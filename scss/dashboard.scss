@@ -6,7 +6,37 @@
 
 .nav-link {
 
+  .normal-icon {
+    display: inline-block;
+  }
+
+  .active-icon {
+    display: none;
+  }
+
+  &:hover {
+    .normal-icon {
+      display: none;
+    }
+  
+    .active-icon {
+      display: inline-block;
+    }
+
+    a {
+      color: #6E72EE;
+    }
+  }
+
   &.active {
+    .normal-icon {
+      display: none;
+    }
+  
+    .active-icon {
+      display: inline-block;
+    }
+
     a {
       background: var(--bs-gray-light);
       border-top-left-radius: 35px;
@@ -14,5 +44,9 @@
       box-shadow: inset 10px 3px 12px rgba(0, 0, 0, 0.1);
       color: #6E72EE;
     }
+
+
   }
+
+  
 }
