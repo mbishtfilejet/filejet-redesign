@@ -70,9 +70,10 @@ module.exports = function (grunt) {
     // Register tasks
     grunt.registerTask('default', [
         'sass',
-        'uglify'
-    ]);
-    grunt.registerTask('dev', [
+        'uglify',
         'watch'
     ]);
+    // grunt.registerTask('dev', [
+    //     'watch'
+    // ]);
 };
