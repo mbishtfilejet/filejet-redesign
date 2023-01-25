@@ -161,14 +161,13 @@
                             </h3>
                         </div>
                         <div class="col col-xl-9 col-lg-8 d-flex align-items-center justify-content-end">
-                            <div
-                                class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar">
-                                <span class="icon icon-search-grey icon-lg"></span>
+                            <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                <span class="icon icon-search-grey icon-lg text-opacity-50 text-primary"></span>
                                 <span class="text-placeholder w-100">What are you looking for?</span>
                             </div>
                             <div class="notification position-relative px-4">
-                                <a href="">
-                                    <span class="icon icon-notification m-0"></span>
+                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#notificationMOdal">
+                                    <span class="icon icon-bell m-0"></span>
                                     <span class="notification-dot"></span>
                                 </a>
                             </div>
@@ -908,6 +907,347 @@
             </div>
         </div>
     </div>
+
+     <!-- Search Modal Starts-->
+     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content bg-transparent border-0">
+            <div class="modal-body">
+                <form autocomplete="off">
+                    <div class="d-flex align-items-center white-bg px-4 py-3 rounded-pill">
+                        <span class="icon icon-search-grey icon-lg"></span>
+                        <input class="w-100 bg-transparent p-0 rounded-5 border-0 fs-3" id="search" type="text" name="seach" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Search Modal Ends -->
+
+    <!-- Notification Modal Starts -->
+    <div class="modal fade" id="notificationMOdal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-sm icon-bell-white m-0"></span>
+                        </span>                      
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9">Notifications</span>
+                            <h3 class="fs-3 m-0">Your Notifications</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100">
+                        <span class="icon icon-search-grey"></span>
+                        <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach" placeholder="Find a Notification">
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <ul class="nav nav-tabs pt-2" id="notificationTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link active border-0" id="unread-notification-tab" data-bs-toggle="tab" data-bs-target="#unread-notification" type="button" role="tab" aria-controls="unreadNotification" aria-selected="true">UNREAD</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link border-0" id="read-notification-tab" data-bs-toggle="tab" data-bs-target="#read-notification" type="button" role="tab" aria-controls="readNotification" aria-selected="false">READ</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content bg-white" id="notificationTabContent">
+
+                        <!-- Unread Notification -->
+                        <div class="tab-pane fade show active" id="unread-notification" role="tabpanel" aria-labelledby="unread-notification-tab">
+                            <table class="table m-0 table-hover">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">
+                                            <span>Notification</span>
+                                        </th>
+                                        <th>Date <span class=""></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2"><strong>**Item Name** has been shipped/emailed</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2"><strong>10 / 29 / 2021</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2"><strong>**Item Name** has been shipped/emailed</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2"><strong>10 / 29 / 2021</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2"><strong>**Item Name** has been shipped/emailed</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2"><strong>10 / 29 / 2021</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2"><strong>**Item Name** has been shipped/emailed</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2"><strong>10 / 29 / 2021</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2"><strong>**Item Name** has been shipped/emailed</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2"><strong>10 / 29 / 2021</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2"><strong>**Item Name** has been shipped/emailed</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2"><strong>10 / 29 / 2021</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2"><strong>**Item Name** has been shipped/emailed</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2"><strong>10 / 29 / 2021</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2"><strong>**Item Name** has been shipped/emailed</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2"><strong>10 / 29 / 2021</strong></p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Unread Notification -->
+
+                        <!-- Read Notification -->
+                        <div class="tab-pane fade" id="read-notification" role="tabpanel" aria-labelledby="read-notification-tab">
+                            <table class="table m-0 table-hover">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">
+                                            <span>Notification</span>
+                                        </th>
+                                        <th>Date <span class="caret"> 1</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">
+                                            <span class="bg-dark p-2 rounded-2 me-2 d-inline-block">
+                                                <span class="icon icon-xs icon-bell-white m-0"></span>
+                                            </span> 
+                                        </td>
+                                        <td>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </td>
+                                        <td width="140">
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Read Notification -->
+                    </div>                    
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Notification Modal Ends -->
     
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
