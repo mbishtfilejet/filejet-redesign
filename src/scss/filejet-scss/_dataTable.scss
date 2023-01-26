@@ -1,0 +1,77 @@
+.dataTables_wrapper {
+    &>.row {
+        &:last-child {
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    .dataTables_paginate {
+        ul.pagination {
+            margin: 0;
+            justify-content: end;
+            .paginate_button {
+                &.next {
+                    @extend .ms-4;
+                    .page-link {
+                        background: url(../../../dist/images/icons/icon-angle-right.svg) no-repeat center center;
+                    }
+                }         
+                &.previous {
+                    .page-link {
+                        background: url(../../../dist/images/icons/icon-angle-left.svg) no-repeat center center;
+                    }
+                }
+                &.disabled {
+                    a.page-link {
+                        opacity: 0.5;
+                    }    
+                }
+                a.page-link {
+                    border: none;
+                    background: none;
+                    padding: 0;
+                    font-size: 0;
+                    width: rem(9);
+                    height: rem(12);
+                    &:focus,
+                    &:active {
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+    .dataTable {
+        thead {
+            th.sorting {
+                position: relative;
+
+                &::after {
+                    content: '';
+                    background-image: url('../../../dist/images/icons/down-filter-arrow.svg');
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    position: absolute;
+                    width: rem(10);
+                    height: rem(6);
+                    right: rem(12px);
+                    top: rem(16px);
+                    transition: all 0.3s ease-in;
+                }
+
+                &.sorting_asc {
+                    &::after {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                &.sorting_desc {
+                    &::after {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+        }
+    }
+}
