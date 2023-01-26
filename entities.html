@@ -218,11 +218,11 @@
                                     <span
                                         class="icon icon-search-grey icon-sm opacity-25 position-absolute ms-4 h-100"></span>
                                     <input type="text" placeholder="Find an Entity"
-                                        class="form-control white-bg py-4 ps-5 pe-4 box-shadow" />
+                                        class="form-control white-bg py-4 ps-5 pe-4 box-shadow m-0" />
                                 </div>
                                 <div class="w-25 d-flex justify-content-between ps-3">
                                     <div class="w-50 d-flex pe-3">
-                                        <button type="button"
+                                        <button data-bs-toggle="modal" data-bs-target="#entitiesFilter" type="button"
                                             class="btn filter-btn px-3 rounded-3 text-uppercase border-0 w-100">
                                             Filter <span class="icon m-0 ms-4 icon-filter"></span>
                                         </button>
@@ -1454,7 +1454,7 @@
     </div>
     <!-- Additional Jurisdictions Modal End-->
 
-    <!-- Additional Jurisdictions Modal start-->
+    <!-- updateEntityDetails Modal start-->
     <div class="modal modal-right fade" id="updateEntityDetails" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
@@ -1561,6 +1561,299 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <div class="w-100">
+                                <label for="" class="form-label">Agent of Service of process</label>
+                            </div>
+                            <div class="radio-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Filejet</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Corporate</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 1" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 2" />
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                </div>
+                                <div class="col-md">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>State</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="County" />
+                                </div>
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <fieldset disabled>
+                                <label for="" class="form-label">Number of shares Authorized to issue</label>
+                                <input type="text" class="form-control" id="" value="Number of shares" />
+                            </fieldset>
+                        </div>
+                        <div class="mb-4">
+                            <fieldset disabled>
+                                <label for="" class="form-label">Per Value</label>
+                                <input type="text" class="form-control" id="" value="$ per value" />
+                            </fieldset>
+                        </div>
+                        <h5 class="font-weight-700">Officers</h5>
+                        <div class="accordion mb-3" id="officers-address">
+                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
+                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">John
+                                            Doe</span> <span
+                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">President</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#officers-address">
+                                    <div class="accordion-body">
+                                        <label for="" class="form-label">Address</label>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 1" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 2" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>State</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id=""
+                                                        placeholder="County" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed bg-white" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
+                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">Wade
+                                            Warren</span> <span
+                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">Director</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#officers-address">
+                                    <div class="accordion-body">
+                                        <label for="" class="form-label">Address</label>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 1" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 2" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>State</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id=""
+                                                        placeholder="County" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed bg-white" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
+                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">Esther
+                                            Howard</span> <span
+                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">Shareholder</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#officers-address">
+                                    <div class="accordion-body">
+                                        <label for="" class="form-label">Address</label>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 1" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 2" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>State</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id=""
+                                                        placeholder="County" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <button type="button"
+                                class="btn btn-tertiary text-uppercase py-3 px-3 rounded-3 font-weight-600"
+                                data-bs-dismiss="modal">
+                                Add New Officer
+                            </button>
+                        </div>
+                        <h5 class="font-weight-700 mb-3">Sign</h5>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Filejet will sign on your behalf</label>
+                            <input type="text" class="form-control" id="" placeholder="Authorized signer" />
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <label for="" class="form-label">Organizer address</label>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="" checked="">
+                                        <label class="form-check-label form-label" for="">
+                                            SAME AS BUSINESS address?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 1" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 2" />
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                </div>
+                                <div class="col-md">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>State</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="County" />
+                                </div>
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="" class="form-label">Group</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Groups</option>
+                                <option value="1">Group Name 1</option>
+                                <option value="2">Group Name 1</option>
+                                <option value="3">Group Name 1</option>
+                            </select>
+                        </div>
 
                     </form>
                 </div>
@@ -1585,7 +1878,320 @@
             </div>
         </div>
     </div>
-    <!-- Additional Jurisdictions Modal End-->
+    <!-- updateEntityDetails Modal End-->
+
+    <!-- Entities Filter Modal start-->
+    <div class="modal modal-right fade" id="entitiesFilter" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-filter-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Filter</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Filter Entity Listing</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Group</label>
+                            <div class="radio-checkbox-group bg-white p-3 rounded-2 row flex-wrap">
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Group 1
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="2">
+                                    <label class="form-check-label text-capitalize" for="2">
+                                        Group 2
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="3">
+                                    <label class="form-check-label text-capitalize" for="3">
+                                        Group 3
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="4">
+                                    <label class="form-check-label text-capitalize" for="4">
+                                        Group 4
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="5">
+                                    <label class="form-check-label text-capitalize" for="5">
+                                        Group 5
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="6">
+                                    <label class="form-check-label text-capitalize" for="6">
+                                        Group 6
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">TYPE</label>
+                            <div class="radio-checkbox-group bg-white p-3 rounded-2 row flex-wrap">
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Profit Corporation
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="2" checked>
+                                    <label class="form-check-label text-capitalize" for="2">
+                                        Non-Profit Corporation
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="checkbox" name="" id="3" checked>
+                                    <label class="form-check-label text-capitalize" for="3">
+                                        LLC
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">ASSIGNED TO</label>
+                            <div class="radio-checkbox-group bg-white p-3 rounded-2 row flex-wrap">
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="radio" name="assigned" id="11">
+                                    <label class="form-check-label text-capitalize m-0" for="11">
+                                        Everyone
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="radio" name="assigned" id="12" checked>
+                                    <label class="form-check-label text-capitalize" for="12">
+                                        Only Assigned To You
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">STATE (51 SELECTED)</label>
+                            <div class="radio-checkbox-group radio-checkbox-group-fixed bg-white p-3 rounded-2 row flex-wrap">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alabama
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alaska
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arizona
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arkansas
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        California
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alabama
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alaska
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arizona
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arkansas
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        California
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alabama
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alaska
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arizona
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arkansas
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        California
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alabama
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alaska
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arizona
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arkansas
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        California
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alabama
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alaska
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arizona
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arkansas
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        California
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alabama
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Alaska
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arizona
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Arkansas
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        California
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button"
+                            class="btn btn-link text-uppercase text-decoration-none font-weight-600 me-auto"
+                            data-bs-dismiss="modal">
+                            Clear All Filters
+                        </button>
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3"
+                            data-bs-dismiss="modal">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Entities Filter Modal End-->
 
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
