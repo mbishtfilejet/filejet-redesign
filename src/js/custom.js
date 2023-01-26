@@ -9,4 +9,10 @@ $(function () {
     "lengthChange": false,
     "pagingType": "simple"
   });
+
+  $('#jurisdictions-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple"
+  });
 });
