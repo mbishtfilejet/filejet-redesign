@@ -3,6 +3,7 @@ $(function () {
     e.preventDefault()
     $(this).tab('show')
   });
+  
   $('#entity-listing').DataTable({
     "searching": false,
     "lengthChange": false,
