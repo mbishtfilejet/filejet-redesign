@@ -2323,6 +2323,11 @@ textarea.form-control-lg {
   min-height: 1.5rem;
   padding-left: 1.5em;
   margin-bottom: 0.125rem;
+  label {
+    margin: 0;
+    position: relative;
+    top: 5px;
+  }
 }
 
 .form-check label {
@@ -2387,8 +2392,6 @@ textarea.form-control-lg {
 .form-check-input[type=checkbox]:checked {
   border-color: var(--bs-purple-100);
   background: var(--bs-purple-100);
-}
-.form-check-input[type=checkbox]:checked:after {
 }
 .form-check-input[type=radio]:checked:after {
   content: "";
@@ -4669,19 +4672,34 @@ textarea.form-control-lg {
   list-style: none;
   background-color: var(--bs-breadcrumb-bg);
   border-radius: var(--bs-breadcrumb-border-radius);
+  font-weight: 700;
 }
 
 .breadcrumb-item + .breadcrumb-item {
-  padding-left: var(--bs-breadcrumb-item-padding-x);
+  padding-left: rem(12);
 }
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
-  padding-right: var(--bs-breadcrumb-item-padding-x);
+  padding-right: rem(16);
   color: var(--bs-breadcrumb-divider-color);
-  content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
+  content: '';
+  background-image: url(../../../dist/images/icons/icon-breadcrumb.svg);
+  background-repeat: no-repeat;
+  width: 6px;
+  height: 11px;
+  position: relative;
+  top: 3px;
 }
 .breadcrumb-item.active {
   color: var(--bs-breadcrumb-item-active-color);
+  opacity: 0.5;
+}
+
+.breadcrumb-item {
+  a {
+    color: var(--bs-purple);
+    text-decoration: none;
+  }
 }
 
 .pagination {
@@ -8269,6 +8287,10 @@ textarea.form-control-lg {
 
 .fs-9 {
   font-size: rem(13) !important;
+}
+
+.fs-10 {
+  font-size: rem(12) !important;
 }
 
 .fst-italic {
