@@ -357,7 +357,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
+                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -387,7 +387,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-secondary">Take action</button>
+                                                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -598,7 +598,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-primary">Take action</button>
+                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -651,7 +651,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
-                                                        <button class="btn btn-secondary">Take action</button>
+                                                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -1605,7 +1605,7 @@
                     </div>
                     <div class="d-flex pt-4 w-100">
                         <button type="button" class="btn btn-tertiary text-capitalize me-2 py-2 px-4 text-uppercase" >Yes</button>
-                        <button type="button" class="btn btn-info text-capitalize py-2 px-4 text-uppercase">No, See Preview</button>
+                        <button type="button" class="btn btn-info text-capitalize py-2 px-4 text-uppercase" data-bs-target="#previewModal" data-bs-toggle="modal">No, See Preview</button>
                     </div>
                 </div>
 
@@ -1706,7 +1706,7 @@
                 <div class="modal-footer">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-info px-5 py-3 text-uppercase" data-bs-target="#actionModalSeond" data-bs-toggle="modal" data-bs-dismiss="modal">Next</button>
+                        <button type="button" class="btn btn-info px-5 py-3 text-uppercase" data-bs-target="#actionModalSecond" data-bs-toggle="modal" data-bs-dismiss="modal">Next</button>
                     </div>
                 </div>
 
@@ -1716,7 +1716,7 @@
     <!-- Action Modal Ends -->
 
     <!-- Action Modal Second Starts -->
-    <div class="modal modal-right fade" id="actionModalSeond" tabindex="-1" aria-labelledby="actionModalSeondLabel" aria-hidden="true">
+    <div class="modal modal-right fade" id="actionModalSecond" tabindex="-1" aria-labelledby="actionModalSecondLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
@@ -1802,11 +1802,11 @@
                             Cancel
                         </button>
                         <button type="button" class="btn btn-tertiary text-uppercase py-3 px-3 rounded-3 ms-3"
-                            data-bs-dismiss="modal">
+                            data-bs-target="#previewModal" data-bs-toggle="modal" data-bs-dismiss="modal">
                             SAVE & PREVIEW
                         </button>
                         <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3"
-                            data-bs-dismiss="modal">
+                        data-bs-target="#previewModal" data-bs-toggle="modal" data-bs-dismiss="modal">
                             Next
                         </button>
                     </div>
@@ -1816,6 +1816,114 @@
         </div>
     </div>
     <!-- Action Modal Second Ends -->
+
+
+    <!-- Preview Modal Starts -->
+    <div class="modal modal-right fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100 modal-xl">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-settings m-0"></span>
+                        </span>                      
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">PREVIEW</span>
+                            <h3 class="fs-3 m-0 mt-2">Preview</h3>
+                        </div>
+                    </div>
+                    <div class="row pt-4 w-100">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-info text-capitalize py-2 px-4 text-uppercase shadow-lg w-100" >Articles of Organization</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-light text-capitalize py-2 px-4 text-uppercase shadow-lg w-100" data-bs-target="#previewModal" data-bs-toggle="modal" disabled="disabled">Statement of Information</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-light text-capitalize py-2 px-4 text-uppercase shadow-lg w-100" data-bs-target="#previewModal" data-bs-toggle="modal" disabled="disabled">Custom Operating Agreement</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="">
+                        <img src="dist/images/preview-img.jpg" alt="">
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-link text-uppercase py-3 px-5 text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-tertiary text-uppercase py-3 px-5 rounded-3 ms-3"
+                            data-bs-target="#actionModalSecond" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            GO BACK
+                        </button>
+                        <button type="button" class="btn btn-info text-uppercase py-3 px-5 rounded-3 ms-3"
+                        data-bs-target="#successModal" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Preview Modal Ends -->
+
+
+    <!-- Success Modal Starts -->
+
+    <div class="modal modal-right fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="green-bg p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-white-tick m-0"></span>
+                        </span>                      
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SUCCESS</span>
+                            <h3 class="fs-3 m-0 mt-2">Task Complete!</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="">
+                        <p>You’ve successfully updated the compliance task  <<task name>>. Now sit back and relax - Filejet does the rest!</p>
+                        <p>The State Fees of $XXXXX will be charged per the Terms & Conditions of your account.</p>
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info text-uppercase px-5 py-3 rounded-3 ms-3"
+                            data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal Ends -->
     
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
