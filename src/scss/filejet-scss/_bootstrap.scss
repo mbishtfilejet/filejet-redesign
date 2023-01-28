@@ -34,6 +34,7 @@
   --bs-cyan: #0dcaf0;
   --bs-black: #000;
   --bs-purple: #6741DF;
+  --bs-purple-100: #6E72EE;
   --bs-purple-secondry: #DDDFF5;
   --bs-purple-light: rgba(110, 114, 238, 0.24);
   --bs-black-primary: #0D2C36;
@@ -2062,7 +2063,8 @@ progress {
   color: var(--bs-black-primary);
   background-clip: padding-box;
   background-color: var(--bs-white);
-  border: 1px solid var(--bs-white);
+  // border: 1px solid var(--bs-white);
+  border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -2070,13 +2072,19 @@ progress {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   letter-spacing: -0.05px;
   margin:0 0 rem(8);
-  box-shadow: 0px 2px 70px rgba(0, 0, 0, 0.03), 0px 0.835552px 29.2443px rgba(0, 0, 0, 0.0215656), 0px 0.446726px 15.6354px rgba(0, 0, 0, 0.0178832), 0px 0.250431px 8.76509px rgba(0, 0, 0, 0.015), 0px 0.133002px 4.65507px rgba(0, 0, 0, 0.0121168), 0px 0.0553451px 1.93708px rgba(0, 0, 0, 0.00843437);
+  @extend .shadow-lg;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control {
     transition: none;
   }
 }
+
+.grey-input {
+  background-color: var(--bs-gray-light);
+  border-color: var(--bs-gray-light);
+}
+
 .form-control[type=file] {
   overflow: hidden;
 }
@@ -2085,7 +2093,7 @@ progress {
 }
 .form-control:focus {
   color: #212529;
-  background-color: #fff;
+  // background-color: #fff;
   //border-color: #86b7fe;
   outline: 0;
   //box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
@@ -2106,7 +2114,7 @@ progress {
   color: var(--bs-black-primary);
   background-color: var(--bs-gray-200);
   border: 1px solid var(--bs-gray-200);
-  box-shadow: none;
+  @extend .shadow-none;
 }
 .form-control::-webkit-file-upload-button {
   padding: 0.375rem 0.75rem;
@@ -2270,7 +2278,7 @@ textarea.form-control-lg {
   appearance: none;
   letter-spacing: -0.05px;
   margin:0 0 rem(8);
-  box-shadow: 0px 2px 70px rgba(0, 0, 0, 0.03), 0px 0.835552px 29.2443px rgba(0, 0, 0, 0.0215656), 0px 0.446726px 15.6354px rgba(0, 0, 0, 0.0178832), 0px 0.250431px 8.76509px rgba(0, 0, 0, 0.015), 0px 0.133002px 4.65507px rgba(0, 0, 0, 0.0121168), 0px 0.0553451px 1.93708px rgba(0, 0, 0, 0.00843437);
+  @extend .shadow-lg;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-select {
@@ -2321,6 +2329,11 @@ textarea.form-control-lg {
     top: 5px;
   }
 }
+
+.form-check label {
+  @extend .text-capitalize;
+}
+
 .form-check .form-check-input {
   float: left;
   margin-left: -1.5em;
@@ -2338,22 +2351,25 @@ textarea.form-control-lg {
 }
 
 .form-check-input {
-  width: 1em;
-  height: 1em;
+  width: rem(18);
+  height: rem(18);
   margin-top: 0.25em;
   vertical-align: top;
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  // border: 1px solid rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--bs-black-primary);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   -webkit-print-color-adjust: exact;
   color-adjust: exact;
   print-color-adjust: exact;
+  position: relative;
 }
+
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
 }
@@ -2364,13 +2380,28 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #86b7fe;
+  //border-color: #86b7fe;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  //box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-check-input:checked {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  // background-color: #0d6efd;
+  // border-color: #0d6efd;
+  border-color: var(--bs-purple-100);
+}
+.form-check-input[type=checkbox]:checked {
+  border-color: var(--bs-purple-100);
+  background: var(--bs-purple-100);
+}
+.form-check-input[type=radio]:checked:after {
+  content: "";
+  background: var(--bs-purple-100);
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  right: 1px;
+  top: 1px;
+  border-radius: 50%;
 }
 .form-check-input:checked[type=checkbox] {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
@@ -3048,23 +3079,6 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #6E72EE;
 }
 
-.btn-info-light {
-  --bs-btn-color: #6E72EE;
-  --bs-btn-bg: #DDDFF5;
-  --bs-btn-border-color: #DDDFF5;
-  --bs-btn-hover-color: #6E72EE;
-  --bs-btn-hover-bg: #DDDFF5;
-  --bs-btn-hover-border-color: #DDDFF5;
-  --bs-btn-focus-shadow-rgb: 11, 172, 204;
-  --bs-btn-active-color: #6E72EE;
-  --bs-btn-active-bg: #DDDFF5;
-  --bs-btn-active-border-color: #DDDFF5;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #6E72EE;
-  --bs-btn-disabled-bg: #DDDFF5;
-  --bs-btn-disabled-border-color: #DDDFF5;
-}
-
 .btn-warning {
   --bs-btn-color: #000;
   --bs-btn-bg: #ffc107;
@@ -3282,7 +3296,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: transparent;
   --bs-btn-box-shadow: none;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  text-decoration: underline;
+  // text-decoration: underline;
 }
 .btn-link:focus-visible {
   color: var(--bs-btn-color);
@@ -7276,7 +7290,7 @@ textarea.form-control-lg {
 }
 
 .shadow {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0px rem(7) rem(12) rgb(0 0 0 / 10%) !important;
 }
 
 .shadow-sm {
@@ -7284,7 +7298,11 @@ textarea.form-control-lg {
 }
 
 .shadow-lg {
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  box-shadow: 0px 2px 70px rgba(0, 0, 0, 0.03), 0px 0.835552px 29.2443px rgba(0, 0, 0, 0.0215656), 0px 0.446726px 15.6354px rgba(0, 0, 0, 0.0178832), 0px 0.250431px 8.76509px rgba(0, 0, 0, 0.015), 0px 0.133002px 4.65507px rgba(0, 0, 0, 0.0121168), 0px 0.0553451px 1.93708px rgba(0, 0, 0, 0.00843437) !important;
+}
+
+.shadow-inner {
+  box-shadow: 0px 7px 12px rgb(0 0 0 / 10%) inset !important;
 }
 
 .shadow-none {
@@ -8260,15 +8278,15 @@ textarea.form-control-lg {
 }
 
 .fs-7 {
-  font-size: 0.9375rem !important;
+  font-size: rem(15) !important;
 }
 
 .fs-8 {
-  font-size: 0.875rem !important;
+  font-size: rem(14) !important;
 }
 
 .fs-9 {
-  font-size: 0.8125rem !important;
+  font-size: rem(13) !important;
 }
 
 .fs-10 {
