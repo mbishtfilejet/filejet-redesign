@@ -361,12 +361,17 @@
                                     <a href="javascript: void(0)" data-id="grid-view"><span
                                             class="icon m-0 ms-4 icon-grid-view"></span></a>
                                 </li>
-                                <li class="nav-item nav-items">
-                                    <a href="#" class="nav-link px-4" data-bs-toggle="tab">All Jurisdictions</a>
+                                <li>
+                                    <select class="form-select p-0 my-0 ms-5 bg-transparent h-100 border-0 shadow-none" aria-label="select">
+                                        <option selected="">All Jurisdictions</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-12 tab-content-wrapper">
+                        <div class="col-12 tab-content-wrapper" id="list-view">
                             <div class="tab-content bg-white rounded-2">
                                 <div class="tab-pane fade show active" id="all">
                                     <table id="entity-listing" class="table table-striped w-100">
@@ -464,7 +469,7 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="overdue">
-                                    <table id="entity-listing" class="table table-striped w-100">
+                                    <table id="overdue-table" class="table table-striped w-100">
                                         <thead>
                                             <tr>
                                                 <th>Task Name</th>
@@ -493,73 +498,88 @@
                                                 <td>
                                                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
                                                 </td>
-                                            </tr>
+                                            </tr>                                            
                                             <tr>
-                                                <td>Annual Report</td>
+                                                <td>Franchise Tax Report</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                    <span class="text-grey">Upcoming</span>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-grey">24 days</span>
-                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
                                                 </td>
-                                            </tr>
+                                            </tr>                                            
                                             <tr>
-                                                <td>Registered Agent</td>
+                                                <td>Franchise Tax Report</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                    <span class="text-blue">Submitted</span>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-blue">10/10/2022</span>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    
+                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
                                                 </td>
-                                            </tr>
+                                            </tr>                                            
                                             <tr>
-                                                <td>Business License Renewal</td>
+                                                <td>Franchise Tax Report</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                    <span class="text-green">Recently completed</span>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-green">10/10/2022</span>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <a href="">
-                                                        <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                    </a>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
                                                 </td>
-                                            </tr>
+                                            </tr>                                            
                                             <tr>
-                                                <td>Business License Renewal</td>
+                                                <td>Franchise Tax Report</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                    <span class="text-purple">Sent to state</span>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-purple">10/10/2022</span>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                   
+                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
                                                 </td>
-                                            </tr>
+                                            </tr>                                            
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="upcoming">
-                                    <table id="entity-listing" class="table table-striped w-100">
+                                    <table id="upcoming-table" class="table table-striped w-100">
                                         <thead>
                                             <tr>
                                                 <th>Task Name</th>
@@ -571,22 +591,20 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Franchise Tax Report</td>
+                                                <td>Annual Report</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                    <span class="text-red">Overdue</span>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-red">-5 days</span>
-                                                    <div class="progress" role="progressbar" aria-label="Overdue"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                        </div>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -607,54 +625,61 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Registered Agent</td>
+                                                <td>Annual Report</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                    <span class="text-blue">Submitted</span>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-blue">10/10/2022</span>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Business License Renewal</td>
+                                                <td>Annual Report</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                    <span class="text-green">Recently completed</span>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-green">10/10/2022</span>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <a href="">
-                                                        <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                    </a>
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Business License Renewal</td>
+                                                <td>Annual Report</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                    <span class="text-purple">Sent to state</span>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-purple">10/10/2022</span>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                   
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="submitted">
-                                    <table id="entity-listing" class="table table-striped w-100">
+                                    <table id="sumbitted-table" class="table table-striped w-100">
                                         <thead>
                                             <tr>
                                                 <th>Task Name</th>
@@ -666,39 +691,17 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Franchise Tax Report</td>
+                                                <td>Registered Agent</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                    <span class="text-red">Overdue</span>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-red">-5 days</span>
-                                                    <div class="progress" role="progressbar" aria-label="Overdue"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                        </div>
-                                                    </div>
+                                                    <span class="text-blue">10/10/2022</span>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Annual Report</td>
-                                                <td>AZ</td>
-                                                <td>
-                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                    <span class="text-grey">Upcoming</span>
-                                                </td>
-                                                <td>
-                                                    <span class="text-grey">24 days</span>
-                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
+                                                    
                                                 </td>
                                             </tr>
                                             <tr>
@@ -716,19 +719,74 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="sent-to-state">
+                                    <table id="setToState-table" class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Task Name</th>
+                                                <th>Jurisdiction</th>
+                                                <th>Status</th>
+                                                <th>Due In</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
                                                 <td>Business License Renewal</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                    <span class="text-green">Recently completed</span>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-green">10/10/2022</span>
+                                                    <span class="text-purple">10/10/2022</span>
                                                 </td>
                                                 <td>
-                                                    <a href="">
-                                                        <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                    </a>
+                                                   
                                                 </td>
                                             </tr>
                                             <tr>
@@ -745,85 +803,46 @@
                                                    
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="tab-pane fade" id="sent-to-state">
-                                    <table id="entity-listing" class="table table-striped w-100">
-                                        <thead>
                                             <tr>
-                                                <th>Task Name</th>
-                                                <th>Jurisdiction</th>
-                                                <th>Status</th>
-                                                <th>Due In</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Franchise Tax Report</td>
+                                                <td>Business License Renewal</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                    <span class="text-red">Overdue</span>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-red">-5 days</span>
-                                                    <div class="progress" role="progressbar" aria-label="Overdue"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                        </div>
-                                                    </div>
+                                                    <span class="text-purple">10/10/2022</span>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Annual Report</td>
-                                                <td>AZ</td>
-                                                <td>
-                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                    <span class="text-grey">Upcoming</span>
-                                                </td>
-                                                <td>
-                                                    <span class="text-grey">24 days</span>
-                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Registered Agent</td>
-                                                <td>AZ</td>
-                                                <td>
-                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                    <span class="text-blue">Submitted</span>
-                                                </td>
-                                                <td>
-                                                    <span class="text-blue">10/10/2022</span>
-                                                </td>
-                                                <td>
-                                                    
+                                                   
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Business License Renewal</td>
                                                 <td>AZ</td>
                                                 <td>
-                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                    <span class="text-green">Recently completed</span>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-green">10/10/2022</span>
+                                                    <span class="text-purple">10/10/2022</span>
                                                 </td>
                                                 <td>
-                                                    <a href="">
-                                                        <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                    </a>
+                                                   
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                   
                                                 </td>
                                             </tr>
                                             <tr>
@@ -844,7 +863,7 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="up-to-date">
-                                    <table id="entity-listing" class="table table-striped w-100">
+                                    <table id="upToDate-table" class="table table-striped w-100">
                                         <thead>
                                             <tr>
                                                 <th>Task Name</th>
