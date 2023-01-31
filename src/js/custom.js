@@ -16,6 +16,12 @@ $(function () {
     "pagingType": "simple"
   });
 
+  $('#partners-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple"
+  });
+
   $('#group-listing').DataTable({
     "searching": false,
     "lengthChange": false,
