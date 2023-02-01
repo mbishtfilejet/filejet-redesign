@@ -355,3 +355,62 @@ form {
 .border-left {
   border-left: 1px solid rgba(13, 44, 54, 0.24);
 }
+
+.step-group  {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.step > div {
+  font-weight: 700;
+  font-size: rem(21);
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: rgb(13 44 54 / 40%);
+  width: rem(48);
+  height: rem(48);
+  background: rgb(13 44 54 / 10%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.step > div:after {
+  content: "";
+  position: absolute;
+  width: rem(31);
+  height: rem(2);
+  background: rgba(13,44,54,.1);
+  left: rem(-31);
+  z-index: 0;
+}
+
+.step:first-child > div {
+  margin-left: 0;
+}
+
+.step:first-child > div:after {
+  content: none;
+}
+
+.step .icon {
+  display: none;
+}
+
+.step.completed > div {
+  background-color: var(--bs-green);
+  font-size: 0;
+}
+
+.step.completed .icon{
+  display: block;
+}
+
+.active.step > div {
+  background: var(--bs-purple);
+  color: var(--bs-white);
+}

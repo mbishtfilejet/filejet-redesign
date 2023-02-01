@@ -16,7 +16,31 @@ $(function () {
     "pagingType": "simple"
   });
 
+  $('#partners-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple"
+  });
+
   $('#group-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple"
+  });
+
+  $('#partners-name-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple"
+  });
+
+  $('#group-entity-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple"
+  });
+
+  $('#group-partner').DataTable({
     "searching": false,
     "lengthChange": false,
     "pagingType": "simple"
@@ -38,4 +62,8 @@ $(function () {
       });
     }
   });
+
+  $(document).on('click', '.showAccordian', function(){
+    $(this).parents('.form-check').next('.accordion').toggleClass('hide');
+  })
 });
