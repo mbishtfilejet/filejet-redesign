@@ -46,6 +46,12 @@ $(function () {
     "pagingType": "simple"
   });
 
+  $('.data-table-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple"
+  });
+
   $('.nav-item a').on('click', function () {
     let dataId = $(this).attr('data-id');
     $('.tab-content-wrapper').css('display', 'none');
