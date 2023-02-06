@@ -3850,6 +3850,51 @@ textarea.form-control-lg {
   background-color: var(--bs-nav-tabs-link-active-bg);
   // border-color: var(--bs-nav-tabs-link-active-border-color);
 }
+.nav-tabs .nav-link {
+  &.dot {
+    &::before {
+      content: '';
+      display: inline-block;
+      width: rem(10);
+      height: rem(10);
+      border-radius: 100%;
+      margin-right: rem(16);
+      background: var(--bs-nav-link-color);
+    }
+  }
+}
+.nav-tabs .nav-link.active {
+  &.red-text {
+    color: var(--bs-red);
+    &.dot::before {
+      background: var(--bs-red);
+    }
+  }
+  &.black-text {
+    color: var(--bs-gray-800);
+    &.dot::before {
+      background: var(--bs-gray-800);
+    }
+  }
+  &.light-blue-text {
+    color: var(--bs-blue);
+    &.dot::before {
+      background: var(--bs-blue);
+    }
+  }
+  &.green-text {
+    color: var(--bs-green);
+    &.dot::before {
+      background: var(--bs-green);
+    }
+  }
+  &.blue-text {
+    color: var(--bs-purple);
+    &.dot::before {
+      background: var(--bs-purple);
+    }
+  }
+}
 .nav-tabs .dropdown-menu {
   margin-top: calc(-1 * var(--bs-nav-tabs-border-width));
   border-top-left-radius: 0;
