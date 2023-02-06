@@ -33,7 +33,7 @@
                             </a>
                         </li>
                         <!-- Entities -->
-                        <li class="nav-link active">
+                        <li class="nav-link">
                             <a href="./entities.html" class="text-decoration-none ps-3 py-3 d-block">
                                 <span>
                                     <span class="icon icon-entities normal-icon"></span>
@@ -47,7 +47,7 @@
                         </li>
                         <!-- Groups -->
                         <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
+                            <a href="./groups.html" class="text-decoration-none ps-3 py-3 d-block">
                                 <span>
                                     <span class="icon icon-group normal-icon"></span>
                                     <span class="icon icon-group-purple active-icon"></span>
@@ -66,8 +66,8 @@
                             </a>
                         </li>
                         <!-- Registered Agent -->
-                        <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
+                        <li class="nav-link active">
+                            <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block">
                                 <span>
                                     <span class="icon icon-users-check normal-icon"></span>
                                     <span class="icon icon-users-check-purple active-icon"></span>
@@ -80,7 +80,7 @@
                         </li>
                         <!-- Business Licenses -->
                         <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
+                            <a href="./business-licences.html" class="text-decoration-none ps-3 py-3 d-block">
                                 <span>
                                     <span class="icon icon-business normal-icon"></span>
                                     <span class="icon icon-business-purple active-icon"></span>
@@ -90,7 +90,7 @@
                         </li>
                         <!-- Fictitious / Trade Name -->
                         <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
+                            <a href="./trade.html" class="text-decoration-none ps-3 py-3 d-block">
                                 <span>
                                     <span class="icon icon-certificate-black normal-icon"></span>
                                     <span class="icon icon-certificate-purple active-icon"></span>
@@ -137,7 +137,7 @@
                         </li>
                         <!-- Additional Services -->
                         <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-2 d-block">
+                            <a href="./additional-services.html" class="text-decoration-none ps-3 py-2 d-block">
                                 <span>
                                     <span class="icon icon-services normal-icon"></span>
                                     <span class="icon icon-services-purple active-icon"></span>
@@ -154,7 +154,7 @@
                     <div class="row align-items-center">
                         <div class="col col-xl-3 col-lg-4">
                             <h3 class="m-0">
-                                <strong> Entity Listing </strong>
+                                <strong> Registered Agent </strong>
                             </h3>
                         </div>
                         <div class="col col-xl-9 col-lg-8 d-flex align-items-center justify-content-end">
@@ -217,19 +217,19 @@
                                 <div class="w-75 d-flex position-relative pe-3">
                                     <span
                                         class="icon icon-search-grey icon-sm opacity-25 position-absolute ms-4 h-100"></span>
-                                    <input type="text" placeholder="Find an Entity"
-                                        class="form-control white-bg py-4 ps-5 pe-4 shadow" />
+                                    <input type="text" placeholder="Search by  Entity Name, Agent Name or State"
+                                        class="form-control white-bg py-4 ps-5 pe-4 shadow mb-0" />
                                 </div>
                                 <div class="w-25 d-flex justify-content-between ps-3">
                                     <div class="w-50 d-flex pe-3">
-                                        <button data-bs-toggle="modal" data-bs-target="#entitiesFilter" type="button"
-                                            class="btn filter-btn px-3 rounded-3 text-uppercase border-0 w-100">
+                                        <button data-bs-toggle="modal" data-bs-target="#RAFilter" type="button"
+                                            class="btn filter-btn px-3 rounded-3 border-0 w-100">
                                             Filter <span class="icon m-0 ms-4 icon-filter"></span>
                                         </button>
                                     </div>
                                     <div class="w-50 d-flex ps-3">
-                                        <button type="button" class="btn btn-info px-3 rounded-3 text-uppercase w-100">
-                                            Add New
+                                        <button type="button" class="btn btn-info px-3 rounded-3 w-100" data-bs-toggle="modal" data-bs-target="#fileJetOffice">
+                                            Filejet Offices
                                         </button>
                                     </div>
                                 </div>
@@ -238,377 +238,93 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col-12">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item nav-items">
-                                    <a href="#all" class="nav-link active" data-bs-toggle="tab">All</a>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" 
+                                    id="ra-detail-tab"
+                                    class="nav-link active" data-bs-toggle="tab" data-bs-target="#ra-detail"
+                                    role="tab" aria-controls="ra-detail" aria-selected="true"
+                                >Filejet as RA</a>
                                 </li>
-                                <li class="nav-item d-flex align-items-center ms-auto">
-                                    <a href="javascript: void(0)" data-id="list-view"><span
-                                            class="icon m-0 ms-4 icon-list-view"></span></a>
-                                    <a href="javascript: void(0)" data-id="grid-view"><span
-                                            class="icon m-0 ms-4 icon-grid-view"></span></a>
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" 
+                                    id="ra-other-tab"
+                                    class="nav-link" data-bs-toggle="tab" data-bs-target="#ra-other"
+                                    role="tab" aria-controls="ra-other" aria-selected="true"
+                                >Others</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-12 tab-content-wrapper" id="list-view">
+                        <div class="col-12 tab-content" id="">
                             <div class="tab-content bg-white rounded-2">
-                                <div class="tab-pane fade show active" id="all">
-                                    <table id="entity-listing" class="table table-striped w-100">
+                                <div class="tab-pane fade show active" id="ra-detail" role="tabpanel" aria-labelledby="ra-detail-tab">
+                                    <table id="" class="table table-striped w-100 data-table-listing">
                                         <thead>
                                             <tr>
                                                 <th>Entity Name</th>
-                                                <th>Group</th>
-                                                <th>Type</th>
                                                 <th>State</th>
-                                                <th>Formation Date</th>
-                                                <th>Jurisdictions</th>
+                                                <th>Date Received</th>
+                                                <th>Date Acknowledged</th>
+                                                <th>Type of SOP</th>
+                                                <th class="sorting-none"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><a href="#">McDonald Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
+                                                <td><a href="javascript:void(0);">Entity Name 1</a></td>
                                                 <td>AZ</td>
-                                                <td>08/03/2021</td>
+                                                <td>11/14/2022</td>
+                                                <td>11/14/2021</td>
+                                                <td>Certified Mail</td>
                                                 <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Jenson Museum Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/11/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Compliance 4U, LLC</a></td>
-                                                <td>Unassigned</td>
-                                                <td>LLC</td>
-                                                <td>NY</td>
-                                                <td>08/06/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Steve’s Accounting Firm</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/24/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">WeComply Corp</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Profit Corp.</td>
-                                                <td>NY</td>
-                                                <td>08/30/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#updateEntityDetails">BioHelp Inc</a>
-                                                </td>
-                                                <td>Unassigned</td>
-                                                <td>Profit Corp.</td>
-                                                <td>NY</td>
-                                                <td>08/30/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">McDonald Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/03/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Jenson Museum Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/11/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Compliance 4U, LLC</a></td>
-                                                <td>Unassigned</td>
-                                                <td>LLC</td>
-                                                <td>NY</td>
-                                                <td>08/06/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Steve’s Accounting Firm</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/24/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">WeComply Corp</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Profit Corp.</td>
-                                                <td>NY</td>
-                                                <td>08/30/2021</td>
-                                                <td><a href="#">0</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">BioHelp Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Profit Corp.</td>
-                                                <td>NY</td>
-                                                <td>08/30/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">McDonald Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/03/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Jenson Museum Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/11/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Compliance 4U, LLC</a></td>
-                                                <td>Unassigned</td>
-                                                <td>LLC</td>
-                                                <td>NY</td>
-                                                <td>08/06/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Steve’s Accounting Firm</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/24/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">WeComply Corp</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Profit Corp.</td>
-                                                <td>NY</td>
-                                                <td>08/30/2021</td>
-                                                <td><a href="#">0</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">BioHelp Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Profit Corp.</td>
-                                                <td>NY</td>
-                                                <td>08/30/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">McDonald Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/03/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Jenson Museum Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/11/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Compliance 4U, LLC</a></td>
-                                                <td>Unassigned</td>
-                                                <td>LLC</td>
-                                                <td>NY</td>
-                                                <td>08/06/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Steve’s Accounting Firm</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Non-Profit Corp.</td>
-                                                <td>AZ</td>
-                                                <td>08/24/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">WeComply Corp</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Profit Corp.</td>
-                                                <td>NY</td>
-                                                <td>08/30/2021</td>
-                                                <td><a href="#">0</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">BioHelp Inc</a></td>
-                                                <td>Unassigned</td>
-                                                <td>Profit Corp.</td>
-                                                <td>NY</td>
-                                                <td>08/30/2021</td>
-                                                <td>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                    <div class="d-flex justify-content-end pe-4">
+                                                        <span class="icon icon-sm icon-card-dark me-4"></span>
+                                                        <span class="icon icon-sm icon-download-dark me-4"></span>
+                                                        <span class="icon icon-stop-green me-4"></span>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12 tab-content-wrapper mt-3" id="grid-view">
-                            <div class="row">
-                                <div class="col col-md-3">
-                                    <div class="card w-100 rounded-2 shadow">
-                                        <div
-                                            class="card-header d-flex card-purple align-items-center text-white font-weight-600 py-4 px-4">
-                                            <span>Steave’s Accounting Inc</span>
-                                            <span class="icon m-0 ms-auto icon-arrow-right-white"></span>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                Arizona
-                                            </li>
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                Unassigned | Non-profit corp.
-                                            </li>
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                08/28/2021
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col col-md-3">
-                                    <div class="card w-100 rounded-2 shadow">
-                                        <div
-                                            class="card-header d-flex card-purple align-items-center text-white font-weight-600 py-4 px-4">
-                                            <span>WeComply Corp</span>
-                                            <span class="icon m-0 ms-auto icon-arrow-right-white"></span>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                Arizona
-                                            </li>
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                Unassigned | Non-profit corp.
-                                            </li>
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                08/28/2021
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col col-md-3">
-                                    <div class="card w-100 rounded-2 shadow">
-                                        <div
-                                            class="card-header d-flex card-purple align-items-center text-white font-weight-600 py-4 px-4">
-                                            <span>BioHelp Inc</span>
-                                            <span class="icon m-0 ms-auto icon-arrow-right-white"></span>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                Arizona
-                                            </li>
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                Unassigned | Non-profit corp.
-                                            </li>
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                08/28/2021
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col col-md-3">
-                                    <div class="card w-100 rounded-2 shadow">
-                                        <div
-                                            class="card-header d-flex card-purple align-items-center text-white font-weight-600 py-4 px-4">
-                                            <span>Jones Accounting, Inc</span>
-                                            <span class="icon m-0 ms-auto icon-arrow-right-white"></span>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                Arizona
-                                            </li>
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                Unassigned | Non-profit corp.
-                                            </li>
-                                            <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                08/28/2021
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <div class="tab-pane fade" id="ra-other" role="tabpanel" aria-labelledby="ra-other-tab">
+                                    <table id="" class="table table-striped w-100 data-table-listing">
+                                        <thead>
+                                            <tr>
+                                                <th>Entity Name</th>
+                                                <th>State</th>
+                                                <th>Reg. Agent Name</th>
+                                                <th>Reg. Agent Address</th>
+                                                <th class="sorting-none" width="200"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="javascript:void(0);">Entity Name 1</a></td>
+                                                <td>AZ</td>
+                                                <td>Sally Smith</td>
+                                                <td>123 Main St., Tusan,
+                                                    AZ 81001</td>
+                                                <td width="200">
+                                                    <div class="d-flex justify-content-end pe-4">
+                                                        <button class="btn btn-info px-5 py-3 text-purple bg-light">Use Filejet</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="javascript:void(0);">Entity Name 1</a></td>
+                                                <td>AZ</td>
+                                                <td>Sally Smith</td>
+                                                <td>123 Main St., Tusan,
+                                                    AZ 81001</td>
+                                                <td width="200">
+                                                    <div class="d-flex justify-content-end pe-4">
+                                                        <button class="btn btn-info px-5 py-3 text-purple bg-light">Use Filejet</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -1176,7 +892,7 @@
 
                 <div class="modal-footer mt-5 pt-5">
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-info px-5 py-3 text-uppercase" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">
                             Close
                         </button>
                     </div>
@@ -1186,21 +902,20 @@
     </div>
     <!-- Notification Modal Ends -->
 
-    <!-- Additional Jurisdictions Modal start-->
-    <div class="modal modal-right fade" id="additionalJurisdictions" tabindex="-1" aria-labelledby="searchModalLabel"
+    <!-- Filejet Offices Modal start-->
+    <div class="modal modal-right fade" id="fileJetOffice" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0">
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 mb-4 pb-2">
-                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
-                            <span class="icon icon-md icon-scale-white m-0"></span>
+                        <span class="purple-bg p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-white-tick m-0"></span>
                         </span>
                         <div>
-                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">ADDITIONAL
-                                JURISDICTIONS</span>
-                            <h3 class="fs-3 m-0 font-weight-700">Keegan LLC</h3>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Registered agent</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Filejet Offices</h3>
                         </div>
                     </div>
                 </div>
@@ -1209,232 +924,67 @@
                 <div class="modal-body">
                     <div class="tab-content bg-white rounded-3">
                         <div class="tab-pane fade show active rounded-3 overflow-hidden" id="all">
-                            <table id="jurisdictions-listing" class="table table-striped w-100">
+                            <table class="table table-striped w-100 data-table-listing">
                                 <thead>
                                     <tr>
-                                        <th>Entity</th>
-                                        <th>Jurisdiction</th>
-                                        <th>Type</th>
-                                        <th>Formation Date</th>
+                                        <th>Name</th>
+                                        <th>Address</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
                                     <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
+                                        <td>Filejet LLC.</td>
+                                        <td>1234 Main street, Los Angeles, AL 90220</td>
                                     </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan LLC</td>
-                                        <td>AZ</td>
-                                        <td>LLC</td>
-                                        <td>08/09/2021</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Keegan Team Inc</td>
-                                        <td>CA</td>
-                                        <td>Profit Corp</td>
-                                        <td>08/11/2021</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -1444,447 +994,24 @@
 
                 <div class="modal-footer mt-5 pt-5">
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-info px-5 py-3 text-uppercase" data-bs-dismiss="modal">
+                        <button type="button" class="btn px-5 py-3 me-4" data-bs-dismiss="modal">
                             Close
                         </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Additional Jurisdictions Modal End-->
-
-    <!-- updateEntityDetails Modal start-->
-    <div class="modal modal-right fade" id="updateEntityDetails" tabindex="-1" aria-labelledby="searchModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-            <div class="modal-content border-0 rounded-0">
-                <!-- Modal Header -->
-                <div class="modal-header flex-wrap">
-                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
-                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
-                            <span class="icon icon-md icon-folder-white m-0"></span>
-                        </span>
-                        <div>
-                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Steve’s Accounting Firm
-                                > Foreign - California</span>
-                            <h3 class="fs-3 m-0 font-weight-700">Update Entity Details</h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Header Ends -->
-                <!-- Modal Body Start-->
-                <div class="modal-body">
-                    <p>
-                        Enter the details of the Entity by filling out the form below.
-                    </p>
-                    <form action="">
-                        <div class="mb-3">
-                            <fieldset disabled>
-                                <label for="" class="form-label">Name of Entity</label>
-                                <input type="text" class="form-control" id="" value="Keegan Corp." />
-                            </fieldset>
-                        </div>
-                        <div class="mb-3">
-                            <fieldset disabled>
-                                <label for="" class="form-label">Entity State</label>
-                                <input type="text" class="form-control" id="" value="Keegan Corp." />
-                            </fieldset>
-                        </div>
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="mb-3">
-                                    <fieldset disabled>
-                                        <label for="" class="form-label">Type</label>
-                                        <input type="text" class="form-control" id="" value="Type" />
-                                    </fieldset>
-                                </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="mb-3">
-                                    <fieldset disabled>
-                                        <label for="" class="form-label">Sub Type</label>
-                                        <input type="text" class="form-control" id="" value="Sub Type" />
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <fieldset disabled>
-                                <label for="" class="form-label">Formation Date</label>
-                                <input type="text" class="form-control" id="" value="Formation Date" />
-                            </fieldset>
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md">
-                                    <label for="" class="form-label">Business address</label>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="" checked />
-                                        <label class="form-check-label form-label" for="">
-                                            SAME AS MAILING address?
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="" placeholder="Address line 1" />
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="" placeholder="Address line 2" />
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="City" />
-                                </div>
-                                <div class="col-md">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>State</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="County" />
-                                </div>
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="Zip" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="w-100">
-                                <label for="" class="form-label">Agent of Service of process</label>
-                            </div>
-                            <div class="radio-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Filejet</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Other</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Corporate</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="" placeholder="Address line 1" />
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="" placeholder="Address line 2" />
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="City" />
-                                </div>
-                                <div class="col-md">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>State</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="County" />
-                                </div>
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="Zip" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <fieldset disabled>
-                                <label for="" class="form-label">Number of shares Authorized to issue</label>
-                                <input type="text" class="form-control" id="" value="Number of shares" />
-                            </fieldset>
-                        </div>
-                        <div class="mb-4">
-                            <fieldset disabled>
-                                <label for="" class="form-label">Per Value</label>
-                                <input type="text" class="form-control" id="" value="$ per value" />
-                            </fieldset>
-                        </div>
-                        <h5 class="font-weight-700">Officers</h5>
-                        <div class="accordion mb-3" id="officers-address">
-                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
-                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">John
-                                            Doe</span> <span
-                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">President</span>
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#officers-address">
-                                    <div class="accordion-body">
-                                        <label for="" class="form-label">Address</label>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id=""
-                                                placeholder="Address line 1" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id=""
-                                                placeholder="Address line 2" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="row">
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id="" placeholder="City" />
-                                                </div>
-                                                <div class="col-md">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>State</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="row">
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id=""
-                                                        placeholder="County" />
-                                                </div>
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed bg-white" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
-                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
-                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">Wade
-                                            Warren</span> <span
-                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">Director</span>
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#officers-address">
-                                    <div class="accordion-body">
-                                        <label for="" class="form-label">Address</label>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id=""
-                                                placeholder="Address line 1" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id=""
-                                                placeholder="Address line 2" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="row">
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id="" placeholder="City" />
-                                                </div>
-                                                <div class="col-md">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>State</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="row">
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id=""
-                                                        placeholder="County" />
-                                                </div>
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed bg-white" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
-                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
-                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">Esther
-                                            Howard</span> <span
-                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">Shareholder</span>
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#officers-address">
-                                    <div class="accordion-body">
-                                        <label for="" class="form-label">Address</label>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id=""
-                                                placeholder="Address line 1" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id=""
-                                                placeholder="Address line 2" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="row">
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id="" placeholder="City" />
-                                                </div>
-                                                <div class="col-md">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>State</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="row">
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id=""
-                                                        placeholder="County" />
-                                                </div>
-                                                <div class="col-md">
-                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-5">
-                            <button type="button"
-                                class="btn btn-tertiary text-uppercase py-3 px-3 rounded-3 font-weight-600"
-                                data-bs-dismiss="modal">
-                                Add New Officer
-                            </button>
-                        </div>
-                        <h5 class="font-weight-700 mb-3">Sign</h5>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Filejet will sign on your behalf</label>
-                            <input type="text" class="form-control" id="" placeholder="Authorized signer" />
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md">
-                                    <label for="" class="form-label">Organizer address</label>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="" checked="">
-                                        <label class="form-check-label form-label" for="">
-                                            SAME AS BUSINESS address?
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="" placeholder="Address line 1" />
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="" placeholder="Address line 2" />
-                        </div>
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="City" />
-                                </div>
-                                <div class="col-md">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>State</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <div class="row">
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="County" />
-                                </div>
-                                <div class="col-md">
-                                    <input type="text" class="form-control" id="" placeholder="Zip" />
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="" class="form-label">Group</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Groups</option>
-                                <option value="1">Group Name 1</option>
-                                <option value="2">Group Name 1</option>
-                                <option value="3">Group Name 1</option>
-                            </select>
-                        </div>
-
-                    </form>
-                </div>
-                <!-- Modal Body End -->
-
-                <div class="modal-footer mt-5 pt-5">
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
-                            data-bs-dismiss="modal">
-                            Cancel
-                        </button>
-                        <button type="button" class="btn btn-tertiary text-uppercase py-3 px-3 rounded-3 ms-3"
-                            data-bs-dismiss="modal">
-                            Preview
-                        </button>
-                        <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3"
-                            data-bs-dismiss="modal">
-                            Save and exit
+                        <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">
+                            Download
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- updateEntityDetails Modal End-->
+    <!-- Filejet Offices Modal End-->
 
-    <!-- Entities Filter Modal start-->
-    <div class="modal modal-right fade" id="entitiesFilter" tabindex="-1" aria-labelledby="searchModalLabel"
+    <!-- Registered Filter Modal start-->
+    <div class="modal modal-right fade" id="RAFilter" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-            <div class="modal-content border-0 rounded-0">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 mb-4 pb-2">
@@ -2188,15 +1315,15 @@
                 <div class="modal-footer mt-5 pt-5">
                     <div class="d-flex justify-content-end w-100">
                         <button type="button"
-                            class="btn btn-link text-uppercase text-decoration-none font-weight-600 me-auto"
+                            class="btn btn-link text-decoration-none font-weight-600 me-auto"
                             data-bs-dismiss="modal">
                             Clear All Filters
                         </button>
-                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600"
                             data-bs-dismiss="modal">
                             Cancel
                         </button>
-                        <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3"
+                        <button type="button" class="btn btn-info py-3 px-3 rounded-3 ms-3"
                             data-bs-dismiss="modal">
                             Apply
                         </button>
@@ -2205,7 +1332,7 @@
             </div>
         </div>
     </div>
-    <!-- Entities Filter Modal End-->
+    <!-- Registered Filter Modal End-->
 
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
