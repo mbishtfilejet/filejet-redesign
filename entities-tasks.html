@@ -251,7 +251,7 @@
                                         <span class="p-3 bg-white rounded-3 me-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#entitiesReminders">
                                             <span class="icon icon-md icon-bell m-0"></span>
                                         </span>
-                                        <span class="p-3 bg-white rounded-3 me-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#entitiesCreateReminders">
+                                        <span class="p-3 bg-white rounded-3 me-2 d-inline-block">
                                             <span class="icon icon-md icon-edit m-0"></span>
                                         </span>
                                         <span class="p-3 bg-white rounded-3 me-2 d-inline-block">
@@ -1678,7 +1678,7 @@
                             data-bs-dismiss="modal">
                             Close
                         </button>
-                        <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3">
+                        <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#entitiesCreateReminders">
                             ADD NEW
                         </button>
                     </div>
@@ -1692,7 +1692,7 @@
     <div class="modal modal-right fade" id="entitiesCreateReminders" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-            <div class="modal-content border-0 rounded-0 min-vh-100 bg-white">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 mb-4 pb-2">
@@ -1729,13 +1729,30 @@
                                     </select>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 calender-input">
                                         <label for="" class="form-label">Date</label>
                                         <input type="text" id="datepicker" class="form-control" placeholder="MM / DD / YYYY">
+                                        <span class="d-inline-block">
+                                            <span class="icon icon-calender"></span>
+                                        </span>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <label for="" class="form-label">Time</label>
                                         <input type="time" class="form-control" id="" placeholder="HH:MM">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-md-2">
+                                        <label for="" class="form-label">ALL DAY</label>
+                                        <div class="p-2 rounded-2 bg-white text-center">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="checkbox" value="" id="" checked="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-10">
+                                        <label for="" class="form-label">RECURRING</label>
+                                        <input type="text" class="form-control" id="" placeholder="Doesn’t repeat">
                                     </div>
                                 </div>
                             </form>
