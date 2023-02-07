@@ -29,7 +29,8 @@ module.exports = function (grunt) {
                     'dist/js/plugins.min.js':
                         [
                             'src/js/lib/bootstrap.bundle.js',
-                            'src/js/lib/datatables.js'
+                            'src/js/lib/datatables.js',
+                            'src/js/lib/jquery-ui.js'
                         ],
                     'dist/js/custom.min.js':
                         [
