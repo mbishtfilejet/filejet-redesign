@@ -5,17 +5,17 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
- /*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=PT+Sans:wght@400;700&display=swap');*/
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap');
 
- @font-face {
-  font-family: 'Roboto Slab';
-  src: url('../../../dist/fonts/RobotoFlex.eot'); /* IE9 Compat Modes */
-  src: url('../../dist/fonts/RobotoFlex.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../../dist/fonts/RobotoFlex.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../../dist/fonts/RobotoFlex.woff') format('woff'), /* Pretty Modern Browsers */
-       url('../../dist/fonts/RobotoFlex.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('../../dist/fonts/RobotoFlex.svg#RobotoFlex') format('svg'); /* Legacy iOS */
-}
+//  @font-face {
+//   font-family: 'Roboto Slab';
+//   src: url('../../../dist/fonts/RobotoFlex.eot'); /* IE9 Compat Modes */
+//   src: url('../../dist/fonts/RobotoFlex.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//        url('../../dist/fonts/RobotoFlex.woff2') format('woff2'), /* Super Modern Browsers */
+//        url('../../dist/fonts/RobotoFlex.woff') format('woff'), /* Pretty Modern Browsers */
+//        url('../../dist/fonts/RobotoFlex.ttf')  format('truetype'), /* Safari, Android, iOS */
+//        url('../../dist/fonts/RobotoFlex.svg#RobotoFlex') format('svg'); /* Legacy iOS */
+// }
 
 :root {
   /*--bs-blue: #0d6efd;*/
@@ -38,6 +38,7 @@
   --bs-purple-secondry: #DDDFF5;
   --bs-purple-light: rgba(110, 114, 238, 0.24);
   --bs-black-primary: #0D2C36;
+  --bs-light-blue: #3B95CD;
   --bs-white: #ffffff;
   --bs-gray-light: #F3F5F8;
   --bs-gray-dark: #343a40;
@@ -77,9 +78,9 @@
   --bs-body-bg-rgb: 255, 255, 255;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --bs-font-robotoslab: Roboto Slab;
+  --bs-font-robotoFlex: Roboto Flex;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: var(--bs-font-robotoslab);
+  --bs-body-font-family: var(--bs-font-robotoFlex);
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -126,11 +127,11 @@ body {
 }
 
 hr {
-  margin: 1rem 0;
+  margin: 0 0 1rem;
   color: inherit;
   border: 0;
-  border-top: 1px solid;
-  opacity: 0.25;
+  border-top: 1px solid var(--bs-black-primary);
+  opacity: .12;
 }
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
@@ -254,7 +255,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 small, .small {
@@ -299,7 +300,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: var(--bs-font-robotoslab);
+  font-family: var(--bs-font-robotoFlex);
   font-size: 1em;
 }
 
@@ -2918,9 +2919,9 @@ textarea.form-control-lg {
 }
 
 .btn {
-  --bs-btn-padding-x: 0.75rem;
-  --bs-btn-padding-y: 0.375rem;
-  --bs-btn-font-family: Roboto Slab;
+  --bs-btn-padding-x: 1.25rem;
+  --bs-btn-padding-y: 0.9375rem;
+  --bs-btn-font-family: var(--bs-font-robotoFlex);
   --bs-btn-font-size: 1rem;
   --bs-btn-font-weight: 400;
   --bs-btn-line-height: 1.5;
@@ -5856,7 +5857,7 @@ textarea.form-control-lg {
   display: block;
   padding: var(--bs-tooltip-arrow-height);
   margin: var(--bs-tooltip-margin);
-  font-family: var(--bs-font-robotoslab);
+  font-family: var(--bs-font-robotoFlex);
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5967,7 +5968,7 @@ textarea.form-control-lg {
   z-index: var(--bs-popover-zindex);
   display: block;
   max-width: var(--bs-popover-max-width);
-  font-family: var(--bs-font-robotoslab);
+  font-family: var(--bs-font-robotoFlex);
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -8320,11 +8321,11 @@ textarea.form-control-lg {
 }
 
 .font-monospace {
-  font-family: var(--bs-font-robotoslab) !important;
+  font-family: var(--bs-font-robotoFlex) !important;
 }
 
 .font-robotoslab {
-  font-family: var(--bs-font-robotoslab) !important;
+  font-family: var(--bs-font-robotoFlex) !important;
 }
 
 .fs-1 {
