@@ -86,6 +86,8 @@ $(function () {
     let dataId = $(this).attr('data-id');
     if (dataId === 'grid-view' || dataId === 'list-view') {
       $('.tab-content-wrapper').css('display', 'none');
+      $('.nav-item a').removeClass('active');
+      $(this).addClass('active');
       $('#' + dataId).css('display', 'block');
       if (dataId === 'grid-view') {
         $('.nav-items').css({
