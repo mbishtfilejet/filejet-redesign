@@ -110,4 +110,7 @@ $(function () {
   $("#datepicker").datepicker({
     dateFormat: "mm-dd-yy"
   });
+
+  $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+
 });
