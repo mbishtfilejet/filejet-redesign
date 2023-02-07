@@ -105,7 +105,11 @@ $(function () {
 
   $(document).on('click', '.showAccordian', function(){
     $(this).parents('.form-check').next('.accordion').toggleClass('hide');
-  })
+  });
+
+  $("#datepicker").datepicker({
+    dateFormat: "mm-dd-yy"
+  });
 
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
