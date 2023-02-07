@@ -72,4 +72,7 @@ $(function () {
   $(document).on('click', '.showAccordian', function(){
     $(this).parents('.form-check').next('.accordion').toggleClass('hide');
   })
+
+  $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+
 });
