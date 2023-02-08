@@ -86,19 +86,13 @@ $(function () {
     let dataId = $(this).attr('data-id');
     if (dataId === 'grid-view' || dataId === 'list-view') {
       $('.tab-content-wrapper').css('display', 'none');
-      $('.nav-item a').removeClass('active');
-      $(this).addClass('active');
       $('#' + dataId).css('display', 'block');
       if (dataId === 'grid-view') {
-        $('.nav-items').css({
-          'opacity': '0',
-          'visibility': 'hidden'
-        });
+        $('.tab-listing-grid').addClass('active');
+        $('.tab-listing-list').removeClass('active');
       } else {
-        $('.nav-items').css({
-          'opacity': '1',
-          'visibility': 'visible'
-        });
+        $('.tab-listing-grid').removeClass('active');
+        $('.tab-listing-list').addClass('active');
       }
     }
   });
@@ -113,4 +107,11 @@ $(function () {
 
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
+  $('.btn-tab button').on('click', function(){
+    $('.btn-tab button').removeClass('active');
+    $(this).addClass('active');
+    let dataID = $(this).attr('data-id');
+    $('.btn-tab-content').css('display', 'none');
+    $('#'+ dataID).css('display', 'block');
+  });
 });
