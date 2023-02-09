@@ -10,6 +10,12 @@ img {
   box-shadow: 0px 7px 12px rgb(0 0 0 / 10%) inset;
 }
 
+.full-width {
+  .container {
+    max-width: 100%;
+  }
+}
+
 .count {
   padding: 0 rem(15);
   font-weight: 500;
@@ -119,6 +125,10 @@ img {
   color: var(--bs-blue);
 }
 
+.text-light-blue {
+  color: var(  --bs-light-blue);
+}
+
 .text-purple {
   color: var(--bs-purple) !important;
 }
@@ -195,7 +205,7 @@ img {
   background: var(--bs-light-blue);
   color: var(--bs-white);
   border-radius: rem(7);
-  padding: 0 7px;
+  padding: 0 rem(7);
   font-size: rem(11);
   line-height: rem(15);
   letter-spacing: -0.05px;
@@ -434,8 +444,55 @@ form {
   }
 }
 
-.calender-input {
-  position: relative;
+.inline-button-group {
+  display: flex;
+  justify-content: center;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  @extend .shadow;
+  
+
+  li {
+    padding: rem(16);
+    list-style: none;
+    background-color: var(--bs-white);
+
+    &.active {
+      background-color: var(--bs-purple);
+  
+      .normal-icon {
+        display: none;
+      }
+  
+      .active-icon {
+        display: block;
+      }
+    }
+  }
+
+  .active-icon {
+    display: none;
+    margin:rem(2) 0;
+  }
+
+  .normal-icon {
+    display: block;
+    margin:rem(2) 0;
+  }
+}
+
+.dot {
+  width: rem(10);
+  height: rem(10);
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: rem(16);
+  
+  .calender-input {
+    position: relative;
+  }
 }
 
 .calender-input > span {
