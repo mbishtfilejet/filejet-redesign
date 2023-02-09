@@ -1,11 +1,14 @@
-#grid-view {
+.tab-content-wrapper {
     display: none;
 }
 
 .nav-tabs {
     .nav-item {
         a {
-            &[data-id="list-view"] {
+            &[data-id="list-view-stake"],
+            &[data-id="list-view-task"],
+            &[data-id="list-view"],
+            &[data-id="list-view-juri"] {
                 .icon-list-view {
                     display: inline-block;
                 }
@@ -21,7 +24,10 @@
                     }
                 }
             }
-            &[data-id="grid-view"] {
+            &[data-id="grid-view-stake"],
+            &[data-id="grid-view-task"],
+            &[data-id="grid-view"],
+            &[data-id="grid-view-juri"] {
                 .icon-grid-view {
                     display: inline-block;
                 }
@@ -41,7 +47,25 @@
     }
 }
 
+
 .tab-listing {
+    display: none;
+    &.active {
+        display: block;
+    }
+}
+
+.card {
+    &.entity-card {
+        border: 5px solid transparent;
+    }
+    transition: all 0.7s ease-in;
+    &.active {
+        border: 5px solid var(--bs-white);
+    }
+}
+
+.entity-card-content {
     display: none;
     &.active {
         display: block;
