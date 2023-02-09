@@ -4,7 +4,7 @@ $(function () {
     $(this).tab('show')
   });
 
-  $('#entity-listing').DataTable({
+  $('#entity-listing, #stake-all-listing, #active-table, #inactive-table, #find-a-user, #jurisdiction-list-table').DataTable({
     "searching": false,
     "lengthChange": false,
     "pagingType": "simple"
@@ -82,19 +82,22 @@ $(function () {
     "pagingType": "simple"
   });
 
-  $('.nav-item a').on('click', function () {
+  $(document).on('click', '.view-change > a', function () {
+    $('.view-change > a').removeClass('active');
+    $(this).addClass('active');
     let dataId = $(this).attr('data-id');
-    if (dataId === 'grid-view' || dataId === 'list-view') {
-      $('.tab-content-wrapper').css('display', 'none');
-      $('#' + dataId).css('display', 'block');
-      if (dataId === 'grid-view') {
-        $('.tab-listing-grid').addClass('active');
-        $('.tab-listing-list').removeClass('active');
-      } else {
-        $('.tab-listing-grid').removeClass('active');
-        $('.tab-listing-list').addClass('active');
-      }
-    }
+    $(this).parents('.entity-card-content').find('.tab-content-wrapper').css('display', 'none');
+    $('#'+ dataId).css('display', 'block');   
+    $(this).parents('.entity-card-content').find('.tab-listing').removeClass('active');
+    $('.'+ dataId).addClass('active');
+  });
+
+  $(document).on('click', '.view-change-entry > a', function () {
+    $('.view-change-entry > a').removeClass('active');
+    $(this).addClass('active');
+    let dataId = $(this).attr('data-id');
+    $('.tab-content-wrapper').css('display', 'none');
+    $('#'+ dataId).css('display', 'block');
   });
 
   $(document).on('click', '.showAccordian', function(){
@@ -113,5 +116,13 @@ $(function () {
     let dataID = $(this).attr('data-id');
     $('.btn-tab-content').css('display', 'none');
     $('#'+ dataID).css('display', 'block');
+  });
+
+  $('.entity-card').on('click', function(){
+    $('.entity-card').removeClass('active');
+    $(this).addClass('active');
+    let dataId = $(this).attr('data-id');
+    $('.entity-card-content').removeClass('active');
+    $('#'+ dataId).addClass('active');
   });
 });
