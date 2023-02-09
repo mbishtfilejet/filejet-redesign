@@ -237,47 +237,49 @@
                             </div>
                             <div class="col col-md-7 d-flex justify-content-end">
                                 <div class="d-flex">
-                                    <div class="d-flex">
-                                        <div class="d-flex flex-wrap justify-content-between flex-column">
-                                            <div class="text-uppercase fs-10 font-weight-700 opacity-50">Users</div>
-                                            <div class="font-weight-500">5 Active</div>
-                                        </div>
-                                        <div class="ms-4">
-                                            <span class="p-3 bg-white rounded-3 me-4 d-inline-block">
-                                                <span class="icon icon-md icon-user-with-laptop m-0"></span>
-                                            </span>
-                                        </div>
+                                    <div class="d-flex flex-wrap justify-content-between flex-column">
+                                        <div class="text-uppercase fs-10 font-weight-700 opacity-50">Users</div>
+                                        <div class="font-weight-500">5 Active</div>
                                     </div>
-                                    <div class="d-flex border-left ps-4">
-                                        <div class="d-flex flex-wrap justify-content-between flex-column">
-                                            <div class="text-uppercase fs-10 font-weight-700 opacity-50">STATE</div>
-                                            <div class="font-weight-500">Arizona</div>
-                                        </div>
-                                        <div class="d-flex flex-wrap justify-content-between flex-column ms-3">
-                                            <div class="text-uppercase fs-10 font-weight-700 opacity-50">EIN NUMBER</div>
-                                            <div class="font-weight-500">31523214231</div>
-                                        </div>
-                                        <div class="ms-4">
-                                            <span class="p-3 bg-white rounded-3 me-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#entitiesReminders">
-                                                <span class="icon icon-md icon-bell m-0"></span>
-                                            </span>
-                                            <span class="p-3 bg-white rounded-3 me-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#entitiesCreateReminders">
-                                                <span class="icon icon-md icon-edit m-0"></span>
-                                            </span>
-                                            <span class="p-3 bg-white rounded-3 me-2 d-inline-block">
-                                                <span class="icon icon-md icon-delete m-0"></span>
-                                            </span>
-                                        </div>
+                                    <div class="ms-4">
+                                        <span class="p-3 bg-white rounded-3 me-4 d-inline-block">
+                                            <span class="icon icon-md icon-user-with-laptop m-0"></span>
+                                        </span>
                                     </div>
-                                    <div class="d-flex ms-4 border-left ps-4">
-                                        <div>
-                                            <div class="font-weight-500 text-uppercase">Additional <br /> SERVICES</div>
-                                        </div>
-                                        <div class="ms-4">
-                                            <span class="p-3 bg-white rounded-3 d-inline-block">
-                                                <span class="icon icon-md icon-cart-dark m-0"></span>
-                                            </span>
-                                        </div>
+                                </div>
+                                <div class="d-flex border-left ps-4">
+                                    <div class="d-flex flex-wrap justify-content-between flex-column">
+                                        <div class="text-uppercase fs-10 font-weight-700 opacity-50">STATE</div>
+                                        <div class="font-weight-500">Arizona</div>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-between flex-column ms-3">
+                                        <div class="text-uppercase fs-10 font-weight-700 opacity-50">EIN NUMBER</div>
+                                        <div class="font-weight-500">31523214231</div>
+                                    </div>
+                                    <div class="ms-4">
+                                        <span class="p-3 bg-white rounded-3 me-2 d-inline-block" role="button"
+                                            data-bs-toggle="modal" data-bs-target="#entitiesReminders">
+                                            <span class="icon icon-md icon-bell m-0"></span>
+                                        </span>
+                                        <span class="p-3 bg-white rounded-3 me-2 d-inline-block">
+                                            <span class="icon icon-md icon-edit m-0"></span>
+                                        </span>
+                                        <span class="p-3 bg-white rounded-3 me-2 d-inline-block" role="button"
+                                        data-bs-toggle="modal" data-bs-target="#deleteEntity">
+                                            <span class="icon icon-md icon-delete m-0"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="d-flex ms-4 border-left ps-4">
+                                    <div>
+                                        <div class="font-weight-500 text-uppercase" role="button" data-bs-toggle="modal"
+                                            data-bs-target="#additionalServices">Additional <br /> SERVICES</div>
+                                    </div>
+                                    <div class="ms-4">
+                                        <span class="p-3 bg-white rounded-3 d-inline-block" role="button"
+                                            data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                            <span class="icon icon-md icon-cart-dark m-0"></span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -339,722 +341,965 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <h4>Compliance Tasks</h4>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>Compliance Tasks</h4>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-12">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item nav-items">
-                                        <a href="#all" class="nav-link active px-4" data-bs-toggle="tab">All</a>
-                                    </li>
-                                    <li class="nav-item nav-items">
-                                        <a href="#overdue" class="nav-link px-4 red-text dot" data-bs-toggle="tab">Overdue (4)</a>
-                                    </li>
-                                    <li class="nav-item nav-items">
-                                        <a href="#upcoming" class="nav-link px-4 black-text dot" data-bs-toggle="tab">Upcoming (5)</a>
-                                    </li>
-                                    <li class="nav-item nav-items">
-                                        <a href="#submitted" class="nav-link px-4 light-blue-text dot" data-bs-toggle="tab">Submitted (3)</a>
-                                    </li>
-                                    <li class="nav-item nav-items">
-                                        <a href="#sent-to-state" class="nav-link px-4 dot blue-text" data-bs-toggle="tab">Sent to State (3)</a>
-                                    </li>
-                                    <li class="nav-item nav-items">
-                                        <a href="#up-to-date" class="nav-link px-4 green-text dot" data-bs-toggle="tab">Up to Date (9)</a>
-                                    </li>
-                                    <li class="nav-item d-flex align-items-center">
-                                        <a href="javascript: void(0)" data-id="list-view" class="active"><span
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 tab-listing tab-listing-list active">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item nav-items">
+                                    <a href="#all-list" class="nav-link active px-4" data-bs-toggle="tab">All</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#overdue-list" class="nav-link px-4 red-text dot" data-bs-toggle="tab">Overdue
+                                        (4)</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#upcoming-list" class="nav-link px-4 black-text dot"
+                                        data-bs-toggle="tab">Upcoming (5)</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#submitted-list" class="nav-link px-4 light-blue-text dot"
+                                        data-bs-toggle="tab">Submitted (3)</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#sent-to-state-list" class="nav-link px-4 dot blue-text"
+                                        data-bs-toggle="tab">Sent to State (3)</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#up-to-date-list" class="nav-link px-4 green-text dot" data-bs-toggle="tab">Up
+                                        to Date (9)</a>
+                                </li>
+                                <li class="nav-item d-flex align-items-center">
+                                    <a href="javascript: void(0)" data-id="list-view" class="active"><span
                                             class="icon m-0 ms-4 icon-list-view"></span><span
                                             class="icon m-0 ms-4 icon-list-view-active"></span></a>
                                     <a href="javascript: void(0)" data-id="grid-view"><span
                                             class="icon m-0 ms-4 icon-grid-view"></span><span
                                             class="icon m-0 ms-4 icon-grid-view-active"></span></a>
-                                    </li>
-                                    <li>
-                                        <select class="form-select p-0 my-0 ms-5 bg-transparent h-100 border-0 shadow-none" aria-label="select">
-                                            <option selected="">All Jurisdictions</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </li>
-                                </ul>
+                                </li>
+                                <li>
+                                    <select class="form-select p-0 my-0 ms-5 bg-transparent h-100 border-0 shadow-none"
+                                        aria-label="select">
+                                        <option selected="">All Jurisdictions</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 tab-listing tab-listing-grid">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item nav-items">
+                                    <a href="#all-grid" class="nav-link active px-4" data-bs-toggle="tab">All</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#overdue-grid" class="nav-link px-4 red-text dot" data-bs-toggle="tab">Overdue
+                                        (4)</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#upcoming-grid" class="nav-link px-4 black-text dot"
+                                        data-bs-toggle="tab">Upcoming (5)</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#submitted-grid" class="nav-link px-4 light-blue-text dot"
+                                        data-bs-toggle="tab">Submitted (3)</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#sent-to-state-grid" class="nav-link px-4 dot blue-text"
+                                        data-bs-toggle="tab">Sent to State (3)</a>
+                                </li>
+                                <li class="nav-item nav-items">
+                                    <a href="#up-to-date-grid" class="nav-link px-4 green-text dot" data-bs-toggle="tab">Up
+                                        to Date (9)</a>
+                                </li>
+                                <li class="nav-item d-flex align-items-center">
+                                    <a href="javascript: void(0)" data-id="list-view" class="active"><span
+                                            class="icon m-0 ms-4 icon-list-view"></span><span
+                                            class="icon m-0 ms-4 icon-list-view-active"></span></a>
+                                    <a href="javascript: void(0)" data-id="grid-view"><span
+                                            class="icon m-0 ms-4 icon-grid-view"></span><span
+                                            class="icon m-0 ms-4 icon-grid-view-active"></span></a>
+                                </li>
+                                <li>
+                                    <select class="form-select p-0 my-0 ms-5 bg-transparent h-100 border-0 shadow-none"
+                                        aria-label="select">
+                                        <option selected="">All Jurisdictions</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 tab-content-wrapper" id="list-view">
+                            <div class="tab-content bg-white rounded-2">
+                                <div class="tab-pane fade show active" id="all-list">
+                                    <table id="entity-listing" class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Task Name</th>
+                                                <th>Jurisdiction</th>
+                                                <th>Status</th>
+                                                <th>Due In</th>
+                                                <th class="invisible opacity-0"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Franchise Tax Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Annual Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#actionModal">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
+                                                    <span class="text-green">Recently completed</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-green">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    <a href="">
+                                                        <span
+                                                            class="icon icon-circular icon-lg icon-download-green"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="overdue-list">
+                                    <table id="overdue-table" class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Task Name</th>
+                                                <th>Jurisdiction</th>
+                                                <th>Status</th>
+                                                <th>Due In</th>
+                                                <th class="invisible opacity-0"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Franchise Tax Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Franchise Tax Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Franchise Tax Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Franchise Tax Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Franchise Tax Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 25%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#">Take action</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="upcoming-list">
+                                    <table id="upcoming-table" class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Task Name</th>
+                                                <th>Jurisdiction</th>
+                                                <th>Status</th>
+                                                <th>Due In</th>
+                                                <th class="invisible opacity-0"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Annual Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#actionModal">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Annual Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#actionModal">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Annual Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#actionModal">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Annual Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#actionModal">Take action</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Annual Report</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#actionModal">Take action</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="submitted-list">
+                                    <table id="sumbitted-table" class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Task Name</th>
+                                                <th>Jurisdiction</th>
+                                                <th>Status</th>
+                                                <th>Submitted On</th>
+                                                <th class="invisible opacity-0"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Registered Agent</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="sent-to-state-list">
+                                    <table id="setToState-table" class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Task Name</th>
+                                                <th>Jurisdiction</th>
+                                                <th>Status</th>
+                                                <th>Due In</th>
+                                                <th class="invisible opacity-0"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="up-to-date-list">
+                                    <table id="upToDate-table" class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Task Name</th>
+                                                <th>Jurisdiction</th>
+                                                <th>Status</th>
+                                                <th>Due In</th>
+                                                <th class="invisible opacity-0"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
+                                                    <span class="text-green">Recently completed</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-green">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    <a href="">
+                                                        <span
+                                                            class="icon icon-circular icon-lg icon-download-green"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
+                                                    <span class="text-green">Recently completed</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-green">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    <a href="">
+                                                        <span
+                                                            class="icon icon-circular icon-lg icon-download-green"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
+                                                    <span class="text-green">Recently completed</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-green">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    <a href="">
+                                                        <span
+                                                            class="icon icon-circular icon-lg icon-download-green"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
+                                                    <span class="text-green">Recently completed</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-green">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    <a href="">
+                                                        <span
+                                                            class="icon icon-circular icon-lg icon-download-green"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business License Renewal</td>
+                                                <td>AZ</td>
+                                                <td>
+                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
+                                                    <span class="text-green">Recently completed</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-green">10/10/2022</span>
+                                                </td>
+                                                <td>
+                                                    <a href="">
+                                                        <span
+                                                            class="icon icon-circular icon-lg icon-download-green"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="col-12 tab-content-wrapper" id="list-view">
-                                <div class="tab-content bg-white rounded-2">
-                                    <div class="tab-pane fade show active" id="all">
-                                        <table id="entity-listing" class="table table-striped w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>Task Name</th>
-                                                    <th>Jurisdiction</th>
-                                                    <th>Status</th>
-                                                    <th>Due In</th>
-                                                    <th class="invisible opacity-0"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Franchise Tax Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                        <span class="text-red">Overdue</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-red">-5 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Overdue"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                            </div>
+                        </div>
+                        <div class="col-12 tab-content-wrapper mt-3" id="grid-view">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="all-grid">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Franchise Tax Report</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 100%">
                                                         </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Annual Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                        <span class="text-grey">Upcoming</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-grey">24 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Annual Report</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
                                                         </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Registered Agent</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                        <span class="text-blue">Submitted</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-blue">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                        <span class="text-green">Recently completed</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-green">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="">
-                                                            <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                        <span class="text-purple">Sent to state</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                    
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Registered Agent</div>
+                                                    <div class="font-weight-500">Colorado</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Business License Renewal</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Franchise Tax Report</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 100%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Annual Report</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Registered Agent</div>
+                                                    <div class="font-weight-500">Colorado</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-green">10/10/2022</span>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
+                                                    <span class="text-green">Recently completed</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Business License Renewal</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane fade" id="overdue">
-                                        <table id="overdue-table" class="table table-striped w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>Task Name</th>
-                                                    <th>Jurisdiction</th>
-                                                    <th>Status</th>
-                                                    <th>Due In</th>
-                                                    <th class="invisible opacity-0"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Franchise Tax Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                        <span class="text-red">Overdue</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-red">-5 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Overdue"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                            </div>
+                                </div>
+                                <div class="tab-pane fade" id="overdue-grid">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Franchise Tax Report</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-red">-5 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Overdue" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-red" style="width: 100%">
                                                         </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
-                                                    </td>
-                                                </tr>                                            
-                                                <tr>
-                                                    <td>Franchise Tax Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                        <span class="text-red">Overdue</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-red">-5 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Overdue"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
-                                                    </td>
-                                                </tr>                                            
-                                                <tr>
-                                                    <td>Franchise Tax Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                        <span class="text-red">Overdue</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-red">-5 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Overdue"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
-                                                    </td>
-                                                </tr>                                            
-                                                <tr>
-                                                    <td>Franchise Tax Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                        <span class="text-red">Overdue</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-red">-5 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Overdue"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
-                                                    </td>
-                                                </tr>                                            
-                                                <tr>
-                                                    <td>Franchise Tax Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                        <span class="text-red">Overdue</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-red">-5 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Overdue"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-red" style="width: 25%">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#">Take action</button>
-                                                    </td>
-                                                </tr>                                            
-                                            </tbody>
-                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                                                    <span class="text-red">Overdue</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane fade" id="upcoming">
-                                        <table id="upcoming-table" class="table table-striped w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>Task Name</th>
-                                                    <th>Jurisdiction</th>
-                                                    <th>Status</th>
-                                                    <th>Due In</th>
-                                                    <th class="invisible opacity-0"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Annual Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                        <span class="text-grey">Upcoming</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-grey">24 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
+                                </div>
+                                <div class="tab-pane fade" id="upcoming-grid">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Annual Report</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-grey">24 days</span>
+                                                    <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-grey" style="width: 100%">
                                                         </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Annual Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                        <span class="text-grey">Upcoming</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-grey">24 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Annual Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                        <span class="text-grey">Upcoming</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-grey">24 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Annual Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                        <span class="text-grey">Upcoming</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-grey">24 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Annual Report</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                        <span class="text-grey">Upcoming</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-grey">24 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar progress-bar-grey" style="width: 100%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#actionModal">Take action</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-lg icon-clock"></span>
+                                                    <span class="text-grey">Upcoming</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane fade" id="submitted">
-                                        <table id="sumbitted-table" class="table table-striped w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>Task Name</th>
-                                                    <th>Jurisdiction</th>
-                                                    <th>Status</th>
-                                                    <th>Submitted On</th>
-                                                    <th class="invisible opacity-0"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Registered Agent</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                        <span class="text-blue">Submitted</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-blue">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Registered Agent</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                        <span class="text-blue">Submitted</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-blue">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Registered Agent</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                        <span class="text-blue">Submitted</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-blue">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Registered Agent</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                        <span class="text-blue">Submitted</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-blue">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Registered Agent</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-upload-blue"></span>
-                                                        <span class="text-blue">Submitted</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-blue">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                </div>
+                                <div class="tab-pane fade" id="submitted-grid">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Registered Agent</div>
+                                                    <div class="font-weight-500">Colorado</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-blue">10/10/2022</span>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-xl icon-upload-blue"></span>
+                                                    <span class="text-blue">Submitted</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane fade" id="sent-to-state">
-                                        <table id="setToState-table" class="table table-striped w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>Task Name</th>
-                                                    <th>Jurisdiction</th>
-                                                    <th>Status</th>
-                                                    <th>Due In</th>
-                                                    <th class="invisible opacity-0"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                        <span class="text-purple">Sent to state</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                    
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                        <span class="text-purple">Sent to state</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                    
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                        <span class="text-purple">Sent to state</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                    
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                        <span class="text-purple">Sent to state</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                    
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                        <span class="text-purple">Sent to state</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                    
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-certificate"></span>
-                                                        <span class="text-purple">Sent to state</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-purple">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                    
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                </div>
+                                <div class="tab-pane fade" id="sent-to-state-grid">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Business License Renewal</div>
+                                                    <div class="font-weight-500">Arkansas</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-purple">10/10/2022</span>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-xl icon-certificate"></span>
+                                                    <span class="text-purple">Sent to state</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane fade" id="up-to-date">
-                                        <table id="upToDate-table" class="table table-striped w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>Task Name</th>
-                                                    <th>Jurisdiction</th>
-                                                    <th>Status</th>
-                                                    <th>Due In</th>
-                                                    <th class="invisible opacity-0"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                        <span class="text-green">Recently completed</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-green">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="">
-                                                            <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                        <span class="text-green">Recently completed</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-green">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="">
-                                                            <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                        <span class="text-green">Recently completed</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-green">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="">
-                                                            <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                        <span class="text-green">Recently completed</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-green">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="">
-                                                            <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Business License Renewal</td>
-                                                    <td>AZ</td>
-                                                    <td>
-                                                        <span class="icon icon-circular icon-xl icon-green-dot"></span>
-                                                        <span class="text-green">Recently completed</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-green">10/10/2022</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="">
-                                                            <span class="icon icon-circular icon-lg icon-download-green"></span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                </div>
+                                <div class="tab-pane fade" id="up-to-date-grid">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 mb-3">
+                                            <div class="bg-white rounded-3 p-3">
+                                                <div class="d-flex justify-content-between w-100 mb-3">
+                                                    <div class="font-weight-600">Registered Agent</div>
+                                                    <div class="font-weight-500">Colorado</div>
+                                                </div>
+                                                <div class="mb-3 w-75">
+                                                    <span class="text-green">10/10/2022</span>
+                                                </div>
+                                                <div>
+                                                    <span class="icon icon-circular icon-xl icon-green-dot"></span>
+                                                    <span class="text-green">Recently completed</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-12 tab-content-wrapper mt-3" id="grid-view">
-                                <div class="row">
-                                    <div class="col col-md-3">
-                                        <div class="card w-100 rounded-2 box-shadow">
-                                            <div
-                                                class="card-header d-flex card-purple align-items-center text-white font-weight-600 py-4 px-4">
-                                                <span>Steave’s Accounting Inc</span>
-                                                <span class="icon m-0 ms-auto icon-arrow-right-white"></span>
-                                            </div>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    Arizona
-                                                </li>
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    Unassigned | Non-profit corp.
-                                                </li>
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    08/28/2021
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col col-md-3">
-                                        <div class="card w-100 rounded-2 box-shadow">
-                                            <div
-                                                class="card-header d-flex card-purple align-items-center text-white font-weight-600 py-4 px-4">
-                                                <span>WeComply Corp</span>
-                                                <span class="icon m-0 ms-auto icon-arrow-right-white"></span>
-                                            </div>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    Arizona
-                                                </li>
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    Unassigned | Non-profit corp.
-                                                </li>
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    08/28/2021
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col col-md-3">
-                                        <div class="card w-100 rounded-2 box-shadow">
-                                            <div
-                                                class="card-header d-flex card-purple align-items-center text-white font-weight-600 py-4 px-4">
-                                                <span>BioHelp Inc</span>
-                                                <span class="icon m-0 ms-auto icon-arrow-right-white"></span>
-                                            </div>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    Arizona
-                                                </li>
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    Unassigned | Non-profit corp.
-                                                </li>
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    08/28/2021
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col col-md-3">
-                                        <div class="card w-100 rounded-2 box-shadow">
-                                            <div
-                                                class="card-header d-flex card-purple align-items-center text-white font-weight-600 py-4 px-4">
-                                                <span>Jones Accounting, Inc</span>
-                                                <span class="icon m-0 ms-auto icon-arrow-right-white"></span>
-                                            </div>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    Arizona
-                                                </li>
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    Unassigned | Non-profit corp.
-                                                </li>
-                                                <li class="list-group-item font-weight-500 border-0 py-3 px-4">
-                                                    08/28/2021
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -1661,7 +1906,8 @@
                             <div class="card-secondry grey-card-secondry mb-3">
                                 <div class="card-secondry-title font-weight-600">Reminder Name</div>
                                 <div class="card-secondry-sub-title opacity-50">Entity Name</div>
-                                <div class="card-secondry-time font-weight-600 d-inline-block bg-white rounded-2 px-2 py-1 mt-3">
+                                <div
+                                    class="card-secondry-time font-weight-600 d-inline-block bg-white rounded-2 px-2 py-1 mt-3">
                                     <span class="me-2 d-inline-block">
                                         <span class="icon icon-md icon-bell m-0"></span>
                                     </span>
@@ -1671,7 +1917,8 @@
                             <div class="card-secondry red-card-secondry">
                                 <div class="card-secondry-title font-weight-600">Reminder Name</div>
                                 <div class="card-secondry-sub-title opacity-50">Entity Name</div>
-                                <div class="card-secondry-time font-weight-600 d-inline-block bg-white rounded-2 px-2 py-1 mt-3">
+                                <div
+                                    class="card-secondry-time font-weight-600 d-inline-block bg-white rounded-2 px-2 py-1 mt-3">
                                     <span class="me-2 d-inline-block">
                                         <span class="icon icon-md icon-bell m-0"></span>
                                     </span>
@@ -1689,7 +1936,8 @@
                             data-bs-dismiss="modal">
                             Close
                         </button>
-                        <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3">
+                        <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3" role="button"
+                            data-bs-toggle="modal" data-bs-target="#entitiesCreateReminders">
                             ADD NEW
                         </button>
                     </div>
@@ -1699,11 +1947,11 @@
     </div>
     <!-- Entity Reminders Modal End-->
 
-    <!-- Entity Create Reminders Modal start-->
+    <!-- Entities Create Reminders Modal start-->
     <div class="modal modal-right fade" id="entitiesCreateReminders" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-            <div class="modal-content border-0 rounded-0 min-vh-100 bg-white">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 mb-4 pb-2">
@@ -1711,7 +1959,8 @@
                             <span class="icon icon-md icon-bell-white m-0"></span>
                         </span>
                         <div>
-                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Create Notification</span>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Create
+                                Notification</span>
                             <h3 class="fs-3 m-0 font-weight-700">Reminder Details</h3>
                         </div>
                     </div>
@@ -1728,7 +1977,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Description</label>
-                                    <input type="text" class="form-control" id="" placeholder="Describe this notification">
+                                    <input type="text" class="form-control" id=""
+                                        placeholder="Describe this notification">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Entity</label>
@@ -1740,13 +1990,32 @@
                                     </select>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-6 calender-input">
                                         <label for="" class="form-label">Date</label>
-                                        <input type="text" id="datepicker" class="form-control" placeholder="MM / DD / YYYY">
+                                        <input type="text" id="datepicker" class="form-control"
+                                            placeholder="MM / DD / YYYY">
+                                        <span class="d-inline-block">
+                                            <span class="icon icon-calender"></span>
+                                        </span>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <label for="" class="form-label">Time</label>
                                         <input type="time" class="form-control" id="" placeholder="HH:MM">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-md-2">
+                                        <label for="" class="form-label">ALL DAY</label>
+                                        <div class="p-2 rounded-2 bg-white text-center">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="checkbox" value="" id=""
+                                                    checked="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-10">
+                                        <label for="" class="form-label">RECURRING</label>
+                                        <input type="text" class="form-control" id="" placeholder="Doesn’t repeat">
                                     </div>
                                 </div>
                             </form>
@@ -1769,7 +2038,711 @@
             </div>
         </div>
     </div>
-    <!-- Entity Create Reminders Modal End-->
+    <!-- Entities Create Reminders Modal End-->
+
+    <!-- Additional Services Modal start-->
+    <div class="modal modal-right fade" id="additionalServices" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-cart-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Additional
+                                Services</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Select a Service</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="w-100 d-flex position-relative">
+                                <span
+                                    class="icon icon-search-grey icon-sm opacity-25 position-absolute ms-4 h-100"></span>
+                                <input type="text" placeholder="Find a Service"
+                                    class="form-control white-bg py-4 ps-5 pe-4 shadow m-0">
+                            </div>
+                        </div>
+                        <div class="col-12 mb-5">
+                            <div class="row btn-tab">
+                                <div class="col-12 col-md-6">
+                                    <button data-id="new" type="button"
+                                        class="active btn btn-link bg-white rounded-3 text-capitalize text-decoration-none font-weight-600 w-100">
+                                        <span class="opacity-50">New</span>
+                                    </button>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <button data-id="inProcess" type="button"
+                                        class="btn btn-link bg-white rounded-3 text-capitalize text-decoration-none font-weight-600 w-100">
+                                        <span class="opacity-50">In Process</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="new" class="btn-tab-content" style="display: block;">
+                            <div class="col-12 mb-4">
+                                <div class="mb-3">
+                                    <span class="me-2 d-inline-block">
+                                        <span class="icon icon-bag-black m-0"></span>
+                                    </span>
+                                    <span class="text-uppercase font-weight-700 fs-9">Annual Recurring Service</span>
+                                </div>
+                                <p class="fs-7 opacity-50 font-weight-500">These tasks are added onto your portal for
+                                    ongoing annual compliance automation.</p>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item">Create New Entity</li>
+                                    <li class="list-group-item">Add Existing Entity</li>
+                                    <li class="list-group-item">DBA|FBN</li>
+                                    <li class="list-group-item">Existing DBA|FBN</li>
+                                    <li class="list-group-item">Statement of Information (CA)</li>
+                                    <li class="list-group-item">Annual Report (outside of CA)</li>
+                                    <li class="list-group-item">Franchise Tax report</li>
+                                    <li class="list-group-item">Registered Agent</li>
+                                </ul>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="mb-3">
+                                    <span class="me-2 d-inline-block">
+                                        <span class="icon icon-document-black m-0"></span>
+                                    </span>
+                                    <span class="text-uppercase font-weight-700 fs-9">ONE-OFF FILINGs</span>
+                                </div>
+                                <p class="fs-7 opacity-50 font-weight-500">These tasks are for events that do not happen
+                                    regularly.</p>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item">Amendments</li>
+                                    <li class="list-group-item">Dissolutions</li>
+                                    <li class="list-group-item">Restated articles</li>
+                                    <li class="list-group-item">Corrections</li>
+                                    <li class="list-group-item">EIN</li>
+                                    <li class="list-group-item">25102f</li>
+                                    <li class="list-group-item">Conversion</li>
+                                    <li class="list-group-item">Certificate of status retrieval</li>
+                                    <li class="list-group-item">Document Retrievals (assorted)</li>
+                                    <li class="list-group-item">Name Reservation\Verify</li>
+                                    <li class="list-group-item">Business license renewal</li>
+                                </ul>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="mb-3">
+                                    <span class="me-2 d-inline-block">
+                                        <span class="icon icon-folder-black m-0"></span>
+                                    </span>
+                                    <span class="text-uppercase font-weight-700 fs-9">PRODUCTS</span>
+                                </div>
+                                <p class="fs-7 opacity-50 font-weight-500">These products are for a suite of documents.
+                                </p>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Corporate kits
+                                        <span class="badge">
+                                            <span class="me-2 d-inline-block" data-toggle="tooltip"
+                                                data-placement="bottom" title="Tooltip on top">
+                                                <span class="icon icon-info m-0"></span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Stocks & Certificates
+                                        <span class="badge">
+                                            <span class="me-2 d-inline-block" data-toggle="tooltip">
+                                                <span class="icon icon-info m-0"></span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Custom Tabs
+                                        <span class="badge">
+                                            <span class="me-2 d-inline-block" data-toggle="tooltip">
+                                                <span class="icon icon-info m-0"></span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">Corporate books (1.5" 2.0")</li>
+                                    <li class="list-group-item">Estate Planning books</li>
+                                    <li class="list-group-item">Minutes & Bylaws</li>
+                                    <li class="list-group-item">Operating Agreement</li>
+                                    <li class="list-group-item">Corporate seals</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="inProcess" class="btn-tab-content">
+                            <div class="col-12 mb-4">
+                                <div class="mb-3">
+                                    <span class="me-2 d-inline-block">
+                                        <span class="icon icon-bag-black m-0"></span>
+                                    </span>
+                                    <span class="text-uppercase font-weight-700 fs-9">Annual Recurring Service</span>
+                                </div>
+                                <p class="fs-7 opacity-50 font-weight-500">These tasks are added onto your portal for
+                                    ongoing annual compliance automation.</p>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-4 font-weight-500">Mainsail LLC (CA)
+                                                New Entity</div>
+                                            <div class="col-12 col-md-3">09/18/2021</div>
+                                            <div class="col-12 col-md-5 d-flex align-items-center">
+                                                <div class="progress w-75 me-3" role="progressbar" aria-label="Overdue"
+                                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar progress-bar-orange" style="width: 50%">
+                                                    </div>
+                                                </div>
+                                                <span class="text-orange">50%</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-4 font-weight-500">Mainsail Corp (FL)
+                                                Existing Entity</div>
+                                            <div class="col-12 col-md-3">08/12/2021</div>
+                                            <div class="col-12 col-md-5 d-flex align-items-center">
+                                                <div class="progress w-75 me-3" role="progressbar" aria-label="Overdue"
+                                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar progress-bar-red" style="width: 0%"></div>
+                                                </div>
+                                                <span class="text-red">0%</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-4 font-weight-500">Mainsail Corp (FL)
+                                                DBA|FBN</div>
+                                            <div class="col-12 col-md-3">08/05/2021</div>
+                                            <div class="col-12 col-md-5 d-flex align-items-center">
+                                                <div class="progress w-75 me-3" role="progressbar" aria-label="Overdue"
+                                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar progress-bar-orange" style="width: 75%">
+                                                    </div>
+                                                </div>
+                                                <span class="text-orange">75%</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="mb-3">
+                                    <span class="me-2 d-inline-block">
+                                        <span class="icon icon-document-black m-0"></span>
+                                    </span>
+                                    <span class="text-uppercase font-weight-700 fs-9">ONE-OFF FILINGs</span>
+                                </div>
+                                <p class="fs-7 opacity-50 font-weight-500">These tasks are for events that do not happen
+                                    regularly.</p>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-4 font-weight-500">Mainsail LLC (CA)
+                                                New Entity</div>
+                                            <div class="col-12 col-md-3">09/18/2021</div>
+                                            <div class="col-12 col-md-5 d-flex align-items-center">
+                                                <div class="progress w-75 me-3" role="progressbar" aria-label="Overdue"
+                                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar progress-bar-orange" style="width: 50%">
+                                                    </div>
+                                                </div>
+                                                <span class="text-orange">50%</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-4 font-weight-500">Mainsail Corp (FL)
+                                                Existing Entity</div>
+                                            <div class="col-12 col-md-3">08/12/2021</div>
+                                            <div class="col-12 col-md-5 d-flex align-items-center">
+                                                <div class="progress w-75 me-3" role="progressbar" aria-label="Overdue"
+                                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar progress-bar-red" style="width: 0%"></div>
+                                                </div>
+                                                <span class="text-red">0%</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="mb-3">
+                                    <span class="me-2 d-inline-block">
+                                        <span class="icon icon-folder-black m-0"></span>
+                                    </span>
+                                    <span class="text-uppercase font-weight-700 fs-9">PRODUCTS</span>
+                                </div>
+                                <p class="fs-7 opacity-50 font-weight-500">These products are for a suite of documents.
+                                </p>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <ul class="list-group list-group-flush rounded-3">
+                                    <li class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-4 font-weight-500">Mainsail LLC (CA)
+                                                New Entity</div>
+                                            <div class="col-12 col-md-3">09/18/2021</div>
+                                            <div class="col-12 col-md-5 d-flex align-items-center">
+                                                <div class="progress w-75 me-3" role="progressbar" aria-label="Overdue"
+                                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar progress-bar-orange" style="width: 50%">
+                                                    </div>
+                                                </div>
+                                                <span class="text-orange">50%</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-info text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Additional Services Modal End-->
+
+    <!-- customizedKits Modal start-->
+    <div class="modal modal-right fade" id="customizedKits" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-settings m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SERVICE
+                                INFORMATION</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Customized Kits</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <ul class="list-unstyled m-0 row">
+                        <li class="col-12 col-md-6 mb-4">
+                            <div class="mb-3">
+                                <img src="dist/images/spacesaver-kit.png" alt="" class="w-100">
+                            </div>
+                            <div class="text-center font-weight-700 text-uppercase">Space Saver Kit</div>
+                        </li>
+                        <li class="col-12 col-md-6 mb-4">
+                            <div class="mb-3">
+                                <img src="dist/images/basic-electric-kit.png" alt="" class="w-100">
+                            </div>
+                            <div class="text-center font-weight-700 text-uppercase">Basic Electric Kit</div>
+                        </li>
+                        <li class="col-12 col-md-6 mb-4">
+                            <div class="mb-3">
+                                <img src="dist/images/value-llc-kit.png" alt="" class="w-100">
+                            </div>
+                            <div class="text-center font-weight-700 text-uppercase">Value Kit</div>
+                        </li>
+                        <li class="col-12 col-md-6 mb-4">
+                            <div class="mb-3">
+                                <img src="dist/images/a1-kit.png" alt="" class="w-100">
+                            </div>
+                            <div class="text-center font-weight-700 text-uppercase">A1 Kit</div>
+                        </li>
+                        <li class="col-12 col-md-6 mb-4">
+                            <div class="mb-3">
+                                <img src="dist/images/attorney-kit.png" alt="" class="w-100">
+                            </div>
+                            <div class="text-center font-weight-700 text-uppercase">Attorney Kit</div>
+                        </li>
+                        <li class="col-12 col-md-6 mb-4">
+                            <div class="mb-3">
+                                <img src="dist/images/delux-kit.png" alt="" class="w-100">
+                            </div>
+                            <div class="text-center font-weight-700 text-uppercase">Deluxe Kit</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            GO BACK
+                        </button>
+                        <button type="button" class="btn btn-info text-uppercase text-decoration-none font-weight-600"
+                            role="button" data-bs-toggle="modal" data-bs-target="#stocksCertificates">
+                            SELECT SERVICE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- customizedKits Modal End-->
+
+    <!-- Stocks & Certificates Modal start-->
+    <div class="modal modal-right fade" id="stocksCertificates" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-settings m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SERVICE
+                                INFORMATION</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Stocks & Certificates</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <ul class="list-unstyled m-0 row">
+                        <li class="col-12 mb-4 border-bottom pb-4">
+                            <div class="row">
+                                <div
+                                    class="col-12 col-md-6 bg-white d-flex align-items-center justify-content-center rounded-3">
+                                    <img src="dist/images/digital-cert.png" alt="">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="font-weight-700 fs-9 mb-3 text-uppercase">E-Certificates</div>
+                                    <p class="fs-8">The E-Certificates include the following PDF documents: Printing
+                                        Instructions, 20 E-Certificates (fillable form), Stock/Membership Transfer
+                                        Ledger (fillable form), Stock/Membership Cancellation Form (fillable form), and
+                                        Certificate Back Wording Files. We recommend using a laser color printer.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-12 mb-4 border-bottom pb-4">
+                            <div class="row">
+                                <div
+                                    class="col-12 col-md-6 bg-white d-flex align-items-center justify-content-center rounded-3">
+                                    <img src="dist/images/digital-cert-short-form.png" alt="">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="font-weight-700 fs-9 mb-3 text-uppercase">Short Form</div>
+                                    <p class="fs-8">Set of 22 standard 8.5 x 11" stock or membership certificates, 20
+                                        numbered and 2 unnumbered. Certificates are imprinted with corporate name, stock
+                                        designation, state of incorporation and signatories. Certificates are available
+                                        for General Corporations and Limited Liability Companies (LLC).</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-12 mb-4 border-bottom pb-4">
+                            <div class="row">
+                                <div
+                                    class="col-12 col-md-6 bg-white d-flex align-items-center justify-content-center rounded-3">
+                                    <img src="dist/images/digital-cert-long-form.png" alt="">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="font-weight-700 fs-9 mb-3 text-uppercase">Long Form</div>
+                                    <p class="fs-8">Set of 22 standard 8.5 x 14" stock or membership certificates, 20
+                                        numbered and 2 unnumbered. Certificates are imprinted with corporate name, stock
+                                        designation, state of incorporation and signatories. Certificates are available
+                                        for General Corporations and Limited Liability Companies (LLC).</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-12 mb-4 border-bottom pb-4">
+                            <div class="row">
+                                <div
+                                    class="col-12 col-md-6 bg-white d-flex align-items-center justify-content-center rounded-3">
+                                    <img src="dist/images/digital-cert.png" alt="">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="font-weight-700 fs-9 mb-3 text-uppercase">E-Certificates</div>
+                                    <p class="fs-8">The E-Certificates include the following PDF documents: Printing
+                                        Instructions, 20 E-Certificates (fillable form), Stock/Membership Transfer
+                                        Ledger (fillable form), Stock/Membership Cancellation Form (fillable form), and
+                                        Certificate Back Wording Files. We recommend using a laser color printer.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-12 mb-4 border-bottom pb-4">
+                            <div class="row">
+                                <div
+                                    class="col-12 col-md-6 bg-white d-flex align-items-center justify-content-center rounded-3">
+                                    <img src="dist/images/digital-cert-short-form.png" alt="">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="font-weight-700 fs-9 mb-3 text-uppercase">Short Form</div>
+                                    <p class="fs-8">Set of 22 standard 8.5 x 11" stock or membership certificates, 20
+                                        numbered and 2 unnumbered. Certificates are imprinted with corporate name, stock
+                                        designation, state of incorporation and signatories. Certificates are available
+                                        for General Corporations and Limited Liability Companies (LLC).</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="col-12 mb-4 border-bottom pb-4">
+                            <div class="row">
+                                <div
+                                    class="col-12 col-md-6 bg-white d-flex align-items-center justify-content-center rounded-3">
+                                    <img src="dist/images/digital-cert-long-form.png" alt="">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="font-weight-700 fs-9 mb-3 text-uppercase">Long Form</div>
+                                    <p class="fs-8">Set of 22 standard 8.5 x 14" stock or membership certificates, 20
+                                        numbered and 2 unnumbered. Certificates are imprinted with corporate name, stock
+                                        designation, state of incorporation and signatories. Certificates are available
+                                        for General Corporations and Limited Liability Companies (LLC).</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            GO BACK
+                        </button>
+                        <button type="button" class="btn btn-info text-uppercase text-decoration-none font-weight-600"
+                            role="button" data-bs-toggle="modal" data-bs-target="#customTabs">
+                            SELECT SERVICE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Stocks & Certificates Modal End-->
+
+    <!-- customTabs Modal start-->
+    <div class="modal modal-right fade" id="customTabs" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-settings m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SERVICE
+                                INFORMATION</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Custom Tabs</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <ul class="list-unstyled m-0">
+                        <li class="mb-4 rounded-3 overflow-hidden">
+                            <img src="dist/images/custom-tab.png" alt="" class="w-100">
+                        </li>
+                    </ul>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            GO BACK
+                        </button>
+                        <button type="button" class="btn btn-info text-uppercase text-decoration-none font-weight-600">
+                            SELECT SERVICE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- customTabs Modal End-->
+
+    <!-- deleteEntity Modal start-->
+    <div class="modal modal-right fade" id="deleteEntity" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-danger p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-delete-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">ENTITY DELETion</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Delete This Entity?</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This will permanently remove this Entity from your Filejet account.</p>
+                    <p>Your account will be updated for the next billing cylce.</p>
+                    <p class="font-weight-600">You also have the option for Filejet to dissolve this Entity registration with the State on your behalf.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600" data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-danger text-uppercase text-decoration-none font-weight-600 me-3 opacity-50" role="button" data-bs-toggle="modal" data-bs-target="#deleteOnly">
+                            <span class="text-black opacity-1">Delete Only</span>
+                        </button>
+                        <button type="button" class="btn btn-danger text-uppercase text-decoration-none font-weight-600" role="button" data-bs-toggle="modal" data-bs-target="#deactivate">
+                            Delete and Dissolve
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- deleteEntity Modal End-->
+
+    <!-- deactivate Modal start-->
+    <div class="modal modal-right fade" id="deactivate" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-danger p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-stop m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Entity Disable</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Deactivate This Entity?</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This Entity will be deactivated and notifications will be turned off.  You will still have full acccess to the entity profile. Your account will be updated for the next billing cylce.</p>
+                    <p class="font-weight-600">You also have the option for Filejet to dissolve this Entity registration with the State on your behalf.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600" data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-danger text-uppercase text-decoration-none font-weight-600 me-3 opacity-50" role="button" data-bs-toggle="modal" data-bs-target="#deactivateOnly">
+                            <span class="text-black opacity-1">Deactivate Only</span>
+                        </button>
+                        <button type="button" class="btn btn-danger text-uppercase text-decoration-none font-weight-600">
+                            Deactivate and Dissolve
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- deactivate Modal End-->
+
+    <!-- delete Only Modal start-->
+    <div class="modal modal-right fade" id="deleteOnly" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-success p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-white-tick m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SUCCESS</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Entity Deleted Successfully!</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This Entity has been permanently removed from your Filejet account.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-info text-uppercase text-decoration-none font-weight-600" data-bs-dismiss="modal">
+                            CONTINUE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete Only Modal End-->
+
+    <!-- delete Only Modal start-->
+    <div class="modal modal-right fade" id="deactivateOnly" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-success p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-white-tick m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SUCCESS</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Entity Deactivated Successfully!</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This Entity has been removed from your account.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-info text-uppercase text-decoration-none font-weight-600" data-bs-dismiss="modal">
+                            CONTINUE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete Only Modal End-->
 
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
