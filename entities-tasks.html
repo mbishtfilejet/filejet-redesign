@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>File Jet: Dashboard</title>
+    <title>File Jet: Entity Details</title>
     <!-- Styles -->
     <link rel="stylesheet" href="dist/css/filejet-style.css" />
     <script src="dist/js/jquery.min.js"></script>
@@ -12,221 +12,230 @@
 
 <body>
     <div class="grey-bg dashboard-page min-vh-100">
-        <div class="container-fluid d-flex p-0">
-            <div class="sidebar py-3 ps-3">
-                <div class="ps-2 pb-4">
-                    <a href="/">
-                        <img src="dist/images/logo.png" />
-                    </a>
-                </div>
-                <div>
-                    <ul class="menu-link p-0 m-0">
-                        <!-- Dashboard -->
-                        <li class="nav-link">
-                            <a href="./index.html" class="text-decoration-none ps-3 py-3 d-block">
-                                <span>
-                                    <span class="icon icon-dashboard normal-icon"></span>
-                                    <span class="icon icon-dashboard-purple active-icon"></span>
-                                </span>
+        <div class="container-fluid p-0">
+            <div class="sidebar-wrapper">
+                <div class="sidebar py-3 ps-3">
+                    <div class="ps-2 pb-4">
+                        <a href="/">
+                            <img src="dist/images/logo.png">
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="menu-link p-0 m-0">
+                            <!-- Dashboard -->
+                            <li class="nav-link">
+                                <a href="./index.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-dashboard normal-icon"></span>
+                                        <span class="icon icon-dashboard-purple active-icon"></span>
+                                    </span>
 
-                                <span class="text nav-text">Dashboard</span>
-                            </a>
-                        </li>
-                        <!-- Entities -->
-                        <li class="nav-link active">
-                            <a href="./entities.html" class="text-decoration-none ps-3 py-3 d-block">
-                                <span>
-                                    <span class="icon icon-entities normal-icon"></span>
-                                    <span class="icon icon-entities-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text position-relative">
-                                    Entities
-                                    <span class="count-notification position-absolute">1</span>
-                                </span>
-                            </a>
-                        </li>
-                        <!-- Groups -->
-                        <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
-                                <span>
-                                    <span class="icon icon-group normal-icon"></span>
-                                    <span class="icon icon-group-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text">Groups</span>
-                            </a>
-                        </li>
-                        <!-- Calendar -->
-                        <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
-                                <span>
-                                    <span class="icon icon-calender normal-icon"></span>
-                                    <span class="icon icon-calender-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text">Calendar</span>
-                            </a>
-                        </li>
-                        <!-- Registered Agent -->
-                        <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
-                                <span>
-                                    <span class="icon icon-users-check normal-icon"></span>
-                                    <span class="icon icon-users-check-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text position-relative">
-                                    Registered Agent
-                                    <span class="count-notification position-absolute">1</span>
-                                </span>
-                            </a>
-                        </li>
-                        <!-- Business Licenses -->
-                        <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
-                                <span>
-                                    <span class="icon icon-business normal-icon"></span>
-                                    <span class="icon icon-business-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text">Business Licenses</span>
-                            </a>
-                        </li>
-                        <!-- Fictitious / Trade Name -->
-                        <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
-                                <span>
-                                    <span class="icon icon-certificate-black normal-icon"></span>
-                                    <span class="icon icon-certificate-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text">Fictitious / Trade Name</span>
-                            </a>
-                        </li>
-                        <!-- Organization Charts  -->
-                        <li class="nav-link disabled">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center">
-                                <span>
-                                    <span class="icon icon-chart normal-icon"></span>
-                                    <span class="icon icon-chart-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text d-inline-block">
-                                    Organization Charts
-                                    <span class="small-tag">Coming soon</span>
-                                </span>
-                            </a>
-                        </li>
-                        <!-- Cap Table -->
-                        <li class="nav-link disabled">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center">
-                                <span>
-                                    <span class="icon icon-table normal-icon"></span>
-                                    <span class="icon icon-table-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text d-inline-block position-relative">
-                                    Cap Table
-                                    <span class="count-notification position-absolute">1</span>
-                                    <span class="small-tag">Coming soon</span>
-                                </span>
-                            </a>
-                        </li>
-                        <!-- Reports -->
-                        <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-3 d-block">
-                                <span>
-                                    <span class="icon icon-report normal-icon"></span>
-                                    <span class="icon icon-report-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text">Reports </span>
-                            </a>
-                        </li>
-                        <!-- Additional Services -->
-                        <li class="nav-link">
-                            <a href="" class="text-decoration-none ps-3 py-2 d-block">
-                                <span>
-                                    <span class="icon icon-services normal-icon"></span>
-                                    <span class="icon icon-services-purple active-icon"></span>
-                                </span>
-                                <span class="text nav-text">Additional Services </span>
-                            </a>
-                        </li>
-                    </ul>
+                                    <span class="text nav-text">Dashboard</span>
+                                </a>
+                            </li>
+                            <!-- Entities -->
+                            <li class="nav-link active">
+                                <a href="javascript:void(0);" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-entities normal-icon"></span>
+                                        <span class="icon icon-entities-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Entities
+                                        <span class="count-notification position-absolute">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Groups -->
+                            <li class="nav-link">
+                                <a href="./groups.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-group normal-icon"></span>
+                                        <span class="icon icon-group-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Groups</span>
+                                </a>
+                            </li>
+                            <!-- Calendar -->
+                            <li class="nav-link">
+                                <a href="./calender.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-calender normal-icon"></span>
+                                        <span class="icon icon-calender-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Calendar</span>
+                                </a>
+                            </li>
+                            <!-- Registered Agent -->
+                            <li class="nav-link">
+                                <a href="./registered-agent.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-users-check normal-icon"></span>
+                                        <span class="icon icon-users-check-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Registered Agent
+                                        <span class="count-notification position-absolute">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Business Licenses -->
+                            <li class="nav-link">
+                                <a href="./business-licences.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-business normal-icon"></span>
+                                        <span class="icon icon-business-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Business Licenses</span>
+                                </a>
+                            </li>
+                            <!-- Fictitious / Trade Name -->
+                            <li class="nav-link">
+                                <a href="./trade.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-certificate-black normal-icon"></span>
+                                        <span class="icon icon-certificate-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Fictitious / Trade Name</span>
+                                </a>
+                            </li>
+                            <!-- Organization Charts  -->
+                            <li class="nav-link disabled">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center">
+                                    <span>
+                                        <span class="icon icon-chart normal-icon"></span>
+                                        <span class="icon icon-chart-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block">
+                                        Organization Charts
+                                        <span class="small-tag">Coming soon</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Cap Table -->
+                            <li class="nav-link disabled">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center">
+                                    <span>
+                                        <span class="icon icon-table normal-icon"></span>
+                                        <span class="icon icon-table-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block position-relative">
+                                        Cap Table
+                                        <span class="count-notification position-absolute">1</span>
+                                        <span class="small-tag">Coming soon</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Reports -->
+                            <li class="nav-link">
+                                <a href="./reports.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-report normal-icon"></span>
+                                        <span class="icon icon-report-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Reports </span>
+                                </a>
+                            </li>
+                            <!-- Additional Services -->
+                            <li class="nav-link">
+                                <a href="./additional-services.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-services normal-icon"></span>
+                                        <span class="icon icon-services-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Additional Services </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="header py-1 mb-3">
-                    <div class="row align-items-center">
-                        <div class="col col-xl-3 col-lg-4">
-                            <h3 class="m-0">
-                                <strong>Entity Details</strong>
-                            </h3>
-                        </div>
-                        <div class="col col-xl-9 col-lg-8 d-flex align-items-center justify-content-end">
-                            <div
-                                class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar">
-                                <span class="icon icon-search-grey icon-lg"></span>
-                                <span class="text-placeholder w-100">What are you looking for?</span>
+            <div class="main-content-wrapper">
+                <div class="container">
+                    <div class="header py-1">
+                        <div class="row align-items-center">
+                            <div class="col col-xl-3 col-lg-4">
+                                <h3 class="m-0">
+                                    <strong>
+                                        Entity Details
+                                    </strong>
+                                </h3>
                             </div>
-                            <div class="notification position-relative px-4">
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#notificationMOdal">
-                                    <span class="icon icon-bell m-0"></span>
-                                    <span class="notification-dot"></span>
-                                </a>
-                            </div>
-                            <div class="profile-nav">
-                                <div class="dropdow white-bg p-0 rounded-5 overflow-hidden">
-                                    <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
-                                        aria-expanded="true">
-                                        <img class="ms-n3" src="dist/images/avatar.png" alt="" />
-                                        <span class="user-name">Roman</span>
+                            <div class="col col-xl-9 col-lg-8 d-flex align-items-center justify-content-end">
+                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                                    <span class="text-placeholder w-100">What are you looking for?</span>
+                                </div>
+                                <div class="notification position-relative px-4">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#notificationModal">
+                                        <span class="icon icon-bell m-0"></span>
+                                        <span class="notification-dot"></span>
                                     </a>
-                                    <ul class="dropdown-menu" data-bs-popper="static">
-                                        <li>
-                                            <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
-                                                Account
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
-                                                href="#">
-                                                <span class="icon">
-                                                    <img src="dist/images/avatar.png" alt="" />
+                                </div>
+                                <div class="profile-nav">
+                                    <div class="dropdow white-bg p-0 rounded-5 overflow-hidden">
+
+                                        <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg ms-n3">
+                                                <img src="dist/images/avatar.png" alt="" />
+                                            </span>  
+                                            <span class="user-name">Roman</span>
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                                    Account
                                                 </span>
-                                                View Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
-                                                href="#">
-                                                <span class="icon icon-user"></span>
-                                                Switch Account (Member)
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item py-3 d-flex align-items-center" href="#">
-                                                <span class="icon icon-logout"></span>
-                                                Logout
-                                            </a>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="avatar avatar-sm me-4">
+                                                        <img src="dist/images/avatar.png" alt="">
+                                                    </span>
+                                                    View Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center" href="#">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="main-content pt-3">
-                    <div class="row mb-2">
-                        <div class="col-12">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb text-uppercase fs-10">
-                                    <li class="breadcrumb-item"><a href="entities.html">Entities</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Steve’s Accounting Firm</li>
-                                </ol>
-                            </nav>
+                <hr>
+                <div class="container">
+                    <div class="main-content pt-3">
+                        <div class="row mb-2">
+                            <div class="col-12">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb text-uppercase fs-10">
+                                        <li class="breadcrumb-item"><a href="entities.html">Entities</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Steve’s Accounting Firm</li>
+                                    </ol>
+                                </nav>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col col-md-5">
-                            <h3 class="font-weight-700">Steve’s Accounting Firm</h3>
-                        </div>
-                        <div class="col col-md-7 d-flex justify-content-end">
-                            <div class="d-flex">
+                        <div class="row mb-3">
+                            <div class="col col-md-5">
+                                <h3 class="font-weight-700">Steve’s Accounting Firm</h3>
+                            </div>
+                            <div class="col col-md-7 d-flex justify-content-end">
                                 <div class="d-flex">
                                     <div class="d-flex flex-wrap justify-content-between flex-column">
                                         <div class="text-uppercase fs-10 font-weight-700 opacity-50">Users</div>
@@ -275,59 +284,59 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row mb-4 mt-5">
-                        <div class="col col-4 px-1">
-                            <div class="card card-red h-100 py-3">
-                                <div class="card-body d-flex">
-                                    <div class="d-flex w-100">
-                                        <div class="me-4">
-                                            <span class="p-3 rounded-2 d-inline-block">
-                                                <span class="icon icon-xl icon-multi-task m-0"></span>
-                                            </span>
+                        <div class="row mb-4 mt-5">
+                            <div class="col col-4 px-1">
+                                <div class="card card-red h-100 py-3">
+                                    <div class="card-body d-flex">
+                                        <div class="d-flex w-100">
+                                            <div class="me-4">
+                                                <span class="p-3 rounded-2 d-inline-block">
+                                                    <span class="icon icon-xl icon-multi-task m-0"></span>
+                                                </span>
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-between">
+                                                <div class="text-uppercase fs-10 font-weight-700 opacity-50">Document
+                                                    management</div>
+                                                <h3 class="m-0 font-weight-700">Jurisdiction</h3>
+                                            </div>
+                                            <div class="text-l ms-auto">4</div>
                                         </div>
-                                        <div class="d-flex flex-column justify-content-between">
-                                            <div class="text-uppercase fs-10 font-weight-700 opacity-50">Document
-                                                management</div>
-                                            <h3 class="m-0 font-weight-700">Jurisdiction</h3>
-                                        </div>
-                                        <div class="text-l ms-auto">4</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col col-4 px-1">
-                            <div class="card card-purple h-100 py-3">
-                                <div class="card-body d-flex">
-                                    <div class="d-flex w-100">
-                                        <div class="me-4">
-                                            <span class="p-3 rounded-2 d-inline-block">
-                                                <span class="icon icon-xl icon-profile-white m-0"></span>
-                                            </span>
+                            <div class="col col-4 px-1">
+                                <div class="card card-purple h-100 py-3">
+                                    <div class="card-body d-flex">
+                                        <div class="d-flex w-100">
+                                            <div class="me-4">
+                                                <span class="p-3 rounded-2 d-inline-block">
+                                                    <span class="icon icon-xl icon-profile-white m-0"></span>
+                                                </span>
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-between">
+                                                <div class="text-uppercase fs-10 font-weight-700 opacity-50">Active</div>
+                                                <h3 class="m-0 text-white font-weight-700">Stakeholders</h3>
+                                            </div>
+                                            <div class="text-l text-white ms-auto">12</div>
                                         </div>
-                                        <div class="d-flex flex-column justify-content-between">
-                                            <div class="text-uppercase fs-10 font-weight-700 opacity-50">Active</div>
-                                            <h3 class="m-0 text-white font-weight-700">Stakeholders</h3>
-                                        </div>
-                                        <div class="text-l text-white ms-auto">12</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col col-4 px-1">
-                            <div class="card card-green h-100 py-3">
-                                <div class="card-body d-flex">
-                                    <div class="d-flex w-100">
-                                        <div class="me-4">
-                                            <span class="p-3 rounded-2 d-inline-block">
-                                                <span class="icon icon-xl icon-task m-0"></span>
-                                            </span>
+                            <div class="col col-4 px-1">
+                                <div class="card card-green h-100 py-3">
+                                    <div class="card-body d-flex">
+                                        <div class="d-flex w-100">
+                                            <div class="me-4">
+                                                <span class="p-3 rounded-2 d-inline-block">
+                                                    <span class="icon icon-xl icon-task m-0"></span>
+                                                </span>
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-between">
+                                                <div class="text-uppercase fs-10 font-weight-700 opacity-50">Total</div>
+                                                <h3 class="m-0 font-weight-700">Tasks</h3>
+                                            </div>
+                                            <div class="text-l ms-auto">8</div>
                                         </div>
-                                        <div class="d-flex flex-column justify-content-between">
-                                            <div class="text-uppercase fs-10 font-weight-700 opacity-50">Total</div>
-                                            <h3 class="m-0 font-weight-700">Tasks</h3>
-                                        </div>
-                                        <div class="text-l ms-auto">8</div>
                                     </div>
                                 </div>
                             </div>
