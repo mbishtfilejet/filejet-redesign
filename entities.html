@@ -245,21 +245,299 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-5">
-                            <div class="col-12">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item nav-items">
-                                        <a href="#all" class="nav-link active" data-bs-toggle="tab">All</a>
-                                    </li>
-                                    <li class="nav-item d-flex align-items-center ms-auto">
-                                        <a href="javascript: void(0)" data-id="list-view" class="active"><span
-                                                class="icon m-0 ms-4 icon-list-view"></span><span
-                                                class="icon m-0 ms-4 icon-list-view-active"></span></a>
-                                        <a href="javascript: void(0)" data-id="grid-view"><span
-                                                class="icon m-0 ms-4 icon-grid-view"></span><span
-                                                class="icon m-0 ms-4 icon-grid-view-active"></span></a>
-                                    </li>
-                                </ul>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item nav-items">
+                                    <a href="#all" class="nav-link active" data-bs-toggle="tab">All</a>
+                                </li>
+                                <li class="nav-item d-flex align-items-center ms-auto view-change-entry">
+                                    <a href="javascript: void(0)" data-id="list-view" class="active"><span
+                                            class="icon m-0 ms-4 icon-list-view"></span><span
+                                            class="icon m-0 ms-4 icon-list-view-active"></span></a>
+                                    <a href="javascript: void(0)" data-id="grid-view"><span
+                                            class="icon m-0 ms-4 icon-grid-view"></span><span
+                                            class="icon m-0 ms-4 icon-grid-view-active"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 tab-content-wrapper" id="list-view" style="display: block;">
+                            <div class="tab-content bg-white rounded-2">
+                                <div class="tab-pane fade show active" id="all">
+                                    <table id="entity-listing" class="table table-striped w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>Entity Name</th>
+                                                <th>Group</th>
+                                                <th>Type</th>
+                                                <th>State</th>
+                                                <th>Formation Date</th>
+                                                <th>Jurisdictions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="#">McDonald Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/03/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Jenson Museum Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/11/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Compliance 4U, LLC</a></td>
+                                                <td>Unassigned</td>
+                                                <td>LLC</td>
+                                                <td>NY</td>
+                                                <td>08/06/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Steve’s Accounting Firm</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/24/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">WeComply Corp</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Profit Corp.</td>
+                                                <td>NY</td>
+                                                <td>08/30/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#updateEntityDetails">BioHelp Inc</a>
+                                                </td>
+                                                <td>Unassigned</td>
+                                                <td>Profit Corp.</td>
+                                                <td>NY</td>
+                                                <td>08/30/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">McDonald Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/03/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Jenson Museum Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/11/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Compliance 4U, LLC</a></td>
+                                                <td>Unassigned</td>
+                                                <td>LLC</td>
+                                                <td>NY</td>
+                                                <td>08/06/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Steve’s Accounting Firm</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/24/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">WeComply Corp</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Profit Corp.</td>
+                                                <td>NY</td>
+                                                <td>08/30/2021</td>
+                                                <td><a href="#">0</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">BioHelp Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Profit Corp.</td>
+                                                <td>NY</td>
+                                                <td>08/30/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">McDonald Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/03/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Jenson Museum Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/11/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Compliance 4U, LLC</a></td>
+                                                <td>Unassigned</td>
+                                                <td>LLC</td>
+                                                <td>NY</td>
+                                                <td>08/06/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Steve’s Accounting Firm</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/24/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">WeComply Corp</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Profit Corp.</td>
+                                                <td>NY</td>
+                                                <td>08/30/2021</td>
+                                                <td><a href="#">0</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">BioHelp Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Profit Corp.</td>
+                                                <td>NY</td>
+                                                <td>08/30/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">McDonald Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/03/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Jenson Museum Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/11/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Compliance 4U, LLC</a></td>
+                                                <td>Unassigned</td>
+                                                <td>LLC</td>
+                                                <td>NY</td>
+                                                <td>08/06/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">Steve’s Accounting Firm</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Non-Profit Corp.</td>
+                                                <td>AZ</td>
+                                                <td>08/24/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">WeComply Corp</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Profit Corp.</td>
+                                                <td>NY</td>
+                                                <td>08/30/2021</td>
+                                                <td><a href="#">0</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="#">BioHelp Inc</a></td>
+                                                <td>Unassigned</td>
+                                                <td>Profit Corp.</td>
+                                                <td>NY</td>
+                                                <td>08/30/2021</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#additionalJurisdictions">5</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class="col-12 tab-content-wrapper" id="list-view">
                                 <div class="tab-content bg-white rounded-2">
