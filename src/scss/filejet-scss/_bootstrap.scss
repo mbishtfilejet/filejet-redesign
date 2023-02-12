@@ -50,7 +50,7 @@
   --bs-gray-600: #6c757d;
   --bs-gray-700: #4E4E5C;
   --bs-gray-800: #2E2E36;
-  --bs-gray-900: #212529;
+  --bs-gray-900: #2F2F2F;
   --bs-primary: #0d6efd;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
@@ -139,7 +139,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   /* margin-bottom: 0.5rem; */
   margin-bottom: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -3036,6 +3036,23 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #6c757d;
 }
 
+.btn-quaternary {
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bs-light-blue);
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--bs-light-blue);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-focus-shadow-rgb: 130, 138, 145;
+  --bs-btn-active-color: var(--bs-white);
+  --bs-btn-active-bg: var(--bs-light-blue);
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--bs-white);
+  --bs-btn-disabled-bg: var(--bs-light-blue);
+  --bs-btn-disabled-border-color: transparent;
+}
+
 .btn-tertiary {
   --bs-btn-color: #6E72EE;
   --bs-btn-bg: #DDDFF5;
@@ -3055,20 +3072,20 @@ textarea.form-control-lg {
 }
 
 .btn-success {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #198754;
-  --bs-btn-border-color: #198754;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #157347;
-  --bs-btn-hover-border-color: #146c43;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bs-green);
+  --bs-btn-border-color: var(--bs-green);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--bs-green);
+  --bs-btn-hover-border-color: var(--bs-green);
   --bs-btn-focus-shadow-rgb: 60, 153, 110;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #146c43;
-  --bs-btn-active-border-color: #13653f;
+  --bs-btn-active-color: var(--bs-white);
+  --bs-btn-active-bg: var(--bs-green);
+  --bs-btn-active-border-color: var(--bs-green);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #198754;
-  --bs-btn-disabled-border-color: #198754;
+  --bs-btn-disabled-color: var(--bs-white);
+  --bs-btn-disabled-bg: var(--bs-green);
+  --bs-btn-disabled-border-color: var(--bs-green);
 }
 
 .btn-info {
@@ -3276,19 +3293,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-dark {
-  --bs-btn-color: #212529;
-  --bs-btn-border-color: #212529;
+  --bs-btn-color: #231F20;
+  --bs-btn-border-color: #231F20;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #212529;
-  --bs-btn-hover-border-color: #212529;
+  --bs-btn-hover-bg: #231F20;
+  --bs-btn-hover-border-color: #231F20;
   --bs-btn-focus-shadow-rgb: 33, 37, 41;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #212529;
-  --bs-btn-active-border-color: #212529;
+  --bs-btn-active-bg: #231F20;
+  --bs-btn-active-border-color: #231F20;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #212529;
+  --bs-btn-disabled-color: #231F20;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #212529;
+  --bs-btn-disabled-border-color: #231F20;
   --bs-gradient: none;
 }
 
@@ -5307,6 +5324,7 @@ textarea.form-control-lg {
 }
 .list-group-flush {
   border-radius: 0;
+  @extend .shadow-none;
 }
 .list-group-flush > .list-group-item {
   border-width: 0 0 var(--bs-list-group-border-width);
@@ -5732,6 +5750,24 @@ textarea.form-control-lg {
     --bs-modal-width: 1021px;
   }
 }
+
+@media (min-width: 992px) {
+  .modal-xxl {
+      --bs-modal-width: 800px;
+    }
+  }
+
+@media (min-width: 1024px) {
+.modal-xxl {
+    --bs-modal-width: 1000px;
+  }
+}
+@media (min-width: 1340px) {
+  .modal-xxl {
+    --bs-modal-width: 1230px;
+  }
+}
+
 .modal-fullscreen {
   width: 100vw;
   max-width: none;
@@ -7859,6 +7895,26 @@ textarea.form-control-lg {
 
 .m-5 {
   margin: 3rem !important;
+}
+
+.mn-1 {
+  margin: -0.25rem !important;
+}
+
+.mn-2 {
+  margin: -0.5rem !important;
+}
+
+.mn-3 {
+  margin: -1rem !important;
+}
+
+.mn-4 {
+  margin: -1.5rem !important;
+}
+
+.mn-5 {
+  margin: -3rem !important;
 }
 
 .m-auto {
