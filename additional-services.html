@@ -12,13 +12,15 @@
 </head>
 
 <body>
+
   <div class="grey-bg dashboard-page min-vh-100">
     <div class="container-fluid p-0">
       <div class="sidebar-wrapper">
         <div class="sidebar min-vh-100 py-3 ps-3">
           <div class="ps-2 pb-4">
-            <a href="/">
-              <img src="dist/images/logo.png">
+            <a href="/" class="logo">
+              <img src="dist/images/logo.png" class="d-none d-lg-block" alt="FileJet">
+              <img src="dist/images/filejet-pinLogo.png" class="d-block d-lg-none" alt="FileJet">
             </a>
           </div>
           <div>
@@ -157,113 +159,164 @@
       <div class="main-content-wrapper">
         <div class="container">
           <div class="header py-1">
-            <div class="row align-items-center">
-              <div class="col col-xl-3 col-lg-4">
-                <h3 class="m-0">
-                  <strong>
-                    Additional Services
-                  </strong>
-                </h3>
-              </div>
-              <div class="col col-xl-9 col-lg-8 d-flex align-items-center justify-content-end">
-                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar"
-                  data-bs-toggle="modal" data-bs-target="#searchModal">
-                  <span class="icon icon-search-grey icon-smd opacity-50"></span>
-                  <span class="text-placeholder w-100">What are you looking for?</span>
-                </div>
-                <div class="notification position-relative px-4">
-                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#notificationModal">
-                    <span class="icon icon-bell m-0"></span>
-                    <span class="notification-dot"></span>
-                  </a>
-                </div>
-                <div class="profile-nav">
-                  <div class="dropdow white-bg p-0 rounded-5 overflow-hidden">
+            <div class="mobile-header d-block d-lg-none text-end mb-3">
+                <div class="row align-items-center mt-3">
+                    <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar col-7" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                        <span class="text-placeholder">What are you looking for?</span>
+                    </div>
+                    <div class="profile-nav d-inline-block col-5">
+                        <div class="dropdow white-bg p-0 rounded-5 overflow-hidden d-inline-block">
 
-                    <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
-                      aria-expanded="true">
-                      <span class="avatar avatar-lg ms-n3">
-                        <img src="dist/images/avatar.png" alt="" />
-                      </span>
-                      <span class="user-name">Roman</span>
-                    </a>
-                    <ul class="dropdown-menu" data-bs-popper="static">
-                      <li>
-                        <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
-                          Account
-                        </span>
-                      </li>
-                      <li>
-                        <a class="dropdown-item py-3 d-flex align-items-center border-bottom" href="#">
-                          <span class="avatar avatar-sm me-4">
-                            <img src="dist/images/avatar.png" alt="">
-                          </span>
-                          View Profile
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item py-3 d-flex align-items-center border-bottom" href="#">
-                          <span class="icon icon-user me-4"></span>
-                          Switch Account (Member)
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item py-3 d-flex align-items-center" href="#">
-                          <span class="icon icon-logout me-4"></span>
-                          Logout
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                            <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
+                                aria-expanded="true">
+                                <span class="avatar avatar-lg ms-n3">
+                                    <img src="dist/images/avatar.png" alt="" />
+                                </span>  
+                                <span class="user-name">Roman</span>
+                            </a>
+                            <ul class="dropdown-menu" data-bs-popper="static">
+                                <li>
+                                    <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                        Account
+                                    </span>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                        href="#">
+                                        <span class="avatar avatar-sm me-4">
+                                            <img src="dist/images/avatar.png" alt="">
+                                        </span>
+                                        View Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                        href="#">
+                                        <span class="icon icon-user me-4"></span>
+                                        Switch Account (Member)
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center" href="#">
+                                        <span class="icon icon-logout me-4"></span>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            <div class="row align-items-center">
+                <div class="col-3 col-xl-3 col-lg-12 order-xl-1">
+                    <h3 class="m-0">
+                        <strong>
+                            Additional Services
+                        </strong>
+                    </h3>
+                </div>
+                <div class="col-9 col-xl-9 col-lg-12 d-flex align-items-center justify-content-end order-xl-2">
+                    <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar d-none d-lg-flex" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                        <span class="text-placeholder w-100">What are you looking for?</span>
+                    </div>
+                    <div class="notification position-relative px-4">
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#notificationModal">
+                            <span class="icon icon-bell m-0"></span>
+                            <span class="notification-dot"></span>
+                        </a>
+                    </div>
+                    <div class="profile-nav d-none d-lg-flex">
+                        <div class="dropdow white-bg p-0 rounded-5 overflow-hidden">
+
+                            <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
+                                aria-expanded="true">
+                                <span class="avatar avatar-lg ms-n3">
+                                    <img src="dist/images/avatar.png" alt="" />
+                                </span>  
+                                <span class="user-name">Roman</span>
+                            </a>
+                            <ul class="dropdown-menu" data-bs-popper="static">
+                                <li>
+                                    <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                        Account
+                                    </span>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                        href="#">
+                                        <span class="avatar avatar-sm me-4">
+                                            <img src="dist/images/avatar.png" alt="">
+                                        </span>
+                                        View Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                        href="#">
+                                        <span class="icon icon-user me-4"></span>
+                                        Switch Account (Member)
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center" href="#">
+                                        <span class="icon icon-logout me-4"></span>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
         <hr>
-        <div class="container">
 
+        <div class="container">
           <!---New Entity--->
-          <div class="row">
-            <div class="col">
+          <div class="row align-items-center">
+            <div class="col-md-4">
               <div class="d-flex align-items-center w-100 mb-4 pb-2">
                 <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
                   <span class="icon icon-md icon-cart-white m-0"></span>
                 </span>
                 <div>
-                  <span class="fs-6 fw-bold">New Entity</span>
+                  <span class="fs-3 fw-bold">New Entity</span>
                 </div>
               </div>
             </div>
 
-            <div class="col">
+            <div class="col-md-6">
               <div class="flex-wrap">
-                <div class="step-group">
-                  <div class="active step">
+                <div class="step-group step-space-1 mb-0">
+                  <div class="completed step">
                     <div>
                       <span class="icon icon-white-tick me-0"></span>
                       1
                     </div>
+                    <span class="text">Setup</span>
                   </div>
-                  <div class="step">
+                  <div class="active step">
                     <div>
                       <span class="icon icon-white-tick me-0"></span>
                       2
                     </div>
+                    <span class="text">Options</span>
                   </div>
                   <div class="step">
                     <div>3</div>
+                    <span class="text">Details</span>
                   </div>
                 </div>
               </div>
             </div>
 
-
-
-            <div class="col">
+            <div class="col-md-2">
               <div class="d-flex align-items-center justify-content-end">
-                <span class="rounded-2 white-bg p-2 ">
-                  <span class="icon icon-md icon-reload"></span>
+                <span class="rounded-2 white-bg p-1 ">
+                  <span class="icon icon-history-clock"></span>
                 </span>
                 <div class="mx-3">
                   <span class="fw-bold fs-10 d-block">HISTORY</span>
@@ -275,472 +328,444 @@
           <!---New Entity End--->
 
           <!---form 1-->
-          <div>
-            <div>
-              <!--Setup Entity Ends -->
-              <div class="border-bottom">
-                <div class="d-flex mb-3 w-100">
-                  <div class="fw-normal fs-5 lh-1 me-5">Setup Entity</div>
-                  <div class="mb-3">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="entity" id="entity1" value="option1">
-                        <label class="form-check-label" for="entity1">Create New Entity</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="entity" id="entity2" value="option2">
-                        <label class="form-check-label" for="entity2">Add Entity formed outside of filejet</label>
-                    </div>
-                  </div>
-                  
+          <div class="step-section pt-3" id="stepFirst">
+            <!--Setup Entity Ends -->
+            <div class="border-bottom pt-5 pb-4">
+              <div class="d-flex mb-3 align-items-center">
+                <div class="me-5">
+                  <div class="fw-normal fs-5 lh-1">Setup Entity</div>
                 </div>
+                <div class="ms-2">
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="setupSection" id="" value="">
+                      <label class="form-check-label top-0" for="inlineRadio1">Create New Entity</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="setupSection" id="" value="">
+                      <label class="form-check-label top-0" for="inlineRadio2">Add Entity formed outside of filejet</label>
+                  </div>
+                </div>
+
               </div>
-              <!--Setup Entity Ends -->
-
-              <!--Entity Details Start-->
-              <div class="border-bottom ">
-                <div class="fw-bold mt-4">Entity Details</div>
-
-                <div class="row">
-                  <div class="col-3">
-                    <div class="fw-bold fs-9 mt-4 mb-2">FORMATION TYPE</div>
-                    <select class="form-select">
-                      <option selected>Select</option>
-                      <option value="1"></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                    </select>
-                  </div>
-
-                  <div class="col-3">
-                    <div class="fw-bold fs-9 mt-4 mb-2">ENTITY STATE</div>
-                    <select class="form-select">
-                      <option selected>Select</option>
-                      <option value="1"></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                    </select>
-                  </div>
-
-                  <div class="col-6 mt-4">
-                    <label for="" class="">Name</label>
-                    <input type="text" placeholder="Name of Entity" class="form-control" id="" />
-                  </div>
-                </div>
-
-                <div class="row ">
-                  <div class="col-3">
-                    <div class="fw-bold fs-9 mt-4 mb-2">SELECT TYPE</div>
-                    <select class="form-select">
-                      <option selected>Select</option>
-                      <option value="1"></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                    </select>
-                  </div>
-
-                  <div class="col-3">
-                    <div class="fw-bold fs-9 mt-4 mb-2">SELECT SUB TYPE</div>
-                    <select class="form-select">
-                      <option selected>select</option>
-                      <option value="1"></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                    </select>
-                  </div>
-
-
-                  <div class="col-6">
-                    <div class="fw-bold fs-9 mt-4 mb-2 ml">SELECT FILING DATE OPTION</div>
-                    <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2">
-                      <div class="form-check radio-child-element">
-                        <input class="form-check-input" type="radio" name="select-date" />
-                        <label class="form-check-label">
-                          Current Date (Most Common)- Document is immediately reviewed and
-                          filed
-                        </label>
-                      </div>
-
-                      <div class="form-check radio-child-element">
-                        <input class="form-check-input" type="radio" name="select-date" />
-                        <label class="form-check-label">
-                          Future File Date- Document will be held and filed on a specified
-                          future file date
-                        </label>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-              <!--Entity Details End-->
-
-              <!--footer Buttons-->
-              <div class="modal-footer py-3">
-                <div class="d-flex justify-content-end">
-                  <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-toggle="modal"
-                    data-bs-target="#exitModal">
-                    SAVE AND EXIT
-                  </a>
-                  <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3"
-                    data-bs-target="#newGroupSecondModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                    NEXT
-                  </button>
-                </div>
-              </div>
-              <!--footer Buttons Ends-->            
             </div>
+            <!--Setup Entity Ends -->
 
-            <!---Accordian start-->
-            <div>
-              <div class="accordion fw-normal" id="newGroupSecondModall" aria-labelledby="newGroupSecondModalLabel">
-                <div class="accordion-item ">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button border-bottom" type="button" data-bs-toggle="collapse"
+            <!--Entity Details Start-->
+            <div class="border-bottom pb-4">
+              <div class="fw-bold mt-4 fs-5">Entity Details</div>
+
+              <div class="row">
+                <div class="col-3">
+                  <div class="fw-bold fs-9 mt-4 mb-2">FORMATION TYPE</div>
+                  <select class="form-select">
+                    <option selected>Select</option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+
+                <div class="col-3">
+                  <div class="fw-bold fs-9 mt-4 mb-2">ENTITY STATE</div>
+                  <select class="form-select">
+                    <option selected>Select</option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+
+                <div class="col-6 mt-4">
+                  <label for="" class="">Name</label>
+                  <input type="text" placeholder="Name of Entity" class="form-control" id="" />
+                </div>
+              </div>
+
+              <div class="row ">
+                <div class="col-3">
+                  <div class="fw-bold fs-9 mt-4 mb-2">SELECT TYPE</div>
+                  <select class="form-select">
+                    <option selected>Select</option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+
+                <div class="col-3">
+                  <div class="fw-bold fs-9 mt-4 mb-2">SELECT SUB TYPE</div>
+                  <select class="form-select">
+                    <option selected>select</option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+
+
+                <div class="col-6">
+                  <div class="fw-bold fs-9 mt-4 mb-2 ml">SELECT FILING DATE OPTION</div>
+                  <div class="white-bg mb-3 rounded-2 shadow py-3 px-3">
+                    <div class="form-check radio-child-element mb-4">
+                      <input class="form-check-input" type="radio" name="select-date" />
+                      <label class="form-check-label top-0">
+                        Current Date (Most Common)- Document is immediately reviewed and
+                        filed
+                      </label>
+                    </div>
+
+                    <div class="form-check radio-child-element">
+                      <input class="form-check-input" type="radio" name="select-date" />
+                      <label class="form-check-label top-0">
+                        Future File Date- Document will be held and filed on a specified
+                        future file date
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!--Entity Details End-->
+
+            <!--footer Buttons-->
+            <div class="modal-footer py-3">
+              <div class="d-flex justify-content-end">
+                <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase">
+                  SAVE AND EXIT
+                </a>
+                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection">
+                  NEXT
+                </button>
+              </div>
+            </div>
+            <!--footer Buttons Ends-->
+          </div>
+          <!----form 1 end-->
+
+          <!-----form 2----->
+          <div class="step-section collapse" id="stepSecond">
+            <!---Accordian-->
+            <div class="accordion" id="accordionExample">
+              <!--ACCORDION 1 START-->
+              <div class="accordion" id="accordionGroup">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="GroupInfo">
+                    <button class="accordion-button fw-normal fs-5" type="button" data-bs-toggle="collapse"
                       data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       Filings
                     </button>
                   </h2>
-
-
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                    data-bs-parent="#accordionExample">
-
-
-                    <form class="accordion-body" action="">
-                      <h6 class="fw-bold">
-                        Business Compliance
-                      </h6>
-                      <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2">
-                        <div class="form-check border-bottom">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Preparation and Filing of Entity Documents (State Filing Fee $90)
-                            <div class="opacity-50 mt-1 mb-3">At no extra cost, Filejet advances the state fee as part
-                              of our services!</div>
-                          </label>
-                        </div>
-                      </div>
-
-                      <div class="border-bottom ">
-                        <div class="d-flex justify-content-between mb-3 ">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label " for="flexRadioDefault1">
-                              Prepare and File Entity Documents
-                            </label>
-                          </div>
-                          <div class="fw-bold fs-7">$562.30</div>
-                        </div>
-
-                        <div class="d-flex justify-content-between mb-3">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                              checked>
-                            <label class="form-check-label " for="flexRadioDefault2">
-                              Only File Articles of Entity
-                            </label>
-                          </div>
-                          <div class="fw-bold fs-7">5558.60</div>
-                        </div>
-                      </div>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="GroupInfo"
+                    data-bs-parent="#accordionGroup">
+                    <div class="accordion-body">
+                      <div class="fw-bold fs-6 mt-4">Business Compliance</div>
 
                       <div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label " for="flexCheckDefault">
-                            Certified Copy
-                          </label>
-                        </div>
+                        <form action="">
+                          <div class="form-check mt-4 border-bottom">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label fw-normal fs-6" for="flexCheckDefault">
+                              Preparation and Filing of Entity Documents (State Filing Fee $90)
+                              <div class="opacity-50 fw-normal fs-8 mt-2 mb-4">At no extra cost, Filejet advances the
+                                state fee as part of our services!</div>
+                            </label>
+                          </div>
+
+                          <div class="border-bottom">
+                            <div class="mt-4 row">
+                              <div class="form-check col-11">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                  id="flexRadioDefault1">
+                                <label class="form-check-label fs-6 fw-normal" for="flexRadioDefault1">
+                                  Prepare and File Entity Documents
+                                </label>
+                              </div>
+                              <div class="fw-bold fs-8 col-1">$562.30</div>
+                            </div>
+
+                            <div class="mt-4 row mb-4">
+                              <div class="form-check col-11">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                  id="flexRadioDefault1">
+                                <label class="form-check-label fs-6 fw-normal" for="flexRadioDefault1">
+                                  Only File Articles of Entity
+                                </label>
+                              </div>
+                              <div class="fw-bold opacity-50 fs-8 col-1"><del>5558.60</del></div>
+                            </div>
+                          </div>
+
+                          <div class="mt-3 row">
+
+
+                            <div class="form-check col-9">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                              <label class="form-check-label fs-6 fw-normal" for="flexCheckDefault">
+                                Certified Copy
+                              </label>
+                            </div>
+
+                            <div class="d-flex col-2">
+                              <div class="fs-6 fw-normal">Quantity</div>
+                              <div>
+                                <nav aria-label="Page navigation example">
+                                  <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                      </a>
+                                    </li>
+
+                                    <li class="page-item">
+                                      <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </nav>
+                              </div>
+                            </div>
+
+                            <div class="fw-bold fs-8 col-1">$6.00</div>
+                          </div>
+                        </form>
                       </div>
 
-                      <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2 border-bottom">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Reserve or Verify Business Name
-                          </label>
-                        </div>
+                      <div class="form-check border-bottom">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label fs-6 fw-normal mb-4" for="flexCheckDefault">
+                          Reserve or Verify Business Name
+                        </label>
                       </div>
 
-                      <h6 class="fw-bold">
-                        Taxes & Licenses
-                      </h6>
+                      <div class="fw-bold fs-6 mt-4">Taxes & Licenses</div>
 
-                      <div class="d-flex justify-content-between mb-3">
-                        <div class="form-check">
+                      <div class="row mt-3">
+                        <div class="form-check col-11">
                           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
+                          <label class="form-check-label fw-normal fs-6" for="flexCheckDefault">
                             Obtain Fedral Employer Tax ID(EIN #)
                           </label>
                         </div>
-                        <div class="fw-bold fs-7">$45.00</div>
+                        <div class="col-1 fw-bold fs-8">$45.00</div>
                       </div>
 
-                      <div class="d-flex justify-content-between mb-3">
-                        <div class="form-check">
+                      <div class="row mt-3">
+                        <div class="form-check col-11">
                           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
+                          <label class="form-check-label fw-normal fs-6" for="flexCheckDefault">
                             Convert to Sub S Selection(S Corp)
                           </label>
                         </div>
-                        <div class="fw-bold fs-7">$45.00</div>
+                        <div class="col-1 fw-bold fs-8">$45.00</div>
                       </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Registered Agent
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Kits & Certificates
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+
+
                     </div>
                   </div>
                 </div>
               </div>
-            <!--Accordian End-->
+              <!--ACCORDION 1 END-->
 
-              <!--Accordian Page footer-->
-              <div>
-                <div>
-                  <h6>Total</h6>
-                  $245.00
-                </div>
-                <div>
-                  <div class="modal-footer py-3">
-                    <div class="d-flex justify-content-end">
-                      <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-toggle="modal"
-                        data-bs-target="#exitModal">
-                        SAVE AND EXIT
-                      </a>
-                      <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3"
-                        data-bs-target="#newGroupThirdModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                        NEXT
-                      </button>
-                    </div>
+              <!--ACCORDION 2 START-->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Registered Agent
+                    <span class="fw-bold fs-8 opacity-50">Section 02</span>
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                    that
+                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does
+                    limit
+                    overflow.
                   </div>
                 </div>
+              </div>
+              <!--ACCORDION 2 END-->
+
+              <!--ACCORDION 3 START-->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Kits & Certificates
+                    <span class="fw-bold fs-8 opacity-50">Section 03</span>
+                  </button>
+
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                    that
+                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does
+                    limit
+                    overflow.
+                  </div>
+                </div>
+              </div>
+              <!--ACCORDION 3 END-->
+            </div>
+            <!---Accordian End-->
+
+            <!--Accordian Page footer-->
+            <div class="row">
+              <div class="col mt-3">
+                <label class="form-label  ">Total</label>
+                <div class="fw-bold fs-6">$245.00</div>
+              </div>
+              <div class="col-md-auto modal-footer py-3">
+                <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-toggle="modal"
+                  data-bs-target="#exitModal">
+                  SAVE AND EXIT
+                </a>
+                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection">
+                  NEXT
+                </button>
               </div>
             </div>
-
-
-            <!---step 2 end-->
-
-
-            <!--Save and exit Button Form-->
-            <div class="modal modal-right fade" id="exitModal" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
-                <div class="modal-content border-0 rounded-0 min-vh-100">
-                  <!-- Modal Header -->
-                  <div class="modal-header flex-wrap">
-                    <div class="d-flex align-items-center w-100 pb-2">
-                      <span class="red-bg p-3 rounded-2 me-4 d-inline-block">
-                        <span class="icon icon-delete-white m-0"></span>
-                      </span>
-                      <div>
-                        <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">CANCEL</span>
-                        <h3 class="fs-3 m-0 mt-2 fw-bold">Are You Sure You Want to Save and Exit?</h3>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Modal Header Ends -->
-
-                  <!-- Modal Body -->
-                  <div class="modal-body">
-                    <div class="fs-6 fw-normal">
-                      <p>Your changes will be saved as an In Process Service so that you can resume from where you left
-                        off.</p>
-                    </div>
-                  </div>
-
-                  <!-- Modal Body Ends-->
-
-                  <!-- Modal Body footer-->
-                  <div class="modal-footer">
-                    <div class="d-flex justify-content-end w-100">
-                      <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600 "
-                        data-bs-toggle="modal">
-                        Go Back
-                      </button>
-                      <button type="button" class="btn btn-primary text-white text-uppercase py-3 px-3 rounded-3 ms-3"
-                        data-bs-dismiss="modal">
-                        SAVE AND EXIT
-                      </button>
-                    </div>
-                  </div>
-                  <!-- Modal Body footer ends-->
-
-                </div>
-              </div>
-            </div>
-
-            <!--Save and exit Button form end-->
-
-            <!-----------------------------Form 2----------------->
-            <div>
-              <h6 class="fw-normal fs-5">Entity Details</h6>
-              <!-----Tabber Code-->
-              <!-----Tabber Code End-->
-
-              <div class="d-flex justify-content-between  border-bottom">
-                <h6 class="fw-normal fs-5">General Info</h6>
-                <div class="  opacity-50 ">Section 01</div>
-              </div>
-
-              <form action="">
-                <!--div 1 start-->
-                <div>
-                  <div class="fw-bold fs-6 mt-4">Basic Info</div>
-                  <div class="mb-3 mt-4">
-                    <label for="exampleFormControlInput1" class="form-label">NAME OF ENTITY</label>
-                    <input type="email" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                      placeholder="Keegan Corp.">
-                  </div>
-
-                  <div>
-                    <div class="mb-3 mt-4 ">
-                      <label for="exampleFormControlInput1" class="form-label">BUSINESS ADDRESS</label>
-                      <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                        placeholder="Address line 1">
-                      <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                        placeholder="Address line 1">
-                    </div>
-
-                    <div class="row g-4">
-                      <div class="col-3">
-                        <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                          placeholder="City">
-                      </div>
-                      <div class="col-3">
-                        <select class="form-select  mb-2  fw-normal fs-6" aria-label=".form-select-lg example">
-                          <option selected>State</option>
-                          <option value="1"></option>
-                          <option value="2"></option>
-                          <option value="3"></option>
-                        </select>
-                      </div>
-                      <div class="col-3">
-                        <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                          placeholder="Country">
-                      </div>
-                      <div class="col-3">
-                        <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                          placeholder="Zip">
-                      </div>
-                    </div>
-                  </div>
-
-                  <label for="exampleFormControlInput1" class="form-label mt-4">AGENT OF SALE OF PROCESS</label>
-                  <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="option1">
-                      <label class="form-check-label" for="inlineRadio1">An Individual</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="option2">
-                      <label class="form-check-label" for="inlineRadio2">Corporate Agent</label>
-                    </div>
-                  </div>
-                  <div class="row g-4">
-                    <div class="col-3">
-                      <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                        placeholder="Agent's suffix">
-                    </div>
-                    <div class="col-3">
-                      <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                        placeholder="Agent first name">
-                    </div>
-                    <div class="col-3">
-                      <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                        placeholder="Agent middle name">
-                    </div>
-                    <div class="col-3">
-                      <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                        placeholder="Agent last name">
-                    </div>
-                  </div>
-                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                    placeholder="Address line 1">
-                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                    placeholder="Address line 1">
-                </div>
-
-                <div class="row g-4">
-                  <div class="col-3">
-                    <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                      placeholder="City">
-                  </div>
-                  <div class="col-3">
-                    <select class="form-select  mb-2  fw-normal fs-6" aria-label=".form-select-lg example">
-                      <option selected>State</option>
-                      <option value="1"></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                    </select>
-                  </div>
-                  <div class="col-3">
-                    <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                      placeholder="Country">
-                  </div>
-                  <div class="col-3">
-                    <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                      placeholder="Zip">
-                  </div>
-                </div>
-                <div class="mb-3 mt-3">
-                  <label for="exampleFormControlInput1" class="form-label">NUMBER OF SHARES AUTHORIZED TO ISSUE</label>
-                  <input type="email" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                    placeholder="Number of shares">
-                </div>
-
-                <div class="mb-3 mt-3 border-bottom">
-                  <label for="exampleFormControlInput1" class="form-label">PER VALUE</label>
-                  <input type="email" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                    placeholder="$per value">
-                </div>
-            </div>
+            <!--Accordian Page footer End-->
           </div>
+          <!-----form 2 end---->
 
-          <!-----div 1 end-->
-
-          <!----div 2 -->
-          <div>
-            <div class="fw-bold fs-6 mt-4">Sign</div>
-            <div class="mb-3 mt-4">
-              <label for="exampleFormControlInput1" class="form-label">FILEJET WILL SIGN ON YOUR BEHALF</label>
-              <input type="email" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                placeholder="Authorized signer">
+          <!----Form 3 start-->
+          <div class="step-section collapse" id="stepThird">
+          <!---form 3 main div-->
+            <!--form 3 header-->
+            <h6 class="fw-normal fs-5">Entity Details</h6>
+            <!-----Tabber Code-->
+            <div class="white-bg d-flex px-3 py-3 mt-2 ">
+              <ul class="nav border-bottom">
+                <li class="nav-item ">
+                  <a class="nav-link active fs-7 fw-bold opacity-50 " aria-current="page" href="#">01-GENERAL INFO</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-7 fw-bold opacity-50" href="#">02-REGISTERED AGENT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-7 fw-bold opacity-50" href="#">03-STATEMENT OF INFO</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-7 fw-bold opacity-50" href="#">04-AGREEMENT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-7 fw-bold opacity-50" href="#">05-CLIENT</a>
+                </li>
+              </ul>
             </div>
+            <!-----Tabber Code End-->
+            <div class=" mt-5  d-flex justify-content-between  border-bottom">
+              <h6 class="fw-normal fs-5">General Info</h6>
+              <div class="  opacity-50 ">Section 01</div>
+            </div>
+            <!--form 3 header end-->
 
-            <div class="border-bottom">
-              <div class="mb-3 mt-4  ">
-                <label for="exampleFormControlInput1" class="form-label">ORGANISER ADDRESS</label>
+            <!--form 3 body Starts-->
+            <form action="">
+
+              <div class="fw-bold fs-6 mt-4">Basic Info</div>
+              <div class="mb-4 mt-4">
+                <label for="exampleFormControlInput1" class="form-label">NAME OF ENTITY</label>
                 <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                  placeholder="Address line 1">
-                <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                  placeholder="Address line 1">
+                  placeholder="Keegan Corp.">
               </div>
+
+              <div class="mb-1">
+                <div class="row">
+                  <div class="col-9">
+                    <label for="" class="form-label">Business address</label>
+                  </div>
+                  <div class="col-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="" checked />
+                      <label class="form-check-label form-label" for="">
+                        SAME AS MAILING address?
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-1">
+                <input type="text" class="form-control" id="" placeholder="Address line 1" />
+              </div>
+              <div class="mb-1">
+                <input type="text" class="form-control" id="" placeholder="Address line 2" />
+              </div>
+              <div class="row g-4">
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="City">
+                </div>
+                <div class="col-3">
+                  <select class="form-select  mb-2  fw-normal fs-6" aria-label=".form-select-lg example">
+                    <option selected>State</option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="Country">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="Zip">
+                </div>
+              </div>
+
+              <label for="exampleFormControlInput1" class="form-label mt-4 mb-4">AGENT OF SALE OF PROCESS</label>
+              <div class="white-bg mb-2 rounded-1 broder-px-3 py-3 ps-2">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                    value="option1">
+                  <label class="form-check-label" for="inlineRadio1">An Individual</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                    value="option2">
+                  <label class="form-check-label" for="inlineRadio2">Corporate Agent</label>
+                </div>
+              </div>
+
+              <div class="row g-4 mb-2">
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="Agent's suffix">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="Agent first name">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="Agent middle name">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="Agent last name">
+                </div>
+              </div>
+
+              <input type="text" class="form-control fw-normal fs-6 mb-2" id="exampleFormControlInput1"
+                placeholder="Address line 1">
+              <input type="text" class="form-control fw-normal fs-6 mb-2" id="exampleFormControlInput1"
+                placeholder="Address line 2">
+
 
               <div class="row g-4">
                 <div class="col-3">
@@ -764,210 +789,312 @@
                     placeholder="Zip">
                 </div>
               </div>
-            </div>
-            <!----div 2 end-->
+
+              <div class="mb-4 mt-4">
+                <label for="exampleFormControlInput1" class="form-label">NUMBER OF SHARES AUTHORIZED TO ISSUE</label>
+                <input type="email" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                  placeholder="Number of shares">
+              </div>
 
 
-            <!-----div 3-->
-            <div class="fw-bold fs-6 mt-4 ">Special Instruction</div>
-            <div class="mb-3 mt-4 border-bottom">
-              <label for="exampleFormControlInput1" class="form-label">SPECIAL INSTRUCTION FOR OUR TEAM?</label>
-              <input type="email" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
-                placeholder="Your message">
-            </div>
-            <!-----div 3-->
+              <div class="mb-4 mt-4 border-bottom">
+                <label for="exampleFormControlInput1" class="form-label">PER VALUE</label>
+                <input type="email" class="form-control fw-normal fs-6 mb-4" id="exampleFormControlInput1"
+                  placeholder="$per value">
+              </div>
+
+
+              <div class="fw-bold fs-6 mt-4">Sign</div>
+              <div class="mb-4 mt-4">
+                <label for="exampleFormControlInput1" class="form-label">FILEJET WILL SIGN ON YOUR BEHALF</label>
+                <input type="email" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                  placeholder="Authorized signer">
+              </div>
+
+              <div class="mb-1">
+                <div class="row">
+                  <div class="col-9">
+                    <label for="" class="form-label">ORGANISER ADDRESS</label>
+                  </div>
+                  <div class="col-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="" checked />
+                      <label class="form-check-label form-label" for="">
+                        SAME AS MAILING address?
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-1">
+                <input type="text" class="form-control" id="" placeholder="Address line 1" />
+              </div>
+              <div class="mb-1">
+                <input type="text" class="form-control" id="" placeholder="Address line 2" />
+              </div>
+              <div class="row g-4 border-bottom">
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="City">
+                </div>
+                <div class="col-3">
+                  <select class="form-select  mb-2  fw-normal fs-6" aria-label=".form-select-lg example">
+                    <option selected>State</option>
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                  </select>
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6" id="exampleFormControlInput1"
+                    placeholder="Country">
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control fw-normal fs-6 mb-4" id="exampleFormControlInput1"
+                    placeholder="Zip">
+                </div>
+              </div>
+
+              <div class="fw-bold fs-6 mt-4 ">Special Instruction</div>
+              <div class="mb-4 mt-4 border-bottom">
+                <label for="exampleFormControlInput1" class="form-label">SPECIAL INSTRUCTION FOR OUR TEAM?</label>
+                <input type="email" class="form-control fw-normal fs-6 mb-4" id="exampleFormControlInput1"
+                  placeholder="Your message">
+              </div>
             </form>
+            <!--form 3 body end-->
 
-            <!--form 2 footer-->
-            <div>
-              <div>
-                <div class="mt-0">
-                  <label class="form-label ">Total</label>
+            <!---form 3 footer Starts -->
+            <div class="container">
+              <div class="row">
+                <div class="col mt-3">
+                  <label class="form-label  ">Total</label>
                   <div class="fw-bold fs-6">$245.00</div>
                 </div>
-                <div class="modal-footer py-3">
-                  <div class="d-flex justify-content-end">
-                    <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-toggle="modal"
-                      data-bs-target="#exitModal">
-                      SAVE AND EXIT
-                    </a>
-                    <button type="button" class="btn btn-tertiary text-uppercase py-3 px-5 rounded-3 ms-3"
-                      data-bs-target="#actionModalSecond" data-bs-toggle="modal" data-bs-dismiss="modal">
-                      PREVIEW
-                    </button>
-                    <button type="button" class="btn btn-info text-uppercase py-3 px-5 rounded-3 ms-3"
-                      data-bs-target="#submitModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                      Submit
-                    </button>
-                  </div>
+                <div class="col-md-auto modal-footer py-3">
+                  <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-toggle="modal"
+                    data-bs-target="#exitModal">
+                    SAVE AND EXIT
+                  </a>
+                  <button type="button" class="btn btn-tertiary text-uppercase py-3 px-5 rounded-3 ms-3"
+                    data-bs-target="#actionModalSecond" data-bs-toggle="modal" data-bs-dismiss="modal">
+                    PREVIEW
+                  </button>
+                  <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3" data-bs-target="#submitModal"
+                    data-bs-toggle="modal" data-bs-dismiss="modal">
+                    SUBMIT
+                  </button>
                 </div>
               </div>
             </div>
 
+            <!---form 3 footer Ends -->
           </div>
-          <!---form 2 footer end-->
-
-
+          <!----Form 3 start end-->
         </div>
 
-        <!---Submit Modal-->
+      </div>
 
-        <div class="modal modal-right fade" id="submitModal" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
-            <div class="modal-content border-0 rounded-0 min-vh-100">
-              <!-- Modal Header -->
-              <div class="modal-header flex-wrap">
-                <div class="d-flex align-items-center w-100 pb-2">
-                  <span class="purple-bg p-3 rounded-2 me-4 d-inline-block">
-                    <span class="icon icon-card-white  m-0"></span>
-                  </span>
-                  <div>
-                    <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">PAYMENT</span>
-                    <h3 class="fs-3 m-0 mt-2 fw-bold">Confirm Your Payment</h3>
-                  </div>
-                </div>
-              </div>
+    </div>
+  </div>
 
-              <!-- Modal Header Ends -->
-
-              <!-- Modal Body -->
-              <div>
-                <div class="modal-body mb-1">
-                  <div class="fs-6 fw-normal border-bottom">
-                    <p>This is the Annual Recurring Platform Fee(formerly known as maintenance fee) for this individual
-                      Entity based on your subscription plan.</p>
-                    <p>Upon completion of payment, you will have access to the Entity's Profile and will recieve
-                      Compliance Notifications. </p>
-                  </div>
-                </div>
-
-                <!-- Modal Body Ends-->
-
-                <!---Modal body-->
-
-                <h6 class="fw-bold fs-5 ">Payment Method</h6>
-                <h6 class="fw-bold fs-9">SELECT METHOD</h6>
-                <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                      value="option1">
-                    <label class="form-check-label" for="inlineRadio1">Your Billing</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                      value="option2">
-                    <label class="form-check-label" for="inlineRadio2">New Payment Option</label>
-                  </div>
-                </div>
-
-                <div class="fw-bold fs-9 mt-4 mb-2">NEW PAYMENT OPTION</div>
-                <select class="form-select ">
-                  <option selected>xxxx4242 Visa</option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-                </select>
-              </div>
-
-              <h6 class="fw-bold fs-5 border-top">Order Summary</h6>
-              <div>
-                <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2 d-flex justify-content-between ">
-                  <div>
-                    Platform Fee
-                  </div>
-                  <div>$100</div>
-                </div>
-
-
-                <!---Modal body end-->
-
-                <!-- Modal Body footer-->
-                <div>
-                  <div class="modal-footer">
-                    <div class="d-flex justify-content-end w-100">
-                      <div>
-                        <h6>TOTAL</h6>
-                        <div>$245.00</div>
-                      </div>
-                      <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600 "
-                        data-bs-toggle="modal">
-                        Go Back
-                      </button>
-                      <button type="button" class="btn btn-info text-uppercase py-3 px-5 rounded-3 ms-3"
-                        data-bs-target="#groupCreatedConfirmModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                        PAY
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal Body footer ends-->
-
-                <div class="modal modal-right fade" id="groupCreatedConfirmModal" tabindex="-1"
-                  aria-labelledby="groupCreatedConfirmModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
-                    <div class="modal-content border-0 rounded-0 min-vh-100">
-                      <!-- Modal Header -->
-                      <div class="modal-header flex-wrap">
-                        <div class="d-flex align-items-center w-100 pb-2">
-                          <span class="green-bg p-3 rounded-2 me-4 d-inline-block">
-                            <span class="icon icon-md icon-white-tick m-0"></span>
-                          </span>
-                          <div>
-                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SUCCESS</span>
-                            <h3 class="fs-3 m-0 mt-2">
-                              <<Service>> Setup Complete!
-                            </h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Modal Header Ends -->
-
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                      <div class="">
-                        <p>You have successfully setup the <<service>> on your account.</p>
-                      </div>
-                    </div>
-
-                    <!-- Modal Body Ends-->
-
-                    <div class="modal-footer">
-                      <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600 "
-                          data-bs-toggle="modal">
-                          PERFORM ANOTHER
-                        </button>
-                        <button type="button" class="btn btn-info px-5 py-3 rounded-3 ms-3" data-bs-dismiss="modal">
-                          VIEW
-                        </button>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-
+  <!--Save and exit Button Form-->
+  <div class="modal modal-right fade" id="exitModal" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+      <div class="modal-content border-0 rounded-0 min-vh-100">
+        <!-- Modal Header -->
+        <div class="modal-header flex-wrap">
+          <div class="d-flex align-items-center w-100 pb-2">
+            <span class="red-bg p-3 rounded-2 me-4 d-inline-block">
+              <span class="icon icon-delete-white m-0"></span>
+            </span>
+            <div>
+              <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">CANCEL</span>
+              <h3 class="fs-3 m-0 mt-2 fw-bold">Are You Sure You Want to Save and Exit?</h3>
             </div>
           </div>
         </div>
-        <!--Save and exit Button form end-->
 
-        <!---Submit Modal End-->
+        <!-- Modal Header Ends -->
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <div class="fs-6 fw-normal">
+            <p>Your changes will be saved as an In Process Service so that you can resume from where you left
+              off.</p>
+          </div>
+        </div>
+
+        <!-- Modal Body Ends-->
+
+        <!-- Modal Body footer-->
+        <div class="modal-footer">
+          <div class="d-flex justify-content-end w-100">
+            <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600 "
+              data-bs-toggle="modal">
+              Go Back
+            </button>
+            <button type="button" class="btn btn-primary text-white text-uppercase py-3 px-3 rounded-3 ms-3"
+              data-bs-dismiss="modal">
+              SAVE AND EXIT
+            </button>
+          </div>
+        </div>
+        <!-- Modal Body footer ends-->
+
+      </div>
+    </div>
+  </div>
+  <!--Save and exit Button form end-->
+
+  <!---PAYMENT MODEL START-->
+  <div class="modal modal-right fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+      <div class="modal-content border-0 rounded-0 min-vh-100">
+
+        <!-- Modal Header -->
+        <div class="modal-header flex-wrap">
+          <div class="d-flex align-items-center w-100 pb-2">
+            <span class="purple-bg p-3 rounded-2 me-4 d-inline-block">
+              <span class="icon icon-card-white  m-0"></span>
+            </span>
+
+            <div>
+              <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">PAYMENT</span>
+              <h3 class="fs-3 m-0 mt-2 fw-bold">Confirm Your Payment</h3>
+            </div>
+          </div>
+
+          <div class="fs-6 fw-normal border-bottom  mt-3">
+            <p>This is the Annual Recurring Platform Fee(formerly known as maintenance fee) for this individual
+              Entity based on your subscription plan.</p>
+            <p>Upon completion of payment, you will have access to the Entity's Profile and will recieve
+              Compliance Notifications. </p>
+          </div>
+
+        </div>
+
+        <!-- Modal Header Ends -->
+
+        <!--MODAL BODY-->
+        <div class="modal-body">
+          <form action="">
+
+            <h6 class="fw-bold fs-5 mb-4 ">Payment Method</h6>
+            <h6 class="fw-bold fs-9">SELECT METHOD</h6>
+
+            <div class="white-bg mb-2 rounded-1 broder-px-3 py-3 ps-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                  value="option1">
+                <label class="form-check-label" for="inlineRadio1">Your Billing</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                  value="option2">
+                <label class="form-check-label" for="inlineRadio2">New Payment Option</label>
+              </div>
+            </div>
+
+            <div class="fw-bold fs-9 mt-4 mb-2">NEW PAYMENT OPTION</div>
+            <select class="form-select mb-4">
+              <option selected>xxxx4242 Visa</option>
+              <option value="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+            </select>
+
+            <div class="border-top">
+              <h6 class="fw-bold fs-5 mt-4">Order Summary</h6>
+              <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2 row ">
+                <div class="fs-6 fw-normal col-10">
+                  Platform Fee
+                </div>
+                <div class="fs-8 fw-bold col-2">$100</div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <!--MODAL BODY END-->
+
+        <!--MODAL BODY Footer-->
+        <div class="container">
+          <div class="row">
+            <div class="col mt-3">
+              <label class="form-label  ">Total</label>
+              <div class="fw-bold fs-6">$245.00</div>
+            </div>
+            <div class="col-md-auto modal-footer py-3">
+              <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-toggle="modal"
+                data-bs-target="#exitModal">
+                GO BACK
+              </a>
+              <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3"
+                data-bs-target="#paysuccessModal" data-bs-toggle="modal" data-bs-dismiss="modal">
+                PAY
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--MODAL BODY Footer End-->
+      </div>
+    </div>
+  </div>
+  <!---PAYMENT MODEL END-->
+
+  <!-- Success Modal Starts -->
+  <div class="modal modal-right fade" id="paysuccessModal" tabindex="-1" aria-labelledby="paysuccessModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+      <div class="modal-content border-0 rounded-0 min-vh-100">
+        <!-- Modal Header -->
+        <div class="modal-header flex-wrap">
+          <div class="d-flex align-items-center w-100 pb-2">
+            <span class="green-bg p-3 rounded-2 me-4 d-inline-block">
+              <span class="icon icon-md icon-white-tick m-0"></span>
+            </span>
+            <div>
+              <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SUCCESS</span>
+              <h3 class="fs-3 m-0 mt-2">&lt &lt Service &gt &gt Setup Complete!</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Header Ends -->
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <div class="">
+            <p>You have successfully setup the &lt &lt Service &gt &gt on your account.</p>
+          </div>
+        </div>
+
+        <!-- Modal Body Ends-->
+
+        <div class="modal-footer">
+          <div class="d-flex justify-content-end">
+            <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-toggle="modal"
+              data-bs-target="">
+              PERFORM ANOTHER
+            </a>
+            <button type="button" class="btn btn-info px-5 py-3 rounded-3 ms-3" data-bs-dismiss="modal">
+              VIEW
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Success Modal Ends -->
 
 
-
-
-
-
-
-
-
-        <script src="dist/js/plugins.min.js"></script>
-        <script src="dist/js/custom.min.js"></script>
+  <script src="dist/js/plugins.min.js"></script>
+  <script src="dist/js/custom.min.js"></script>
 </body>
 
 </html>

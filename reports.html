@@ -16,8 +16,9 @@
             <div class="sidebar-wrapper">
                 <div class="sidebar min-vh-100 py-3 ps-3">
                     <div class="ps-2 pb-4">
-                        <a href="/">
-                            <img src="dist/images/logo.png">
+                        <a href="/" class="logo">
+                            <img src="dist/images/logo.png" class="d-none d-lg-block" alt="FileJet">
+                            <img src="dist/images/filejet-pinLogo.png" class="d-block d-lg-none" alt="FileJet">
                         </a>
                     </div>
                     <div>
@@ -153,16 +154,65 @@
             <div class="main-content-wrapper">
                 <div class="container">
                     <div class="header py-1">
+                        <div class="mobile-header d-block d-lg-none text-end mb-3">
+                            <div class="row align-items-center mt-3">
+                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar col-7" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                                    <span class="text-placeholder">What are you looking for?</span>
+                                </div>
+                                <div class="profile-nav d-inline-block col-5">
+                                    <div class="dropdow white-bg p-0 rounded-5 overflow-hidden d-inline-block">
+
+                                        <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg ms-n3">
+                                                <img src="dist/images/avatar.png" alt="" />
+                                            </span>  
+                                            <span class="user-name">Roman</span>
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                                    Account
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="avatar avatar-sm me-4">
+                                                        <img src="dist/images/avatar.png" alt="">
+                                                    </span>
+                                                    View Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center" href="#">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row align-items-center">
-                            <div class="col col-xl-3 col-lg-4">
+                            <div class="col-3 col-xl-3 col-lg-12 order-xl-1">
                                 <h3 class="m-0">
                                     <strong>
                                         Reports
                                     </strong>
                                 </h3>
                             </div>
-                            <div class="col col-xl-9 col-lg-8 d-flex align-items-center justify-content-end">
-                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <div class="col-9 col-xl-9 col-lg-12 d-flex align-items-center justify-content-end order-xl-2">
+                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar d-none d-lg-flex" data-bs-toggle="modal" data-bs-target="#searchModal">
                                     <span class="icon icon-search-grey icon-smd opacity-50"></span>
                                     <span class="text-placeholder w-100">What are you looking for?</span>
                                 </div>
@@ -172,7 +222,7 @@
                                         <span class="notification-dot"></span>
                                     </a>
                                 </div>
-                                <div class="profile-nav">
+                                <div class="profile-nav d-none d-lg-flex">
                                     <div class="dropdow white-bg p-0 rounded-5 overflow-hidden">
 
                                         <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
