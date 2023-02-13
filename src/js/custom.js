@@ -4,7 +4,7 @@ $(function () {
     $(this).tab('show')
   });
 
-  $('#entity-listing, #stake-all-listing, #active-table, #inactive-table, #find-a-user, #jurisdiction-list-table, #custom-list-table').DataTable({
+  $('#entity-listing, #stake-all-listing, #active-table, #inactive-table, #find-a-user, #jurisdiction-list-table, #custom-list-table, #arizona-list-table').DataTable({
     "searching": false,
     "lengthChange": false,
     "pagingType": "simple"
