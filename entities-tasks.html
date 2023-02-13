@@ -291,7 +291,7 @@
                         </div>
                         <div class="row mb-4 mt-5">
                             <div class="col col-4 px-1">
-                                <div class="card card-red h-100 py-3 entity-card" role="button"
+                                <div class="card card-red h-100 py-3 active entity-card" role="button"
                                     data-id="jurisdiction">
                                     <div class="card-body d-flex">
                                         <div class="d-flex w-100">
@@ -329,7 +329,7 @@
                                 </div>
                             </div>
                             <div class="col col-4 px-1">
-                                <div class="card card-green h-100 py-3 active entity-card" role="button" data-id="tasks">
+                                <div class="card card-green h-100 py-3 entity-card" role="button" data-id="tasks">
                                     <div class="card-body d-flex">
                                         <div class="d-flex w-100">
                                             <div class="me-4">
@@ -346,539 +346,838 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="jurisdiction" class="entity-card-content">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h4>Documents</h4>
+                        <div id="jurisdiction" class="entity-card-content active">
+                            <div id="parent-folder" style="display: none;">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4>Documents</h4>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-9">
+                                                <div class="tab-listing tab-listing-list list-view-juri active">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="nav-item nav-items">
+                                                            <a href="#jurisdiction-list" class="nav-link active px-4"
+                                                                data-bs-toggle="tab">JURISDICTIONS</a>
+                                                        </li>
+                                                        <li class="nav-item nav-items">
+                                                            <a href="#custom-list" class="nav-link px-4"
+                                                                data-bs-toggle="tab">CUSTOM</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="tab-listing tab-listing-grid grid-view-juri">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="nav-item nav-items">
+                                                            <a href="#jurisdiction-grid"
+                                                                class="nav-link active px-4 rounded-3"
+                                                                data-bs-toggle="tab">JURISDICTIONS</a>
+                                                        </li>
+                                                        <li class="nav-item nav-items">
+                                                            <a href="#custom-grid" class="nav-link px-4 rounded-3"
+                                                                data-bs-toggle="tab">CUSTOM</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="nav-item d-flex align-items-center ms-auto view-change">
+                                                        <a href="javascript: void(0)" data-id="list-view-juri"
+                                                            class="active"><span
+                                                                class="icon m-0 ms-4 icon-list-view"></span><span
+                                                                class="icon m-0 ms-4 icon-list-view-active"></span></a>
+                                                        <a href="javascript: void(0)" data-id="grid-view-juri"><span
+                                                                class="icon m-0 ms-4 icon-grid-view"></span><span
+                                                                class="icon m-0 ms-4 icon-grid-view-active"></span></a>
+                                                    </li>
+                                                    <li class="d-flex justify-content-center align-items-center ms-4">
+                                                        <a href="javascript: void(0)"
+                                                            class="text-decoration-none text-purple font-weight-600"
+                                                            data-bs-toggle="modal" data-bs-target="">ADD JURISDICTION</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 tab-content-wrapper" id="list-view-juri" style="display: block;">
+                                        <div class="tab-content bg-white rounded-2">
+                                            <div class="tab-pane fade show active" id="jurisdiction-list">
+                                                <table id="jurisdiction-list-table" class="table table-striped w-100">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Number</th>
+                                                            <th>Formation Date</th>
+                                                            <th>Level</th>
+                                                            <th class="invisible opacity-0"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Arizona
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Home</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE" role="button" data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" role="button" data-bs-toggle="modal" data-bs-target="#deactivateJuri">
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Arizona
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Home</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate">
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Arizona
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Home</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate">
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Arizona
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Home</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate">
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-list">
+                                                <table id="custom-list-table" class="table table-striped w-100">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Number</th>
+                                                            <th class="invisible opacity-0"></th>
+                                                            <th class="invisible opacity-0"></th>
+                                                            <th class="invisible opacity-0"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Folder Name
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Custom</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Folder Name
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Custom</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Folder Name
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Custom</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Folder Name
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Custom</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Folder Name
+                                                            </td>
+                                                            <td>12411242</td>
+                                                            <td>09/05/2021</td>
+                                                            <td>Custom</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 tab-content-wrapper" id="grid-view-juri">
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade show active" id="jurisdiction-grid">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="custom-grid">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-12">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-9">
-                                            <div class="tab-listing tab-listing-list list-view-juri active">
+                            <div id="child-folder">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="javascript: void(0)" class="text-decoration-none text-purple font-weight-600">GO BACK</a>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb text-uppercase breadcrumb-secondry">
+                                                <li class="breadcrumb-item"><a href="entities.html">Documents</a></li>
+                                                <li class="breadcrumb-item active opacity-100 ps-4" aria-current="page">Arizona</li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-9">
+                                                <div class="tab-listing tab-listing-list list-view-juri active">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="nav-item nav-items">
+                                                            <a href="#arizona-list" class="nav-link active px-4"
+                                                                data-bs-toggle="tab">Arizona</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="tab-listing tab-listing-grid grid-view-juri">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="nav-item nav-items">
+                                                            <a href="#arizona-grid"
+                                                                class="nav-link active px-4 rounded-3"
+                                                                data-bs-toggle="tab">Arizona</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
                                                 <ul class="nav nav-tabs">
-                                                    <li class="nav-item nav-items">
-                                                        <a href="#jurisdiction-list" class="nav-link active px-4"
-                                                            data-bs-toggle="tab">JURISDICTIONS</a>
+                                                    <li class="nav-item d-flex align-items-center ms-auto view-change">
+                                                        <a href="javascript: void(0)" data-id="list-view-arizona"
+                                                            class="active"><span
+                                                                class="icon m-0 ms-4 icon-list-view"></span><span
+                                                                class="icon m-0 ms-4 icon-list-view-active"></span></a>
+                                                        <a href="javascript: void(0)" data-id="grid-view-arizona"><span
+                                                                class="icon m-0 ms-4 icon-grid-view"></span><span
+                                                                class="icon m-0 ms-4 icon-grid-view-active"></span></a>
                                                     </li>
-                                                    <li class="nav-item nav-items">
-                                                        <a href="#custom-list" class="nav-link px-4"
-                                                            data-bs-toggle="tab">CUSTOM</a>
+                                                    <li class="d-flex justify-content-center align-items-center ms-4">
+                                                        <a href="javascript: void(0)"
+                                                            class="text-decoration-none text-purple font-weight-600"
+                                                            data-bs-toggle="modal" data-bs-target="">ADD FOLDER</a>
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="tab-listing tab-listing-grid grid-view-juri">
-                                                <ul class="nav nav-tabs">
-                                                    <li class="nav-item nav-items">
-                                                        <a href="#jurisdiction-grid"
-                                                            class="nav-link active px-4 rounded-3"
-                                                            data-bs-toggle="tab">JURISDICTIONS</a>
-                                                    </li>
-                                                    <li class="nav-item nav-items">
-                                                        <a href="#custom-grid" class="nav-link px-4 rounded-3"
-                                                            data-bs-toggle="tab">CUSTOM</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <ul class="nav nav-tabs">
-                                                <li class="nav-item d-flex align-items-center ms-auto view-change">
-                                                    <a href="javascript: void(0)" data-id="list-view-juri"
-                                                        class="active"><span
-                                                            class="icon m-0 ms-4 icon-list-view"></span><span
-                                                            class="icon m-0 ms-4 icon-list-view-active"></span></a>
-                                                    <a href="javascript: void(0)" data-id="grid-view-juri"><span
-                                                            class="icon m-0 ms-4 icon-grid-view"></span><span
-                                                            class="icon m-0 ms-4 icon-grid-view-active"></span></a>
-                                                </li>
-                                                <li class="d-flex justify-content-center align-items-center ms-4">
-                                                    <a href="javascript: void(0)"
-                                                        class="text-decoration-none text-purple font-weight-600"
-                                                        data-bs-toggle="modal" data-bs-target="">ADD JURISDICTION</a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 tab-content-wrapper" id="list-view-juri" style="display: block;">
-                                    <div class="tab-content bg-white rounded-2">
-                                        <div class="tab-pane fade show active" id="jurisdiction-list">
-                                            <table id="jurisdiction-list-table" class="table table-striped w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Number</th>
-                                                        <th>Formation Date</th>
-                                                        <th>Level</th>
-                                                        <th class="invisible opacity-0"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Arizona
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Home</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE" role="button" data-bs-toggle="modal" data-bs-target="#deleteJuri">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" role="button" data-bs-toggle="modal" data-bs-target="#deactivateJuri">
-                                                                <span class="icon icon-stop-line m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Arizona
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Home</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate">
-                                                                <span class="icon icon-stop-line m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Arizona
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Home</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate">
-                                                                <span class="icon icon-stop-line m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Arizona
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Home</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate">
-                                                                <span class="icon icon-stop-line m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="tab-pane fade" id="custom-list">
-                                            <table id="custom-list-table" class="table table-striped w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Number</th>
-                                                        <th class="invisible opacity-0"></th>
-                                                        <th class="invisible opacity-0"></th>
-                                                        <th class="invisible opacity-0"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Folder Name
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Custom</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Folder Name
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Custom</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Folder Name
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Custom</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Folder Name
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Custom</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="d-inline-block me-2">
-                                                                <span class="icon icon-folder-open-dark m-0"></span>
-                                                            </span>
-                                                            Folder Name
-                                                        </td>
-                                                        <td>12411242</td>
-                                                        <td>09/05/2021</td>
-                                                        <td>Custom</td>
-                                                        <td class="text-end">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 tab-content-wrapper" id="grid-view-juri">
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="jurisdiction-grid">
-                                            <div class="row">
-                                                <div class="col-12 col-md-3 mb-3">
-                                                    <div class="bg-white rounded-3 p-3 h-100 mt-3">
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-600">
+                                    <div class="col-12 tab-content-wrapper" id="list-view-juri" style="display: block;">
+                                        <div class="tab-content bg-white rounded-2">
+                                            <div class="tab-pane fade show active" id="arizona-list">
+                                                <table id="arizona-list-table" class="table table-striped w-100">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Level</th>
+                                                            <th>Date Added</th>
+                                                            <th class="invisible opacity-0"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
                                                                 <span class="d-inline-block me-2">
                                                                     <span class="icon icon-folder-open-dark m-0"></span>
-                                                                </span>Arizona
-                                                            </div>
-                                                            <div class="font-weight-500">12411242</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-500">Home</div>
-                                                            <div class="font-weight-500">09/05/2021</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end w-100 align-items-center">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
-                                                                <span class="icon icon-stop-line m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-3 mb-3">
-                                                    <div class="bg-white rounded-3 p-3 h-100 mt-3">
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-600">
+                                                                </span>
+                                                                State File Documents
+                                                            </td>
+                                                            <td>Filejet</td>
+                                                            <td>06/12/2021</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
                                                                 <span class="d-inline-block me-2">
                                                                     <span class="icon icon-folder-open-dark m-0"></span>
-                                                                </span>Arizona
-                                                            </div>
-                                                            <div class="font-weight-500">12411242</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-500">Home</div>
-                                                            <div class="font-weight-500">09/05/2021</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end w-100 align-items-center">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
-                                                                <span class="icon icon-stop-line m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-3 mb-3">
-                                                    <div class="bg-white rounded-3 p-3 h-100 mt-3">
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-600">
+                                                                </span>
+                                                                Misc. Folder
+                                                            </td>
+                                                            <td>Custom</td>
+                                                            <td>06/12/2021</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE" role="button" data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
                                                                 <span class="d-inline-block me-2">
                                                                     <span class="icon icon-folder-open-dark m-0"></span>
-                                                                </span>Arizona
-                                                            </div>
-                                                            <div class="font-weight-500">12411242</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-500">Home</div>
-                                                            <div class="font-weight-500">09/05/2021</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end w-100 align-items-center">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
-                                                                <span class="icon icon-stop-line m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-3 mb-3">
-                                                    <div class="bg-white rounded-3 p-3 h-100 mt-3">
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-600">
+                                                                </span>
+                                                                Extra From State
+                                                            </td>
+                                                            <td>Custom</td>
+                                                            <td>06/12/2021</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE" role="button" data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
                                                                 <span class="d-inline-block me-2">
                                                                     <span class="icon icon-folder-open-dark m-0"></span>
-                                                                </span>Arizona
-                                                            </div>
-                                                            <div class="font-weight-500">12411242</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-500">Home</div>
-                                                            <div class="font-weight-500">09/05/2021</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end w-100 align-items-center">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
-                                                                <span class="icon icon-stop-line m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                                </span>
+                                                                Storage
+                                                            </td>
+                                                            <td>Custom</td>
+                                                            <td>06/12/2021</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE" role="button" data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="d-inline-block me-2">
+                                                                    <span class="icon icon-folder-open-dark m-0"></span>
+                                                                </span>
+                                                                Taxes
+                                                            </td>
+                                                            <td>Custom</td>
+                                                            <td>06/12/2021</td>
+                                                            <td class="text-end">
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE" role="button" data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE" role="button" data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                                    <span class="icon icon-download-secondry m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" role="button" data-bs-toggle="modal" data-bs-target="#deactivateJuri">
+                                                                    <span class="icon icon-bell m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="custom-grid">
-                                            <div class="row">
-                                                <div class="col-12 col-md-3 mb-3">
-                                                    <div class="bg-white rounded-3 p-3 h-100 mt-3">
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-600">
-                                                                <span class="d-inline-block me-2">
-                                                                    <span class="icon icon-folder-open-dark m-0"></span>
-                                                                </span>Arizona
+                                    </div>
+                                    <div class="col-12 tab-content-wrapper" id="grid-view-juri">
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade show active" id="arizona-grid">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
                                                             </div>
-                                                            <div class="font-weight-500">12411242</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-500">Home</div>
-                                                            <div class="font-weight-500">09/05/2021</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end w-100 align-items-center">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-12 col-md-3 mb-3">
-                                                    <div class="bg-white rounded-3 p-3 h-100 mt-3">
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-600">
-                                                                <span class="d-inline-block me-2">
-                                                                    <span class="icon icon-folder-open-dark m-0"></span>
-                                                                </span>Arizona
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
                                                             </div>
-                                                            <div class="font-weight-500">12411242</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-500">Home</div>
-                                                            <div class="font-weight-500">09/05/2021</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end w-100 align-items-center">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-12 col-md-3 mb-3">
-                                                    <div class="bg-white rounded-3 p-3 h-100 mt-3">
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-600">
-                                                                <span class="d-inline-block me-2">
-                                                                    <span class="icon icon-folder-open-dark m-0"></span>
-                                                                </span>Arizona
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
                                                             </div>
-                                                            <div class="font-weight-500">12411242</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-500">Home</div>
-                                                            <div class="font-weight-500">09/05/2021</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end w-100 align-items-center">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-12 col-md-3 mb-3">
-                                                    <div class="bg-white rounded-3 p-3 h-100 mt-3">
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-600">
-                                                                <span class="d-inline-block me-2">
-                                                                    <span class="icon icon-folder-open-dark m-0"></span>
-                                                                </span>Arizona
+                                                    <div class="col-12 col-md-3 mb-3">
+                                                        <div class="bg-white rounded-3 p-3 h-100 mt-3">
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-600">
+                                                                    <span class="d-inline-block me-2">
+                                                                        <span class="icon icon-folder-open-dark m-0"></span>
+                                                                    </span>Arizona
+                                                                </div>
+                                                                <div class="font-weight-500">12411242</div>
                                                             </div>
-                                                            <div class="font-weight-500">12411242</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between w-100 mb-3">
-                                                            <div class="font-weight-500">Home</div>
-                                                            <div class="font-weight-500">09/05/2021</div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-end w-100 align-items-center">
-                                                            <span class="d-inline-block">
-                                                                <span class="icon icon-cart-dark m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
-                                                                <span class="icon icon-delete m-0"></span>
-                                                            </span>
-                                                            <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
-                                                                <span class="icon icon-edit m-0"></span>
-                                                            </span>
+                                                            <div class="d-flex justify-content-between w-100 mb-3">
+                                                                <div class="font-weight-500">Home</div>
+                                                                <div class="font-weight-500">09/05/2021</div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-end w-100 align-items-center">
+                                                                <span class="d-inline-block">
+                                                                    <span class="icon icon-cart-dark m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="DELETE">
+                                                                    <span class="icon icon-delete m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="Deactivate" >
+                                                                    <span class="icon icon-stop-line m-0"></span>
+                                                                </span>
+                                                                <span class="d-inline-block ms-3" role="button" data-toggle="tooltip" title="EDIT" data-bs-toggle="modal" data-bs-target="#updateEntityDetails">
+                                                                    <span class="icon icon-edit m-0"></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1650,7 +1949,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="tasks" class="entity-card-content active">
+                        <div id="tasks" class="entity-card-content">
                             <div class="row">
                                 <div class="col-12">
                                     <h4>Compliance Tasks</h4>
