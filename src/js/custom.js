@@ -125,4 +125,11 @@ $(function () {
     $('.entity-card-content').removeClass('active');
     $('#'+ dataId).addClass('active');
   });
+
+  $(document).on('click', '.toggleSection', function(){
+    $(this).parents('.step-section').addClass('collapse');
+    $(this).parents('.step-section').next('.step-section').removeClass('collapse');
+  });
+
+  
 });
