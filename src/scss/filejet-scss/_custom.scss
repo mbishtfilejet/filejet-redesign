@@ -568,19 +568,70 @@ form {
   }
 }
 
+// notification
 
-// notification 
-
-.notification-box-wrapper{
-  .notification-box{
-    .notification-row{
-      .notification-action{
-        span{
-          flex:  0 0 70px;
-          .form-check .form-check-input{
+.notification-box-wrapper {
+  .notification-box {
+    .notification-row {
+      .notification-action {
+        span {
+          flex: 0 0 70px;
+          .form-check .form-check-input {
             margin-left: 0;
           }
         }
+      }
+    }
+  }
+}
+.form-control {
+  min-height: 56px;
+}
+.upload-photo-input {
+  img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.form-switch {
+  .form-check-input {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    &:checked {
+      background-position: right center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.your-policy-type-list {
+  .policy-type-box {
+    background-color: var(--bs-white);
+    padding: 40px 30px;
+    position: relative;
+    .icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+    .icon-info-blue{
+      display:inline-block;
+    }
+    .icon-info-white{  
+      display: none;
+    }
+    &.active {
+      background: linear-gradient(224.01deg, #6e72ee -5.3%, #595ddc 100%);
+      color: var(--bs-white);
+      .icon-info-blue{
+        display:none;
+
+      }      
+      .icon-info-white{
+        display:inline-block;
       }
     }
   }
