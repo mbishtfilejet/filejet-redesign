@@ -371,9 +371,7 @@ form {
   display: flex;
   margin-bottom: 30px;
 
-
   .step {
-
     > div {
       font-weight: 700;
       font-size: rem(21);
@@ -391,22 +389,18 @@ form {
       position: relative;
       z-index: 2;
 
-
-    
-
       &:after {
         content: "";
         position: absolute;
         width: rem(31);
         height: rem(2);
-        background: rgba(13,44,54,.1);
+        background: rgba(13, 44, 54, 0.1);
         left: rem(-31);
         z-index: 0;
       }
     }
 
     &:first-child {
-
       > div {
         margin-left: 0;
 
@@ -442,7 +436,7 @@ form {
         }
       }
 
-      .icon{
+      .icon {
         display: block;
       }
 
@@ -450,11 +444,9 @@ form {
         color: var(--bs-green);
         opacity: 1;
       }
-
     }
 
     &.active {
-
       > div {
         background: var(--bs-purple);
         color: var(--bs-white);
@@ -468,31 +460,23 @@ form {
         color: var(--bs-purple);
         opacity: 1;
       }
-
     }
-
-    
-
   }
 
   &.step-space-1 {
-
     .step {
       > div {
         margin: 0 rem(60);
-
 
         &:after {
           width: rem(120);
           left: auto;
           right: 100%;
         }
-      }  
+      }
     }
   }
-
 }
-
 
 .card-secondry {
   padding: 15px;
@@ -689,21 +673,49 @@ form {
       right: 10px;
       cursor: pointer;
     }
-    .icon-info-blue{
-      display:inline-block;
+    .icon-info-blue {
+      display: inline-block;
     }
-    .icon-info-white{  
+    .icon-info-white {
       display: none;
     }
     &.active {
       background: linear-gradient(224.01deg, #6e72ee -5.3%, #595ddc 100%);
       color: var(--bs-white);
-      .icon-info-blue{
-        display:none;
+      .icon-info-blue {
+        display: none;
+      }
+      .icon-info-white {
+        display: inline-block;
+      }
+    }
+  }
+}
 
-      }      
-      .icon-info-white{
-        display:inline-block;
+.cursor-pointer {
+  cursor: pointer;
+}
+
+// billing
+.plans-tabs {
+  .nav-item {
+    flex-grow: 1;
+    .nav-link {
+      background-color: var(--bs-white);
+      color: #0d2c36;
+      text-align: center;
+      position: relative;
+      .icon {
+        top: 5px;
+        right: 5px;
+        position: absolute;
+      }
+      &.active {
+        background: linear-gradient(224.01deg, #6e72ee -5.3%, #595ddc 100%);
+        color: var(--bs-white);
+      }
+      &:not(.active) {
+        opacity: 1;
       }
     }
   }
