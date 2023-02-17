@@ -2066,7 +2066,7 @@ progress {
   width: 100%;
   padding: rem(18) rem(20);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25rem;
   color: var(--bs-black-primary);
   background-clip: padding-box;
@@ -2110,12 +2110,12 @@ progress {
   height: 1.5em;
 }
 .form-control::-moz-placeholder {
-  color: #6c757d;
-  opacity: 1;
+  color: var(--bs-black-primary);
+  opacity: 0.5;
 }
 .form-control::placeholder {
-  color: #6c757d;
-  opacity: 1;
+  color: var(--bs-black-primary);
+  opacity: 0.5;
 }
 .form-control:disabled {
   opacity: 1;
@@ -4608,13 +4608,13 @@ textarea.form-control-lg {
   --bs-accordion-inner-border-radius: 0.5rem;
   --bs-accordion-btn-padding-x: 1.25rem;
   --bs-accordion-btn-padding-y: 1rem;
-  --bs-accordion-btn-color: #212529;
+  --bs-accordion-btn-color: rgba(13, 44, 54, 0.5);
   --bs-accordion-btn-bg: var(--bs-accordion-bg);
-  --bs-accordion-btn-icon: url(../../../dist/images/arrow-down.png);
+  --bs-accordion-btn-icon: url(../../../dist/images/icons/icon-angle-bottom.svg);
   --bs-accordion-btn-icon-width: 1.25rem;
   --bs-accordion-btn-icon-transform: rotate(-180deg);
   --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
-  --bs-accordion-btn-active-icon: url(../../../dist/images/arrow-up.png);
+  --bs-accordion-btn-active-icon: url(../../../dist/images/icons/icon-angle-top.svg);
   --bs-accordion-btn-focus-border-color: #86b7fe;
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   --bs-accordion-body-padding-x: 1.25rem;
@@ -4625,6 +4625,16 @@ textarea.form-control-lg {
   &.hide {
     display: none;
   }
+
+  button {
+    color: rgba(13, 44, 54, 0.5);
+    @extend .text-inherit;
+
+    &:hover {
+      color: rgba(13, 44, 54, 0.5);
+    }
+  }
+
 
   .accordion-collapse {
     border-top:1px solid var(--bs-gray-300);
