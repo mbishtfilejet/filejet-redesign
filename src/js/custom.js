@@ -87,9 +87,9 @@ $(function () {
     $(this).addClass('active');
     let dataId = $(this).attr('data-id');
     $(this).parents('.entity-card-content').find('.tab-content-wrapper').css('display', 'none');
-    $('#'+ dataId).css('display', 'block');   
+    $('#' + dataId).css('display', 'block');
     $(this).parents('.entity-card-content').find('.tab-listing').removeClass('active');
-    $('.'+ dataId).addClass('active');
+    $('.' + dataId).addClass('active');
   });
 
   $(document).on('click', '.view-change-entry > a', function () {
@@ -97,10 +97,10 @@ $(function () {
     $(this).addClass('active');
     let dataId = $(this).attr('data-id');
     $('.tab-content-wrapper').css('display', 'none');
-    $('#'+ dataId).css('display', 'block');
+    $('#' + dataId).css('display', 'block');
   });
 
-  $(document).on('click', '.showAccordian', function(){
+  $(document).on('click', '.showAccordian', function () {
     $(this).parents('.form-check').next('.accordion').toggleClass('hide');
   });
 
@@ -110,31 +110,31 @@ $(function () {
 
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
-  $('.btn-tab button').on('click', function(){
+  $('.btn-tab button').on('click', function () {
     $('.btn-tab button').removeClass('active');
     $(this).addClass('active');
     let dataID = $(this).attr('data-id');
     $('.btn-tab-content').css('display', 'none');
-    $('#'+ dataID).css('display', 'block');
+    $('#' + dataID).css('display', 'block');
   });
 
-  $('.entity-card').on('click', function(){
+  $('.entity-card').on('click', function () {
     $('.entity-card').removeClass('active');
     $(this).addClass('active');
     let dataId = $(this).attr('data-id');
     $('.entity-card-content').removeClass('active');
-    $('#'+ dataId).addClass('active');
+    $('#' + dataId).addClass('active');
   });
 
-  $(document).on('click', '.toggleSection', function(){
+  $(document).on('click', '.toggleSection', function () {
     $(this).parents('.step-section').addClass('collapse');
     $(this).parents('.step-section').next('.step-section').removeClass('collapse');
   });
 
-  $('.open-folder').on('click', function(){
+  $('.open-folder').on('click', function () {
     let dataId = $(this).attr('data-id');
     $('.folder-level').css('display', 'none');
-    $('#'+dataId).css('display', 'block');
+    $('#' + dataId).css('display', 'block');
   });
 });
 
@@ -210,3 +210,83 @@ function updateThumbnail(dropZoneElement, file) {
   }
 }
 
+/*Custom Select */
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function (e) {
+      /*when an item is clicked, update the original select box,
+      and the selected item:*/
+      var y, i, k, s, h, sl, yl;
+      s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+      sl = s.length;
+      h = this.parentNode.previousSibling;
+      for (i = 0; i < sl; i++) {
+        if (s.options[i].innerHTML == this.innerHTML) {
+          s.selectedIndex = i;
+          h.innerHTML = this.innerHTML;
+          y = this.parentNode.getElementsByClassName("same-as-selected");
+          yl = y.length;
+          for (k = 0; k < yl; k++) {
+            y[k].removeAttribute("class");
+          }
+          this.setAttribute("class", "same-as-selected");
+          break;
+        }
+      }
+      h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function (e) {
+    /*when the select box is clicked, close any other select boxes,
+    and open/close the current select box:*/
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+/*Custom Select End*/
