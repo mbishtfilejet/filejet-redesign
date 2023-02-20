@@ -172,6 +172,16 @@ document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
 
     dropZoneElement.classList.remove("drop-zone--over");
   });
+
+  $(document).on('click', '.go-back-parent', function(){
+    $('.folder-level').css('display', 'none');
+    $('#parent-folder').css('display', 'block');
+  });
+
+  $(document).on('click', '.go-back-child', function(){
+    $('.folder-level').css('display', 'none');
+    $('#child-folder').css('display', 'block');
+  });
 });
 
 /**
