@@ -203,6 +203,7 @@ function updateThumbnail(dropZoneElement, file) {
     thumbnailElement = document.createElement("div");
     thumbnailElement.classList.add("drop-zone__thumb");
     dropZoneElement.appendChild(thumbnailElement);
+    $('#fileUpload').modal('show');
   }
 
   thumbnailElement.dataset.label = file.name;
