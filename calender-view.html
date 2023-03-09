@@ -1549,6 +1549,75 @@
     </div>
     <!-- edit Reminders Modal End-->
 
+    <!-- Reminders list Modal start-->
+    <div class="modal modal-right fade" id="remindersList" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-bell-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">
+                                Reminders</span>
+                            <h3 class="fs-3 m-0 font-weight-700">December 20, 2020</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <li class="text-red">Overdue</li>
+                        <li>Upcoming</li>
+                    </div>
+
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 d-flex flex-column gap-3">
+                            <div class="caledar-event-upcoming">
+                                <div class="font-weight-bold">Annual Tax Report</div>
+                                <div class="text-secondary">Steve’s Accounting</div>
+                            </div>
+                            <div class="caledar-event-upcoming">
+                                <div class="font-weight-bold">Annual Tax Report</div>
+                                <div class="text-secondary">Steve’s Accounting</div>
+                            </div>
+                            <div class="caledar-event-overdue">
+                                <div class="font-weight-bold">Annual Tax Report</div>
+                                <div class="text-secondary">Steve’s Accounting</div>
+                            </div>
+                            <div class="caledar-event-overdue">
+                                <div class="font-weight-bold">Annual Tax Report</div>
+                                <div class="text-secondary">Steve’s Accounting</div>
+                            </div>
+                            <div class="caledar-event-overdue">
+                                <div class="font-weight-bold">Annual Tax Report</div>
+                                <div class="text-secondary">Steve’s Accounting</div>
+                            </div>
+                            <div class="caledar-event-upcoming">
+                                <div class="font-weight-bold">Annual Tax Report</div>
+                                <div class="text-secondary">Steve’s Accounting</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-5 pt-5">
+                    <button type="button" class="btn btn-info text-uppercase text-decoration-none font-weight-600"
+                        data-bs-dismiss="modal">
+                        CLOSE
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit Reminders Modal End-->
+
     <script src="dist/js/plugins.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.4/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
@@ -1561,7 +1630,6 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 dayMaxEvents: 2,
-                moreLinkClick: 'popover',
                 events: [
                     {
                         id: '1',
@@ -1669,7 +1737,12 @@
                 eventClick: function () {
                     let editReminderModal = new bootstrap.Modal(document.getElementById('editReminders'))
                     editReminderModal.show()
-                }
+                },
+                moreLinkClick: function (info) {
+                    let createReminderModal = new bootstrap.Modal(document.getElementById('remindersList'))
+                    createReminderModal.show();
+                    return info;
+                },
             });
             calendar.render();
             document.getElementsByClassName('fc-toolbar-chunk').item(0).firstChild.classList.add('left-toolbar');
