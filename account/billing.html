@@ -887,81 +887,36 @@
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        <div class="">
+                        <div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Name</label>
                             </div>
 
-                            <div class="d-flex align-items-center bg-white px-3 rounded py-3 mb-4"
-                                data-bs-target="#addCrediCardModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                <span class="ps-1">
-                                    Credit Card
-                                </span>
-                                <div class="d-flex flex-wrap ms-auto">
+                            <div class="row d-flex align-items-center bg-white px-3 rounded py-3 mb-4"
+                                data-bs-target="#addCrediCardModal">
+
+                                <div class=" col-6 d-flex flex-wrap align-items-center">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="view" id="View1">
+                                        <input class="form-check-input" type="radio" name="view""
+                                            onclick=" showCreditCardDetails()">
                                     </div>
+                                    <span class="ps-1">
+                                        Credit Card
+                                    </span>
+                                </div>
+
+                                <div class="col-6 d-flex flex-wrap align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="view"
+                                            onclick="showAchInfo()">
+                                    </div>
+                                    <span class="ps-1">
+                                        ACH
+                                    </span>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center bg-white px-3 rounded py-3 mb-4"
-                                data-bs-target="#bankInformationModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                <span class="ps-1">
-                                    ACH
-                                </span>
-                                <div class="d-flex flex-wrap ms-auto">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="view" id="View1">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-
-                    <!-- Modal Body Ends-->
-
-                    <div class="modal-footer">
-                        <div class="d-flex justify-content-end w-100">
-                            <button type="button" class="btn btn-link text-decoration-none font-weight-600"
-                                data-bs-toggle="modal">
-                                Cancel
-                            </button>
-                            <button type="button" class="btn btn-info py-3 px-3 rounded-3 ms-3"
-                                data-bs-target="#addCrediCardModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                Continue
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- Add Payment Ends -->
-
-        <!-- credit card info Starts -->
-        <div class="modal modal-right fade" id="addCrediCardModal" tabindex="-1"
-            aria-labelledby="addCrediCardModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
-                <div class="modal-content border-0 rounded-0 min-vh-100">
-                    <!-- Modal Header -->
-                    <div class="modal-header flex-wrap">
-
-                        <div class="d-flex align-items-center w-100 mb-4 pb-2">
-                            <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
-                                <span class="icon icon-payment-white  icon-lg m-0"></span>
-                            </span>
-                            <div>
-                                <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Credit card</span>
-                                <h3 class="fs-3 m-0 mt-2">Credit Card Information</h3>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Modal Header Ends -->
-
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <div class="row">
+                        <div class="row hide" id="creditCardDetails">
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="" class="text-uppercase">Name on card</label>
@@ -991,102 +946,12 @@
                                     <input type="text" class="form-control" placeholder="CVV">
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">CVV</label>
-                                    <input type="text" class="form-control" placeholder="Email address">
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">Contact Number</label>
-                                    <input type="text" class="form-control" placeholder="Contact Number">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">Billing Address</label>
-                                    <input type="text" class="form-control" placeholder="Billing address">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">ZIP</label>
-                                    <input type="text" class="form-control" placeholder="Zip">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">CITY</label>
-                                    <input type="text" class="form-control" placeholder="City">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">STATE</label>
-                                    <input type="text" class="form-control" placeholder="State">
-                                </div>
-                            </div>
                         </div>
-                    </div>
-
-                    <!-- Modal Body Ends-->
-
-                    <div class="modal-footer">
-                        <div class="d-flex justify-content-end w-100">
-                            <button type="button" class="btn btn-link text-decoration-none font-weight-600"
-                                data-bs-target="#addPaymentModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                GO BACK
-                            </button>
-                            <button type="button" class="btn btn-info py-3 px-3 rounded-3 ms-3"
-                                data-bs-target="#bankInformationModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                NEXT
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- credit card info Ends -->
-
-        <!--bank info Starts -->
-        <div class="modal modal-right fade" id="bankInformationModal" tabindex="-1"
-            aria-labelledby="bankInformationModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
-                <div class="modal-content border-0 rounded-0 min-vh-100">
-                    <!-- Modal Header -->
-                    <div class="modal-header flex-wrap">
-
-                        <div class="d-flex align-items-center w-100 mb-4 pb-2">
-                            <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
-                                <span class="icon icon-bank-white  icon-lg m-0"></span>
-                            </span>
-                            <div>
-                                <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">ACH</span>
-                                <h3 class="fs-3 m-0 mt-2">ACH Information</h3>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Modal Header Ends -->
-
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <div class="row">
+                        <div class="row hide" id="achInfo">
                             <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">Bank Name</label>
-                                    <input type="text" class="form-control" placeholder="Bank Name">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase mb-0">branch</label>
-                                    <p class="mb-2 text-muted">If applicable.</p>
-                                    <input type="text" class="form-control" placeholder="Branch Name...">
+                                    <label for="" class="text-uppercase">Nickname</label>
+                                    <input type="text" class="form-control" placeholder="Name">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -1094,55 +959,34 @@
                                     <label for="" class="text-uppercase">ACCOUNT TYPE</label>
 
                                     <div class="d-flex">
-                                        <div class="form-check radio-child-element mb-4 form-control w-auto">
+                                        <div
+                                            class="form-check radio-child-element mb-4 form-control w-auto d-flex align-items-center">
                                             <input class="form-check-input ms-0 mt-0" type="radio" name="account-type">
                                             <label class="form-check-label top-0 ms-3">
-                                                Savings
+                                                Individual
                                             </label>
                                         </div>
-                                        <div class="form-check radio-child-element mb-4 ms-4 form-control w-auto">
+                                        <div
+                                            class="form-check radio-child-element mb-4 ms-4 form-control w-auto d-flex align-items-center">
                                             <input class="form-check-input ms-0 mt-0" type="radio" name="account-type">
                                             <label class="form-check-label top-0 ms-3">
-                                                Checkings
+                                                Company
                                             </label>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group mb-3">
-
-                                    <label for="" class="text-uppercase mb-0">ROUTING NUMBER</label>
+                                    <label for="" class="text-uppercase">ROUTING NUMBER</label>
                                     <p class="mb-2 text-muted">Also known as ABA number.</p>
                                     <input type="text" class="form-control" placeholder="ex. 110000000">
-
-
                                 </div>
                             </div>
-
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="" class="text-uppercase ">Account Number</label>
                                     <input type="text" class="form-control" placeholder="ex. 000123456789">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">ZIP</label>
-                                    <input type="text" class="form-control" placeholder="Zip">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">CITY</label>
-                                    <input type="text" class="form-control" placeholder="City">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group mb-3">
-                                    <label for="" class="text-uppercase">STATE</label>
-                                    <input type="text" class="form-control" placeholder="State">
                                 </div>
                             </div>
                         </div>
@@ -1153,8 +997,8 @@
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end w-100">
                             <button type="button" class="btn btn-link text-decoration-none font-weight-600"
-                                data-bs-target="#addPaymentModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                GO BACK
+                                data-bs-toggle="modal">
+                                CANCEL
                             </button>
                             <button type="button" class="btn btn-info py-3 px-3 rounded-3 ms-3"
                                 data-bs-target="#linkEntityModal" data-bs-toggle="modal" data-bs-dismiss="modal">
@@ -1166,7 +1010,7 @@
                 </div>
             </div>
         </div>
-        <!-- bank info Ends -->
+        <!-- Add Payment Ends -->
 
         <!-- link entity  Starts -->
         <div class="modal modal-right fade" id="linkEntityModal" tabindex="-1" aria-labelledby="linkEntityModalLabel"
@@ -1437,11 +1281,6 @@
         </div>
         <!-- payment method updated Ends -->
 
-
-
-
-
-
         <!-- add payment close confirm Starts -->
         <div class="modal modal-right fade" id="closeConfirmModal" tabindex="-1"
             aria-labelledby="closeConfirmModalLabel" aria-hidden="true">
@@ -1685,7 +1524,17 @@
             </div>
         </div>
         <!-- Payment Information Modal Ends -->
+        <Script>
+            function showCreditCardDetails() {
+                document.getElementById('creditCardDetails').style.display = 'flex';
+                document.getElementById('achInfo').style.display = 'none';
 
+            }
+            function showAchInfo() {
+                document.getElementById('creditCardDetails').style.display = 'none';
+                document.getElementById('achInfo').style.display = 'flex';
+            }
+        </Script>
         <script src="../dist/js/plugins.min.js"></script>
         <script src="../dist/js/custom.min.js"></script>
         <!-- Scripts End-->
