@@ -109,7 +109,7 @@
                                     </span>
                                     <span class="text nav-text d-inline-block">
                                         Organization Charts
-                                        <span class="small-tag">Coming soon</span>
+                                        <span class="span-tag">Coming soon</span>
                                     </span>
                                 </a>
                             </li>
@@ -123,7 +123,7 @@
                                     <span class="text nav-text d-inline-block position-relative">
                                         Cap Table
                                         <span class="count-notification position-absolute">1</span>
-                                        <span class="small-tag">Coming soon</span>
+                                        <span class="span-tag">Coming soon</span>
                                     </span>
                                 </a>
                             </li>
@@ -334,12 +334,12 @@
                                                         <td>Entity 1 INC</td>
                                                         <td>$45.00</td>
                                                         <td> Paid </td>
-                                                        <td>11/22/2022
-                                                            <small>04:00 PM</small>
+                                                        <td class="fs-6">11/22/2022
+                                                            <span>04:00 PM</span>
                                                         </td>
                                                         <td>NA</td>
-                                                        <td>11/22/2022
-                                                            <small>04:00 PM</small>
+                                                        <td class="fs-6">11/22/2022
+                                                            <span>04:00 PM</span>
                                                         </td>
                                                         <td>EMAILED</td>
                                                         <td>N/A</td>
@@ -355,12 +355,12 @@
                                                         <td>Entity 1 INC</td>
                                                         <td>$45.00</td>
                                                         <td> Paid </td>
-                                                        <td>11/22/2022
-                                                            <small>04:00 PM</small>
+                                                        <td class="fs-6">11/22/2022
+                                                            <span>04:00 PM</span>
                                                         </td>
                                                         <td>NA</td>
-                                                        <td>11/22/2022
-                                                            <small>04:00 PM</small>
+                                                        <td class="fs-6">11/22/2022
+                                                            <span>04:00 PM</span>
                                                         </td>
                                                         <td>EMAILED</td>
                                                         <td>N/A</td>
@@ -376,8 +376,8 @@
                                                         <td>Entity 1 INC</td>
                                                         <td>$45.00</td>
                                                         <td> <span class="text-red">Pending</span> </td>
-                                                        <td>11/22/2022
-                                                            <small>04:00 PM</small>
+                                                        <td class="fs-6">11/22/2022
+                                                            <span>04:00 PM</span>
                                                         </td>
                                                         <td>NA</td>
                                                         <td>
@@ -1136,12 +1136,13 @@
                                         <div class="mb-3 bg-white rounded-3">
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio1" value="option1">
+                                                    id="inlineRadio1" value="option1"
+                                                    onclick=" showCreditCardDetails()" checked>
                                                 <label class="form-check-label" for="inlineRadio1">Card</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="inlineRadio2" value="option2">
+                                                    id="inlineRadio2" value="option2" onclick="showAchInfo()">
                                                 <label class="form-check-label" for="inlineRadio2">ACH</label>
                                             </div>
                                         </div>
@@ -1149,18 +1150,60 @@
                                             <label for="" class="form-label">Nick name (optional)</label>
                                             <input type="text" class="form-control" id="" value="Nick Name">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Card number</label>
-                                            <input type="text" class="form-control" id="" value="Card number">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Card expiration</label>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <input type="text" class="form-control" id="" value="mm/yyyy">
+                                        <div id="creditCardDetails">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Card number</label>
+                                                <input type="text" class="form-control" id="" value="Card number">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Card expiration</label>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input type="text" class="form-control" id="" value="mm/yyyy">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input type="text" class="form-control" id="" value="CVV">
+                                                    </div>
                                                 </div>
-                                                <div class="col-6">
-                                                    <input type="text" class="form-control" id="" value="CVV">
+                                            </div>
+                                        </div>
+                                        <div class="row hide" id="achInfo">
+                                            <div class="col-12">
+                                                <div class="form-group mb-3">
+                                                    <label for="" class="text-uppercase">ACCOUNT TYPE</label>
+
+                                                    <div class="d-flex">
+                                                        <div
+                                                            class="form-check radio-child-element mb-4 form-control w-auto d-flex align-items-center">
+                                                            <input class="form-check-input ms-0 mt-0" type="radio"
+                                                                name="account-type">
+                                                            <label class="form-check-label top-0 ms-3">
+                                                                Individual
+                                                            </label>
+                                                        </div>
+                                                        <div
+                                                            class="form-check radio-child-element mb-4 ms-4 form-control w-auto d-flex align-items-center">
+                                                            <input class="form-check-input ms-0 mt-0" type="radio"
+                                                                name="account-type">
+                                                            <label class="form-check-label top-0 ms-3">
+                                                                Company
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group mb-3">
+                                                    <label for="" class="text-uppercase">ROUTING NUMBER</label>
+                                                    <p class="mb-2 text-muted">Also known as ABA number.</p>
+                                                    <input type="text" class="form-control" placeholder="ex. 110000000">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group mb-3">
+                                                    <label for="" class="text-uppercase ">Account Number</label>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="ex. 000123456789">
                                                 </div>
                                             </div>
                                         </div>
@@ -1171,8 +1214,10 @@
                                             </label>
                                         </div>
                                         <div class="d-flex justify-content-end align-item-center">
-                                            <button type="button" class="btn btn-link px-4 border border-1 rounded-3">Discard</button>
-                                            <button type="button" class="btn btn-info px-4 ms-3 text-white">SAVE</button>
+                                            <button type="button"
+                                                class="btn btn-link px-4 border border-1 rounded-3">Discard</button>
+                                            <button type="button"
+                                                class="btn btn-info px-4 ms-3 text-white">SAVE</button>
 
                                         </div>
                                     </form>
@@ -1235,7 +1280,17 @@
         </div>
     </div>
     <!-- Delete Payment Ends -->
+    <script>
+        function showCreditCardDetails() {
+            document.getElementById('creditCardDetails').style.display = 'flex';
+            document.getElementById('achInfo').style.display = 'none';
 
+        }
+        function showAchInfo() {
+            document.getElementById('creditCardDetails').style.display = 'none';
+            document.getElementById('achInfo').style.display = 'flex';
+        }
+    </script>
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
     <!-- Scripts End-->
