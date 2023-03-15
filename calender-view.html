@@ -1593,7 +1593,7 @@
                         title: 'Annual Tax Report',
                         start: '2023-03-01',
                         textColor: 'black',
-                        className: 'caledar-event-overdue'
+                        className: 'caledar-event-overdue',
                     },
                     {
                         id: '2',
@@ -1607,7 +1607,8 @@
                         title: 'Annual Tax Report',
                         start: '2023-03-08',
                         textColor: 'black',
-                        className: 'caledar-event-upcoming'
+                        className: 'caledar-event-upcoming',
+                        desciption: 'Steve’s Accounting',
                     },
                     {
                         id: '4',
@@ -1695,8 +1696,12 @@
                     let createReminderModal = new bootstrap.Modal(document.getElementById('createReminders'))
                     createReminderModal.show()
                 },
-                eventClick: function () {
-                    let editReminderModal = new bootstrap.Modal(document.getElementById('editReminders'))
+                eventClick: function (e) {
+                    let editReminderModa;
+                    if (e.event.extendedProps.desciption) {
+                        editReminderModal = new bootstrap.Modal(document.getElementById('actionModal'))
+                    }
+                    else editReminderModal = new bootstrap.Modal(document.getElementById('editReminders'))
                     editReminderModal.show()
                 },
                 moreLinkClick: function (info) {
