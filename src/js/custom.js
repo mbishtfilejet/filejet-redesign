@@ -51,6 +51,11 @@ $(function () {
     "lengthChange": false,
     "pagingType": "simple"
   });
+  $('#entites-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple"
+  });
 
   $('#group-listing').DataTable({
     "searching": false,
@@ -173,12 +178,12 @@ document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     dropZoneElement.classList.remove("drop-zone--over");
   });
 
-  $(document).on('click', '.go-back-parent', function(){
+  $(document).on('click', '.go-back-parent', function () {
     $('.folder-level').css('display', 'none');
     $('#parent-folder').css('display', 'block');
   });
 
-  $(document).on('click', '.go-back-child', function(){
+  $(document).on('click', '.go-back-child', function () {
     $('.folder-level').css('display', 'none');
     $('#child-folder').css('display', 'block');
   });
