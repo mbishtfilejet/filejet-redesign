@@ -3892,7 +3892,8 @@
                                 </ul>
                             </div>
                             <div class="col-12">
-                                <div class="card-secondry grey-card-secondry mb-3">
+                                <div class="card-secondry grey-card-secondry mb-3" data-bs-toggle="modal"
+                                    data-bs-target="#editReminders">
                                     <div class="card-secondry-title font-weight-600">Reminder Name</div>
                                     <div class="card-secondry-sub-title opacity-50">Entity Name</div>
                                     <div
@@ -3903,7 +3904,8 @@
                                         <span class="font-weight-500 fs-8">12/02/2021 • 3:30PM - 4:30PM. Daily</span>
                                     </div>
                                 </div>
-                                <div class="card-secondry red-card-secondry">
+                                <div class="card-secondry red-card-secondry" data-bs-toggle="modal"
+                                    data-bs-target="#editReminders">
                                     <div class="card-secondry-title font-weight-600">Reminder Name</div>
                                     <div class="card-secondry-sub-title opacity-50">Entity Name</div>
                                     <div
@@ -3996,8 +3998,9 @@
                                     <div class="row mb-3">
                                         <div class="col-12 col-md-2">
                                             <label for="" class="form-label">ALL DAY</label>
-                                            <div class="p-2 rounded-2 bg-white text-center">
-                                                <div class="form-check d-inline-block">
+                                            <div class="py-3 px-2 rounded-2 bg-white text-center">
+                                                <div
+                                                    class="py-1 form-check d-fLex align-item-center justify-content-center">
                                                     <input class="form-check-input" type="checkbox" value="" id=""
                                                         checked="">
                                                 </div>
@@ -4030,6 +4033,113 @@
             </div>
         </div>
         <!-- Entities Create Reminders Modal End-->
+
+        <!-- Edit Reminders Modal start-->
+        <div class="modal modal-right fade" id="editReminders" tabindex="-1" aria-labelledby="searchModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+                <div class="modal-content border-0 rounded-0 min-vh-100">
+                    <!-- Modal Header -->
+                    <div class="modal-header flex-wrap">
+                        <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                            <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                                <span class="icon icon-md icon-bell-white m-0"></span>
+                            </span>
+                            <div>
+                                <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit
+                                    Reminder</span>
+                                <h3 class="fs-3 m-0 font-weight-700">Reminder Details</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Header Ends -->
+                    <!-- Modal Body Start-->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="" placeholder="Enter a name"
+                                            value="Annual Tax Reminder">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Description</label>
+                                        <input type="text" class="form-control" id=""
+                                            value="I need to remember when this is."
+                                            placeholder="Describe this notification">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Entity</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option>Select</option>
+                                            <option selected value="Steve’s Accounting">Steve’s Accounting</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-5 calender-input">
+                                            <label for="" class="form-label">Date</label>
+                                            <input type="text" id="datepicker" class="form-control"
+                                                placeholder="MM / DD / YYYY" value="12 / 16 / 2022">
+                                            <span class="d-inline-block">
+                                                <span class="icon icon-calender-lined"></span>
+                                            </span>
+                                        </div>
+                                        <div class="col-12 col-md-5">
+                                            <label for="" class="form-label">Time</label>
+                                            <input type="time" class="form-control" id="" placeholder="HH:MM">
+                                        </div>
+                                        <div class="col-12 col-md-2">
+                                            <label for="all-day" class="form-label">ALL DAY</label>
+                                            <div class="py-3 rounded-2 bg-white text-center">
+                                                <div class="form-check d-flex justify-content-center ">
+                                                    <input class="form-check-input" type="checkbox" value="true"
+                                                        id="all-day" checked="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-12">
+                                            <label for="" class="form-label">RECURRING</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option>Select</option>
+                                                <option selected value="Steve’s Accounting">Doesn’t repeat</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Body End -->
+
+                    <div class="modal-footer mt-5 pt-5">
+                        <div class="d-flex justify-content-end w-100">
+                            <button type="button"
+                                class="btn btn-link text-uppercase text-decoration-none font-weight-600 text-red"
+                                data-bs-dismiss="modal">
+                                DELETE
+                            </button>
+                            <button type="button"
+                                class="btn btn-tertiary text-uppercase text-decoration-none font-weight-600"
+                                data-bs-toggle="modal" data-bs-target="#entitiesReminders">
+                                CANCEL
+                            </button>
+                            <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3"
+                                data-bs-dismiss="modal">
+                                CONFIRM
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- edit Reminders Modal End-->
 
         <!-- Additional Services Modal start-->
         <div class="modal modal-right fade" id="additionalServices" tabindex="-1" aria-labelledby="searchModalLabel"
