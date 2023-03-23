@@ -211,7 +211,7 @@
                             <div class="col-3 col-xl-3 col-lg-12 order-xl-1">
                                 <h3 class="m-0">
                                     <strong>
-                                        Report Payments
+                                        Reports: Payments
                                     </strong>
                                 </h3>
                             </div>
@@ -345,7 +345,9 @@
                                                         <td>N/A</td>
                                                         <td>
                                                             <div class="d-flex justify-content-end align-item-center">
-                                                                <span class="icon icon-xs icon-pdf-black me-0"></span>
+                                                                <span class="icon icon-xs icon-pdf-black me-0 cursor-pointer"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#invoiceModal"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -366,7 +368,9 @@
                                                         <td>N/A</td>
                                                         <td>
                                                             <div class="d-flex justify-content-end align-item-center">
-                                                                <span class="icon icon-xs icon-pdf-black me-0"></span>
+                                                                <span class="icon icon-xs icon-pdf-black me-0 cursor-pointer"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#invoiceModal"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -391,7 +395,9 @@
                                                                     tabindex="0" data-toggle="tooltip"
                                                                     title="Complete payment" data-bs-toggle="modal"
                                                                     data-bs-target="#updatePayment"></span>
-                                                                <span class="icon icon-xs icon-pdf-black me-0"></span>
+                                                                <span class="icon icon-xs icon-pdf-black me-0 cursor-pointer"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#invoiceModal"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -513,7 +519,7 @@
                                     <div>
                                         <div class="dropdown white-bg p-0 rounded-5">
 
- <a class="nav-link px-0">
+                                            <a class="nav-link px-0">
                                                 <span class="user-name fw-bold">Notification</span>
                                             </a>
                                             <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
@@ -810,7 +816,7 @@
                                     <div>
                                         <div class="dropdown white-bg p-0 rounded-5">
 
- <a class="nav-link px-0">
+                                            <a class="nav-link px-0">
                                                 <span class="user-name fw-bold">Notification</span>
                                             </a>
                                             <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
@@ -1314,6 +1320,49 @@
         </div>
     </div>
     <!-- Delete Payment Ends -->
+
+    <!-- Invoice Modal Starts -->
+    <div class="modal modal-right fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100 modal-xl">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-clipboard-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">PREVIEW</span>
+                            <h3 class="fs-3 m-0 mt-2">Invoice</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="">
+                        <img src="dist/images/preview-img.jpg" alt="">
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Invoice Modal Ends -->
+
     <script>
         function showCreditCardDetails() {
             document.getElementById('creditCardDetails').style.display = 'flex';
