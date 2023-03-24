@@ -5450,12 +5450,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Role</span></label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" aria-label="Default select example" id="roleSelect">
                                     <option selected>Select Role</option>
-                                    <option value="1">President</option>
-                                    <option value="2">Director</option>
-                                    <option value="3">Shareholder</option>
+                                    <option value="President">President</option>
+                                    <option value="Director">Director</option>
+                                    <option value="Shareholder">Shareholder</option>
+                                    <option value="Other">Other</option>
                                 </select>
+                            </div>
+                            <div class="mb-3 hide" id="roleInput">
+                                <input type="text" class="form-control" id="" placeholder="Type Role" />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Address</span></label>
@@ -6985,7 +6989,18 @@
             </div>
         </div>
         <!-- Preview Modal Ends -->
-
+        <script>
+            $(document).ready(function () {
+                $('#roleSelect').on('change', function () {
+                    var roleVal = $(this).val();
+                    if (roleVal == "Other") {
+                        $("#roleInput").show();
+                    } else {
+                        $("#roleInput").hide();
+                    }
+                });
+            });
+        </script>
         <script src="dist/js/plugins.min.js"></script>
         <script src="dist/js/custom.min.js"></script>
         <!-- Scripts End-->
