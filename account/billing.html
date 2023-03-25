@@ -905,9 +905,11 @@
                                 <span class="icon icon-payment-white  icon-lg m-0"></span>
                             </span>
                             <div>
-                                <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Payment
+                                <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Add Payment
                                     method</span>
-                                <h3 class="fs-3 m-0 mt-2">Add Payment Method</h3>
+                                <h3 class="fs-3 m-0 mt-2" id="defaultPaymentDetails">Select Payment Method</h3>
+                                <h3 class="fs-3 m-0 mt-2 hide" id="creditCardDetails">Credit Card Information</h3>
+                                <h3 class="fs-3 m-0 mt-2 hide" id="achInfo">ACH Information</h3>
                             </div>
                         </div>
                     </div>
@@ -917,13 +919,9 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Name</label>
-                            </div>
-
+                            <label for="" class="form-label">Select Method </label>
                             <div class="row d-flex align-items-center bg-white px-3 rounded py-3 mb-4"
                                 data-bs-target="#addCrediCardModal">
-
                                 <div class=" col-6 d-flex flex-wrap align-items-center">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="view""
@@ -1558,13 +1556,26 @@
         <!-- Payment Information Modal Ends -->
         <Script>
             function showCreditCardDetails() {
-                document.getElementById('creditCardDetails').style.display = 'flex';
-                document.getElementById('achInfo').style.display = 'none';
-
+                document.querySelectorAll('#creditCardDetails').forEach(function (el) {
+                    el.style.display = 'flex';
+                });
+                document.querySelectorAll('#achInfo').forEach(function (el) {
+                    el.style.display = 'none';
+                });
+                document.querySelectorAll('#defaultPaymentDetails').forEach(function (el) {
+                    el.style.display = 'none';
+                });
             }
             function showAchInfo() {
-                document.getElementById('creditCardDetails').style.display = 'none';
-                document.getElementById('achInfo').style.display = 'flex';
+                document.querySelectorAll('#achInfo').forEach(function (el) {
+                    el.style.display = 'flex';
+                });
+                document.querySelectorAll('#creditCardDetails').forEach(function (el) {
+                    el.style.display = 'none';
+                });
+                document.querySelectorAll('#defaultPaymentDetails').forEach(function (el) {
+                    el.style.display = 'none';
+                });
             }
         </Script>
         <script src="../dist/js/plugins.min.js"></script>
