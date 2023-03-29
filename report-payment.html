@@ -969,7 +969,7 @@
                         </span>
                         <div>
                             <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Billing</span>
-                            <h3 class="fs-3 m-0 mt-2">Payment Method</h3>
+                            <h3 class="fs-3 m-0 mt-2">Complete Payment</h3>
                         </div>
                     </div>
                 </div>
@@ -991,33 +991,36 @@
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Payment Method</label>
-                                <select class="form-select">
-                                    <option selected>With Filejet</option>
-                                    <option>With Amex</option>
+                                <select id="paymentMethodInput" class="form-select">
+                                    <option value="filejet" selected>With Filejet</option>
+                                    <option value="amex">With Amex</option>
+                                    <option value="Other">Other</option>
+
                                 </select>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3" id="choosePaymentInput">
                                 <label for="" class="form-label">Choose Payment Method</label>
                                 <select class="form-select">
                                     <option selected>Kelley-visa4242</option>
                                     <option value="other">Other</option>
                                 </select>
                             </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Card Number</label>
-                                <input type="text" class="form-control py-3 px-4 shadow mb-0" value="Card number">
-                            </div>
-                            <div class="mb-3">
-                                <div class="row">
-                                    <div class="col-12 col-md-6">
-                                        <label for="" class="form-label">Exp</label>
-                                        <input type="text" class="form-control py-3 px-4 shadow mb-0" disabled
-                                            value="12/23/2025">
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label for="" class="form-label">CVV</label>
-                                        <input type="text" class="form-control py-3 px-4 shadow mb-0" disabled
-                                            value="123">
+                            <div id="cardInfoInput">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Card Number</label>
+                                    <input type="text" class="form-control py-3 px-4 shadow mb-0" value="Card number">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Card expiratoin</label>
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <input type="text" class="form-control py-3 px-4 shadow mb-0" disabled
+                                                value="12/23/2025">
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input type="text" class="form-control py-3 px-4 shadow mb-0" disabled
+                                                value="123">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1381,6 +1384,18 @@
             document.getElementById('creditCardDetails').style.display = 'none';
             document.getElementById('achInfo').style.display = 'flex';
         }
+        $(document).ready(function () {
+            $('#paymentMethodInput').on('change', function () {
+                var paymentMethodInput = $(this).val();
+                if (paymentMethodInput == "Other") {
+                    $("#choosePaymentInput").hide();
+                    $("#cardInfoInput").show();
+                } else {
+                    $("#choosePaymentInput").show();
+                    $("#cardInfoInput").hide();
+                }
+            });
+        });
     </script>
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
