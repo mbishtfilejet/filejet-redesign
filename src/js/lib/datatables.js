@@ -1164,7 +1164,6 @@
       )
         (i = t.aoColumns[l]),
           (o = (u = !n) ? v.createElement(i.sCellType) : a[l]) ||
-            W(t, 0, "Incorrect column count", 18),
           (o._DT_CellIndex = { row: e, column: l }),
           d.push(o),
           (!u &&
