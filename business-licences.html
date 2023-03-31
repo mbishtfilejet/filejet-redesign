@@ -2216,10 +2216,66 @@
     <!-- Success Modal Ends -->
     <script>
         /* For more info: https://datatables.net/examples/api/row_details.html */
-        function format() {
+        function nested1() {
             //this func can accept arguments for dynamic data
             return (
-                `<table class="table table-striped data-table-listing w-100 table-nowrap">
+                `<table id="nested-one-table" class="table table-striped w-100 table-nowrap">
+                <thead>
+                    <tr>
+                        <th class="sorting-none"></th>
+                        <th>License Name 1</th>
+                        <th>City/County 2</th>
+                        <th>Registration Date 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="dt-control"><a href="javascript:void(0)">
+                            <span class="icon icon-folder-upload-purple me-0"></span>
+                        </a></td>
+                        <td>11/14/2021 1</td>
+                        <td>0000001 2</td>
+                        <td><a href="./entities-details.html">WeComply
+                            Corp
+                            3</a> </td>
+                    </tr>
+                    <tr text-color="red">
+                        <td class="dt-control">
+                            <a href="javascript:void(0)">
+                            <span class="icon icon-folder-upload-purple me-0"></span>
+                        </a></td>
+                        <td>11/14/2021 1</td>
+                        <td>0000001 2</td>
+                        <td><a href="./entities-details.html">WeComply
+                            Corp3</a></td>
+                    </tr>
+                    <tr>
+                        <td class="dt-control"><a href="javascript:void(0)">
+                            <span class="icon icon-folder-upload-purple me-0"></span>
+                        </a></td>
+                        <td>11/14/2021 1</td>
+                        <td>0000001 2</td>
+                        <td><a href="./entities-details.html">WeComply
+                            Corp3</a></td>
+                    </tr>
+                    <tr>
+                        <td class="dt-control"><a href="javascript:void(0)">
+                            <span class="icon icon-folder-upload-purple me-0"></span>
+                        </a></td>
+                        <td>11/14/2021 1</td>
+                        <td>0000001 2</td>
+                        <td><a href="./entities-details.html">WeComply
+                            Corp3</a></td>
+                    </tr>
+                </tbody>
+            </table >`
+            );
+        }
+
+        function nested2() {
+            //this func can accept arguments for dynamic data
+            return (
+                `<table id="nested-two-table" class="table table-striped w-100 table-nowrap">
                 <thead>
                     <tr>
                         <th class="sorting-none"></th>
@@ -2233,7 +2289,7 @@
                         <td><a href="javascript:void(0)">
                             <span class="icon icon-folder-upload-purple me-0"></span>
                         </a></td>
-                        <td>11/14/2021 1</td>
+                        <td>nested 2 11/14/2021 1</td>
                         <td>0000001 2</td>
                         <td><a href="./entities-details.html">WeComply
                             Corp
@@ -2272,7 +2328,7 @@
             );
         }
 
-        var handleTable = function (table) {
+        var handleNested1Table = function (table) {
             return function () {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
@@ -2283,12 +2339,35 @@
                     tr.removeClass('shown');
                 } else {
                     // Open this row
-                    row.child(format()).show();
+                    row.child(nested1()).show();
+                    tr.addClass('shown');
+                    var nested1Tab = $('#nested-one-table').DataTable({
+                        "searching": false,
+                        "lengthChange": false,
+                        "pagingType": "simple"
+                    });
+                    $('#nested-one-table tbody').on('click', 'td.dt-control', handleNested2Table(nested1Tab));
+
+                }
+            }
+        }
+        var handleNested2Table = function (table) {
+            return function () {
+                console.log('nested2 clicked');
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    // Open this row
+                    row.child(nested2()).show();
                     tr.addClass('shown');
                 }
             }
         }
-
 
         $(document).ready(function () {
             var AllTable = $('#bl-all-table').DataTable({
@@ -2301,9 +2380,11 @@
                 "lengthChange": false,
                 "pagingType": "simple"
             });
+
             // Add event listener for opening and closing details
-            $('#bl-all-table tbody').on('click', 'td.dt-control', handleTable(AllTable));
-            $('#bl-inprogress-table tbody').on('click', 'td.dt-control', handleTable(inProgressTable));
+            $('#bl-all-table tbody').on('click', 'td.dt-control', handleNested1Table(AllTable));
+            $('#bl-inprogress-table tbody').on('click', 'td.dt-control', handleNested1Table(inProgressTable));
+
         });
     </script>
     <script src="dist/js/plugins.min.js"></script>
