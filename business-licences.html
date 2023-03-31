@@ -2338,13 +2338,12 @@
                     row.child.hide();
                     tr.removeClass('shown');
                 } else {
-                    // Open this row
                     row.child(nested1()).show();
                     tr.addClass('shown');
                     var nested1Tab = $('#nested-one-table').DataTable({
                         "searching": false,
                         "lengthChange": false,
-                        "pagingType": "simple"
+                        retrieve: true
                     });
                     $('#nested-one-table tbody').on('click', 'td.dt-control', handleNested2Table(nested1Tab));
 
@@ -2353,7 +2352,6 @@
         }
         var handleNested2Table = function (table) {
             return function () {
-                console.log('nested2 clicked');
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
 
