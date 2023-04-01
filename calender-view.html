@@ -310,27 +310,25 @@
                                 </ul>
                             </div>
                         </div>
-                        <!--  -->
+                        <!-- custom calendar toolbar start  -->
                             <div class="d-flex justify-content-between mt-4">
                                 <div class="d-flex align-items-center">
                                     <div>
                                         <button type="button" id="my-prev-button" class="btn btn-info me-3">prev</button>  
                                     </div>
-                                    <!-- <h2 class="fs-3 mb-0" id="selected-date"></h2> -->
-                                    <h2 class="fs-3 mb-0" id="selected-date"></h2>
-                                    
+                                        <h2 class="fs-3 mb-0" id="selected-date"></h2>                                    
                                     <div>
                                         <button type="button" id="my-next-button" class="btn btn-info ms-3">next</button>
                                     </div>
                                 </div>
 
                                 <div class="d-flex">  
-                                    <button type="button" id="my-today-button" class="btn btn-info">today</button>
-                                    <button type="button" id="my-week-button" class="btn btn-info">week</button>
-                                    <button type="button" id="my-month-button" class="btn btn-info">month</button>
+                                    <button type="button" id="my-today-button" onclick="mytodayClick()"  class="btn btn-info">today</button>
+                                    <button type="button" id="my-week-button"  onclick="myweekClick()" class="btn btn-info">week</button>
+                                    <button type="button" id="my-month-button" onclick="mymonthClick()" class="btn btn-info">month</button>
                                 </div>
                             </div>
-                        <!-- /\   -->
+                        <!-- custom calendar toolbar end   -->
                         <div class="pt-5" id="calendar"></div>
                     </div>
                 </div>
@@ -1638,50 +1636,12 @@
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.4/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
     <!-- <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.4/index.global.min.js'></script> -->
-
+    
     <script>
 
-// 
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
             
-            // custom start
-                document.getElementById('my-next-button').addEventListener('click', function() {
-                    calendar.next();
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                });
-             
-                document.getElementById('my-prev-button').addEventListener('click', function() {
-                    calendar.prev();
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                });
-
-                document.getElementById('my-today-button').addEventListener('click', function() {
-                    console.log(calendar.currentData.viewTitle);
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                });
-                document.getElementById('my-week-button').addEventListener('click', function(currentViewType) {
-                    
-                        document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                    
-                    
-                });
-                document.getElementById('my-month-button').addEventListener('click', function() {
-                   
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                });
-
-                document.getElementById('my-today-button').addEventListener('click', function() {
-                    calendar.changeView('timeGridDay');
-                });
-                document.getElementById('my-week-button').addEventListener('click', function() {
-                    calendar.changeView('dayGridWeek');
-                });
-                document.getElementById('my-month-button').addEventListener('click', function() {
-                    calendar.changeView('dayGridMonth');
-                });
-
-            // custum end
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 
@@ -1817,10 +1777,38 @@
                     return info;
                 },
             });
+
             var view = calendar.view;
-        
-        console.log(calendar,calendar.start);
+            console.log(calendar,calendar.start);
             calendar.render();
+
+             // custom toolbar start
+                window.onload = function() {
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                }
+                document.getElementById('my-next-button').addEventListener('click', function() {
+                    calendar.next();
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+                document.getElementById('my-prev-button').addEventListener('click', function() {
+                    calendar.prev();
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+
+                document.getElementById('my-today-button').addEventListener('click', function() {
+                    calendar.changeView('timeGridDay');
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+                document.getElementById('my-week-button').addEventListener('click', function() {
+                    calendar.changeView('dayGridWeek');
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+                document.getElementById('my-month-button').addEventListener('click', function() {
+                    calendar.changeView('dayGridMonth');
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+            // custom toolbar end
+            
             document.getElementsByClassName('fc-toolbar-chunk').item(0).firstChild.classList.add('left-toolbar');
             // document.querySelector('.fc-timeGridDay-button').insertAdjacentHTML('afterbegin', '<i class="icon icon-users-check-purple"></i>');
         });
