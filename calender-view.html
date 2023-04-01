@@ -310,6 +310,27 @@
                                 </ul>
                             </div>
                         </div>
+                        <!--  -->
+                            <div class="d-flex justify-content-between mt-4">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <button type="button" id="my-prev-button" class="btn btn-info me-3">prev</button>  
+                                    </div>
+                                    <!-- <h2 class="fs-3 mb-0" id="selected-date"></h2> -->
+                                    <h2 class="fs-3 mb-0" id="selected-date"></h2>
+                                    
+                                    <div>
+                                        <button type="button" id="my-next-button" class="btn btn-info ms-3">next</button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex">  
+                                    <button type="button" id="my-today-button" class="btn btn-info">today</button>
+                                    <button type="button" id="my-week-button" class="btn btn-info">week</button>
+                                    <button type="button" id="my-month-button" class="btn btn-info">month</button>
+                                </div>
+                            </div>
+                        <!-- /\   -->
                         <div class="pt-5" id="calendar"></div>
                     </div>
                 </div>
@@ -1620,10 +1641,50 @@
 
     <script>
 
+// 
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
+            
+            // custom start
+                document.getElementById('my-next-button').addEventListener('click', function() {
+                    calendar.next();
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+             
+                document.getElementById('my-prev-button').addEventListener('click', function() {
+                    calendar.prev();
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+
+                document.getElementById('my-today-button').addEventListener('click', function() {
+                    console.log(calendar.currentData.viewTitle);
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+                document.getElementById('my-week-button').addEventListener('click', function(currentViewType) {
+                    
+                        document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                    
+                    
+                });
+                document.getElementById('my-month-button').addEventListener('click', function() {
+                   
+                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                });
+
+                document.getElementById('my-today-button').addEventListener('click', function() {
+                    calendar.changeView('timeGridDay');
+                });
+                document.getElementById('my-week-button').addEventListener('click', function() {
+                    calendar.changeView('dayGridWeek');
+                });
+                document.getElementById('my-month-button').addEventListener('click', function() {
+                    calendar.changeView('dayGridMonth');
+                });
+
+            // custum end
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                
                 events: [
                     {
                         id: '1',
@@ -1713,22 +1774,31 @@
                         click: function () {
                         }
                     },
+                    integrationButton2: {
+                        text: 'Integrations2',
+                        hint: 'Integrations2',
+                        click: function () {
+                        }
+                    },
                 },
+                // headerToolbar: false,
                 headerToolbar: {
                     left: 'prev,title,next',
-                    center: 'integrationButton',
-                    right: 'timeGridDay,dayGridMonth,timeGridWeek',
+                    center:'integrationButton,integrationButton2',
+                    right: 'timeGridDay,timeGridWeek,dayGridMonth',
+                    
                 },
+   
                 buttonText: {
                     day: 'Today',
                     month: 'Month',
                     week: 'Week',
                 },
-                // buttonIcons: {
-                //     month: 'icon-dashboard',
-                //     week: 'icon-calendar',
-                //     day: 'icon-calendar',
-                // },
+                buttonIcons: {
+                    month: 'chevron-right',
+                    week: 'icon-calendar',
+                    day: 'icon-calendar',
+                },
                 dateClick: function () {
                     let createReminderModal = new bootstrap.Modal(document.getElementById('createReminders'))
                     createReminderModal.show()
@@ -1747,6 +1817,9 @@
                     return info;
                 },
             });
+            var view = calendar.view;
+        
+        console.log(calendar,calendar.start);
             calendar.render();
             document.getElementsByClassName('fc-toolbar-chunk').item(0).firstChild.classList.add('left-toolbar');
             // document.querySelector('.fc-timeGridDay-button').insertAdjacentHTML('afterbegin', '<i class="icon icon-users-check-purple"></i>');
