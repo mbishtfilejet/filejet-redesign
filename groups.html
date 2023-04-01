@@ -4296,56 +4296,518 @@
         function format() {
             //this func can accept arguments for dynamic data
             return (
-                `<table class="table table-striped data-table-listing w-100 table-nowrap">
-                <thead>
-                    <tr>
-                        <th class="sorting-none"></th>
-                        <th>License Name 1</th>
-                        <th>City/County 2</th>
-                        <th>Registration Date 3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="javascript:void(0)">
-                            <span class="icon icon-file-dark me-0"></span>
-                        </a></td>
-                        <td>11/14/2021</td>
-                        <td>0000001</td>
-                        <td><a href="./entities-details.html">WeComply
-                            Corp
-                            </a> </td>
-                    </tr>
-                    <tr text-color="red">
-                        <td>
-                            <a href="javascript:void(0)">
-                            <span class="icon icon-file-dark me-0"></span>
-                        </a></td>
-                        <td>11/14/2021</td>
-                        <td>0000001</td>
-                        <td><a href="./entities-details.html">WeComply
-                            Corp</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="javascript:void(0)">
-                            <span class="icon icon-file-dark me-0"></span>
-                        </a></td>
-                        <td>11/14/2021</td>
-                        <td>0000001</td>
-                        <td><a href="./entities-details.html">WeComply
-                            Corp</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="javascript:void(0)">
-                            <span class="icon icon-file-dark me-0"></span>
-                        </a></td>
-                        <td>11/14/2021</td>
-                        <td>0000001</td>
-                        <td><a href="./entities-details.html">WeComply
-                            Corp3</a></td>
-                    </tr>
-                </tbody>
-            </table >`
+                `<table
+                    class="table table-striped w-100 data-table-listing table-nowrap">
+                    <thead>
+                        <tr>
+                            <th class="sorting-none"></th>
+                            <th>Name</th>
+                            <th>Date Added</th>
+                            <th class="sorting-none"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a data-bs-toggle="collapse"
+                                href="#collapseRowTable1"
+                                data-bs-target="#collapseRowTable1"
+                                aria-expanded="false"
+                                aria-controls="collapseRowTable1">
+                                <span
+                                    class="icon icon-folder-upload-purple me-0"></span>
+                            </a></td>
+                            <td>Extra From State</td>
+                            <td>06/12/2021</td>
+                            <td class="text-end">
+                                <span class="icon icon-delete m-0"
+                                    data-toggle="tooltip" title="DELETE"></span>
+                                <span class="icon icon-edit m-0"
+                                    data-toggle="tooltip" title="EDIT"></span>
+                            </td>
+                        </tr>
+                        <tr class="collapse" id="collapseRowTable1"><td colspan="4">
+                            <table class="table table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Document Name</th>
+                                        <th>Date Added</th>
+                                        <th class="invisible opacity-0"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Clearance Certificate
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Misc. Folder
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Extra From State
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteFolder">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Storage
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal"
+                                                class="text-decoration-none">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Taxes
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td></tr>
+                        <tr>
+                            <td><a data-bs-toggle="collapse"
+                                href="#collapseRowTable2"
+                                data-bs-target="#collapseRowTable2"
+                                aria-expanded="false"
+                                aria-controls="collapseRowTable2">
+                                <span
+                                    class="icon icon-folder-upload-purple me-0"></span>
+                            </a></td>
+                            <td>Misc. Folder</td>
+                            <td>06/12/2021</td>
+                            <td class="text-end">
+                                <span class="icon icon-delete m-0"
+                                    data-toggle="tooltip" title="DELETE"></span>
+                                <span class="icon icon-edit m-0"
+                                    data-toggle="tooltip" title="EDIT"></span>
+                            </td>
+                        </tr>
+                        <tr class="collapse" id="collapseRowTable2"><td colspan="4">
+                            <table class="table table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Document Name</th>
+                                        <th>Date Added</th>
+                                        <th class="invisible opacity-0"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Clearance Certificate
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Misc. Folder
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Extra From State
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteFolder">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Storage
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal"
+                                                class="text-decoration-none">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Taxes
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td></tr>
+
+                        <tr>
+                            <td><a data-bs-toggle="collapse"
+                                href="#collapseRowTable3"
+                                data-bs-target="#collapseRowTable3"
+                                aria-expanded="false"
+                                aria-controls="collapseRowTable3">
+                                <span
+                                    class="icon icon-folder-upload-purple me-0"></span>
+                            </a></td>
+                            <td>State File Documents</td>
+                            <td>06/12/2021</td>
+                            <td class="text-end">
+                                <span class="icon icon-delete m-0"
+                                    data-toggle="tooltip" title="DELETE"></span>
+                                <span class="icon icon-edit m-0"
+                                    data-toggle="tooltip" title="EDIT"></span>
+                            </td>
+                        </tr>
+                        <tr class="collapse" id="collapseRowTable3"><td colspan="4">
+                            <table class="table table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Document Name</th>
+                                        <th>Date Added</th>
+                                        <th class="invisible opacity-0"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Clearance Certificate
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Misc. Folder
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Extra From State
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteFolder">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)"
+                                                class="text-decoration-none" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Storage
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="javascript: void(0)" data-bs-toggle="modal"
+                                                data-bs-target="#previewModal"
+                                                class="text-decoration-none">
+                                                <span class="d-inline-block me-2">
+                                                    <span class="icon icon-file-dark m-0"></span>
+                                                </span>
+                                                Taxes
+                                            </a>
+                                        </td>
+                                        <td>06/12/2021</td>
+                                        <td class="text-end">
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="DELETE"
+                                                data-bs-toggle="modal" data-bs-target="#deleteJuri">
+                                                <span class="icon icon-delete m-0"
+                                                    data-toggle="tooltip" title="DELETE"></span>
+                                            </span>
+                                            <span class="d-inline-block ms-3" role="button"
+                                                data-toggle="tooltip" title="EDIT"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateEntityDetails">
+                                                <span class="icon icon-edit m-0"
+                                                    data-toggle="tooltip" title="EDIT"></span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td></tr>
+                    </tbody>
+                </table>`
             );
         }
 
