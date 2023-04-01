@@ -60,7 +60,8 @@ $(function () {
   $('#group-listing').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple",
+    "retrieve": true
   });
 
   $('#partners-name-listing').DataTable({
