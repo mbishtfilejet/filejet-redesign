@@ -4284,7 +4284,7 @@
     <script>
         /* For more info: https://datatables.net/examples/api/row_details.html */
         function format() {
-            //this func can accept arguments for dynamic data
+            const uniqueId = (new Date()).getTime();
             return (
                 `<table
                     class="table table-striped w-100 data-table-listing table-nowrap">
@@ -4299,10 +4299,10 @@
                     <tbody>
                         <tr>
                             <td><a data-bs-toggle="collapse"
-                                href="#collapseRowTable1"
-                                data-bs-target="#collapseRowTable1"
+                                href="#collapseRow1-${uniqueId}"
+                                data-bs-target="#collapseRow1-${uniqueId}"
                                 aria-expanded="false"
-                                aria-controls="collapseRowTable1">
+                                aria-controls="collapseRow1-${uniqueId}">
                                 <span
                                     class="icon icon-folder-upload-purple me-0"></span>
                             </a></td>
@@ -4314,7 +4314,7 @@
                                     ></span>
                             </td>
                         </tr>
-                        <tr class="collapse" id="collapseRowTable1"><td colspan="4">
+                        <tr class="collapse" id="collapseRow1-${uniqueId}"><td colspan="4">
                             <table class="table table-striped w-100">
                                 <thead>
                                     <tr>
@@ -4414,10 +4414,10 @@
                         </td></tr>
                         <tr>
                             <td><a data-bs-toggle="collapse"
-                                href="#collapseRowTable2"
-                                data-bs-target="#collapseRowTable2"
+                                href="#collapseRow2-${uniqueId}"
+                                data-bs-target="#collapseRow2-${uniqueId}"
                                 aria-expanded="false"
-                                aria-controls="collapseRowTable2">
+                                aria-controls="collapseRow2-${uniqueId}">
                                 <span
                                     class="icon icon-folder-upload-purple me-0"></span>
                             </a></td>
@@ -4429,7 +4429,7 @@
                                     ></span>
                             </td>
                         </tr>
-                        <tr class="collapse" id="collapseRowTable2"><td colspan="4">
+                        <tr class="collapse" id="collapseRow2-${uniqueId}"><td colspan="4">
                             <table class="table table-striped w-100">
                                 <thead>
                                     <tr>
@@ -4529,10 +4529,10 @@
 
                         <tr>
                             <td><a data-bs-toggle="collapse"
-                                href="#collapseRowTable3"
-                                data-bs-target="#collapseRowTable3"
+                                href="#collapseRow3-${uniqueId}"
+                                data-bs-target="#collapseRow3-${uniqueId}"
                                 aria-expanded="false"
-                                aria-controls="collapseRowTable3">
+                                aria-controls="collapseRow3-${uniqueId}">
                                 <span
                                     class="icon icon-folder-upload-purple me-0"></span>
                             </a></td>
@@ -4544,7 +4544,7 @@
                                     ></span>
                             </td>
                         </tr>
-                        <tr class="collapse" id="collapseRowTable3"><td colspan="4">
+                        <tr class="collapse" id="collapseRow3-${uniqueId}"><td colspan="4">
                             <table class="table table-striped w-100">
                                 <thead>
                                     <tr>
