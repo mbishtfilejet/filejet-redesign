@@ -310,6 +310,64 @@
                                 </ul>
                             </div>
                         </div>
+                        <!-- custom calendar toolbar start  -->
+                            <div class="d-flex justify-content-between mt-5">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <button type="button" id="my-prev-button" class="btn btn-sm btn-light me-3 p-3 "><span class="icon icon-prev-btn1 me-0"></span></button>  
+                                    </div>
+                                        <h2 class="fs-3 mb-0" id="selected-date"></h2>                                    
+                                    <div>
+                                        <button type="button" id="my-next-button" class="btn btn-sm btn-light ms-3 p-3 "><span class="icon icon-next-btn1 me-0"></span></button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-center align-items-center"> 
+                                    <!-- list group indicator-->
+                                        <div class="me-5">
+                                            <ul class="d-flex justify-content-between align-items-center mb-0">
+                                                <li class="me-5 text-danger fs-6">Overdue</li>
+                                                <li class="fs-6 text-dark">Upcoming</li>
+                                            </ul>
+                                        </div>
+                                    <!-- list group indecator end-->
+                                     <!--integration button  -->
+                                    <div class="dropdown me-4">
+                                        <a class="btn btn-info fs-6 dropdown-togge text-capitalize p-2 ps-4 pe-5" href="#"  id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" data-bs-offset="10,20">
+                                         <span class="me-2 icon icon-integrations"></span> Integrations
+                                        </a>
+                                      
+                                        <ul class="dropdown-menu shadow-sm border-0 p-3 ps-2" aria-labelledby="dropdownMenuClickableInside">
+                                        <li><a class="dropdown-item fs-7 fw-bold text-uppercase bg-white" href="#">Integrations</a></li>
+                                        <li class="mt-3">
+                                            <div class="dropdown-item bg-white d-flex justify-content-start align-items-center">
+                                                <span class="icon-lg me-2 icon-google-calendar"></span> 
+                                                <div class="d-flex justify-content-between align-items-center w-100">
+                                                    <label class="form-check-label mb-0" for="inlineRadio2">Google Calendar</label>
+                                                    <input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-3 mt-3">
+                                            <div class="dropdown-item bg-white d-flex justify-content-start align-items-center">
+                                                <span class="icon-lg me-2 icon-microsoft-outlook"></span> 
+                                                <div class="d-flex justify-content-between align-items-center w-100">
+                                                    <label class="form-check-label mb-0" for="inlineRadio1">Microsoft Outlook</label>
+                                                    <input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                    <!-- itegration btn end -->
+                                    <div class="d-flex" id="btngroup">
+                                        <button type="button" id="my-today-button" class="btn btn-light btn-sm btnChange1  p-2 ps-3 pe-3 fs-6 text-capitalize rounded-0 rounded-start"><span class="me-2 icon icon-toolbar-day normal-icon"></span><span class="me-2 icon icon-toolbar-day-white active-icon"></span> Today</button>
+                                        <button type="button" id="my-week-button" class="btn btn-light btn-sm btnChange1 p-2 ps-3 pe-3 fs-6 text-capitalize rounded-0"><span class="me-2 icon icon-toolbar-week normal-icon"></span><span class="me-2 icon icon-toolbar-week-white active-icon"></span> Week</button>
+                                        <button type="button" id="my-month-button" class="btn btn-light btn-sm btnChange1 active2 p-2 ps-3 fs-6 pe-3 text-capitalize rounded-0 rounded-end"><span class="me-2 icon icon-toolbar-month-white active-icon"></span><span class="me-2 icon icon-toolbar-month-black normal-icon"></span> Month</button>
+                                    </div>    
+                                </div>
+                            </div>
+                        <!-- custom calendar toolbar end   -->
                         <div class="pt-5" id="calendar"></div>
                     </div>
                 </div>
@@ -719,7 +777,7 @@
                                     <div>
                                         <div class="dropdown white-bg p-0 rounded-5">
 
- <a class="nav-link px-0">
+                                                <a class="nav-link px-0">
                                                 <span class="user-name fw-bold">Notification</span>
                                             </a>
                                             <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
@@ -1618,12 +1676,27 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
     <!-- <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.4/index.global.min.js'></script> -->
 
+<!-- dynamic active/remove class script -->
+    <script>
+        const buttons = document.querySelectorAll(".btnChange1");
+        buttons.forEach(button => {
+        button.addEventListener("click", function() {
+            buttons.forEach(btn => {
+            btn.classList.remove("active2");
+            });
+            button.classList.add("active2");
+        });
+        });
+    </script>
+<!-- end -->
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
+            
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                
                 events: [
                     {
                         id: '1',
@@ -1706,29 +1779,7 @@
                         dayHeaderFormat: { weekday: 'short', day: 'numeric' },
                     }
                 },
-                customButtons: {
-                    integrationButton: {
-                        text: 'Integrations',
-                        hint: 'Integrations',
-                        click: function () {
-                        }
-                    },
-                },
-                headerToolbar: {
-                    left: 'prev,title,next',
-                    center: 'integrationButton',
-                    right: 'timeGridDay,dayGridMonth,timeGridWeek',
-                },
-                buttonText: {
-                    day: 'Today',
-                    month: 'Month',
-                    week: 'Week',
-                },
-                // buttonIcons: {
-                //     month: 'icon-dashboard',
-                //     week: 'icon-calendar',
-                //     day: 'icon-calendar',
-                // },
+                headerToolbar: false,
                 dateClick: function () {
                     let createReminderModal = new bootstrap.Modal(document.getElementById('createReminders'))
                     createReminderModal.show()
@@ -1747,9 +1798,20 @@
                     return info;
                 },
             });
+
+            var view = calendar.view;
+            console.log(calendar,calendar.start);
             calendar.render();
-            document.getElementsByClassName('fc-toolbar-chunk').item(0).firstChild.classList.add('left-toolbar');
-            // document.querySelector('.fc-timeGridDay-button').insertAdjacentHTML('afterbegin', '<i class="icon icon-users-check-purple"></i>');
+
+             // custom toolbar start
+            document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+            const setSelectedDate = () => document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+            document.getElementById('my-next-button').addEventListener('click', () => { calendar.next(); setSelectedDate(); });
+            document.getElementById('my-prev-button').addEventListener('click', () => { calendar.prev(); setSelectedDate(); });
+            document.getElementById('my-today-button').addEventListener('click', () => { calendar.changeView('timeGridDay'); setSelectedDate(); });
+            document.getElementById('my-week-button').addEventListener('click', () => { calendar.changeView('dayGridWeek'); setSelectedDate(); });
+            document.getElementById('my-month-button').addEventListener('click', () => { calendar.changeView('dayGridMonth'); setSelectedDate(); });
+            // custom toolbar end
         });
 
     </script>
