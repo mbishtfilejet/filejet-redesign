@@ -1804,34 +1804,14 @@
             calendar.render();
 
              // custom toolbar start
-               
-                document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                document.getElementById('my-next-button').addEventListener('click', function() {
-                    calendar.next();
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                });
-                document.getElementById('my-prev-button').addEventListener('click', function() {
-                    calendar.prev();
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                });
-
-                document.getElementById('my-today-button').addEventListener('click', function() {
-                    calendar.changeView('timeGridDay');
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                    
-                });
-                document.getElementById('my-week-button').addEventListener('click', function() {
-                    calendar.changeView('dayGridWeek');
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                });
-                document.getElementById('my-month-button').addEventListener('click', function() {
-                    calendar.changeView('dayGridMonth');
-                    document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-                });
+            document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+            const setSelectedDate = () => document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+            document.getElementById('my-next-button').addEventListener('click', () => { calendar.next(); setSelectedDate(); });
+            document.getElementById('my-prev-button').addEventListener('click', () => { calendar.prev(); setSelectedDate(); });
+            document.getElementById('my-today-button').addEventListener('click', () => { calendar.changeView('timeGridDay'); setSelectedDate(); });
+            document.getElementById('my-week-button').addEventListener('click', () => { calendar.changeView('dayGridWeek'); setSelectedDate(); });
+            document.getElementById('my-month-button').addEventListener('click', () => { calendar.changeView('dayGridMonth'); setSelectedDate(); });
             // custom toolbar end
-            
-            // document.getElementsByClassName('fc-toolbar-chunk').item(0).firstChild.classList.add('left-toolbar');
-            // document.querySelector('.fc-timeGridDay-button').insertAdjacentHTML('afterbegin', '<i class="icon icon-users-check-purple"></i>');
         });
 
     </script>
