@@ -361,9 +361,9 @@
                                     </div>
                                     <!-- itegration btn end -->
                                     <div class="d-flex" id="btngroup">
-                                        <button type="button" id="my-today-button" class="btn btn-light btn-sm btnChange1  p-2 ps-3 pe-3 fs-6 text-capitalize rounded-0 rounded-start"><span class="me-2 icon icon-toolbar-day normal-icon"></span><span class="me-2 icon icon-toolbar-day-white active-icon"></span> Today</button>
-                                        <button type="button" id="my-week-button" class="btn btn-light btn-sm btnChange1 p-2 ps-3 pe-3 fs-6 text-capitalize rounded-0"><span class="me-2 icon icon-toolbar-week normal-icon"></span><span class="me-2 icon icon-toolbar-week-white active-icon"></span> Week</button>
-                                        <button type="button" id="my-month-button" class="btn btn-light btn-sm btnChange1 active2 p-2 ps-3 fs-6 pe-3 text-capitalize rounded-0 rounded-end"><span class="me-2 icon icon-toolbar-month-white active-icon"></span><span class="me-2 icon icon-toolbar-month-black normal-icon"></span> Month</button>
+                                        <button type="button" id="my-today-button" class="btn btn-light btn-sm btnChange1  p-2 ps-3 pe-3 fs-6 text-capitalize rounded-0 rounded-start"><span class="me-2 icon icon-toolbar-day normal-icon mb-1"></span><span class="me-2 icon icon-toolbar-day-white active-icon mb-1"></span> Today</button>
+                                        <button type="button" id="my-week-button" class="btn btn-light btn-sm btnChange1 p-2 ps-3 pe-3 fs-6 text-capitalize rounded-0"><span class="me-2 mb-1 icon icon-toolbar-week normal-icon"></span><span class="me-2 mb-1 icon icon-toolbar-week-white active-icon"></span> Week</button>
+                                        <button type="button" id="my-month-button" class="btn btn-light btn-sm btnChange1 active2 p-2 ps-3 fs-6 pe-3 text-capitalize rounded-0 rounded-end"><span class="me-2 mb-1 icon icon-toolbar-month-white active-icon"></span><span class="me-2 mb-1 icon icon-toolbar-month-black normal-icon"></span> Month</button>
                                     </div>    
                                 </div>
                             </div>
@@ -1689,14 +1689,14 @@
         });
     </script>
 <!-- end -->
-    <script>
 
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
             
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                
+                slotDuration: '24:00:00',
                 events: [
                     {
                         id: '1',
@@ -1769,6 +1769,13 @@
                         textColor: 'black',
                         className: 'caledar-event-overdue'
                     },
+                    {
+                        id: '11',
+                        title: 'Annual Tax Report',
+                        start: '2023-04-05',
+                        textColor: 'black',
+                        className: 'caledar-event-overdue'
+                    },
                 ],
                 views: {
                     dayGridMonth: {
@@ -1777,7 +1784,11 @@
                     week: {
                         titleFormat: { month: 'short', day: 'numeric' },
                         dayHeaderFormat: { weekday: 'short', day: 'numeric' },
-                    }
+                    },
+                    dayGridDay:{
+                        dayMaxEvents: 2,
+                    },
+                    
                 },
                 headerToolbar: false,
                 dateClick: function () {
