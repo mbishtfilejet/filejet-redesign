@@ -323,3 +323,34 @@ $('.filter-state-label').hover(
     $this.text($this.data('defaultText'));
   }
 );
+
+function editDocumentName() {
+  // add click event listener to all edit icons in the table
+  $('.edit-document-name').click(function () {
+      // get the table row containing the clicked edit icon
+      var tableRow = $(this).closest('tr');
+      // get the second span element in the first cell of the row
+      var spanElement = tableRow.find('.doc-name');
+      // set the contentEditable attribute to true
+      spanElement.attr('contentEditable', true);
+      // set focus on the span element to start editing
+      spanElement.focus();
+      // hide the edit button and show the save button
+      $(this).hide();
+      tableRow.find('.save-document-name').show();
+  });
+
+  // add click event listener to all save icons in the table
+  $('.save-document-name').click(function () {
+      // get the table row containing the clicked save icon
+      var tableRow = $(this).closest('tr');
+      // get the element with doc nme class in the first cell of the row
+      var spanElement = tableRow.find('.doc-name');
+      // disable editing by removing the contentEditable attribute
+      spanElement.removeAttr('contentEditable');
+      // hide the save button and show the edit button
+      $(this).hide();
+      tableRow.find('.edit-document-name').show();
+  });
+}
+editDocumentName();
