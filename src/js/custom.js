@@ -325,6 +325,8 @@ $('.filter-state-label').hover(
 );
 
 function editDocumentName() {
+  // hide all save button
+  $('.save-document-name').hide();
   // add click event listener to all edit icons in the table
   $('.edit-document-name').click(function () {
       // get the table row containing the clicked edit icon
