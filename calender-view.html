@@ -368,6 +368,22 @@
                                 </div>
                             </div>
                         <!-- custom calendar toolbar end   -->
+                       
+                        <!-- custom tooltip -->
+                        <div id="tooltipCustom" class="mt-5 position-absolute">
+                            <div class="bg-white w-100 rounded-3 shadow-lg p-4">
+                                <div class="d-flex justify-content-end">
+                                    <a href="#"><span class="icon icon-delete me-3" data-bs-target="#eventDelete" data-bs-toggle="modal"></span></a>
+                                    <a href="#"><span class="icon icon-edit" data-bs-toggle="modal" data-bs-target="#editEventGroupModal"></span></a>
+                                </div>
+                                <h4 class="fw-semibold">Reminder Name</h4>
+                                <p>I need to remember when this is.</p>
+                                <p class="text-lighter"><span>2 December</span> <span>2021</span> <span>•</span> <span>3:30PM - 5:30PM</span>
+                                    Daily</p>
+                            </div>
+                        </div>
+                        <!--end  -->
+
                         <div class="pt-5 mb-3" id="calendar"></div>
                     </div>
                 </div>
@@ -1670,7 +1686,7 @@
         </div>
     </div>
     <!-- edit Reminders Modal End-->
-
+   
     <script src="dist/js/plugins.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.4/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
@@ -1692,6 +1708,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            var name = 'vivek';
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
@@ -1761,20 +1778,46 @@
                         className: 'caledar-event-overdue'
                     },
                     {
-                        id: '10',
+                        // id: '10',
                         title: 'Annual Tax Report',
-                        start: '2023-03-12',
+                        start: '2023-04-03',
                         textColor: 'black',
-                        className: 'caledar-event-overdue'
+                        className: 'caledar-event-upcoming',
+                        desciptions:"im description test for events"
                     },
                     {
-                        id: '11',
-                        title: 'Annual Tax Report',
-                        start: '2023-04-06',
+                        id: 'cutomUpcomingEvent',
+                        myIds:'myCustomEvents',
+                        title: 'Reminder Name',
+                        start: new Date(),
+                        startStr:"2023-04-08",
+                        display:'block',
+                        allDay:true,
                         textColor: 'black',
-                        className: 'caledar-event-overdue'
+                        className: 'caledar-event-upcoming',
+                        description: 'Lecture some text for description',
+                        displayEventEnd:false,
                     },
+                    
                 ],
+                eventDidMount: function(info) {
+                    if (info.el.classList.contains('caledar-event-upcoming')){
+                    var eventEl = info.el;
+                    var newElement = document.createElement('div');
+                    newElement.classList.add('customEle');
+                    newElement.innerHTML = '<div class="w-100 d-flex flex-wrap text-lighter fs-6 pt-3 fw-normal me-4"><span>Steve’s Accounting</span> <span class="text-dark bg-white p-2 mt-2 rounded fs-7 fw-normal"><i class="icon me-0 icon-bell"></i> <span clas="d-flex flex-wrap"><span>02/12/2021</span> • <span>3:30PM</span></span></span> </div>';
+                    eventEl.appendChild(newElement);
+                    }
+                },
+                eventMouseEnter: function(info) {
+                    if (info.el.classList.contains('caledar-event-upcoming')){
+                    var tooltipEl = document.getElementById('tooltipCustom');
+                    tooltipEl.classList.add("d-block");
+                    tooltipEl.style.left = info.jsEvent.clientX + 'px';
+                    tooltipEl.style.top = info.jsEvent.clientY + 'px';
+                    }
+                },
+                
                 views: {
                     dayGridMonth: {
                         dayMaxEvents: 2,
@@ -1785,9 +1828,9 @@
                     },
                     dayGridDay:{
                         dayMaxEvents: 2,
-                    },
-                    
+                    },   
                 },
+                
                 headerToolbar: false,
                 dateClick: function () {
                     let createReminderModal = new bootstrap.Modal(document.getElementById('createReminders'))
@@ -1809,15 +1852,23 @@
             });
             var view = calendar.view;
             calendar.render();
+
+            // tooltip will go
+                document.getElementById("tooltipCustom").addEventListener("mouseleave", function() {
+                    this.classList.remove("d-block");
+                });
+            // tooltip end
+
              // custom toolbar start
-            document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-            const setSelectedDate = () => document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
-            document.getElementById('my-next-button').addEventListener('click', () => { calendar.next(); setSelectedDate(); });
-            document.getElementById('my-prev-button').addEventListener('click', () => { calendar.prev(); setSelectedDate(); });
-            document.getElementById('my-today-button').addEventListener('click', () => { calendar.changeView('timeGridDay'); setSelectedDate(); });
-            document.getElementById('my-week-button').addEventListener('click', () => { calendar.changeView('dayGridWeek'); setSelectedDate(); });
-            document.getElementById('my-month-button').addEventListener('click', () => { calendar.changeView('dayGridMonth'); setSelectedDate(); });
+                document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                const setSelectedDate = () => document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
+                document.getElementById('my-next-button').addEventListener('click', () => { calendar.next(); setSelectedDate(); });
+                document.getElementById('my-prev-button').addEventListener('click', () => { calendar.prev(); setSelectedDate(); });
+                document.getElementById('my-today-button').addEventListener('click', () => { calendar.changeView('timeGridDay'); setSelectedDate(); });
+                document.getElementById('my-week-button').addEventListener('click', () => { calendar.changeView('dayGridWeek'); setSelectedDate(); });
+                document.getElementById('my-month-button').addEventListener('click', () => { calendar.changeView('dayGridMonth'); setSelectedDate(); });
             // custom toolbar end
+            
         });
 
     </script>
