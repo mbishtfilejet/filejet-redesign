@@ -4396,6 +4396,93 @@
     </div>
     <!-- Create Folder Modal End-->
 
+    <!-- delete folder Modal start-->
+    <div class="modal modal-right fade" id="deleteFolder" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-danger p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-delete-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Folder
+                                Deletion</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Are you sure you want to delete this folder</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This will permanently remove this Folder and its content.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-3">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button"
+                            class="btn btn-danger text-uppercase text-decoration-none font-weight-600 opacity-50 me-3"
+                            data-bs-dismiss="modal">
+                            <span class="text-black opacity-1">Confirm</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete folder Modal End-->
+
+    <!-- delete document Modal start-->
+    <div class="modal modal-right fade" id="deleteDocument" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-danger p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-delete-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Folder
+                                Deletion</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Are you sure you want to delete this Document</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This will permanently remove this file.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-3">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button"
+                            class="btn btn-danger text-uppercase text-decoration-none font-weight-600 opacity-50 me-3"
+                            data-bs-dismiss="modal">
+                            <span class="text-black opacity-1">Confirm</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete document Modal End-->
+
+
     <script>
         /* For more info: https://datatables.net/examples/api/row_details.html */
         function format() {
@@ -4426,12 +4513,12 @@
                                     <span
                                         class="icon icon-folder-upload-purple me-0"></span>
                                 </a></td>
-                                <td>Extra From State</td>
+                                <td class="doc-name">Extra From State</td>
                                 <td>06/12/2021</td>
                                 <td class="text-end">
-                                    <span class="icon icon-delete me-3"></span>
-                                    <span class="icon icon-edit m-0"
-                                    ></span>
+                                    <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                    <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                    <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteFolder"></span>
                                 </td>
                             </tr>
                             <tr class="collapse remove-hover" id="collapseRow1-${uniqueId}"><td colspan="4">
@@ -4454,13 +4541,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Clearance Certificate
                                                         </a>
+                                                        <span class="doc-name">Clearance Certificate</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4471,13 +4559,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Misc. Folder
                                                         </a>
+                                                        <span class="doc-name"> Misc. Folder</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4488,13 +4577,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Extra From State
                                                         </a>
+                                                        <span class="doc-name">Extra From State</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4505,13 +4595,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Storage
                                                         </a>
+                                                        <span class="doc-name"> Storage</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4522,13 +4613,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Taxes
                                                         </a>
+                                                        <span class="doc-name">Taxes</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -4549,12 +4641,12 @@
                                     <span
                                         class="icon icon-folder-upload-purple me-0"></span>
                                 </a></td>
-                                <td>Misc. Folder</td>
+                                <td class="doc-name">Misc. Folder</td>
                                 <td>06/12/2021</td>
                                 <td class="text-end">
-                                    <span class="icon icon-delete me-3"></span>
-                                    <span class="icon icon-edit m-0"
-                                    ></span>
+                                    <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                    <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                    <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteFolder"></span>
                                 </td>
                             </tr>
                             <tr class="collapse remove-hover" id="collapseRow2-${uniqueId}"><td colspan="4">
@@ -4577,13 +4669,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Clearance Certificate
                                                         </a>
+                                                        <span class="doc-name">Clearance Certificate</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4594,13 +4687,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Misc. Folder
                                                         </a>
+                                                        <span class="doc-name"> Misc. Folder</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4611,13 +4705,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Extra From State
                                                         </a>
+                                                        <span class="doc-name">Extra From State</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4628,13 +4723,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Storage
                                                         </a>
+                                                        <span class="doc-name"> Storage</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4645,13 +4741,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Taxes
                                                         </a>
+                                                        <span class="doc-name">Taxes</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -4673,12 +4770,12 @@
                                     <span
                                         class="icon icon-folder-upload-purple me-0"></span>
                                 </a></td>
-                                <td>State File Documents</td>
+                                <td class="doc-name">State File Documents</td>
                                 <td>06/12/2021</td>
                                 <td class="text-end">
-                                    <span class="icon icon-delete me-3"></span>
-                                    <span class="icon icon-edit m-0"
-                                    ></span>
+                                    <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                    <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                    <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteFolder"></span>
                                 </td>
                             </tr>
                             <tr class="collapse remove-hover" id="collapseRow3-${uniqueId}"><td colspan="4">
@@ -4701,13 +4798,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Clearance Certificate
                                                         </a>
+                                                        <span class="doc-name">Clearance Certificate</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4718,13 +4816,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Misc. Folder
                                                         </a>
+                                                        <span class="doc-name"> Misc. Folder</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4735,13 +4834,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Extra From State
                                                         </a>
+                                                        <span class="doc-name">Extra From State</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4752,13 +4852,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Storage
                                                         </a>
+                                                        <span class="doc-name"> Storage</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -4769,13 +4870,14 @@
                                                             <span class="d-inline-block me-2">
                                                                 <span class="icon icon-file-dark m-0"></span>
                                                             </span>
-                                                            Taxes
                                                         </a>
+                                                        <span class="doc-name">Taxes</span>
                                                     </td>
                                                     <td>06/12/2021</td>
                                                     <td class="text-end">
-                                                        <span class="icon icon-delete mx-3"></span>
-                                                        <span class="icon icon-edit m-0"></span>
+                                                        <span class="icon icon-edit edit-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-save save-document-name mx-3 cursor-pointer"></span>
+                                                        <span class="icon icon-delete m-0 cursor-pointer" data-bs-toggle="modal" data-bs-target="#deleteDocument"></span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -4807,6 +4909,7 @@
                     row.child(format()).show();
                     tr.addClass('shown');
                     row.child().addClass('remove-hover');
+                    editDocumentName(); //calling edit document name function defined in custom.js
                     fileUploadInput(); //call file upload input function defined in custom.js 
                 }
                 $('td[colspan="8"]').addClass('nested-table');
