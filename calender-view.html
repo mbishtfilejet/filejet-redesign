@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html lang="en">
 
 <head>
@@ -1718,27 +1719,30 @@
                         start: '2023-03-01',
                         textColor: 'black',
                         className: 'caledar-event-overdue',
+                        description: 'Steve’s Accounting 1',
                     },
                     {
                         id: '2',
                         title: 'Annual Tax Report',
                         start: '2023-03-08',
                         textColor: 'black',
-                        className: 'caledar-event-overdue'
+                        className: 'caledar-event-overdue',
+                        description: 'Steve’s Accounting 2',
                     },
                     {
                         id: '3',
                         title: 'Annual Tax Report',
                         start: '2023-03-08',
                         textColor: 'black',
-                        className: 'caledar-event-upcoming',
-                        desciption: 'Steve’s Accounting',
+                        className: 'caledar-event-upcoming 3',
+                        description: 'Steve’s Accounting',
                     },
                     {
                         id: '4',
                         title: 'Annual Tax Report',
                         start: '2023-03-12',
                         textColor: 'black',
+                        description: 'Steve’s Accounting 4',
                         className: 'caledar-event-overdue'
                     },
                     {
@@ -1746,6 +1750,7 @@
                         title: 'Annual Tax Report',
                         start: '2023-03-12',
                         textColor: 'black',
+                        description: 'Steve’s Accounting 5',
                         className: 'caledar-event-overdue'
                     },
                     {
@@ -1753,6 +1758,7 @@
                         title: 'Annual Tax Report',
                         start: '2023-03-12',
                         textColor: 'black',
+                        description: 'Steve’s Accounting 6',
                         className: 'caledar-event-overdue'
                     },
                     {
@@ -1760,6 +1766,7 @@
                         title: 'Annual Tax Report',
                         start: '2023-03-12',
                         textColor: 'black',
+                        description: 'Steve’s Accounting 7',
                         className: 'caledar-event-overdue'
                     },
                     {
@@ -1767,6 +1774,7 @@
                         title: 'Annual Tax Report',
                         start: '2023-03-12',
                         textColor: 'black',
+                        description: 'Steve’s Accounting 8',
                         className: 'caledar-event-overdue'
                     },
                     {
@@ -1774,6 +1782,7 @@
                         title: 'Annual Tax Report',
                         start: '2023-03-12',
                         textColor: 'black',
+                        description: 'Steve’s Accounting 9',
                         className: 'caledar-event-overdue'
                     },
                     {
@@ -1781,8 +1790,8 @@
                         title: 'Annual Tax Report',
                         start: '2023-04-03',
                         textColor: 'black',
-                        className: 'caledar-event-upcoming',
-                        desciptions:"im description test for events"
+                        className: 'caledar-event-overdue',
+                        description:"I'm description test for events"
                     },
                     {
                         id: '12',
@@ -1798,12 +1807,21 @@
                     },
                     
                 ],
+                eventContent: function(info) {
+                    var eventDescription = '';
+                    if (info.event.extendedProps.description) {
+                        eventDescription = '<div class="fc-event-description text-lighter fs-6 pt-1 fw-normal">' + info.event.extendedProps.description + '</div>';
+                    }
+                    return {
+                        html: '<div class="fc-event-title fw-bold fs-6">' + info.event.title + '</div>' + eventDescription
+                    }
+                },
                 eventDidMount: function(info) {
                     if (info.el.classList.contains('caledar-event-upcoming')){
                     var eventEl = info.el;
                     var newElement = document.createElement('div');
                     newElement.classList.add('customEle');
-                    newElement.innerHTML = '<div class="w-100 d-flex flex-wrap text-lighter fs-6 pt-3 fw-normal me-4"><span>Steve’s Accounting</span> <span class="text-dark bg-white p-2 mt-2 rounded fs-7 fw-normal"><i class="icon me-0 icon-bell"></i> <span clas="d-flex flex-wrap"><span>02/12/2021</span> • <span>3:30PM</span></span></span> </div>';
+                    newElement.innerHTML = '<div class="w-100 d-flex flex-wrap text-lighter fs-6 pt-1 fw-normal me-4"><span class="text-dark bg-white p-2 mt-2 rounded fs-7 fw-normal"><i class="icon me-0 icon-bell"></i> <span clas="d-flex flex-wrap"><span>02/12/2021</span> • <span>3:30PM</span></span></span> </div>';
                     eventEl.appendChild(newElement);
                     }
                 },
@@ -1856,7 +1874,6 @@
                     this.classList.remove("d-block");
                 });
             // tooltip end
-
              // custom toolbar start
                 document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
                 const setSelectedDate = () => document.getElementById("selected-date").innerHTML = calendar.currentData.viewTitle;
