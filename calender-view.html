@@ -374,7 +374,7 @@
                             <div class="bg-white w-100 rounded-3 shadow-lg p-4">
                                 <div class="d-flex justify-content-end">
                                     <a href="#"><span class="icon icon-delete me-3" data-bs-target="#eventDelete" data-bs-toggle="modal"></span></a>
-                                    <a href="#"><span class="icon icon-edit" data-bs-toggle="modal" data-bs-target="#editEventGroupModal"></span></a>
+                                    <a href="#"><span class="icon icon-edit" data-bs-toggle="modal" data-bs-target="#editReminders"></span></a>
                                 </div>
                                 <h4 class="fw-semibold">Reminder Name</h4>
                                 <p>I need to remember when this is.</p>
@@ -1521,7 +1521,7 @@
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 mb-4 pb-2">
                         <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
-                            <span class="icon icon-md icon-bell-white m-0"></span>
+                            <span class="icon icon-md icon-edit-white m-0"></span>
                         </span>
                         <div>
                             <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit
@@ -1836,11 +1836,12 @@
                 },
                 eventClick: function (e) {
                     let editReminderModa;
-                    if (e.event.extendedProps.desciption) {
+                    if (e.el.classList.contains('caledar-event-overdue')) {
                         editReminderModal = new bootstrap.Modal(document.getElementById('actionModal'))
                     }
-                    else editReminderModal = new bootstrap.Modal(document.getElementById('editReminders'))
+                    // else editReminderModal = new bootstrap.Modal(document.getElementById('editReminders'))
                     editReminderModal.show()
+                   
                 },
                 moreLinkClick: function (info) {
                     let createReminderModal = new bootstrap.Modal(document.getElementById('remindersList'))
@@ -1850,7 +1851,6 @@
             });
             var view = calendar.view;
             calendar.render();
-
             // tooltip will go
                 document.getElementById("tooltipCustom").addEventListener("mouseleave", function() {
                     this.classList.remove("d-block");
