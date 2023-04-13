@@ -145,10 +145,6 @@ $(function () {
     $('#' + dataId).addClass('active');
   });
 
-  $(document).on('click', '.toggleSection', function () {
-    $(this).parents('.step-section').addClass('collapse');
-    $(this).parents('.step-section').next('.step-section').removeClass('collapse');
-  });
 
   $('.open-folder').on('click', function () {
     let dataId = $(this).attr('data-id');
@@ -370,16 +366,18 @@ function editDocumentName() {
 }
 editDocumentName();
 
+function toggleSection(that) {
+  $(that).parents('.step-section').addClass('collapse');
+  $(that).parents('.step-section').next('.step-section').removeClass('collapse');
+}
 
-function additionalServicesOptionTab(){
-   // this function for stepper to redirect to second step in pages additional services/select
-    const searchParams = new URLSearchParams(window.location.search);
-    const tab = searchParams.get('tab');
-    if (tab === 'options'){
-        //automatic trigger on next button 
-        var element = document.getElementsByClassName("toggleSection")[0];
-        // Click on the element
-        element.click();
-    }
-    
+function additionalServicesOptionTab(that) {
+  // this function for stepper to redirect to second step in pages additional services/select
+  const searchParams = new URLSearchParams(window.location.search);
+  const tab = searchParams.get('tab');
+  if (tab === 'options') {
+    //automatic trigger on next button 
+    toggleSection(that)
+  }
+
 }

@@ -88,7 +88,7 @@
                                         <span class="icon icon-business normal-icon"></span>
                                         <span class="icon icon-business-purple active-icon"></span>
                                     </span>
-                                      <span class="text nav-text position-relative">Business Licenses
+                                    <span class="text nav-text position-relative">Business Licenses
                                         <span class="count-notification position-absolute">1</span>
                                     </span>
                                 </a>
@@ -348,7 +348,8 @@
                                 </div>
                                 <div class="ms-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="setupSection" id="" value="" checked>
+                                        <input class="form-check-input" type="radio" name="setupSection" id="" value=""
+                                            checked>
                                         <label class="form-check-label top-0" for="inlineRadio1">Entity</label>
                                     </div>
                                     <div class="form-check form-check-inline">
@@ -379,7 +380,7 @@
                                 <a href="" type="button" class="btn btn-link px-2 py-3 text-uppercase">
                                     SAVE AND EXIT
                                 </a>
-                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection">
+                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection" onclick="toggleSection(this)">
                                     NEXT
                                 </button>
                             </div>
@@ -609,7 +610,7 @@
                                     data-bs-toggle="modal" data-bs-target="#exitModal">
                                     SAVE AND EXIT
                                 </a>
-                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection">
+                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection" onclick="toggleSection(this)">
                                     NEXT
                                 </button>
                             </div>
@@ -1376,12 +1377,13 @@
 
     <script>
         // this function for stepper to redirect to second step in pages additional services/select
-        window.onload = () => additionalServicesOptionTab() 
+        window.onload = () => additionalServicesOptionTab($('.toggleSection')[0]) 
+
     </script>
     <!-- Preview Modal Ends -->
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
-    
+
 </body>
 
 </html>
