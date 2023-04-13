@@ -439,7 +439,7 @@
                 <a href="" type="button" class="btn btn-link px-2 py-3 text-uppercase">
                   SAVE AND EXIT
                 </a>
-                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection">
+                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection" onclick="toggleSection(this)">
                   NEXT
                 </button>
               </div>
@@ -631,7 +631,7 @@
                   data-bs-target="#exitModal">
                   SAVE AND EXIT
                 </a>
-                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection">
+                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection" onclick="toggleSection(this)">
                   NEXT
                 </button>
               </div>
@@ -947,7 +947,6 @@
 
     </div>
   </div>
-
   <!--Save and exit Button Form-->
   <div class="modal modal-right fade" id="exitModal" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
     aria-hidden="true">
@@ -1904,10 +1903,13 @@
     </div>
   </div>
   <!-- Notification Modal Ends -->
-
-
+  <script>
+    // this function for stepper to redirect to second step in pages additional services/select
+    window.onload = () => additionalServicesOptionTab($('.toggleSection')[0]) 
+  </script>
   <script src="dist/js/plugins.min.js"></script>
   <script src="dist/js/custom.min.js"></script>
+
 </body>
 
 </html>
