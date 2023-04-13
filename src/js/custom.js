@@ -369,3 +369,15 @@ function editDocumentName() {
   });
 }
 editDocumentName();
+
+
+function additionalServicesOptionTab(){
+   // this function for stepper to redirect to second step in pages additional services/select
+    const searchParams = new URLSearchParams(window.location.search);
+    const tab = searchParams.get('tab');
+    if (tab === 'options'){
+        //automatic trigger on next button 
+        document.getElementById("tabOption").click();
+    }
+    
+}
