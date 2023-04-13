@@ -377,7 +377,9 @@ function additionalServicesOptionTab(){
     const tab = searchParams.get('tab');
     if (tab === 'options'){
         //automatic trigger on next button 
-        document.getElementById("tabOption").click();
+        var element = document.getElementsByClassName("toggleSection")[0];
+        // Click on the element
+        element.click();
     }
     
 }
