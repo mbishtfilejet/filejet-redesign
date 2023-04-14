@@ -312,7 +312,7 @@
                             </div>
                         </div>
                         <!-- custom calendar toolbar start  -->
-                        <div class="d-flex justify-content-between mt-5">
+                        <div class="d-flex justify-content-between mt-5" id="customToolbar">
                             <div class="d-flex align-items-center">
                                 <div>
                                     <button type="button" id="my-prev-button"
@@ -1913,6 +1913,10 @@
                 this.classList.remove("d-block");
             });
             document.querySelector(".btn-close").addEventListener("click", function () {
+                document.getElementById("tooltipCustom").classList.remove("d-block");
+            });
+
+            document.getElementById("customToolbar").addEventListener("mouseover", function () {
                 document.getElementById("tooltipCustom").classList.remove("d-block");
             });
             // tooltip end
