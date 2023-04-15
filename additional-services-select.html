@@ -145,7 +145,8 @@
                             </li>
                             <!-- Additional Services -->
                             <li class="nav-link active">
-                                <a href="./additional-services.html" class="text-decoration-none ps-3 py-3 d-block">
+                                <a href="#" class="text-decoration-none ps-3 py-3 d-block" data-bs-toggle="modal"
+                                    data-bs-target="#servicesModal">
                                     <span>
                                         <span class="icon icon-services normal-icon"></span>
                                         <span class="icon icon-services-purple active-icon"></span>
@@ -380,7 +381,8 @@
                                 <a href="" type="button" class="btn btn-link px-2 py-3 text-uppercase">
                                     SAVE AND EXIT
                                 </a>
-                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection" onclick="toggleSection(this)">
+                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection"
+                                    onclick="toggleSection(this)">
                                     NEXT
                                 </button>
                             </div>
@@ -610,7 +612,8 @@
                                     data-bs-toggle="modal" data-bs-target="#exitModal">
                                     SAVE AND EXIT
                                 </a>
-                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection" onclick="toggleSection(this)">
+                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection"
+                                    onclick="toggleSection(this)">
                                     NEXT
                                 </button>
                             </div>
@@ -1375,9 +1378,319 @@
         </div>
     </div>
 
+    <!-- Service Modal Starts -->
+    <div class="modal modal-right fade" id="servicesModal" tabindex="-1" aria-labelledby="servicesModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-cart-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Additional
+                                Services</span>
+                            <h3 class="fs-3 m-0 mt-2 fw-bold">Select a Service</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100">
+                        <span class="icon icon-search-grey"></span>
+                        <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                            placeholder="Find a Service">
+                    </div>
+                    <div class="d-flex pt-4 w-100 btn-tab">
+                        <button data-id="new" type="button"
+                            class="active btn btn-light text-capitalize w-100 me-2 py-2">New</button>
+                        <button data-id="inProcess" type="button" class="btn btn-light text-capitalize w-100 py-2">In
+                            Progress</button>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div id="new" class="btn-tab-content" style="display: block;">
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-bag-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">Annual Recurring
+                                    Service</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These tasks are added onto your portal
+                                for
+                                ongoing annual compliance automation.</p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Create New Entity</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Add Existing Entity</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">DBA|FBN</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Existing DBA|FBN</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Statement of Information (CA)</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Annual Report (outside of CA)</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Franchise Tax report</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Registered Agent</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-document-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">ONE-OFF FILINGs</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These tasks are for events that do not
+                                happen
+                                regularly.</p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item">Amendments</li>
+                                <li class="list-group-item">Dissolutions</li>
+                                <li class="list-group-item">Restated articles</li>
+                                <li class="list-group-item">Corrections</li>
+                                <li class="list-group-item">EIN</li>
+                                <li class="list-group-item">25102f</li>
+                                <li class="list-group-item">Conversion</li>
+                                <li class="list-group-item">Certificate of status retrieval</li>
+                                <li class="list-group-item">Document Retrievals (assorted)</li>
+                                <li class="list-group-item">Name Reservation\Verify</li>
+                                <li class="list-group-item">Business license renewal</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-folder-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">PRODUCTS</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These products are for a suite of
+                                documents.
+                            </p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Corporate kits
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" data-placement="top"
+                                            title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Stocks & Certificates
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Custom Tabs
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">Corporate books (1.5" 2.0")</li>
+                                <li class="list-group-item">Estate Planning books</li>
+                                <li class="list-group-item">Minutes & Bylaws</li>
+                                <li class="list-group-item">Operating Agreement</li>
+                                <li class="list-group-item">Corporate seals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="inProcess" class="btn-tab-content">
+                        <div class="d-flex align-items-center pt-1">
+                            <span class="icon icon-sm icon-bag-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">annual recurring
+                                serviceS</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These tasks are added onto your portal
+                            for
+                            ongoing annual compliance automation.</p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span>Mainsail Partners (DE)</span>
+                                                <span class="fs-10 d-block text-secondary">New
+                                                    Entity</span>
+                                            </div>
+                                        </td>
+                                        <td>09/18/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width: 40%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-orange">40%</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><span>Greypoint Properties (DE)</span>
+                                                <span class="fs-10 d-block text-secondary">Annual
+                                                    Report</span>
+                                            </div>
+                                        </td>
+                                        <td>08/12/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-red" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-red" style="width: 1%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-red">0%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span>Greypoint Properties (DE)</span>
+                                                <span class="fs-10 d-block text-secondary">Franchise
+                                                    Tax Report</span>
+                                            </div>
+                                        </td>
+                                        <td>08/05/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-green" style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-green">100%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="d-flex align-items-center pt-3">
+                            <span class="icon icon-sm icon-document-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">ONE-OFF FILINGs</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These tasks are for events that do not
+                            happen
+                            regularly.</p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>Coastal One, Inc. (DE)</span>
+                                            <span class="fs-10 d-block text-secondary">Bi-Annual
+                                                Report</span>
+                                        </td>
+                                        <td>08/07/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width: 40%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-orange">40%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>CIG, Inc. (DE)</span>
+                                            <span class="fs-10 d-block text-secondary">Business
+                                                License</span>
+                                        </td>
+                                        <td>08/05/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-green" style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-green">100%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex align-items-center pt-3">
+                            <span class="icon icon-sm icon-folder-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">PRODUCTS</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These products are for a suite of
+                            documents.
+                        </p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>Coastal One, Inc. (DE)</span>
+                                            <span class="fs-10 d-block text-secondary">Bi-Annual
+                                                Report</span>
+                                        </td>
+                                        <td>09/18/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width: 40%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-orange">40%</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Service Modal Ends -->
     <script>
         // this function for stepper to redirect to second step in pages additional services/select
-        window.onload = () => additionalServicesOptionTab($('.toggleSection')[0]) 
+        window.onload = () => additionalServicesOptionTab($('.toggleSection')[0])
 
     </script>
     <!-- Preview Modal Ends -->
