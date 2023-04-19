@@ -2350,8 +2350,9 @@
                     const tooltipCustomDiv = document.getElementById('tooltipCustom');
                     if (info.el.classList.contains('caledar-event-upcoming')) {
                         tooltipCustomDiv.classList.add("d-block");
-                        tooltipCustomDiv.style.left = info.jsEvent.clientX + 'px';
-                        tooltipCustomDiv.style.top = info.jsEvent.clientY + 'px';
+                        var rect = info.el.getBoundingClientRect();
+                        tooltipCustomDiv.style.left = rect.right + 'px';
+                        tooltipCustomDiv.style.top = rect.top + 'px';
                     }
                 },
                 eventMouseLeave: function (info) {
@@ -2362,7 +2363,7 @@
                         if (!isOnDiv) {
                             tooltipCustomDiv.classList.remove("d-block");
                         }
-                    }, 100);
+                    }, 200);
 
                 },
 
