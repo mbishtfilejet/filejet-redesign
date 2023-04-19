@@ -2300,50 +2300,6 @@
                     },
 
                 ],
-                eventContent: function (info) {
-                    var eventDescription = '';
-                    if (info.event.extendedProps.description) {
-                        eventDescription = '<div class="fc-event-description text-lighter fs-6 pt-1 fw-normal">' + info.event.extendedProps.description + '</div>';
-                    }
-                    return {
-                        html: '<div class="fc-event-title fw-bold fs-6">' + info.event.title + '</div>' + eventDescription
-                    }
-                },
-                eventDidMount: function (info) {
-                    if (info.el.classList.contains('caledar-event-upcoming')) {
-                        var eventEl = info.el;
-                        var newElement = document.createElement('div');
-                        newElement.classList.add('customEle');
-                        newElement.innerHTML = '<div class="w-100 d-flex flex-wrap text-lighter fs-6 pt-1 fw-normal me-4"><span class="text-dark bg-white p-2 mt-2 rounded fs-7 fw-normal"><i class="icon me-0 icon-bell"></i> <span clas="d-flex flex-wrap"><span>02/12/2021</span> • <span>3:30PM</span></span></span> </div>';
-                        eventEl.appendChild(newElement);
-                    }
-                },
-                eventMouseEnter: function (info) {
-                    if (info.el.classList.contains('caledar-event-upcoming')) {
-                        var tooltipEl = document.getElementById('tooltipCustom');
-                        tooltipEl.classList.add("d-block");
-                        tooltipEl.style.left = info.jsEvent.clientX + 'px';
-                        tooltipEl.style.top = info.jsEvent.clientY + 'px';
-                        console.log(info.event);
-                    }
-                    else {
-                        var tooltipEl = document.getElementById('tooltipCustom');
-                        tooltipEl.classList.remove("d-block");
-                    }
-                },
-                eventMouseLeave: function (info) {
-                    const tooltipCustomDiv = document.querySelector("#tooltipCustom")
-                    let isOnDiv = false;
-                    tooltipCustomDiv.onmouseenter = () => isOnDiv = true;
-
-                    setTimeout(() => {
-                        if (!isOnDiv) {
-                            tooltipCustomDiv.classList.remove("d-block");
-                        }
-                    }, 100);
-
-                },
-
                 views: {
                     dayGridMonth: {
                         dayMaxEvents: 2,
@@ -2358,6 +2314,15 @@
                 },
 
                 headerToolbar: false,
+                eventContent: function (info) {
+                    var eventDescription = '';
+                    if (info.event.extendedProps.description) {
+                        eventDescription = '<div class="fc-event-description text-lighter fs-6 pt-1 fw-normal">' + info.event.extendedProps.description + '</div>';
+                    }
+                    return {
+                        html: '<div class="fc-event-title fw-bold fs-6">' + info.event.title + '</div>' + eventDescription
+                    }
+                },
                 dateClick: function () {
                     let createReminderModal = new bootstrap.Modal(document.getElementById('createReminders'))
                     createReminderModal.show()
@@ -2375,9 +2340,36 @@
                     createReminderModal.show();
                     return info;
                 },
+                eventDidMount: function (info) {
+                    if (info.el.classList.contains('caledar-event-upcoming')) {
+                        var eventEl = info.el;
+                        var newElement = document.createElement('div');
+                        newElement.classList.add('customEle');
+                        newElement.innerHTML = '<div class="w-100 d-flex flex-wrap text-lighter fs-6 pt-1 fw-normal me-4"><span class="text-dark bg-white p-2 mt-2 rounded fs-7 fw-normal"><i class="icon me-0 icon-bell"></i> <span clas="d-flex flex-wrap"><span>02/12/2021</span> • <span>3:30PM</span></span></span> </div>';
+                        eventEl.appendChild(newElement);
+                    }
+                },
+                eventMouseEnter: function (info) {
+                    const tooltipCustomDiv = document.getElementById('tooltipCustom');
+                    if (info.el.classList.contains('caledar-event-upcoming')) {
+                        tooltipCustomDiv.classList.add("d-block");
+                        tooltipCustomDiv.style.left = info.jsEvent.clientX + 'px';
+                        tooltipCustomDiv.style.top = info.jsEvent.clientY + 'px';
+                    }
+                },
+                eventMouseLeave: function (info) {
+                    const tooltipCustomDiv = document.querySelector("#tooltipCustom")
+                    let isOnDiv = false;
+                    tooltipCustomDiv.onmouseenter = () => isOnDiv = true;
+                    setTimeout(() => {
+                        if (!isOnDiv) {
+                            tooltipCustomDiv.classList.remove("d-block");
+                        }
+                    }, 100);
+
+                },
 
             });
-            var view = calendar.view;
             calendar.render();
             // tooltip will go
             document.getElementById("tooltipCustom").addEventListener("mouseleave", function () {
