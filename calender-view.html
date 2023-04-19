@@ -402,10 +402,7 @@
                         <!-- custom tooltip -->
                         <div id="tooltipCustom" class="mt-5 mb-3 position-absolute">
                             <div class="bg-white w-100 rounded-3 shadow-lg p-4">
-                                <div class="d-flex justify-content-between mb-4">
-                                    <div>
-                                        <button type="button" class="btn-close" aria-label="Close"></button>
-                                    </div>
+                                <div class="d-flex justify-content-end mb-4">
                                     <div>
                                         <a href="#"><span class="icon icon-delete me-3" data-bs-target="#eventDelete"
                                                 data-bs-toggle="modal"></span></a>
@@ -1792,7 +1789,8 @@
                     <div class="d-flex align-items-end w-100 justify-content-between">
                         <div>
                             <h2 class="mb-0 fs-3 h1">Organization charts</h2>
-                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal d-inline fs-9 py-1 px-4">Coming soon</span>
+                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal d-inline fs-9 py-1 px-4">Coming
+                                soon</span>
                         </div>
                         <div>
                             <button type="button" class="btn btn-outline-dark px-4 py-3 rounded-3 ms-3">
@@ -1816,7 +1814,7 @@
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                     
+
                     </div>
 
                     <div class="row">
@@ -1829,7 +1827,7 @@
                                 dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
                                 diam.</p>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -1863,10 +1861,12 @@
                     <div class="d-flex align-items-end w-100 justify-content-between">
                         <div>
                             <h2 class="mb-0 fs-3 h1">Cap Table</h2>
-                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span>
+                            <span
+                                class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-success px-4 py-3 rounded-3 ms-3" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-success px-4 py-3 rounded-3 ms-3"
+                                data-bs-dismiss="modal">
                                 <span class="icon icon-sm icon-cart-white"></span>
                                 Add to Cart
                             </button>
@@ -1886,12 +1886,12 @@
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                       
+
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                            
+
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
                                 lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
@@ -1901,7 +1901,7 @@
                                 dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
                                 diam.</p>
                         </div>
-                       
+
                     </div>
                 </div>
 
@@ -2297,38 +2297,6 @@
                     },
 
                 ],
-                eventContent: function (info) {
-                    var eventDescription = '';
-                    if (info.event.extendedProps.description) {
-                        eventDescription = '<div class="fc-event-description text-lighter fs-6 pt-1 fw-normal">' + info.event.extendedProps.description + '</div>';
-                    }
-                    return {
-                        html: '<div class="fc-event-title fw-bold fs-6">' + info.event.title + '</div>' + eventDescription
-                    }
-                },
-                eventDidMount: function (info) {
-                    if (info.el.classList.contains('caledar-event-upcoming')) {
-                        var eventEl = info.el;
-                        var newElement = document.createElement('div');
-                        newElement.classList.add('customEle');
-                        newElement.innerHTML = '<div class="w-100 d-flex flex-wrap text-lighter fs-6 pt-1 fw-normal me-4"><span class="text-dark bg-white p-2 mt-2 rounded fs-7 fw-normal"><i class="icon me-0 icon-bell"></i> <span clas="d-flex flex-wrap"><span>02/12/2021</span> • <span>3:30PM</span></span></span> </div>';
-                        eventEl.appendChild(newElement);
-                    }
-                },
-                eventMouseEnter: function (info) {
-                    if (info.el.classList.contains('caledar-event-upcoming')) {
-                        var tooltipEl = document.getElementById('tooltipCustom');
-                        tooltipEl.classList.add("d-block");
-                        tooltipEl.style.left = info.jsEvent.clientX + 'px';
-                        tooltipEl.style.top = info.jsEvent.clientY + 'px';
-                        console.log(info.event);
-                    }
-                    else {
-                        var tooltipEl = document.getElementById('tooltipCustom');
-                        tooltipEl.classList.remove("d-block");
-                    }
-                },
-
                 views: {
                     dayGridMonth: {
                         dayMaxEvents: 2,
@@ -2343,6 +2311,15 @@
                 },
 
                 headerToolbar: false,
+                eventContent: function (info) {
+                    var eventDescription = '';
+                    if (info.event.extendedProps.description) {
+                        eventDescription = '<div class="fc-event-description text-lighter fs-6 pt-1 fw-normal">' + info.event.extendedProps.description + '</div>';
+                    }
+                    return {
+                        html: '<div class="fc-event-title fw-bold fs-6">' + info.event.title + '</div>' + eventDescription
+                    }
+                },
                 dateClick: function () {
                     let createReminderModal = new bootstrap.Modal(document.getElementById('createReminders'))
                     createReminderModal.show()
@@ -2360,19 +2337,47 @@
                     createReminderModal.show();
                     return info;
                 },
+                eventDidMount: function (info) {
+                    if (info.el.classList.contains('caledar-event-upcoming')) {
+                        var eventEl = info.el;
+                        var newElement = document.createElement('div');
+                        newElement.classList.add('customEle');
+                        newElement.innerHTML = '<div class="w-100 d-flex flex-wrap text-lighter fs-6 pt-1 fw-normal me-4"><span class="text-dark bg-white p-2 mt-2 rounded fs-7 fw-normal"><i class="icon me-0 icon-bell"></i> <span clas="d-flex flex-wrap"><span>02/12/2021</span> • <span>3:30PM</span></span></span> </div>';
+                        eventEl.appendChild(newElement);
+                    }
+                },
+                eventMouseEnter: function (info) {
+                    const tooltipCustomDiv = document.getElementById('tooltipCustom');
+                    if (info.el.classList.contains('caledar-event-upcoming')) {
+                        tooltipCustomDiv.classList.add("d-block");
+                        var rect = info.el.getBoundingClientRect();
+                        if (rect.right + tooltipCustomDiv.offsetWidth > window.innerWidth) {
+                            tooltipCustomDiv.style.left = rect.left + 'px';
+                            tooltipCustomDiv.style.top = rect.top + tooltipCustomDiv.clientHeight / 3 + window.scrollY + 'px';
+
+                        } else {
+                            tooltipCustomDiv.style.left = rect.right + 'px';
+                            tooltipCustomDiv.style.top = rect.top + window.scrollY + 'px';
+                        }
+                    }
+                },
+                eventMouseLeave: function (info) {
+                    const tooltipCustomDiv = document.querySelector("#tooltipCustom")
+                    let isOnDiv = false;
+                    tooltipCustomDiv.onmouseenter = () => isOnDiv = true;
+                    setTimeout(() => {
+                        if (!isOnDiv) {
+                            tooltipCustomDiv.classList.remove("d-block");
+                        }
+                    }, 0);
+
+                },
+
             });
-            var view = calendar.view;
             calendar.render();
             // tooltip will go
             document.getElementById("tooltipCustom").addEventListener("mouseleave", function () {
                 this.classList.remove("d-block");
-            });
-            document.querySelector(".btn-close").addEventListener("click", function () {
-                document.getElementById("tooltipCustom").classList.remove("d-block");
-            });
-
-            document.getElementById("customToolbar").addEventListener("mouseover", function () {
-                document.getElementById("tooltipCustom").classList.remove("d-block");
             });
             // tooltip end
             // custom toolbar start
