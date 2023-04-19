@@ -1792,7 +1792,8 @@
                     <div class="d-flex align-items-end w-100 justify-content-between">
                         <div>
                             <h2 class="mb-0 fs-3 h1">Organization charts</h2>
-                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal d-inline fs-9 py-1 px-4">Coming soon</span>
+                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal d-inline fs-9 py-1 px-4">Coming
+                                soon</span>
                         </div>
                         <div>
                             <button type="button" class="btn btn-outline-dark px-4 py-3 rounded-3 ms-3">
@@ -1816,7 +1817,7 @@
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                     
+
                     </div>
 
                     <div class="row">
@@ -1829,7 +1830,7 @@
                                 dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
                                 diam.</p>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -1863,10 +1864,12 @@
                     <div class="d-flex align-items-end w-100 justify-content-between">
                         <div>
                             <h2 class="mb-0 fs-3 h1">Cap Table</h2>
-                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span>
+                            <span
+                                class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-success px-4 py-3 rounded-3 ms-3" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-success px-4 py-3 rounded-3 ms-3"
+                                data-bs-dismiss="modal">
                                 <span class="icon icon-sm icon-cart-white"></span>
                                 Add to Cart
                             </button>
@@ -1886,12 +1889,12 @@
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                       
+
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                            
+
 
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
                                 lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
@@ -1901,7 +1904,7 @@
                                 dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
                                 diam.</p>
                         </div>
-                       
+
                     </div>
                 </div>
 
@@ -2328,6 +2331,18 @@
                         tooltipEl.classList.remove("d-block");
                     }
                 },
+                eventMouseLeave: function (info) {
+                    const tooltipCustomDiv = document.querySelector("#tooltipCustom")
+                    let isOnDiv = false;
+                    tooltipCustomDiv.onmouseenter = () => isOnDiv = true;
+
+                    setTimeout(() => {
+                        if (!isOnDiv) {
+                            tooltipCustomDiv.classList.remove("d-block");
+                        }
+                    }, 100);
+
+                },
 
                 views: {
                     dayGridMonth: {
@@ -2360,6 +2375,7 @@
                     createReminderModal.show();
                     return info;
                 },
+
             });
             var view = calendar.view;
             calendar.render();
