@@ -2352,7 +2352,7 @@
                         tooltipCustomDiv.classList.add("d-block");
                         var rect = info.el.getBoundingClientRect();
                         tooltipCustomDiv.style.left = rect.right + 'px';
-                        tooltipCustomDiv.style.top = rect.top + 'px';
+                        tooltipCustomDiv.style.top = rect.top + window.scrollY + 'px';
                     }
                 },
                 eventMouseLeave: function (info) {
@@ -2363,7 +2363,7 @@
                         if (!isOnDiv) {
                             tooltipCustomDiv.classList.remove("d-block");
                         }
-                    }, 200);
+                    }, 100);
 
                 },
 
