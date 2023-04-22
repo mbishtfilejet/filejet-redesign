@@ -30,7 +30,8 @@ module.exports = function (grunt) {
                         [
                             'src/js/lib/bootstrap.bundle.js',
                             'src/js/lib/datatables.js',
-                            'src/js/lib/jquery-ui.js'
+                            'src/js/lib/jquery-ui.js',
+                            'src/js/lib/jquery-alerts.js',
                         ],
                     'dist/js/custom.min.js':
                         [
