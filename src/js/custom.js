@@ -151,6 +151,10 @@ $(function () {
     $('.folder-level').css('display', 'none');
     $('#' + dataId).css('display', 'block');
   });
+
+  $('.warning-popup').on('click', function () {
+    warningPopup();
+  });
 });
 
 function fileUploadInput() {
@@ -380,4 +384,19 @@ function additionalServicesOptionTab(that) {
     toggleSection(that)
   }
 
+}
+function warningPopup() {
+  $.alert({
+    title: 'Warning',
+    content: 'Unable to complete your request. Try Later',
+    theme: 'bootstrap',
+    columnClass: 'col-6 col-md-4',
+    buttons: {
+      Ok: {
+        text: 'Ok',
+        btnClass: 'w-100 py-2 m-0 text-white',
+        keys: ['enter', 'shift'],
+      }
+    }
+  });
 }
