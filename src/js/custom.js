@@ -81,6 +81,19 @@ $(function () {
     "lengthChange": false,
     "pagingType": "simple"
   });
+  $('.dashboard-data-table').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple",
+    "columns": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ],
+  });
   $('#payment-method-table').DataTable({
     "searching": false,
     "lengthChange": false,
