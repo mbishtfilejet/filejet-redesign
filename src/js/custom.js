@@ -168,6 +168,13 @@ $(function () {
   $('.warning-popup').on('click', function () {
     warningPopup();
   });
+
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'center',
+    locale: {
+      format: 'MMMM D, YYYY'
+    }
+  });
 });
 
 function fileUploadInput() {
