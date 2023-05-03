@@ -4966,7 +4966,7 @@
                             <tr class="collapse remove-hover" id="collapseRow1-${uniqueId}"><td colspan="4">
                                 <div class="px-5 py-4 bg-black-light">
                                     <div class="bg-white p-1">
-                                        <table class="table table-striped w-100">
+                                        <table class="table data-table-listing table-striped w-100">
                                             <thead>
                                                 <tr>
                                                     <th>Document Name</th>
@@ -5094,7 +5094,7 @@
                             <tr class="collapse remove-hover" id="collapseRow2-${uniqueId}"><td colspan="4">
                                 <div class="px-5 py-4 bg-black-light">
                                     <div class="bg-white p-1">
-                                        <table class="table table-striped w-100">
+                                        <table class="table data-table-listing table-striped w-100">
                                             <thead>
                                                 <tr>
                                                     <th>Document Name</th>
@@ -5223,7 +5223,7 @@
                             <tr class="collapse remove-hover" id="collapseRow3-${uniqueId}"><td colspan="4">
                                 <div class="px-5 py-4 bg-black-light">
                                     <div class="bg-white p-1">
-                                        <table class="table table-striped w-100">
+                                        <table class="table data-table-listing table-striped w-100">
                                             <thead>
                                                 <tr>
                                                     <th>Document Name</th>
@@ -5353,6 +5353,7 @@
                     row.child().addClass('remove-hover');
                     editDocumentName(); //calling edit document name function defined in custom.js
                     fileUploadInput(); //call file upload input function defined in custom.js 
+                    // reintializeDataTable(); //init datatable after page is loaded
                 }
                 $('td[colspan="8"]').addClass('nested-table');
                 $('td[colspan="4"]').addClass('nested-table');
@@ -5364,7 +5365,9 @@
             var AllGroupTable = $('#group-listing').DataTable({
                 "searching": false,
                 "lengthChange": false,
-                "pagingType": "simple_numbers"
+                "pagingType": "simple_numbers",
+                "retrieve":true,
+
             });
             // Add event listener for opening and closing details
             $('#group-listing tbody').on('click', 'td.dt-control', handleTable(AllGroupTable));
