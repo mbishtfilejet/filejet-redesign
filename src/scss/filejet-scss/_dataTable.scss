@@ -1,8 +1,8 @@
 .dataTables_wrapper {
     &>.row {
         &:last-child {
-            justify-content: space-between;
-            align-items: center;
+            @extend .justify-content-between;
+            @extend .align-items-center;
         }
     }
 
@@ -50,8 +50,8 @@
 
     .dataTables_paginate {
         ul.pagination {
-            margin: 0;
-            justify-content: end;
+            @extend .m-0;
+            @extend .justify-content-end;
             
             .paginate_button {
                 &.next {
@@ -76,29 +76,29 @@
                 }
 
                 a.page-link {
-                    border: none;
-                    background: none;
+                    @extend .border-0;
+                    @extend .text-center;
+                    @extend .bg-transparent;
                     color: #a5a4a4;
-                    text-align: center;
                     width: 3rem;
 
                     &:focus,
                     &:active {
                         outline: none;
-                        box-shadow: none;
+                        @extend .shadow-none;
                     }
                 }
             }
             .paginate_button.active{
                 a.page-link{
-                    color: #000;
+                    @extend .text-dark;
                 }
             }
         }
     }
 
     .dataTable {
-        margin: 0;
+        @extend .m-0;
 
         thead {
             th.sorting {
