@@ -1,16 +1,13 @@
 .dataTables_wrapper {
     &>.row {
         &:last-child {
-            justify-content: space-between;
-            align-items: center;
+            @extend .justify-content-between,.align-items-center;
         }
     }
 
     tbody {
         td {
-            @extend .py-3;
-            @extend .px-3;
-            @extend .bg-transparent;
+            @extend .py-3,.px-3,.bg-transparent;
             font-weight: 500;
             line-height: rem(20);
             font-size: rem(18);
@@ -39,10 +36,7 @@
 
     thead {
         th {
-            @extend .py-4;
-            @extend .px-3;
-            @extend .bg-white;
-            @extend .fs-7;
+            @extend .py-4,.px-3,.bg-white,.fs-7;
             font-weight: 700;
             line-height: rem(19);
         }
@@ -50,21 +44,21 @@
 
     .dataTables_paginate {
         ul.pagination {
-            margin: 0;
-            justify-content: end;
-
+            @extend .m-0,.justify-content-end;
+            
             .paginate_button {
                 &.next {
-                    @extend .ms-4;
 
                     .page-link {
                         background: url(../../../dist/images/icons/icon-angle-right.svg) no-repeat center center;
+                        color: transparent;
                     }
                 }
 
                 &.previous {
                     .page-link {
                         background: url(../../../dist/images/icons/icon-angle-left.svg) no-repeat center center;
+                        color: transparent;
                     }
                 }
 
@@ -75,25 +69,27 @@
                 }
 
                 a.page-link {
-                    border: none;
-                    background: none;
-                    padding: 0;
-                    font-size: 0;
-                    width: rem(9);
-                    height: rem(12);
+                    @extend .border-0 ,.text-center,.bg-transparent;
+                    color: #a5a4a4;
+                    width: 3rem;
 
                     &:focus,
                     &:active {
                         outline: none;
-                        box-shadow: none;
+                        @extend .shadow-none;
                     }
+                }
+            }
+            .paginate_button.active{
+                a.page-link{
+                    @extend .text-dark;
                 }
             }
         }
     }
 
     .dataTable {
-        margin: 0;
+        @extend .m-0;
 
         thead {
             th.sorting {
@@ -140,8 +136,7 @@
 }
 
 .dataTables_info {
-    @extend .py-4;
-    @extend .px-3;
+    @extend .py-4,.px-3;
     font-size: rem(14);
     font-weight: 400;
     line-height: rem(20);
@@ -149,8 +144,7 @@
 }
 
 .dataTables_paginate {
-    @extend .py-4;
-    @extend .px-3;
+    @extend .py-4,.px-3;
 }
 
 table {
