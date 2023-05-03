@@ -425,5 +425,6 @@ function reintializeDataTable() {
     "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers",
+    "retrieve": true
   });
 }
