@@ -52,19 +52,20 @@
         ul.pagination {
             margin: 0;
             justify-content: end;
-
+            
             .paginate_button {
                 &.next {
-                    @extend .ms-4;
 
                     .page-link {
                         background: url(../../../dist/images/icons/icon-angle-right.svg) no-repeat center center;
+                        color: transparent;
                     }
                 }
 
                 &.previous {
                     .page-link {
                         background: url(../../../dist/images/icons/icon-angle-left.svg) no-repeat center center;
+                        color: transparent;
                     }
                 }
 
@@ -77,16 +78,20 @@
                 a.page-link {
                     border: none;
                     background: none;
-                    padding: 0;
-                    font-size: 0;
-                    width: rem(9);
-                    height: rem(12);
+                    color: #a5a4a4;
+                    text-align: center;
+                    width: 3rem;
 
                     &:focus,
                     &:active {
                         outline: none;
                         box-shadow: none;
                     }
+                }
+            }
+            .paginate_button.active{
+                a.page-link{
+                    color: #000;
                 }
             }
         }
