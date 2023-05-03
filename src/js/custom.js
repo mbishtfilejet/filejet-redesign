@@ -420,3 +420,10 @@ function warningPopup() {
     }
   });
 }
+function reintializeDataTable() {
+  $('.data-table-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple_numbers",
+  });
+}
