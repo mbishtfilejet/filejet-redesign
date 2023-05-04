@@ -5,77 +5,64 @@ $(function () {
   });
 
   $('#entity-listing, #stake-all-listing, #active-table, #inactive-table, #find-a-user, #jurisdiction-list-table, #custom-list-table, #arizona-list-table').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#overdue-table').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#upcoming-table').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#sumbitted-table').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#setToState-table').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#upToDate-table').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#jurisdictions-listing').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#partners-listing').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
   $('#entites-listing').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#partners-name-listing').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#group-entity-listing').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
 
   $('#group-partner').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers"
   });
   $('.dashboard-data-table').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "columns": [
@@ -88,7 +75,6 @@ $(function () {
     ],
   });
   $('#payment-method-table').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "order": [],
@@ -102,7 +88,6 @@ $(function () {
   });
 
   $('.data-table-listing').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers",
   });
@@ -415,7 +400,6 @@ function warningPopup() {
 }
 function reintializeDataTable() {
   $('.data-table-listing').DataTable({
-    "searching": false,
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "retrieve": true
