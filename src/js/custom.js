@@ -57,13 +57,6 @@ $(function () {
     "pagingType": "simple_numbers"
   });
 
-  $('#group-listing').DataTable({
-    "searching": false,
-    "lengthChange": false,
-    "pagingType": "simple_numbers",
-    "retrieve": true
-  });
-
   $('#partners-name-listing').DataTable({
     "searching": false,
     "lengthChange": false,
@@ -418,5 +411,13 @@ function warningPopup() {
         keys: ['enter', 'shift'],
       }
     }
+  });
+}
+function reintializeDataTable() {
+  $('.data-table-listing').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple_numbers",
+    "retrieve": true
   });
 }

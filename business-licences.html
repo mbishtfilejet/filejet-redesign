@@ -160,7 +160,7 @@
             <div class="main-content-wrapper">
                 <div class="container">
                     <div class="header py-1">
-                        
+
                         <div class="row align-items-center">
                             <div class="col col-xl-3 col-lg-3">
                                 <h3 class="m-0">
@@ -169,11 +169,13 @@
                                     </strong>
                                 </h3>
                             </div>
-                            <div class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
-                                <div
-                                    class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-3 py-md-2 search-bar" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <div
+                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
+                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-3 py-md-2 search-bar"
+                                    data-bs-toggle="modal" data-bs-target="#searchModal">
                                     <span class="icon icon-search-grey icon-smd opacity-50"></span>
-                                    <span class="text-placeholder w-100 d-none d-md-block">What are you looking for?</span>
+                                    <span class="text-placeholder w-100 d-none d-md-block">What are you looking
+                                        for?</span>
                                 </div>
                                 <div class="notification position-relative px-4">
                                     <a href="javascript:void(0)" data-bs-toggle="modal"
@@ -2667,7 +2669,7 @@
             return (
                 `<div class="px-5 py-3 bg-black-light">
                     <div class="bg-white p-1">
-                        <table class="table table-striped w-100">
+                        <table class="table data-table-listing table-striped w-100">
                             <thead>
                                 <tr>
                                     <th>Document Name</th>
@@ -2792,6 +2794,7 @@
                     row.child().addClass('remove-hover');
                     editDocumentName(); //call edit document name function defined in custom.js
                     fileUploadInput(); //call file upload input function defined in custom.js 
+                    reintializeDataTable(); //init datatable after page is loaded
                 }
                 $('td[colspan="10"]').addClass('nested-table');
             }
@@ -2802,12 +2805,12 @@
             var AllTable = $('#bl-all-table').DataTable({
                 "searching": false,
                 "lengthChange": false,
-                "pagingType": "simple"
+                "pagingType": "simple_numbers"
             });
             var inProgressTable = $('#bl-inprogress-table').DataTable({
                 "searching": false,
                 "lengthChange": false,
-                "pagingType": "simple"
+                "pagingType": "simple_numbers"
             });
             // Add event listener for opening and closing details
             $('#bl-all-table tbody').on('click', 'td.dt-control', handleTable(AllTable));
