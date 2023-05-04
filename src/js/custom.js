@@ -57,13 +57,6 @@ $(function () {
     "pagingType": "simple_numbers"
   });
 
-  $('#group-listing').DataTable({
-    "searching": false,
-    "lengthChange": false,
-    "pagingType": "simple_numbers",
-    "retrieve": true
-  });
-
   $('#partners-name-listing').DataTable({
     "searching": false,
     "lengthChange": false,
