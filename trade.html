@@ -417,7 +417,7 @@
                                     aria-labelledby="trade-inprocess-tab">
                                     <div class="table-responsive-3xl">
                                         <table id="trade-inprocess-table" class=" table table-striped w-100
-                                            data-table-listing table-nowrap">
+                                             table-nowrap">
                                             <thead>
                                                 <tr>
                                                     <th class="sorting-none"></th>
@@ -2401,7 +2401,7 @@
             return (
                 `<div class="px-5 py-3 bg-black-light">
                     <div class="bg-white p-1">
-                        <table class="table table-striped w-100">
+                        <table class="table data-table-listing table-striped w-100">
                             <thead>
                                 <tr>
                                     <th>Document Name</th>
@@ -2528,6 +2528,7 @@
                     row.child().addClass('remove-hover');
                     editDocumentName(); //calling edit document name function defined in custom.js
                     fileUploadInput(); //calling file upload input function defined in custom.js 
+                    reintializeDataTable(); //init datatable after page is loaded
                 }
                 $('td[colspan="10"]').addClass('nested-table');
             }
