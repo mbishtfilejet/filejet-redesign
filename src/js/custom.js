@@ -7,84 +7,97 @@ $(function () {
   $('#entity-listing, #stake-all-listing, #active-table, #inactive-table, #find-a-user, #jurisdiction-list-table, #custom-list-table, #arizona-list-table').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#overdue-table').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#upcoming-table').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#sumbitted-table').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#setToState-table').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#upToDate-table').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#jurisdictions-listing').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#partners-listing').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
   $('#entites-listing').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#group-listing').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple",
+    "pagingType": "simple_numbers",
     "retrieve": true
   });
 
   $('#partners-name-listing').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#group-entity-listing').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
   });
 
   $('#group-partner').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers"
+  });
+  $('.dashboard-data-table').DataTable({
+    "searching": false,
+    "lengthChange": false,
+    "pagingType": "simple_numbers",
+    "columns": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ],
   });
   $('#payment-method-table').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple",
+    "pagingType": "simple_numbers",
     "order": [],
     "columns": [
       null,
@@ -98,7 +111,7 @@ $(function () {
   $('.data-table-listing').DataTable({
     "searching": false,
     "lengthChange": false,
-    "pagingType": "simple"
+    "pagingType": "simple_numbers",
   });
 
   $(document).on('click', '.view-change > a', function () {
@@ -154,6 +167,13 @@ $(function () {
 
   $('.warning-popup').on('click', function () {
     warningPopup();
+  });
+
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'center',
+    locale: {
+      format: 'MMMM D, YYYY'
+    }
   });
 });
 

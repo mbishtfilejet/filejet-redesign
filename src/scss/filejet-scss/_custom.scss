@@ -60,7 +60,7 @@ img {
   .nav-link {
     border-radius: rem(50);
     text-transform: none !important;
-    padding: rem(5) rem(10);
+    padding: rem(5) rem(16);
     font-size: rem(16);
     line-height: rem(20);
     font-weight: 400;
@@ -307,10 +307,10 @@ img {
   }
 }
 
-input:focus-visible {
-  border: none !important;
-  outline: none !important;
-}
+// input:focus-visible {
+//   border: none !important;
+//   outline: none !important;
+// }
 
 .filter-btn {
   background: var(--bs-white);
@@ -360,8 +360,16 @@ form {
 }
 
 .avatar-xl {
-  width: rem(44);
-  height: rem(44);
+  width: rem(56);
+  height: rem(56);
+}
+
+.avatar-lg {
+  img {
+    width: 44px;
+    height: 44px;
+    border-radius: 100%;
+  }
 }
 
 .avatar-sm {
@@ -375,10 +383,10 @@ form {
   background: var(--bs-gray-200);
 }
 
-.form-check .form-check-label.form-label {
-  position: relative;
-  top: 5px;
-}
+// .form-check .form-check-label.form-label {
+//   position: relative;
+//   top: 5px;
+// }
 
 .radio-checkbox-group {
   .form-check {
@@ -387,7 +395,7 @@ form {
 
   label {
     margin: 0;
-    position: relative;
+    // position: relative;
     // top: 5px;
   }
 }
@@ -533,6 +541,13 @@ form {
 .table-responsive {
   table {
     min-width: rem(800);
+  }
+}
+
+@media (max-width: 1599.98px) {
+  .table-responsive-3xl {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -893,5 +908,43 @@ body .jconfirm-box-container .jconfirm-box {
   .jconfirm-buttons {
     @extend .p-0, .bg-white, .border-top-0;
     background: rgba(255, 255, 255, 0.2) !important;
+  }
+}
+
+.table-gap-rows {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+
+  thead th {
+    background-color: transparent !important;
+  }
+
+  td {
+    padding-top: 1.125rem !important;
+    padding-bottom: 1.125rem !important;
+  }
+
+  tr td:first-child {
+    border-top-left-radius: rem(12);
+    border-bottom-left-radius: rem(12);
+  }
+
+  tr td:last-child {
+    border-top-right-radius: rem(12);
+    border-bottom-right-radius: rem(12);
+  }
+}
+
+.custom-date-range-picker {
+  .icon {
+    right: 1rem;
+    top: 47%;
+    transform: translateY(-50%);
+  }
+
+  @media screen and (max-width: 992px) {
+    .icon {
+      top: 50%;
+    }
   }
 }
