@@ -4930,7 +4930,7 @@
         function format() {
             const uniqueId = (new Date()).getTime();
             return (
-                `<div class="px-5 py-3 bg-black-light">
+                `<div class="px-5 py-3 bg-black-light groups-subFolder-table">
                     <div class="bg-white">
                         <table class="table groups-subFolder-listing table-striped w-100 table-nowrap">
                             <thead>
@@ -5409,6 +5409,13 @@
                     row.child.hide();
                     tr.removeClass('shown');
                 } else {
+                    // Close all other nested tables
+                    table.rows().every(function () {
+                        if (this.child.isShown()) {
+                            this.child.hide();
+                            $(this.node()).removeClass('shown');
+                        }
+                    });
                     // Open this row
                     row.child(format()).show();
                     tr.addClass('shown');
