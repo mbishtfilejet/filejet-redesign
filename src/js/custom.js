@@ -4,64 +4,7 @@ $(function () {
     $(this).tab('show')
   });
 
-  $('#entity-listing, #stake-all-listing, #active-table, #inactive-table, #find-a-user, #jurisdiction-list-table, #custom-list-table, #arizona-list-table').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
 
-  $('#overdue-table').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#upcoming-table').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#sumbitted-table').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#setToState-table').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#upToDate-table').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#jurisdictions-listing').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#partners-listing').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-  $('#entites-listing').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#partners-name-listing').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#group-entity-listing').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
-
-  $('#group-partner').DataTable({
-    "lengthChange": false,
-    "pagingType": "simple_numbers"
-  });
   $('.dashboard-data-table').DataTable({
     "lengthChange": false,
     "pagingType": "simple_numbers",
