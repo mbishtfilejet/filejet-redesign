@@ -8,6 +8,10 @@ $(function () {
   $('.dashboard-data-table').DataTable({
     "lengthChange": false,
     "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div  role="status"> </div>' ,
+    },
     "columns": [
       null,
       null,
@@ -20,6 +24,10 @@ $(function () {
   $('#payment-method-table').DataTable({
     "lengthChange": false,
     "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div  role="status"> </div>' ,
+    },
     "order": [],
     "columns": [
       null,
@@ -33,6 +41,10 @@ $(function () {
   $('.data-table-listing').DataTable({
     "lengthChange": false,
     "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div  role="status"> </div>' ,
+    },
   });
 
   $(document).on('click', '.view-change > a', function () {
@@ -361,6 +373,10 @@ function reintializeDataTable() {
   $('.data-table-listing').DataTable({
     "lengthChange": false,
     "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div class="" role="status"> </div>' ,
+    },
     "retrieve": true
   });
 }
