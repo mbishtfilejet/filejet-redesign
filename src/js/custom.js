@@ -291,6 +291,22 @@ $('.filter-state-label').hover(
 );
 
 function editDocumentName() {
+  //generalized and optimized edit name functionality
+  $('.save-name').hide();
+
+  $('.edit-name').click(function () {
+    $(this).hide();
+    $(this).parents('.edit-name-parent').find('.item-name').attr('contentEditable', true).css('border', '1px solid #ccc').focus();
+    $(this).parents('.edit-name-parent').find('.save-name').show();
+  });
+
+  $('.save-name').click(function () {
+    $(this).hide();
+    $(this).parents('.edit-name-parent').find('.item-name').removeAttr('contentEditable', true).css('border', '0px solid #ccc');
+    $(this).parents('.edit-name-parent').find('.edit-name').show();
+  });
+
+  // edit document name functionality for table
   // hide all save button
   $('.save-document-name').hide();
   // add click event listener to all edit icons in the table
