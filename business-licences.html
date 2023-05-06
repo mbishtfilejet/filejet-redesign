@@ -2804,11 +2804,19 @@
         $(document).ready(function () {
             var AllTable = $('#bl-all-table').DataTable({
                 "lengthChange": false,
-                "pagingType": "simple_numbers"
+                "pagingType": "simple_numbers",
+                "processing": true,
+                "language": {
+                "processing": '<div class="spinner-border text-purple" role="status"> </div>' ,
+                },
             });
             var inProgressTable = $('#bl-inprogress-table').DataTable({
                 "lengthChange": false,
-                "pagingType": "simple_numbers"
+                "pagingType": "simple_numbers",
+                "processing": true,
+                "language": {
+                "processing": '<div class="spinner-border text-purple" role="status"> </div>' ,
+                },
             });
             // Add event listener for opening and closing details
             $('#bl-all-table tbody').on('click', 'td.dt-control', handleTable(AllTable));
