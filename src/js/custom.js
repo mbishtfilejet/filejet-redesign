@@ -10,7 +10,7 @@ $(function () {
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
-      "processing": '<div class="spinner-border text-purple" role="status"> </div>' ,
+      "processing": '<div  role="status"> </div>' ,
     },
     "columns": [
       null,
@@ -26,7 +26,7 @@ $(function () {
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
-      "processing": '<div class="spinner-border text-purple" role="status"> </div>' ,
+      "processing": '<div  role="status"> </div>' ,
     },
     "order": [],
     "columns": [
@@ -43,7 +43,7 @@ $(function () {
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
-      "processing": '<div class="spinner-border text-purple" role="status"> </div>' ,
+      "processing": '<div  role="status"> </div>' ,
     },
   });
 
@@ -359,7 +359,7 @@ function reintializeDataTable() {
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
-      "processing": '<div class="spinner-border text-purple" role="status"> </div>' ,
+      "processing": '<div class="" role="status"> </div>' ,
     },
     "retrieve": true
   });
