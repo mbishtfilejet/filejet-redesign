@@ -10,7 +10,7 @@ $(function () {
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
-      "processing": '<div  role="status"> </div>' ,
+      "processing": '<div  role="status"> </div>',
     },
     "columns": [
       null,
@@ -26,7 +26,7 @@ $(function () {
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
-      "processing": '<div  role="status"> </div>' ,
+      "processing": '<div  role="status"> </div>',
     },
     "order": [],
     "columns": [
@@ -43,7 +43,7 @@ $(function () {
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
-      "processing": '<div  role="status"> </div>' ,
+      "processing": '<div  role="status"> </div>',
     },
   });
 
@@ -103,10 +103,24 @@ $(function () {
   });
 
   $('input[name="daterange"]').daterangepicker({
+    ranges: {
+      'Today': [moment(), moment()],
+      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+      '3 Months': [moment().subtract(2, 'month').startOf('month'), moment().endOf('month')],
+      '6 Months': [moment().subtract(5, 'month').startOf('month'), moment().endOf('month')],
+      '1 Year': [moment().subtract(11, 'month').startOf('month'), moment().endOf('month')]
+    },
     opens: 'center',
+    linkedCalendars: false,
+    alwaysShowCalendars: true,
+    cancelClass: 'btn-secondary',
     locale: {
-      format: 'MMMM D, YYYY'
-    }
+      format: 'MMMM D, YYYY',
+    },
+    startDate: moment().subtract(11, 'month').startOf('month'),
+    endDate: moment().subtract(1, 'month'),
   });
 });
 
@@ -375,7 +389,7 @@ function reintializeDataTable() {
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
-      "processing": '<div class="" role="status"> </div>' ,
+      "processing": '<div class="" role="status"> </div>',
     },
     "retrieve": true
   });
