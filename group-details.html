@@ -660,7 +660,7 @@
                                             <div class="d-flex justify-content-between mb-2">
                                                 <h4>Payment Information</h4>
                                                 <a href="javascript: void(0)" class="text-purple text-decoration-none"
-                                                    data-bs-toggle="modal" data-bs-target="#editPaymentDetails">
+                                                    data-bs-toggle="modal" data-bs-target="#addPaymentModal">
                                                     EDIT <span class="icon icon-sm icon-edit-purple mx-1"
                                                         data-toggle="tooltip" title="EDIT"></span></a>
 
@@ -683,7 +683,7 @@
                                                                 <span class="icon icon-edit mx-3 cursor-pointer"
                                                                     data-toggle="tooltip" title="EDIT"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#editPaymentDetails"></span>
+                                                                    data-bs-target="#addPaymentModal"></span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -693,7 +693,7 @@
                                                                 <span class="icon icon-edit mx-3 cursor-pointer"
                                                                     data-toggle="tooltip" title="EDIT"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#editPaymentDetails"></span>
+                                                                    data-bs-target="#addPaymentModal"></span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -703,7 +703,7 @@
                                                                 <span class="icon icon-edit mx-3 cursor-pointer"
                                                                     data-toggle="tooltip" title="EDIT"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#editPaymentDetails"></span>
+                                                                    data-bs-target="#addPaymentModal"></span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -832,8 +832,8 @@
                             <label for="" class="form-label">Name</label>
                             <input type="text" class="form-control" id="" placeholder="Group name">
                         </div>
-                        <div class="bg-white p-4">
-                            <div class="opacity-50 pb-3"> Group Information</div>
+                        <div>
+                            <div class="opacity-75 pb-3"> Group Information</div>
                             <form class="border-top pt-3">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Primary Contact</label>
@@ -895,7 +895,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <div class="bg-white p-4">
+                    <div>
                         <label class="pb-3 text-uppercase fw-bold">Address</label>
                         <form class="d-flex flex-column gap-2">
                             <input type="text" class="form-control" id="" placeholder="Address line 1">
@@ -948,9 +948,9 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <div class="bg-white p-4">
+                    <div>
                         <form class="d-flex flex-column gap-2">
-                            <div class="text-uppercase fw-bold opacity-50">Shipping Address</div>
+                            <div class="text-uppercase fw-bold opacity-75">Shipping Address</div>
                             <div class="border-top pt-3">
                                 <label for="shippingEmail" class="form-label">Email</label>
                                 <input type="text" class="form-control" id="shippingEmail" placeholder="Email Address">
@@ -1018,9 +1018,9 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <div class="bg-white p-4">
+                    <div>
                         <form class="d-flex flex-column gap-3">
-                            <div class="text-uppercase fw-bold opacity-50">Billing Address</div>
+                            <div class="text-uppercase fw-bold opacity-75">Billing Address</div>
                             <div class="border-top pt-3">
                                 <label for="billingEmail" class="form-label">Email</label>
                                 <input type="text" class="form-control" id="billingEmail" placeholder="Email Address">
@@ -1075,47 +1075,141 @@
         </div>
     </div>
     <!-- edit billing address Ends -->
-    <!-- edit payment details Starts -->
-    <div class="modal modal-right fade" id="editPaymentDetails" tabindex="-1" aria-labelledby="editPaymentDetailsLabel"
+
+    <!-- Add Payment  Starts -->
+    <div class="modal modal-right fade" id="addPaymentModal" tabindex="-1" aria-labelledby="addPaymentModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-payment-white  icon-lg m-0"></span>
+                        </span>
                         <div>
-                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit Group</span>
-                            <h3 class="fs-3 m-0 mt-2">Edit Address</h3>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Add Payment
+                                method</span>
+                            <h3 class="fs-3 m-0 mt-2" id="defaultPaymentDetails">Select Payment Method</h3>
+                            <h3 class="fs-3 m-0 mt-2 hide" id="creditCardDetails">Credit Card Information</h3>
+                            <h3 class="fs-3 m-0 mt-2 hide" id="achInfo">ACH Information</h3>
                         </div>
                     </div>
                 </div>
+
                 <!-- Modal Header Ends -->
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <div class="bg-white p-4">
-                        <form class="d-flex flex-column gap-3">
-                            <div>
-                                <label for="billingEmail" class="form-label">Nickname</label>
-                                <input type="text" class="form-control" id="billingEmail" placeholder="Nickname">
+                    <div>
+                        <label for="" class="form-label">Select Method </label>
+                        <div class="row d-flex align-items-center bg-white px-3 rounded py-3 mb-4"
+                            data-bs-target="#addCrediCardModal">
+                            <div class="col-6 d-flex flex-wrap align-items-center">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="view" onclick="showAchInfo()">
+                                </div>
+                                <span class="ps-1">
+                                    ACH
+                                </span>
                             </div>
-                            <div>
-                                <label for="fax" class="form-label">Last 4 digits</label>
-                                <input type="text" class="form-control" id="fax" placeholder="**** **** **** 1234">
+                            <div class=" col-6 d-flex flex-wrap align-items-center">
+                                <div class="form-check d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="view""
+                                            onclick=" showCreditCardDetails()">
+                                </div>
+                                <span class="ps-1">
+                                    Credit Card
+                                </span>
                             </div>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="row hide" id="creditCardDetails">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="" class="text-uppercase">Name on card</label>
+                                <input type="text" class="form-control" placeholder="Name on card">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mb-3">
+
+                                <label for="" class="text-uppercase">Card DETAILS</label>
+                                <div class="d-flex align-items-center form-control">
+                                    <input type="text" placeholder="1242-2341-1242-1642" class="border-0">
+                                    <img src="../dist/images/icon-mastercard.png" alt="card">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-3">
+                                <label for="" class="text-uppercase">&nbsp;</label>
+                                <input type="text" class="form-control" placeholder="MM/YY">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-3">
+                                <label for="" class="text-uppercase">&nbsp;</label>
+                                <input type="text" class="form-control" placeholder="CVV">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hide" id="achInfo">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="" class="text-uppercase">Nickname</label>
+                                <input type="text" class="form-control" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="" class="text-uppercase">ACCOUNT TYPE</label>
+
+                                <div class="d-flex">
+                                    <div
+                                        class="form-check radio-child-element mb-4 form-control w-auto d-flex align-items-center">
+                                        <input class="form-check-input ms-0 mt-0" type="radio" name="account-type">
+                                        <label class="form-check-label top-0 ms-3">
+                                            Individual
+                                        </label>
+                                    </div>
+                                    <div
+                                        class="form-check radio-child-element mb-4 ms-4 form-control w-auto d-flex align-items-center">
+                                        <input class="form-check-input ms-0 mt-0" type="radio" name="account-type">
+                                        <label class="form-check-label top-0 ms-3">
+                                            Company
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="" class="text-uppercase">ROUTING NUMBER</label>
+                                <p class="mb-2 text-muted">Also known as ABA number.</p>
+                                <input type="text" class="form-control" placeholder="ex. 110000000">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="" class="text-uppercase ">Account Number</label>
+                                <input type="text" class="form-control" placeholder="ex. 000123456789">
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <!-- Modal Body Ends-->
 
-                <div class="modal-footer mt-3 pb-0">
+                <div class="modal-footer">
                     <div class="d-flex justify-content-end w-100">
                         <button type="button" class="btn btn-link text-decoration-none font-weight-600"
                             data-bs-toggle="modal">
-                            Cancel
+                            CANCEL
                         </button>
-                        <button type="button" class="btn btn-info py-3 px-3 rounded-3 ms-3" data-bs-dismiss="modal">
-                            Save Changes
+                        <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3" data-bs-dismiss="modal">
+                            Save
                         </button>
                     </div>
                 </div>
@@ -1123,7 +1217,7 @@
             </div>
         </div>
     </div>
-    <!-- edit payment details Ends -->
+    <!-- Add Payment Ends -->
 
     <!-- add Group members Starts -->
     <div class="modal modal-right fade" id="addGroupMembers" tabindex="-1" aria-labelledby="addGroupMembersLabel"
@@ -1144,7 +1238,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form action="" class="mt-4 p-4 bg-white">
+                    <form action="" class="mt-4">
                         <div class="row py-2">
                             <div class="col-8">
                                 <label for="" class="m-0">Rights</label>
@@ -1292,7 +1386,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form action="" class="mt-4 p-4 bg-white">
+                    <form action="" class="mt-4">
                         <div class="row py-2">
                             <div class="col-8">
                                 <label for="" class="m-0">Rights</label>
@@ -2237,7 +2331,7 @@
                                 </td>
                                 <td class="sorting_1">
                                     <div class="d-flex flex-wrap ms-auto justify-content-end">
-                                        <input class="form-check-input mt-0 me-3" type="checkbox" value="" id="">
+                                        <input class="form-check-input mt-0 me-3" type="checkbox" id="">
 
                                     </div>
                                 </td>
@@ -2250,7 +2344,7 @@
                                 </td>
                                 <td class="sorting_1">
                                     <div class="d-flex flex-wrap ms-auto justify-content-end">
-                                        <input class="form-check-input mt-0 me-3" type="checkbox" value="" id="">
+                                        <input class="form-check-input mt-0 me-3" type="checkbox" id="">
                                     </div>
                                 </td>
                             </tr>
@@ -2262,7 +2356,7 @@
                                 </td>
                                 <td class="sorting_1">
                                     <div class="d-flex flex-wrap ms-auto justify-content-end">
-                                        <input class="form-check-input mt-0 me-3" type="checkbox" value="" id="">
+                                        <input class="form-check-input mt-0 me-3" type="checkbox" id="">
 
                                     </div>
                                 </td>
@@ -2275,7 +2369,7 @@
                                 </td>
                                 <td class="sorting_1">
                                     <div class="d-flex flex-wrap ms-auto justify-content-end">
-                                        <input class="form-check-input mt-0 me-3" type="checkbox" value="" id="">
+                                        <input class="form-check-input mt-0 me-3" type="checkbox" id="">
                                     </div>
                                 </td>
                             </tr>
@@ -2287,7 +2381,7 @@
                                 </td>
                                 <td class="sorting_1">
                                     <div class="d-flex flex-wrap ms-auto justify-content-end">
-                                        <input class="form-check-input mt-0 me-3" type="checkbox" value="" id="">
+                                        <input class="form-check-input mt-0 me-3" type="checkbox" id="">
                                     </div>
                                 </td>
                             </tr>
@@ -2299,7 +2393,7 @@
                                 </td>
                                 <td class="sorting_1">
                                     <div class="d-flex flex-wrap ms-auto justify-content-end">
-                                        <input class="form-check-input mt-0 me-3" type="checkbox" value="" id="">
+                                        <input class="form-check-input mt-0 me-3" type="checkbox" id="">
                                     </div>
                                 </td>
                             </tr>
@@ -2311,7 +2405,7 @@
                                 </td>
                                 <td class="sorting_1">
                                     <div class="d-flex flex-wrap ms-auto justify-content-end">
-                                        <input class="form-check-input mt-0 me-3" type="checkbox" value="" id="">
+                                        <input class="form-check-input mt-0 me-3" type="checkbox" id="">
                                     </div>
                                 </td>
                             </tr>
@@ -2323,7 +2417,7 @@
                                 </td>
                                 <td class="sorting_1">
                                     <div class="d-flex flex-wrap ms-auto justify-content-end">
-                                        <input class="form-check-input mt-0 me-3" type="checkbox" value="" id="">
+                                        <input class="form-check-input mt-0 me-3" type="checkbox" id="">
                                     </div>
                                 </td>
                             </tr>

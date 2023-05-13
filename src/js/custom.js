@@ -303,6 +303,28 @@ $('.filter-state-label').hover(
     $this.text($this.data('defaultText'));
   }
 );
+function showCreditCardDetails() {
+  document.querySelectorAll('#creditCardDetails').forEach(function (el) {
+    el.style.display = 'flex';
+  });
+  document.querySelectorAll('#achInfo').forEach(function (el) {
+    el.style.display = 'none';
+  });
+  document.querySelectorAll('#defaultPaymentDetails').forEach(function (el) {
+    el.style.display = 'none';
+  });
+}
+function showAchInfo() {
+  document.querySelectorAll('#achInfo').forEach(function (el) {
+    el.style.display = 'flex';
+  });
+  document.querySelectorAll('#creditCardDetails').forEach(function (el) {
+    el.style.display = 'none';
+  });
+  document.querySelectorAll('#defaultPaymentDetails').forEach(function (el) {
+    el.style.display = 'none';
+  });
+}
 
 function editDocumentName() {
   //generalized and optimized edit name functionality
