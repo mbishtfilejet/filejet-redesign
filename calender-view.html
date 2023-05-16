@@ -159,7 +159,7 @@
                 </div>
             </div>
             <div class="main-content-wrapper">
-                <div class="container">
+                <div class="container-fluid container-lg">
                     <div class="header py-1">
                         
                         <div class="row align-items-center">
@@ -231,7 +231,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="container">
+                <div class="container-fluid container-lg">
                     <div class="main-content pt-3">
                         <div class="d-flex">
                             <div class="d-flex position-relative pe-3 w-100">
@@ -241,19 +241,19 @@
                                     class="form-control white-bg py-3 ps-5 pe-4 shadow mb-0" />
                             </div>
                             <div class="d-flex justify-content-end ps-3 align-items-center">
-                                <button type="button" class="btn px-3 rounded-3 bg-white me-4 shadow"
+                                <button type="button" class="btn px-3 rounded-3 bg-white me-4 h-100 shadow"
                                     data-bs-toggle="modal" data-bs-target="#calenderFilter">
                                     <span class="me-3">Filter</span>
                                     <span class="icon icon-sm icon-filter"></span>
                                 </button>
-                                <ul class="inline-button-group ms-1">
-                                    <li class="w-50">
+                                <ul class="inline-button-group ms-1 h-100">
+                                    <li class="w-50 h-100 d-flex align-items-center">
                                         <a href="./calender.html">
                                             <span class="icon icon-list-view-active normal-icon"></span>
                                             <span class="icon icon-list-view-white active-icon"></span>
                                         </a>
                                     </li>
-                                    <li class="w-50 active">
+                                    <li class="w-50 h-100 d-flex align-items-center active">
                                         <a href="./calender-view.html">
                                             <span class="icon icon-calender-outline-dark normal-icon"></span>
                                             <span class="icon icon-calender-outline-white active-icon"></span>
@@ -263,7 +263,7 @@
                             </div>
                         </div>
                         <!-- custom calendar toolbar start  -->
-                        <div class="d-flex justify-content-between mt-5" id="customToolbar">
+                        <div class="d-flex justify-content-between mt-5 flex-wrap flex-xl-nowrap" id="customToolbar">
                             <div class="d-flex align-items-center">
                                 <div>
                                     <button type="button" id="my-prev-button"
@@ -307,7 +307,7 @@
                                                     <label class="form-check-label mb-0" for="inlineRadio2">Google
                                                         Calendar</label>
                                                     <input class="form-check-input ms-4" type="radio"
-                                                        name="inlineRadioOptions" id="inlineRadio2" value="option1">
+                                                        name="inlineRadioOptions" id="inlineRadio2" value="" placeholder="Option1">
                                                 </div>
                                             </div>
                                         </li>
@@ -319,7 +319,7 @@
                                                     <label class="form-check-label mb-0" for="inlineRadio1">Microsoft
                                                         Outlook</label>
                                                     <input class="form-check-input ms-4" type="radio"
-                                                        name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                        name="inlineRadioOptions" id="inlineRadio1" value="" placeholder="Option1">
                                                 </div>
                                             </div>
                                         </li>
@@ -379,6 +379,7 @@
     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-black opacity-75 border-0">
+                <button type="button" class="btn-close btn-close-white ms-auto pe-3" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body d-flex flex-column align-items-center">
                     <div class="w-50 text-white">
                         <form autocomplete="off">
@@ -729,7 +730,7 @@
 
                 <!-- Modal Body Ends-->
 
-                <div class="modal-footer pb-0">
+                <div class="modal-footer mt-3 pb-0">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
                     </div>
@@ -739,486 +740,6 @@
         </div>
     </div>
     <!-- Service Modal Ends -->
-
-    <!-- Notification Modal Starts -->
-    <div class="modal modal-right fade" id="notificationModal" tabindex="-1" aria-labelledby="searchModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
-            <div class="modal-content border-0 rounded-0 min-vh-100">
-                <!-- Modal Header -->
-                <div class="modal-header flex-wrap">
-                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
-                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
-                            <span class="icon icon-sm icon-bell-white m-0"></span>
-                        </span>
-                        <div>
-                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Notifications</span>
-                            <h3 class="fs-3 m-0 mt-2">Your Notifications</h3>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100">
-                        <span class="icon icon-search-grey opacity-25"></span>
-                        <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
-                            placeholder="Find a Notification">
-                    </div>
-                </div>
-
-                <!-- Modal Header Ends -->
-
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <ul class="nav nav-tabs pt-2" id="notificationTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active border-0 text-uppercase" id="unread-notification-tab"
-                                data-bs-toggle="tab" data-bs-target="#unread-notification" type="button" role="tab"
-                                aria-controls="unreadNotification" aria-selected="true">UNREAD</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link border-0 text-uppercase" id="read-notification-tab"
-                                data-bs-toggle="tab" data-bs-target="#read-notification" type="button" role="tab"
-                                aria-controls="readNotification" aria-selected="false">READ</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content bg-white" id="notificationTabContent">
-
-                        <!-- Unread Notification -->
-                        <div class="tab-pane fade show active" id="unread-notification" role="tabpanel"
-                            aria-labelledby="unread-notification-tab">
-                            <ul class="list-group m-0 p-0 border-0 list-table">
-                                <li
-                                    class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
-                                    <div>
-                                        <div class="dropdown white-bg p-0 rounded-5">
-
-                                            <a class="nav-link px-0">
-                                                <span class="user-name fw-bold">Notification</span>
-                                            </a>
-                                            <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
-                                                <li>
-                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
-                                                        Latest
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
-                                                        Older
-                                                    </a>
-                                                </li>
-                                            </ul> -->
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="dropdown white-bg p-0 rounded-5">
-
-                                            <a class="nav-link dropdown-toggle show px-0" href="#"
-                                                data-bs-toggle="dropdown" aria-expanded="true">
-                                                <span class="user-name">Date</span>
-                                            </a>
-                                            <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
-                                                <li>
-                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
-                                                        Past date
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
-                                                        Latest Date
-                                                    </a>
-                                                </li>
-                                            </ul> -->
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="px-4 mb-3 pt-5 mt-2">
-                                <p class="text-uppercase mb-0">Notifications based on Partner inviting a Client </p>
-                            </div>
-                            <ul class="list-group m-0 p-0 border-0 list-table">
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="">
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Unread Notification -->
-
-                        <!-- Read Notification -->
-                        <div class="tab-pane fade" id="read-notification" role="tabpanel"
-                            aria-labelledby="read-notification-tab">
-                            <ul class="list-group m-0 p-0 border-0 list-table">
-                                <li
-                                    class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
-                                    <div>
-                                        <div class="dropdown white-bg p-0 rounded-5">
-
-                                            <a class="nav-link px-0">
-                                                <span class="user-name fw-bold">Notification</span>
-                                            </a>
-                                            <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
-                                                <li>
-                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
-                                                        Latest
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
-                                                        Older
-                                                    </a>
-                                                </li>
-                                            </ul> -->
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="dropdown white-bg p-0 rounded-5">
-
-                                            <a class="nav-link dropdown-toggle show px-0" href="#"
-                                                data-bs-toggle="dropdown" aria-expanded="true">
-                                                <span class="user-name">Date</span>
-                                            </a>
-                                            <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
-                                                <li>
-                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
-                                                        Past date
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
-                                                        Latest Date
-                                                    </a>
-                                                </li>
-                                            </ul> -->
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
-                                    <a class="d-flex align-items-center text-decoration-none w-100" href="">
-                                        <div>
-                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
-                                        </div>
-                                        <div>
-                                            <p class="mb-2">10 / 29 / 2021</p>
-                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Read Notification -->
-                    </div>
-                </div>
-
-                <!-- Modal Body Ends-->
-
-                <div class="modal-footer mt-5 pt-5">
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- Notification Modal Ends -->
 
     <!-- Calender Filter Modal start-->
     <div class="modal modal-right fade" id="calenderFilter" tabindex="-1" aria-labelledby="calenderFilterModalLabel"
@@ -1245,62 +766,62 @@
                             <label for="" class="form-label">ENTITIES</label>
                             <div class="radio-checkbox-group bg-white p-3 rounded-2 row flex-wrap">
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="1">
-                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName1">
+                                    <label class="form-check-label text-capitalize m-0" for="entityName1">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="2">
-                                    <label class="form-check-label text-capitalize" for="2">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName2">
+                                    <label class="form-check-label text-capitalize" for="entityName2">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="1">
-                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName3">
+                                    <label class="form-check-label text-capitalize m-0" for="entityName3">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="2">
-                                    <label class="form-check-label text-capitalize" for="2">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName4">
+                                    <label class="form-check-label text-capitalize" for="entityName4">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="1">
-                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName5">
+                                    <label class="form-check-label text-capitalize m-0" for="entityName5">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="2">
-                                    <label class="form-check-label text-capitalize" for="2">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName6">
+                                    <label class="form-check-label text-capitalize" for="entityName6">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="1">
-                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName7">
+                                    <label class="form-check-label text-capitalize m-0" for="entityName7">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="2">
-                                    <label class="form-check-label text-capitalize" for="2">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName8">
+                                    <label class="form-check-label text-capitalize" for="entityName8">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="1">
-                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName9">
+                                    <label class="form-check-label text-capitalize m-0" for="entityName9">
                                         Entity Name 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="2">
-                                    <label class="form-check-label text-capitalize" for="2">
+                                    <input class="form-check-input" type="checkbox" name="" id="entityName10">
+                                    <label class="form-check-label text-capitalize" for="entityName10">
                                         Entity Name 1
                                     </label>
                                 </div>
@@ -1310,26 +831,26 @@
                             <label for="" class="form-label">Status</label>
                             <div class="radio-checkbox-group bg-white p-3 rounded-2 row flex-wrap">
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="1">
-                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                    <input class="form-check-input" type="checkbox" name="" id="status1">
+                                    <label class="form-check-label text-capitalize m-0" for="status1">
                                         Status 1
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="2">
-                                    <label class="form-check-label text-capitalize" for="2">
+                                    <input class="form-check-input" type="checkbox" name="" id="status2">
+                                    <label class="form-check-label text-capitalize" for="status2">
                                         Status 2
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="1">
-                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                    <input class="form-check-input" type="checkbox" name="" id="status3">
+                                    <label class="form-check-label text-capitalize m-0" for="status3">
                                         Status 3
                                     </label>
                                 </div>
                                 <div class="form-check col-md-6">
-                                    <input class="form-check-input" type="checkbox" name="" id="2">
-                                    <label class="form-check-label text-capitalize" for="2">
+                                    <input class="form-check-input" type="checkbox" name="" id="status4">
+                                    <label class="form-check-label text-capitalize" for="status4">
                                         Status 4
                                     </label>
                                 </div>
@@ -1339,7 +860,7 @@
                 </div>
                 <!-- Modal Body End -->
 
-                <div class="modal-footer mt-5 pt-5">
+                <div class="modal-footer mt-3 pb-0">
                     <div class="d-flex justify-content-end w-100">
                         <button type="button" class="btn btn-link text-decoration-none font-weight-600 me-auto"
                             data-bs-dismiss="modal">
@@ -1388,13 +909,13 @@
                         <div class="mb-3">
                             <fieldset disabled="">
                                 <label for="" class="form-label">Name of Entity</label>
-                                <input type="text" class="form-control" id="" value="Keegan Corp.">
+                                <input type="text" class="form-control" id="" value="" placeholder="Keegan Corp.">
                             </fieldset>
                         </div>
                         <div class="mb-3">
                             <fieldset disabled="">
                                 <label for="" class="form-label">Entity State</label>
-                                <input type="text" class="form-control" id="" value="Keegan Corp.">
+                                <input type="text" class="form-control" id="" value="" placeholder="Keegan Corp.">
                             </fieldset>
                         </div>
                         <div class="row">
@@ -1402,7 +923,7 @@
                                 <div class="mb-3">
                                     <fieldset disabled="">
                                         <label for="" class="form-label">Type</label>
-                                        <input type="text" class="form-control" id="" value="Type">
+                                        <input type="text" class="form-control" id="" value="" placeholder="Type">
                                     </fieldset>
                                 </div>
                             </div>
@@ -1410,7 +931,7 @@
                                 <div class="mb-3">
                                     <fieldset disabled="">
                                         <label for="" class="form-label">Sub Type</label>
-                                        <input type="text" class="form-control" id="" value="Sub Type">
+                                        <input type="text" class="form-control" id="" value="" placeholder="Sub Type">
                                     </fieldset>
                                 </div>
                             </div>
@@ -1418,7 +939,7 @@
                         <div class="mb-3">
                             <fieldset disabled="">
                                 <label for="" class="form-label">Formation Date</label>
-                                <input type="text" class="form-control" id="" value="Formation Date">
+                                <input type="text" class="form-control" id="" value="" placeholder="Formation Date">
                             </fieldset>
                         </div>
                         <div class="mb-3">
@@ -1428,8 +949,8 @@
                                 </div>
                                 <div class="col-md">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="" checked="">
-                                        <label class="form-check-label form-label" for="">
+                                        <input class="form-check-input" type="checkbox" value="" id="sameAsMail" checked="">
+                                        <label class="form-check-label form-label" for="sameAsMail">
                                             SAME AS MAILING address?
                                         </label>
                                     </div>
@@ -1437,10 +958,10 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="" placeholder="Address line 1">
+                            <input type="text" class="form-control" id="" placeholder="Address Line 1">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="" placeholder="Address line 2">
+                            <input type="text" class="form-control" id="" placeholder="Address Line 2">
                         </div>
                         <div class="mb-3">
                             <div class="row">
@@ -1448,7 +969,7 @@
                                     <input type="text" class="form-control" id="" placeholder="City">
                                 </div>
                                 <div class="col-md">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select form-control" aria-label="Default select example">
                                         <option selected="">State</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
@@ -1473,7 +994,7 @@
 
                 <!-- Modal Body Ends-->
 
-                <div class="modal-footer">
+                <div class="modal-footer mt-3 pb-0">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-link px-5 py-3" data-bs-dismiss="modal">Cancel</button>
                         <button type="button" class="btn btn-info px-5 py-3" data-bs-target="#actionModalSecond"
@@ -1509,67 +1030,67 @@
                         <p>Donec id elit non mi porta gravida at eget metus?</p>
                         <div class="mb-3 bg-white p-4 rounded-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="option1" id="optionYes1"
+                                    value="">
+                                <label class="form-check-label" for="optionYes1">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                    value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="optionYes1" id="option1"
+                                    value="">
+                                <label class="form-check-label" for="optionYes1">No</label>
                             </div>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
                         <div class="mb-3 bg-white p-4 rounded-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions2"
-                                    id="inlineRadio3" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="option2"
+                                    id="optionYes2" value="">
+                                <label class="form-check-label" for="optionYes2">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions2"
-                                    id="inlineRadio4" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="option2"
+                                    id="optionNo2" value="option2">
+                                <label class="form-check-label" for="optionNo2">No</label>
                             </div>
                         </div>
                         <p>Etiam porta sem malesuada magna mollis euismod?</p>
                         <div class="mb-3 bg-white p-4 rounded-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions3"
-                                    id="inlineRadio5" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="option3"
+                                    id="optionYes3" value="option1">
+                                <label class="form-check-label" for="optionYes3">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions3"
-                                    id="inlineRadio6" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="option3"
+                                    id="optionNo3" value="option2">
+                                <label class="form-check-label" for="optionNo3">No</label>
                             </div>
                         </div>
                         <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa
                             justo sit amet risus?</p>
                         <div class="mb-3 bg-white p-4 rounded-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions4"
-                                    id="inlineRadio7" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="option4"
+                                    id="optionYes4" value="option1">
+                                <label class="form-check-label" for="optionYes4">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions4"
-                                    id="inlineRadio8" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="option4"
+                                    id="optionNo4" value="option2">
+                                <label class="form-check-label" for="optionNo4">No</label>
                             </div>
                         </div>
                         <p>Cras mattis consectetur purus sit amet fermentum?</p>
                         <div class="mb-3 bg-white p-4 rounded-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions5"
-                                    id="inlineRadio9" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="option5"
+                                    id="optionYes5" value="option1">
+                                <label class="form-check-label" for="optionYes5">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions5"
-                                    id="inlineRadio10" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="option5"
+                                    id="optionNo5" value="option2">
+                                <label class="form-check-label" for="optionNo5">No</label>
                             </div>
                         </div>
 
@@ -1578,7 +1099,7 @@
 
                 <!-- Modal Body Ends-->
 
-                <div class="modal-footer">
+                <div class="modal-footer mt-3 pb-0">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-link text-decoration-none font-weight-600"
                             data-bs-dismiss="modal">
@@ -1646,7 +1167,7 @@
 
                 <!-- Modal Body Ends-->
 
-                <div class="modal-footer">
+                <div class="modal-footer mt-3 pb-0">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-link py-3 px-5 text-decoration-none font-weight-600"
                             data-bs-dismiss="modal">
@@ -1699,7 +1220,7 @@
 
                 <!-- Modal Body Ends-->
 
-                <div class="modal-footer">
+                <div class="modal-footer mt-3 pb-0">
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-info px-5 py-3 rounded-3 ms-3" data-bs-dismiss="modal">
                             Close
@@ -1712,152 +1233,628 @@
     </div>
     <!-- Success Modal Ends -->
 
-    <!-- Organization Chart Starts -->
-    <div class="modal fade" id="organizationChartModal" tabindex="-1" aria-labelledby="organizationChartModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
-            <div class="modal-content border-0 rounded-2 bg-white">
-                <!-- Modal Header -->
-                <div class="modal-header flex-wrap">
-                    <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb breadcrumb-default mb-0">
-                                <li class="breadcrumb-item"><a href="#">Filejet</a></li>
-                                <li class="breadcrumb-item"><a href="#">What’s new</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Organization charts</li>
-                            </ol>
-                        </nav>
-                        <div>
-                            <a href="/" class="text-decoration-none">
-                                <span class="icon icon-sm icon-link-dark"></span>
-                                Permalink
-                            </a>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-end w-100 justify-content-between">
-                        <div>
-                            <h2 class="mb-0 fs-3 h1">Organization charts</h2>
-                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal d-inline fs-9 py-1 px-4">Coming
-                                soon</span>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-outline-dark px-4 py-3 rounded-3 ms-3">
-                                <span class="icon icon-sm icon-mail-filled-dark"></span>
-                                <span class="icon icon-sm icon-mail-filled-white"></span>
-                                Get Notified
-                            </button>
-                        </div>
-                    </div>
-                </div>
+      <!-- Organization Chart Starts -->
+      <div class="modal fade" id="organizationChartModal" tabindex="-1" aria-labelledby="organizationChartModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+          <div class="modal-content border-0 rounded-2 bg-white">
+              <!-- Modal Header -->
+              <div class="modal-header flex-wrap">
+                  <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                      <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb breadcrumb-default mb-0">
+                              <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                              <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Organization charts</li>
+                          </ol>
+                      </nav>
+                      <div>
+                          <a href="/" class="text-decoration-none d-flex align-items-center">
+                              <span class="icon icon-sm icon-link-dark"></span>
+                              Permalink
+                          </a>
+                      </div>
+                  </div>
+                  <div class="d-flex align-items-end w-100 justify-content-between mt-3 mt-xl-0">
+                      <div>
+                          <h2 class="mb-0 fs-2 fs-md-3 h1">Organization charts</h2>
+                          <span class="btn btn-sm btn-quaternary rounded-4 fw-normal d-inline fs-9 py-1 px-4">Coming
+                              soon</span>
+                      </div>
+                      <div>
+                          <button type="button" class="btn btn-outline-dark px-3 px-md-4 py-3 rounded-3 ms-3">
+                              <span class="icon icon-sm icon-mail-filled-dark"></span>
+                              <span class="icon icon-sm icon-mail-filled-white"></span>
+                              Get Notified
+                          </button>
+                      </div>
+                  </div>
+              </div>
 
-                <!-- Modal Header Ends -->
+              <!-- Modal Header Ends -->
 
-                <!-- Modal Body -->
-                <div class="modal-body pb-0">
-                    <div class="two-col-video">
-                        <div class="col-md-12 video-wrapper">
-                            <video preload="auto" poster="./dist/images/video-poster.svg" autoplay>
-                                <source src="movie.mp4" type="video/mp4">
-                                <source src="movie.ogg" type="video/ogg">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
+              <!-- Modal Body -->
+              <div class="modal-body pb-0">
+                  <div class="two-col-video">
+                      <div class="col-12 col-md-12 video-wrapper">
+                          <video preload="auto" poster="./dist/images/video-poster.svg" autoplay>
+                              <source src="movie.mp4" type="video/mp4">
+                              <source src="movie.ogg" type="video/ogg">
+                              Your browser does not support the video tag.
+                          </video>
+                      </div>
 
-                    </div>
+                  </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
-                                lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
-                                Aliquam finibus a purus vel ullamcorper. Integer vitae pellentesque mauris. </p>
-                            <p>Fusce elementum tortor id erat consequat, vel dignissim nisi maximus. Aliquam sagittis
-                                vestibulum lacinia. Nam vel convallis sapien. Morbi at lorem sed neque commodo
-                                dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
-                                diam.</p>
-                        </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
+                              lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
+                              Aliquam finibus a purus vel ullamcorper. Integer vitae pellentesque mauris. </p>
+                          <p>Fusce elementum tortor id erat consequat, vel dignissim nisi maximus. Aliquam sagittis
+                              vestibulum lacinia. Nam vel convallis sapien. Morbi at lorem sed neque commodo
+                              dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
+                              diam.</p>
+                      </div>
 
-                    </div>
-                </div>
+                  </div>
+              </div>
 
-                <!-- Modal Body Ends-->
-            </div>
-        </div>
-    </div>
-    <!-- Organization Chart Ends -->
+              <!-- Modal Body Ends-->
+          </div>
+      </div>
+  </div>
+  <!-- Organization Chart Ends -->
 
-    <!-- Cap Table Starts -->
-    <div class="modal fade" id="capTableModal" tabindex="-1" aria-labelledby="capTableModalLabel" aria-hidden="true">
-        <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
-            <div class="modal-content border-0 rounded-2 bg-white">
-                <!-- Modal Header -->
-                <div class="modal-header flex-wrap">
-                    <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb breadcrumb-default mb-0">
-                                <li class="breadcrumb-item"><a href="#">Filejet</a></li>
-                                <li class="breadcrumb-item"><a href="#">What’s new</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Departments</li>
-                            </ol>
-                        </nav>
-                        <div>
-                            <a href="/" class="text-decoration-none">
-                                <span class="icon icon-sm icon-link-dark"></span>
-                                Permalink
-                            </a>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-end w-100 justify-content-between">
-                        <div>
-                            <h2 class="mb-0 fs-3 h1">Cap Table</h2>
-                            <span
-                                class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-success px-4 py-3 rounded-3 ms-3"
-                                data-bs-dismiss="modal">
-                                <span class="icon icon-sm icon-cart-white"></span>
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
+  <!-- Cap Table Starts -->
+  <div class="modal fade" id="capTableModal" tabindex="-1" aria-labelledby="capTableModalLabel" aria-hidden="true">
+      <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+          <div class="modal-content border-0 rounded-2 bg-white">
+              <!-- Modal Header -->
+              <div class="modal-header flex-wrap">
+                  <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                      <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb breadcrumb-default mb-0">
+                              <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                              <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Departments</li>
+                          </ol>
+                      </nav>
+                      <div>
+                          <a href="/" class="text-decoration-none d-flex align-items-center">
+                              <span class="icon icon-sm icon-link-dark"></span>
+                              Permalink
+                          </a>
+                      </div>
+                  </div>
+                  <div class="d-flex align-items-end w-100 justify-content-between mt-3 mt-xl-0">
+                      <div>
+                          <h2 class="mb-0 fs-3 h1">Cap Table</h2>
+                          <span
+                              class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span>
+                      </div>
+                      <div>
+                          <button type="button" class="btn btn-success px-3 px-md-4 py-3 rounded-3 ms-3"
+                              data-bs-dismiss="modal">
+                              <span class="icon icon-sm icon-cart-white"></span>
+                              Add to Cart
+                          </button>
+                      </div>
+                  </div>
+              </div>
 
-                <!-- Modal Header Ends -->
+              <!-- Modal Header Ends -->
 
-                <!-- Modal Body -->
-                <div class="modal-body pb-0">
-                    <div class="two-col-video">
-                        <div class="col-md-12 video-wrapper">
-                            <video preload="auto" poster="./dist/images/cap-table.svg" autoplay>
-                                <source src="movie.mp4" type="video/mp4">
-                                <source src="movie.ogg" type="video/ogg">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
+              <!-- Modal Body -->
+              <div class="modal-body pb-0">
+                  <div class="two-col-video">
+                      <div class="col-12 col-md-12 video-wrapper">
+                          <video preload="auto" poster="./dist/images/cap-table.svg" autoplay>
+                              <source src="movie.mp4" type="video/mp4">
+                              <source src="movie.ogg" type="video/ogg">
+                              Your browser does not support the video tag.
+                          </video>
+                      </div>
 
-                    </div>
+                  </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
+                  <div class="row">
+                      <div class="col-md-12">
 
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
-                                lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
-                                Aliquam finibus a purus vel ullamcorper. Integer vitae pellentesque mauris. </p>
-                            <p>Fusce elementum tortor id erat consequat, vel dignissim nisi maximus. Aliquam sagittis
-                                vestibulum lacinia. Nam vel convallis sapien. Morbi at lorem sed neque commodo
-                                dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
-                                diam.</p>
-                        </div>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
+                              lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
+                              Aliquam finibus a purus vel ullamcorper. Integer vitae pellentesque mauris. </p>
+                          <p>Fusce elementum tortor id erat consequat, vel dignissim nisi maximus. Aliquam sagittis
+                              vestibulum lacinia. Nam vel convallis sapien. Morbi at lorem sed neque commodo
+                              dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
+                              diam.</p>
+                      </div>
 
-                    </div>
-                </div>
+                  </div>
+              </div>
 
-                <!-- Modal Body Ends-->
-            </div>
-        </div>
-    </div>
-    <!-- Cap Table Ends -->
+              <!-- Modal Body Ends-->
+          </div>
+      </div>
+  </div>
+  <!-- Cap Table Ends -->
+  <!-- Notification Modal Starts -->
+  <div class="modal modal-right fade" id="notificationModal" tabindex="-1" aria-labelledby="searchModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
+          <div class="modal-content border-0 rounded-0 min-vh-100">
+              <!-- Modal Header -->
+              <div class="modal-header flex-wrap">
+                  <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                      <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                          <span class="icon icon-sm icon-bell-white m-0"></span>
+                      </span>
+                      <div>
+                          <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Notifications</span>
+                          <h3 class="fs-3 m-0 mt-2">Your Notifications</h3>
+                      </div>
+                  </div>
+                  <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100">
+                      <span class="icon icon-search-grey opacity-25"></span>
+                      <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                          placeholder="Find a Notification">
+                  </div>
+              </div>
+
+              <!-- Modal Header Ends -->
+
+              <!-- Modal Body -->
+              <div class="modal-body">
+                  <ul class="nav nav-tabs pt-2" id="notificationTab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                          <button class="nav-link active border-0 text-uppercase" id="unread-notification-tab"
+                              data-bs-toggle="tab" data-bs-target="#unread-notification" type="button" role="tab"
+                              aria-controls="unreadNotification" aria-selected="true">UNREAD</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <button class="nav-link border-0 text-uppercase" id="read-notification-tab"
+                              data-bs-toggle="tab" data-bs-target="#read-notification" type="button" role="tab"
+                              aria-controls="readNotification" aria-selected="false">READ</button>
+                      </li>
+                  </ul>
+                  <div class="tab-content bg-white" id="notificationTabContent">
+
+                      <!-- Unread Notification -->
+                      <div class="tab-pane fade show active" id="unread-notification" role="tabpanel"
+                          aria-labelledby="unread-notification-tab">
+                          <ul class="list-group m-0 p-0 border-0 list-table">
+                              <li
+                                  class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                  <div>
+                                      <div class="dropdown white-bg p-0 rounded-5">
+
+                                          <a class="nav-link px-0">
+                                              <span class="user-name fw-bold">Notification</span>
+                                          </a>
+                                      </div>
+                                  </div>
+                                  <div>
+                                      <div class="dropdown white-bg p-0 rounded-5">
+
+                                          <a class="nav-link dropdown-toggle show px-0" href="#"
+                                              data-bs-toggle="dropdown" aria-expanded="true">
+                                              <span class="user-name">Date</span>
+                                          </a>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                          </ul>
+                          <div class="px-4 mb-3 pt-5 mt-2">
+                              <p class="text-uppercase mb-0">Notifications based on Partner inviting a Client </p>
+                          </div>
+                          <ul class="list-group m-0 p-0 border-0 list-table">
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="">
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                      <!-- Unread Notification -->
+
+                      <!-- Read Notification -->
+                      <div class="tab-pane fade" id="read-notification" role="tabpanel"
+                          aria-labelledby="read-notification-tab">
+                          <ul class="list-group m-0 p-0 border-0 list-table">
+                              <li
+                                  class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                  <div>
+                                      <div class="dropdown white-bg p-0 rounded-5">
+
+                                          <a class="nav-link px-0">
+                                              <span class="user-name fw-bold">Notification</span>
+                                          </a>
+                                          <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                              <li>
+                                                  <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                      Latest
+                                                  </a>
+                                              </li>
+                                              <li>
+                                                  <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                      Older
+                                                  </a>
+                                              </li>
+                                          </ul> -->
+                                      </div>
+                                  </div>
+                                  <div>
+                                      <div class="dropdown white-bg p-0 rounded-5">
+
+                                          <a class="nav-link dropdown-toggle show px-0" href="#"
+                                              data-bs-toggle="dropdown" aria-expanded="true">
+                                              <span class="user-name">Date</span>
+                                          </a>
+                                          <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                              <li>
+                                                  <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                      Past date
+                                                  </a>
+                                              </li>
+                                              <li>
+                                                  <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                      Latest Date
+                                                  </a>
+                                              </li>
+                                          </ul> -->
+                                      </div>
+                                  </div>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                              <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                  <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                      href="">
+                                      <div>
+                                          <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                      </div>
+                                      <div>
+                                          <p class="mb-2">10 / 29 / 2021</p>
+                                          <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                      </div>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                      <!-- Read Notification -->
+                  </div>
+              </div>
+
+              <!-- Modal Body Ends-->
+
+              <div class="modal-footer mt-3 pb-0">
+                  <div class="d-flex justify-content-end">
+                      <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+  <!-- Notification Modal Ends -->
     <!-- Create Reminders Modal start-->
     <div class="modal modal-right fade" id="createReminders" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
@@ -1884,16 +1881,16 @@
                             <form action="">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="" placeholder="Enter a name">
+                                    <input type="text" class="form-control" id="" placeholder="Enter a Name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Description</label>
                                     <input type="text" class="form-control" id=""
-                                        placeholder="Describe this notification">
+                                        placeholder="Describe This Notification">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Entity</label>
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select form-control" aria-label="Default select example">
                                         <option selected>Select</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
@@ -1915,8 +1912,8 @@
                                     </div>
                                     <div class="col-12 col-md-2">
                                         <label for="all-day" class="form-label">ALL DAY</label>
-                                        <div class="py-3 rounded-2 bg-white text-center">
-                                            <div class="form-check d-flex justify-content-center ">
+                                        <div class="py-3 rounded-2 bg-white text-center form-control d-flex align-items-center justify-content-center">
+                                            <div class="form-check d-flex justify-content-center">
                                                 <input class="form-check-input" type="checkbox" value="" id="all-day"
                                                     checked="">
                                             </div>
@@ -1926,7 +1923,7 @@
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-12">
                                         <label for="" class="form-label">RECURRING</label>
-                                        <input type="text" class="form-control" id="" placeholder="Doesn’t repeat">
+                                        <input type="text" class="form-control" id="" placeholder="Doesn’t Repeat">
                                     </div>
                                 </div>
                             </form>
@@ -1935,7 +1932,7 @@
                 </div>
                 <!-- Modal Body End -->
 
-                <div class="modal-footer mt-5 pt-5">
+                <div class="modal-footer mt-3 pb-0">
                     <div class="d-flex justify-content-end w-100">
                         <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
                             data-bs-dismiss="modal">
@@ -1977,18 +1974,18 @@
                             <form action="">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="" placeholder="Enter a name"
-                                        value="Annual Tax Reminder">
+                                    <input type="text" class="form-control" id="" placeholder="Enter a Name"
+                                        value="">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Description</label>
                                     <input type="text" class="form-control" id=""
-                                        value="I need to remember when this is."
-                                        placeholder="Describe this notification">
+                                        value=""
+                                        placeholder="Describe This Notification">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Entity</label>
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select form-control" aria-label="Default select example">
                                         <option>Select</option>
                                         <option selected value="Steve’s Accounting">Steve’s Accounting</option>
                                         <option value="2">Two</option>
@@ -2010,7 +2007,7 @@
                                     </div>
                                     <div class="col-12 col-md-2">
                                         <label for="all-day" class="form-label">ALL DAY</label>
-                                        <div class="py-3 rounded-2 bg-white text-center">
+                                        <div class="py-3 rounded-2 bg-white text-center form-control d-flex align-items-center justify-content-center">
                                             <div class="form-check d-flex justify-content-center ">
                                                 <input class="form-check-input" type="checkbox" value="true"
                                                     id="all-day" checked="">
@@ -2021,9 +2018,9 @@
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-12">
                                         <label for="" class="form-label">RECURRING</label>
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select form-control" aria-label="Default select example">
                                             <option>Select</option>
-                                            <option selected value="Steve’s Accounting">Doesn’t repeat</option>
+                                            <option selected value="Steve’s Accounting">Doesn’t Repeat</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
                                         </select>
@@ -2035,7 +2032,7 @@
                 </div>
                 <!-- Modal Body End -->
 
-                <div class="modal-footer mt-5 pt-5">
+                <div class="modal-footer mt-3 pb-0">
                     <div class="d-flex justify-content-end w-100">
                         <button type="button"
                             class="btn btn-link text-uppercase text-decoration-none font-weight-600 text-red"
@@ -2114,7 +2111,7 @@
                 </div>
                 <!-- Modal Body End -->
 
-                <div class="modal-footer mt-5 pt-5">
+                <div class="modal-footer mt-3 pb-0">
                     <button type="button" class="btn btn-info text-uppercase text-decoration-none font-weight-600"
                         data-bs-dismiss="modal">
                         CLOSE
