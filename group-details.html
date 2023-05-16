@@ -474,7 +474,9 @@
                                                                     data-bs-target="#editGroupMembers"
                                                                     data-toggle="tooltip" title="EDIT"></span>
                                                                 <span class=" icon icon-delete ms-3 me-0"
-                                                                    data-toggle="tooltip" title="DELETE"></span>
+                                                                    data-toggle="tooltip" title="DELETE"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteMember"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -495,7 +497,9 @@
                                                                     data-bs-target="#editGroupMembers"
                                                                     data-toggle="tooltip" title="EDIT"></span>
                                                                 <span class=" icon icon-delete ms-3 me-0"
-                                                                    data-toggle="tooltip" title="DELETE"></span>
+                                                                    data-toggle="tooltip" title="DELETE"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteMember"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -517,7 +521,9 @@
                                                                     data-bs-target="#editGroupMembers"
                                                                     data-toggle="tooltip" title="EDIT"></span>
                                                                 <span class=" icon icon-delete ms-3 me-0"
-                                                                    data-toggle="tooltip" title="DELETE"></span>
+                                                                    data-toggle="tooltip" title="DELETE"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteMember"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -661,8 +667,7 @@
                                                 <h4>Payment Information</h4>
                                                 <a href="javascript: void(0)" class="text-purple text-decoration-none"
                                                     data-bs-toggle="modal" data-bs-target="#addPaymentModal">
-                                                    ADD NEW <span class="icon icon-sm icon-edit-purple mx-1"
-                                                        data-toggle="tooltip" title="EDIT"></span></a>
+                                                    + ADD NEW</a>
 
                                             </div>
                                             <div class="table-responsive-xxl">
@@ -2270,6 +2275,47 @@
                 <!-- Modal Body Start-->
                 <div class="modal-body">
                     <p>This will permanently remove this file.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-danger px-5 py-3" data-bs-dismiss="modal">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete document Modal End-->
+
+    <!-- delete member Modal start-->
+    <div class="modal modal-right fade" id="deleteMember" tabindex="-1" aria-labelledby="deleteMemberlabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-danger p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-delete-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Member
+                                Deletion</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Are you sure you want to delete this Member</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This will permanently remove this member.</p>
                 </div>
                 <!-- Modal Body End -->
 
