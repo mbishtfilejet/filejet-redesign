@@ -474,7 +474,9 @@
                                                                     data-bs-target="#editGroupMembers"
                                                                     data-toggle="tooltip" title="EDIT"></span>
                                                                 <span class=" icon icon-delete ms-3 me-0"
-                                                                    data-toggle="tooltip" title="DELETE"></span>
+                                                                    data-toggle="tooltip" title="DELETE"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteMember"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -495,7 +497,9 @@
                                                                     data-bs-target="#editGroupMembers"
                                                                     data-toggle="tooltip" title="EDIT"></span>
                                                                 <span class=" icon icon-delete ms-3 me-0"
-                                                                    data-toggle="tooltip" title="DELETE"></span>
+                                                                    data-toggle="tooltip" title="DELETE"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteMember"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -517,7 +521,9 @@
                                                                     data-bs-target="#editGroupMembers"
                                                                     data-toggle="tooltip" title="EDIT"></span>
                                                                 <span class=" icon icon-delete ms-3 me-0"
-                                                                    data-toggle="tooltip" title="DELETE"></span>
+                                                                    data-toggle="tooltip" title="DELETE"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteMember"></span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -661,8 +667,7 @@
                                                 <h4>Payment Information</h4>
                                                 <a href="javascript: void(0)" class="text-purple text-decoration-none"
                                                     data-bs-toggle="modal" data-bs-target="#addPaymentModal">
-                                                    EDIT <span class="icon icon-sm icon-edit-purple mx-1"
-                                                        data-toggle="tooltip" title="EDIT"></span></a>
+                                                    + ADD NEW</a>
 
                                             </div>
                                             <div class="table-responsive-xxl">
@@ -680,30 +685,39 @@
                                                             <td class="doc-name">AMEX</td>
                                                             <td>**** **** **** 1234</td>
                                                             <td class="text-end">
-                                                                <span class="icon icon-edit mx-3 cursor-pointer"
-                                                                    data-toggle="tooltip" title="EDIT"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#addPaymentModal"></span>
+                                                                <span
+                                                                    class="icon icon-edit edit-document-name mx-3 cursor-pointer"
+                                                                    data-toggle="tooltip" title="EDIT"></span>
+                                                                <span
+                                                                    class="icon icon-save save-document-name mx-3 cursor-pointer"
+                                                                    data-toggle="tooltip" title="SAVE"></span>
+
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="doc-name">Ryan's ACH</td>
                                                             <td>**** **** **** 1234</td>
                                                             <td class="text-end">
-                                                                <span class="icon icon-edit mx-3 cursor-pointer"
-                                                                    data-toggle="tooltip" title="EDIT"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#addPaymentModal"></span>
+                                                                <span
+                                                                    class="icon icon-edit edit-document-name mx-3 cursor-pointer"
+                                                                    data-toggle="tooltip" title="EDIT"></span>
+                                                                <span
+                                                                    class="icon icon-save save-document-name mx-3 cursor-pointer"
+                                                                    data-toggle="tooltip" title="SAVE"></span>
+
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="doc-name">Visa (default)</td>
                                                             <td>**** **** **** 1234</td>
                                                             <td class="text-end">
-                                                                <span class="icon icon-edit mx-3 cursor-pointer"
-                                                                    data-toggle="tooltip" title="EDIT"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#addPaymentModal"></span>
+                                                                <span
+                                                                    class="icon icon-edit edit-document-name mx-3 cursor-pointer"
+                                                                    data-toggle="tooltip" title="EDIT"></span>
+                                                                <span
+                                                                    class="icon icon-save save-document-name mx-3 cursor-pointer"
+                                                                    data-toggle="tooltip" title="SAVE"></span>
+
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -817,6 +831,9 @@
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-edit-white m-0"></span>
+                        </span>
                         <div>
                             <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit Group</span>
                             <h3 class="fs-3 m-0 mt-2">Group Details</h3>
@@ -885,6 +902,9 @@
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-edit-white m-0"></span>
+                        </span>
                         <div>
                             <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit Group</span>
                             <h3 class="fs-3 m-0 mt-2">Edit Address</h3>
@@ -938,6 +958,9 @@
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-edit-white m-0"></span>
+                        </span>
                         <div>
                             <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit Group</span>
                             <h3 class="fs-3 m-0 mt-2">Edit Address</h3>
@@ -1008,6 +1031,9 @@
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-edit-white m-0"></span>
+                        </span>
                         <div>
                             <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit Group</span>
                             <h3 class="fs-3 m-0 mt-2">Edit Address</h3>
@@ -1107,7 +1133,8 @@
                             data-bs-target="#addCrediCardModal">
                             <div class="col-6 d-flex flex-wrap align-items-center">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="view" id="ach" onclick="showAchInfo()">
+                                    <input class="form-check-input" type="radio" name="view" id="ach"
+                                        onclick="showAchInfo()">
                                 </div>
                                 <label class="ps-1 mb-0 fs-6" for="ach">
                                     ACH
@@ -1115,12 +1142,12 @@
                             </div>
                             <div class=" col-6 d-flex flex-wrap align-items-center">
                                 <div class="form-check d-flex align-items-center">
-                                    <input class="form-check-input" type="radio" name="view"
-                                         id="creditCard"   onclick=" showCreditCardDetails()">
+                                    <input class="form-check-input" type="radio" name="view" id="creditCard"
+                                        onclick=" showCreditCardDetails()">
                                 </div>
                                 <label class="ps-1 mb-0 fs-6" for="creditCard">
                                     Credit Card
-                                </span>
+                                    </span>
                             </div>
                         </div>
                     </div>
@@ -1169,14 +1196,16 @@
                                 <div class="d-flex">
                                     <div
                                         class="form-check radio-child-element mb-4 form-control w-auto d-flex align-items-center">
-                                        <input class="form-check-input ms-0 mt-0" type="radio" id="individual" name="account-type">
+                                        <input class="form-check-input ms-0 mt-0" type="radio" id="individual"
+                                            name="account-type">
                                         <label class="form-check-label top-0 ms-3" for="individual">
                                             Individual
                                         </label>
                                     </div>
                                     <div
                                         class="form-check radio-child-element mb-4 ms-4 form-control w-auto d-flex align-items-center">
-                                        <input class="form-check-input ms-0 mt-0" type="radio" id="company" name="account-type">
+                                        <input class="form-check-input ms-0 mt-0" type="radio" id="company"
+                                            name="account-type">
                                         <label class="form-check-label top-0 ms-3" for="company">
                                             Company
                                         </label>
@@ -1227,6 +1256,9 @@
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-edit-white m-0"></span>
+                        </span>
                         <div>
                             <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit Group</span>
                             <h3 class="fs-3 m-0 mt-2">Add Members</h3>
@@ -1245,8 +1277,8 @@
                             </div>
                             <div class="col-4">
                                 <div class="form-check form-check-inline me-3">
-                                    <input class="form-check-input" type="radio" name="rightView"
-                                        id="rightView" value="rights" checked>
+                                    <input class="form-check-input" type="radio" name="rightView" id="rightView"
+                                        value="rights" checked>
                                     <label class="form-check-label" for="rightView">View</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -1300,29 +1332,29 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="First Name">
+                            <input type="text" class="form-control" id="" placeholder="First Name">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Middle name</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="Middle Name">
+                            <input type="text" class="form-control" id="" placeholder="Middle Name">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="Last Name">
+                            <input type="text" class="form-control" id="" placeholder="Last Name">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="email@address.com">
+                            <input type="text" class="form-control" id="" placeholder="email@address.com">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="(999) 999 - 9999">
+                            <input type="text" class="form-control" id="" placeholder="(999) 999 - 9999">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Address</label>
-                            <input type="text" class="form-control mb-3" id="" value="" placeholder="Address Line 1">
-                            <input type="text" class="form-control mb-3" id="" value="" placeholder="Address Line 2">
-                            <input type="text" class="form-control" id="" value="" placeholder="City">
+                            <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
+                            <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
+                            <input type="text" class="form-control" id="" placeholder="City">
                         </div>
                         <div class="mb-3">
                             <div class="row">
@@ -1375,6 +1407,9 @@
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-edit-white m-0"></span>
+                        </span>
                         <div>
                             <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit Group</span>
                             <h3 class="fs-3 m-0 mt-2">Edit Members</h3>
@@ -1393,8 +1428,8 @@
                             </div>
                             <div class="col-4">
                                 <div class="form-check form-check-inline me-3">
-                                    <input class="form-check-input" type="radio" name="view1"
-                                        id="rightView1" value="rights" checked>
+                                    <input class="form-check-input" type="radio" name="view1" id="rightView1"
+                                        value="rights" checked>
                                     <label class="form-check-label" for="rightView1">View</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -1427,13 +1462,13 @@
                             </div>
                             <div class="col-4">
                                 <div class="form-check form-check-inline me-3">
-                                    <input class="form-check-input" type="radio" name="invoice1"
-                                        id="invoicesYes1" value="invoice" checked>
+                                    <input class="form-check-input" type="radio" name="invoice1" id="invoicesYes1"
+                                        value="invoice" checked>
                                     <label class="form-check-label" for="invoicesYes1">yes</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="invoice1"
-                                        id="invoicesNo1" value="invoice">
+                                    <input class="form-check-input" type="radio" name="invoice1" id="invoicesNo1"
+                                        value="invoice">
                                     <label class="form-check-label" for="invoicesNo1">No</label>
                                 </div>
                             </div>
@@ -1448,29 +1483,29 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="First Name">
+                            <input type="text" class="form-control" id="" placeholder="First Name">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Middle name</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="Middle Name">
+                            <input type="text" class="form-control" id="" placeholder="Middle Name">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="Last Name">
+                            <input type="text" class="form-control" id="" placeholder="Last Name">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="email@address.com">
+                            <input type="text" class="form-control" id="" placeholder="email@address.com">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="" value="" placeholder="(999) 999 - 9999">
+                            <input type="text" class="form-control" id="" placeholder="(999) 999 - 9999">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Address</label>
-                            <input type="text" class="form-control mb-3" id="" value="" placeholder="Address Line 1">
-                            <input type="text" class="form-control mb-3" id="" value="" placeholder="Address Line 2">
-                            <input type="text" class="form-control" id="" value="" placeholder="City">
+                            <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
+                            <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
+                            <input type="text" class="form-control" id="" placeholder="City">
                         </div>
                         <div class="mb-3">
                             <div class="row">
@@ -2277,6 +2312,47 @@
     </div>
     <!-- delete document Modal End-->
 
+    <!-- delete member Modal start-->
+    <div class="modal modal-right fade" id="deleteMember" tabindex="-1" aria-labelledby="deleteMemberlabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-danger p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-delete-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Member
+                                Deletion</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Are you sure you want to delete this Member</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This will permanently remove this member.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-danger px-5 py-3" data-bs-dismiss="modal">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete document Modal End-->
+
     <!-- Edit entities modal starts -->
     <div class="modal modal-right fade" id="editEntity" tabindex="-1" aria-labelledby="editEntityLabel"
         aria-hidden="true">
@@ -2765,6 +2841,7 @@
                             <span class="icon icon-md icon-folder-white m-0"></span>
                         </span>
                         <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Edit Group</span>
                             <h3 class="fs-3 m-0 font-weight-700">Create Folder</h3>
                         </div>
                     </div>
