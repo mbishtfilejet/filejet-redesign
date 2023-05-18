@@ -45,6 +45,12 @@ $(function () {
     "language": {
       "processing": '<div  role="status"> </div>',
     },
+    "scrollX": true,
+    "scrollY": "52vh",
+    "scrollCollapse": true,
+    "drawCallback": function () { // this gets rid of duplicate headers
+      $('.dataTables_scrollBody thead tr').css({ display: 'none' }); 
+  },
   });
 
   $(document).on('click', '.view-change > a', function () {
