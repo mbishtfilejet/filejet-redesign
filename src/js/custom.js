@@ -45,6 +45,9 @@ $(function () {
     "language": {
       "processing": '<div  role="status"> </div>',
     },
+    "scrollX": true,
+    "scrollY": "50vh",
+    "scrollCollapse": true,
   });
 
   $(document).on('click', '.view-change > a', function () {
