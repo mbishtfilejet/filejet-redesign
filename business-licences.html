@@ -277,7 +277,7 @@
                                 <div class="tab-content bg-white rounded-2">
                                     <div class="tab-pane fade show active" id="bl-all" role="tabpanel"
                                         aria-labelledby="bl-all-tab">
-                                        <div class="table-responsive">
+                                        <div class="">
                                             <table id="bl-all-table" class="table table-striped w-100  table-nowrap">
                                                 <thead>
                                                     <tr>
@@ -372,7 +372,7 @@
                                     </div>
                                     <div class="tab-pane fade" id="bl-inprogress" role="tabpanel"
                                         aria-labelledby="bl-inprogress-tab">
-                                        <div class="table-responsive">
+                                        <div class="">
                                             <table id="bl-inprogress-table"
                                                 class="table table-striped w-100 table-nowrap">
                                                 <thead>
@@ -2807,16 +2807,22 @@
                 "pagingType": "simple_numbers",
                 "processing": true,
                 "language": {
-                "processing": '<div  role="status"> </div>' ,
+                    "processing": '<div  role="status"> </div>',
                 },
+                "scrollX": true,
+                "scrollY": "50vh",
+                "scrollCollapse": true,
             });
             var inProgressTable = $('#bl-inprogress-table').DataTable({
                 "lengthChange": false,
                 "pagingType": "simple_numbers",
                 "processing": true,
                 "language": {
-                "processing": '<div  role="status"> </div>' ,
+                    "processing": '<div  role="status"> </div>',
                 },
+                "scrollX": true,
+                "scrollY": "50vh",
+                "scrollCollapse": true,
             });
             // Add event listener for opening and closing details
             $('#bl-all-table tbody').on('click', 'td.dt-control', handleTable(AllTable));
