@@ -48,7 +48,6 @@ $(function () {
     "scrollX": true,
     "scrollY": "50vh",
     "scrollCollapse": true,
-
   });
 
   $(document).on('click', '.view-change > a', function () {
