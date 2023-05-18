@@ -20,6 +20,9 @@ $(function () {
       null,
       null,
     ],
+    "scrollX": true,
+    "scrollY": "50vh",
+    "scrollCollapse": true,
   });
   $('#payment-method-table').DataTable({
     "lengthChange": false,
@@ -29,13 +32,17 @@ $(function () {
       "processing": '<div  role="status"> </div>',
     },
     "order": [],
+    "scrollCollapse": true,
     "columns": [
       null,
       null,
       null,
       null,
       null
-    ]
+    ],
+    "scrollX": true,
+    "scrollY": "50vh",
+    "scrollCollapse": true,
   });
 
   $('.data-table-listing').DataTable({
