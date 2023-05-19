@@ -21,8 +21,7 @@ $(function () {
       null,
     ],
     "scrollX": true,
-    "scrollY": "50vh",
-    "scrollCollapse": true,
+    "scrollY": "45vh",
   });
   $('#payment-method-table').DataTable({
     "lengthChange": false,
@@ -40,8 +39,7 @@ $(function () {
       null
     ],
     "scrollX": true,
-    "scrollY": "50vh",
-    "scrollCollapse": true,
+    "scrollY": "45vh",
   });
 
   $('.data-table-listing').DataTable({
@@ -53,10 +51,9 @@ $(function () {
     },
     "responsive": true,
     "scrollX": true,
-    "scrollY": "50vh",
-    "scrollCollapse": true,
+    "scrollY": "45vh",
   })
-  $(document).on('shown.bs.modal', function () {
+  $(document).on('shown.bs.tab shown.bs.modal', function () {
     $('.data-table-listing').DataTable().columns.adjust();
   });
 
@@ -182,6 +179,7 @@ function fileUploadInput() {
     $(document).on('click', '.go-back-child', function () {
       $('.folder-level').css('display', 'none');
       $('#child-folder').css('display', 'block');
+      $('.data-table-listing').DataTable().columns.adjust();
     });
   });
 }
