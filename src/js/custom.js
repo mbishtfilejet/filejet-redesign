@@ -65,6 +65,7 @@ $(function () {
     $('#' + dataId).css('display', 'block');
     $(this).parents('.entity-card-content').find('.tab-listing').removeClass('active');
     $('.' + dataId).addClass('active');
+    $('.data-table-listing').DataTable().columns.adjust();
   });
 
   $(document).on('click', '.view-change-entry > a', function () {
@@ -99,6 +100,7 @@ $(function () {
     let dataId = $(this).attr('data-id');
     $('.entity-card-content').removeClass('active');
     $('#' + dataId).addClass('active');
+    $('.data-table-listing').DataTable().columns.adjust();
   });
 
 
