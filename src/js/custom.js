@@ -32,7 +32,6 @@ $(function () {
       "processing": '<div  role="status"> </div>',
     },
     "order": [],
-    "scrollCollapse": true,
     "columns": [
       null,
       null,
@@ -52,9 +51,13 @@ $(function () {
     "language": {
       "processing": '<div  role="status"> </div>',
     },
+    "responsive": true,
     "scrollX": true,
     "scrollY": "50vh",
     "scrollCollapse": true,
+  })
+  $(document).on('shown.bs.modal', function () {
+    $('.data-table-listing').DataTable().columns.adjust();
   });
 
   $(document).on('click', '.view-change > a', function () {
@@ -106,6 +109,7 @@ $(function () {
     let dataId = $(this).attr('data-id');
     $('.folder-level').css('display', 'none');
     $('#' + dataId).css('display', 'block');
+    $('.data-table-listing').DataTable().columns.adjust();
   });
 
   $('.warning-popup').on('click', function () {
