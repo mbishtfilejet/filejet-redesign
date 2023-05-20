@@ -57,53 +57,6 @@
         }
     }
 
-    .dataTables_paginate {
-        ul.pagination {
-            @extend .m-0, .justify-content-end;
-
-            .paginate_button {
-                &.next {
-
-                    .page-link {
-                        background: url(../../../dist/images/icons/icon-angle-right.svg) no-repeat center center;
-                        color: transparent;
-                    }
-                }
-
-                &.previous {
-                    .page-link {
-                        background: url(../../../dist/images/icons/icon-angle-left.svg) no-repeat center center;
-                        color: transparent;
-                    }
-                }
-
-                &.disabled {
-                    a.page-link {
-                        opacity: 0.5;
-                    }
-                }
-
-                a.page-link {
-                    @extend .border-0, .text-center, .bg-transparent;
-                    color: #a5a4a4;
-                    width: 3rem;
-
-                    &:focus,
-                    &:active {
-                        outline: none;
-                        @extend .shadow-none;
-                    }
-                }
-            }
-
-            .paginate_button.active {
-                a.page-link {
-                    @extend .text-dark;
-                }
-            }
-        }
-    }
-
     .dataTable {
         @extend .m-0;
 
@@ -148,6 +101,53 @@
             }
 
 
+        }
+    }
+}
+
+.dataTables_paginate {
+    ul.pagination {
+        @extend .m-0, .justify-content-end;
+
+        .paginate_button {
+            &.next {
+
+                .page-link {
+                    background: url(../../../dist/images/icons/icon-angle-right.svg) no-repeat center center;
+                    color: transparent;
+                }
+            }
+
+            &.previous {
+                .page-link {
+                    background: url(../../../dist/images/icons/icon-angle-left.svg) no-repeat center center;
+                    color: transparent;
+                }
+            }
+
+            &.disabled {
+                a.page-link {
+                    opacity: 0.5;
+                }
+            }
+
+            a.page-link {
+                @extend .border-0, .text-center, .bg-transparent;
+                color: #a5a4a4;
+                width: 3rem;
+
+                &:focus,
+                &:active {
+                    outline: none;
+                    @extend .shadow-none;
+                }
+            }
+        }
+
+        .paginate_button.active {
+            a.page-link {
+                @extend .text-dark;
+            }
         }
     }
 }
