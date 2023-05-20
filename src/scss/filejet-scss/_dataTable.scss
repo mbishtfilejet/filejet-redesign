@@ -1,24 +1,28 @@
 .dataTables_wrapper {
+
     // css for table loader
-    .row.dt-row{
+    .row.dt-row {
         @extend .position-relative;
-        .dataTables_processing.card{
-            @extend .position-absolute,.top-50,.start-50,.bg-transparent,.border-0;
+
+        .dataTables_processing.card {
+            @extend .position-absolute, .top-50, .start-50, .bg-transparent, .border-0;
         }
-        .dataTables_processing.card div[role="status"]{
-            @extend .text-purple,.spinner-border;
+
+        .dataTables_processing.card div[role="status"] {
+            @extend .text-purple, .spinner-border;
         }
     }
+
     // loader end
     &>.row {
         &:last-child {
-            @extend .justify-content-between,.align-items-center;
+            @extend .justify-content-between, .align-items-center;
         }
     }
 
     tbody {
         td {
-            @extend .py-3,.px-3,.bg-transparent;
+            @extend .py-3, .px-3, .bg-transparent;
             font-weight: 500;
             line-height: rem(20);
             font-size: rem(16);
@@ -47,7 +51,7 @@
 
     thead {
         th {
-            @extend .py-4,.px-3,.bg-white,.fs-7;
+            @extend .py-4, .px-3, .bg-white, .fs-7;
             font-weight: 700;
             line-height: rem(19);
         }
@@ -55,8 +59,8 @@
 
     .dataTables_paginate {
         ul.pagination {
-            @extend .m-0,.justify-content-end;
-            
+            @extend .m-0, .justify-content-end;
+
             .paginate_button {
                 &.next {
 
@@ -80,7 +84,7 @@
                 }
 
                 a.page-link {
-                    @extend .border-0 ,.text-center,.bg-transparent;
+                    @extend .border-0, .text-center, .bg-transparent;
                     color: #a5a4a4;
                     width: 3rem;
 
@@ -91,8 +95,9 @@
                     }
                 }
             }
-            .paginate_button.active{
-                a.page-link{
+
+            .paginate_button.active {
+                a.page-link {
                     @extend .text-dark;
                 }
             }
@@ -148,7 +153,7 @@
 }
 
 .dataTables_info {
-    @extend .py-4,.px-3;
+    @extend .py-4, .px-3;
     font-size: rem(14);
     font-weight: 400;
     line-height: rem(20);
@@ -156,7 +161,7 @@
 }
 
 .dataTables_paginate {
-    @extend .py-4,.px-3;
+    @extend .py-4, .px-3;
 }
 
 table {
@@ -188,3 +193,17 @@ table {
     }
 }
 
+.dataTables_filter {
+    @extend .d-none;
+}
+
+.dataTables_scrollBody>table>thead>tr {
+    visibility: collapse;
+    height: 0px !important;
+}
+
+.dataTables_scroll {
+    .dataTables_scrollBody {
+        padding-top: 1px;
+    }
+}
