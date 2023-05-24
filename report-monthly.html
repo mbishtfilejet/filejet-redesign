@@ -299,8 +299,7 @@
                                                         <td>
                                                             <span class="icon icon-md icon-pdf-black me-0"
                                                                 data-bs-toggle="modal" data-bs-target="#invoiceModal"
-                                                                data-toggle="tooltip"
-                                                                title="SEE INVOICE"></span>
+                                                                data-toggle="tooltip" title="SEE INVOICE"></span>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -313,8 +312,7 @@
                                                         <td>
                                                             <span class="icon icon-md icon-pdf-black me-0"
                                                                 data-bs-toggle="modal" data-bs-target="#invoiceModal"
-                                                                data-toggle="tooltip" 
-                                                                title="SEE INVOICE"></span>
+                                                                data-toggle="tooltip" title="SEE INVOICE"></span>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -327,8 +325,7 @@
                                                         <td>
                                                             <span class="icon icon-md icon-pdf-black me-0"
                                                                 data-bs-toggle="modal" data-bs-target="#invoiceModal"
-                                                                data-toggle="tooltip"
-                                                                title="SEE INVOICE"></span>
+                                                                data-toggle="tooltip" title="SEE INVOICE"></span>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -341,8 +338,7 @@
                                                         <td>
                                                             <span class="icon icon-md icon-pdf-black me-0"
                                                                 data-bs-toggle="modal" data-bs-target="#invoiceModal"
-                                                                data-toggle="tooltip"
-                                                                title="SEE INVOICE"></span>
+                                                                data-toggle="tooltip" title="SEE INVOICE"></span>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -355,8 +351,7 @@
                                                         <td>
                                                             <span class="icon icon-md icon-pdf-black me-0"
                                                                 data-bs-toggle="modal" data-bs-target="#invoiceModal"
-                                                                data-toggle="tooltip"
-                                                                title="SEE INVOICE"></span>
+                                                                data-toggle="tooltip" title="SEE INVOICE"></span>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -370,8 +365,7 @@
                                                         <td>
                                                             <span class="icon icon-md icon-pdf-black me-0"
                                                                 data-bs-toggle="modal" data-bs-target="#invoiceModal"
-                                                                data-toggle="tooltip"
-                                                                title="SEE INVOICE"></span>
+                                                                data-toggle="tooltip" title="SEE INVOICE"></span>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -384,8 +378,7 @@
                                                         <td>
                                                             <span class="icon icon-md icon-pdf-black me-0"
                                                                 data-bs-toggle="modal" data-bs-target="#invoiceModal"
-                                                                data-toggle="tooltip"
-                                                                title="SEE INVOICE"></span>
+                                                                data-toggle="tooltip" title="SEE INVOICE"></span>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1574,12 +1567,36 @@
     </div>
     <!-- Service Modal Ends -->
 
-    <script src="dist/js/plugins.min.js"></script>
-    <script src="dist/js/custom.min.js"></script>
     <!-- for date picker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $('input[name="daterange"]').daterangepicker({
+            ranges: {
+                'Today': [moment(), moment()],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                '3 Months': [moment().subtract(2, 'month').startOf('month'), moment().endOf('month')],
+                '6 Months': [moment().subtract(5, 'month').startOf('month'), moment().endOf('month')],
+                '1 Year': [moment().subtract(11, 'month').startOf('month'), moment().endOf('month')]
+            },
+            opens: 'center',
+            linkedCalendars: false,
+            alwaysShowCalendars: true,
+            cancelClass: 'btn-secondary',
+            locale: {
+                format: 'MMMM D, YYYY',
+            },
+            startDate: moment().subtract(11, 'month').startOf('month'),
+            endDate: moment().subtract(1, 'month'),
+        });
+    </script>
+    <!--Date picker script ends -->
+    <script src="dist/js/plugins.min.js"></script>
+    <script src="dist/js/custom.min.js"></script>
+
     <!-- Scripts End-->
 </body>
 
