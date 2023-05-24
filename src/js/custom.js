@@ -1,4 +1,5 @@
 $(function () {
+
   $('#compliance a').on('click', function (e) {
     e.preventDefault()
     $(this).tab('show')
@@ -115,6 +116,11 @@ $(function () {
     warningPopup();
   });
 
+  document.getElementById("showTimeButton").addEventListener("click", (event) => {
+    const input = event.target.previousElementSibling;
+    input.showPicker();
+  });
+
   $('input[name="daterange"]').daterangepicker({
     ranges: {
       'Today': [moment(), moment()],
@@ -135,6 +141,7 @@ $(function () {
     startDate: moment().subtract(11, 'month').startOf('month'),
     endDate: moment().subtract(1, 'month'),
   });
+
 });
 
 function fileUploadInput() {
