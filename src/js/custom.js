@@ -21,7 +21,7 @@ $(function () {
       null,
     ],
     "scrollX": true,
-    "scrollY": "45vh",
+    "scrollY": "50vh",
   });
   $('#payment-method-table').DataTable({
     "lengthChange": false,
@@ -39,7 +39,7 @@ $(function () {
       null
     ],
     "scrollX": true,
-    "scrollY": "45vh",
+    "scrollY": "50vh",
   });
 
   $('.data-table-listing').DataTable({
@@ -51,7 +51,7 @@ $(function () {
     },
     "responsive": true,
     "scrollX": true,
-    "scrollY": "45vh",
+    "scrollY": "50vh",
   })
   $(document).on('shown.bs.tab shown.bs.modal', function () {
     $('.data-table-listing').DataTable().columns.adjust();
