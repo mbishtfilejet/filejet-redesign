@@ -81,7 +81,7 @@ $(function () {
     $(this).parents('.form-check').next('.accordion').toggleClass('hide');
   });
 
-  $("#datepicker").datepicker({
+  $(".datepicker").datepicker({
     dateFormat: "mm-dd-yy"
   });
 
