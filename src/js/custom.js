@@ -116,9 +116,11 @@ $(function () {
     warningPopup();
   });
 
-  document.getElementById("showTimeButton").addEventListener("click", (event) => {
-    const input = event.target.previousElementSibling;
-    input.showPicker();
+  document.querySelectorAll(".showTimeButton").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const input = event.target.previousElementSibling;
+      input.showPicker();
+    });
   });
 
   $('input[name="daterange"]').daterangepicker({
