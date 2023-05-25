@@ -1,4 +1,5 @@
 $(function () {
+
   $('#compliance a').on('click', function (e) {
     e.preventDefault()
     $(this).tab('show')
@@ -80,7 +81,7 @@ $(function () {
     $(this).parents('.form-check').next('.accordion').toggleClass('hide');
   });
 
-  $("#datepicker").datepicker({
+  $(".datepicker").datepicker({
     dateFormat: "mm-dd-yy"
   });
 
@@ -114,6 +115,14 @@ $(function () {
   $('.warning-popup').on('click', function () {
     warningPopup();
   });
+
+  document.querySelectorAll(".showTimeButton").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const input = event.target.previousElementSibling;
+      input.showPicker();
+    });
+  });
+
 });
 
 function fileUploadInput() {
