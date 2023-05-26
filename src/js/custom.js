@@ -54,8 +54,20 @@ $(function () {
     "scrollX": true,
     "scrollY": "50vh",
   })
+  $('.long-data-table-listing').DataTable({
+    "lengthChange": false,
+    "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div  role="status"> </div>',
+    },
+    "responsive": true,
+    "scrollX": true,
+    "scrollY": "57.5vh",
+  })
+
   $(document).on('shown.bs.tab shown.bs.modal', function () {
-    $('.data-table-listing').DataTable().columns.adjust();
+    adjustDataTable()
   });
 
   $(document).on('click', '.view-change > a', function () {
@@ -66,7 +78,7 @@ $(function () {
     $('#' + dataId).css('display', 'block');
     $(this).parents('.entity-card-content').find('.tab-listing').removeClass('active');
     $('.' + dataId).addClass('active');
-    $('.data-table-listing').DataTable().columns.adjust();
+    adjustDataTable()
   });
 
   $(document).on('click', '.view-change-entry > a', function () {
@@ -101,7 +113,7 @@ $(function () {
     let dataId = $(this).attr('data-id');
     $('.entity-card-content').removeClass('active');
     $('#' + dataId).addClass('active');
-    $('.data-table-listing').DataTable().columns.adjust();
+    adjustDataTable()
   });
 
 
@@ -109,7 +121,7 @@ $(function () {
     let dataId = $(this).attr('data-id');
     $('.folder-level').css('display', 'none');
     $('#' + dataId).css('display', 'block');
-    $('.data-table-listing').DataTable().columns.adjust();
+    adjustDataTable()
   });
 
   $('.warning-popup').on('click', function () {
@@ -169,7 +181,7 @@ function fileUploadInput() {
     $(document).on('click', '.go-back-child', function () {
       $('.folder-level').css('display', 'none');
       $('#child-folder').css('display', 'block');
-      $('.data-table-listing').DataTable().columns.adjust();
+      adjustDataTable()
     });
   });
 }
@@ -326,6 +338,10 @@ function showAchInfo() {
   document.querySelectorAll('#defaultPaymentDetails').forEach(function (el) {
     el.style.display = 'none';
   });
+}
+function adjustDataTable(){
+  $('.data-table-listing').DataTable().columns.adjust();
+  $('.long-data-table-listing').DataTable().columns.adjust();
 }
 
 function editDocumentName() {
