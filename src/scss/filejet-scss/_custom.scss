@@ -71,7 +71,7 @@ img {
     &.active {
       background: linear-gradient(224.01deg, #6e72ee -5.3%, #595ddc 100%);
       color: var(--bs-white);
-    padding: rem(6) rem(36);
+      padding: rem(6) rem(36);
     }
 
     &:hover {
@@ -146,6 +146,7 @@ img {
 .text-grey {
   color: var(--bs-gray-800);
 }
+
 .text-brown {
   color: #651B0C;
 }
@@ -334,7 +335,7 @@ input[type="text"]:focus-visible {
   }
 }
 
-//for chrome
+//for chrome scrollbar
 body *::-webkit-scrollbar {
   width: rem(10);
   height: rem(10);
@@ -352,10 +353,47 @@ body *::-webkit-scrollbar-thumb {
   border-radius: rem(8);
 }
 
+//for capitalizing first letter of placeholder
+
+::-webkit-input-placeholder {
+  text-transform: capitalize;
+}
+
+.placeholder-lowercase::-webkit-input-placeholder {
+  text-transform: lowercase;
+}
+
 //for firefox
+
+//for scrollbar
 body * {
   scrollbar-width: thin;
   scrollbar-color: var(--bs-purple) var(--bs-purple-light);
+}
+
+//for capitalizing first letter of placeholder
+:-moz-placeholder {
+  text-transform: capitalize;
+}
+
+::-moz-placeholder {
+  text-transform: capitalize;
+}
+
+:-ms-input-placeholder {
+  text-transform: capitalize;
+}
+
+.placeholder-lowercase::-moz-placeholder {
+  text-transform: lowercase;
+}
+
+.placeholder-lowercase::-moz-placeholder {
+  text-transform: lowercase;
+}
+
+.placeholder-lowercase:-ms-input-placeholder {
+  text-transform: lowercase;
 }
 
 form {
@@ -410,7 +448,9 @@ form {
 //   top: 5px;
 // }
 
-label.form-check-label, label.form-check,label{
+label.form-check-label,
+label.form-check,
+label {
   text-transform: uppercase !important;
 }
 
@@ -425,10 +465,12 @@ label.form-check-label, label.form-check,label{
     // top: 5px;
   }
 }
-.checkbox-group-fixed{
+
+.checkbox-group-fixed {
   max-height: rem(274);
   overflow-x: auto;
 }
+
 .radio-checkbox-group-fixed {
   max-height: rem(274);
   overflow-x: auto;
@@ -986,11 +1028,11 @@ td>span.doc-name {
 }
 
 
-#RAFilter.modal{
+#RAFilter.modal {
   --bs-modal-width: 700px;
 }
 
-.time-input{
+.time-input {
   .icon.time-icon {
     position: absolute;
     top: 50%;
