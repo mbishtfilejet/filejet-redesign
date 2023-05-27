@@ -63,7 +63,7 @@ $(function () {
     },
     "responsive": true,
     "scrollX": true,
-    "scrollY": "57.5vh",
+    "scrollY": "50vh",
   })
 
   $(document).on('shown.bs.tab shown.bs.modal', function () {
