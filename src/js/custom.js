@@ -85,6 +85,8 @@ $(function () {
     $('.view-change-entry > a').removeClass('active');
     $(this).addClass('active');
     let dataId = $(this).attr('data-id');
+    if (dataId === 'grid-view') $('.hide-tabs-grid-view').hide();
+    else $('.hide-tabs-grid-view').show();
     $('.tab-content-wrapper').css('display', 'none');
     $('#' + dataId).css('display', 'block');
   });
