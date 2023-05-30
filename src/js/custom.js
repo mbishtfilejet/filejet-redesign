@@ -141,6 +141,17 @@ $(function () {
   }
 });
 
+// increase decrease Number
+function changeValue(value) {
+  var numberInput = document.getElementById('numberInput');
+  var currentValue = parseInt(numberInput.value);
+  var newValue = currentValue + value;
+  if (newValue >= 0) {
+    numberInput.value = newValue;
+  }
+}
+// end
+
 function fileUploadInput() {
   document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
