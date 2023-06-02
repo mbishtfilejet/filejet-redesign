@@ -448,9 +448,9 @@
                                                 class="form-control py-0 ps-5 pe-4 m-0 grey-bg" />
                                         </div>
                                         <table class="table table-striped w-100 table-nowrap data-table-listing">
-                                            <thead class="d-none">
+                                            <thead>
                                                 <tr>
-                                                    <th class="sorting-none"></th>
+                                                    <th class="sorting-none">Name</th>
                                                     <th class="sorting-none"></th>
                                                     <th class="sorting-none"></th>
                                                 </tr>
@@ -461,7 +461,8 @@
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-center">
                                                             <span class="opacity-25 mx-3">View</span>
-                                                            <span class="icon icon-bell opacity-25 mx-3"></span>
+                                                            <span class="icon icon-bell opacity-25 mx-3"
+                                                                data-toggle="tooltip" title="Notification"></span>
                                                             <span class="icon mx-3"></span>
                                                         </div>
                                                     </td>
@@ -483,7 +484,8 @@
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-center">
                                                             <span class="opacity-25 mx-3">View</span>
-                                                            <span class="icon icon-bell opacity-25 mx-3"></span>
+                                                            <span class="icon icon-bell opacity-25 mx-3"
+                                                                data-toggle="tooltip" title="Notification"></span>
                                                             <span class="icon mx-3"></span>
                                                         </div>
                                                     </td>
@@ -505,9 +507,10 @@
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-center">
                                                             <span class="opacity-25 mx-3">Edit</span>
-                                                            <span class="icon icon-bell opacity-25 mx-3"></span>
-                                                            <span
-                                                                class="icon icon-document-black opacity-25 mx-3"></span>
+                                                            <span class="icon icon-bell opacity-25 mx-3"
+                                                                data-toggle="tooltip" title="Notification"></span>
+                                                            <span class="icon icon-document-black opacity-25 mx-3"
+                                                                data-toggle="tooltip" title="Invoice"></span>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -1288,7 +1291,7 @@
                                 <label for="">Notification</label>
                             </div>
                             <div class="col-4">
-                                <div class="form-check form-check-inline me-3">
+                                <div class="form-check form-check-inline me-4 pe-1">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                         id="notificataionYes" value="notification">
                                     <label class="form-check-label" for="notificataionYes">yes</label>
@@ -1305,7 +1308,7 @@
                                 <label for="">Invoices</label>
                             </div>
                             <div class="col-4">
-                                <div class="form-check form-check-inline me-3">
+                                <div class="form-check form-check-inline me-4 pe-1">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                         id="invoicesYes" value="invoice" checked>
                                     <label class="form-check-label" for="invoicesYes">yes</label>
@@ -3063,7 +3066,7 @@
                 },
                 "scrollX": true,
                 "scrollY": "50vh",
-                
+
             });
             // Add event listener for opening and closing details
             $('.groups-details-table tbody').on('click', 'td.dt-control', handleTable(AllTable));
