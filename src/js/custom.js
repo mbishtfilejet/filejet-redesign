@@ -455,27 +455,18 @@ function loadWarningSmallScreenPopup() {
   const modalContainer = document.createElement('div');
   modalContainer.innerHTML =
     `<div class="modal fade" id="mobileScreenWarning" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered align-items-center">
-      <div class="modal-content border-0 rounded-3 bg-white p-0">
-          <div class="modal-header p-0">
-              <div class="d-flex justify-content-between align-items-center px-4 py-4 w-100 border-bottom">
-                  <div class="font-weight-700 fs-7">Warning</div>
-                  <div>
-                      <span class="p-0 d-inline-block" role="button" data-bs-dismiss="modal">
-                          <span class="icon icon-xs icon-close-dark m-0"></span>
-                      </span>
+      <div class="modal-dialog modal-dialog-centered align-items-center min-vw-100 min-vh-100 m-0">
+          <div class="modal-content border-0 rounded-3 bg-white p-0 min-vh-100">
+              <div class="modal-body p-4 d-flex flex-column justify-content-center vh-100">
+                      <div class="font-weight-700 fs-5 pb-3 text-uppercase">Warning</div>
+                  <div class="border-top py-4">
+                  For the best user experience and to ensure proper functionality, we strongly recommend
+                  accessing this website from a desktop computer or a laptop with a larger screen.
                   </div>
               </div>
           </div>
-          <div class="modal-body p-0">
-              <div class="px-4 py-4 w-100 border-bottom">
-                  For the best user experience and to ensure proper functionality, we strongly recommend
-                  accessing this website from a desktop computer or a laptop with a larger screen.
-              </div>
-          </div>
       </div>
-  </div>
-</div>`
+    </div>`
 
   // Append modalContainer to the document body
   document.body.appendChild(modalContainer);
