@@ -455,23 +455,21 @@ function loadWarningSmallScreenPopup() {
   const modalContainer = document.createElement('div');
   modalContainer.innerHTML =
     `<div class="modal fade" id="mobileScreenWarning" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered align-items-center min-vw-100 min-vh-100 m-0">
-            <div class="modal-content border-0 rounded-3 bg-white p-0 min-vh-100">
-                <div class="modal-header border-0 text-center">
-                    <a href="/">
-                        <img src="dist/images/logo.png" />
-                    </a>
-                </div>
-                <div class="modal-body p-4 d-flex flex-column justify-content-center">
-                    <div class="font-weight-700 fs-5 pb-3 text-uppercase">Warning</div>
-                    <div class="border-top py-4">
-                        For the best user experience and to ensure proper functionality, we strongly recommend
-                        accessing this website from a desktop computer or a laptop with a larger screen.
-                    </div>
+    <div class="modal-dialog modal-dialog-centered align-items-center min-vw-100 min-vh-100 m-0">
+        <div class="modal-content border-0 rounded-3 bg-white p-0 min-vh-100">
+            <div class="modal-body p-4 d-flex flex-column justify-content-center align-items-center">
+                <a class="mb-5 pb-5" href="/">
+                    <img src="dist/images/logo.png" />
+                </a>
+                <div class="font-weight-700 fs-5 pb-3 text-uppercasetext-right">Warning</div>
+                <div class="border-top py-4">
+                    For the best user experience and to ensure proper functionality, we strongly recommend
+                    accessing this website from a desktop computer or a laptop with a larger screen.
                 </div>
             </div>
         </div>
-    </div>`
+    </div>
+</div>>`
 
   // Append modalContainer to the document body
   document.body.appendChild(modalContainer);
