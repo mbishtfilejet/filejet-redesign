@@ -103,6 +103,11 @@ $(function () {
   $(".datepicker").datepicker({
     dateFormat: "mm-dd-yy"
   });
+  $(".tab-shadow").children('.nav-link.active').parent().addClass('shadow-lg');
+  $(".tab-shadow").children('.nav-link').on('click', function () {
+    $(".tab-shadow").children('.nav-link').parent().removeClass('shadow-lg');
+    $(this).parent().addClass('shadow-lg');
+  });
 
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 
