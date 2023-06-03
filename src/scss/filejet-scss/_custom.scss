@@ -1147,6 +1147,21 @@ td>span.doc-name {
 .icon-reload-hover:hover {
   @extend .icon-waiting-blue;
 }
+input[type="time"]:invalid:before {
+  @extend .ps-3,.text-black-primary,.opacity-50,.position-absolute,.start-0;
+  content: "HH:MM";
+}
+input[type="time"]:valid,
+input[type="time"]:focus,
+input[type="time"]:active {
+  @extend .text-black-primary;
+}
+input[type="time"]:valid:before,
+input[type="time"]:focus:before,
+input[type="time"]:active:before {
+  @extend .d-none;
+}
+
 
 // bs-5 class overide
 .form-check {
