@@ -101,7 +101,7 @@ $(function () {
   });
 
   $(".datepicker").datepicker({
-    dateFormat: "mm-dd-yy"
+    dateFormat: "mm/dd/yy"
   });
   $(".tab-shadow").children('.nav-link.active').parent().addClass('shadow-lg');
   $(".tab-shadow").children('.nav-link').on('click', function () {
