@@ -66,6 +66,11 @@ $(function () {
     "scrollY": "50vh",
   })
 
+  // :has() selector is not compatable with firefox which causes scroll height issue in .long-data-table-listing table.
+  if (navigator.userAgent.indexOf("Firefox") > 0) {
+    $('.long-data-table-listing').parent().addClass('firefox-scroll-height');
+  }
+
   $(document).on('shown.bs.tab shown.bs.modal', function () {
     adjustDataTable()
   });
