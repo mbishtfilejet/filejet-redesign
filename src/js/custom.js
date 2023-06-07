@@ -330,18 +330,6 @@ then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 
 //hover state for state field in filter slideout
-$('.filter-state-label').hover(
-  function () {
-    var $this = $(this); // caching $(this)
-    title = $(this).attr('title');
-    $this.data('defaultText', $this.text());
-    $this.text(title);
-  },
-  function () {
-    var $this = $(this); // caching $(this)
-    $this.text($this.data('defaultText'));
-  }
-);
 function showCreditCardDetails() {
   document.querySelectorAll('#creditCardDetails').forEach(function (el) {
     el.style.display = 'flex';

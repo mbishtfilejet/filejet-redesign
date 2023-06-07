@@ -973,15 +973,44 @@ label {
 .filter-state {
   display: flex;
   align-items: center;
-  min-height: 36px;
+  min-height: 2.25rem;
   min-width: 115px;
 
   &:hover {
     background-color: #FFFFFF;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.09), 0px 2.41177px 3.01471px rgba(0, 0, 0, 0.058643), 0px 1.00172px 1.25216px rgba(0, 0, 0, 0.045), 0px 0.362304px 0.45288px rgba(0, 0, 0, 0.031357);
-    border-radius: 8px;
+    border-radius: 0.5rem;
     padding-right: 0.5rem;
-    width: min-content;
+    z-index: 1;
+  }
+
+  .filter-state-label {
+    .short-text {
+      display: block;
+    }
+
+    .long-text {
+      display: none;
+    }
+
+    &:hover {
+      .short-text {
+        display: none;
+      }
+
+      .long-text {
+        display: flex;
+        align-items: center;
+        background-color: #FFFFFF;
+        padding-right: 0.52rem;
+        border-radius: 0 0.5rem 0.5rem 0;
+        min-height: 2.28rem;
+        min-width: 90px;
+        white-space: nowrap;
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.09), 0px 2.41177px 3.01471px rgba(0, 0, 0, 0.058643), 0px 1.00172px 1.25216px rgba(0, 0, 0, 0.045), 0px 0.362304px 0.45288px rgba(0, 0, 0, 0.031357);
+        clip-path: inset(0px -15px -2px 0px);
+      }
+    }
   }
 }
 
@@ -1148,15 +1177,18 @@ td>span.doc-name {
 .icon-reload-hover:hover {
   @extend .icon-waiting-blue;
 }
+
 input[type="time"]:invalid:before {
-  @extend .ps-3,.bg-white,.position-absolute,.start-0,.text-lighter;
+  @extend .ps-3, .bg-white, .position-absolute, .start-0, .text-lighter;
   content: "HH:MM";
 }
+
 input[type="time"]:valid,
 input[type="time"]:focus,
 input[type="time"]:active {
-  @extend .text-black-primary,.opacity-100;
+  @extend .text-black-primary, .opacity-100;
 }
+
 input[type="time"]:valid:before,
 input[type="time"]:focus:before,
 input[type="time"]:active:before {
@@ -1166,16 +1198,21 @@ input[type="time"]:active:before {
 
 // bs-5 class overide
 .form-check {
-  @extend .d-flex,.gap-3;
+  @extend .d-flex, .gap-3;
   align-items: center;
 }
-.form-check .form-check-label,.form-check-inline .form-check-label{
+
+.form-check .form-check-label,
+.form-check-inline .form-check-label {
   line-height: initial;
 }
+
 .form-check-inline {
-  @extend .d-inline-flex, .align-items-center,.gap-3;
+  @extend .d-inline-flex, .align-items-center, .gap-3;
 }
-input[type=checkbox]{
+
+input[type=checkbox] {
   padding: 0.5rem;
 }
+
 // end
