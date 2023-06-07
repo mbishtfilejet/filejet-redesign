@@ -329,7 +329,6 @@ function closeAllSelect(elmnt) {
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 
-//hover state for state field in filter slideout
 function showCreditCardDetails() {
   document.querySelectorAll('#creditCardDetails').forEach(function (el) {
     el.style.display = 'flex';
