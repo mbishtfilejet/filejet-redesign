@@ -387,7 +387,7 @@
                                                                 data-bs-toggle="tab">JURISDICTIONS</a>
                                                         </li>
                                                         <li class="nav-item nav-items">
-                                                            <a href="#custom-list" class="nav-link px-4"
+                                                            <a href="#custom-list" class="nav-link px-4 custom-juri-tab"
                                                                 data-bs-toggle="tab">CUSTOM</a>
                                                         </li>
                                                     </ul>
@@ -400,7 +400,8 @@
                                                                 data-bs-toggle="tab">JURISDICTIONS</a>
                                                         </li>
                                                         <li class="nav-item nav-items">
-                                                            <a href="#custom-grid" class="nav-link px-4 rounded-3"
+                                                            <a href="#custom-grid"
+                                                                class="nav-link px-4 rounded-3 custom-juri-tab"
                                                                 data-bs-toggle="tab">CUSTOM</a>
                                                         </li>
                                                     </ul>
@@ -417,14 +418,15 @@
                                                         <a href="javascript: void(0)" data-id="grid-view-juri"><span
                                                                 class="icon m-0 ms-4 icon-grid-view"></span><span
                                                                 class="icon m-0 ms-4 icon-grid-view-active"></span></a>
-
-                                                        <a href="./additional-services.html"
-                                                            class="text-decoration-none text-purple font-weight-600 ms-4">ADD
-                                                            JURISDICTION </a>
                                                     </li>
-                                                    <!-- <li class="d-flex justify-content-center align-items-center ms-4">
-                                                        
-                                                    </li> -->
+                                                    <li class="cursor-pointer">
+                                                        <a href="./additional-services.html"
+                                                            class="text-decoration-none text-purple font-weight-600 ms-4 add-jurisdictiom-btn">ADD
+                                                            JURISDICTION </a>
+                                                        <a class="text-decoration-none text-purple font-weight-600 ms-4 custom-add-folder-btn"
+                                                            data-bs-toggle="modal" data-bs-target="#createFolder">ADD
+                                                            FOLDER </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -4646,7 +4648,7 @@
                                 data-bs-dismiss="modal">
                                 CANCEL
                             </button>
-                            <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3">
+                            <button type="button" class="btn btn-info text-uppercase py-3 px-5 rounded-3 ms-3">
                                 SAVE
                             </button>
                         </div>
@@ -4789,7 +4791,8 @@
                                         <div class="col-12 col-md-6">
                                             <label for="" class="form-label">Time </label>
                                             <div class="time-input position-relative">
-                                                <input type="time" class="form-control bg-white" placeholder="HH:MM" required>
+                                                <input type="time" class="form-control bg-white" placeholder="HH:MM"
+                                                    required>
                                                 <span class="icon time-icon showTimeButton"></span>
                                             </div>
                                         </div>
@@ -4890,7 +4893,8 @@
                                         <div class="col-12 col-md-5">
                                             <label for="" class="form-label">Time</label>
                                             <div class="time-input position-relative">
-                                                <input type="time" class="form-control" id="" placeholder="HH:MM" required>
+                                                <input type="time" class="form-control" id="" placeholder="HH:MM"
+                                                    required>
                                                 <span class="icon time-icon showTimeButton"></span>
 
                                             </div>
@@ -8350,6 +8354,17 @@
 
         <script>
             $(document).ready(function () {
+                $('.custom-add-folder-btn').hide();
+                $('.tab-listing').on('click', function () {
+                    if ($('.tab-listing').find('.custom-juri-tab').hasClass('active')) {
+                        $('.custom-add-folder-btn').show();
+                        $('.add-jurisdictiom-btn').hide();
+                    }
+                    else {
+                        $('.custom-add-folder-btn').hide();
+                        $('.add-jurisdictiom-btn').show();
+                    }
+                });
                 $('#roleSelect').on('change', function () {
                     var roleVal = $(this).val();
                     if (roleVal == "Other") {
