@@ -291,10 +291,11 @@
                                 <!-- list group indecator end-->
                                 <!--integration button  -->
                                 <div class="dropdown me-4">
-                                    <a class="btn btn-info fs-6 text-capitalize p-2 pt-3 pb-3 ps-4 pe-5 integrationBtn bg-white border-white" href="#"
-                                        id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
+                                    <a class="btn btn-info fs-6 text-capitalize p-2 pt-3 pb-3 ps-4 pe-5 integrationBtn bg-white border-white"
+                                        href="#" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
                                         data-bs-auto-close="outside" aria-expanded="false" data-bs-offset="10,20">
-                                        <span class="me-2 icon icon-integrations d-none"></span><span class="me-2 icon icon-integrations-black"></span> Integrations
+                                        <span class="me-2 icon icon-integrations d-none"></span><span
+                                            class="me-2 icon icon-integrations-black"></span> Integrations
                                     </a>
 
                                     <ul class="dropdown-menu shadow-sm border-0 p-3 ps-2"
@@ -1905,8 +1906,7 @@
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-5 calender-input">
                                         <label for="" class="form-label">Date</label>
-                                        <input type="text" class="form-control datepicker"
-                                            placeholder="MM / DD / YYYY">
+                                        <input type="text" class="form-control datepicker" placeholder="MM / DD / YYYY">
                                         <span class="d-inline-block">
                                             <span class="icon icon-calender-lined"></span>
                                         </span>
@@ -1914,7 +1914,8 @@
                                     <div class="col-12 col-md-5">
                                         <label for="" class="form-label">Time</label>
                                         <div class="time-input position-relative">
-                                            <input type="time" class="form-control bg-white" placeholder="HH:MM" required>
+                                            <input type="time" class="form-control bg-white" placeholder="HH:MM"
+                                                required>
                                             <span class="icon time-icon showTimeButton"></span>
                                         </div>
                                     </div>
@@ -2010,8 +2011,8 @@
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-5 calender-input">
                                         <label for="" class="form-label">Date</label>
-                                        <input type="text" class="form-control datepicker"
-                                            placeholder="MM / DD / YYYY" value="12 / 16 / 2022">
+                                        <input type="text" class="form-control datepicker" placeholder="MM / DD / YYYY"
+                                            value="12 / 16 / 2022">
                                         <span class="d-inline-block">
                                             <span class="icon icon-calender-lined"></span>
                                         </span>
@@ -2019,7 +2020,8 @@
                                     <div class="col-12 col-md-5">
                                         <label for="" class="form-label">Time</label>
                                         <div class="time-input position-relative">
-                                            <input type="time" class="form-control bg-white" placeholder="HH:MM" required>
+                                            <input type="time" class="form-control bg-white" placeholder="HH:MM"
+                                                required>
                                             <span class="icon time-icon showTimeButton"></span>
                                         </div>
                                     </div>
@@ -2055,7 +2057,7 @@
                     <div class="d-flex justify-content-end w-100">
                         <button type="button"
                             class="btn btn-link text-uppercase text-decoration-none font-weight-600 text-red"
-                            data-bs-dismiss="modal">
+                            data-bs-dismiss="modal" data-bs-target="#eventDelete" data-bs-toggle="modal">
                             DELETE
                         </button>
                         <button type="button"
@@ -2141,6 +2143,46 @@
         </div>
     </div>
     <!-- edit Reminders Modal End-->
+    <!-- delete event Modal start-->
+    <div class="modal modal-right fade" id="eventDelete" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-danger p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-delete-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Event
+                                Deletion</span>
+                            <h3 class="fs-3 m-0 font-weight-700">Are you sure you want to delete this event</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>This will permanently remove this event.</p>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-danger px-5 py-3" data-bs-dismiss="modal">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete event Modal End-->
 
     <script src="dist/js/plugins.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.4/index.global.min.js'></script>
@@ -2333,7 +2375,7 @@
                         if (!isOnDiv) {
                             tooltipCustomDiv.classList.remove("d-block");
                         }
-                    }, 0);
+                    }, 100);
 
                 },
 
