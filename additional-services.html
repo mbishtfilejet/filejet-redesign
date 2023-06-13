@@ -282,7 +282,7 @@
             </div>
 
             <div class="col-md-2">
-              <a href="javascript:void(0)" class="text-decoration-none"  data-bs-toggle="modal"
+              <a href="javascript:void(0)" class="text-decoration-none" data-bs-toggle="modal"
                 data-bs-target="#serviceSetUpModal">
                 <div class="d-flex align-items-center justify-content-end">
                   <span class="rounded-2 white-bg p-2">
@@ -1054,6 +1054,10 @@
                         data-bs-target="#exitModal">
                         SAVE AND EXIT
                       </a>
+                      <a href="" type="button" class="btn btn-outline-dark px-2 py-3 text-uppercase"
+                        data-bs-toggle="modal" data-bs-target="#addClient">
+                        ADD CLIENT
+                      </a>
                       <button type="button" class="btn btn-tertiary text-uppercase py-3 px-5 rounded-3 ms-3"
                         data-bs-target="#previewModal" data-bs-toggle="modal" data-bs-dismiss="modal">
                         PREVIEW
@@ -1164,6 +1168,881 @@
     </div>
   </div>
   <!--Save and exit Button form end-->
+
+  <!--add Client Button Form-->
+  <div class="modal modal-right fade" id="addClient" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+      <div class="modal-content border-0 rounded-0 min-vh-100">
+        <div class="modal-header flex-wrap">
+          <div class="d-flex align-items-center w-100 pb-2">
+            <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+              <span class="icon icon-md icon-settings m-0"></span>
+            </span>
+            <div>
+              <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Additionl Services</span>
+              <h3 class="fs-3 m-0 mt-2">Add Client</h3>
+            </div>
+          </div>
+        </div>
+        <!-- code inspected from back-end url-->
+        <div class="modal-body">
+          <!-- div class="existing-client-detail"></div !-->
+          <div class="row ">
+            <div class="col-12">
+              <h6 class="w-100">Search Existing Clients</h6>
+              <form method="post" accept-charset="utf-8" class="search-field w-100"
+                action="/v3/partner/products/overview/">
+                <div style="display:none;"><input type="hidden" name="_method" value="POST"><input type="hidden"
+                    name="_csrfToken" autocomplete="off"
+                    value="7bb70b2c2ac8767877c3efdd3f9c75228dfe9ef844a19c146e22656f6debaa135e9695e13805b0208bb72ae67b1ffe237d158c2e88ca9d79ce9fda83dff493a1">
+                </div> <input type="text" class="form-control client-search-input ui-autocomplete-input ui-corner-all"
+                  name="term" placeholder="Type client name or email address to search"
+                  data-redirect="/v3/partner/get-started/entity/setup/" data-src="/v3/partner/client/search/"
+                  autocomplete="off">
+                <button type="submit" class="btn" style="
+                  display: none;
+                  ">
+                  <img src="/v3/assets/images/SVG/search-icon.svg?1670656440" alt=""> </button>
+              </form>
+              <div class="search-client-autocomplete-result">
+                <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front"
+                  unselectable="on" style="top: 96.5833px; left: 12px; width: 620.667px; display: none;">
+                  <li class="ui-menu-item">
+                    <p id="ui-id-21" tabindex="-1" class="ui-menu-item-wrapper"><a href="javascript:;">ABC (<small>Email
+                          not provided</small>)</a></p>
+                  </li>
+                  <li class="ui-menu-item">
+                    <p id="ui-id-22" tabindex="-1" class="ui-menu-item-wrapper"><a href="javascript:;">Abraham Allan
+                        Alsop Anderson (<small>parveen+69555@filejet.com</small>)</a></p>
+                  </li>
+                  <li class="ui-menu-item">
+                    <p id="ui-id-23" tabindex="-1" class="ui-menu-item-wrapper"><a href="javascript:;">Alexandra Cameron
+                        (<small>parveen+855@filejet.com</small>)</a></p>
+                  </li>
+                  <li class="ui-menu-item">
+                    <p id="ui-id-24" tabindex="-1" class="ui-menu-item-wrapper"><a href="javascript:;">Amelia Rose
+                        (<small>parveen+14@filejet.com</small>)</a></p>
+                  </li>
+                  <li class="ui-menu-item">
+                    <p id="ui-id-25" tabindex="-1" class="ui-menu-item-wrapper"><a href="javascript:;">Amy
+                        (<small>parveen+@filejet.com</small>)</a></p>
+                  </li>
+                </ul>
+              </div>
+              <div class="no-search-result d-none"><i>No result found for <b>jh</b>, Add new client instead</i></div>
+            </div>
+          </div>
+          <div class="row maintenance-search pb-3">
+            <div class="col">
+              
+              <ul
+                class="list-unstyled list-inline alphabet-filter w-100 mt-3 mb-0 py-3 border bg-white rounded-2 text-ctext-dark bg-light d-flex flex-wrap align-items-center gap-3 justify-content-center">
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2 active" data-search="all" data-offset="15" data-term="" href="#">All</a> </li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="digit" data-offset="0" data-term="#">#</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="15" data-term="A">A</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="15" data-term="B">B</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="C">C</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="15" data-term="D">D</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="15" data-term="E">E</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="F">F</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="G">G</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="H">H</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="I">I</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="J">J</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="K">K</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="L">L</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="M">M</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="N">N</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="O">O</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="P">P</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="Q">Q</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="R">R</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="S">S</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="T">T</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="U">U</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="V">V</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="W">W</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="X">X</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="Y">Y</a></li>
+                <li class="border py-2"><a class="filter-option text-decoration-none p-3 py-2" href="#" data-search="exact" data-offset="0" data-term="Z">Z</a></li>
+              </ul>
+              <div class="w-100 alphabet-container py-3 px-3 my-2 border" style="max-height:32vh;overflow-y:auto;background:#fff;">
+                <ul class="list-unstyleds pl-5 row gy-2">
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="131" class="client-search-result">ABC ()</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="14" class="client-search-result">Abraham Allan Alsop
+                          Anderson (parveen+69555@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="66" class="client-search-result">Alexandra Cameron
+                          (parveen+855@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="30" class="client-search-result">Amelia Rose
+                          (parveen+14@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="118" class="client-search-result">Amy
+                          (parveen+@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="39" class="client-search-result">Bailey
+                          (parveen+69@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="31" class="client-search-result">Client A
+                          (parveen+15@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="34" class="client-search-result">Client B
+                          (parveen+17@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="35" class="client-search-result">Client C
+                          (parveen+18@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="36" class="client-search-result">Client D
+                          (parveen+20@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="37" class="client-search-result">Client E
+                          (parveen+21@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="38" class="client-search-result">Client F
+                          (parveen+22@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="101" class="client-search-result">Client H
+                          (parveen+964@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="33" class="client-search-result">Client Name 1 Client
+                          Name 1 Client Name 1 Client Name 1 (parveen+16@filejet.com)</a></li>
+                    </ol>
+                  </li>
+                  <li class="col-md-6 col-sm-12 float-left">
+                    <ol class="list-unstyled list-inline">
+                      <li><a href="javascript:;" data-client-id="130" class="client-search-result">Donald
+                          (donald1@mailinator.com)</a></li>
+                    </ol>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="no-alphabet-search-result mt-4 text text-danger text-cw-100 d-none"></div>
+          </div>
+
+          <div class="process__container border-0">
+            <div class="small__box">
+              <div class="row mb-4">
+                <div class="col">
+                  <div class="custom-control custom-checkbox form-check">
+                    <input type="checkbox" class="custom-control-input toggle-option form-check-input" data-target=".client-form"
+                      value="1" id="toggle-option">
+                    <label class="custom-control-label h6" for="toggle-option">Add New Client?</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add New Client -->
+          <form method="post" accept-charset="utf-8" id="clientForm" novalidate="novalidate"
+            class="ajaxForm content-box-area" action="http://13.64.144.136/v3/partner/products/create-client/">
+            <div style="display:none;"><input type="hidden" name="_method" value="POST"><input type="hidden"
+                name="_csrfToken" autocomplete="off"
+                value="7bb70b2c2ac8767877c3efdd3f9c75228dfe9ef844a19c146e22656f6debaa135e9695e13805b0208bb72ae67b1ffe237d158c2e88ca9d79ce9fda83dff493a1">
+            </div>
+            <div class="my-3 client-form">
+              <div class="row my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" content="Client name*" for="clientName">Client Name</label>
+                    <div class="clientNameformError parentFormclientForm formError"
+                      style="opacity: 0.87; position: absolute; top: 18px; left: 225.633px; right: initial; margin-top: 0px; display: block;">
+                      <div class="formErrorContent">* This field is required</div>
+                      <div class="formErrorArrow">
+                        <div class="line10"><!-- --></div>
+                        <div class="line9"><!-- --></div>
+                        <div class="line8"><!-- --></div>
+                        <div class="line7"><!-- --></div>
+                        <div class="line6"><!-- --></div>
+                        <div class="line5"><!-- --></div>
+                        <div class="line4"><!-- --></div>
+                        <div class="line3"><!-- --></div>
+                        <div class="line2"><!-- --></div>
+                        <div class="line1"><!-- --></div>
+                      </div>
+                    </div><input type="text" name="client_name" class="form-control validate[required]"
+                      placeholder="Client Name" id="clientName" autocomplete="off">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" content="Email address*" for="email">Email</label><input type="email"
+                      name="email" class="form-control validate[custom[email]]" placeholder="Email Address" id="email">
+                  </div>
+                </div>
+              </div>
+              <div class="row my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" content="Address" for="address">Address</label><input type="text"
+                      name="address" class="form-control" placeholder="Address" id="address">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" content="Address Line 2" for="address2">Address2</label><input type="text"
+                      name="address2" class="form-control" placeholder="Address Line 2" id="address2">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" content="City" for="city">City</label><input type="text" name="city"
+                      class="form-control" placeholder="City" id="city">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100">State</label>
+                    <select name="client_state_id" class="form-control">
+                      <option value="">Select State</option>
+
+                      <option value="1">Alabama</option>
+
+                      <option value="2">Alaska</option>
+
+                      <option value="3">Arizona</option>
+
+                      <option value="4">Arkansas</option>
+
+                      <option value="5">California</option>
+
+                      <option value="6">Colorado</option>
+
+                      <option value="7">Connecticut</option>
+
+                      <option value="8">Delaware</option>
+
+                      <option value="9">District of Columbia</option>
+
+                      <option value="10">Florida</option>
+
+                      <option value="11">Georgia</option>
+
+                      <option value="12">Hawaii</option>
+
+                      <option value="13">Idaho</option>
+
+                      <option value="14">Illinois</option>
+
+                      <option value="15">Indiana</option>
+
+                      <option value="16">Iowa</option>
+
+                      <option value="17">Kansas</option>
+
+                      <option value="18">Kentucky</option>
+
+                      <option value="19">Louisiana</option>
+
+                      <option value="20">Maine</option>
+
+                      <option value="21">Maryland</option>
+
+                      <option value="22">Massachusetts</option>
+
+                      <option value="23">Michigan</option>
+
+                      <option value="24">Minnesota</option>
+
+                      <option value="25">Mississippi</option>
+
+                      <option value="26">Missouri</option>
+
+                      <option value="27">Montana</option>
+
+                      <option value="28">Nebraska</option>
+
+                      <option value="29">Nevada</option>
+
+                      <option value="30">New Hampshire</option>
+
+                      <option value="31">New Jersey</option>
+
+                      <option value="32">New Mexico</option>
+
+                      <option value="33">New York</option>
+
+                      <option value="34">North Carolina</option>
+
+                      <option value="35">North Dakota</option>
+
+                      <option value="36">Ohio</option>
+
+                      <option value="37">Oklahoma</option>
+
+                      <option value="38">Oregon</option>
+
+                      <option value="39">Pennsylvania</option>
+
+                      <option value="40">Rhode Island</option>
+
+                      <option value="41">South Carolina</option>
+
+                      <option value="42">South Dakota</option>
+
+                      <option value="43">Tennessee</option>
+
+                      <option value="44">Texas</option>
+
+                      <option value="45">Utah</option>
+
+                      <option value="46">Vermont</option>
+
+                      <option value="47">Virginia</option>
+
+                      <option value="48">Washington</option>
+
+                      <option value="49">West Virginia</option>
+
+                      <option value="50">Wisconsin</option>
+
+                      <option value="51">Wyoming</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row my-2">
+                <div class="col-6">
+                  <div class="input-group">
+                    <label class="w-100" content="Zip" for="zip-code">Zip Code</label><input type="text" name="zip_code"
+                      class="form-control" placeholder="Zip" id="zip-code">
+                  </div>
+                </div>
+
+                <div class="col-6 phone-fields">
+                  <div class="input-group phone-input">
+                    <label class="w-100">Phone</label>
+                    <div class="form-validation-field-1formError parentFormclientForm formError"
+                      style="opacity: 0.87; position: absolute; top: 18px; left: 106.508px; right: initial; margin-top: 0px; display: block;">
+                      <div class="formErrorContent">* This field is required<br>* Minimum 14 characters required</div>
+                      <div class="formErrorArrow">
+                        <div class="line10"><!-- --></div>
+                        <div class="line9"><!-- --></div>
+                        <div class="line8"><!-- --></div>
+                        <div class="line7"><!-- --></div>
+                        <div class="line6"><!-- --></div>
+                        <div class="line5"><!-- --></div>
+                        <div class="line4"><!-- --></div>
+                        <div class="line3"><!-- --></div>
+                        <div class="line2"><!-- --></div>
+                        <div class="line1"><!-- --></div>
+                      </div>
+                    </div>
+                    
+                    <input type="text" class="validate[required, minSize[14]] form-control phone_format"
+                      name="phone" placeholder="(___) ___-____" value="" maxlength="14" id="form-validation-field-1">
+                  </div>
+                 
+                </div>
+                <div class="col"></div>
+
+                <div class="my-2"> 
+                  <div class="col-12">
+                    <div class="input-group phone-extension">
+                      <label class="w-100">Extension</label>
+                      <input type="text" class="validate[minSize[4],maxSize[4]] form-control" minlength="4" maxlength="4"
+                        name="phone_extension" placeholder="Ext." value="">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+             
+
+
+              <!-- Billing -->
+              <div class="row my-4">
+                <div class="col">
+                  <div class="input-group header-mini border-0">
+                    <div class="custom-control custom-checkbox form-check">
+                      <input type="checkbox" data-opt="billing-opt" name="is_billing"
+                        class="custom-control-input drop-options form-check-input" value="1" id="is_billing">
+                      <label class="custom-control-label" for="is_billing">Would you like to add Billing
+                        Information?</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row billing-opt my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="billingaddress-billing-name">Name</label><input type="text"
+                      name="billingAddress[billing_name]" class="form-control validate[required]" placeholder="Name"
+                      autocomplete="off" id="billingaddress-billing-name">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="billingaddress-billing-phone">Phone</label><input type="text"
+                      name="billingAddress[billing_phone]"
+                      class="form-control phone_format validate[required, minSize[14]]" placeholder="(___) ___-____"
+                      autocomplete="off" id="billingaddress-billing-phone" maxlength="14">
+                  </div>
+                </div>
+              </div>
+              <div class="row billing-opt my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="billingaddress-billing-email">Email</label><input type="text"
+                      name="billingAddress[billing_email]" class="form-control validate[required, custom[email]]"
+                      placeholder="Email" autocomplete="off" id="billingaddress-billing-email">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="billingaddress-billing-address">Address Line 1</label><input type="text"
+                      name="billingAddress[billing_address]" class="form-control validate[required]"
+                      placeholder="Address Line 1" autocomplete="off" id="billingaddress-billing-address">
+                  </div>
+                </div>
+              </div>
+              <div class="row billing-opt my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="billingaddress-billing-address2">Address Line 2</label><input type="text"
+                      name="billingAddress[billing_address2]" class="form-control" placeholder="Address Line 2"
+                      autocomplete="off" id="billingaddress-billing-address2">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="billingaddress-billing-city">City</label><input type="text"
+                      name="billingAddress[billing_city]" class="form-control validate[required]" placeholder="City"
+                      autocomplete="off" id="billingaddress-billing-city">
+                  </div>
+                </div>
+              </div>
+              <div class="row billing-opt my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100">State</label>
+                    <select name="billingAddress[billing_state]" class="form-control validate[required]">
+                      <option value="">Select State</option>
+
+                      <option value="1">Alabama</option>
+
+                      <option value="2">Alaska</option>
+
+                      <option value="3">Arizona</option>
+
+                      <option value="4">Arkansas</option>
+
+                      <option value="5">California</option>
+
+                      <option value="6">Colorado</option>
+
+                      <option value="7">Connecticut</option>
+
+                      <option value="8">Delaware</option>
+
+                      <option value="9">District of Columbia</option>
+
+                      <option value="10">Florida</option>
+
+                      <option value="11">Georgia</option>
+
+                      <option value="12">Hawaii</option>
+
+                      <option value="13">Idaho</option>
+
+                      <option value="14">Illinois</option>
+
+                      <option value="15">Indiana</option>
+
+                      <option value="16">Iowa</option>
+
+                      <option value="17">Kansas</option>
+
+                      <option value="18">Kentucky</option>
+
+                      <option value="19">Louisiana</option>
+
+                      <option value="20">Maine</option>
+
+                      <option value="21">Maryland</option>
+
+                      <option value="22">Massachusetts</option>
+
+                      <option value="23">Michigan</option>
+
+                      <option value="24">Minnesota</option>
+
+                      <option value="25">Mississippi</option>
+
+                      <option value="26">Missouri</option>
+
+                      <option value="27">Montana</option>
+
+                      <option value="28">Nebraska</option>
+
+                      <option value="29">Nevada</option>
+
+                      <option value="30">New Hampshire</option>
+
+                      <option value="31">New Jersey</option>
+
+                      <option value="32">New Mexico</option>
+
+                      <option value="33">New York</option>
+
+                      <option value="34">North Carolina</option>
+
+                      <option value="35">North Dakota</option>
+
+                      <option value="36">Ohio</option>
+
+                      <option value="37">Oklahoma</option>
+
+                      <option value="38">Oregon</option>
+
+                      <option value="39">Pennsylvania</option>
+
+                      <option value="40">Rhode Island</option>
+
+                      <option value="41">South Carolina</option>
+
+                      <option value="42">South Dakota</option>
+
+                      <option value="43">Tennessee</option>
+
+                      <option value="44">Texas</option>
+
+                      <option value="45">Utah</option>
+
+                      <option value="46">Vermont</option>
+
+                      <option value="47">Virginia</option>
+
+                      <option value="48">Washington</option>
+
+                      <option value="49">West Virginia</option>
+
+                      <option value="50">Wisconsin</option>
+
+                      <option value="51">Wyoming</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="billingaddress-billing-zip">Zip</label><input type="text"
+                      name="billingAddress[billing_zip]" class="form-control validate[required, minSize[5], maxSize[5]]"
+                      maxlength="5" placeholder="Zip" autocomplete="off" id="billingaddress-billing-zip">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row my-4">
+                <div class="col">
+                  <div class="input-group header-mini border-0">
+                    <div class="custom-control custom-checkbox form-check">
+                      <input type="checkbox" data-opt="invoice-recipient-opt" name="is_invoice_recipient"
+                        class="custom-control-input drop-options form-check-input" value="1" id="is_invoice_recipient">
+                      <label class="custom-control-label" for="is_invoice_recipient">Invoice Recipients</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row invoice-recipient-opt my-2">
+                <div class="col">
+                  <div class="input-group mt-0">
+                    <input type="text" name="invoice_recipient"
+                      class="form-control validate[required, custom[multiEmail]]" placeholder="Invoice Recipients"
+                      id="invoice-recipient-email" value="">
+                  </div>
+                  <small class="w-100 text-muted">Enter email addresses separated by comma (e.g.
+                    name@email.com,name2@email.com)</small>
+                </div>
+              </div>
+              <div class="row my-4">
+                <div class="col">
+                  <div class="input-group header-mini border-0">
+                    <div class="custom-control custom-checkbox form-check">
+                      <input type="checkbox" data-opt="shipping-opt" name="is_shipping"
+                        class="custom-control-input drop-options form-check-input" value="1" id="is_shipping">
+                      <label class="custom-control-label" for="is_shipping">Add Shipping Address?</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row shipping-opt my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="shippingaddress-shiping-name">Name</label><input type="text"
+                      name="shippingAddress[shiping_name]" class="form-control validate[required]" placeholder="Name"
+                      autocomplete="off" id="shippingaddress-shiping-name">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="shippingaddress-shiping-phone">Phone</label><input type="text"
+                      name="shippingAddress[shiping_phone]"
+                      class="form-control phone_format validate[required, minSize[14]]" placeholder="(___) ___-____"
+                      autocomplete="off" id="shippingaddress-shiping-phone" maxlength="14">
+                  </div>
+                </div>
+              </div>
+              <div class="row shipping-opt my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="shippingaddress-shiping-email">Email</label><input type="text"
+                      name="shippingAddress[shiping_email]" class="form-control validate[required, custom[email]]"
+                      placeholder="Email" autocomplete="off" id="shippingaddress-shiping-email">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="shippingaddress-shiping-address">Address Line 1</label><input type="text"
+                      name="shippingAddress[shiping_address]" class="form-control validate[required]"
+                      placeholder="Address Line 1" autocomplete="off" id="shippingaddress-shiping-address">
+                  </div>
+                </div>
+              </div>
+              <div class="row shipping-opt my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="shippingaddress-shiping-address-2">Address Line 2</label><input
+                      type="text" name="shippingAddress[shiping_address_2]" class="form-control"
+                      placeholder="Address Line 2" autocomplete="off" id="shippingaddress-shiping-address-2">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="shippingaddress-shiping-city">City</label><input type="text"
+                      name="shippingAddress[shiping_city]" class="form-control validate[required]" placeholder="City"
+                      autocomplete="off" id="shippingaddress-shiping-city">
+                  </div>
+                </div>
+              </div>
+              <div class="row shipping-opt my-2">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100">Shipping State</label>
+                    <select name="shippingAddress[shiping_state_id]" class="form-control validate[required]">
+                      <option value="">Select State</option>
+
+                      <option value="1">Alabama</option>
+
+                      <option value="2">Alaska</option>
+
+                      <option value="3">Arizona</option>
+
+                      <option value="4">Arkansas</option>
+
+                      <option value="5">California</option>
+
+                      <option value="6">Colorado</option>
+
+                      <option value="7">Connecticut</option>
+
+                      <option value="8">Delaware</option>
+
+                      <option value="9">District of Columbia</option>
+
+                      <option value="10">Florida</option>
+
+                      <option value="11">Georgia</option>
+
+                      <option value="12">Hawaii</option>
+
+                      <option value="13">Idaho</option>
+
+                      <option value="14">Illinois</option>
+
+                      <option value="15">Indiana</option>
+
+                      <option value="16">Iowa</option>
+
+                      <option value="17">Kansas</option>
+
+                      <option value="18">Kentucky</option>
+
+                      <option value="19">Louisiana</option>
+
+                      <option value="20">Maine</option>
+
+                      <option value="21">Maryland</option>
+
+                      <option value="22">Massachusetts</option>
+
+                      <option value="23">Michigan</option>
+
+                      <option value="24">Minnesota</option>
+
+                      <option value="25">Mississippi</option>
+
+                      <option value="26">Missouri</option>
+
+                      <option value="27">Montana</option>
+
+                      <option value="28">Nebraska</option>
+
+                      <option value="29">Nevada</option>
+
+                      <option value="30">New Hampshire</option>
+
+                      <option value="31">New Jersey</option>
+
+                      <option value="32">New Mexico</option>
+
+                      <option value="33">New York</option>
+
+                      <option value="34">North Carolina</option>
+
+                      <option value="35">North Dakota</option>
+
+                      <option value="36">Ohio</option>
+
+                      <option value="37">Oklahoma</option>
+
+                      <option value="38">Oregon</option>
+
+                      <option value="39">Pennsylvania</option>
+
+                      <option value="40">Rhode Island</option>
+
+                      <option value="41">South Carolina</option>
+
+                      <option value="42">South Dakota</option>
+
+                      <option value="43">Tennessee</option>
+
+                      <option value="44">Texas</option>
+
+                      <option value="45">Utah</option>
+
+                      <option value="46">Vermont</option>
+
+                      <option value="47">Virginia</option>
+
+                      <option value="48">Washington</option>
+
+                      <option value="49">West Virginia</option>
+
+                      <option value="50">Wisconsin</option>
+
+                      <option value="51">Wyoming</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <label class="w-100" for="shippingaddress-shiping-zip">Zip</label><input type="text"
+                      name="shippingAddress[shiping_zip]"
+                      class="form-control validate[required, minSize[5], maxSize[5]]" maxlength="5" placeholder="Zip"
+                      autocomplete="off" id="shippingaddress-shiping-zip">
+                  </div>
+                </div>
+              </div>
+              <div class="row my-4">
+                <div class="col">
+                  <div class="input-group header-mini border-0">
+                    <div class="custom-control custom-checkbox form-check">
+                      <input type="checkbox" data-opt="invite-opt" name="invite"
+                        class="custom-control-input drop-options form-check-input" value="1" id="invite-client-option">
+                      <label class="custom-control-label" for="invite-client-option">Send Invite</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row invite-opt my-4">
+                <div class="col">
+                  <div class="input-group header-mini border-0">
+                    <div class="custom-control custom-radio mr-5 form-check">
+                      <input type="radio" name="permission" id="permission" class="custom-control-input form-check-input" value="edit"
+                        checked="">
+                      <label class="custom-control-label" for="permission">Edit Rights</label>
+                    </div>
+                    <div class="custom-control custom-radio form-check ms-5">
+                      <input type="radio" name="permission" id="permission_1" class="custom-control-input form-check-input" value="view">
+                      <label class="custom-control-label" for="permission_1">View Rights</label>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row my-4">
+                <div class="col">
+                  <div class="input-group header-mini border-0">
+                    <div class="custom-control custom-checkbox form-check">
+                      <input type="hidden" name="allow_notification" value="0"><input type="checkbox"
+                        name="allow_notification" value="1" class="custom-control-input form-check-input" id="allow_notification"><label
+                        for="allow_notification" class="custom-control-label">Would you like Filejet to send
+                        notifications to this Client?</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center justify-content-end gap-5">
+                <button type="submit" class="btn btn-primary submit-client-btn">Add Client</button>
+                <button type="reset" class="btn btn-danger ">Clear</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer mt-3 pb-0">
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-tertiary py-3 px-5 rounded-3 ms-3 font-weight-600"
+              data-bs-dismiss="modal">
+              Close
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--add Client Button form end-->
 
   <!---PAYMENT MODEL START-->
   <div class="modal modal-right fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel"
