@@ -1,0 +1,2836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Jet: Entity Listing</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="dist/css/filejet-style.css" />
+    <script src="dist/js/jquery.min.js"></script>
+    <!-- Scripts -->
+</head>
+
+<body>
+    <div class="grey-bg dashboard-page min-vh-100">
+        <div class="container-fluid p-0">
+            <div class="sidebar-wrapper">
+                <div class="sidebar min-vh-100 py-3 ps-3">
+                    <div class="ps-2 pb-4">
+                        <a href="/">
+                            <img src="dist/images/logo.png">
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="menu-link p-0 m-0">
+                            <!-- Dashboard -->
+                            <li class="nav-link">
+                                <a href="./index.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-dashboard normal-icon"></span>
+                                        <span class="icon icon-dashboard-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text">Dashboard</span>
+                                </a>
+                            </li>
+                            <!-- Entities -->
+                            <li class="nav-link active">
+                                <a href="javascript:void(0);" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-entities normal-icon"></span>
+                                        <span class="icon icon-entities-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Entities
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Groups -->
+                            <li class="nav-link">
+                                <a href="./groups.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-group normal-icon"></span>
+                                        <span class="icon icon-group-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Groups</span>
+                                </a>
+                            </li>
+                            <!-- Calendar -->
+                            <li class="nav-link">
+                                <a href="./calender-view.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-calender normal-icon"></span>
+                                        <span class="icon icon-calender-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Calendar</span>
+                                </a>
+                            </li>
+                            <!-- Registered Agent -->
+                            <li class="nav-link">
+                                <a href="./registered-agent.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-users-check normal-icon"></span>
+                                        <span class="icon icon-users-check-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Registered Agent
+                                        <span class="count-notification position-absolute">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Business Licenses -->
+                            <li class="nav-link">
+                                <a href="./business-licences.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-business normal-icon"></span>
+                                        <span class="icon icon-business-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">Business Licenses
+                                        <span class="count-notification position-absolute">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Fictitious / Trade Name -->
+                            <li class="nav-link">
+                                <a href="./trade.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-certificate-black normal-icon"></span>
+                                        <span class="icon icon-certificate-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">Fictitious / Trade Name
+                                        <span class="count-notification position-absolute">1</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Organization Charts  -->
+                            <li class="nav-link">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#organizationChartModal">
+                                    <span>
+                                        <span class="icon icon-chart normal-icon"></span>
+                                        <span class="icon icon-chart-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block">
+                                        Organization Charts
+                                        <span class="small-tag">Coming soon</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Cap Table -->
+                            <li class="nav-link">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#capTableModal">
+                                    <span>
+                                        <span class="icon icon-table normal-icon"></span>
+                                        <span class="icon icon-table-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block position-relative">
+                                        Cap Table
+                                        <span class="small-tag">Coming soon</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Reports -->
+                            <li class="nav-link">
+                                <a href="./reports.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-report normal-icon"></span>
+                                        <span class="icon icon-report-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Reports </span>
+                                </a>
+                            </li>
+                            <!-- Additional Services -->
+                            <li class="nav-link">
+                                <a href="#" class="text-decoration-none ps-3 py-3 d-block" data-bs-toggle="modal"
+                                    data-bs-target="#servicesModal">
+                                    <span>
+                                        <span class="icon icon-services normal-icon"></span>
+                                        <span class="icon icon-services-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Additional Services </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-wrapper">
+                <div class="container-fluid container-lg">
+                    <div class="header py-1">
+                        <div class="row align-items-center">
+                            <div class="col col-xl-3 col-lg-3">
+                                <h3 class="m-0">
+                                    <strong>
+                                        Entity Listing
+                                    </strong>
+                                </h3>
+                            </div>
+                            <div
+                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
+                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-3 py-md-2 search-bar"
+                                    data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                                    <span class="text-placeholder w-100 d-none d-md-block">What are you looking
+                                        for?</span>
+                                </div>
+                                <div class="notification position-relative px-4">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#notificationModal">
+                                        <span class="icon icon-bell m-0"></span>
+                                        <span class="notification-dot"></span>
+                                    </a>
+                                </div>
+                                <div class="profile-nav">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg ms-n3">
+                                                <img src="../dist/images/avatar.png" alt="" />
+                                            </span>
+                                            <span class="user-name">Roman</span>
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <span
+                                                    class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                                    Account
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="./account/settings.html">
+                                                    <span class="avatar avatar-sm me-4">
+                                                        <img src="dist/images/avatar.png" alt="">
+                                                    </span>
+                                                    View Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center"
+                                                    href="../../login.html">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="container-fluid container-lg">
+                    <div class="main-content pt-3">
+                        <div class="d-flex flex-wrap flex-md-nowrap w-100">
+                            <div class="w-100 d-flex position-relative me-0 me-md-4">
+                                <span
+                                    class="icon icon-search-grey icon-sm opacity-25 position-absolute ms-4 h-100"></span>
+                                <input type="text" placeholder="Find an Entity"
+                                    class="form-control white-bg py-4 ps-5 pe-4 shadow m-0" />
+                            </div>
+                            <div class="d-flex flex-grow-1 justify-content-between">
+                                <div class="d-flex w-100 me-3 mt-3 mt-md-0">
+                                    <button data-bs-toggle="modal" data-bs-target="#RAFilter" type="button"
+                                        class="btn filter-btn px-3 rounded-3 text-uppercase border-0 w-100">
+                                        Filter <span class="icon m-0 ms-4 icon-filter"></span>
+                                    </button>
+                                </div>
+                                <div class="d-flex w-100 mt-3 mt-md-0">
+                                    <button type="button" class="btn btn-info px-4 rounded-3 text-uppercase w-100"
+                                        onclick="window.location.href='./additional-services.html'">
+                                        Add New
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                       <div class="not-found mb-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img src="./dist/images/404-page.png" class="img-fluid w-50" alt="">
+                            </div>
+                            <div class="text-center">
+                                <h6 class="fs-3 opacity-75">Oops! Something went wrong</h6>
+                                <button type="button" class="btn btn-info px-4 rounded-3 text-uppercase">
+                                    Go Back
+                                </button>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Organization Chart Starts -->
+    <div class="modal fade" id="organizationChartModal" tabindex="-1" aria-labelledby="organizationChartModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+            <div class="modal-content border-0 rounded-2 bg-white">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb breadcrumb-default mb-0">
+                                <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                                <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Organization charts</li>
+                            </ol>
+                        </nav>
+                        <div>
+                            <a href="/" class="text-decoration-none d-flex align-items-center">
+                                <span class="icon icon-sm icon-link-dark"></span>
+                                Permalink
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end w-100 justify-content-between mt-3 mt-xl-0">
+                        <div>
+                            <h2 class="mb-0 fs-2 fs-md-3 h1">Organization charts</h2>
+                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal d-inline fs-9 py-1 px-4">Coming
+                                soon</span>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-dark px-3 px-md-4 py-3 rounded-3 ms-3">
+                                <span class="icon icon-sm icon-mail-filled-dark"></span>
+                                <span class="icon icon-sm icon-mail-filled-white"></span>
+                                Get Notified
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body pb-0">
+                    <div class="two-col-video">
+                        <div class="col-12 col-md-12 video-wrapper">
+                            <video preload="auto" poster="./dist/images/video-poster.svg" autoplay>
+                                <source src="movie.mp4" type="video/mp4">
+                                <source src="movie.ogg" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
+                                lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
+                                Aliquam finibus a purus vel ullamcorper. Integer vitae pellentesque mauris. </p>
+                            <p>Fusce elementum tortor id erat consequat, vel dignissim nisi maximus. Aliquam sagittis
+                                vestibulum lacinia. Nam vel convallis sapien. Morbi at lorem sed neque commodo
+                                dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
+                                diam.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+            </div>
+        </div>
+    </div>
+    <!-- Organization Chart Ends -->
+
+    <!-- Cap Table Starts -->
+    <div class="modal fade" id="capTableModal" tabindex="-1" aria-labelledby="capTableModalLabel" aria-hidden="true">
+        <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+            <div class="modal-content border-0 rounded-2 bg-white">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb breadcrumb-default mb-0">
+                                <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                                <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Departments</li>
+                            </ol>
+                        </nav>
+                        <div>
+                            <a href="/" class="text-decoration-none d-flex align-items-center">
+                                <span class="icon icon-sm icon-link-dark"></span>
+                                Permalink
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end w-100 justify-content-between mt-3 mt-xl-0">
+                        <div>
+                            <h2 class="mb-0 fs-3 h1">Cap Table</h2>
+                            <span
+                                class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success px-3 px-md-4 py-3 rounded-3 ms-3"
+                                data-bs-dismiss="modal">
+                                <span class="icon icon-sm icon-cart-white"></span>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body pb-0">
+                    <div class="two-col-video">
+                        <div class="col-12 col-md-12 video-wrapper">
+                            <video preload="auto" poster="./dist/images/cap-table.svg" autoplay>
+                                <source src="movie.mp4" type="video/mp4">
+                                <source src="movie.ogg" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
+                                lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
+                                Aliquam finibus a purus vel ullamcorper. Integer vitae pellentesque mauris. </p>
+                            <p>Fusce elementum tortor id erat consequat, vel dignissim nisi maximus. Aliquam sagittis
+                                vestibulum lacinia. Nam vel convallis sapien. Morbi at lorem sed neque commodo
+                                dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
+                                diam.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+            </div>
+        </div>
+    </div>
+    <!-- Cap Table Ends -->
+    <!-- Notification Modal Starts -->
+    <div class="modal modal-right fade" id="notificationModal" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-sm icon-bell-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Notifications</span>
+                            <h3 class="fs-3 m-0 mt-2">Your Notifications</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100">
+                        <span class="icon icon-search-grey opacity-25"></span>
+                        <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                            placeholder="Find a Notification">
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <ul class="nav nav-tabs pt-2" id="notificationTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active border-0 text-uppercase" id="unread-notification-tab"
+                                data-bs-toggle="tab" data-bs-target="#unread-notification" type="button" role="tab"
+                                aria-controls="unreadNotification" aria-selected="true">UNREAD</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link border-0 text-uppercase" id="read-notification-tab"
+                                data-bs-toggle="tab" data-bs-target="#read-notification" type="button" role="tab"
+                                aria-controls="readNotification" aria-selected="false">READ</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content bg-white" id="notificationTabContent">
+
+                        <!-- Unread Notification -->
+                        <div class="tab-pane fade show active" id="unread-notification" role="tabpanel"
+                            aria-labelledby="unread-notification-tab">
+                            <ul class="list-group m-0 p-0 border-0 list-table">
+                                <li
+                                    class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                    <div>
+                                        <div class="dropdown white-bg p-0 rounded-5">
+
+                                            <a class="nav-link px-0">
+                                                <span class="user-name fw-bold">Notification</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown white-bg p-0 rounded-5">
+
+                                            <a class="nav-link dropdown-toggle show px-0" href="#"
+                                                data-bs-toggle="dropdown" aria-expanded="true">
+                                                <span class="user-name">Date</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="px-4 mb-3 pt-5 mt-2">
+                                <p class="text-uppercase mb-0">Notifications based on Partner inviting a Client </p>
+                            </div>
+                            <ul class="list-group m-0 p-0 border-0 list-table">
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="">
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Unread Notification -->
+
+                        <!-- Read Notification -->
+                        <div class="tab-pane fade" id="read-notification" role="tabpanel"
+                            aria-labelledby="read-notification-tab">
+                            <ul class="list-group m-0 p-0 border-0 list-table">
+                                <li
+                                    class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                    <div>
+                                        <div class="dropdown white-bg p-0 rounded-5">
+
+                                            <a class="nav-link px-0">
+                                                <span class="user-name fw-bold">Notification</span>
+                                            </a>
+                                            <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                                <li>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                        Latest
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                        Older
+                                                    </a>
+                                                </li>
+                                            </ul> -->
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown white-bg p-0 rounded-5">
+
+                                            <a class="nav-link dropdown-toggle show px-0" href="#"
+                                                data-bs-toggle="dropdown" aria-expanded="true">
+                                                <span class="user-name">Date</span>
+                                            </a>
+                                            <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                                <li>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                        Past date
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                        Latest Date
+                                                    </a>
+                                                </li>
+                                            </ul> -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                    <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                        href="">
+                                        <div>
+                                            <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-2">10 / 29 / 2021</p>
+                                            <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Read Notification -->
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Notification Modal Ends -->
+
+    <!-- Additional Jurisdictions Modal start-->
+    <div class="modal modal-right modal-lg fade" id="additionalJurisdictions" tabindex="-1"
+        aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-start w-100">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-scale-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">ADDITIONAL
+                                JURISDICTIONS</span>
+                            <h3 class="fs-3 m-0 font-weight-700 mt-2">Keegan</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <div class="tab-content bg-white rounded-3">
+                        <div class="tab-pane fade show active rounded-3 overflow-hidden" id="all">
+                            <div class="">
+                                <table class="table long-data-table-listing table-striped w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>Entity</th>
+                                            <th>Jurisdiction</th>
+                                            <th>Type</th>
+                                            <th class="formation-type-min-width">Formation Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    data-toggle="tooltip" title="Arizona" class="text-decoration-none">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">ACENTERFORRELATIONALHEALING(CRH)MARRIAGEANDFAMILYTHERAPY</a>
+                                            </td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span
+                                                    class="text-break">ACENTERFORRELATIONALHEALING(CRH)MARRIAGEANDFAMILYTHERAPY</span>
+                                            </td>
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">A CENTER FOR RELATIONAL HEALING (CRH) - MARRIAGE
+                                                    AND FAMILY THERAPY</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">A CENTER FOR RELATIONAL HEALING (CRH) -
+                                                    MARRIAGE AND FAMILY THERAPY</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan LLC</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip" title="Arizona">
+                                                    AZ</a></td>
+                                            <td><span class="text-break">LLC</span></td>
+                                            <td>08/09/2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-break">Keegan Team Inc</a></td>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#updateEntityDetails"
+                                                    class="text-decoration-none" data-toggle="tooltip"
+                                                    title="California">
+                                                    CA</a></td>
+                                            <td><span class="text-break">Profit Corp</span></td>
+
+                                            <td>08/11/2021</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info px-5 py-3 text-uppercase" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Additional Jurisdictions Modal End-->
+
+    <!-- updateEntityDetails Modal start-->
+    <div class="modal modal-right fade" id="updateEntityDetails" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-folder-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Steve’s Accounting Firm
+                                > Foreign - California</span>
+                            <h3 class="fs-3 m-0 font-weight-700 mt-2">Update Entity Details</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <p>
+                        Enter the details of the Entity by filling out the form below.
+                    </p>
+                    <form action="" class="mt-5">
+                        <div class="mb-3">
+                            <fieldset disabled>
+                                <label for="" class="form-label">Name of Entity</label>
+                                <input type="text" class="form-control" id="" value="Keegan Corp." />
+                            </fieldset>
+                        </div>
+                        <div class="mb-3">
+                            <fieldset disabled>
+                                <label for="" class="form-label">Entity State</label>
+                                <input type="text" class="form-control" id="" value="Keegan Corp." />
+                            </fieldset>
+                        </div>
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="mb-3">
+                                    <fieldset disabled>
+                                        <label for="" class="form-label">Type</label>
+                                        <input type="text" class="form-control" id="" value="Type" />
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="mb-3">
+                                    <fieldset disabled>
+                                        <label for="" class="form-label">Sub Type</label>
+                                        <input type="text" class="form-control" id="" value="Sub Type" />
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <fieldset disabled>
+                                <label for="" class="form-label">Formation Date</label>
+                                <input type="text" class="form-control" id="" value="Formation Date" />
+                            </fieldset>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <label for="" class="form-label">Business address</label>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-check d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" value="" id="sameAsMail"
+                                            checked />
+                                        <label class="form-check-label form-label ms-3" for="sameAsMail">
+                                            SAME AS MAILING ADDRESS?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 1" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 2" />
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                </div>
+                                <div class="col-md">
+                                    <select class="form-select form-control" aria-label="Default select example">
+                                        <option selected>State</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="County" />
+                                </div>
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="w-100">
+                                <label for="" class="form-label">Agent of Service of process</label>
+                            </div>
+                            <div class="radio-group d-flex align-items-center">
+                                <div class="form-check form-check-inline d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label ms-3" for="inlineRadio1">Filejet</label>
+                                </div>
+                                <div class="form-check form-check-inline d-flex align-items-center">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label ms-3" for="inlineRadio2">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select form-control" aria-label="Default select example">
+                                <option selected>Corporate</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 1" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 2" />
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                </div>
+                                <div class="col-md">
+                                    <select class="form-select form-control" aria-label="Default select example">
+                                        <option selected>State</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="County" />
+                                </div>
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <fieldset disabled>
+                                <label for="" class="form-label">Number of shares Authorized to issue</label>
+                                <input type="text" class="form-control" id="" value="Number of shares" />
+                            </fieldset>
+                        </div>
+                        <div class="mb-4">
+                            <fieldset disabled>
+                                <label for="" class="form-label">Per Value</label>
+                                <input type="text" class="form-control" id="" value="$ per value" />
+                            </fieldset>
+                        </div>
+                        <h5 class="font-weight-700">Officers</h5>
+                        <div class="accordion mb-3" id="officers-address">
+                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
+                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">John
+                                            Doe</span> <span
+                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">President</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#officers-address">
+                                    <div class="accordion-body">
+                                        <label for="" class="form-label">Address</label>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 1" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 2" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <select class="form-select form-control"
+                                                        aria-label="Default select example">
+                                                        <option selected>State</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id=""
+                                                        placeholder="County" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed bg-white" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
+                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">Wade
+                                            Warren</span> <span
+                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">Director</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#officers-address">
+                                    <div class="accordion-body">
+                                        <label for="" class="form-label">Address</label>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 1" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 2" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <select class="form-select form-control"
+                                                        aria-label="Default select example">
+                                                        <option selected>State</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id=""
+                                                        placeholder="County" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-3 rounded-2 overflow-hidden border-0 box-shadow">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed bg-white" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        <span class="avatar d-inline-block me-3"><img src="dist/images/avatar.png"
+                                                alt=""></span> <span class="d-inline-block font-weight-600 fs-7">Esther
+                                            Howard</span> <span
+                                            class="d-inline-block font-weight-600 fs-7 text-lighter ms-3">Shareholder</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#officers-address">
+                                    <div class="accordion-body">
+                                        <label for="" class="form-label">Address</label>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 1" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" id=""
+                                                placeholder="Address line 2" />
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <select class="form-select form-control"
+                                                        aria-label="Default select example">
+                                                        <option selected>State</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id=""
+                                                        placeholder="County" />
+                                                </div>
+                                                <div class="col-md">
+                                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <button type="button"
+                                class="btn btn-tertiary text-uppercase py-3 px-3 rounded-3 font-weight-600"
+                                data-bs-dismiss="modal">
+                                Add New Officer
+                            </button>
+                        </div>
+                        <h5 class="font-weight-700 mb-3">Sign</h5>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Filejet will sign on your behalf</label>
+                            <input type="text" class="form-control" id="" placeholder="Authorized signer" />
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <label for="" class="form-label">Organizer address</label>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-check d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" value="" id="sameAsBusiness"
+                                            checked="">
+                                        <label class="form-check-label form-label ms-3" for="sameAsBusiness">
+                                            SAME AS BUSINESS ADDRESS?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 1" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="" placeholder="Address line 2" />
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="City" />
+                                </div>
+                                <div class="col-md">
+                                    <select class="form-select form-control" aria-label="Default select example">
+                                        <option selected>State</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="County" />
+                                </div>
+                                <div class="col-md">
+                                    <input type="text" class="form-control" id="" placeholder="Zip" />
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="" class="form-label">Group</label>
+                            <select class="form-select form-control" aria-label="Default select example">
+                                <option selected>Groups</option>
+                                <option value="1">Group Name 1</option>
+                                <option value="2">Group Name 1</option>
+                                <option value="3">Group Name 1</option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-tertiary text-uppercase py-3 px-3 rounded-3 ms-3"
+                            data-bs-dismiss="modal">
+                            Preview
+                        </button>
+                        <button type="button" class="btn btn-info text-uppercase py-3 px-3 rounded-3 ms-3"
+                            data-bs-dismiss="modal">
+                            Save and exit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- updateEntityDetails Modal End-->
+
+    <!-- Entities Filter Modal start-->
+    <div class="modal modal-right fade filter-slideout" id="RAFilter" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100 pb-0">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-2 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-filter-white m-0"></span>
+                        </span>
+                        <div>
+                            <h3 class="fs-3 m-0 font-weight-700">Filter</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-3">
+                            <div class="font-weight-700 mb-3">GROUP</div>
+                            <div
+                                class="radio-checkbox-group checkbox-group-fixed bg-white p-3 rounded-3 d-flex flex-wrap mb-4 shadow">
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="1">
+                                    <label class="form-check-label text-capitalize m-0" for="1">
+                                        Group 1
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="2">
+                                    <label class="form-check-label text-capitalize" for="2">
+                                        GROUP 2
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="3">
+                                    <label class="form-check-label text-capitalize" for="3">
+                                        Group 3
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="4">
+                                    <label class="form-check-label text-capitalize" for="4">
+                                        Group 4
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="5">
+                                    <label class="form-check-label text-capitalize" for="5">
+                                        Group 5
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="6">
+                                    <label class="form-check-label text-capitalize" for="6">
+                                        Group 6
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="3">
+                                    <label class="form-check-label text-capitalize" for="3">
+                                        Group 3
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="4">
+                                    <label class="form-check-label text-capitalize" for="4">
+                                        Group 4
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="5">
+                                    <label class="form-check-label text-capitalize" for="5">
+                                        Group 5
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="6">
+                                    <label class="form-check-label text-capitalize" for="6">
+                                        Group 6
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="3">
+                                    <label class="form-check-label text-capitalize" for="3">
+                                        Group 3
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="4">
+                                    <label class="form-check-label text-capitalize" for="4">
+                                        Group 4
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="5">
+                                    <label class="form-check-label text-capitalize" for="5">
+                                        Group 5
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="6">
+                                    <label class="form-check-label text-capitalize" for="6">
+                                        Group 6
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="6">
+                                    <label class="form-check-label text-capitalize" for="6">
+                                        Group 6
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="font-weight-700 mb-3">TYPE</div>
+                            <div
+                                class="radio-checkbox-group checkbox-group-fixed bg-white p-3 rounded-3 d-flex flex-wrap mb-4 shadow">
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="profitCorporation">
+                                    <label class="form-check-label text-capitalize m-0" for="profitCorporation">
+                                        Profit Corporation
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="nonProfitCorporation"
+                                        checked>
+                                    <label class="form-check-label text-capitalize" for="nonProfitCorporation">
+                                        Non-Profit Corporation
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        Profit Corp.
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        Non-Profit
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        Profit Corp.
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        LLC
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="" id="llc" checked>
+                                    <label class="form-check-label text-capitalize" for="llc">
+                                        Non-Profit
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="font-weight-700">ASSIGNED TO</div>
+                                <div class="d-flex align-items-center">
+                                    <a href="#"
+                                        class="d-inline-block ms-auto font-weight-600 text-uppercase text-purple text-decoration-none">SELECT
+                                        ALL / </a>
+                                    <a href="#"
+                                        class="d-inline-block ms-auto font-weight-600 text-uppercase text-purple text-decoration-none">
+                                        DESELECT
+                                        ALL</a>
+                                </div>
+                            </div>
+                            <div
+                                class="radio-checkbox-group checkbox-group-fixed bg-white p-3 rounded-3 d-flex flex-wrap shadow">
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="kimberlyChavez">
+                                    <label class="form-check-label text-capitalize m-0" for="kimberlyChavez">
+                                        Kimberly Chavez
+                                    </label>
+                                </div>
+
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="jakeSmith">
+                                    <label class="form-check-label text-capitalize m-0" for="jakeSmith">
+                                        Jake Smith
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="jonathanDoe">
+                                    <label class="form-check-label text-capitalize m-0" for="jonathanDoe">
+                                        Jonathan Doe
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart Le
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart Le
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4 mb-3 pe-3">
+                                    <input class="form-check-input" type="checkbox" name="assigned" id="alanaStuart">
+                                    <label class="form-check-label text-capitalize m-0" for="alanaStuart">
+                                        Alana Stuart
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-4">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                                <div class="me-4 font-weight-700">STATE (51 SELECTED)</div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="assigned" id="20" checked>
+                                        <label class="form-check-label text-capitalize" for="20">
+                                            Include International
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <a href="#"
+                                            class="d-inline-block ms-auto font-weight-600 text-uppercase text-purple text-decoration-none">SELECT
+                                            ALL / </a>
+                                        <a href="#"
+                                            class="d-inline-block ms-auto font-weight-600 text-uppercase text-purple text-decoration-none">
+                                            DESELECT
+                                            ALL</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="radio-checkbox-group radio-checkbox-group-fixed row bg-white rounded-3 shadow py-3 px-2 mx-1">
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">DC</span>
+                                            <span class="long-text">District of Columbia</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label" >
+                                            <span class="short-text">CA</span>
+                                            <span class="long-text">Arkansas</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">CO</span>
+                                            <span class="long-text">California</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">CT</span>
+                                            <span class="long-text">Alabama</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">DE</span>
+                                            <span class="long-text">Alaska</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">DE</span>
+                                            <span class="long-text">Arizona</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">FL</span>
+                                            <span class="long-text">Arkansas</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">GA</span>
+                                            <span class="long-text">California</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">AL</span>
+                                            <span class="long-text">Alabama</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">AZ</span>
+                                            <span class="long-text">Alaska</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">AR</span>
+                                            <span class="long-text">Arizona</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">CA</span>
+                                            <span class="long-text">Arkansas</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">CO</span>
+                                            <span class="long-text">California</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">CT</span>
+                                            <span class="long-text">Alabama</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">DE</span>
+                                            <span class="long-text">Alaska</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">DE</span>
+                                            <span class="long-text">Arizona</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">FL</span>
+                                            <span class="long-text">Arkansas</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">GA</span>
+                                            <span class="long-text">California</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">FL</span>
+                                            <span class="long-text">Arkansas</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">GA</span>
+                                            <span class="long-text">California</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">AL</span>
+                                            <span class="long-text">Alabama</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">AZ</span>
+                                            <span class="long-text">Alaska</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">AZ</span>
+                                            <span class="long-text">Arizona</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">CA</span>
+                                            <span class="long-text">Arkansas</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">CO</span>
+                                            <span class="long-text">California</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">CT</span>
+                                            <span class="long-text">Alabama</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">DE</span>
+                                            <span class="long-text">Alaska</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">DE</span>
+                                            <span class="long-text">Arizona</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label" for="1">
+                                            <span class="short-text">PA</span>
+                                            <span class="long-text">Pennsylvania</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">AA</span>
+                                            <span class="long-text">Alaska Alabama</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">FL</span>
+                                            <span class="long-text">Arkansas</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-2 p-0">
+                                    <div class="form-check me-2 filter-state">
+                                        <input class="form-check-input" type="checkbox" name="" checked id="1">
+                                        <label class="form-check-label text-capitalize m-0 filter-state-label">
+                                            <span class="short-text">GA</span>
+                                            <span class="long-text">California</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer mt-2 pb-0 mb-3">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 me-auto"
+                            data-bs-dismiss="modal">
+                            Clear All Filters
+                        </button>
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3" data-bs-dismiss="modal">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Entities Filter Modal End-->
+
+
+    <!-- Search Modal Starts-->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-black opacity-75 border-0">
+                <button type="button" class="btn-close btn-close-white ms-auto pe-3" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                <div class="modal-body d-flex flex-column align-items-center">
+                    <div class="w-50 text-white">
+                        <form autocomplete="off">
+                            <div class="d-flex align-items-center white-bg px-4 py-3 rounded-pill">
+                                <span class="icon icon-search-grey icon-lg"></span>
+                                <input class="w-100 p-0 rounded-5 border-0 fs-3" id="search" type="text" name="seach"
+                                    placeholder="Search">
+                            </div>
+                        </form>
+                        <div class="fw-bold fs-4 mt-5 d-flex align-items-center"> <span
+                                class="icon icon-circular icon-lg icon-clock-dark mr-4"></span>
+                            Search results</div>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">Domain Inc (England) - 20% in progress</div>
+                                <div class="fs-8 mt-1">Entity</div>
+                            </div>
+                        </a>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">Mainsail Industries (AL) </div>
+                                <div class="fs-8 mt-1">Entity</div>
+                            </div>
+                        </a>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">The Main Group </div>
+                                <div class="fs-8 mt-1">Group</div>
+                            </div>
+                        </a>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">The Main Sail (Irvine/Orange, CA) </div>
+                                <div class="font-weight-600 fs-6">Mainsail Industries Inc (CA) </div>
+                                <div class="fs-8 mt-1">Business License</div>
+                            </div>
+                        </a>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">Shoes R Us (Los Angeles, CA)</div>
+                                <div class="font-weight-600 fs-6">Mainshoe Industries Inc (CA)</div>
+                                <div class="fs-8 mt-1">Fictitious / Trade Name</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Modal Ends -->
+
+    <!-- Service Modal Starts -->
+    <div class="modal modal-right fade" id="servicesModal" tabindex="-1" aria-labelledby="servicesModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-cart-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Additional
+                                Services</span>
+                            <h3 class="fs-3 m-0 mt-2 fw-bold">Select a Service</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100">
+                        <span class="icon icon-search-grey"></span>
+                        <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                            placeholder="Find a Service">
+                    </div>
+                    <div class="d-flex pt-4 w-100 btn-tab">
+                        <button data-id="new" type="button"
+                            class="active btn btn-light text-capitalize w-100 me-2 py-2">New</button>
+                        <button data-id="inProcess" type="button" class="btn btn-light text-capitalize w-100 py-2">In
+                            Progress</button>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div id="new" class="btn-tab-content" style="display: block;">
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-bag-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">Annual Recurring
+                                    Service</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These tasks are added onto your portal
+                                for
+                                ongoing annual compliance automation.</p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Create New Entity</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Add Existing Entity</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">DBA|FBN</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Existing DBA|FBN</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Statement of Information (CA)</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Annual Report (outside of CA)</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Franchise Tax report</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Registered Agent</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-document-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">ONE-OFF FILINGs</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These tasks are for events that do not
+                                happen
+                                regularly.</p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item">Amendments</li>
+                                <li class="list-group-item">Dissolutions</li>
+                                <li class="list-group-item">Restated articles</li>
+                                <li class="list-group-item">Corrections</li>
+                                <li class="list-group-item">EIN</li>
+                                <li class="list-group-item">25102f</li>
+                                <li class="list-group-item">Conversion</li>
+                                <li class="list-group-item">Certificate of status retrieval</li>
+                                <li class="list-group-item">Document Retrievals (assorted)</li>
+                                <li class="list-group-item">Name Reservation\Verify</li>
+                                <li class="list-group-item">Business license renewal</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-folder-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">PRODUCTS</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These products are for a suite of
+                                documents.
+                            </p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Corporate kits
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" data-placement="top"
+                                            title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Stocks & Certificates
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Custom Tabs
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">Corporate books (1.5" 2.0")</li>
+                                <li class="list-group-item">Estate Planning books</li>
+                                <li class="list-group-item">Minutes & Bylaws</li>
+                                <li class="list-group-item">Operating Agreement</li>
+                                <li class="list-group-item">Corporate seals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="inProcess" class="btn-tab-content">
+                        <div class="d-flex align-items-center pt-1">
+                            <span class="icon icon-sm icon-bag-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">annual recurring
+                                serviceS</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These tasks are added onto your portal
+                            for
+                            ongoing annual compliance automation.</p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span>Mainsail Partners (DE)</span>
+                                                <span class="fs-10 d-block text-secondary">New
+                                                    Entity</span>
+                                            </div>
+                                        </td>
+                                        <td>09/18/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width: 40%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-orange">40%</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><span>Greypoint Properties (DE)</span>
+                                                <span class="fs-10 d-block text-secondary">Annual
+                                                    Report</span>
+                                            </div>
+                                        </td>
+                                        <td>08/12/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-red" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-red" style="width: 1%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-red">0%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span>Greypoint Properties (DE)</span>
+                                                <span class="fs-10 d-block text-secondary">Franchise
+                                                    Tax Report</span>
+                                            </div>
+                                        </td>
+                                        <td>08/05/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-green" style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-green">100%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="d-flex align-items-center pt-3">
+                            <span class="icon icon-sm icon-document-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">ONE-OFF FILINGs</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These tasks are for events that do not
+                            happen
+                            regularly.</p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>Coastal One, Inc. (DE)</span>
+                                            <span class="fs-10 d-block text-secondary">Bi-Annual
+                                                Report</span>
+                                        </td>
+                                        <td>08/07/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width: 40%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-orange">40%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>CIG, Inc. (DE)</span>
+                                            <span class="fs-10 d-block text-secondary">Business
+                                                License</span>
+                                        </td>
+                                        <td>08/05/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-green" style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-green">100%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex align-items-center pt-3">
+                            <span class="icon icon-sm icon-folder-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">PRODUCTS</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These products are for a suite of
+                            documents.
+                        </p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>Coastal One, Inc. (DE)</span>
+                                            <span class="fs-10 d-block text-secondary">Bi-Annual
+                                                Report</span>
+                                        </td>
+                                        <td>09/18/2021</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width: 40%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-orange">40%</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Service Modal Ends -->
+
+    <!-- toasts container -->
+    <div class="toast">
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast hide border-danger bg-white" role="alert" aria-live="assertive"
+                aria-atomic="true">
+                <div class="toast-header border-bottom">
+                    <span class="icon icon-circular icon-lg icon-alert"></span>
+                    <strong class="me-auto font-weight-700 fs-6">Title Name</strong>
+                    <small>11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-danger">
+                    <span class="fw-normal fs-6">Some Error Found</span>
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast hide border-success bg-white" role="alert" aria-live="assertive"
+                aria-atomic="true">
+                <div class="toast-header border-bottom">
+                    <span class="icon icon-circular icon-lg icon-green-tick"></span>
+                    <strong class="me-auto font-weight-700 fs-6">Title Name</strong>
+                    <small>11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-success">
+                    <span class="fw-normal fs-6">Successfully Added</span>
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast hide border-info bg-white" role="alert" aria-live="assertive"
+                aria-atomic="true">
+                <div class="toast-header border-bottom">
+                    <span class="icon icon-info m-0"></span>
+                    <strong class="me-auto font-weight-700 fs-6 ms-2">Title Name</strong>
+                    <small>11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-info">
+                    <span class="fw-normal fs-6">Some Info Text</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- toasts container end -->
+
+    <!-- script for toasts -->
+    <script>
+        document.getElementById("toastbtn").onclick = function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl)
+            })
+            toastList.forEach(toast => toast.show())
+        }
+    </script>
+    <!--end script for toasts -->
+    <script src="dist/js/plugins.min.js"></script>
+    <script src="dist/js/custom.min.js"></script>
+    <!-- Scripts End-->
+</body>
+
+</html>
