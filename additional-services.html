@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="dist/css/filejet-style.css" />
   <script src="dist/js/jquery.min.js"></script>
   <!-- Scripts -->
+  <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'> -->
+  <!-- 
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'> -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'> 
 </head>
 
 <body>
@@ -328,6 +334,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="row">
+                  
                     <div class="col-6">
                       <div class="fw-bold fs-9 mt-4 mb-2">FORMATION TYPE</div>
                       <select class="form-select form-control">
@@ -374,6 +381,29 @@
                       <label for="" class="mt-4 fw-bold">Registration Date</label>
                       <input type="text" class="form-control datepicker" placeholder="Registration Date" value="">
                       <span class="icon icon-calender-lined mt-2"></span>
+                    </div>
+
+                    
+                      <div class="col-6">
+                      
+                        <div class="content">
+         
+                          <div class="form-group">
+                            <label>Time</label>
+                            <div class="input-group time position-relative" id="timepicker">
+                              <input class="form-control rounded-2 input-group-addon" placeholder="HH:MM AM/PM">
+                              <span class="input-group-append input-group-addon position-absolute end-0 pb-2 translate-middle top-50 me-2">
+                                <span class=""><i class="fa fa-clock fs-5"></i></span>
+                              </span>       
+                            </div>
+                            <style>
+                              .input-group-append.input-group-addon{
+                                z-index: 9;
+                              }  
+                                                       
+                            </style>
+                          </div>
+                        </div>
                     </div>
                   </div>
 
@@ -665,26 +695,7 @@
                         </div>
                       </div>
                       <div class="col-5">
-                        <div class="d-flex align-items-center justify-content-between">
-                          <div class="d-flex align-items-center gap-2 w-100">
-                            <label for="" class="form-label">State</label>
-                            <select class="form-select form-control" aria-label="Default select example">
-                              <option>Select</option>
-                              <option selected value="Steve’s Accounting">Alabama</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
-                            </select>
-                          </div>
-                          <div class="form-check-inline gap-2 w-100">
-                            <label for="" class="form-label w-100">Entity Type</label>
-                            <select class="form-select form-control" aria-label="Default select example">
-                              <option>Select</option>
-                              <option selected value="Steve’s Accounting">LLC</option>
-                              <option value="2">LLP</option>
-                              <option value="3">Three</option>
-                            </select>
-                          </div>
-                        </div>
+
                       </div>
                       <div class="col-1 fw-bold fs-8 text-end">$45.00</div>
                     </div>
@@ -790,9 +801,12 @@
             <h6 class="fw-normal fs-5">Entity Details</h6>
             <!-----Tabber Code-->
             <!-- overview info start -->
-              <div class="alert alert-info mb-5 w-100 float-left overview-intro d-flex align-items-center justify-content-between">
-                <span class="p-2 fs-5 fw-normal"><i class="fa fa-info-circle"></i> Please complete all information in each tab and click the submit button to complete your order. </span><a href="#" class="btn btn-dark float-right px-4 py-2">Got it</a>
-              </div>
+            <div
+              class="alert alert-info mb-5 w-100 float-left overview-intro d-flex align-items-center justify-content-between">
+              <span class="p-2 fs-5 fw-normal"><i class="fa fa-info-circle"></i> Please complete all information in each
+                tab and click the submit button to complete your order. </span><a href="#"
+                class="btn btn-dark float-right px-4 py-2">Got it</a>
+            </div>
             <!-- overview info end -->
 
             <div class="white-bg d-flex px-3 py-3 pb-0 mt-2 shadow rounded-2">
@@ -2956,21 +2970,184 @@
               <h3 class="fs-3 m-0 mt-2">Preview</h3>
             </div>
           </div>
-          <div class="row pt-4 w-100">
-            <div class="col-4">
-              <button type="button" class="btn btn-info text-capitalize py-2 px-4 shadow-lg w-100">Articles of
-                Organization</button>
+          <!-- <div class="row pt-4 w-100">
+            <ul class="nav nav-pills preview-navigation " id="pills-tab" role="tablist"
+              style="flex-wrap: nowrap;align-items: center;overflow: hidden;">
+              <div class="d-flex align-items-center justify-content-between w-100 position-absolute start-0 px-4">
+                <button type="button" class="btn btn-light btn-sm">Next</button>
+                <button type="button" class="btn btn-light btn-sm">Prev</button>
+              </div>
+              <li role="presentation" class=" nav-item  ms-2 me-3">
+
+                <a class="btn btn-info text-capitalize py-2 px-4 shadow-lg w-100 active" id="pills-4748-preview-tab"
+                  data-bs-toggle="tab" data-bs-target="#pills-4748-preview" role="tab" aria-controls="pills-home"
+                  aria-selected="true" href="#" tab-active-status="1">Articles of Organization</a>
+              </li>
+              <li role="presentation" class=" nav-item  ms-2 me-3">
+
+                <a class="btn btn-info text-capitalize py-2 px-4 shadow-lg w-100" id="pills-4749-preview-tab"
+                  data-bs-toggle="tab" data-bs-target="#pills-4749-preview" role="tab" aria-controls="pills-home"
+                  aria-selected="false" href="#" tab-active-status="1" tabindex="-1">Registered Agent</a>
+              </li>
+              <li role="presentation" class=" nav-item  ms-2 me-3">
+
+                <a class="btn btn-info text-capitalize py-2 px-4 shadow-lg w-100" id="pills-4750-preview-tab"
+                  data-bs-toggle="tab" data-bs-target="#pills-4750-preview" role="tab" aria-controls="pills-home"
+                  aria-selected="false" href="#" tab-active-status="1" tabindex="-1">Federal Employer Tax ID (EIN)</a>
+              </li>
+              <li role="presentation" class=" nav-item  ms-2 me-3">
+
+                <a class="btn btn-info text-capitalize py-2 px-4 shadow-lg w-100" id="pills-4751-preview-tab"
+                  data-bs-toggle="tab" data-bs-target="#pills-4751-preview" role="tab" aria-controls="pills-home"
+                  aria-selected="false" href="#" tab-active-status="1" tabindex="-1">Statement of Information</a>
+              </li>
+              <li role="presentation" class=" nav-item  ms-2 me-3">
+
+                <a class="btn btn-info text-capitalize py-2 px-4 shadow-lg w-100" id="pills-4752-preview-tab"
+                  data-bs-toggle="tab" data-bs-target="#pills-4752-preview" role="tab" aria-controls="pills-home"
+                  aria-selected="false" href="#" tab-active-status="1" tabindex="-1">Convert to Sub S Election</a>
+              </li>
+              <li role="presentation" class=" nav-item  ms-2 me-3">
+
+                <a class="  btn btn-info text-capitalize py-2 px-4 shadow-lg w-100" id="pills-4753-preview-tab"
+                  data-bs-toggle="tab" data-bs-target="#pills-4753-preview" role="tab" aria-controls="pills-home"
+                  aria-selected="false" href="#" tab-active-status="1" tabindex="-1">Notice of Transaction 25102(f)
+                  Task</a>
+              </li>
+              <li role="presentation" class=" nav-item  ms-2 me-3">
+
+                <a class="  btn btn-info text-capitalize py-2 px-4 shadow-lg w-100" id="pills-4754-preview-tab"
+                  data-bs-toggle="tab" data-bs-target="#pills-4754-preview" role="tab" aria-controls="pills-home"
+                  aria-selected="false" href="#" tab-active-status="1" tabindex="-1">DBA Filing</a>
+              </li>
+              <li role="presentation" class=" nav-item  ms-2 me-3">
+
+                <a class="  btn btn-info text-capitalize py-2 px-4 shadow-lg w-100" id="pills-4756-preview-tab"
+                  data-bs-toggle="tab" data-bs-target="#pills-4756-preview" role="tab" aria-controls="pills-home"
+                  aria-selected="false" href="#" tab-active-status="1" tabindex="-1">Certificates</a>
+              </li>
+            </ul>
+          </div> -->
+
+          <div class="w-100 mt-3">
+            <div class="row mx-auto my-auto justify-content-center">
+              <div id="recipeCarousel" class="carousel slide" data-bs-ride="false">
+                  <div class="carousel-inner px-4" role="listbox">
+                      <div class="carousel-item active">
+                          <div class="col-md mx-2">
+                              <div class="">
+                                <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Articles of
+                                  Organization</button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="col-md mx-2">
+                              <div class="">
+                                <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Registered Agent </button>
+                                
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="col-md mx-2">
+                              <div class="">
+                                <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Federal Employer Tax ID (EIN)
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="col-md mx-2">
+                              <div class="">
+                                <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Statement of Information
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="col-md mx-2">
+                              <div class="">
+                                <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Convert to Sub S Election
+                                </button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="col-md mx-2">
+                              <div class="">
+                                  
+                                <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Notice of Transaction 25102(f) Task
+                                </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <a class="carousel-control-prev purple-bg opacity-100 w-auto rounded-2" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </a>
+                  <a class="carousel-control-next purple-bg opacity-100 w-auto rounded-2" href="#recipeCarousel" role="button" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </a>
+              </div>
             </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100"
-                data-bs-target="#previewModal" data-bs-toggle="modal" disabled="disabled">Statement of
-                Information</button>
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100"
-                data-bs-target="#previewModal" data-bs-toggle="modal" disabled="disabled">Custom
-                Operating Agreement</button>
-            </div>
+
+            <script>
+              let items = document.querySelectorAll('.carousel .carousel-item')
+
+              items.forEach((el) => {
+                  const minPerSlide = 4
+                  let next = el.nextElementSibling
+                  for (var i=1; i<minPerSlide; i++) {
+                      if (!next) {
+                          // wrap carousel by using first child
+                        next = items[0]
+                      }
+                      let cloneChild = next.cloneNode(true)
+                      el.appendChild(cloneChild.children[0])
+                      next = next.nextElementSibling
+                  }
+              })
+
+            </script>
+
+            <style>
+              @media (max-width: 767px) {
+                  .carousel-inner .carousel-item > div {
+                      display: none;
+                  }
+                  .carousel-inner .carousel-item > div:first-child {
+                      display: block;
+                  }
+              }
+
+              .carousel-inner .carousel-item.active,
+              .carousel-inner .carousel-item-next,
+              .carousel-inner .carousel-item-prev {
+                  display: flex;
+              }
+
+              /* medium and up screens */
+              @media (min-width: 768px) {
+                  
+                  .carousel-inner .carousel-item-end.active,
+                  .carousel-inner .carousel-item-next {
+                    transform: translateX(25%);
+                  }
+                  
+                  .carousel-inner .carousel-item-start.active, 
+                  .carousel-inner .carousel-item-prev {
+                    transform: translateX(-25%);
+                  }
+              }
+
+              .carousel-inner .carousel-item-end,
+              .carousel-inner .carousel-item-start { 
+                transform: translateX(0);
+              }
+
+
+            </style>
           </div>
         </div>
 
@@ -3839,6 +4016,39 @@
   </script>
   <script src="dist/js/plugins.min.js"></script>
   <script src="dist/js/custom.min.js"></script>
+
+
+<!--bootstrap time/picker -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
+
+<script>
+  if (/Mobi/.test(navigator.userAgent)) {
+  // if mobile device, use native pickers
+  $(".date input").attr("type", "date");
+  $(".time input").attr("type", "time");
+} else {
+  // if desktop device, use DateTimePicker
+  $("#datepicker").datetimepicker({
+    useCurrent: false,
+    format: "DD-MMM-YYYY",
+    showTodayButton: true,
+    icons: {
+      next: "fa fa-chevron-right",
+      previous: "fa fa-chevron-left",
+      today: 'todayText',
+    }
+  });
+  $("#timepicker").datetimepicker({
+    format: "LT",
+    icons: {
+      up: "fa fa-chevron-up",
+      down: "fa fa-chevron-down"
+    }
+  });
+}
+</script>
+<!-- bootstrap timepicker end -->
 
 </body>
 
