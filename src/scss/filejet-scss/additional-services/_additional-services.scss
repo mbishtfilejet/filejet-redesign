@@ -47,16 +47,53 @@
     @extend .bg-transparent;
   }
 }
-
-.carousel-item.active{
-  div:first-child{
-    div{
-      button{
-        @extend .btn-info;
-      }
+.previewSlides {
+  .carousel-item{
+    .nav-link.active{
+      @extend .btn-info;
+    }
+    .nav-link.active:focus{
+      @extend .text-white;
     }
   }
-}  
+}
+.bootstrap-datetimepicker-widget button{
+  @extend .btn-info;
+}
 .input-group-append.input-group-addon{
   z-index: 9;
 }  
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+      display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+/* medium and up screens for preview slide-out tabs slider*/
+@media (min-width: 768px) {
+  
+  .carousel-inner .carousel-item-end.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+  
+  .carousel-inner .carousel-item-start.active, 
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+transform: translateX(0%);
+}
