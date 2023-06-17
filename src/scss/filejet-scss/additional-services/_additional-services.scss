@@ -3,11 +3,14 @@
 
 
   .nav-link {
-    color: var(--bs-gray-500);
-    border-bottom: 4px solid var(--bs-gray-500);
+    color: var(--bs-secondary);
+    opacity: .75;
+    border-bottom: 4px solid var(--bs-secondary);
     padding: 0 3rem rem(16);
     margin-bottom: 1.2rem;
     &.active {
+      opacity: 1;
+      font-weight: 800 !important;
       color: var(--bs-purple);
       border-color: var(--bs-purple);
     }
@@ -50,7 +53,7 @@
 .previewSlides {
   .carousel-item{
     .nav-link.active{
-      @extend .btn-info;
+      @extend .btn-info,.text-white;
     }
     .nav-link.active:focus{
       @extend .text-white;
