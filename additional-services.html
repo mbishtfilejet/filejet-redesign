@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="dist/css/filejet-style.css" />
   <script src="dist/js/jquery.min.js"></script>
   <!-- Scripts -->
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'> 
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
 </head>
 
 <body>
@@ -330,7 +331,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="row">
-                  
+
                     <div class="col-6">
                       <div class="fw-bold fs-9 mt-4 mb-2">FORMATION TYPE</div>
                       <select class="form-select form-control">
@@ -379,22 +380,23 @@
                       <span class="icon icon-calender-lined mt-2"></span>
                     </div>
 
-                    
-                      <div class="col-6">
-                      
-                        <div class="content">
-         
-                          <div class="form-group">
-                            <label>Time</label>
-                            <div class="input-group time position-relative" id="timepicker">
-                              <input class="form-control rounded-2 input-group-addon" placeholder="HH:MM AM/PM">
-                              <span class="input-group-append input-group-addon position-absolute end-0 pb-2 translate-middle top-50 me-2">
-                                <span class=""><i class="fa fa-clock fs-5"></i></span>
-                              </span>       
-                            </div>
-                          
+
+                    <div class="col-6">
+
+                      <div class="content">
+
+                        <div class="form-group">
+                          <label>Time</label>
+                          <div class="input-group time position-relative" id="timepicker">
+                            <input class="form-control rounded-2 input-group-addon" placeholder="HH:MM AM/PM">
+                            <span
+                              class="input-group-append input-group-addon position-absolute end-0 pb-2 translate-middle top-50 me-2">
+                              <span class=""><i class="fa fa-clock fs-5"></i></span>
+                            </span>
                           </div>
+
                         </div>
+                      </div>
                     </div>
                   </div>
 
@@ -466,7 +468,76 @@
                 <div id="collapseOne" class="accordion-collapse border-0 collapse show" aria-labelledby="headingOne"
                   data-bs-parent="#accordionGroup">
                   <div class="accordion-body px-0">
+                    <!-- upload file component -->
+                    <div class="uploadDocs">
+                      <div class="d-flex align-items-end justify-content-between">
+                        <div class="fw-bold fs-5 my-3">Upload Documents</div>
+                        <div>
+                          <a type="button" class="btn btn-info text-uppercase btn-sm my-4" data-bs-toggle="modal"
+                            data-bs-target="#viewUploadDocuments">VIEW UPLOADED DOCUMENTS</a>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div class="dropzone dz-clickable bg-white py-4 rounded-2 shadow-sm">
+                          <div class=" drop-zone dynamicDropzone my-3 mx-4 dz-message h-auto py-4" data-dz-message="">
+                            <span class="drop-zone__prompt"> + Click Or Drop File Here To Upload<br>(Optional)</span>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <!-- end -->
                     <div class="fw-bold fs-5 my-4 pb-2">Business Compliance</div>
+
+                    <div class="bg-white shadow rounded-2 p-3 my-3">
+
+                      <div class="">
+                        <div class="soi_fields">
+                          <div class="d-flex align-items-center">
+                            <div class="col-10 d-flex align-items-center">
+                              <div class="input checkbox">
+                                <div class="custom-control custom-checkbox pricing-checkbox d-flex align-items-center">
+                                  <input type="hidden" name="file_statement_with_ca_option" value="0"><input
+                                    type="checkbox" name="file_statement_with_ca_option" value="1"
+                                    class="statement_of_information_with_state_of_CA selectFields reverseSelectFields calculatePrice custom-control-input form-check-input"
+                                    data-attr-class="soi_fields"
+                                    data-ajax-url="http://13.64.144.136/v3/partner/services/delete-service/24733/11"
+                                    data-attr-reverse-class="reverseSelectFields_1" id="file_statement_with_ca_option"
+                                    data-service-name="file_statement_with_ca" checked="checked"><label
+                                    for="file_statement_with_ca_option"
+                                    class="custom-control-label form-check-label fw-normal fs-6 text-inherit ms-3 mb-0"></label>
+                                </div>
+                              </div>
+                              <label class="form-check-label fs-6 fw-normal text-inherit mb-0" for="soi_fields">
+                                File Statement of Information with State of CA (Includes one Certified Copy and State
+                                Fees)
+                              </label>
+                            </div>
+                            <div class="fw-bold fs-8 col-2 text-end">
+
+
+                              <button type="button"
+                                class="btn pt-1 pb-1 btn-info text-white btn-service-upload upload_btn_file_statement_with_ca"
+                                data-backdrop="static" data-keyboard="false" data-service-name="file_statement_with_ca"
+                                data-recurring="1" data-service-title="File Statement of Information with State of CA"
+                                data-bs-toggle="modal" data-bs-target="#addDateModal"
+                                data-ajax-url="http://13.64.144.136/v3/partner/services/service-documents"
+                                data-file-date="6/30/25, 12:36 PM"
+                                data-maintenance-url="http://13.64.144.136/v3/partner/maintenance/service-maintenance"
+                                service-filed-date="">
+                                Add Date
+                                <input type="hidden" class="document-file_statement_with_ca"
+                                  name="existing_service[file_statement_with_ca][start_date]" value="06/20/2023">
+                                <input type="hidden" class="document-file_statement_with_ca"
+                                  name="existing_service[file_statement_with_ca][end_date]" value="06/30/2025">
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
 
                     <div class="bg-white shadow rounded-2 p-3">
                       <form action="">
@@ -792,10 +863,10 @@
             <h6 class="fw-normal fs-5">Entity Details</h6>
             <!-----Tabber Code-->
             <!--alert error message -->
-              <div class="alert alert-warning alert-dismissible fade show shadow-sm" role="alert">
-                Order has been completed. For more services, go to marketplace from the dashboard
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
+            <div class="alert alert-warning alert-dismissible fade show shadow-sm" role="alert">
+              Order has been completed. For more services, go to marketplace from the dashboard
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <!-- end -->
 
             <!-- overview info start -->
@@ -816,18 +887,19 @@
                       aria-selected="true">01-GENERAL INFO</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link fs-7 fw-normal" href="javascript:void(0);" id="registered-tab" data-bs-toggle="tab"
-                      data-bs-target="#registered" role="tab" aria-controls="registered"
+                    <a class="nav-link fs-7 fw-normal" href="javascript:void(0);" id="registered-tab"
+                      data-bs-toggle="tab" data-bs-target="#registered" role="tab" aria-controls="registered"
                       aria-selected="true">02-REGISTERED AGENT</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link fs-7 fw-normal" href="javascript:void(0);" id="statement-tab" data-bs-toggle="tab"
-                      data-bs-target="#statement" role="tab" aria-controls="statement" aria-selected="true">03-STATEMENT
+                    <a class="nav-link fs-7 fw-normal" href="javascript:void(0);" id="statement-tab"
+                      data-bs-toggle="tab" data-bs-target="#statement" role="tab" aria-controls="statement"
+                      aria-selected="true">03-STATEMENT
                       OF INFO</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link fs-7 fw-normal" href="javascript:void(0);" id="agreement-tab" data-bs-toggle="tab"
-                      data-bs-target="#agreement" role="tab" aria-controls="agreement"
+                    <a class="nav-link fs-7 fw-normal" href="javascript:void(0);" id="agreement-tab"
+                      data-bs-toggle="tab" data-bs-target="#agreement" role="tab" aria-controls="agreement"
                       aria-selected="true">04-AGREEMENT</a>
                   </li>
                   <li class="nav-item">
@@ -1137,6 +1209,360 @@
 
     </div>
   </div>
+
+  <!-- Add Date modal -->
+  <div class="modal modal-right fade" id="addDateModal" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+      <div class="modal-content border-0 rounded-0 min-vh-100">
+        <!-- Modal Header -->
+        <div class="modal-header flex-wrap">
+          <div class="d-flex align-items-center w-100 pb-2">
+            <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+              <span class="icon icon-calender-outline-white m-0"></span>
+            </span>
+            <div>
+              <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Add Date</span>
+              <h3 class="fs-3 m-0 mt-2 fw-bold">File Statement of Information with State of CA</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Header Ends -->
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <form class="substituteClass" data-entity-id="24767"
+            data-ajax-url="/v3/partner/entity/24767/service/document/upload/" id="uploadServiceForm">
+            <div id="newUpdateId" data-entity-id="24767"
+              data-ajax-url="/v3/partner/entity/24767/service/document/upload/" class="updateDiv">
+
+              <small class="date-fields">Most recent filing date required</small>
+              <div class="row date-fields">
+                <div class="col calender-input">
+                  <label>File Date</label>
+                  <input name="start_date" class="form-control input-datepicker maintenance-start-date" readonly=""
+                    required="">
+                  <span class="icon icon-calender-lined"></span>
+                </div>
+                <div class="col calender-input">
+                  <label>Due Date</label>
+                  <input name="end_date" id="end_date" class="form-control input-datepicker maintenance-due-date"
+                    readonly="" required="">
+                  <input type="hidden" id="maintenance-due-date" class="form-control">
+                  <span class="icon icon-calender-lined"></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col due-date-note"></div>
+              </div>
+              <div class="registered-agent-fields mt-3 d-none">
+                <div class="row">
+                  <div class="col">
+                    <label>Who is your Registered Agent?</label>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col d-flex align-items-center">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <div class="custom-control custom-checkbox pricing-checkbox"><input type="radio"
+                          name="agent_for_service_of_process_option" value="0"
+                          id="agent-for-service-of-process-option-0"
+                          class="custom-control-input form-check-input agentRadioFields" data-attr-class="radioFields_2"
+                          checked="checked"><label for="agent-for-service-of-process-option-0"
+                          class="custom-control-label form-check-label fs-6 fw-normal text-inherit ms-3 mb-0">An
+                          Individual</label></div>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <div class="custom-control custom-checkbox pricing-checkbox"><input type="radio"
+                          name="agent_for_service_of_process_option" value="1"
+                          id="agent-for-service-of-process-option-1"
+                          class="agentRadioFields form-check-input ms-5 custom-control-input"
+                          data-attr-class="radioFields_1"><label for="agent-for-service-of-process-option-1"
+                          class="custom-control-label form-check-label fs-6 fw-normal text-inherit ms-3 mb-0">Corporate
+                          Agent</label></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="registered-agent-fields-btn">
+                  <div class="row mt-3 radioFields_2 ">
+                    <div class="col">
+                      <div class="input text"><input type="text" name="agent_suffix" placeholder="Agent's Suffix"
+                          class="form-control" id="agent-suffix"></div>
+                    </div>
+                    <div class="col">
+                      <div class="input text"><input type="text" name="agent_firstname" placeholder="Agent's First Name"
+                          class="form-control validate[required]" id="agent-firstname"></div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3 radioFields_2 ">
+                    <div class="col">
+                      <div class="input text"><input type="text" name="agent_middle_name"
+                          placeholder="Agent's Middle Name" class="form-control" id="agent-middle-name"></div>
+                    </div>
+                    <div class="col">
+                      <div class="input text"><input type="text" name="agent_lastname" placeholder="Agent's Last Name"
+                          class="form-control validate[required]" id="agent-lastname"></div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3 radioFields_2 ">
+                    <div class="col">
+                      <div class="input text"><input type="text" name="agent_address" placeholder="Address 1"
+                          class="form-control validate[required]" id="agent-address"></div>
+                    </div>
+                    <div class="col">
+                      <div class="input text"><input type="text" name="agent_address2" placeholder="Address 2"
+                          class="form-control" id="agent-address2"></div>
+                    </div>
+                  </div>
+                  <div class="row mt-3 radioFields_2 ">
+                    <div class="col">
+                      <div class="input text"><input type="text" name="agent_city" placeholder="City"
+                          class="form-control validate[required]" id="agent-city"></div>
+                    </div>
+                    <div class="col ">
+                      <input type="hidden" name="agent_state_id" class="agent_state_class"> <select name="agent_state"
+                        class="form-control form-select" id="agent_state_id">
+                        <option value="">Select State</option>
+
+                        <option value="1">Alabama</option>
+
+                        <option value="2">Alaska</option>
+
+                        <option value="3">Arizona</option>
+
+                        <option value="4">Arkansas</option>
+
+                        <option value="5">California</option>
+
+                        <option value="6">Colorado</option>
+
+                        <option value="7">Connecticut</option>
+
+                        <option value="8">Delaware</option>
+
+                        <option value="9">District of Columbia</option>
+
+                        <option value="10">Florida</option>
+
+                        <option value="11">Georgia</option>
+
+                        <option value="12">Hawaii</option>
+
+                        <option value="13">Idaho</option>
+
+                        <option value="14">Illinois</option>
+
+                        <option value="15">Indiana</option>
+
+                        <option value="16">Iowa</option>
+
+                        <option value="17">Kansas</option>
+
+                        <option value="18">Kentucky</option>
+
+                        <option value="19">Louisiana</option>
+
+                        <option value="20">Maine</option>
+
+                        <option value="21">Maryland</option>
+
+                        <option value="22">Massachusetts</option>
+
+                        <option value="23">Michigan</option>
+
+                        <option value="24">Minnesota</option>
+
+                        <option value="25">Mississippi</option>
+
+                        <option value="26">Missouri</option>
+
+                        <option value="27">Montana</option>
+
+                        <option value="28">Nebraska</option>
+
+                        <option value="29">Nevada</option>
+
+                        <option value="30">New Hampshire</option>
+
+                        <option value="31">New Jersey</option>
+
+                        <option value="32">New Mexico</option>
+
+                        <option value="33">New York</option>
+
+                        <option value="34">North Carolina</option>
+
+                        <option value="35">North Dakota</option>
+
+                        <option value="36">Ohio</option>
+
+                        <option value="37">Oklahoma</option>
+
+                        <option value="38">Oregon</option>
+
+                        <option value="39">Pennsylvania</option>
+
+                        <option value="40">Rhode Island</option>
+
+                        <option value="41">South Carolina</option>
+
+                        <option value="42">South Dakota</option>
+
+                        <option value="43">Tennessee</option>
+
+                        <option value="44">Texas</option>
+
+                        <option value="45">Utah</option>
+
+                        <option value="46">Vermont</option>
+
+                        <option value="47">Virginia</option>
+
+                        <option value="48">Washington</option>
+
+                        <option value="49">West Virginia</option>
+
+                        <option value="50">Wisconsin</option>
+
+                        <option value="51">Wyoming</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col radioFields_2 ">
+                      <div class="input text"><input type="text" name="agent_zip" placeholder="Zip"
+                          class="form-control validate[required,minSize[5]] zip_format" id="agent-zip" maxlength="5">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="radioFields_1 d-none">
+                        <div class="input text"><input type="text" name="corporate_agent_name"
+                            placeholder="Corporate Agent Name" class="form-control validate[required]"
+                            id="corporate-agent-name"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Modal Body Ends-->
+
+        <!-- Modal Body footer-->
+        <div class="modal-footer mt-3 pb-0">
+          <div class="d-flex justify-content-end w-100">
+            <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600 "
+              data-bs-toggle="modal">
+              CANCEL
+            </button>
+            <button type="button" class="btn btn-info text-white text-uppercase py-3 px-5 rounded-3 ms-3"
+              data-bs-dismiss="modal">
+              SAVE
+            </button>
+          </div>
+        </div>
+        <!-- Modal Body footer ends-->
+
+      </div>
+    </div>
+  </div>
+  <!-- End Add Date Modal -->
+
+  <!-- View and Upload documents -->
+  <div class="modal modal-right fade" id="viewUploadDocuments" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+      <div class="modal-content border-0 rounded-0 min-vh-100">
+        <!-- Modal Header -->
+        <div class="modal-header flex-wrap">
+          <div class="d-flex align-items-center w-100 pb-2">
+            <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+              <span class="icon icon-md icon-clipboard-white m-0"></span>
+            </span>
+            <div>
+              <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Uploaded Documents</span>
+              <h3 class="fs-3 m-0 mt-2 fw-bold">Documents</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Header Ends -->
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <div class="docsTable bg-white rounded-2 shadow-sm px-3">
+            <table class="table service-doc-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th class="text-center" style="width:2rem;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="doc-row-5832">
+                  <td>
+                    <span id="doc-text-5832">Resume (1) (1) (1) (1)</span>
+                    <div id="doc-input-5832" class="d-none input-group-edit">
+                      <input class="form-control" value="Resume (1) (1) (1) (1)">
+                      <div class="btn-edit-group" style="display: block;">
+                        <button type="button" style="all:unset" data-action="update"
+                          data-ajax-url="http://13.64.144.136/v3/partner/services/update-document/" data-id="5832"
+                          class="btn-document-action"><span class="icon icon-save cursor-pointer" data-toggle="tooltip"
+                            aria-label="SAVE" data-bs-original-title="SAVE"></span></button>
+                        <button type="button" style="all:unset" data-action="cancel" data-id="5832"
+                          class="btn-document-action"><span class="icon icon-close-dark cursor-pointer"
+                            data-toggle="tooltip" aria-label="CANCEL" data-bs-original-title="CANCEL"></span></button>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center justify-content-end">
+                      <a href="#" class="mx-2 btn-document-action" data-id="5832" data-action="edit"><span
+                          class="icon icon-edit cursor-pointer" data-toggle="tooltip" aria-label="EDIT"
+                          data-bs-original-title="EDIT"></span></a>
+                      <a href="http://13.64.144.136/v3/uploads/entity/image/b3f34fe52819e14a9d76b02e5e70b1c9a2d65126fba57d4e04a8c4f20b3f29ab/documents/resume.pdf"
+                        target="_blank" download="" class="mx-2"><span
+                          class="icon icon-circular icon-lg icon-download-green"></span></a>
+                      <a href="#" class="btn-document-action-cancel"
+                        data-ajax-url="http://13.64.144.136/v3/partner/services/update-document/" data-id="5832"
+                        data-action="delete"><span class="icon icon-delete me-3 cursor-pointer" data-toggle="tooltip"
+                          aria-label="DELETE" data-bs-original-title="DELETE"></span></a>
+                    </div>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Modal Body Ends-->
+
+        <!-- Modal Body footer-->
+        <div class="modal-footer mt-3 pb-0">
+          <div class="d-flex justify-content-end w-100">
+            <!-- <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600 "
+            data-bs-toggle="modal">
+            Go Back
+          </button> -->
+            <button type="button" class="btn btn-info text-white text-uppercase py-3 px-5 rounded-3 ms-3"
+              data-bs-dismiss="modal">
+              CLOSE
+            </button>
+          </div>
+        </div>
+        <!-- Modal Body footer ends-->
+
+      </div>
+    </div>
+  </div>
+  <!-- end View and Upload documents -->
+
   <!--Save and exit Button Form-->
   <div class="modal modal-right fade" id="exitModal" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
     aria-hidden="true">
@@ -2972,65 +3398,78 @@
           <div class="w-100 mt-3">
             <div class="row mx-auto my-auto justify-content-center previewSlides">
               <div id="recipeCarousel" class="carousel slide" data-bs-ride="false">
-                  <div class="carousel-inner px-4 " role="listbox">
-                      <div class="carousel-item active" role="tablist">
-                          <div class="col-md-3">
-                              <div class="px-2">
-                                <button type="button" data-bs-toggle="pill" href="#previewDivOne" class="active nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Articles of
-                                  Organization1</button>
-                              </div>
-                          </div>
+                <div class="carousel-inner px-4 " role="listbox">
+                  <div class="carousel-item active" role="tablist">
+                    <div class="col-md-3">
+                      <div class="px-2">
+                        <button type="button" data-bs-toggle="pill" href="#previewDivOne"
+                          class="active nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Articles of
+                          Organization1</button>
                       </div>
-                      <div class="carousel-item" role="tablist">
-                          <div class="col-md-3">
-                              <div class=" px-2">
-                                <button type="button" data-bs-toggle="pill" href="#previewDivTwo" class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Registered Agent 2</button>
-                                
-                              </div>
-                          </div>
-                      </div>
-                      <div class="carousel-item" role="tablist">
-                          <div class="col-md-3">
-                              <div class=" px-2">
-                                <button type="button" data-bs-toggle="pill" href="#previewDivThree" class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Federal Employer Tax ID 
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="carousel-item" role="tablist">
-                          <div class="col-md-3">
-                              <div class=" px-2">
-                                <button type="button" data-bs-toggle="pill" href="#previewDivFour" class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Statement of Information4
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="carousel-item" role="tablist">
-                          <div class="col-md-3">
-                              <div class=" px-2">
-                                <button type="button" data-bs-toggle="pill" href="#previewDivFive" class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Convert to Sub S Election5
-                                </button>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="carousel-item" role="tablist">
-                          <div class="col-md-3">
-                              <div class=" px-2">
-                                  
-                                <button type="button" data-bs-toggle="pill" href="#previewDivSix" class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Notice of Transaction 2510
-                                </button>
-                              </div>
-                          </div>
-                      </div>
+                    </div>
                   </div>
-                  <a class="carousel-control-prev purple-bg opacity-100 w-auto rounded-2" href="#recipeCarousel" role="button" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </a>
-                  <a class="carousel-control-next purple-bg opacity-100 w-auto rounded-2" href="#recipeCarousel" role="button" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  </a>
+                  <div class="carousel-item" role="tablist">
+                    <div class="col-md-3">
+                      <div class=" px-2">
+                        <button type="button" data-bs-toggle="pill" href="#previewDivTwo"
+                          class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Registered Agent
+                          2</button>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" role="tablist">
+                    <div class="col-md-3">
+                      <div class=" px-2">
+                        <button type="button" data-bs-toggle="pill" href="#previewDivThree"
+                          class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Federal Employer Tax
+                          ID
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" role="tablist">
+                    <div class="col-md-3">
+                      <div class=" px-2">
+                        <button type="button" data-bs-toggle="pill" href="#previewDivFour"
+                          class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Statement of
+                          Information4
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" role="tablist">
+                    <div class="col-md-3">
+                      <div class=" px-2">
+                        <button type="button" data-bs-toggle="pill" href="#previewDivFive"
+                          class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Convert to Sub S
+                          Election5
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" role="tablist">
+                    <div class="col-md-3">
+                      <div class=" px-2">
+
+                        <button type="button" data-bs-toggle="pill" href="#previewDivSix"
+                          class="nav-link btn btn-light text-capitalize py-2 px-4 shadow-lg w-100">Notice of Transaction
+                          2510
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev purple-bg opacity-100 w-auto rounded-2" href="#recipeCarousel"
+                  role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next purple-bg opacity-100 w-auto rounded-2" href="#recipeCarousel"
+                  role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
 
@@ -3918,37 +4357,38 @@
   <script src="dist/js/custom.min.js"></script>
 
 
-<!--bootstrap time/picker -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
+  <!--bootstrap time/picker -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+  <script
+    src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
 
-<script>
-  if (/Mobi/.test(navigator.userAgent)) {
-  // if mobile device, use native pickers
-  $(".date input").attr("type", "date");
-  $(".time input").attr("type", "time");
-} else {
-  // if desktop device, use DateTimePicker
-  $("#datepicker").datetimepicker({
-    useCurrent: false,
-    format: "DD-MMM-YYYY",
-    showTodayButton: true,
-    icons: {
-      next: "fa fa-chevron-right",
-      previous: "fa fa-chevron-left",
-      today: 'todayText',
+  <script>
+    if (/Mobi/.test(navigator.userAgent)) {
+      // if mobile device, use native pickers
+      $(".date input").attr("type", "date");
+      $(".time input").attr("type", "time");
+    } else {
+      // if desktop device, use DateTimePicker
+      $("#datepicker").datetimepicker({
+        useCurrent: false,
+        format: "DD-MMM-YYYY",
+        showTodayButton: true,
+        icons: {
+          next: "fa fa-chevron-right",
+          previous: "fa fa-chevron-left",
+          today: 'todayText',
+        }
+      });
+      $("#timepicker").datetimepicker({
+        format: "LT",
+        icons: {
+          up: "fa fa-chevron-up",
+          down: "fa fa-chevron-down"
+        }
+      });
     }
-  });
-  $("#timepicker").datetimepicker({
-    format: "LT",
-    icons: {
-      up: "fa fa-chevron-up",
-      down: "fa fa-chevron-down"
-    }
-  });
-}
-</script>
-<!-- bootstrap timepicker end -->
+  </script>
+  <!-- bootstrap timepicker end -->
 
 </body>
 
