@@ -481,19 +481,28 @@ function loadWarningSmallScreenPopup() {
   bootstrapModal.show();
 }
 
-// preview slide-out tabs-slider additional services
-let items = document.querySelectorAll('.carousel .carousel-item')
 
-items.forEach((el) => {
-    const minPerSlide = 4
-    let next = el.nextElementSibling
-    for (var i=1; i<minPerSlide; i++) {
-        if (!next) {
-            // wrap carousel by using first child
-          next = items[0]
+
+// owl-carousel tabs for preview slide-out
+     // Initialize the Owl Carousel
+     $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        items: 4, // Set the number of items to display
+        loop: false, // Enable loop to create a continuous carousel
+     // Set the margin between items
+        nav: true,
+        dots: false,
+        // autoWidth:true, 
+        responsive: {
+          0: {
+            items: 1 // Display one item on smaller screens
+          },
+          768: {
+            items: 3 // Display three items on medium screens and above
+          },
+          1200: {
+            items: 4 // Display three items on medium screens and above
+          }
         }
-        let cloneChild = next.cloneNode(true)
-        el.appendChild(cloneChild.children[0])
-        next = next.nextElementSibling
-    }
-})
+      });
+    });
