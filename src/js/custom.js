@@ -489,7 +489,8 @@ function loadWarningSmallScreenPopup() {
       $('.owl-carousel').owlCarousel({
         items: 4, // Set the number of items to display
         loop: false, // Enable loop to create a continuous carousel
-     // Set the margin between items
+        stagePadding: 20,
+        autoWidth:true,
         nav: true,
         dots: false,
         // autoWidth:true, 
