@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>File Jet: Entity Listing</title>
+    <title>File Jet: Org-Chart</title>
     <!-- Styles -->
     <link rel="stylesheet" href="dist/css/filejet-style.css" />
     <script src="dist/js/jquery.min.js"></script>
@@ -166,7 +166,7 @@
                             <div class="col col-xl-3 col-lg-3">
                                 <h3 class="m-0">
                                     <strong>
-                                        Entity Listing
+                                        Organization Chart
                                     </strong>
                                 </h3>
                             </div>
@@ -827,7 +827,13 @@
         </div>
     </div>
     <!-- toasts container end -->
-
+    <style>
+        .boc-light .boc-chart-menu [data-item]:hover {
+           background-color: #fff !important;
+           color: #AB65EF !important;
+           cursor: pointer;
+       }
+   </style>
     <!-- script for toasts -->
     <script>
         document.getElementById("toastbtn").onclick = function () {
@@ -839,101 +845,8 @@
         }
     </script>
     <!--end script for toasts -->
-    <!-- org script --> 
-    <style>
-    [data-l-id] path {
-        stroke: #AB65EF;
-        stroke-width: 2;
-        }
-    [data-ctrl-n-menu-id] circle {
-        fill: black;
-    }
-    #tree>svg {
-        background-color: #F3F5F8;
-        font-family: var(--bs-body-font-family);
-    }
-    [data-n-id] rect{
-       filter: drop-shadow( 0px 0.4375rem 0.75rem rgba(0,0,0,.1));
-       stroke-opacity:25%;
-    }
-    [data-n-id] rect {
-        fill: #fff;
-    }
-    .boc-light .boc-fill {
-        fill: #fff;
-        stroke-opacity: 0.25;
-    }
-    .boc-light .boc-fill+line{
-        stroke: #000;
-    }
-    </style>
-    <script>
-        //JavaScript
-        var actionIcon="";
-        OrgChart.templates.ana.field_0 = 
-        '<text width="230" style="font-size: 18px;" fill="#ffffff" x="125" y="95" text-anchor="middle" class="field_0">{val}</text>';
-        OrgChart.templates.ana.field_1 = 
-        '<text data-width="130" data-text-overflow="multiline" style="font-size: 14px;" fill="#ffffff" x="230" y="30" text-anchor="end" class="field_1">{val}</text>';
-        OrgChart.templates.olivia.company ='<text style="font-size:18px;font-weight:500"; fill="#000000" x="90" y="30">{val}</text>';
-        OrgChart.templates.olivia.name = '<text style="font-size:13px";fill="#000000" x="90" y="52">{val}</text>';
-        OrgChart.templates.olivia.title = '<text style="font-size:13px";fill="#000000" f x="90" y="70">{val}</text>';
-        OrgChart.templates.olivia.img_0 =
-        '<clipPath id="ulaImg">'
-        + '<circle cx="46" cy="46" r="30"></circle>'
-        + '</clipPath>'
-        + '<image preserveAspectRatio="xMidYMid slice" clip-path="url(#ulaImg)" xlink:href="{val}" x="14" y="15" width="65" height="65">'
-        + '</image>';
-        OrgChart.templates.olivia.size = [320, 92];
-        OrgChart.templates.olivia.nodeMenuButton = '<g style="cursor:pointer;background-color:blue;" transform="matrix(1,0,0,1,285,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#ffffff"></circle><circle cx="7" cy="0" r="2" fill="#ffffff"></circle><circle cx="14" cy="0" r="2" fill="#ffffff"></circle></g>';
-        OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
-        var chart = new OrgChart(document.getElementById("tree"), {
-            template: 'olivia',    
-            showYScroll: OrgChart.scroll.visible,
-            showXScroll: OrgChart.scroll.visible,
-            mouseScrool: OrgChart.action.ctrlZoom,
-            layout: OrgChart.mixed,
-            enableSearch: false,
-            nodeMenu: {
-                action: { text: "Take Action",
-                          icon: "actionIcon"
-                        },
-                entity: { text: "Open Entity" },
-                update_entity:{ text: "Update Entity"},
-                svg1: { text:"Entity Summary" },
-                csv1: { text: "Add Entity" }
-            },
-            nodeBinding: {
-                img_0: "img",
-                name: "name",
-                title: "title",
-                company: "company"
-            }
-        });
-
-        chart.load([
-            { id: "1", pid:"0", company:"Hunt Groups", name: "Jack Hill", title: "Chairman and CEO", title2:"Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg"},
-            { id: "2", pid: "1", company:"Hunt LLC", name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "dist/images/icons/hunt-groups.svg" },
-            { id: "3", pid: "1", company:"NBC Networks", name: "Janae Barrett", title: "Technical Director", img: "dist/images/icons/nbc-network.svg" },
-            { id: "4", pid: "1", company:"Dropbox", name: "Aaliyah Webb", title: "Manager", email: "jay@domain.com", img: "dist/images/icons/dropbox.svg" },
-            { id: "5", pid: "2", company:"Google", name: "Elliot Ross", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
-            { id: "6", pid: "2", company:"Google", name: "Anahi Gordon", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
-            { id: "7", pid: "2", company:"Target", name: "Knox Macias", title: "QA", img: "dist/images/icons/target.svg" },
-            { id: "8", pid: "3", company:"Apple", name: "Nash Ingram", title: ".NET Team Lead", email: "kohen@domain.com", img: "dist/images/icons/apple.svg" },
-            { id: "9", pid: "3", company:"Google", name: "Sage Barnett", title: "JS Team Lead", img: "dist/images/icons/hunt-groups.svg" },
-            { id: "10", pid: "8", company:"Tesla", name: "Alice Gray", title: "Programmer", img: "dist/images/icons/tesla.svg" },
-            { id: "11", pid: "8", company:"Nike", name: "Anne Ewing", title: "Programmer", img: "dist/images/icons/nike.svg" },
-            { id: "12", pid: "9", company:"Google", name: "Reuben Mcleod", title: "Programmer", img: "dist/images/icons/hunt-groups.svg" },
-            { id: "13", pid: "9", company:"Google", name: "Ariel Wiley", title: "Programmer", img: "dist/images/icons/google.svg" },
-            { id: "14", pid: "4", company:"Google", name: "Lucas West", title: "Marketer", img: "dist/images/icons/hunt-groups.svg" },
-            { id: "15", pid: "4", company:"Starbucks", name: "Adan Travis", title: "Designer", img: "dist/images/icons/starbuks.svg" },
-            { id: "16", pid: "4", company:"Microsoft", name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
-        ]);
-
-        document.getElementById("selectTemplate").addEventListener("change", function () {
-            chart.config.template = this.value;
-            chart.draw();
-        });
-    </script> 
+    <!-- org script -->
+    <script src="./src/js/custom-org-chart.js"></script>
     <!-- org script end -->
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
