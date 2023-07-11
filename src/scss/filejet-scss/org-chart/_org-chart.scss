@@ -29,37 +29,128 @@
 .boc-light .boc-fill+line {
     stroke: #000;
 }
-.boc-light{
-    .boc-chart-menu [data-item]{
+
+.boc-light {
+    .boc-chart-menu [data-item] {
         border-bottom: none !important;
         align-items: center !important;
         display: flex !important;
         gap: 8px !important;
     }
 }
-.boc-chart-menu{
+
+.boc-chart-menu {
     min-width: 180px !important;
 }
-.boc-light{
+
+.boc-light {
     .boc-chart-menu [data-item]:hover {
         background-color: #fff !important;
         color: #AB65EF !important;
         cursor: pointer;
     }
+
     .boc-chart-menu [data-item] svg {
         filter: none !important;
         fill: #231F20;
     }
+
     .boc-chart-menu [data-item]:hover svg {
         filter: none !important;
         fill: #AB65EF;
     }
-} 
+
+    .boc-toolbar-container {
+        background: #fff !important;
+        border-radius: 7px !important;
+        position: fixed !important;
+        padding: 12px !important;
+        right: 87px !important;
+        bottom: -11px !important;
+        transform: rotate(90deg);
+        filter: drop-shadow(0px 0.4375rem 0.75rem rgba(0, 0, 0, .1));
+
+        svg {
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        div[data-tlbr="minus"] {
+            svg {
+                transform: rotate(90deg);
+            }
+        }
+
+        div[data-tlbr="layout"] {
+            position: fixed;
+            top: 0px;
+            right: 44px;
+            transform: rotate(0deg) translateX(0px) translateY(0px) !important;
+        }
+    }
+}
 
 // 
 .boc-edit-form {
-    .boc-edit-form-header{
-        background-image:linear-gradient(to bottom, #AB65EF, #6741DF);
+    .boc-edit-form-header {
+        background-image: linear-gradient(to bottom, #AB65EF, #6741DF);
         border-radius: 0px;
     }
+}
+
+
+// custom org select
+/* Hide the original select element */
+.org-custom-select select {
+    display: none;
+}
+
+/* Style the custom select container */
+.org-custom-select {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the selected option */
+.org-select-selected {
+    background-color: #fff;
+    text-align: left;
+    padding: 14px 16px;
+    border-radius: var(--bs-border-radius);
+    min-width: 154px;
+    cursor: pointer;
+}
+
+.org-custom-select .org-select-selected::after {
+    content: "";
+    top: 19px;
+    right: 22px;
+    position: absolute;
+    background-image: url('./dist/images/icons/chevron-down-org.svg');
+    width: 1.2rem;
+    height: 1.2rem;
+    background-size: cover;
+}
+
+
+/* Style the select items/options */
+.org-select-items {
+    position: absolute;
+    top: 52px;
+    background-color: #fff;
+    border-radius: var(--bs-border-radius);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    min-width: 154px;
+    z-index: 1;
+    display: none;
+}
+
+.org-select-items div {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.org-select-items div:hover {
+    background-color: #e9e9e9;
 }
