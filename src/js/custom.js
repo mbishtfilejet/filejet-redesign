@@ -484,46 +484,46 @@ function loadWarningSmallScreenPopup() {
 
 
 // owl-carousel tabs for preview slide-out
-     // Initialize the Owl Carousel
-     $(document).ready(function(){
-      $('.owl-carousel').owlCarousel({
-        items: 4, // Set the number of items to display
-        loop: false, // Enable loop to create a continuous carousel
-        stagePadding: 20,
-        autoWidth:true,
-        nav: true,
-        dots: false,
-        // autoWidth:true, 
-        responsive: {
-          0: {
-            items: 1 // Display one item on smaller screens
-          },
-          768: {
-            items: 3 // Display three items on medium screens and above
-          },
-          1200: {
-            items: 4 // Display three items on medium screens and above
-          }
-        }
-      });
-    });
+// Initialize the Owl Carousel
+$(document).ready(function () {
+  $('.owl-carousel').owlCarousel({
+    items: 4, // Set the number of items to display
+    loop: false, // Enable loop to create a continuous carousel
+    stagePadding: 20,
+    autoWidth: true,
+    nav: true,
+    dots: false,
+    // autoWidth:true, 
+    responsive: {
+      0: {
+        items: 1 // Display one item on smaller screens
+      },
+      768: {
+        items: 3 // Display three items on medium screens and above
+      },
+      1200: {
+        items: 4 // Display three items on medium screens and above
+      }
+    }
+  });
+});
 
 
-    // custom org select
-                                            // JavaScript to handle the custom select behavior
+// custom org select
+// JavaScript to handle the custom select behavior
 var selectContainer = document.querySelector(".org-custom-select");
 var selectedOption = selectContainer.querySelector(".org-select-selected");
 var selectItems = selectContainer.querySelector(".org-select-items");
-var options = selectItems.querySelectorAll("div");
+var options = selectItems.querySelectorAll(".div1");
 
 // Toggle select items visibility when clicking the selected option
-selectedOption.addEventListener("click", function() {
+selectedOption.addEventListener("click", function () {
   selectItems.style.display = selectItems.style.display === "block" ? "none" : "block";
 });
 
 // Handle option selection
 for (var i = 0; i < options.length; i++) {
-  options[i].addEventListener("click", function() {
+  options[i].addEventListener("click", function () {
     selectedOption.textContent = this.textContent;
     selectItems.style.display = "none";
     // Handle selected option value or perform any other desired action
@@ -531,9 +531,38 @@ for (var i = 0; i < options.length; i++) {
 }
 
 // Close select items if user clicks outside the select container
-document.addEventListener("click", function(e) {
+document.addEventListener("click", function (e) {
   if (!selectContainer.contains(e.target)) {
     selectItems.style.display = "none";
+  }
+});
+
+
+// custom org select2
+// JavaScript to handle the custom select behavior
+var selectContainer2 = document.querySelector(".org-custom-select2");
+var selectedOption2 = selectContainer2.querySelector(".org-select-selected2");
+var selectItems2 = selectContainer2.querySelector(".org-select-items2");
+var options2 = selectItems2.querySelectorAll(".div2");
+
+// Toggle select items visibility when clicking the selected option
+selectedOption2.addEventListener("click", function () {
+  selectItems2.style.display = selectItems2.style.display === "block" ? "none" : "block";
+});
+
+// Handle option selection
+for (var i = 0; i < options2.length; i++) {
+  options2[i].addEventListener("click", function () {
+    selectedOption2.textContent = this.textContent;
+    selectItems2.style.display = "none";
+    // Handle selected option value or perform any other desired action
+  });
+}
+
+// Close select items if user clicks outside the select container
+document.addEventListener("click", function (e) {
+  if (!selectContainer2.contains(e.target)) {
+    selectItems2.style.display = "none";
   }
 });
 
