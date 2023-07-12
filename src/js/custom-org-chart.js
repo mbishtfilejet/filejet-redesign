@@ -60,7 +60,16 @@ OrgChart.toolbarUI.fitIcon = fitIcon;
 OrgChart.toolbarUI.zoomInIcon = zoomInIcon;
 OrgChart.toolbarUI.zoomOutIcon = zoomOutIcon;
 // OrgChart.toolbarUI.layoutIcon = layoutIcon;
-
+// OrgChart.miniMap.colors = ["red","yellow"];
+OrgChart.miniMap.width = 156;
+OrgChart.miniMap.height = 110;
+OrgChart.miniMap.padding = 5;
+OrgChart.miniMap.position = {
+  top: undefined,
+  left: undefined,
+  right: 'padding',
+  bottom: 'padding',
+}
 OrgChart.templates.olivia.size = [320, 92];
 OrgChart.templates.olivia.nodeMenuButton = '<g style="cursor:pointer;background-color:blue;" transform="matrix(1,0,0,1,285,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#ffffff"></circle><circle cx="7" cy="0" r="2" fill="#ffffff"></circle><circle cx="14" cy="0" r="2" fill="#ffffff"></circle></g>';
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
@@ -69,8 +78,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.ctrlZoom,
-    scaleInitial: OrgChart.match.boundary,
+    // scaleInitial: OrgChart.match.boundary,
     enableSearch: false,
+    miniMap: true,
     // scaleInitial: OrgChart.match.height,
     layout: OrgChart.mixed,
     toolbar: {
