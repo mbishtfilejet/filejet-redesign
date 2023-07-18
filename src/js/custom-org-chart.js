@@ -55,6 +55,7 @@ OrgChart.templates.olivia.img_0 =
     + '</clipPath>'
     + '<image preserveAspectRatio="xMidYMid slice" clip-path="url(#ulaImg)" xlink:href="{val}" x="14" y="15" width="65" height="65">'
     + '</image>';
+
 OrgChart.toolbarUI.expandAllIcon = expandAllIcon;
 OrgChart.toolbarUI.fitIcon = fitIcon;
 OrgChart.toolbarUI.zoomInIcon = zoomInIcon;
@@ -82,9 +83,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
     enableSearch: false,
     miniMap: true,
     // scaleInitial: OrgChart.match.height,
+    // orientation: OrgChart.orientation.top,
     layout: OrgChart.mixed,
     toolbar: {
-        // layout: true,
+        layout: true,
         zoom: true,
         fit: true,
         expandAll: true
@@ -119,10 +121,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
         company: "company",
         warning: "warning"
     }
+    
 });
-// chart.on('init', function (sender) {
-//     sender.toolbarUI.showLayout();
-// });
+
 chart.load([
     { id: "1", pid: "0", company: "Hunt Groups", name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
     { id: "2", pid: "1", company: "Hunt LLC", name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
@@ -142,7 +143,63 @@ chart.load([
     { id: "16", pid: "4", company: "Microsoft", name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
 ]);
 
-document.getElementById("selectTemplate").addEventListener("change", function () {
-    chart.config.template = this.value;
-    chart.draw();
+console.log(3+5);
+console.log(OrgChart.orientation);
+console.log(OrgChart.layout);
+console.log(OrgChart);
+
+
+// custom org select
+// JavaScript to handle the custom select behavior
+var selectContainer = document.querySelector(".org-custom-select");
+var selectedOption = selectContainer.querySelector(".org-select-selected");
+var selectItems = selectContainer.querySelector(".org-select-items");
+var options = selectItems.querySelectorAll(".div1");
+
+// Toggle select items visibility when clicking the selected option
+selectedOption.addEventListener("click", function () {
+  selectItems.style.display = selectItems.style.display === "block" ? "none" : "block";
 });
+
+// Handle option selection
+for (var i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", function () {
+    // selectedOption.textContent = this.textContent;
+    selectedOption.innerHTML = this.innerHTML;
+    selectedOption.querySelector('.d-none').classList.remove('d-none');
+    console.log(selectedOption.innerHTML);
+    selectItems.style.display = "none";
+
+    chart.setOrientation(parseInt(this.id));
+    
+    // Handle selected option value or perform any other desired action
+  });
+}
+
+// Close select items if user clicks outside the select container
+document.addEventListener("click", function (e) {
+  if (!selectContainer.contains(e.target)) {
+    selectItems.style.display = "none";
+  }
+});
+
+// 
+// 
+
+
+
+
+
+
+// document.querySelector('#layout').addEventListener('change', function () {
+//     chart.setLayout(parseInt(this.value));
+// });
+
+
+// document.getElementById("selectTemplate").addEventListener("change", function () {
+//     chart.config.template = this.value;
+//     chart.draw();
+    
+// });
+
+
