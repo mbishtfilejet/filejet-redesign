@@ -1,5 +1,5 @@
 //JavaScript
-// var layoutIcon ='./dist/images/icons/hunt-groups.svg';
+
 var expandAllIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<path d="M5.11249 9.9486C5.37284 9.68825 5.79495 9.68825 6.05529 9.9486C6.31564 10.2089 6.31564 10.6311 6.05529 10.8914L4.27667 12.6695H5.33333C5.67522 12.6695 5.957 12.9268 5.99551 13.2584L6 13.3361C6 13.7043 5.70152 14.0028 5.33333 14.0028H2.66667C2.29848 14.0028 2 13.7043 2 13.3361V10.6695C2 10.3013 2.29848 10.0028 2.66667 10.0028C3.03486 10.0028 3.33333 10.3013 3.33333 10.6695V11.7275L5.11249 9.9486ZM10.67 14.0028C10.3018 14.0028 10.0033 13.7043 10.0033 13.3361C10.0033 12.968 10.3018 12.6695 10.67 12.6695H11.7253L9.94841 10.8912C9.70818 10.6508 9.68984 10.2726 9.8933 10.0112L9.94878 9.94841C10.2092 9.68816 10.6313 9.68833 10.8916 9.94878L12.67 11.7288V10.6695C12.67 10.3276 12.9274 10.0458 13.2589 10.0073L13.3367 10.0028C13.7049 10.0028 14.0033 10.3013 14.0033 10.6695V13.3361C14.0033 13.7043 13.7049 14.0028 13.3367 14.0028H10.67ZM5.33333 2C5.70152 2 6 2.29848 6 2.66667C6 3.03486 5.70152 3.33333 5.33333 3.33333H4.278L6.05492 5.11211C6.29515 5.35253 6.31349 5.73069 6.11004 5.99214L6.05455 6.05492C5.7941 6.31517 5.37199 6.315 5.11174 6.05455L3.33333 4.27467V5.33333C3.33333 5.67522 3.07597 5.957 2.74441 5.99551L2.66667 6C2.29848 6 2 5.70152 2 5.33333V2.66667C2 2.29848 2.29848 2 2.66667 2H5.33333ZM13.3367 2C13.7049 2 14.0033 2.29848 14.0033 2.66667V5.33333C14.0033 5.70152 13.7049 6 13.3367 6C12.9685 6 12.67 5.70152 12.67 5.33333V4.27467L10.8915 6.05464C10.6512 6.29501 10.2731 6.31358 10.0115 6.11028L9.94869 6.05483C9.68829 5.79454 9.6882 5.37243 9.9485 5.11202L11.726 3.33333H10.67C10.3281 3.33333 10.0463 3.07597 10.0078 2.74441L10.0033 2.66667C10.0033 2.29848 10.3018 2 10.67 2H13.3367Z" fill="#212121"/>' +
     '</svg>';
@@ -11,7 +11,6 @@ var fitIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns
 var zoomInIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<path d="M7.25 14.25C7.25 14.6642 7.58579 15 8 15C8.41421 15 8.75 14.6642 8.75 14.25V8.75H14.25C14.6642 8.75 15 8.41421 15 8C15 7.58579 14.6642 7.25 14.25 7.25H8.75V1.75C8.75 1.33579 8.41421 1 8 1C7.58579 1 7.25 1.33579 7.25 1.75V7.25H1.75C1.33579 7.25 1 7.58579 1 8C1 8.41421 1.33579 8.75 1.75 8.75H7.25V14.25Z" fill="#212121"/>' +
     '</svg>';
-
 
 var zoomOutIcon = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<rect x="1" y="7.25" width="14" height="1.5" rx="0.75" fill="#212121"/>' +
@@ -60,8 +59,6 @@ OrgChart.toolbarUI.expandAllIcon = expandAllIcon;
 OrgChart.toolbarUI.fitIcon = fitIcon;
 OrgChart.toolbarUI.zoomInIcon = zoomInIcon;
 OrgChart.toolbarUI.zoomOutIcon = zoomOutIcon;
-// OrgChart.toolbarUI.layoutIcon = layoutIcon;
-// OrgChart.miniMap.colors = ["red","yellow"];
 OrgChart.miniMap.width = 156;
 OrgChart.miniMap.height = 110;
 OrgChart.miniMap.padding = 5;
@@ -79,14 +76,11 @@ var chart = new OrgChart(document.getElementById("tree"), {
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.ctrlZoom,
-    // scaleInitial: OrgChart.match.boundary,
     enableSearch: false,
     miniMap: true,
-    // scaleInitial: OrgChart.match.height,
-    // orientation: OrgChart.orientation.top,
     layout: OrgChart.mixed,
     toolbar: {
-        layout: true,
+        layout: false,
         zoom: true,
         fit: true,
         expandAll: true
@@ -143,12 +137,6 @@ chart.load([
     { id: "16", pid: "4", company: "Microsoft", name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
 ]);
 
-console.log(3+5);
-console.log(OrgChart.orientation);
-console.log(OrgChart.layout);
-console.log(OrgChart);
-
-
 // custom org select
 // JavaScript to handle the custom select behavior
 var selectContainer = document.querySelector(".org-custom-select");
@@ -169,9 +157,7 @@ for (var i = 0; i < options.length; i++) {
     selectedOption.querySelector('.d-none').classList.remove('d-none');
     console.log(selectedOption.innerHTML);
     selectItems.style.display = "none";
-
     chart.setOrientation(parseInt(this.id));
-    
     // Handle selected option value or perform any other desired action
   });
 }
@@ -185,21 +171,38 @@ document.addEventListener("click", function (e) {
 
 // 
 // 
+// custom org select2
+// JavaScript to handle the custom select behavior
+var selectContainer2 = document.querySelector(".org-custom-select2");
+var selectedOption2 = selectContainer2.querySelector(".org-select-selected2");
+var selectItems2 = selectContainer2.querySelector(".org-select-items2");
+var options2 = selectItems2.querySelectorAll(".div2");
 
+// Toggle select items visibility when clicking the selected option
+selectedOption2.addEventListener("click", function () {
+  selectItems2.style.display = selectItems2.style.display === "block" ? "none" : "block";
+});
 
+// Handle option selection
+for (var i = 0; i < options2.length; i++) {
+  options2[i].addEventListener("click", function () {
+    // selectedOption2.textContent = this.textContent;
+    // selectItems2.style.display = "none";
+    selectedOption2.innerHTML = this.innerHTML;
+    selectedOption2.querySelector('.d-none').classList.remove('d-none');
+    console.log(selectedOption2.innerHTML);
+    selectItems2.style.display = "none";
 
+    chart.setLayout(parseInt(this.id));
+    // Handle selected option value or perform any other desired action
+  });
+}
 
-
-
-// document.querySelector('#layout').addEventListener('change', function () {
-//     chart.setLayout(parseInt(this.value));
-// });
-
-
-// document.getElementById("selectTemplate").addEventListener("change", function () {
-//     chart.config.template = this.value;
-//     chart.draw();
-    
-// });
+// Close select items if user clicks outside the select container
+document.addEventListener("click", function (e) {
+  if (!selectContainer2.contains(e.target)) {
+    selectItems2.style.display = "none";
+  }
+});
 
 
