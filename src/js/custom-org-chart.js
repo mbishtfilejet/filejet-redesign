@@ -71,6 +71,102 @@ OrgChart.miniMap.position = {
 OrgChart.templates.olivia.size = [320, 92];
 OrgChart.templates.olivia.nodeMenuButton = '<g style="cursor:pointer;background-color:blue;" transform="matrix(1,0,0,1,285,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#ffffff"></circle><circle cx="7" cy="0" r="2" fill="#ffffff"></circle><circle cx="14" cy="0" r="2" fill="#ffffff"></circle></g>';
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
+
+OrgChart.elements.headingText = function () {
+    return {
+        html: `<h5 class="fs-5 ms-1 opacity-50 fw-bold boc-form-field mb-4">Entity summary</h5>`,
+    };
+
+};
+OrgChart.elements.accordionButton =function(){
+    return{
+        html: ` <div class="accordion w-100 mt-5" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item shadow-none">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button text-uppercase black-primary fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" style="text-transform:uppercase !important;">
+                Compliance Status
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse border-0 show" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body pt-0">
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex  align-items-center gap-2 py-1">
+                            <h5 class="mb-0 font-weight-500 fs-5 text-black-primary">Name</h5>
+                            <p class="mb-0 font-weight-500 opacity-50 text-black-primary fs-6">12/25/2022</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center gap-2 py-1">
+                            <h5 class="mb-0 font-weight-500 fs-5 text-black-primary">Business Licence</h5>
+                            <p class="mb-0 font-weight-500 opacity-50 text-black-primary fs-6">10/05/2022</p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-1 px-2 text-white fw-medium" data-bs-toggle="modal" data-bs-target="#actionModal"><span class="icon icon-warning-white me-1"></span>Take action</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <div>
+                            <h5 class="text-uppercase fs-6">Registered Agent <span class="icon icon-info-black"></span></h5>
+                            <div class="d-flex align-items-center gap-2">
+                                <h5 class="mb-0 font-weight-500 fs-5 text-black-primary">Name</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item shadow-none">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo" style="text-transform:uppercase !important;">
+                Stakeholders 
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show border-0" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body pt-0">
+                <div>
+                    <div class="">
+                        <div class="d-flex  align-items-center gap-2 py-1">
+                            <h5 class="mb-0 font-weight-500 fs-5 text-black-primary">Sally James,</h5>
+                            <p class="mb-0 font-weight-500 text-black-primary fs-6">President</p>
+                        </div>
+                        <div class="d-flex  align-items-center gap-2 py-1">
+                            <h5 class="mb-0 font-weight-500 fs-5 text-black-primary">John Smith,</h5>
+                            <p class="mb-0 font-weight-500 text-black-primary fs-6">Manager</p>
+                        </div>
+                        <div class="d-flex  align-items-center gap-2 py-1">
+                            <h5 class="mb-0 font-weight-500 fs-5 text-black-primary">Patch Adams,</h5>
+                            <p class="mb-0 font-weight-500 text-black-primary fs-6">Product Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item shadow-none">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed text-uppercase text-black-primary" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree" style="text-transform:uppercase !important;">
+                Shares 1000
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show border-0" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body pt-0">
+                <div class="gap-3">
+                    <div class="d-flex  align-items-center gap-2 py-1">
+                        <h5 class="mb-0 font-weight-500 fs-5 text-black-primary">Stuart 230</h5>
+                    </div>
+                    <div class="d-flex  align-items-center gap-2 py-1">
+                        <h5 class="mb-0 font-weight-500 fs-5 text-black-primary">Sally 125</h5>   
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>`
+    }
+}
+
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     showYScroll: OrgChart.scroll.visible,
@@ -114,9 +210,44 @@ var chart = new OrgChart(document.getElementById("tree"), {
         title: "title",
         company: "company",
         warning: "warning"
+    },
+
+    // edit form
+    editForm: {
+       
+        cancelBtn: 'Close',
+        saveAndCloseBtn:false,
+        generateElementsFromFields: false,
+        buttons:  {
+            edit: {
+                icon: OrgChart.icon.edit(24,24,'#fff'),
+                text: 'Edit',
+                hideIfEditMode: false,
+                hideIfDetailsMode: false
+            },
+            share: null,
+            pdf: null,
+            remove: null,
+        },
+        addMore:null,
+       
+        // addMoreBtn: 'Add element',
+        // addMoreFieldName: 'Element name',
+        elements: [
+            { type: 'headingText', label: 'Description:', binding: 'desc' },
+            { type: 'textbox', label: 'Entity Name', binding: 'Name'},
+            { type: 'textbox', label: 'JURISDICTION STATE (or country)', binding: 'State'},
+            { type: 'textbox', label: 'Entity Type', binding: 'Entity Type'},
+            { type: 'textbox', label: 'state file number', binding: 'state file number'},
+            { type: 'date', label: 'registration date', binding: 'Name'},
+            { type: 'textbox', label: 'principal business address', binding: 'principal business address'},
+            { type: 'accordionButton', label: 'registration date', binding: 'Name'},
+                    
+        ]
     }
     
 });
+
 
 chart.load([
     { id: "1", pid: "0", company: "Hunt Groups", name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
@@ -204,5 +335,8 @@ document.addEventListener("click", function (e) {
     selectItems2.style.display = "none";
   }
 });
+
+
+
 
 
