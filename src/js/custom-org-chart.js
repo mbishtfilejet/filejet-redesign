@@ -74,7 +74,7 @@ OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae"
 
 OrgChart.elements.headingText = function () {
     return {
-        html: `<h5 class="fs-5 ms-1 opacity-50 fw-bold boc-form-field mb-4">Entity summary</h5>`,
+        html: `<h5 class="fs-5 ms-2 opacity-50 fw-bold boc-form-field mb-4">Entity summary</h5>`,
     };
 
 };
@@ -172,9 +172,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.ctrlZoom,
-    enableSearch: false,
+    enableSearch: true,
     miniMap: true,
     layout: OrgChart.mixed,
+    
     toolbar: {
         layout: false,
         zoom: true,
@@ -214,7 +215,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
     // edit form
     editForm: {
-       
+        titleBinding: "company",
         cancelBtn: 'Close',
         saveAndCloseBtn:false,
         generateElementsFromFields: false,
@@ -225,8 +226,16 @@ var chart = new OrgChart(document.getElementById("tree"), {
                 hideIfEditMode: false,
                 hideIfDetailsMode: false
             },
-            share: null,
-            pdf: null,
+            share:null,
+            pdf:null,
+            // share: {
+            //     icon: OrgChart.icon.share(24,24,'#fff'),
+            //     text: 'Share'
+            // },
+            // pdf: {
+            //     icon: OrgChart.icon.pdf(24,24,'#fff'),
+            //     text: 'Save as PDF'
+            // },
             remove: null,
         },
         addMore:null,
@@ -235,13 +244,13 @@ var chart = new OrgChart(document.getElementById("tree"), {
         // addMoreFieldName: 'Element name',
         elements: [
             { type: 'headingText', label: 'Description:', binding: 'desc' },
-            { type: 'textbox', label: 'Entity Name', binding: 'Name'},
-            { type: 'textbox', label: 'JURISDICTION STATE (or country)', binding: 'State'},
-            { type: 'textbox', label: 'Entity Type', binding: 'Entity Type'},
-            { type: 'textbox', label: 'state file number', binding: 'state file number'},
-            { type: 'date', label: 'registration date', binding: 'Name'},
-            { type: 'textbox', label: 'principal business address', binding: 'principal business address'},
-            { type: 'accordionButton', label: 'registration date', binding: 'Name'},
+            { type: 'textbox', label: 'Entity Name', binding: 'entityName'},
+            { type: 'textbox', label: 'JURISDICTION STATE (or country)', binding: 'JuriState'},
+            { type: 'textbox', label: 'Entity Type', binding: 'EntityType'},
+            { type: 'textbox', label: 'state file number', binding: 'stateFileNumber'},
+            { type: 'date', label: 'registration date', binding: 'registerDate'},
+            { type: 'textbox', label: 'principal business address', binding: 'principalBusinessAddress'},
+            { type: 'accordionButton', label: 'accordion label', binding: 'accordionName'},
                     
         ]
     }
@@ -250,22 +259,22 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 
 chart.load([
-    { id: "1", pid: "0", company: "Hunt Groups", name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
-    { id: "2", pid: "1", company: "Hunt LLC", name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
-    { id: "3", pid: "1", company: "NBC Networks", name: "Janae Barrett", title: "Technical Director", img: "dist/images/icons/nbc-network.svg" },
-    { id: "4", pid: "1", company: "Dropbox", name: "Aaliyah Webb", title: "Manager", email: "jay@domain.com", img: "dist/images/icons/dropbox.svg" },
-    { id: "5", pid: "2", company: "Google", name: "Elliot Ross", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "6", pid: "2", company: "Google", name: "Anahi Gordon", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "7", pid: "2", company: "Target", name: "Knox Macias", title: "QA", img: "dist/images/icons/target.svg" },
-    { id: "8", pid: "3", company: "Apple", name: "Nash Ingram", title: ".NET Team Lead", email: "kohen@domain.com", img: "dist/images/icons/apple.svg" },
-    { id: "9", pid: "3", company: "Google", name: "Sage Barnett", title: "JS Team Lead", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "10", pid: "8", company: "Tesla", name: "Alice Gray", title: "Programmer", img: "dist/images/icons/tesla.svg" },
-    { id: "11", pid: "8", company: "Nike", name: "Anne Ewing", title: "Programmer", img: "dist/images/icons/nike.svg" },
-    { id: "12", pid: "9", company: "Google", name: "Reuben Mcleod", title: "Programmer", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "13", pid: "9", company: "Google", name: "Ariel Wiley", title: "Programmer", img: "dist/images/icons/google.svg" },
-    { id: "14", pid: "4", company: "Google", name: "Lucas West", title: "Marketer", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "15", pid: "4", company: "Starbucks", name: "Adan Travis", title: "Designer", img: "dist/images/icons/starbuks.svg" },
-    { id: "16", pid: "4", company: "Microsoft", name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
+    { id: "1",  pid: "0", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Hunt Groups", name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
+    { id: "2",  pid: "1", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Hunt LLC", name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
+    { id: "3",  pid: "1", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "NBC Networks", name: "Janae Barrett", title: "Technical Director", img: "dist/images/icons/nbc-network.svg" },
+    { id: "4",  pid: "1", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Dropbox", name: "Aaliyah Webb", title: "Manager", email: "jay@domain.com", img: "dist/images/icons/dropbox.svg" },
+    { id: "5",  pid: "2", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Elliot Ross", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "6",  pid: "2", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Anahi Gordon", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "7",  pid: "2", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Target", name: "Knox Macias", title: "QA", img: "dist/images/icons/target.svg" },
+    { id: "8",  pid: "3", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Apple", name: "Nash Ingram", title: ".NET Team Lead", email: "kohen@domain.com", img: "dist/images/icons/apple.svg" },
+    { id: "9",  pid: "3", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Sage Barnett", title: "JS Team Lead", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "10", pid: "8", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Tesla", name: "Alice Gray", title: "Programmer", img: "dist/images/icons/tesla.svg" },
+    { id: "11", pid: "8", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Nike", name: "Anne Ewing", title: "Programmer", img: "dist/images/icons/nike.svg" },
+    { id: "12", pid: "9", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Reuben Mcleod", title: "Programmer", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "13", pid: "9", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Ariel Wiley", title: "Programmer", img: "dist/images/icons/google.svg" },
+    { id: "14", pid: "4", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Lucas West", title: "Marketer", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "15", pid: "4", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Starbucks", name: "Adan Travis", title: "Designer", img: "dist/images/icons/starbuks.svg" },
+    { id: "16", pid: "4", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Microsoft", name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
 ]);
 
 // custom org select
