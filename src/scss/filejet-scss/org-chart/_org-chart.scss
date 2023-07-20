@@ -131,10 +131,20 @@
     }
     .boc-input>label.focused, .boc-input>label.hasval {
         top: 10px;
+        overflow: unset;
     }
     .boc-input>input:focus{
         background-color:#F3F5F8;
         color: #0D2C36 
+    }
+    div[data-boc-input] label::after{
+        @extend .icon,.icon-info-black,.position-absolute;
+        content: "";
+        top: -2px;
+        right: -18px;
+    }
+    div[data-boc-input-disabled] label::after{
+        @extend .d-none; 
     }
     .boc-form-field .boc-input .focused{
         margin-bottom: 0px;
