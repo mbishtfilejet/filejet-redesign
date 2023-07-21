@@ -31,7 +31,8 @@
 }
 
 .boc-light {
-     font-family: var(--bs-body-font-family) !important;
+    font-family: var(--bs-body-font-family) !important;
+
     .boc-chart-menu [data-item] {
         border-bottom: none !important;
         align-items: center !important;
@@ -45,10 +46,35 @@
 }
 
 .boc-light {
+    .boc-edit-form-fields {
+        @extend .px-3, .me-4;
+    }
+
+    .boc-edit-form-fields::-webkit-scrollbar {
+        width: rem(6);
+        height: rem(6);
+    }
+
+    .boc-edit-form-fields::-webkit-scrollbar-track {
+        box-shadow: none;
+        background-color: var(--bs-gray-500);
+        border-radius: rem(0);
+    }
+
+    .boc-edit-form-fields::-webkit-scrollbar-thumb {
+        background-color: var(--bs-gray-700);
+        outline: 1px solid var(--bs-tranparent);
+        border-radius: rem(0);
+    }
+
     .boc-chart-menu [data-item]:hover {
         background-color: #fff !important;
         color: #AB65EF !important;
         cursor: pointer;
+    }
+
+    .boc-edit-form-title {
+        @extend .font-weight-600;
     }
 
     .boc-chart-menu [data-item] svg {
@@ -97,60 +123,78 @@
         @extend .rounded-2, .border-0, .shadow;
         // border-radius: 10px !important;
     }
+
     .boc-chart-menu [data-item]:hover {
         background-color: #fff !important;
         color: #AB65EF !important;
         cursor: pointer;
     }
-    .boc-img-button{
+
+    .boc-img-button {
         background-color: transparent !important;
         position: absolute !important;
         top: 0 !important;
         left: 18px !important;
     }
-    .boc-form-fieldset{
+
+    .boc-form-fieldset {
         @extend .gap-3;
     }
-    .boc-edit-form > .boc-form-fieldset{
+
+    .boc-edit-form>.boc-form-fieldset {
         display: none;
     }
-    .boc-edit-form{
+
+    .boc-edit-form {
         width: 500px;
         z-index: 9;
-        @extend .rounded-0,.position-fixed;
+        @extend .rounded-0, .position-fixed;
     }
-    .boc-form-field .boc-input input{
-        background-color:#F3F5F8;
-        border:0;
+
+    .boc-form-field .boc-input input {
+        background-color: #F3F5F8;
+        border: 0;
     }
-    .boc-input>input, .boc-input>select{
+
+    .boc-input>input,
+    .boc-input>select {
         height: 60px;
     }
-    .boc-input>input, .boc-input>select,.boc-input>label{
+
+    .boc-input>input,
+    .boc-input>select,
+    .boc-input>label {
         color: #0D2C36 !important;
     }
-    .boc-input>label.focused, .boc-input>label.hasval {
+
+    .boc-input>label.focused,
+    .boc-input>label.hasval {
         top: 10px;
         overflow: unset;
     }
-    .boc-input>input:focus{
-        background-color:#F3F5F8;
-        color: #0D2C36 
+
+    .boc-input>input:focus {
+        background-color: #F3F5F8;
+        color: #0D2C36
     }
-    div[data-boc-input] label::after{
-        @extend .icon,.icon-info-black,.position-absolute;
+
+    div[data-boc-input] label::after {
+        @extend .icon, .icon-info-black, .position-absolute;
         content: "";
         top: -2px;
         right: -18px;
     }
-    div[data-boc-input-disabled] label::after{
-        @extend .d-none; 
+
+    div[data-boc-input-disabled] label::after {
+        @extend .d-none;
     }
-    .boc-form-field .boc-input .focused{
+
+    .boc-form-field .boc-input .focused {
         margin-bottom: 0px;
         color: #0D2C36 !important;
     }
-    .accordion button{
+
+    .accordion button {
         @extend .text-black-primary;
     }
 }
@@ -189,7 +233,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    
+
 }
 
 .org-custom-select .org-select-selected::after {
@@ -216,12 +260,15 @@
     z-index: 1;
     display: none;
 }
-.org-select-selected.org-select-selected2{
+
+.org-select-selected.org-select-selected2 {
     min-width: 168px;
 }
-.org-select-items.org-select-items2{
+
+.org-select-items.org-select-items2 {
     min-width: 168px;
 }
+
 .org-select-items div {
     padding: 8px 16px;
     cursor: pointer;
@@ -237,11 +284,12 @@
     border-radius: 8px;
 }
 
-.btnSearch{
+.btnSearch {
     width: 320px;
 }
-.btnFilter{
-    button:first-child .active{
+
+.btnFilter {
+    button:first-child .active {
         @extend .btn-info;
     }
 }

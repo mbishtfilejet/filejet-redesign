@@ -172,7 +172,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.ctrlZoom,
-    enableSearch: true,
+    enableSearch: false,
     miniMap: true,
     layout: OrgChart.mixed,
     
