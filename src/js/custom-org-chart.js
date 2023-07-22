@@ -166,16 +166,15 @@ OrgChart.elements.accordionButton =function(){
       </div>`
     }
 }
-
+OrgChart.SEARCH_PLACEHOLDER = "Search";
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.ctrlZoom,
-    enableSearch: false,
+    enableSearch: true,
     miniMap: true,
     layout: OrgChart.mixed,
-    
     toolbar: {
         layout: false,
         zoom: true,
