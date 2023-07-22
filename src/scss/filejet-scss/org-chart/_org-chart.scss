@@ -46,6 +46,7 @@
 }
 
 .boc-light {
+    overflow: visible !important;
     .boc-edit-form-fields {
         @extend .px-3, .me-4;
     }
@@ -144,21 +145,70 @@
     .boc-edit-form>.boc-form-fieldset {
         display: none;
     }
-
+    .boc-search{
+        top: -73px !important;
+        right: 130px !important;
+        z-index: 9;
+        .boc-form-field{
+            height: 56px;
+            margin: 0;        
+            .boc-input{
+                &::after{
+                    content: "";
+                    right: 5px;
+                    @extend .position-absolute,.top-50,.translate-middle,.opacity-100,.icon,.icon-search-grey,.icon-sm;
+                }
+                input {
+                    background-color: #FFF !important;
+                    height: 56px;
+                    @extend .rounded-2,.shadow,.border-0,.px-4,.py-0;
+                    &:focus{
+                        background-color: #fff;
+                    }
+                } 
+                label{
+                    &::after{
+                        @extend .d-none;
+                    }
+                    &.focused{
+                        top:8px;
+                    }
+                    top: 20px;
+                    left: 11px;
+                    @extend .d-block,.text-capitalize,.opacity-50,.fs-6;
+                }
+                .boc-link-boc-button{
+                    @extend .d-none;
+                }
+            }
+        }
+    }
     .boc-edit-form {
         width: 500px;
         z-index: 9;
         @extend .rounded-0, .position-fixed;
     }
 
-    .boc-form-field .boc-input input {
-        background-color: #F3F5F8;
-        border: 0;
-    }
+    
+    @media (max-width:1280px) {
+        .boc-search{
+         top: -69px !important;
+         right: 112px !important; 
+         .boc-form-field{
+            .boc-input{
+                label{
+                    top: 22px;
+                }
+             }
+         }
+        }
+     }
 
     .boc-input>input,
     .boc-input>select {
         height: 60px;
+        background-color: #f3f5f8 !important;
+        @extend .border-0;
     }
 
     .boc-input>input,
@@ -174,7 +224,7 @@
     }
 
     .boc-input>input:focus {
-        background-color: #F3F5F8;
+        background-color: #F3F5F8 !important;
         color: #0D2C36
     }
 
