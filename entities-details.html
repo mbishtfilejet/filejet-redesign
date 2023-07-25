@@ -105,7 +105,7 @@
                             </li>
                             <!-- Organization Charts  -->
                             <li class="nav-link">
-                                <a href="org-chart.html" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                <a href="org-chart-list.html" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
                                     data-bs-toggle="#" data-bs-target="#organizationChartModal">
                                     <span>
                                         <span class="icon icon-chart normal-icon"></span>
@@ -2756,21 +2756,48 @@
                         <div id="tasks" class="entity-card-content">
                             <div class="row">
                                 <div class="col-12">
-                                    <h4>Compliance Tasks</h4>
+                                    <div class="d-flex justify-content-between align-item-center">
+                                        <div>
+                                            <h4>Compliance Tasks</h4>
+                                        </div>
+    
+                                        <div>
+                                            <ul class="nav nav-tabs d-flex justify-content-end">
+                                                <li class="nav-item d-flex align-items-center view-change">
+                                                    <a href="javascript: void(0)" data-id="list-view-task"
+                                                        class="active"><span
+                                                            class="icon m-0 ms-4 icon-list-view"></span><span
+                                                            class="icon m-0 ms-4 icon-list-view-active"></span></a>
+                                                    <a href="javascript: void(0)" data-id="grid-view-task"><span
+                                                            class="icon m-0 ms-4 icon-grid-view"></span><span
+                                                            class="icon m-0 ms-4 icon-grid-view-active"></span></a>
+                                                </li>
+                                                <li style="width: 135px;">
+                                                    <select class="form-select p-0 my-0 ms-3 bg-transparent h-100 border-0 shadow-none text-black
+                                                        aria-label=" select">
+                                                        <option selected="">All Jurisdictions</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mt-3 mb-3">
                                 <div class="col-12">
                                     <div class="row gap-3 gap-sm-0 align-items-start align-items-lg-center">
-                                        <div class="col-12 col-md-8 col-lg-9 order-1 order-md-0">
+                                        <div class="col-12 col-md-12 col-lg-12 order-1 order-md-0">
                                             <div class="tab-listing tab-listing-list list-view-task active">
                                                 <ul class="nav nav-tabs nav-tab-dots">
                                                     <li class="nav-item nav-items position-relative curve-bottom-right-edge">
-                                                        <a href="#all-list" class="nav-link active px-3 px-3xl-4"
+                                                        <a href="#all-list" class="nav-link active px-4 px-3xl-4"
                                                             data-bs-toggle="tab">All</a>
                                                     </li>
                                                     <li class="nav-item nav-items position-relative curve-bottom-edge">
-                                                        <a href="#overdue-list" class="nav-link px-3 px-3xl-4 red-text"
+                                                        <a href="#overdue-list" class="nav-link px-4 px-3xl-4 red-text"
                                                             data-bs-toggle="tab"><span class="dot me-2 me-3xl-3"></span>Overdue
                                                             (43)</a>
                                                     </li>
@@ -2780,16 +2807,16 @@
                                                     </li>
                                                     <li class="nav-item nav-items position-relative curve-bottom-edge">
                                                         <a href="#submitted-list"
-                                                            class="nav-link px-3 px-3xl-4 light-blue-text"
+                                                            class="nav-link px-4 px-3xl-4 light-blue-text"
                                                             data-bs-toggle="tab"><span class="dot me-2 me-3xl-3"></span>Submitted (33)</a>
                                                     </li>
                                                     <li class="nav-item nav-items position-relative curve-bottom-edge">
                                                         <a href="#sent-to-state-list"
-                                                            class="nav-link px-3 px-3xl-4 blue-text"
+                                                            class="nav-link px-4 px-3xl-4 blue-text"
                                                             data-bs-toggle="tab"><span class="dot me-2 me-3xl-3"></span>Sent to State (33)</a>
                                                     </li>
                                                     <li class="nav-item nav-items position-relative curve-bottom-edge">
-                                                        <a href="#up-to-date-list" class="nav-link px-3 px-3xl-4 green-text"
+                                                        <a href="#up-to-date-list" class="nav-link px-4 px-3xl-4 green-text"
                                                             data-bs-toggle="tab"><span class="dot me-2 me-3xl-3"></span>Up
                                                             to Date (29)</a>
                                                     </li>
@@ -2828,7 +2855,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4 col-lg-3 order-0 order-md-1">
+                                        <div class="col-12 col-md-4 col-lg-3 order-0 order-md-1 d-none">
                                             <ul class="nav nav-tabs d-flex justify-content-end">
                                                 <li class="nav-item d-flex align-items-center view-change">
                                                     <a href="javascript: void(0)" data-id="list-view-task"

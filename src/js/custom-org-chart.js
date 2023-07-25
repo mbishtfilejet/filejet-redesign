@@ -181,6 +181,12 @@ var chart = new OrgChart(document.getElementById("tree"), {
         fit: true,
         expandAll: true
     },
+    menu: {
+        pdf: { text: "Export PDF" },
+        png: { text: "Export PNG" },
+        svg: { text: "Export SVG" },
+       
+    },
     nodeMenu: {
         action: {
             text: "Take Action",
