@@ -364,7 +364,8 @@
 
                                             <div
                                                 class="d-flex justify-content-center align-items-center h-100 flex-fill w-100">
-                                                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <a href="#" class="text-decoration-none" data-bs-toggle="modal"
+                                                    data-bs-target="#firstOrgModal">
                                                     <div>
                                                         <h4 class="mb-0 text-black-primary font-weight-700 fs-3"><span
                                                                 class="icon icon-xxl icon-add-chart"></span> Add New
@@ -375,7 +376,7 @@
 
 
                                             <!-- Modal -->
-                                            <div class="modal fade first-org-chart-modal" id="exampleModal"
+                                            <div class="modal fade first-org-chart-modal" id="firstOrgModal"
                                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered modal-xl modal-xxl">
                                                     <div class="modal-content">
@@ -437,29 +438,33 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <div
-                                                                        class="border-purple p-4 rounded-3 shadow h-100">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div>
-                                                                                <span
-                                                                                    class="icon icon-xxl icon-import-purple-chart"></span>
+                                                                    <a href="#" class="text-decoration-none"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#firstOrgModal2">
+                                                                        <div
+                                                                            class="border-purple p-4 rounded-3 shadow h-100">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div>
+                                                                                    <span
+                                                                                        class="icon icon-xxl icon-import-purple-chart"></span>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h4
+                                                                                        class="fs-2 font-weight-700 mb-0 lh-1">
+                                                                                        Import <br> Chart</h4>
+                                                                                </div>
                                                                             </div>
-                                                                            <div>
-                                                                                <h4
-                                                                                    class="fs-2 font-weight-700 mb-0 lh-1">
-                                                                                    Import <br> Chart</h4>
+                                                                            <div class="pt-4">
+                                                                                <p
+                                                                                    class="fs-5 text-black-primary font-weight-400">
+                                                                                    Import your organization
+                                                                                    chart to our system.
+                                                                                </p>
+                                                                                <small class="fs-11">File extensions
+                                                                                    accepted: CSV, XML or JSON.</small>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="pt-4">
-                                                                            <p
-                                                                                class="fs-5 text-black-primary font-weight-400">
-                                                                                Import your organization
-                                                                                chart to our system.
-                                                                            </p>
-                                                                            <small class="fs-11">File extensions
-                                                                                accepted: CSV, XML or JSON.</small>
-                                                                        </div>
-                                                                    </div>
+                                                                    </a>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <div
@@ -499,6 +504,55 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <!-- modal file upload -->
+                                            <div class="modal fade first-org-chart-modal" id="firstOrgModal2"
+                                                tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                                    <div class="modal-content p-5">
+                                                        <div class="modal-header">
+
+                                                            <button type="button"
+                                                                class="btn-close icon icon-md opacity-100 me-3"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="pt-5">
+                                                                <h1 class="font-weight-700 text-center lh-sm welcomeText"
+                                                                    id="textTitle">
+                                                                    File Upload</h1>
+                                                            </div>
+                                                            <div class="py-0">
+                                                                <p class="fs-5 text-center selectOptionText"
+                                                                    id="extensionOption">Extensions accepted: JSON, CSV
+                                                                    or XML</p>
+                                                            </div>
+                                                            <div class="py-4 uploadFile">
+                                                                <div
+                                                                    class="border-purple text-center rounded-3 p-5 mx-4 position-relative">
+                                                                    <form action="" method="post">
+                                                                        <span
+                                                                            class="icon icon-xl icon-file-upload-chart"
+                                                                            id="successIcon"></span>
+                                                                        <h4 class="fs-2 font-weight-700 mb-0 py-4"
+                                                                            id="fileInfo">Select a file or drag here
+                                                                        </h4>
+                                                                        <button type="button" id="uploadButton"
+                                                                            class="btn btn-info my-4 px-5 text-capitalize fs-5 font-weight-600">Select
+                                                                            a file</button>
+                                                                        <input type="file" id="fileUpload"
+                                                                            name="fileUpload"
+                                                                            class="position-absolute top-0 start-0 bottom-0 end-0 opacity-0">
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end file upload  -->
                                         </div>
                                     </div>
 
@@ -1055,6 +1109,34 @@
             cursor: pointer;
         }
     </style>
+    <script>
+        // file upload script
+        document.addEventListener("DOMContentLoaded", function () {
+            var successIcon = document.getElementById("successIcon");
+            var extensionOption = document.getElementById('extensionOption');
+            var textTitle = document.getElementById("textTitle");
+            var fileUpload = document.getElementById("fileUpload");
+            var fileInfo = document.getElementById("fileInfo");
+            var uploadButton = document.getElementById("uploadButton");
+
+            fileUpload.addEventListener("change", function () {
+                var file = fileUpload.files[0];
+                if (file) {
+                    fileInfo.innerHTML = file.name;
+                    document.title = "Uploaded: " + file.name;
+                    uploadButton.textContent = "Start Now";
+                    textTitle.textContent = "Success !";
+                    extensionOption.textContent = "File uploaded successfuly";
+                    successIcon.classList.add("icon-success-uploaded");
+                    successIcon.classList.remove("icon-file-upload-chart");
+                } else {
+                    fileInfo.innerHTML = "";
+                    document.title = "File Upload Example";
+                    uploadButton.textContent = "Upload";
+                }
+            });
+        });
+    </script>
     <!-- org script -->
     <script src="./src/js/custom-org-chart.js"></script>
     <!-- org script end -->
