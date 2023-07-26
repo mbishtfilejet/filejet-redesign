@@ -41,7 +41,9 @@ var summaryEntity = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"
 var addEntity = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<path d="M7.91012 3.00806L8 3C8.24546 3 8.44961 3.17688 8.49194 3.41012L8.5 3.5V7.5H12.5C12.7455 7.5 12.9496 7.67688 12.9919 7.91012L13 8C13 8.24546 12.8231 8.44961 12.5899 8.49194L12.5 8.5H8.5V12.5C8.5 12.7455 8.32312 12.9496 8.08988 12.9919L8 13C7.75454 13 7.55039 12.8231 7.50806 12.5899L7.5 12.5V8.5H3.5C3.25454 8.5 3.05039 8.32312 3.00806 8.08988L3 8C3 7.75454 3.17688 7.55039 3.41012 7.50806L3.5 7.5H7.5V3.5C7.5 3.25454 7.67688 3.05039 7.91012 3.00806L8 3L7.91012 3.00806Z"/>' +
     '</svg>';
-
+var downloadTempMenu = '<span class="icon me-0 icon-md icon-download-template-menu"></span>';
+var exportCSV = '<span class="icon icon-md me-0 icon-export-csv"></span>';
+var exportJPG = '<span class="icon icon-md me-0 icon-export-jpg"></span>';
 OrgChart.templates.olivia.warning = '<svg width="24" height="24" x="280" y="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<path d="M10.9085 2.78216C11.9483 2.20625 13.2463 2.54089 13.8841 3.5224L13.9669 3.66023L21.7259 17.6685C21.9107 18.0021 22.0076 18.3773 22.0076 18.7587C22.0076 19.9495 21.0825 20.9243 19.9117 21.0035L19.7576 21.0087H4.24187C3.86056 21.0087 3.4855 20.9118 3.15192 20.7271C2.11208 20.1513 1.70704 18.8734 2.20059 17.812L2.27349 17.6687L10.0303 3.66046C10.2348 3.2911 10.5391 2.98674 10.9085 2.78216ZM12.0004 16.0018C11.4489 16.0018 11.0018 16.4489 11.0018 17.0004C11.0018 17.552 11.4489 17.9991 12.0004 17.9991C12.552 17.9991 12.9991 17.552 12.9991 17.0004C12.9991 16.4489 12.552 16.0018 12.0004 16.0018ZM11.9983 7.99806C11.4854 7.99825 11.0629 8.38444 11.0053 8.8818L10.9986 8.99842L11.0004 13.9993L11.0072 14.1159C11.0652 14.6132 11.488 14.9991 12.0008 14.9989C12.5136 14.9988 12.9362 14.6126 12.9938 14.1152L13.0004 13.9986L12.9986 8.9977L12.9919 8.88108C12.9339 8.38376 12.5111 7.99788 11.9983 7.99806Z" fill="#E73B18"/>' +
     '</svg>';
@@ -63,10 +65,10 @@ OrgChart.miniMap.width = 156;
 OrgChart.miniMap.height = 110;
 OrgChart.miniMap.padding = 5;
 OrgChart.miniMap.position = {
-  top: undefined,
-  left: undefined,
-  right: 'padding',
-  bottom: 'padding',
+    top: undefined,
+    left: undefined,
+    right: 'padding',
+    bottom: 'padding',
 }
 OrgChart.templates.olivia.size = [320, 92];
 OrgChart.templates.olivia.nodeMenuButton = '<g style="cursor:pointer;background-color:blue;" transform="matrix(1,0,0,1,285,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#ffffff"></circle><circle cx="7" cy="0" r="2" fill="#ffffff"></circle><circle cx="14" cy="0" r="2" fill="#ffffff"></circle></g>';
@@ -78,8 +80,8 @@ OrgChart.elements.headingText = function () {
     };
 
 };
-OrgChart.elements.accordionButton =function(){
-    return{
+OrgChart.elements.accordionButton = function () {
+    return {
         html: ` <div class="accordion w-100 mt-5" id="accordionPanelsStayOpenExample">
         <div class="accordion-item shadow-none">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -182,10 +184,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
         expandAll: true
     },
     menu: {
-        pdf: { text: "Export PDF" },
-        png: { text: "Export PNG" },
-        svg: { text: "Export SVG" },
-       
+        pdf: { text: "Download Templates", icon: downloadTempMenu },
+        csv: { text: "Export CSV", icon: exportCSV },
+        png: { text: "Export JPG", icon: exportJPG },
+
     },
     nodeMenu: {
         action: {
@@ -222,17 +224,17 @@ var chart = new OrgChart(document.getElementById("tree"), {
     editForm: {
         titleBinding: "company",
         cancelBtn: 'Close',
-        saveAndCloseBtn:false,
+        saveAndCloseBtn: false,
         generateElementsFromFields: false,
-        buttons:  {
+        buttons: {
             edit: {
-                icon: OrgChart.icon.edit(24,24,'#fff'),
+                icon: OrgChart.icon.edit(24, 24, '#fff'),
                 text: 'Edit',
                 hideIfEditMode: false,
                 hideIfDetailsMode: false
             },
-            share:null,
-            pdf:null,
+            share: null,
+            pdf: null,
             // share: {
             //     icon: OrgChart.icon.share(24,24,'#fff'),
             //     text: 'Share'
@@ -243,43 +245,43 @@ var chart = new OrgChart(document.getElementById("tree"), {
             // },
             remove: null,
         },
-        addMore:null,
-       
+        addMore: null,
+
         // addMoreBtn: 'Add element',
         // addMoreFieldName: 'Element name',
         elements: [
             { type: 'headingText', label: 'Description:', binding: 'desc' },
-            { type: 'textbox', label: 'Entity Name', binding: 'entityName'},
-            { type: 'textbox', label: 'JURISDICTION STATE (or country)', binding: 'JuriState'},
-            { type: 'textbox', label: 'Entity Type', binding: 'EntityType'},
-            { type: 'textbox', label: 'state file number', binding: 'stateFileNumber'},
-            { type: 'date', label: 'registration date', binding: 'registerDate'},
-            { type: 'textbox', label: 'principal business address', binding: 'principalBusinessAddress'},
-            { type: 'accordionButton', label: 'accordion label', binding: 'accordionName'},
-                    
+            { type: 'textbox', label: 'Entity Name', binding: 'entityName' },
+            { type: 'textbox', label: 'JURISDICTION STATE (or country)', binding: 'JuriState' },
+            { type: 'textbox', label: 'Entity Type', binding: 'EntityType' },
+            { type: 'textbox', label: 'state file number', binding: 'stateFileNumber' },
+            { type: 'date', label: 'registration date', binding: 'registerDate' },
+            { type: 'textbox', label: 'principal business address', binding: 'principalBusinessAddress' },
+            { type: 'accordionButton', label: 'accordion label', binding: 'accordionName' },
+
         ]
     }
-    
+
 });
 
 
 chart.load([
-    { id: "1",  pid: "0", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Hunt Groups", name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
-    { id: "2",  pid: "1", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Hunt LLC", name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
-    { id: "3",  pid: "1", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "NBC Networks", name: "Janae Barrett", title: "Technical Director", img: "dist/images/icons/nbc-network.svg" },
-    { id: "4",  pid: "1", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Dropbox", name: "Aaliyah Webb", title: "Manager", email: "jay@domain.com", img: "dist/images/icons/dropbox.svg" },
-    { id: "5",  pid: "2", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Elliot Ross", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "6",  pid: "2", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Anahi Gordon", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "7",  pid: "2", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Target", name: "Knox Macias", title: "QA", img: "dist/images/icons/target.svg" },
-    { id: "8",  pid: "3", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Apple", name: "Nash Ingram", title: ".NET Team Lead", email: "kohen@domain.com", img: "dist/images/icons/apple.svg" },
-    { id: "9",  pid: "3", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Sage Barnett", title: "JS Team Lead", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "10", pid: "8", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Tesla", name: "Alice Gray", title: "Programmer", img: "dist/images/icons/tesla.svg" },
-    { id: "11", pid: "8", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Nike", name: "Anne Ewing", title: "Programmer", img: "dist/images/icons/nike.svg" },
-    { id: "12", pid: "9", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Reuben Mcleod", title: "Programmer", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "13", pid: "9", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Ariel Wiley", title: "Programmer", img: "dist/images/icons/google.svg" },
-    { id: "14", pid: "4", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Google", name: "Lucas West", title: "Marketer", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "15", pid: "4", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Starbucks", name: "Adan Travis", title: "Designer", img: "dist/images/icons/starbuks.svg" },
-    { id: "16", pid: "4", entityName:"xyzName", JuriState:"California", EntityType:"abcType", stateFileNumber:"012345", registerDate:"20/07/2023", principalBusinessAddress:"abz Tower",  company: "Microsoft", name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
+    { id: "1", pid: "0", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Hunt Groups", name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
+    { id: "2", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Hunt LLC", name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
+    { id: "3", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "NBC Networks", name: "Janae Barrett", title: "Technical Director", img: "dist/images/icons/nbc-network.svg" },
+    { id: "4", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Dropbox", name: "Aaliyah Webb", title: "Manager", email: "jay@domain.com", img: "dist/images/icons/dropbox.svg" },
+    { id: "5", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Elliot Ross", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "6", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Anahi Gordon", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "7", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Target", name: "Knox Macias", title: "QA", img: "dist/images/icons/target.svg" },
+    { id: "8", pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Apple", name: "Nash Ingram", title: ".NET Team Lead", email: "kohen@domain.com", img: "dist/images/icons/apple.svg" },
+    { id: "9", pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Sage Barnett", title: "JS Team Lead", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "10", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Tesla", name: "Alice Gray", title: "Programmer", img: "dist/images/icons/tesla.svg" },
+    { id: "11", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Nike", name: "Anne Ewing", title: "Programmer", img: "dist/images/icons/nike.svg" },
+    { id: "12", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Reuben Mcleod", title: "Programmer", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "13", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Ariel Wiley", title: "Programmer", img: "dist/images/icons/google.svg" },
+    { id: "14", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Lucas West", title: "Marketer", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "15", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Starbucks", name: "Adan Travis", title: "Designer", img: "dist/images/icons/starbuks.svg" },
+    { id: "16", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Microsoft", name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
 ]);
 
 // custom org select
@@ -291,27 +293,27 @@ var options = selectItems.querySelectorAll(".div1");
 
 // Toggle select items visibility when clicking the selected option
 selectedOption.addEventListener("click", function () {
-  selectItems.style.display = selectItems.style.display === "block" ? "none" : "block";
+    selectItems.style.display = selectItems.style.display === "block" ? "none" : "block";
 });
 
 // Handle option selection
 for (var i = 0; i < options.length; i++) {
-  options[i].addEventListener("click", function () {
-    // selectedOption.textContent = this.textContent;
-    selectedOption.innerHTML = this.innerHTML;
-    selectedOption.querySelector('.d-none').classList.remove('d-none');
-    console.log(selectedOption.innerHTML);
-    selectItems.style.display = "none";
-    chart.setOrientation(parseInt(this.id));
-    // Handle selected option value or perform any other desired action
-  });
+    options[i].addEventListener("click", function () {
+        // selectedOption.textContent = this.textContent;
+        selectedOption.innerHTML = this.innerHTML;
+        selectedOption.querySelector('.d-none').classList.remove('d-none');
+        console.log(selectedOption.innerHTML);
+        selectItems.style.display = "none";
+        chart.setOrientation(parseInt(this.id));
+        // Handle selected option value or perform any other desired action
+    });
 }
 
 // Close select items if user clicks outside the select container
 document.addEventListener("click", function (e) {
-  if (!selectContainer.contains(e.target)) {
-    selectItems.style.display = "none";
-  }
+    if (!selectContainer.contains(e.target)) {
+        selectItems.style.display = "none";
+    }
 });
 
 // 
@@ -325,30 +327,32 @@ var options2 = selectItems2.querySelectorAll(".div2");
 
 // Toggle select items visibility when clicking the selected option
 selectedOption2.addEventListener("click", function () {
-  selectItems2.style.display = selectItems2.style.display === "block" ? "none" : "block";
+    selectItems2.style.display = selectItems2.style.display === "block" ? "none" : "block";
 });
 
 // Handle option selection
 for (var i = 0; i < options2.length; i++) {
-  options2[i].addEventListener("click", function () {
-    // selectedOption2.textContent = this.textContent;
-    // selectItems2.style.display = "none";
-    selectedOption2.innerHTML = this.innerHTML;
-    selectedOption2.querySelector('.d-none').classList.remove('d-none');
-    console.log(selectedOption2.innerHTML);
-    selectItems2.style.display = "none";
+    options2[i].addEventListener("click", function () {
+        // selectedOption2.textContent = this.textContent;
+        // selectItems2.style.display = "none";
+        selectedOption2.innerHTML = this.innerHTML;
+        selectedOption2.querySelector('.d-none').classList.remove('d-none');
+        console.log(selectedOption2.innerHTML);
+        selectItems2.style.display = "none";
 
-    chart.setLayout(parseInt(this.id));
-    // Handle selected option value or perform any other desired action
-  });
+        chart.setLayout(parseInt(this.id));
+        // Handle selected option value or perform any other desired action
+    });
 }
 
 // Close select items if user clicks outside the select container
 document.addEventListener("click", function (e) {
-  if (!selectContainer2.contains(e.target)) {
-    selectItems2.style.display = "none";
-  }
+    if (!selectContainer2.contains(e.target)) {
+        selectItems2.style.display = "none";
+    }
 });
+
+
 
 
 
