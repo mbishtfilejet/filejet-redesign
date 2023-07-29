@@ -189,6 +189,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
         png: { text: "Export JPG", icon: exportJPG },
 
     },
+    collapse: {
+        level: 1,
+        allChildren: true
+    },
     nodeMenu: {
         action: {
             text: "Take Action",
