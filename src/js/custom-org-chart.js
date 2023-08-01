@@ -189,10 +189,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
         png: { text: "Export JPG", icon: exportJPG },
 
     },
-    collapse: {
-        level: 1,
-        allChildren: true
-    },
+    // collapse: {
+    //     level: 1,
+    //     allChildren: true
+    // },
     nodeMenu: {
         action: {
             text: "Take Action",
@@ -270,22 +270,22 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 
 chart.load([
-    { id: "1", pid: "0", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Hunt Groups", name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
-    { id: "2", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Hunt LLC", name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
-    { id: "3", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "NBC Networks", name: "Janae Barrett", title: "Technical Director", img: "dist/images/icons/nbc-network.svg" },
-    { id: "4", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Dropbox", name: "Aaliyah Webb", title: "Manager", email: "jay@domain.com", img: "dist/images/icons/dropbox.svg" },
-    { id: "5", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Elliot Ross", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "6", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Anahi Gordon", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "7", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Target", name: "Knox Macias", title: "QA", img: "dist/images/icons/target.svg" },
-    { id: "8", pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Apple", name: "Nash Ingram", title: ".NET Team Lead", email: "kohen@domain.com", img: "dist/images/icons/apple.svg" },
-    { id: "9", pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Sage Barnett", title: "JS Team Lead", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "10", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Tesla", name: "Alice Gray", title: "Programmer", img: "dist/images/icons/tesla.svg" },
-    { id: "11", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Nike", name: "Anne Ewing", title: "Programmer", img: "dist/images/icons/nike.svg" },
-    { id: "12", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Reuben Mcleod", title: "Programmer", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "13", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Ariel Wiley", title: "Programmer", img: "dist/images/icons/google.svg" },
-    { id: "14", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google", name: "Lucas West", title: "Marketer", img: "dist/images/icons/hunt-groups.svg" },
-    { id: "15", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Starbucks", name: "Adan Travis", title: "Designer", img: "dist/images/icons/starbuks.svg" },
-    { id: "16", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Microsoft", name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
+    { id: "1",  pid: "0", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Hunt Groups",  name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
+    { id: "2",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Hunt LLC",     name: "Lexie Cole", title: "QA Lead", email: "ava@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
+    { id: "3",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "NBC Networks", name: "Janae Barrett", title: "Technical Director", img: "dist/images/icons/nbc-network.svg" },
+    { id: "4",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Dropbox",      name: "Aaliyah Webb", title: "Manager", email: "jay@domain.com", img: "dist/images/icons/dropbox.svg" },
+    { id: "5",  pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google",       name: "Elliot Ross", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "6",  pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google",       name: "Anahi Gordon", title: "QA", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "7",  pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Target",       name: "Knox Macias", title: "QA", img: "dist/images/icons/target.svg" },
+    { id: "8",  pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Apple",        name: "Nash Ingram", title: ".NET Team Lead", email: "kohen@domain.com", img: "dist/images/icons/apple.svg" },
+    { id: "9",  pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google",       name: "Sage Barnett", title: "JS Team Lead", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "10", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Tesla",        name: "Alice Gray", title: "Programmer", img: "dist/images/icons/tesla.svg" },
+    { id: "11", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Nike",         name: "Anne Ewing", title: "Programmer", img: "dist/images/icons/nike.svg" },
+    { id: "12", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google",       name: "Reuben Mcleod", title: "Programmer", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "13", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google",       name: "Ariel Wiley", title: "Programmer", img: "dist/images/icons/google.svg" },
+    { id: "14", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Google",       name: "Lucas West", title: "Marketer", img: "dist/images/icons/hunt-groups.svg" },
+    { id: "15", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Starbucks",    name: "Adan Travis", title: "Designer", img: "dist/images/icons/starbuks.svg" },
+    { id: "16", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Microsoft",    name: "Alex Snider", title: "Sales Manager", img: "dist/images/icons/microsoft.svg" }
 ]);
 
 // custom org select
@@ -355,6 +355,59 @@ document.addEventListener("click", function (e) {
         selectItems2.style.display = "none";
     }
 });
+
+// skip org chart
+
+let clickCount = 0;
+function skipFunction(){
+    var bocLightSkip = document.querySelector('.boc-light.boc-light-skip')
+    var element = document.querySelector('.boc-edit-form.light');
+    var stepText = document.querySelector('.stepText');
+    var stepNum = document.querySelector(".stepNum")
+    var expandButton = document.querySelector('[data-ctrl-ec-id="1"]')
+    var skipOverlay = document.querySelector('.skipOverlay');
+    var paraText =document.querySelector('.paraText');
+    var changeButton = document.querySelector('.changeButton');
+    var textButton = document.querySelector('.textButton');
+    var expandButtonClicked = document.querySelector('[data-tlbr="expand"]');
+  
+
+    clickCount++;
+    if (clickCount === 1) {
+        stepText.innerHTML = '2. Add your <br/> company information';
+        stepNum.innerHTML = "2";
+        element.classList.add("visible");
+    } else if (clickCount === 2) {
+        stepText.innerHTML = '3. Add an Entity <br/> to your Organization';
+        stepNum.innerHTML = "3";
+        element.classList.add("invisible");
+        expandButton.style.opacity="1";
+        bocLightSkip.style.height="400px";
+        // Add a click event listener to the button
+        expandButtonClicked.addEventListener('click', function() {
+            // Code to be executed when the button is clicked
+            console.log('Button clicked!');
+            // Add any other actions or functions you want to perform here
+        });
+
+        // Add a click event listener to the clickMyButton
+        changeButton.addEventListener('click', function() {
+            // Programmatically trigger the click event on the myButton
+            expandButtonClicked.click();
+        });
+    } else if (clickCount === 3) {
+        stepText.innerHTML = '4. You are set! <br/> Lets start to organize your chart';
+        stepNum.innerHTML = "4";
+        skipOverlay.style.display ="none";
+        stepText.classList.remove('text-white');
+        paraText.classList.remove('text-white');
+        changeButton.classList.add('gradientButton');
+        textButton.innerHTML = "Start Now";
+        // clickCount = 0; // Reset the count after three clicks   
+    }
+}
+
+
 
 
 
