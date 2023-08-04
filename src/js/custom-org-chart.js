@@ -356,6 +356,8 @@ document.addEventListener("click", function (e) {
     }
 });
 
+
+
 // skip org chart
 
 let clickCount = 0;
@@ -406,6 +408,13 @@ function skipFunction(){
         // clickCount = 0; // Reset the count after three clicks   
     }
 }
+
+// select for filter
+
+
+
+
+
 
 
 

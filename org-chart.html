@@ -359,49 +359,666 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="toolbarFilter d-none">
-                                <div class="row">
-                                    <div class="col-md">
-                                        <div class="org-custom-select org-custom-select2 shadow rounded-2">
-                                            <div class="org-select-selected org-select-selected2"><span
-                                                    class="icon icon-xl icon-layout"></span>Layout</div>
-                                            <div class="org-select-items org-select-items2 shadow rounded-2" id="layout">
-                                                <div class="row" class="">
-                                                    <div id="0"
-                                                        class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
-                                                        <span class="me-0 icon icon-xl icon-align-normal"></span><span
-                                                            class="d-none fw-bold ms-3">Normal</span>
-                                                    </div>
-                                                    <div id="1"
-                                                        class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
-                                                        <span class="me-0 icon icon-xl icon-align-mixed"></span><span
-                                                            class="d-none fw-bold ms-3">Mixed</span>
-                                                    </div>
-                                                    <div id="2"
-                                                        class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
-                                                        <span class="me-0 icon icon-xl icon-align-tree"></span><span
-                                                            class="d-none fw-bold ms-3">Tree</span>
-                                                    </div>
-                                                    <hr class="my-3">
-                                                    <div id="3"
-                                                        class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
-                                                        <span class="me-0 icon icon-xl icon-align-left"></span><span
-                                                            class="d-none fw-bold ms-3">Left</span>
-                                                    </div>
-                                                    <div id="4"
-                                                        class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
-                                                        <span class="me-0 icon icon-xl icon-align-right"></span><span
-                                                            class="d-none fw-bold ms-3">Right</span>
-                                                    </div>
-                                                </div>
+                            <div class="position-relative">
+                                <div class="toolbarFilter w-100 d-none position-absolute" style="z-index:1;">
+                                    <div class="row g-2 g-xxl-3">
+                                        <div class="col-md">
+                                            <div class="d-flex h-100 position-relative shadow rounded-2" data-boc-input>
+                                                <span
+                                                    class="icon icon-search-grey icon-sm opacity-50 position-absolute ms-4 h-100 end-0 me-4"></span>
+                                                <input type="text" placeholder="Search"
+                                                    class="form-control rounded-2 py-0 pe-5 m-0">
                                             </div>
                                         </div>
+                                        <div class="col-md col-xxl-2 w-20">
+                                            <div class="shadow rounded-2 position-relative w-100">
+                                                <button class="btn lh-sm mb-0 btn-light d-flex justify-content-between align-items-center text-capitalize form-control px-3" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                  <span class="opacity-50 text-black-primary">DBA or Business Type</span> <span class="icon icon-chevron-down me-0 ms-auto"></span>
+                                                </button>
+                                               <form action="">
+                                                <ul class="dropdown-menu translate-0 w-100 border-0 shadow rounded-0 rounded-bottom mt-n2" aria-labelledby="dropdownMenuClickableInside">
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="generalStock">
+                                                                Corporation - General Stock
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="generalStock">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="trustAccount">
+                                                                Trust Account
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="trustAccount">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="technology">
+                                                                Technology
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="technology">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="agencyAccount">
+                                                                Agency Account
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="agencyAccount">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="financialVehicles">
+                                                                Financial Vehicles
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="financialVehicles">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="openEndInvestment">
+                                                                Open-End Investment
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="openEndInvestment">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-3">
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Clear all</button>
+                                                           
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Select all</button>
+                                                        </div>
+                                                    </li>
+                                                  
+                                                </ul>
+                                               </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="shadow rounded-2 position-relative w-100">
+                                                <button class="btn lh-sm mb-0 btn-light d-flex justify-content-between align-items-center text-capitalize form-control px-3" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                  <span class="opacity-50 text-black-primary">Select Entity</span> <span class="icon icon-chevron-down me-0 ms-auto"></span>
+                                                </button>
+                                               <form action="">
+                                                <ul class="dropdown-menu translate-0 w-100 border-0 shadow rounded-0 rounded-bottom mt-n2" aria-labelledby="dropdownMenuClickableInside">
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="huntGroup">
+                                                                Hunt Group
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="huntGroup">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="h-100">
+                                                                Hunt LLC
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="huntllc">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="huntLodge">
+                                                                Hunt Lodge
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="huntLodge">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="google">
+                                                                Google
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="google">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="target">
+                                                                Target
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="target">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="apple">
+                                                                Apple
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="apple">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="uber">
+                                                                Uber
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="uber">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="starbucks">
+                                                                Starbucks
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="starbucks">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="microsoft">
+                                                                Microsoft
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="microsoft">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="nbcNetwork">
+                                                                NBC Network
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="nbcNetwork">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-3">
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Clear all</button>
+                                                           
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Select all</button>
+                                                           
+                                                        </div>
+                                                    </li>
+                                                  
+                                                </ul>
+                                               </form>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md">
+                                            <div class="shadow rounded-2 position-relative w-100">
+                                                <button class="btn lh-sm mb-0 btn-light d-flex justify-content-between align-items-center text-capitalize form-control px-3" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                  <span class="opacity-50 text-black-primary">Compliance</span> <span class="icon icon-chevron-down me-0 ms-auto"></span>
+                                                </button>
+                                               <form action="">
+                                                <ul class="dropdown-menu translate-0 w-100 border-0 shadow rounded-0 rounded-bottom mt-n2" aria-labelledby="dropdownMenuClickableInside">
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="overdue">
+                                                                Overdue
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="overdue">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="upcoming">
+                                                                Upcoming
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="upcoming">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="increased">
+                                                                Increased
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="increased">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="reputation">
+                                                                Reputation
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="reputation">
+                                                        </div>
+                                                    </li>
+                                                    
+                                              
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-3">
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Clear all</button>
+                                                           
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Select all</button>
+                                                           
+                                                        </div>
+                                                    </li>
+                                                  
+                                                </ul>
+                                               </form>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md">
+                                            <div class="shadow rounded-2 position-relativ w-100 jurisdictionMegadrop">
+                                                <button class="btn lh-sm mb-0 btn-light d-flex justify-content-between align-items-center text-capitalize form-control px-3" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                  <span class="opacity-50 text-black-primary">Jurisdiction</span> <span class="icon icon-chevron-down me-0 ms-auto"></span>
+                                                </button>
+                                               <form action="">
+                                                <ul class="dropdown-menu translate-middle-y w-100 border-0 shadow rounded-0 rounded-bottom rounded-2" aria-labelledby="dropdownMenuClickableInside">
+                                                    
+                                                   <div class="row">
+                                                    <li class="col-md-12">
+                                                        <div class="px-3 py-2 mt-2">
+                                                            <h4 class="fs-5 text-black-primary font-weight-500 mb-0">Select Jurisdiction</h4>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md">
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        
+                                                    </li>
+                                                    <li class="col-md">
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        
+                                                    </li>
+                                                    <li class="col-md">
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        
+                                                    </li>
+                                                    <li class="col-md">
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        
+                                                    </li>
+                                                    <li class="col-md">
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        <div class="form-check justify-content-between px-3 py-2 my-2">
+                                                            <label class="label text-capitalize text-black-primary opacity-50" for="alabama">
+                                                                Alabama
+                                                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="" id="alabama">
+                                                        </div>
+                                                        
+                                                    </li>
+                                                   
+                                                                                              
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-3">
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Clear all</button>
+                                                           
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Select all</button>
+                                                           
+                                                        </div>
+                                                    </li>
+                                                   </div>
+                                                  
+                                                </ul>
+                                               </form>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md">
+                                            <div class="shadow rounded-2 position-relative w-100">
+                                                <button class="btn lh-sm mb-0 btn-light d-flex justify-content-between align-items-center text-capitalize form-control px-3" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                  <span class="opacity-50 text-black-primary">Status</span> <span class="icon icon-chevron-down me-0 ms-auto"></span>
+                                                </button>
+                                               <form action="">
+                                                <ul class="dropdown-menu translate-0 w-100 border-0 shadow rounded-0 rounded-bottom mt-n2" aria-labelledby="dropdownMenuClickableInside">
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-success opacity-100" for="active">
+                                                                Active
+                                                            </label>
+                                                            <input class="form-check-input" type="radio" name="staus" value="" id="active">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-info opacity-100" for="inactive">
+                                                                Inactive
+                                                            </label>
+                                                            <input class="form-check-input" type="radio" name="staus" value="" id="inactive">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-2">
+                                                            <label class="label text-capitalize text-danger opacity-100" for="dissolved">
+                                                                Dissolved
+                                                            </label>
+                                                            <input class="form-check-input" type="radio" name="staus" value="" id="dissolved">
+                                                        </div>
+                                                    </li>
+                                                   
+                                                    <li>
+                                                        <div class="form-check justify-content-between px-3 py-3">
+                                                            <button type="reset" class="btn btn-light text-capitalize text-black-primary opacity-50 btn-sm p-0"> Clear Filter</button>
+                                                           
+                                                           
+                                                        </div>
+                                                    </li>
+                                                  
+                                                </ul>
+                                               </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 col-xxl-1">
+                                            <button type="reset" class="btn btn-light px-1 w-100 text-capitalize h-100 text-black-primary mb-0 shadow"><span class="opacity-50">Clear Filter</span></button>
+                                        </div>
                                     </div>
+                                    <!-- filtered tags -->
+                                    <form action="" method="post">
+                                        <div class="filteredTags d-flex flex-wrap justify-content-start align-items-center gap-3 my-4">
+                                        
+                                            
+                                                    <div class="bg-white p-2 rounded-pill px-3 border cursor">
+                                                        <div class="d-flex justify-content-between align-items-center gap-3">
+                                                            <h5 class="fs-6 font-weight-500 mb-0">Insurance Funds</h5>
+                                                            <a href="#"> <span class="icon icon-xs icon-close-dark me-0"></span></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bg-white p-2 rounded-pill px-3 border cursor">
+                                                        <div class="d-flex justify-content-between align-items-center gap-3">
+                                                            <h5 class="fs-6 font-weight-500 mb-0">Alabama</h5>
+                                                            <a href="#"> <span class="icon icon-xs icon-close-dark me-0"></span></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rounded-pill">
+                                                        <button type="reset" class="text-capitalize btn btn-light bg-transparent p-0 border-0 fs-6 text-black-primary opacity-50">Clear all filter</button>
+                                                    </div>
+                                            
+                                        
+                                        </div>
+                                    </form>
+                                    <!-- filtered tags end-->
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mb-4">
-                            <div class="w-100 bg-light" id="tree"></div>
+                        <div class="col-12 mb-4 pt-5 mt-5">
+                            <div class="pt-5">
+                                <div class="w-100 bg-light" id="tree"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -951,9 +1568,35 @@
         color: #AB65EF !important;
         cursor: pointer;
     }
+    .btnFilter button.active{
+        background-image: linear-gradient(to right, #6741DF,#AB65EF);
+    }
     </style>
     <script>
+      
+        var btnFilter = document.querySelector('.btnFilter button');
+        var toolbarFilter = document.querySelector('.toolbarFilter');
+        var filterIcon = document.querySelector('.btnFilter button span');
+     
+        btnFilter.addEventListener('click',function(){
+            btnFilter.classList.toggle("active");
+            toolbarFilter.classList.toggle("d-none");
+            filterIcon.classList.toggle("icon-org-filter-white");
+        });
 
+        // const checkbox = document.querySelectorAll(".form-check-input");
+        // const resultElement = document.querySelectorAll(".filteredTags h5");
+        // const labelElement = document.querySelectorAll(".label");
+
+        // checkbox.addEventListener("change", function() {
+        //     if (checkbox.checked) {
+        //         resultElement.textContent = "Label: " + labelElement.textContent;
+        //     } else {
+        //         resultElement.textContent = "";
+        //     }
+        // });
+
+      
     </script>
     <!-- org script -->
     <script src="./src/js/custom-org-chart.js"></script>
