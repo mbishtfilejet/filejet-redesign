@@ -414,7 +414,7 @@ function skipFunction(){
 
 
 // select for filter
-//  var btnFilter = document.querySelector('.btnFilter button');
+var btnFilter = document.querySelector('.btnFilter button');
 var toolbarFilter = document.querySelector('.toolbarFilter');
 var filterIcon = document.querySelector('.btnFilter button span');
 btnFilter.addEventListener('click',function(){
@@ -439,6 +439,21 @@ checkbox.addEventListener("change", function() {
     });
 });
 
+
+// var selectAll = document.querySelector(".selectAll"); 
+// var clearAll = document.querySelector(".clearAll");
+
+// function checkAllCheckboxes() {
+//     checkboxes.forEach(function(checkbox,index) {
+//         checkbox.checked = true;
+//         labels[index].classList.add("opacity-100");
+//     });
+// }
+
+// selectAll.addEventListener("click", function() {
+//     checkAllCheckboxes();
+// });
+
 const clearAllButtons = document.querySelectorAll(".clearAll");
 
 function unCheckAll() {
@@ -454,6 +469,11 @@ clearAllButtons.forEach((clearAllButton) => {
         unCheckAll();
     });
 });
+
+
+
+
+
 
 
 
