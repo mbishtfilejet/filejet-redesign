@@ -408,13 +408,52 @@ function skipFunction(){
         // clickCount = 0; // Reset the count after three clicks   
     }
 }
+// end skip org chart
+
+
+
 
 // select for filter
+//  var btnFilter = document.querySelector('.btnFilter button');
+var toolbarFilter = document.querySelector('.toolbarFilter');
+var filterIcon = document.querySelector('.btnFilter button span');
+btnFilter.addEventListener('click',function(){
+    btnFilter.classList.toggle("active");
+    toolbarFilter.classList.toggle("d-none");
+    filterIcon.classList.toggle("icon-org-filter-white");
+});
 
+var checkboxes = document.querySelectorAll(".toolbarFilter .form-check-input");
+var labels = document.querySelectorAll(".label");
+var dropdownMenuTitle = document.querySelectorAll('.dropdown-menu-title');
 
+checkboxes.forEach(function(checkbox, index) {
+checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            labels[index].classList.add("opacity-100");
+            dropdownMenuTitle[0].classList.add("opacity-100");
+        } else {
+            labels[index].classList.remove("opacity-100");
+            dropdownMenuTitle[index].classList.remove("opacity-100");
+        }
+    });
+});
 
+const clearAllButtons = document.querySelectorAll(".clearAll");
 
+function unCheckAll() {
+    checkboxes.forEach((checkbox, index) => {
+        checkbox.checked = false;
+        labels[index].classList.remove("opacity-100");
+        dropdownMenuTitle[index].classList.remove("opacity-100");
+    });
+}
 
+clearAllButtons.forEach((clearAllButton) => {
+    clearAllButton.addEventListener("click", () => {
+        unCheckAll();
+    });
+});
 
 
 
