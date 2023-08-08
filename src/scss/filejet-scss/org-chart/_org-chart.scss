@@ -268,6 +268,58 @@
     .accordion button {
         @extend .text-black-primary;
     }
+    #boc-ppdf-btns{
+        font-family: var(--bs-body-font-family) !important;
+        min-width: 286px;
+        
+        @extend .rounded-3,.text-center,.pt-5;
+
+        #boc-prev-save{
+            @extend .btn, .btn-info,.mt-4,.me-3;
+        }
+        #boc-prev-cancel{
+            @extend .btn,.btn-tertiary,.mt-4,.ms-3;
+        }
+        #boc-ppdf-size,#boc-ppdf-layout,#boc-ppdf-scale{
+            @extend .form-select,.w-100,.border;
+        }
+        #boc-ppdf-header,#boc-ppdf-margin,#boc-ppdf-footer{
+            @extend .form-control,.w-100,.py-3,.border;
+            min-height: 43px;
+        }
+        div[style="padding-top:30px;"],div[style="padding-top: 10px; display: block;"],div[style="padding-top:10px;"]{
+            @extend .text-start,.pt-0;
+        }
+    }
+    #boc-ppdf-wrapper{
+        @extend .rounded-3;
+        &::-webkit-scrollbar {
+            width: rem(6);
+            height: rem(6);
+            
+        }
+    
+        &::-webkit-scrollbar-track {
+            box-shadow: none;
+            background-color: var(--bs-gray-500);
+            border-radius: rem(0);
+           
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--bs-gray-700);
+            outline: 1px solid var(--bs-tranparent);
+            border-radius: rem(0);
+        }
+        #boc-ppdf-content{
+            @extend .ps-3,.rounded-3;
+            iframe{
+                margin: -10px auto !important;
+                @extend .w-100,.m-0;
+                
+            }
+        }
+    }
 }
 
 // 
