@@ -184,7 +184,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         expandAll: true
     },
     menu: {
-        pdf: { text: "Download Templates", icon: downloadTempMenu },
+        pdf: { text: "Download Templates", icon: downloadTempMenu , onClick: pdf},
         csv: { text: "Export CSV", icon: exportCSV },
         png: { text: "Export JPG", icon: exportJPG },
 
@@ -268,6 +268,13 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 });
 
+function pdf(nodeId) {
+    OrgChart.pdfPrevUI.show(chart, {
+        format: "A4",
+        header: 'My Header',
+        footer: 'My Footer. Page {current-page} of {total-pages}'
+    });
+}
 
 chart.load([
     { id: "1",  pid: "0", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", company: "Hunt Groups",  name: "Jack Hill", title: "Chairman and CEO", title2: "Google", email: "amber@domain.com", img: "dist/images/icons/hunt-groups.svg", warning: "#", },
