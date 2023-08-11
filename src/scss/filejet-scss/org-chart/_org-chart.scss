@@ -47,6 +47,69 @@
 
 .boc-light {
     overflow: visible !important;
+    .boc-filter{
+        @extend .w-100,.px-3;
+        top: -80px !important;
+        left: 0 !important;
+        div[data-filter-menu="Select_Entity"]{
+            left: 21.2%;
+        }
+        div[data-filter-menu="Compliance"]{
+            left: 41.3%;
+        }
+        div[data-filter-menu="Jurisdiction"]{
+            right: 21.23%;
+        }
+        div[data-filter-menu="Status"]{
+            right: 1%;
+        }
+            &>div {
+                div[data-filter-close]{
+                    @extend .d-none;
+                }
+                @extend .row,.gap-3;
+                & div{
+                    @extend .bg-white,.shadow,.rounded-2,.fs-6,.py-3,.px-3,.col-md,.align-items-center,.d-flex,.justify-content-between;
+                    color: #0d2c3678;   
+                }
+                & div.filter-field-selected{
+                    @extend .text-black-primary 
+                }
+                & div::after{
+                    content: "";
+                    @extend .icon,.icon-chevron-down,.float-end,.me-0;
+                }
+                
+                
+            }
+        .boc-filter-menu{
+                top: 48px;
+                width: 19%;
+                @extend .p-0,.shadow,.rounded-0,.position-absolute,.bg-transparent;
+                fieldset{
+                    @extend .p-0;
+                    &::-webkit-scrollbar {
+                        width: rem(6);
+                        height: rem(6);
+                    }
+                    div{
+                        @extend .rounded-0,.d-flex,.align-items-center,.justify-content-between,.px-3,.flex-row-reverse;
+                        input{
+                            @extend .form-check-input;
+                        }
+                        label{
+                            @extend .mb-0;
+                        }
+                        &::after{
+                            @extend .d-none;
+                        }
+                    }
+                }
+                    legend{
+                        @extend .d-none;
+                    }
+        }    
+    }
     .boc-edit-form-fields {
         @extend .px-3, .me-4;
     }
