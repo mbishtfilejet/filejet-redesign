@@ -297,6 +297,11 @@ chart.load([
     { id: "16", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Microsoft",    Name: "Alex Snider",  Jurisdiction: "California" }
 ]);
 
+// filtered chart
+
+
+// end filtered chart js
+
 // custom org select
 // JavaScript to handle the custom select behavior
 var selectContainer = document.querySelector(".org-custom-select");
@@ -428,14 +433,17 @@ document.addEventListener("DOMContentLoaded", function() {
     var toolbarFilter = document.querySelector('.toolbarFilter');
     var filterIcon = document.querySelector('.btnFilter button span');
     var bocFilter = document.querySelector('.boc-filter');
-    
+    var closeFilterMenu = document.querySelector('.filter-field-selected');
+    var filterMenu = document.querySelector('.boc-filter-menu')
     btnFilter.addEventListener('click',function(){
         btnFilter.classList.toggle("active");
         toolbarFilter.classList.toggle("d-none");
         bocFilter.classList.toggle("d-block");
         filterIcon.classList.toggle("icon-org-filter-white");
     });
-    
+    closeFilterMenu.addEventListener('click', function(){
+        filterMenu.classList.toggle("d-none");
+    });
    
 });
 
