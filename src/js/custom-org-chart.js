@@ -184,7 +184,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         expandAll: true
     },
     menu: {
-        pdf: { text: "Download Templates", icon: downloadTempMenu , onClick: pdf},
+        pdf: { text: "Download Templates", icon: downloadTempMenu, onClick: pdf },
         csv: { text: "Export CSV", icon: exportCSV },
         png: { text: "Export JPG", icon: exportJPG },
 
@@ -193,7 +193,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     level: 1,
     //     allChildren: true
     // },
-    filterBy: ['DBA_Or_Business_Type','Select_Entity','Compliance','Jurisdiction','Status'],
+    filterBy: ['DBA_Or_Business_Type', 'Select_Entity', 'Compliance', 'Jurisdiction', 'Status'],
     nodeMenu: {
         action: {
             text: "Take Action",
@@ -279,22 +279,22 @@ function pdf(nodeId) {
 }
 
 chart.load([
-    { id: "1",  pid: "0", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Has DBA",           Select_Entity: "Hunt Groups",  Name: "Jack Hill",    Jurisdiction: "California", title2: "Google", email: "amber@domain.com", Compliance: "Overdue", },
-    { id: "2",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Does not have DBA", Select_Entity: "Hunt LLC",     Name: "Lexie Cole",   Jurisdiction: "California", email: "ava@domain.com", Compliance: "Overdue", },
-    { id: "3",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Has DBA",           Select_Entity: "NBC Networks", Name: "Janae Barrett",Jurisdiction: "Alabama",},
-    { id: "4",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Dropbox",      Name: "Aaliyah Webb", Jurisdiction: "Californiar", email: "jay@domain.com"},
-    { id: "5",  pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Google",       Name: "Elliot Ross",  Jurisdiction: "California", Compliance: "Upcoming",},
-    { id: "6",  pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Google",       Name: "Anahi Gordon", Jurisdiction: "California", Compliance: "Increase", },
-    { id: "7",  pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Does not have DBA", Select_Entity: "Target",       Name: "Knox Macias",  Jurisdiction: "California", Compliance: "Reputation",},
-    { id: "8",  pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Does not have DBA", Select_Entity: "Apple",        Name: "Nash Ingram",  Jurisdiction: "California", email: "kohen@domain.com"},
-    { id: "9",  pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Google",       Name: "Sage Barnett", Jurisdiction: "California" , Status: "Active"},
-    { id: "10", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Tesla",        Name: "Alice Gray",   Jurisdiction: "California" , Status: "Inactive"},
-    { id: "11", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Nike",         Name: "Anne Ewing",   Jurisdiction: "Programmer" , Status: "Dissolve"},
-    { id: "12", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Google",       Name: "Reuben Mcleod",Jurisdiction: "Programmer" },
-    { id: "13", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Google",       Name: "Ariel Wiley",  Jurisdiction: "Programmer"},
-    { id: "14", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Google",       Name: "Lucas West",   Jurisdiction: "Alabama"},
-    { id: "15", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Starbucks",    Name: "Adan Travis",  Jurisdiction: "California"},
-    { id: "16", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Microsoft",    Name: "Alex Snider",  Jurisdiction: "California" }
+    { id: "1", pid: "0", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type: "Has DBA", Select_Entity: "Hunt Groups", Name: "Jack Hill", Jurisdiction: "California", title2: "Google", email: "amber@domain.com", Compliance: "Overdue", },
+    { id: "2", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type: "Does not have DBA", Select_Entity: "Hunt LLC", Name: "Lexie Cole", Jurisdiction: "California", email: "ava@domain.com", Compliance: "Overdue", },
+    { id: "3", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type: "Has DBA", Select_Entity: "NBC Networks", Name: "Janae Barrett", Jurisdiction: "Alabama", },
+    { id: "4", pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Dropbox", Name: "Aaliyah Webb", Jurisdiction: "Californiar", email: "jay@domain.com" },
+    { id: "5", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Google", Name: "Elliot Ross", Jurisdiction: "California", Compliance: "Upcoming", },
+    { id: "6", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Google", Name: "Anahi Gordon", Jurisdiction: "California", Compliance: "Increase", },
+    { id: "7", pid: "2", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type: "Does not have DBA", Select_Entity: "Target", Name: "Knox Macias", Jurisdiction: "California", Compliance: "Reputation", },
+    { id: "8", pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type: "Does not have DBA", Select_Entity: "Apple", Name: "Nash Ingram", Jurisdiction: "California", email: "kohen@domain.com" },
+    { id: "9", pid: "3", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Google", Name: "Sage Barnett", Jurisdiction: "California", Status: "Active" },
+    { id: "10", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Tesla", Name: "Alice Gray", Jurisdiction: "California", Status: "Inactive" },
+    { id: "11", pid: "8", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Nike", Name: "Anne Ewing", Jurisdiction: "Programmer", Status: "Dissolve" },
+    { id: "12", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Google", Name: "Reuben Mcleod", Jurisdiction: "Programmer" },
+    { id: "13", pid: "9", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Google", Name: "Ariel Wiley", Jurisdiction: "Programmer" },
+    { id: "14", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Google", Name: "Lucas West", Jurisdiction: "Alabama" },
+    { id: "15", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Starbucks", Name: "Adan Travis", Jurisdiction: "California" },
+    { id: "16", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Microsoft", Name: "Alex Snider", Jurisdiction: "California" }
 ]);
 
 // filtered chart
@@ -375,18 +375,18 @@ document.addEventListener("click", function (e) {
 // skip org chart
 
 let clickCount = 0;
-function skipFunction(){
+function skipFunction() {
     var bocLightSkip = document.querySelector('.boc-light.boc-light-skip')
     var element = document.querySelector('.boc-edit-form.light');
     var stepText = document.querySelector('.stepText');
     var stepNum = document.querySelector(".stepNum")
     var expandButton = document.querySelector('[data-ctrl-ec-id="1"]')
     var skipOverlay = document.querySelector('.skipOverlay');
-    var paraText =document.querySelector('.paraText');
+    var paraText = document.querySelector('.paraText');
     var changeButton = document.querySelector('.changeButton');
     var textButton = document.querySelector('.textButton');
     var expandButtonClicked = document.querySelector('[data-tlbr="expand"]');
-  
+
 
     clickCount++;
     if (clickCount === 1) {
@@ -397,24 +397,24 @@ function skipFunction(){
         stepText.innerHTML = '3. Add an Entity <br/> to your Organization';
         stepNum.innerHTML = "3";
         element.classList.add("invisible");
-        expandButton.style.opacity="1";
-        bocLightSkip.style.height="400px";
+        expandButton.style.opacity = "1";
+        bocLightSkip.style.height = "400px";
         // Add a click event listener to the button
-        expandButtonClicked.addEventListener('click', function() {
+        expandButtonClicked.addEventListener('click', function () {
             // Code to be executed when the button is clicked
             console.log('Button clicked!');
             // Add any other actions or functions you want to perform here
         });
 
         // Add a click event listener to the clickMyButton
-        changeButton.addEventListener('click', function() {
+        changeButton.addEventListener('click', function () {
             // Programmatically trigger the click event on the myButton
             expandButtonClicked.click();
         });
     } else if (clickCount === 3) {
         stepText.innerHTML = '4. You are set! <br/> Lets start to organize your chart';
         stepNum.innerHTML = "4";
-        skipOverlay.style.display ="none";
+        skipOverlay.style.display = "none";
         stepText.classList.remove('text-white');
         paraText.classList.remove('text-white');
         changeButton.classList.add('gradientButton');
@@ -428,31 +428,51 @@ function skipFunction(){
 
 
 // select for filter
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var btnFilter = document.querySelector('.btnFilter button');
     var toolbarFilter = document.querySelector('.toolbarFilter');
     var filterIcon = document.querySelector('.btnFilter button span');
     var bocFilter = document.querySelector('.boc-filter');
-    var closeFilterMenu = document.querySelector('.filter-field-selected');
-    var filterMenu = document.querySelector('.boc-filter-menu')
-    btnFilter.addEventListener('click',function(){
+    // var closeFilterMenu = document.querySelector('.filter-field-selected');
+    // var filterMenu = document.querySelector('.boc-filter-menu')
+    btnFilter.addEventListener('click', function () {
         btnFilter.classList.toggle("active");
         toolbarFilter.classList.toggle("d-none");
         bocFilter.classList.toggle("d-block");
         filterIcon.classList.toggle("icon-org-filter-white");
     });
-    closeFilterMenu.addEventListener('click', function(){
-        filterMenu.classList.toggle("d-none");
+
+    //close filter menu
+    var bocFilter = document.querySelector('.boc-filter');
+    bocFilter.addEventListener('click', function () {
+        this.querySelector(".filter-field-selected").classList.remove(".filter-field-selected");
+        var bocFilterMenuList = document.querySelectorAll('.boc-filter-menu');
+        bocFilterMenuList.forEach(function (bocFilterMenu) {
+            if (bocFilterMenu.classList.contains('already-opened')) {
+                bocFilterMenu.classList.toggle('d-none');
+            }
+            else if (bocFilterMenu.classList.contains('opened-first-time')) {
+                bocFilterMenu.classList.remove('opened-first-time');
+                bocFilterMenu.classList.add('d-none');
+                bocFilterMenu.classList.add('already-opened');
+            }
+            else {
+                bocFilterMenu.classList.add('opened-first-time');
+            }
+        });
     });
-   
+    // closeFilterMenu.addEventListener('click', function(){
+    //     filterMenu.classList.toggle("d-none");
+    // });
+
 });
 
 var checkboxes = document.querySelectorAll(".toolbarFilter .form-check-input");
 var labels = document.querySelectorAll(".label");
 var dropdownMenuTitle = document.querySelectorAll('.dropdown-menu-title');
 
-checkboxes.forEach(function(checkbox, index) {
-checkbox.addEventListener("change", function() {
+checkboxes.forEach(function (checkbox, index) {
+    checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
             labels[index].classList.add("opacity-100");
             dropdownMenuTitle[0].classList.add("opacity-100");
