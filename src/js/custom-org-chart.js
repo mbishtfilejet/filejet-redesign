@@ -57,6 +57,8 @@ OrgChart.templates.olivia.img_0 =
     + '<image preserveAspectRatio="xMidYMid slice" clip-path="url(#ulaImg)" xlink:href="{val}" x="14" y="15" width="65" height="65">'
     + '</image>';
 
+OrgChart.templates.olivia.plus = '<circle cx="15" cy="15" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>'
++ '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 OrgChart.toolbarUI.expandAllIcon = expandAllIcon;
 OrgChart.toolbarUI.fitIcon = fitIcon;
 OrgChart.toolbarUI.zoomInIcon = zoomInIcon;
@@ -212,10 +214,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
             text: "Entity Summary",
             icon: summaryEntity,
         },
-        add: {
-            text: "Add Entity",
-            icon: addEntity
-        }
+        // add: {
+        //     text: "Add Entity",
+        //     icon: addEntity
+        // }
     },
     nodeBinding: {
         img_0: "img",
@@ -433,66 +435,36 @@ document.addEventListener("DOMContentLoaded", function() {
     var toolbarFilter = document.querySelector('.toolbarFilter');
     var filterIcon = document.querySelector('.btnFilter button span');
     var bocFilter = document.querySelector('.boc-filter');
-    var closeFilterMenu = document.querySelector('.filter-field-selected');
-    var filterMenu = document.querySelector('.boc-filter-menu')
+
     btnFilter.addEventListener('click',function(){
         btnFilter.classList.toggle("active");
         toolbarFilter.classList.toggle("d-none");
         bocFilter.classList.toggle("d-block");
         filterIcon.classList.toggle("icon-org-filter-white");
     });
-    closeFilterMenu.addEventListener('click', function(){
-        filterMenu.classList.toggle("d-none");
-    });
+
+     //close filter menu
+     var bocFilter = document.querySelector('.boc-filter');
+     bocFilter.addEventListener('click', function () {
+         this.querySelector(".filter-field-selected").classList.remove(".filter-field-selected");
+         var bocFilterMenuList = document.querySelectorAll('.boc-filter-menu');
+         bocFilterMenuList.forEach(function (bocFilterMenu) {
+             if (bocFilterMenu.classList.contains('already-opened')) {
+                 bocFilterMenu.classList.toggle('d-none');
+             }
+             else if (bocFilterMenu.classList.contains('opened-first-time')) {
+                 bocFilterMenu.classList.remove('opened-first-time');
+                 bocFilterMenu.classList.add('d-none');
+                 bocFilterMenu.classList.add('already-opened');
+             }
+             else {
+                 bocFilterMenu.classList.add('opened-first-time');
+             }
+         });
+     });
    
 });
 
-var checkboxes = document.querySelectorAll(".toolbarFilter .form-check-input");
-var labels = document.querySelectorAll(".label");
-var dropdownMenuTitle = document.querySelectorAll('.dropdown-menu-title');
-
-checkboxes.forEach(function(checkbox, index) {
-checkbox.addEventListener("change", function() {
-        if (checkbox.checked) {
-            labels[index].classList.add("opacity-100");
-            dropdownMenuTitle[0].classList.add("opacity-100");
-        } else {
-            labels[index].classList.remove("opacity-100");
-            dropdownMenuTitle[index].classList.remove("opacity-100");
-        }
-    });
-});
-
-
-// var selectAll = document.querySelector(".selectAll"); 
-// var clearAll = document.querySelector(".clearAll");
-
-// function checkAllCheckboxes() {
-//     checkboxes.forEach(function(checkbox,index) {
-//         checkbox.checked = true;
-//         labels[index].classList.add("opacity-100");
-//     });
-// }
-
-// selectAll.addEventListener("click", function() {
-//     checkAllCheckboxes();
-// });
-
-const clearAllButtons = document.querySelectorAll(".clearAll");
-
-function unCheckAll() {
-    checkboxes.forEach((checkbox, index) => {
-        checkbox.checked = false;
-        labels[index].classList.remove("opacity-100");
-        dropdownMenuTitle[index].classList.remove("opacity-100");
-    });
-}
-
-clearAllButtons.forEach((clearAllButton) => {
-    clearAllButton.addEventListener("click", () => {
-        unCheckAll();
-    });
-});
 
 
 
