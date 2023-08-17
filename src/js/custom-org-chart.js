@@ -432,17 +432,18 @@ function skipFunction(){
 // select for filter
 document.addEventListener("DOMContentLoaded", function() {
     var btnFilter = document.querySelector('.btnFilter button');
-    var toolbarFilter = document.querySelector('.toolbarFilter');
+    // var toolbarFilter = document.querySelector('.toolbarFilter');
     var filterIcon = document.querySelector('.btnFilter button span');
     var bocFilter = document.querySelector('.boc-filter');
 
     btnFilter.addEventListener('click',function(){
-        btnFilter.classList.toggle("active");
-        toolbarFilter.classList.toggle("d-none");
-        bocFilter.classList.toggle("d-block");
+        this.classList.toggle("active");
+        // toolbarFilter.classList.toggle("d-none");
         filterIcon.classList.toggle("icon-org-filter-white");
+        bocFilter.classList.toggle("d-block");
     });
 
+    
      //close filter menu
      var bocFilter = document.querySelector('.boc-filter');
      bocFilter.addEventListener('click', function () {
