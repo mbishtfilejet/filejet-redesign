@@ -171,6 +171,56 @@ OrgChart.elements.accordionButton = function () {
       </div>`
     }
 }
+
+/* Edit Form */
+
+var editForm = function () {
+    this.nodeId = null;
+};
+
+
+editForm.prototype.init = function (obj) {
+    var that = this;
+    this.obj = obj;
+    this.editForm = $("#editForm");
+    this.entityName = $("#entity-name");
+    this.JuriState= $("#JuriState");
+    this.EntityType= $("#EntityType");
+
+    this.cancelButton = $("#cancel");
+
+    this.cancelButton.on("click", function () {
+        that.hide();
+    });
+};
+
+
+editForm.prototype.show = function (nodeId) {
+    this.nodeId = nodeId;
+
+    var left = document.body.offsetWidth / 2 - 150;
+    var node = chart.get(nodeId);
+    
+    if (!node) return;
+    this.entityName.html(node.entityName ? node.entityName : "");
+
+    this.editForm.removeClass("d-none");
+
+    OrgChart.animate(this.editForm, { opacity: 0 }, { opacity: 1 }, 300, OrgChart.anim.inOutSin);
+};
+
+editForm.prototype.content = function (id, detailsMode, dontAnim, width, dontRenderButtons) {
+    var div = document.createElement('div');
+    div.innerHTML = $('#editForm').html();
+    //div.innerHTML += '<style>#close{display:none !important;}</style>';
+    return { element: div, focusId: '', title: '', shareText: '' };
+};
+
+editForm.prototype.hide = function (showldUpdateTheNode) {
+    this.editForm.addClass("d-none");
+
+};
+// closed
 OrgChart.SEARCH_PLACEHOLDER = "Search";
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
@@ -221,6 +271,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         //     icon: addEntity
         // }
     },
+    
     nodeBinding: {
         img_0: "img",
         name: "Name",
@@ -229,48 +280,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
         Compliance: "Compliance",
         // Statu:"Status",
     },
-
+    editUI: new editForm(),
     // edit form
-    editForm: {
-        titleBinding: "Select_Entity",
-        cancelBtn: 'Close',
-        saveAndCloseBtn: false,
-        generateElementsFromFields: false,
-        buttons: {
-            edit: {
-                icon: OrgChart.icon.edit(24, 24, '#fff'),
-                text: 'Edit',
-                hideIfEditMode: false,
-                hideIfDetailsMode: false
-            },
-            share: null,
-            pdf: null,
-            // share: {
-            //     icon: OrgChart.icon.share(24,24,'#fff'),
-            //     text: 'Share'
-            // },
-            // pdf: {
-            //     icon: OrgChart.icon.pdf(24,24,'#fff'),
-            //     text: 'Save as PDF'
-            // },
-            remove: null,
-        },
-        addMore: null,
-
-        // addMoreBtn: 'Add element',
-        // addMoreFieldName: 'Element name',
-        elements: [
-            { type: 'headingText', label: 'Description:', binding: 'desc' },
-            { type: 'textbox', label: 'Entity Name', binding: 'entityName' },
-            { type: 'textbox', label: 'JURISDICTION STATE (or country)', binding: 'JuriState' },
-            { type: 'textbox', label: 'Entity Type', binding: 'EntityType' },
-            { type: 'textbox', label: 'state file number', binding: 'stateFileNumber' },
-            { type: 'date', label: 'registration date', binding: 'registerDate' },
-            { type: 'textbox', label: 'principal business address', binding: 'principalBusinessAddress' },
-            { type: 'accordionButton', label: 'accordion label', binding: 'accordionName' },
-
-        ]
-    },
     tags: {
         filter: {
             template: 'dot'
