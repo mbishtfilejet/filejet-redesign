@@ -73,7 +73,8 @@ OrgChart.miniMap.position = {
     bottom: 'padding',
 }
 OrgChart.templates.olivia.size = [320, 92];
-OrgChart.templates.olivia.nodeMenuButton = '<g style="cursor:pointer;background-color:blue;" transform="matrix(1,0,0,1,285,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#ffffff"></circle><circle cx="7" cy="0" r="2" fill="#ffffff"></circle><circle cx="14" cy="0" r="2" fill="#ffffff"></circle></g>';
+OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,285,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
+
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
 
 OrgChart.elements.headingText = function () {
@@ -196,6 +197,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     allChildren: true
     // },
     filterBy: ['DBA_Or_Business_Type','Select_Entity','Compliance','Jurisdiction','Status'],
+   
     nodeMenu: {
         action: {
             text: "Take Action",
@@ -230,7 +232,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
     // edit form
     editForm: {
-        titleBinding: "company",
+        titleBinding: "Select_Entity",
         cancelBtn: 'Close',
         saveAndCloseBtn: false,
         generateElementsFromFields: false,
@@ -268,8 +270,12 @@ var chart = new OrgChart(document.getElementById("tree"), {
             { type: 'accordionButton', label: 'accordion label', binding: 'accordionName' },
 
         ]
-    }
-
+    },
+    tags: {
+        filter: {
+            template: 'dot'
+        }
+},
 });
 
 function pdf(nodeId) {
@@ -281,7 +287,7 @@ function pdf(nodeId) {
 }
 
 chart.load([
-    { id: "1",  pid: "0", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Has DBA",           Select_Entity: "Hunt Groups",  Name: "Jack Hill",    Jurisdiction: "California", title2: "Google", email: "amber@domain.com", Compliance: "Overdue", },
+    { id: "1",  pid: "0", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Has DBA",           Select_Entity: "Hunt Groups Select_Entity Select_Entity Select_Entity",  Name: "Jack Hill",    Jurisdiction: "California", title2: "Google", email: "amber@domain.com", Compliance: "Overdue", },
     { id: "2",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Does not have DBA", Select_Entity: "Hunt LLC",     Name: "Lexie Cole",   Jurisdiction: "California", email: "ava@domain.com", Compliance: "Overdue", },
     { id: "3",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", DBA_Or_Business_Type:"Has DBA",           Select_Entity: "NBC Networks", Name: "Janae Barrett",Jurisdiction: "Alabama",},
     { id: "4",  pid: "1", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower",                                           Select_Entity: "Dropbox",      Name: "Aaliyah Webb", Jurisdiction: "Californiar", email: "jay@domain.com"},
@@ -434,9 +440,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var btnFilter = document.querySelector('.btnFilter button');
     // var toolbarFilter = document.querySelector('.toolbarFilter');
     var filterIcon = document.querySelector('.btnFilter button span');
-    var bocFilter = document.querySelector('.boc-filter');
-
+    
     btnFilter.addEventListener('click',function(){
+        let bocFilter = document.querySelector('.boc-filter');
+
         this.classList.toggle("active");
         // toolbarFilter.classList.toggle("d-none");
         filterIcon.classList.toggle("icon-org-filter-white");
@@ -445,24 +452,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
      //close filter menu
-     var bocFilter = document.querySelector('.boc-filter');
-     bocFilter.addEventListener('click', function () {
-         this.querySelector(".filter-field-selected").classList.remove(".filter-field-selected");
-         var bocFilterMenuList = document.querySelectorAll('.boc-filter-menu');
-         bocFilterMenuList.forEach(function (bocFilterMenu) {
+    const bocFilter = document.querySelector('.boc-filter');
+
+    bocFilter.addEventListener('click', function () {
+        this.querySelector(".filter-field-selected").classList.remove(".filter-field-selected");
+        var bocFilterMenuList = document.querySelectorAll('.boc-filter-menu');
+        bocFilterMenuList.forEach(function (bocFilterMenu) {
              if (bocFilterMenu.classList.contains('already-opened')) {
                  bocFilterMenu.classList.toggle('d-none');
-             }
+            }
              else if (bocFilterMenu.classList.contains('opened-first-time')) {
                  bocFilterMenu.classList.remove('opened-first-time');
                  bocFilterMenu.classList.add('d-none');
                  bocFilterMenu.classList.add('already-opened');
-             }
+            }
              else {
                  bocFilterMenu.classList.add('opened-first-time');
-             }
+            }
          });
-     });
+    });
    
 });
 
