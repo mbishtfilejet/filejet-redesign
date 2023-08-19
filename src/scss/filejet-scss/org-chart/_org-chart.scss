@@ -64,6 +64,24 @@
                 left: 21%;
             }
         }
+        div[data-filter-menu="Group_Name"]{
+            left: 25.4%;
+            @media (min-width:1440px) {
+                left: 25.2%;
+            }
+            @media (min-width:1920px) {
+                left: 25%;
+            }
+        }
+        div[data-filter-menu="Entity_Type"]{
+            left: 30.4%;
+            @media (min-width:1440px) {
+                left: 30.2%;
+            }
+            @media (min-width:1920px) {
+                left: 30%;
+            }
+        }
         div[data-filter-menu="Compliance"]{
             left: 41.5%;
             @media (min-width:1440px) {
@@ -91,11 +109,11 @@
                 }
                 @extend .row,.gap-3,.flex-wrap;
                 & div{
-                    @extend .bg-white,.shadow,.rounded-2,.fs-6,.py-3,.px-3,.col-md,.align-items-center,.d-flex,.justify-content-between;
+                    @extend .bg-white,.shadow,.rounded-2,.fs-6,.py-3,.px-3,.col-md-2,.align-items-center,.d-flex,.justify-content-between;
                     color: #0d2c3678;   
                 }
                 & div.filter-field-selected{
-                    @extend .text-black-primary 
+                    @extend .text-black-primary; 
                 }
                 & div::after{
                     content: "";
@@ -423,10 +441,10 @@
 }
 
 .custotm-edit-form{
-    min-width: 500px;
+    max-width: 660px;
     z-index: 9;
     @media (max-width:1280px) {
-        min-width: 400px;
+        max-width: 400px;
     }
     @extend .position-fixed,.top-0,.end-0;
     .custom-header{
