@@ -320,7 +320,7 @@ setTimeout(function () {
         { id: "16", pid: "4", entityName: "xyzName", JuriState: "California", EntityType: "abcType", stateFileNumber: "012345", registerDate: "20/07/2023", principalBusinessAddress: "abz Tower", Select_Entity: "Microsoft", Name: "Alex Snider", Jurisdiction: "California" }
 
     ]);
-}, 1000)
+}, 100)
 // filtered chart
 
 
