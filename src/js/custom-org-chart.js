@@ -3903,6 +3903,13 @@ function filterMenuToggle() {
     element.textContent = updatedText;
 }
 
+  // remove_Underscore from filter
+  function removeUnderscores(element) {
+    const originalText = element.textContent;
+    const updatedText = originalText.replace(/_/g, ' '); // Use regular expression with global flag to replace all underscores
+    element.textContent = updatedText;
+}
+
 // select for filter
 document.addEventListener("DOMContentLoaded", function () {
     var btnFilter = document.querySelector('.btnFilter button');
@@ -3913,6 +3920,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const elementsToProcess = document.querySelectorAll('[data-filter-field]');
         elementsToProcess.forEach(element => {
             removeUnderscores(element);
+            console.log('hello')
         });
         // remove_Underscore from filter end
         bocFilter = document.querySelector('.boc-filter');
