@@ -3924,9 +3924,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         // remove_Underscore from filter end
         bocFilter = document.querySelector('.boc-filter');
+        bocTree = document.querySelector('#tree');
         this.classList.toggle("active");
         filterIcon.classList.toggle("icon-org-filter-white");
         bocFilter.classList.toggle("d-block");
+        bocTree.classList.toggle("pt-8");
         if (bocFilter.classList.contains('d-block')) {
             bocFilter.addEventListener('click', filterMenuToggle)
         }
