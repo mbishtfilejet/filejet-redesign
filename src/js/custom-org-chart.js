@@ -3742,16 +3742,7 @@ setTimeout(function () {
         ]
     
     );
-
-    // const mySvg = document.querySelector(".mytree svg");
-    // console.log('heloo', mySvg);
-    // const newViewBox = "0,-100,500,500";
-    // mySvg.setAttribute("viewBox", newViewBox);
-  
-
 }, 100)
-// filtered chart
-
 
 // end filtered chart js
 
@@ -3920,15 +3911,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const elementsToProcess = document.querySelectorAll('[data-filter-field]');
         elementsToProcess.forEach(element => {
             removeUnderscores(element);
-            console.log('hello')
+            // console.log('hello')
         });
         // remove_Underscore from filter end
         bocFilter = document.querySelector('.boc-filter');
         bocTree = document.querySelector('#tree');
         this.classList.toggle("active");
         filterIcon.classList.toggle("icon-org-filter-white");
-        bocFilter.classList.toggle("d-block");
-        bocTree.classList.toggle("pt-8");
+        bocFilter.classList.toggle("d-flex");
+        bocTree.classList.toggle("pt-10");
         if (bocFilter.classList.contains('d-block')) {
             bocFilter.addEventListener('click', filterMenuToggle)
         }
