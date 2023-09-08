@@ -222,12 +222,14 @@ editForm.prototype.hide = function (showldUpdateTheNode) {
 };
 // closed
 OrgChart.SEARCH_PLACEHOLDER = "Search";
+OrgChart.RES.IT_IS_LONELY_HERE_LINK = "No Record Found";
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.ctrlZoom,
     align: OrgChart.align.orientation,
+    // scaleInitial: OrgChart.match.width,
     enableSearch: true,
     miniMap: true,
     layout: OrgChart.mixed,
@@ -3869,23 +3871,7 @@ function skipFunction() {
 // end skip org chart
 
 
-function filterMenuToggle() {
-    // this.querySelector(".filter-field-selected").classList.remove(".filter-field-selected");
-    var bocFilterMenuList = document.querySelectorAll('.boc-filter-menu');
-    bocFilterMenuList.forEach(function (bocFilterMenu) {
-        if (bocFilterMenu.classList.contains('already-opened')) {
-            bocFilterMenu.classList.toggle('d-none');
-        }
-        else if (bocFilterMenu.classList.contains('opened-first-time')) {
-            bocFilterMenu.classList.remove('opened-first-time');
-            bocFilterMenu.classList.add('d-none');
-            bocFilterMenu.classList.add('already-opened');
-        }
-        else {
-            bocFilterMenu.classList.add('opened-first-time');
-        }
-    });
-}
+
 
   // remove_Underscore from filter
   function removeUnderscores(element) {
@@ -3906,27 +3892,42 @@ document.addEventListener("DOMContentLoaded", function () {
     var btnFilter = document.querySelector('.btnFilter button');
     var filterIcon = document.querySelector('.btnFilter button span');
     let bocFilter;
+    
     btnFilter.addEventListener('click', function () {
-        // remove_Underscore from filter end
-        const elementsToProcess = document.querySelectorAll('[data-filter-field]');
-        elementsToProcess.forEach(element => {
-            removeUnderscores(element);
-            // console.log('hello')
-        });
-        // remove_Underscore from filter end
         bocFilter = document.querySelector('.boc-filter');
         bocTree = document.querySelector('#tree');
         this.classList.toggle("active");
         filterIcon.classList.toggle("icon-org-filter-white");
-        bocFilter.classList.toggle("d-flex");
+        bocFilter.classList.toggle("d-block");
         bocTree.classList.toggle("pt-10");
-        if (bocFilter.classList.contains('d-block')) {
-            bocFilter.addEventListener('click', filterMenuToggle)
-        }
-        else {
-            bocFilter.addEventListener('click', filterMenuToggle)
-        }
+
+        // remove_Underscore from filter end
+        const elementsToProcess = document.querySelectorAll('[data-filter-field]');
+        const listMenu = document.querySelectorAll('.boc-filter-menu');
+
+        elementsToProcess.forEach(element => { 
+            removeUnderscores(element);
+            element.addEventListener('click', function(){
+                const menuId = element.getAttribute('data-filter-field');
+                const menu = document.querySelector(`[data-filter-menu="${menuId}"]`);
+                
+                if (menu) {
+                    listMenu.forEach(ele2 =>{
+                        if (ele2 !== menu) {
+                            ele2.classList.add('d-none');
+                        }
+                    });
+                    
+                    menu.classList.toggle('d-none');
+                }
+            });
+        });
+
+        // remove_Underscore from filter end
+       
+       
     });
+
 });
 
 
