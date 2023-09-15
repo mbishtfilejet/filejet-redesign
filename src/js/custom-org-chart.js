@@ -229,6 +229,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.ctrlZoom,
     align: OrgChart.align.orientation,
+    lazyLoading: false,
     // scaleInitial: OrgChart.match.width,
     enableSearch: true,
     miniMap: true,
