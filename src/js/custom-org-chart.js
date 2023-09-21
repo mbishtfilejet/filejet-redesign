@@ -312,7 +312,7 @@ setTimeout(function () {
                 "id": 1,
                 "pid": 0,
                 "entityName": "LTD Test LP",
-                "Entity_Type": "LP",
+                "Name": "Lhjbdjh jjhh jhjhh jhdjfhdjf jdhfjh jdhfjP",
                 "stateFileNumber": null,
                 "registerDate": "N\/A",
                 "company": "LTD Test LP",
