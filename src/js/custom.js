@@ -352,7 +352,10 @@ function showAchInfo() {
   });
 }
 function adjustDataTable() {
+  // table header alignment when table have multiple tabs
   $('.data-table-listing').DataTable().columns.adjust();
+  $('#trade-inprogress-table').DataTable().columns.adjust();
+  $('#bl-inprogress-table').DataTable().columns.adjust();
   $('.long-data-table-listing').DataTable().columns.adjust();
 }
 

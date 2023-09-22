@@ -3908,6 +3908,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         elementsToProcess.forEach(element => { 
             removeUnderscores(element);
+
+            // org-chart filter menu's dropdown open/close script
             element.addEventListener('click', function(){
                 const menuId = element.getAttribute('data-filter-field');
                 const menu = document.querySelector(`[data-filter-menu="${menuId}"]`);
