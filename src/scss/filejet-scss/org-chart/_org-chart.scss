@@ -515,7 +515,6 @@
     }
     .custom-form-body{
         overflow-y: auto;
-
         @extend .pb-2,.me-4;
         &::-webkit-scrollbar {
             width: rem(6);
@@ -531,6 +530,14 @@
             background-color: var(--bs-gray-700);
             outline: 1px solid var(--bs-tranparent);
             border-radius: rem(0);
+        }
+        .accordion{
+            .accordion-header{
+                button::after{
+                    background-size:initial;
+                    @extend .pe-3;
+                }
+            }
         }
     }
 }
