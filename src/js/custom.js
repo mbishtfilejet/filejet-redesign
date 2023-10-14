@@ -7,6 +7,7 @@ $(function () {
 
 
   $('.dashboard-data-table').DataTable({
+    "ordering": false,
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "processing": true,
