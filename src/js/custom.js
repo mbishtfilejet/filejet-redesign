@@ -43,7 +43,22 @@ $(function () {
     "scrollY": "50vh",
   });
 
+  $('.data-table-listing12').DataTable({
+    
+    columns: [{}, { orderable: false }, { orderable: false }, { orderable: false }, { orderable: false }],
+    "lengthChange": false,
+    order: [3, 'desc'],
+    "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div  role="status"> </div>',
+    },
+    "responsive": true,
+    "scrollX": true,
+    "scrollY": "50vh",
+  })
   $('.data-table-listing').DataTable({
+    
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "processing": true,
@@ -55,7 +70,7 @@ $(function () {
     "scrollY": "50vh",
   })
   $('.long-data-table-listing').DataTable({
-    "lengthChange": false,
+    "lengthChange": false, 
     "pagingType": "simple_numbers",
     "processing": true,
     "language": {
@@ -489,7 +504,7 @@ function loadWarningSmallScreenPopup() {
 // owl-carousel tabs for preview slide-out
 // Initialize the Owl Carousel
 $(document).ready(function () {
-  $('.owl-carousel').owlCarousel({
+ /* $('.owl-carousel').owlCarousel({
     items: 4, // Set the number of items to display
     loop: false, // Enable loop to create a continuous carousel
     stagePadding: 20,
@@ -508,5 +523,5 @@ $(document).ready(function () {
         items: 4 // Display three items on medium screens and above
       }
     }
-  });
+  });*/
 });
