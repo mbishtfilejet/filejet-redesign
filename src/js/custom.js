@@ -7,6 +7,7 @@ $(function () {
 
 
   $('.dashboard-data-table').DataTable({
+    "ordering": false,
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "processing": true,
@@ -59,6 +60,18 @@ $(function () {
   })
   $('.data-table-listing').DataTable({
     
+    "lengthChange": false,
+    "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div  role="status"> </div>',
+    },
+    "responsive": true,
+    "scrollX": true,
+    "scrollY": "50vh",
+  })
+  $('.data-table-listing-ts').DataTable({
+    "ordering": true,
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "processing": true,
