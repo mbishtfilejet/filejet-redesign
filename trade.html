@@ -1361,10 +1361,10 @@
                         </div>
                         <!-- Due & Registered date  -->
                         <div class="mb-3">
-                            <div class="font-weight-700 text-uppercase">DUE DATE</div>
+                            <div class="font-weight-700 text-uppercase">DUE DATE223</div>
 
                             <div class="custom-date-range-picker form-group position-relative w-100 shadow-lg mt-2">
-                                <input class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                                <input class="form-control" type="text" name="daterange" value="" />
                                 <span class="icon icon-calender-outline-dark position-absolute"></span>
                             </div>
                         </div>
@@ -1374,7 +1374,7 @@
 
                            
                                 <div class="custom-date-range-picker form-group position-relative w-100 shadow-lg mt-2">
-                                    <input class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                                    <input class="form-control" type="text" name="daterange" value="" />
                                     <span class="icon icon-calender-outline-dark position-absolute"></span>
                                 </div>
                            
@@ -3067,12 +3067,17 @@
     <script>
         $(function() {
           $('input[name="daterange"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            },
             opens: 'left'
           }, function(start, end, label) {
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
           });
         });
         </script>
+        
     <!-- date range end -->
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
