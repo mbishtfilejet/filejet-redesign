@@ -108,15 +108,16 @@
                             </li>
                             <!-- Organization Charts  -->
                             <li class="nav-link">
-                                <a href="org-chart-list.html" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
-                                    data-bs-toggle="#" data-bs-target="#organizationChartModal">
+                                <a href="org-chart-list.html"
+                                    class="text-decoration-none ps-3 py-3 d-flex align-items-center" data-bs-toggle="#"
+                                    data-bs-target="#organizationChartModal">
                                     <span>
                                         <span class="icon icon-chart normal-icon"></span>
                                         <span class="icon icon-chart-purple active-icon"></span>
                                     </span>
                                     <span class="text nav-text d-inline-block">
                                         Organization Charts
-                                     
+
                                     </span>
                                 </a>
                             </li>
@@ -1905,7 +1906,8 @@
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-5 calender-input">
                                         <label for="" class="form-label">Date</label>
-                                        <input type="text" class="form-control datepicker" placeholder="MM / DD / YYYY">
+                                        <input type="text" class="form-control" name="reminderDate"
+                                            placeholder="MM / DD / YYYY">
                                         <span class="d-inline-block">
                                             <span class="icon icon-calender-lined"></span>
                                         </span>
@@ -1913,10 +1915,13 @@
                                     <div class="col-12 col-md-5">
                                         <label for="" class="form-label">Time</label>
                                         <div class="time-input position-relative">
-                                            <input type="time" class="form-control bg-white" placeholder="HH:MM"
-                                                required>
+                                            <input type="text" class="form-control bg-white date-picker" id="duration"
+                                                name="reminderTime" placeholder="HH:MM" autocomplete="off" required>
                                             <span class="icon time-icon showTimeButton"></span>
                                         </div>
+
+
+
                                     </div>
                                     <div class="col-12 col-md-2">
                                         <label for="all-day" class="form-label">ALL DAY</label>
@@ -2010,8 +2015,8 @@
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-5 calender-input">
                                         <label for="" class="form-label">Date</label>
-                                        <input type="text" class="form-control datepicker" placeholder="MM / DD / YYYY"
-                                            value="12 / 16 / 2022">
+                                        <input type="text" class="form-control" name="reminderDate" autocomplete="off"
+                                            placeholder="MM / DD / YYYY" value="">
                                         <span class="d-inline-block">
                                             <span class="icon icon-calender-lined"></span>
                                         </span>
@@ -2019,8 +2024,8 @@
                                     <div class="col-12 col-md-5">
                                         <label for="" class="form-label">Time</label>
                                         <div class="time-input position-relative">
-                                            <input type="time" class="form-control bg-white" placeholder="HH:MM"
-                                                required>
+                                            <input type="text" class="form-control bg-white" name="reminderTime"
+                                                autocomplete="off" placeholder="HH:MM" required>
                                             <span class="icon time-icon showTimeButton"></span>
                                         </div>
                                     </div>
@@ -2398,6 +2403,75 @@
         });
 
     </script>
+    <!-- datepicker -->
+    <script>
+        $(function () {
+            $('input[name="reminderDate"]').daterangepicker({
+                singleDatePicker: true,
+                //  timePicker:true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                autoApply: true,
+                drops: 'up',
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+            }, function (start, end, label) {
+                var years = moment().diff(start, 'years');
+
+            });
+            $('input[name="reminderDate"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY'));
+            });
+        });
+
+        $(function () {
+            $('input[name="reminderTime"]').daterangepicker({
+                autoClose: true,
+                orientation: "bottom",
+                timePicker: true,
+                singleDatePicker: true,
+                timePicker24Hour: true,
+                timePickerIncrement: 1,
+                autoUpdateInput: false,
+                autoApply: true,
+                applyButtonClasses: 'btn-info',
+                // drops:'up',
+                timePickerSeconds: false,
+
+
+                locale: {
+                    format: 'HH:mm'
+                },
+                beforeShow: function (input, inst) {
+                    var calendar = inst.dpDiv;
+                    setTimeout(function () {
+                        calendar.position({
+                            my: 'center bottom',
+                            at: 'top',
+                            collision: 'none',
+                            of: input
+                        });
+                    }, 100);
+                }
+            }).on('show.daterangepicker', function (ev, picker) {
+                picker.container.find(".calendar-table").hide();
+
+
+            });
+            $('input[name="reminderTime"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('hh:mm'));
+            });
+        })
+
+
+
+
+
+    </script>
+
+    <!-- datepicker end-->
+
+    <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
     <!-- Scripts End-->
 </body>
