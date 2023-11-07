@@ -1376,7 +1376,7 @@
                         <div class="mb-3">
                             <div class="font-weight-700 text-uppercase">DUE DATE223</div>
 
-                            <div class="custom-date-range-picker form-group position-relative w-100 shadow-lg mt-2">
+                            <div class="custom-date-range-picker calendar-input form-group position-relative w-100 shadow-lg mt-2">
                                 <input class="form-control" type="text" name="datefilter" value="" autocomplete="off" />
                                 <span class="icon icon-calender-outline-dark position-absolute"></span>
                             </div>
@@ -1386,8 +1386,8 @@
                             <div class="font-weight-700 text-uppercase">Registered Date</div>
 
 
-                            <div class="custom-date-range-picker form-group position-relative w-100 shadow-lg mt-2">
-                                <input class="form-control" type="text" name="datefilter" value="" autocomplete="off" />
+                            <div class="custom-date-range-picker calendar-input-registered form-group position-relative w-100 shadow-lg mt-2">
+                                <input class="form-control" type="text" name="registeredDate" value="" autocomplete="off" />
                                 <span class="icon icon-calender-outline-dark position-absolute"></span>
                             </div>
 
@@ -3075,12 +3075,14 @@
     </script>
     <script type="text/javascript">
         $(function () {
-
             $('input[name="datefilter"]').daterangepicker({
                 autoUpdateInput: false,
-                autoApply: true,
                 drops: 'up',
                 applyButtonClasses: 'btn-info',
+                parentEl: $('.calendar-input'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'auto',
                 locale: {
                     cancelLabel: 'Clear'
                 }
@@ -3089,12 +3091,27 @@
             $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
             });
+        });
 
-            $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-                $(this).val('');
+        $(function () {
+            $('input[name="registeredDate"]').daterangepicker({
+                autoUpdateInput: false,
+                drops: 'up',
+                applyButtonClasses: 'btn-info',
+                parentEl: $('.calendar-input-registered'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'auto',
+                locale: {
+                    cancelLabel: 'Clear'
+                }
             });
 
+            $('input[name="registeredDate"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
         });
+
     </script>
     <!-- for date picker -->
 

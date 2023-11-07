@@ -2412,9 +2412,13 @@
                 showDropdowns: true,
                 autoUpdateInput: false,
                 autoApply: true,
-                drops: 'up',
+                parentEl: $('.calender-input'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'auto',
                 minYear: 1901,
                 maxYear: parseInt(moment().format('YYYY'), 10)
+               
             });
             $('input[name="reminderDate"]').on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format('DD/MM/YY hh:mm A'));
@@ -2432,24 +2436,13 @@
                 autoUpdateInput: false,
                 autoApply: true,
                 applyButtonClasses: 'btn-info',
-                // drops:'up',
+                drops:'auto',
                 timePickerSeconds: false,
-
-
+                parentEl: $('.time-input'),
+                showDropdowns: true,
                 locale: {
                     format: 'HH:mm'
                 },
-                beforeShow: function (input, inst) {
-                    var calendar = inst.dpDiv;
-                    setTimeout(function () {
-                        calendar.position({
-                            my: 'center bottom',
-                            at: 'top',
-                            collision: 'none',
-                            of: input
-                        });
-                    }, 100);
-                }
             }).on('show.daterangepicker', function (ev, picker) {
                 picker.container.find(".calendar-table").hide();
 
