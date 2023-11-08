@@ -1900,25 +1900,6 @@
                                     </select>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-12 col-md-5 calender-input">
-                                        <label for="" class="form-label">Date</label>
-                                        <input type="text" class="form-control" name="reminderDate"
-                                            placeholder="MM / DD / YYYY">
-                                        <span class="d-inline-block">
-                                            <span class="icon icon-calender-lined"></span>
-                                        </span>
-                                    </div>
-                                    <div class="col-12 col-md-5">
-                                        <label for="" class="form-label">Time</label>
-                                        <div class="time-input position-relative">
-                                            <input type="text" class="form-control bg-white date-picker" id="duration"
-                                                name="reminderTime" placeholder="HH:MM" autocomplete="off" required>
-                                            <span class="icon time-icon showTimeButton"></span>
-                                        </div>
-
-
-
-                                    </div>
                                     <div class="col-12 col-md-2">
                                         <label for="all-day" class="form-label">ALL DAY</label>
                                         <div
@@ -1929,6 +1910,35 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="col-12 col-md-10 calender-input">
+                                        <label for="" class="form-label">Date</label>
+                                        <input type="text" class="form-control" name="reminderDate"
+                                            placeholder="MM / DD / YYYY">
+                                        <span class="d-inline-block">
+                                            <span class="icon icon-calender-lined"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-md-6 mt-2">
+                                        <label for="" class="form-label">Start Time22</label>
+                                        <div class="time-input time-input1 position-relative">
+                                            <input type="text" class="form-control bg-white"
+                                                name="reminderTime" placeholder="HH:MM" autocomplete="off" required>
+                                            <span class="icon time-icon showTimeButton"></span>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-12 col-md-6 mt-2">
+                                        <label for="" class="form-label">End Time22</label>
+                                        <div class="time-input time-input2 position-relative">
+                                            <input type="text" class="form-control bg-white"
+                                                name="reminderTime2" placeholder="HH:MM" autocomplete="off" required>
+                                            <span class="icon time-icon showTimeButton"></span>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-12">
@@ -2009,32 +2019,45 @@
                                     </select>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-12 col-md-5 calender-input">
-                                        <label for="" class="form-label">Date</label>
-                                        <input type="text" class="form-control" name="reminderDate" autocomplete="off"
-                                            placeholder="MM / DD / YYYY" value="">
-                                        <span class="d-inline-block">
-                                            <span class="icon icon-calender-lined"></span>
-                                        </span>
-                                    </div>
-                                    <div class="col-12 col-md-5">
-                                        <label for="" class="form-label">Time</label>
-                                        <div class="time-input position-relative">
-                                            <input type="text" class="form-control bg-white" name="reminderTime"
-                                                autocomplete="off" placeholder="HH:MM" required>
-                                            <span class="icon time-icon showTimeButton"></span>
-                                        </div>
-                                    </div>
                                     <div class="col-12 col-md-2">
                                         <label for="all-day" class="form-label">ALL DAY</label>
                                         <div
                                             class="py-3 rounded-2 bg-white text-center form-control d-flex align-items-center justify-content-center">
-                                            <div class="form-check d-flex justify-content-center ">
-                                                <input class="form-check-input" type="checkbox" value="true"
-                                                    id="all-day" checked="">
+                                            <div class="form-check d-flex justify-content-center">
+                                                <input class="form-check-input" type="checkbox" value="" id="all-day"
+                                                    checked="">
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="col-12 col-md-10 edit-calender-input calender-input">
+                                        <label for="" class="form-label">Date</label>
+                                        <input type="text" class="form-control" name="editReminderDate"
+                                            placeholder="MM / DD / YYYY">
+                                        <span class="d-inline-block">
+                                            <span class="icon icon-calender-lined"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-md-6 mt-2">
+                                        <label for="" class="form-label">Start Time</label>
+                                        <div class="time-input edit-time-input1 position-relative">
+                                            <input type="text" class="form-control bg-white"
+                                                name="editReminderTime1" placeholder="HH:MM" autocomplete="off" required>
+                                            <span class="icon time-icon showTimeButton"></span>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-12 col-md-6 mt-2">
+                                        <label for="" class="form-label">End Time</label>
+                                        <div class="time-input edit-time-input2 position-relative">
+                                            <input type="text" class="form-control bg-white"
+                                                name="editReminderTime2" placeholder="HH:MM" autocomplete="off" required>
+                                            <span class="icon time-icon showTimeButton"></span>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-12">
@@ -2418,7 +2441,6 @@
                 $(this).val(picker.startDate.format('MM/DD/YY'));
             });
         });
-
         $(function () {
             $('input[name="reminderTime"]').daterangepicker({
                 autoClose: true,
@@ -2432,7 +2454,7 @@
                 applyButtonClasses: 'btn-info',
 
                 timePickerSeconds: false,
-                parentEl: $('.time-input'),
+                parentEl: $('.time-input1'),
                 showDropdowns: true,
                 locale: {
                     format: 'HH:mm'
@@ -2443,6 +2465,109 @@
 
             });
             $('input[name="reminderTime"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('hh:mm'));
+            });
+        })
+
+        $(function () {
+            $('input[name="reminderTime2"]').daterangepicker({
+                autoClose: true,
+                orientation: "bottom",
+                timePicker: true,
+                 singleDatePicker: true,
+                timePicker24Hour: true,
+                timePickerIncrement: 1,
+                autoUpdateInput: false,
+            
+                applyButtonClasses: 'btn-info',
+
+                timePickerSeconds: false,
+                parentEl: $('.time-input2'),
+                showDropdowns: true,
+                locale: {
+                    format: 'HH:mm'
+                },
+            }).on('show.daterangepicker', function (ev, picker) {
+                picker.container.find(".calendar-table").hide();
+
+
+            });
+            $('input[name="reminderTime2"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('hh:mm'));
+            });
+        })
+        // create reminder end
+
+        $(function () {
+            $('input[name="editReminderDate"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                parentEl: $('.edit-calender-input'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'auto',
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+               
+            });
+            $('input[name="editReminderDate"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YY'));
+            });
+        });
+
+        $(function () {
+            $('input[name="editReminderTime1"]').daterangepicker({
+                autoClose: true,
+                orientation: "bottom",
+                timePicker: true,
+                singleDatePicker: true,
+                timePicker24Hour: true,
+                timePickerIncrement: 1,
+                autoUpdateInput: false,
+            
+                applyButtonClasses: 'btn-info',
+
+                timePickerSeconds: false,
+                parentEl: $('.edit-time-input1'),
+                showDropdowns: true,
+                locale: {
+                    format: 'HH:mm'
+                },
+            }).on('show.daterangepicker', function (ev, picker) {
+                picker.container.find(".calendar-table").hide();
+
+
+            });
+            $('input[name="editReminderTime1"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('hh:mm'));
+            });
+        })
+
+        $(function () {
+            $('input[name="editReminderTime2"]').daterangepicker({
+                autoClose: true,
+                orientation: "bottom",
+                timePicker: true,
+                 singleDatePicker: true,
+                timePicker24Hour: true,
+                timePickerIncrement: 1,
+                autoUpdateInput: false,
+            
+                applyButtonClasses: 'btn-info',
+
+                timePickerSeconds: false,
+                parentEl: $('.edit-time-input2'),
+                showDropdowns: true,
+                locale: {
+                    format: 'HH:mm'
+                },
+            }).on('show.daterangepicker', function (ev, picker) {
+                picker.container.find(".calendar-table").hide();
+
+
+            });
+            $('input[name="editReminderTime2"]').on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format('hh:mm'));
             });
         })
