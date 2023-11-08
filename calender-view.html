@@ -2410,10 +2410,8 @@
         $(function () {
             $('input[name="reminderDate"]').daterangepicker({
                 singleDatePicker: true,
-                timePicker:true,
                 showDropdowns: true,
                 autoUpdateInput: false,
-                autoApply: true,
                 parentEl: $('.calender-input'),
                 showDropdowns: true,
                 applyButtonClasses: 'btn-info',
@@ -2423,7 +2421,7 @@
                
             });
             $('input[name="reminderDate"]').on('apply.daterangepicker', function (ev, picker) {
-                $(this).val(picker.startDate.format('DD/MM/YY hh:mm A'));
+                $(this).val(picker.startDate.format('DD/MM/YY'));
             });
         });
 
@@ -2436,9 +2434,9 @@
                 timePicker24Hour: true,
                 timePickerIncrement: 1,
                 autoUpdateInput: false,
-                autoApply: true,
+            
                 applyButtonClasses: 'btn-info',
-                drops:'auto',
+
                 timePickerSeconds: false,
                 parentEl: $('.time-input'),
                 showDropdowns: true,
