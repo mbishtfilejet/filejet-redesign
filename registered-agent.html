@@ -403,10 +403,10 @@
                                     <div class="tab-pane fade" id="ra-other" role="tabpanel"
                                         aria-labelledby="ra-other-tab">
                                         <div class="">
-                                            <table id=""
-                                                class="table table-striped w-100 data-table-listing table-nowrap">
+                                            <table id="ra-other-table" class="table table-striped w-100 table-nowrap">
                                                 <thead>
                                                     <tr>
+                                                        <th class="sorting-none"></th>
                                                         <th class="fixed-max-width">Entity Name</th>
                                                         <th class="fixed-max-width">State</th>
                                                         <th class="fixed-max-width">Reg. Agent Name</th>
@@ -415,7 +415,13 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                  
                                                     <tr>
+                                                        <td><div class="">
+                                                            <a href="javascript:void(0);" class="dt-control">
+                                                                    <span class="icon icon-folder-upload-purple me-4"></span>
+                                                            </a>
+                                                        </div></td>
                                                         <td><a href="./entities-details.html">Envision Endurance LLC</a>
                                                         </td>
                                                         <td> CA</td>
@@ -429,6 +435,11 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
+                                                        <td><div class="">
+                                                            <a href="javascript:void(0);" class="dt-control">
+                                                                    <span class="icon icon-folder-upload-purple me-4"></span>
+                                                            </a>
+                                                        </div></td>
                                                         <td><a href="./entities-details.html">NextWave Industries</a>
                                                         </td>
                                                         <td>ID</td>
@@ -448,10 +459,11 @@
                                     <div class="tab-pane fade" id="ra-progress" role="tabpanel"
                                         aria-labelledby="ra-progress">
                                         <div class="">
-                                            <table id=""
-                                                class="table table-striped w-100 data-table-listing table-nowrap">
+                                            <table id="ra-progress-table"
+                                                class="table table-striped w-100 table-nowrap">
                                                 <thead>
                                                     <tr>
+                                                        <th class="sorting-none" style="min-width:57px"></th>
                                                         <th class="fixed-max-width">Entity Name</th>
                                                         <th class="fixed-max-width">State</th>
                                                         <th class="fixed-max-width">Date Received</th>
@@ -460,6 +472,13 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr class="odd">
+                                                        <td>
+                                                            <div class="">
+                                                                <a href="javascript:void(0);" class="dt-control">
+                                                                        <span class="icon icon-folder-upload-purple me-4"></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
                                                         <td class="sorting_1"><a href="/entities-details.html">Beyond
                                                                 Boundaries Ventures</a></td>
                                                         <td>WY</td>
@@ -469,6 +488,11 @@
                                                                 Submitted</span></td>
                                                     </tr>
                                                     <tr class="even">
+                                                        <td><div class="">
+                                                            <a href="javascript:void(0);" class="dt-control">
+                                                                    <span class="icon icon-folder-upload-purple me-4"></span>
+                                                            </a>
+                                                        </div></td>
                                                         <td class="sorting_1"><a href="/entities-details.html">Fortitude
                                                                 Finance Co.</a></td>
                                                         <td>NV</td>
@@ -478,6 +502,11 @@
                                                         </td>
                                                     </tr>
                                                     <tr class="odd">
+                                                        <td><div class="">
+                                                            <a href="javascript:void(0);" class="dt-control">
+                                                                    <span class="icon icon-folder-upload-purple me-4"></span>
+                                                            </a>
+                                                        </div></td>
                                                         <td class="sorting_1"><a href="/entities-details.html">Wonka
                                                                 Finance Co.</a></td>
                                                         <td>HI</td>
@@ -2551,6 +2580,42 @@
 
             // Add event listener for opening and closing details
             $('#ra-detail-table tbody').on('click', 'a.dt-control', handleTable(AllTable));
+
+        });
+
+        $(document).ready(function () {
+            var AllTable = $('#ra-other-table').DataTable({
+                "lengthChange": false,
+                "pagingType": "simple_numbers",
+                "processing": true,
+                "language": {
+                    "processing": '<div  role="status"> </div>',
+                },
+                "scrollX": true,
+                "scrollY": "50vh",
+
+            });
+
+            // Add event listener for opening and closing details
+            $('#ra-other-table tbody').on('click', 'a.dt-control', handleTable(AllTable));
+
+        });
+
+        $(document).ready(function () {
+            var AllTable = $('#ra-progress-table').DataTable({
+                "lengthChange": false,
+                "pagingType": "simple_numbers",
+                "processing": true,
+                "language": {
+                    "processing": '<div  role="status"> </div>',
+                },
+                "scrollX": true,
+                "scrollY": "50vh",
+
+            });
+
+            // Add event listener for opening and closing details
+            $('#ra-progress-table tbody').on('click', 'a.dt-control', handleTable(AllTable));
 
         });
     </script>
