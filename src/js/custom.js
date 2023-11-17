@@ -384,6 +384,8 @@ function adjustDataTable() {
   $('.data-table-listing').DataTable().columns.adjust();
   $('#trade-inprogress-table').DataTable().columns.adjust();
   $('#bl-inprogress-table').DataTable().columns.adjust();
+  $('#ra-other-table').DataTable().columns.adjust();
+  $('#ra-progress-table').DataTable().columns.adjust();
   $('.long-data-table-listing').DataTable().columns.adjust();
 }
 

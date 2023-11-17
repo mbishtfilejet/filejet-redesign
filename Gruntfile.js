@@ -24,7 +24,8 @@ module.exports = function (grunt) {
                 files: {
                     'dist/js/jquery.min.js':
                         [
-                            'src/js/jquery.js'
+                            'src/js/jquery.js',
+                           
                         ],
                     'dist/js/plugins.min.js':
                         [
@@ -32,6 +33,10 @@ module.exports = function (grunt) {
                             'src/js/lib/datatables.js',
                             'src/js/lib/jquery-ui.js',
                             'src/js/lib/jquery-alerts.js',
+                            'src/js/lib/moment.min.js',
+                            'src/js/lib/daterangepicker.js',
+                          
+                            
                         ],
                     'dist/js/custom.min.js':
                         [
