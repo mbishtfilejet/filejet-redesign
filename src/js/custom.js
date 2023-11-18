@@ -387,6 +387,8 @@ function adjustDataTable() {
   $('#ra-other-table').DataTable().columns.adjust();
   $('#ra-progress-table').DataTable().columns.adjust();
   $('.long-data-table-listing').DataTable().columns.adjust();
+  $('#completed-table').DataTable().columns.adjust();
+  $('#exempt-entity-table').DataTable().columns.adjust();
 }
 
 function editDocumentName() {
