@@ -3847,11 +3847,11 @@
                                 </fieldset>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mb-3 calender-input2 edit-calender-input">
+                        <div class="col-md-6 position-relative">
+                            <div class="mb-3 calender-input2">
                                
                                    
-                                    <input type="text" class="form-control"  name="editReminderDate" id="" value="" placeholder="Date of Birth">
+                                    <input type="text" class="form-control"  name="dateOfBirth" id="" value="" placeholder="Date of Birth">
                              
                             </div>
                         </div>
@@ -3986,11 +3986,11 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <fieldset>
+                            <div class="mb-3 position-relative">
+                                <div class="calendar-input3">
                                    
-                                    <input type="text" class="form-control" id="" value="" placeholder="Date of Birth">
-                                </fieldset>
+                                    <input type="text" class="form-control" name="dateOfBirth2" placeholder="Date of Birth">
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -4068,7 +4068,7 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <form class="border-top pt-4" action="">
-                        <div class="mb-3">
+                        <div class="mb-3 selectPicker">
                             
                             <label for="" class="form-label">Does this company meet any of the following list ?</label>
                             <select class="form-select form-control d-flex align-items-center fw-normal outline-0 selectpicker" data-live-search="true" aria-label="Default select example">
@@ -5058,19 +5058,37 @@
         });
         
         $(function () {
-            $('input[name="editReminderDate"]').daterangepicker({
+            $('input[name="dateOfBirth"]').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
                 autoUpdateInput: false,
-                parentEl: $('.edit-calender-input'),
+                parentEl: $('.calender-input2'),
                 showDropdowns: true,
                 applyButtonClasses: 'btn-info',
-                drops: 'auto',
+                drops: 'bottom',
                 minYear: 1901,
                 maxYear: parseInt(moment().format('YYYY'), 10)
                
             });
-            $('input[name="editReminderDate"]').on('apply.daterangepicker', function (ev, picker) {
+            $('input[name="dateOfBirth"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YY'));
+            });
+        });
+
+        $(function () {
+            $('input[name="dateOfBirth2"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                parentEl: $('.calendar-input3'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'bottom',
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+               
+            });
+            $('input[name="dateOfBirth2"]').on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format('MM/DD/YY'));
             });
         });
