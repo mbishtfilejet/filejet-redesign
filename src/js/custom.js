@@ -542,3 +542,20 @@ $(document).ready(function () {
     }
   });*/
 });
+
+
+// add placeholder in selectPicker in CTA
+
+ // Set the placeholder using JavaScript
+
+ function addAttributeOnLoad() {
+  // Get the input element by its ID
+  var searchInput = document.querySelector('input[role="combobox"]');
+
+  // Add a custom attribute called "placeholder" with the value "some value"
+  searchInput.setAttribute('placeholder', 'Search');
+}
+
+// Attach the function to the window.onload event
+window.onload = addAttributeOnLoad;
+ 
