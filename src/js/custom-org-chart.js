@@ -125,6 +125,7 @@ OrgChart.SEARCH_PLACEHOLDER = "Search";
 OrgChart.RES.IT_IS_LONELY_HERE_LINK = "No Record Found";
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
+    columns: 6,
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.scroll,
@@ -223,7 +224,7 @@ fetch('data.json')
     // Load the JSON data into the chart after a delay of 100 milliseconds
     setTimeout(function () {
       chart.load(data);
-    }, 3000);
+    }, 1000);
   })
   .catch(error => {
     console.error('There has been a problem with your fetch operation:', error);
