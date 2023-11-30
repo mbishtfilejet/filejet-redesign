@@ -122,7 +122,7 @@ editForm.prototype.hide = function (showldUpdateTheNode) {
 };
 // closed
 OrgChart.SEARCH_PLACEHOLDER = "Search";
-OrgChart.RES.IT_IS_LONELY_HERE_LINK = "No Record Found";
+OrgChart.RES.IT_IS_LONELY_HERE_LINK = "Loading...";
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     columns: 6,
