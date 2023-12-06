@@ -3409,210 +3409,240 @@
                             <div class="list-group-item px-0 d-flex justify-content-between">
                                 <div class="pe-5 ps-1">
                                     <p class="mb-0 font-weight-600">
-                                        Have You filed ever outside Filejet ?
+                                        Have you filed a BOI report filing before ?
                                     </p>
                                 </div>
 
                                 <div class="d-flex justify-content-between gap-3">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="checkYes1" value="option1">
+                                            id="checkYes1" value="option1" onclick="toggleDivs(true)">
                                         <label class="form-check-label" for="checkYes1">Yes</label>
                                     </div>
                                     <div class="form-check form-check-inline me-0">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="checkNo1" value="option2">
+                                            id="checkNo1" value="option2" onclick="toggleDivs(false)">
                                         <label class="form-check-label" for="checkNo1">No</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3 selectPicker">
+                        <div class="d-none" id="questionnaireToggleYes">
+                            <div class="mb-3">
 
-                            <label for="" class="form-label">Does this company meet any of the following list ?</label>
-                            <select
-                                class="form-select form-control d-flex align-items-center fw-normal outline-0 selectpicker"
-                                data-live-search="true" aria-label="Default select example">
-                                <option selected="">Securities reporting issuer</option>
-                                <option value="1">Governmental Authority</option>
-                                <option value="2">Bank</option>
-                                <option value="3">Credit Union</option>
-                                <option value="4">Depository Institution Holding Company</option>
-                                <option value="5">Money Services Buisness</option>
-                                <option value="6">Broker or Dealer in securities</option>
-                                <option value="7">Other Exchange Act registered entity</option>
-                                <option value="8">Investment Company or Investment Advisor</option>
-                                <option value="9">Venture Capital Fund Advisor</option>
-                                <option value="10">Insurance Company</option>
-                                <option value="11">State-licensed Insurance Producer</option>
-                                <option value="12">Commodity Exchange Act registered entity</option>
-                                <option value="13">Accounting Firm</option>
-                                <option value="14">Public Utility</option>
-                                <option value="15">Financial Market Utility</option>
-                                <option value="16">Pooled Investment Vehicle</option>
-                                <option value="17">Tax-Exempt entity</option>
-                                <option value="18">Entity assisting a Tax-Exempt entity</option>
-                                <option value="19">Large Operating company</option>
-                                <option value="20">Subsidiary of certain exempt entities</option>
-                                <option value="21">Inactive entity</option>
-                            </select>
+                                <div class="calender-input-filed position-relative">
+                                    <label for="" class="form-label">boi filing Registration Date</label>
 
-                        </div>
-
-                        <div class="mb-3 bg-light shadow-sm rounded-3">
-                            <div class="ps-3 pt-3">
-                                <p class="font-weight-700 mb-1 fs-6">Securities Reporting Issuer (Exemption #1)</p>
-                                <p class="fs-7 font-weight-600">An Entity qualify for this exemptions if <span
-                                        class="fw-bold">either</span> of the following criteria apply :</p>
-                            </div>
-                            <div
-                                class="mb-3 bg-white p-4 py-1 rounded-3 d-flex align-items-center justify-content-between">
-                                <div>
-                                    <ol class="list-group list-group-numbered list-group-flush mb-0">
-                                        <li class="list-group-item px-0 d-flex">
-                                            <div class="pe-5 ps-1">
-                                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit amet
-                                                </p>
-                                            </div>
-
-                                            <div class="d-flex justify-content-between gap-3">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="inlineRadioOptions" id="checkYes1" value="option1">
-                                                    <label class="form-check-label" for="checkYes1">Yes</label>
-                                                </div>
-                                                <div class="form-check form-check-inline me-0">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="inlineRadioOptions" id="checkNo1" value="option2">
-                                                    <label class="form-check-label" for="checkNo1">No</label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item px-0 d-flex">
-                                            <div class="pe-5 ps-1">
-                                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit amet
-                                                </p>
-                                            </div>
-
-                                            <div class="d-flex justify-content-between gap-3">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="checkYes2"
-                                                        id="checkYes2">
-                                                    <label class="form-check-label" for="checkYes2">Yes</label>
-                                                </div>
-                                                <div class="form-check form-check-inline me-0">
-                                                    <input class="form-check-input" type="radio" name="checkYes2"
-                                                        id="checkNo2">
-                                                    <label class="form-check-label" for="checkNo2">No</label>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                    </ol>
+                                    <input type="text" class="form-control" name="filedDate" id=""
+                                        placeholder="MM / DD / YYYY">
+                                    <span class="d-inline-block mt-1 position-absolute top-50 end-0 pe-3 ">
+                                        <span class="icon icon-calender-lined"></span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="mb-3 bg-light shadow-sm rounded-3">
-                            <div class="ps-3 pt-3">
-                                <p class="font-weight-700 mb-1 fs-6">Investment company or Investment advisor (Exemption
-                                    #10)</p>
-                                <p class="fs-7 font-weight-600">An Entity qualify for this exemptions if <span
-                                        class="fw-bold">either</span> of the following criteria apply :</p>
+                        <div class="d-none" id="questionnaireToggleNo">
+                            <div class="mb-3 selectPicker">
+
+                                <label for="" class="form-label">Does this company meet any of the following list
+                                    ?</label>
+                                <select
+                                    class="form-select form-control d-flex align-items-center fw-normal outline-0 selectpicker"
+                                    data-live-search="true" aria-label="Default select example">
+                                    <option selected="">Securities reporting issuer</option>
+                                    <option value="1">Governmental Authority</option>
+                                    <option value="2">Bank</option>
+                                    <option value="3">Credit Union</option>
+                                    <option value="4">Depository Institution Holding Company</option>
+                                    <option value="5">Money Services Buisness</option>
+                                    <option value="6">Broker or Dealer in securities</option>
+                                    <option value="7">Other Exchange Act registered entity</option>
+                                    <option value="8">Investment Company or Investment Advisor</option>
+                                    <option value="9">Venture Capital Fund Advisor</option>
+                                    <option value="10">Insurance Company</option>
+                                    <option value="11">State-licensed Insurance Producer</option>
+                                    <option value="12">Commodity Exchange Act registered entity</option>
+                                    <option value="13">Accounting Firm</option>
+                                    <option value="14">Public Utility</option>
+                                    <option value="15">Financial Market Utility</option>
+                                    <option value="16">Pooled Investment Vehicle</option>
+                                    <option value="17">Tax-Exempt entity</option>
+                                    <option value="18">Entity assisting a Tax-Exempt entity</option>
+                                    <option value="19">Large Operating company</option>
+                                    <option value="20">Subsidiary of certain exempt entities</option>
+                                    <option value="21">Inactive entity</option>
+                                </select>
+
                             </div>
-                            <div
-                                class="mb-3 bg-white p-4 py-1 rounded-3 d-flex align-items-center justify-content-between">
-                                <div>
-                                    <ol class="list-group list-group-numbered list-group-flush mb-0">
-                                        <li class="list-group-item px-0 d-flex">
-                                            <div class="pe-5 ps-1">
-                                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit amet
-                                                </p>
 
-                                                <div>
-                                                    <ul class="ps-3 pe-0">
-                                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Odit eos perferendis at</li>
-                                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Odit eos perferendis at</li>
-                                                    </ul>
+                            <div class="mb-3 bg-light shadow-sm rounded-3">
+                                <div class="ps-3 pt-3">
+                                    <p class="font-weight-700 mb-1 fs-6">Securities Reporting Issuer (Exemption #1)</p>
+                                    <p class="fs-7 font-weight-600">An Entity qualify for this exemptions if <span
+                                            class="fw-bold">either</span> of the following criteria apply :</p>
+                                </div>
+                                <div
+                                    class="mb-3 bg-white p-4 py-1 rounded-3 d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <ol class="list-group list-group-numbered list-group-flush mb-0">
+                                            <li class="list-group-item px-0 d-flex">
+                                                <div class="pe-5 ps-1">
+                                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                        elit.
+                                                        Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit
+                                                        amet
+                                                    </p>
                                                 </div>
-                                            </div>
 
-                                            <div class="d-flex justify-content-between gap-3">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="inlineRadioOptions3" id="checkYes3" value="option1">
-                                                    <label class="form-check-label" for="checkYes3">Yes</label>
+                                                <div class="d-flex justify-content-between gap-3">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="inlineRadioOptions" id="checkYes1" value="option1">
+                                                        <label class="form-check-label" for="checkYes1">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline me-0">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="inlineRadioOptions" id="checkNo1" value="option2">
+                                                        <label class="form-check-label" for="checkNo1">No</label>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check form-check-inline me-0">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="inlineRadioOptions3" id="checkNo3" value="option2">
-                                                    <label class="form-check-label" for="checkNo3">No</label>
+                                            </li>
+                                            <li class="list-group-item px-0 d-flex">
+                                                <div class="pe-5 ps-1">
+                                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                        elit.
+                                                        Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit
+                                                        amet
+                                                    </p>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item px-0 d-flex">
-                                            <div class="pe-5 ps-1">
-                                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit amet
-                                                </p>
-                                            </div>
 
-                                            <div class="d-flex justify-content-between gap-3">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="yesNo4"
-                                                        id="checkYes44">
-                                                    <label class="form-check-label" for="checkYes44">Yes</label>
+                                                <div class="d-flex justify-content-between gap-3">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="checkYes2"
+                                                            id="checkYes2">
+                                                        <label class="form-check-label" for="checkYes2">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline me-0">
+                                                        <input class="form-check-input" type="radio" name="checkYes2"
+                                                            id="checkNo2">
+                                                        <label class="form-check-label" for="checkNo2">No</label>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check form-check-inline me-0">
-                                                    <input class="form-check-input" type="radio" name="yesNo4"
-                                                        id="checkNo44" value="">
-                                                    <label class="form-check-label" for="checkNo44">No</label>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
 
-                                        <li class="list-group-item px-0 d-flex">
-                                            <div class="pe-5 ps-1">
-                                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit amet
-                                                </p>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
 
-                                                <div>
-                                                    <ul class="ps-3 pe-0">
-                                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Odit eos perferendis at</li>
-                                                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Odit eos perferendis at</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                            <div class="mb-3 bg-light shadow-sm rounded-3">
+                                <div class="ps-3 pt-3">
+                                    <p class="font-weight-700 mb-1 fs-6">Investment company or Investment advisor
+                                        (Exemption
+                                        #10)</p>
+                                    <p class="fs-7 font-weight-600">An Entity qualify for this exemptions if <span
+                                            class="fw-bold">either</span> of the following criteria apply :</p>
+                                </div>
+                                <div
+                                    class="mb-3 bg-white p-4 py-1 rounded-3 d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <ol class="list-group list-group-numbered list-group-flush mb-0">
+                                            <li class="list-group-item px-0 d-flex">
+                                                <div class="pe-5 ps-1">
+                                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                        elit.
+                                                        Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit
+                                                        amet
+                                                    </p>
 
-                                            <div class="d-flex justify-content-between gap-3">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="inlineRadioOptions5" id="checkYes5" value="option1">
-                                                    <label class="form-check-label" for="checkYes5">Yes</label>
+                                                    <div>
+                                                        <ul class="ps-3 pe-0">
+                                                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                                Odit eos perferendis at</li>
+                                                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                                Odit eos perferendis at</li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check form-check-inline me-0">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="inlineRadioOptions5" id="checkNo5" value="option2">
-                                                    <label class="form-check-label" for="checkNo5">No</label>
-                                                </div>
-                                            </div>
-                                        </li>
 
-                                    </ol>
+                                                <div class="d-flex justify-content-between gap-3">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="inlineRadioOptions3" id="checkYes3" value="option1">
+                                                        <label class="form-check-label" for="checkYes3">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline me-0">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="inlineRadioOptions3" id="checkNo3" value="option2">
+                                                        <label class="form-check-label" for="checkNo3">No</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-0 d-flex">
+                                                <div class="pe-5 ps-1">
+                                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                        elit.
+                                                        Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit
+                                                        amet
+                                                    </p>
+                                                </div>
+
+                                                <div class="d-flex justify-content-between gap-3">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="yesNo4"
+                                                            id="checkYes44">
+                                                        <label class="form-check-label" for="checkYes44">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline me-0">
+                                                        <input class="form-check-input" type="radio" name="yesNo4"
+                                                            id="checkNo44" value="">
+                                                        <label class="form-check-label" for="checkNo44">No</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item px-0 d-flex">
+                                                <div class="pe-5 ps-1">
+                                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                        elit.
+                                                        Vel quos dolorum ducimus quod, qui nemo? lorem ipsum doller sit
+                                                        amet
+                                                    </p>
+
+                                                    <div>
+                                                        <ul class="ps-3 pe-0">
+                                                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                                Odit eos perferendis at</li>
+                                                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                                Odit eos perferendis at</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-between gap-3">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="inlineRadioOptions5" id="checkYes5" value="option1">
+                                                        <label class="form-check-label" for="checkYes5">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline me-0">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="inlineRadioOptions5" id="checkNo5" value="option2">
+                                                        <label class="form-check-label" for="checkNo5">No</label>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ol>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
 
                     </form>
+
+
                 </div>
 
                 <!-- Modal Body Ends-->
@@ -4479,6 +4509,24 @@
         });
 
         $(function () {
+            $('input[name="filedDate"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                parentEl: $('.calender-input-filed'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'bottom',
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+
+            });
+            $('input[name="filedDate"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YY'));
+            });
+        });
+
+        $(function () {
             $('input[name="dateOfBirth"]').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
@@ -4515,6 +4563,21 @@
         });
 
     </script>
+
+    <!-- this script for questionaries to select Yes/No -->
+    <script>
+        function toggleDivs(checkYes1) {
+            var questionnaireToggleYes = document.getElementById('questionnaireToggleYes');
+            var questionnaireToggleNo = document.getElementById('questionnaireToggleNo');
+
+            questionnaireToggleYes.classList.toggle('d-block', checkYes1);
+            questionnaireToggleYes.classList.toggle('d-none', !checkYes1);
+
+            questionnaireToggleNo.classList.toggle('d-block', !checkYes1);
+            questionnaireToggleNo.classList.toggle('d-none', checkYes1);
+        }
+    </script>
+
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
     <!-- Scripts End-->
