@@ -2348,7 +2348,7 @@
                     {
                         id: '13',
                         title: 'Reminder Name',
-                        start: "2023-12-06",
+                        start: "2023-12-09",
                         startStr: "2023-04-08",
                         display: 'block',
                         allDay: true,
@@ -2358,10 +2358,34 @@
                         displayEventEnd: false,
                     },
                     {
-                        id: '13',
+                        id: '14',
+                        title: 'Reminder Name',
+                        start: "2023-12-30",
+                        startStr: "2023-04-08",
+                        display: 'block',
+                        allDay: true,
+                        textColor: 'black',
+                        className: 'caledar-event-upcoming',
+                        description: 'Lecture some text for description',
+                        displayEventEnd: false,
+                    },
+                    {
+                        id: '15',
                         title: 'Reminder Name',
                         start: "2023-12-07",
-                        startStr: "2023-04-08",
+                        startStr: "2023-04-31",
+                        display: 'block',
+                        allDay: true,
+                        textColor: 'black',
+                        className: 'caledar-event-upcoming',
+                        description: 'Lecture some text for description',
+                        displayEventEnd: false,
+                    },
+                    {
+                        id: '16',
+                        title: 'Reminder Name',
+                        start: "2023-12-31",
+                        startStr: "2023-04-31",
                         display: 'block',
                         allDay: true,
                         textColor: 'black',
@@ -2427,12 +2451,16 @@
                         tooltipCustomDiv.classList.add("d-block");
                         var rect = info.el.getBoundingClientRect();
                         if (rect.right + tooltipCustomDiv.offsetWidth > window.innerWidth) {
-                            tooltipCustomDiv.style.left = rect.left + 'px';
-                            tooltipCustomDiv.style.top = rect.top + tooltipCustomDiv.clientHeight / 3 + window.scrollY + 'px';
-
+                            var leftPosition = rect.left - 100; 
+                            tooltipCustomDiv.style.left = leftPosition + 'px';
+                            var topPosition = rect.top - tooltipCustomDiv.clientHeight - 20;
+                            tooltipCustomDiv.style.top = topPosition + window.scrollY + 'px';
+    
                         } else {
-                            tooltipCustomDiv.style.left = rect.right + 'px';
-                            tooltipCustomDiv.style.top = rect.top + window.scrollY + 'px';
+                           // Adjust the top position to move the tooltip further above the target element
+                            var topPosition = rect.top - tooltipCustomDiv.clientHeight - 20; 
+                            tooltipCustomDiv.style.left = rect.left + 'px';
+                            tooltipCustomDiv.style.top = topPosition + window.scrollY + 'px';
                         }
                     }
                    },30)
