@@ -313,6 +313,7 @@
                             </div>
                             <div class="col-12 tab-content-wrapper" id="list-view" style="display: block;">
                                 <div class="tab-content bg-white rounded-2 mb-3 shadow">
+                                    <!-- Pending tab -->
                                     <div class="tab-pane fade show active" id="pending">
                                         <div class="">
                                             <table id="entity-listing"
@@ -604,6 +605,8 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <!-- Pending tab end-->
+                                    <!-- In-progress tab -->
                                     <div class="tab-pane fade show" id="in-progress">
                                         <div class="">
                                             <table id="entity-listing2"
@@ -675,6 +678,8 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <!-- In-progress tab end-->
+                                    <!-- Completed tab -->
                                     <div class="tab-pane fade show" id="completed">
                                         <div class="">
                                             <table id="completed-table" class="table table-striped table-nowrap w-100">
@@ -860,6 +865,8 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <!-- Completed tab end-->
+                                    <!-- exempt-entity-list tab -->
                                     <div class="tab-pane fade show" id="exempt-entity-list">
                                         <div class="">
                                             <table id="exempt-entity-table"
@@ -937,8 +944,11 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <!-- exempt-entity-list tab end -->
                                 </div>
                             </div>
+
+                            <!-- Grid view section start -->
                             <div class="col-12 tab-content-wrapper my-3 pt-3" id="grid-view">
                                 <!-- no card element is present in grid view -->
                                 <div class="text-center py-3 bg-white d-none">
@@ -1390,6 +1400,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Grid view section end -->
                         </div>
                     </div>
                 </div>
@@ -3428,7 +3439,8 @@
         </div>
     </div>
     <!-- add company applicant Modal Ends -->
-    <!-- Action Modal Second Starts -->
+
+    <!-- Exempt Action Modal Second Starts -->
     <div class="modal modal-right fade" id="exemptModal" tabindex="-1" aria-labelledby="exemptModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
@@ -3461,7 +3473,7 @@
                             <div class="list-group-item px-0 d-flex justify-content-between">
                                 <div class="pe-5 ps-1">
                                     <p class="mb-0 font-weight-600">
-                                        Have you filed a BOI report filing before ?
+                                        Have you filed a Beneficial Ownership Information (BOI) report ?
                                     </p>
                                 </div>
 
@@ -3479,11 +3491,12 @@
                                 </div>
                             </div>
                         </div>
+                        <!--section start for if user checked yes  -->
                         <div class="d-none" id="questionnaireToggleYes">
                             <div class="mb-3">
 
                                 <div class="calender-input-filed position-relative">
-                                    <label for="" class="form-label">boi filing Registration Date</label>
+                                    <label for="" class="form-label">Beneficial Ownership Information filing Date</label>
 
                                     <input type="text" class="form-control" name="filedDate" id=""
                                         placeholder="MM / DD / YYYY">
@@ -3492,8 +3505,69 @@
                                     </span>
                                 </div>
                             </div>
+                            <div class="mb-3">
+                                <div class="bg-white p-4 shadow-lg rounded-3">
+                                    <div class="list-group-item px-0 d-flex justify-content-between">
+                                        <div class="pe-5 ps-1">
+                                            <p class="mb-0 font-weight-600">
+                                                Is this entity exempt from filing the Beneficial Ownership report ?
+                                            </p>
+                                        </div>
+        
+                                        <div class="d-flex justify-content-between gap-3">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions2"
+                                                    id="checkYes2" value="option1">
+                                                <label class="form-check-label" for="checkYes2">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline me-0">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions2"
+                                                    id="checkNo2" value="option2">
+                                                <label class="form-check-label" for="checkNo2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="bg-white p-4 shadow-lg rounded-3">
+                                    <div class="list-group-item px-0 d-flex justify-content-between">
+                                        <div class="pe-5 ps-1">
+                                            <p class="mb-0 font-weight-600">
+                                               Have there been any changes to the Beneficial Ownership Information ?
+                                            </p>
+                                        </div>
+        
+                                        <div class="d-flex justify-content-between gap-3">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions3"
+                                                    id="checkYes3" value="option1">
+                                                <label class="form-check-label" for="checkYes3">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline me-0">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions3"
+                                                    id="checkNo3" value="option2">
+                                                <label class="form-check-label" for="checkNo3">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="position-relative">
+                                    <div class="dropzone dz-clickable bg-white py-4 rounded-2 shadow-sm">
+                                        <div class=" drop-zone dynamicDropzone my-3 mx-4 dz-message h-auto py-4" data-dz-message="">
+                                            <span class="drop-zone__prompt"> + Click Or Drop File Here To Upload
+                                                Documents</span>
+                                            <input type="file" class="position-absolute top-0 start-0 end-0 bottom-0 opacity-0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!--section end for if user checked yes  -->
 
+                        <!--section start for if user checked No  -->
                         <div class="d-none" id="questionnaireToggleNo">
                             <div class="mb-3 selectPicker">
 
@@ -3550,13 +3624,13 @@
                                                 <div class="d-flex justify-content-between gap-3">
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="checkYes1" value="option1">
-                                                        <label class="form-check-label" for="checkYes1">Yes</label>
+                                                            name="radioButton1" id="checkYes11" value="">
+                                                        <label class="form-check-label" for="checkYes11">Yes</label>
                                                     </div>
                                                     <div class="form-check form-check-inline me-0">
                                                         <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions" id="checkNo1" value="option2">
-                                                        <label class="form-check-label" for="checkNo1">No</label>
+                                                            name="radioButton1" id="checkNo11" value="">
+                                                        <label class="form-check-label" for="checkNo11">No</label>
                                                     </div>
                                                 </div>
                                             </li>
@@ -3571,14 +3645,14 @@
 
                                                 <div class="d-flex justify-content-between gap-3">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="checkYes2"
-                                                            id="checkYes2">
-                                                        <label class="form-check-label" for="checkYes2">Yes</label>
+                                                        <input class="form-check-input" type="radio" name="radioButton"
+                                                            id="checkYes22">
+                                                        <label class="form-check-label" for="checkYes22">Yes</label>
                                                     </div>
                                                     <div class="form-check form-check-inline me-0">
-                                                        <input class="form-check-input" type="radio" name="checkYes2"
-                                                            id="checkNo2">
-                                                        <label class="form-check-label" for="checkNo2">No</label>
+                                                        <input class="form-check-input" type="radio" name="radioButton"
+                                                            id="checkNo22">
+                                                        <label class="form-check-label" for="checkNo22">No</label>
                                                     </div>
                                                 </div>
                                             </li>
@@ -3621,13 +3695,13 @@
                                                 <div class="d-flex justify-content-between gap-3">
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions3" id="checkYes3" value="option1">
-                                                        <label class="form-check-label" for="checkYes3">Yes</label>
+                                                            name="inlineRadioOptions3" id="checkYes33" value="option1">
+                                                        <label class="form-check-label" for="checkYes33">Yes</label>
                                                     </div>
                                                     <div class="form-check form-check-inline me-0">
                                                         <input class="form-check-input" type="radio"
-                                                            name="inlineRadioOptions3" id="checkNo3" value="option2">
-                                                        <label class="form-check-label" for="checkNo3">No</label>
+                                                            name="inlineRadioOptions3" id="checkNo33" value="option2">
+                                                        <label class="form-check-label" for="checkNo33">No</label>
                                                     </div>
                                                 </div>
                                             </li>
@@ -3691,7 +3765,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!--section end for if user checked No  -->
                     </form>
 
 
@@ -3701,14 +3775,14 @@
 
                 <div class="modal-footer">
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-link text-decoration-none font-weight-600"
+                        <!-- <button type="button" class="btn btn-link text-decoration-none font-weight-600"
                             data-bs-dismiss="modal">
                             Close
-                        </button>
-                        <!-- <button type="button" class="btn btn-tertiary py-3 px-5 rounded-3 ms-3"
-                            data-bs-target="#congratulationModal" data-bs-toggle="modal" data-bs-dismiss="modal">
-                            Finish
                         </button> -->
+                        <button type="button" class="btn btn-tertiary py-3 px-5 rounded-3 ms-3"
+                             data-bs-dismiss="modal">
+                            Save and Close
+                        </button>
                         <button type="button" class="btn btn-info py-3 px-4 rounded-3 ms-3"
                             data-bs-target="#actionModal" data-bs-toggle="modal" data-bs-dismiss="modal">
                             Next
@@ -3719,7 +3793,7 @@
             </div>
         </div>
     </div>
-    <!-- Action Modal Second Ends -->
+    <!-- Exempt Action Modal Second Ends -->
 
     <!-- Preview Modal Starts -->
     <div class="modal modal-right fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel"
