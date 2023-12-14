@@ -2929,18 +2929,18 @@
                     <div class="d-flex align-items-center w-100 mb-0 pb-2">
                         <div>
                            
-                            <div class="d-flex align-items-center pb-3">
-                                <span class="position-relative ms-4">
-                                    <span class="position-absolute top-0 start-100 translate-middle p-4 w-100 h-100 bg-warning border border-light rounded-circle">
-                                        <span class="fs-4 text-white position-absolute translate-middle">2</span>
-                                    </span>
+                            <div class="d-flex align-items-center w-100 pb-2">
+                                <span class="bg-white p-3 shadow-sm rounded-circle me-4 d-inline-block position-relative">
+                                    <span class="icon icon-xxl icon-warning-yellow m-0"></span>
+                                    <span class="fs-3 visually-hidden position-absolute top-50 start-50 translate-middle">2</span>
                                 </span>
-                                <span class=" text-dark text-opacity-50 fs-9 text-uppercase ms-4 ps-2">Exempt</span> 
-                           
+                                <div>
+                                    <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Exempt</span>
+                                    <h3 class="fs-3 m-0 mt-2">Beneficial Ownership Details</h3>
+                                </div>
                             </div>
                            
-                            <h3 class="fs-3 m-0 mt-2">Beneficial Ownership Details
-                            </h3>
+    
                             <p class="mt-2">
                                 Please confirm the reporting company’s details 
                             </p>
@@ -3525,24 +3525,29 @@
     <!-- Exempt Action Modal Second Starts -->
     <div class="modal modal-right fade" id="exemptModal" tabindex="-1" aria-labelledby="exemptModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+        <div class="modal-dialog modal-lg-plus modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex align-items-center w-100">
                         <div class="">
                            
-                                <div class="d-flex align-items-center pb-3">
-                                    <span class="position-relative ms-4">
-                                        <span class="position-absolute top-0 start-100 translate-middle p-4 w-100 h-100 purple-bg border border-light rounded-circle">
-                                            <span class="fs-4 text-white position-absolute translate-middle">1</span>
-                                        </span>
-                                    </span>
-                                    <span class=" text-dark text-opacity-50 fs-9 text-uppercase ms-4 ps-2">Exempt</span> 
                                
+
+                                <div class="d-flex align-items-center w-100 pb-2">
+                                    <span class="bg-white shadow-sm p-3 rounded-circle me-4 d-inline-block position-relative">
+                                        <span class="m-0 icon icon-circular icon-xxl icon-green-tick"></span>
+                                        <span class="fs-3 visually-hidden position-absolute top-50 start-50 translate-middle">1</span>
+                                    </span>
+                                    <div>
+                                        <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Exempt</span>
+                                        <h3 class="fs-3 m-0 mt-2">First let's see if your company is exempt from reporting.</h3>
+                                    </div>
                                 </div>
-                            <h3 class="fs-3 m-0 mt-2">First let's see if your company is exempt from reporting.
-                            </h3>
+
+                               
+
+                            
                             <p class="mt-2 fw-bold">The reporting rule exempts 23 specific types of entities from the
                                 reporting requirements. An entity that meets certain criteria is not required to submit
                                 a Beneficial Ownership Information (BOI) report. Additionally, if you have filed the
@@ -3578,6 +3583,11 @@
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                             id="checkNo1" value="option2" onclick="toggleDivs(false)">
                                         <label class="form-check-label" for="checkNo1">No</label>
+                                    </div>
+                                    <div class="form-check form-check-inline me-0">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="checkMayBe" value="option2" onclick="toggleDivs(true)">
+                                        <label class="form-check-label" for="checkMayBe">MayBe</label>
                                     </div>
                                 </div>
                             </div>
@@ -4803,13 +4813,13 @@
     <script>
         function toggleDivs(checkYes1) {
             var questionnaireToggleYes = document.getElementById('questionnaireToggleYes');
-            var questionnaireToggleNo = document.getElementById('questionnaireToggleNo');
+            var questionnaireToggleMayBe = document.getElementById('questionnaireToggleMayBe');
 
             questionnaireToggleYes.classList.toggle('d-block', checkYes1);
             questionnaireToggleYes.classList.toggle('d-none', !checkYes1);
 
-            questionnaireToggleNo.classList.toggle('d-block', !checkYes1);
-            questionnaireToggleNo.classList.toggle('d-none', checkYes1);
+            questionnaireToggleMayBe.classList.toggle('d-block', !checkYes1);
+            questionnaireToggleMayBe.classList.toggle('d-none', checkYes1);
         }
     </script>
 
