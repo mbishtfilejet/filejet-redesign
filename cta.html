@@ -3708,16 +3708,13 @@
                                     <input type="text" class="form-control" id="" placeholder="ID Number">
                                 </div>
                                 <div class="col-md">
-                                    <div class="calender-input">
-
-                                        <input type="text" class="form-control" name="reminderDate" id=""
+                                    <div class="calendar-input5 position-relative">
+                                        <input type="text" class="form-control" name="expireDate2" id=""
                                             placeholder="Expiration Date" value="">
-                                        <span class="d-inline-block pb-3">
+                                        <span class="d-inline-block pb-1 position-absolute top-50 end-0 translate-middle">
                                             <span class="icon icon-calender-lined"></span>
                                         </span>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -5138,6 +5135,7 @@
                 singleDatePicker: true,
                 showDropdowns: true,
                 autoUpdateInput: false,
+                autoApply:true,
                 parentEl: $('.calender-input'),
                 showDropdowns: true,
                 applyButtonClasses: 'btn-info',
@@ -5222,6 +5220,25 @@
 
             });
             $('input[name="expireDate"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY'));
+            });
+        });
+
+        $(function () {
+            $('input[name="expireDate2"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                autoApply: true,
+                parentEl: $('.calendar-input5'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'bottom',
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+
+            });
+            $('input[name="expireDate2"]').on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format('MM/DD/YYYY'));
             });
         });
