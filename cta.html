@@ -3082,11 +3082,40 @@
                         </div>
                         <div class="mb-3">
                             <div class="row">
-                                <div class="col-md">
+                                <div class="col-md-6">
                                     <input type="text" class="form-control" id="" placeholder="DBA Name">
                                 </div>
-                                <div class="col-md ">
+                                <div class="col-md-6">
                                     <input type="text" class="form-control" id="" placeholder="DBA Registration">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="" placeholder="County (Optional)*">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="" placeholder="Registration File Number">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md-6 position-relative calendar-input-filed-date">
+                                    <input type="text" class="form-control" name="filedDate" id="" placeholder="Registration Filed Date">
+                                    <span class="d-inline-block position-absolute top-50 end-0 mt-0 pb-3 pe-2 translate-middle">
+                                        <span class="icon icon-calender-lined"></span>
+                                    </span>
+
+                                </div>
+                                <div class="col-md-6 position-relative calendar-input-last-date">
+                                    <input type="text" class="form-control" name="lastDate" id="" placeholder="Date of Last Renewal">
+                                    <span class="d-inline-block position-absolute top-50 end-0 mt-0 pb-3 pe-2 translate-middle">
+                                        <span class="icon icon-calender-lined"></span>
+                                    </span>
 
                                 </div>
                             </div>
@@ -5241,6 +5270,40 @@
 
             });
             $('input[name="expireDate2"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY'));
+            });
+        });
+        $(function () {
+            $('input[name="lastDate"]').daterangepicker({
+                singleDatePicker: true,
+                autoUpdateInput: false,
+                autoApply: true,
+                parentEl: $('.calendar-input-last-date'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'bottom',
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+
+            });
+            $('input[name="lastDate"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY'));
+            });
+        });
+        $(function () {
+            $('input[name="filedDate"]').daterangepicker({
+                singleDatePicker: true,
+                autoUpdateInput: false,
+                autoApply: true,
+                parentEl: $('.calendar-input-filed-date'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'bottom',
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+
+            });
+            $('input[name="filedDate"]').on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format('MM/DD/YYYY'));
             });
         });
