@@ -4,7 +4,7 @@ var expandAllIcon ='<span class="icon me-0 icon-expand-all-"></span>';
 
 var fitIcon = '<span class="icon me-0 icon-fit"></span>';
 
-var zoomInIcon = '<span class="icon me-0 icon-zoom-in-"></span>';
+var zoomInIcon = '<span class="icon me-0 icon-zoom-in"></span>';
 
 var zoomOutIcon = '<span class="icon me-0 icon-zoom-out"></span>';
 
