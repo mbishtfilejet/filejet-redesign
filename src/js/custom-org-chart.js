@@ -1,6 +1,6 @@
 //JavaScript
 
-var expandAllIcon ='<span class="icon me-0 icon-expand-all-"></span>';
+var expandAllIcon ='<span class="icon me-0 icon-expand-all"></span>';
 
 var fitIcon = '<span class="icon me-0 icon-fit"></span>';
 
