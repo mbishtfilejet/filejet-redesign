@@ -3954,18 +3954,18 @@
                                         <div class="d-flex justify-content-between gap-3">
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions2"
-                                                    id="checkYes2" value="option1">
-                                                <label class="form-check-label" for="checkYes2">Yes</label>
+                                                    id="exemptYes" value="option1" onclick="toggleSlide('option1')">
+                                                <label class="form-check-label" for="exemptYes">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions2"
-                                                    id="checkNo2" value="option2">
-                                                <label class="form-check-label" for="checkNo2">No</label>
+                                                    id="exemptNo" value="option2">
+                                                <label class="form-check-label" for="exemptNo" onclick="toggleSlide('option2')">No</label>
                                             </div>
                                             <div class="form-check form-check-inline me-0">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions2"
                                                     id="checkNotSure" value="option2">
-                                                <label class="form-check-label" for="checkNotSure">Not Sure</label>
+                                                <label class="form-check-label" for="checkNotSure" onclick="toggleSlide('option3')">Not Sure</label>
                                             </div>
                                         </div>
                                     </div>
@@ -4295,7 +4295,7 @@
                         <button type="button" class="btn btn-tertiary py-3 px-5 rounded-3 ms-3" data-bs-dismiss="modal">
                             Save and Close
                         </button>
-                        <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3"
+                        <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3" id="nextBtn"
                             data-bs-target="#actionModal" data-bs-toggle="modal" data-bs-dismiss="modal">
                             Next
                         </button>
@@ -5410,6 +5410,25 @@
         });
 
     </script>
+    <!-- end -->
+    <!-- this script for toggle slide-out between BOI and congrats screen  -->
+      <script>
+        function toggleSlide(selectedOption) {
+          var nextBtn = document.getElementById('nextBtn');
+      
+          // Update data-bs-target attribute based on the selected radio button
+          if (selectedOption === 'option1') {
+            nextBtn.setAttribute('data-bs-target', '#successModal');
+          } else if (selectedOption === 'option2') {
+            nextBtn.setAttribute('data-bs-target', '#actionModal');
+          } else if (selectedOption === 'option3') {
+            nextBtn.setAttribute('data-bs-target', '#actionModal');
+          }
+        }
+      </script>
+      
+      
+      <!-- end -->
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
     <!-- Scripts End-->
