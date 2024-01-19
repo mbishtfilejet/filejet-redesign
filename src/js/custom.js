@@ -70,6 +70,18 @@ $(function () {
     "scrollX": true,
     "scrollY": "50vh",
   })
+  $('.data-table-listing-folder').DataTable({
+    
+    "lengthChange": false,
+    "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div  role="status"> </div>',
+    },
+    "responsive": true,
+    "scrollX": true,
+    "scrollY": "30vh",
+  })
   $('.data-table-listing-ts').DataTable({
     "ordering": true,
     "lengthChange": false,
@@ -389,6 +401,7 @@ function adjustDataTable() {
   $('.long-data-table-listing').DataTable().columns.adjust();
   $('#completed-table').DataTable().columns.adjust();
   $('#exempt-entity-table').DataTable().columns.adjust();
+  $('.data-table-listing-folder').DataTable().columns.adjust();
 }
 
 function editDocumentName() {
