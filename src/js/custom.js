@@ -80,7 +80,7 @@ $(function () {
     },
     "responsive": true,
     "scrollX": true,
-    "scrollY": "30vh",
+    "scrollY": "50vh",
   })
   $('.data-table-listing-ts').DataTable({
     "ordering": true,
@@ -109,6 +109,9 @@ $(function () {
   // :has() selector is not compatable with firefox which causes scroll height issue in .long-data-table-listing table.
   if (navigator.userAgent.indexOf("Firefox") > 0) {
     $('.long-data-table-listing').parent().addClass('firefox-scroll-height');
+  }
+  if (navigator.userAgent.indexOf("Firefox") > 0) {
+    $('.data-table-listing-folder').parent().addClass('firefox-scroll-height-folder');
   }
 
   $(document).on('shown.bs.tab shown.bs.modal', function () {
