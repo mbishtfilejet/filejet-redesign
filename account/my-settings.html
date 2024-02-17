@@ -242,7 +242,98 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- google auth start -->
+                        <div class="border-bottom py-4">
+                            <h4>SSO Authentication (SSO)</h4>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos perferendis cumque quod facilis reiciendis ex nulla ullam quasi et pariatur deserunt aut, delectus illum numquam, magni nisi amet asperiores. Id?</p>
+                            <div class="row pb-3">
+                                <div class="col-md-6">
+                                    <!-- google logIn -->
+                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm">
+                                        <div class="d-flex align-items-center w-75">
+                                            <span class="bg-light p-2 rounded-2 me-4 d-inline-block">
+                                                <span class="icon icon-md icon-google m-0"></span>
+                                            </span>
+                                            <div>
+                                                <span class="d-block text-dark font-weight-700 fs-6 text-uppercase">Sign In with google</span>
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch justify-content-end ms-2 w-25">
+                                            
+                                            <input class="form-check-input icon-md w-50" type="checkbox" role="switch"
+                                                id="googleToggle">
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3 d-none" id="googleLogged">
+                                        <div class="d-flex align-items-center w-75">
+                                            <span class="bg-light p-2 rounded-2 me-4 d-inline-block">
+                                                <span class="icon icon-md icon-google m-0"></span>
+                                            </span>
+                                            <div>
+                                                <span class="d-block text-dark font-weight-700 fs-6 text-uppercase">Connected with google Account</span>
+                                                <p class="m-0 opacity-50">john@gmail.com
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch justify-content-end ms-2 w-25">
+                                            <button class="btn btn-tertiary rounded-pill py-0 text-capitalize">Disconnect</button>
+                                            <!-- <input class="form-check-input icon-md w-50" type="checkbox" role="switch"
+                                                id="2faCheckboxSos"> -->
+                                            <!-- <label class="form-check-label" for="flexSwitchCheckChecked"></label> -->
+                                        </div>
+                                        
+                                    </div>
+                                   <!-- google logIn end-->
+                                    <!-- microsoft logIn -->
+                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3">
+                                        <div class="d-flex align-items-center w-75">
+                                            <span class="bg-light p-2 rounded-2 me-4 d-inline-block">
+                                                <span class="icon icon-md icon-microsoft m-0"></span>
+                                            </span>
+                                            <div>
+                                                <span class="d-block text-dark font-weight-700 fs-6 text-uppercase">Sign In with Microsoft</span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch justify-content-end ms-2 w-25">
+                                            
+                                            <input class="form-check-input icon-md w-50" type="checkbox" role="switch"
+                                                id="microsoftToggle">
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3 d-none" id="microsoftLogged">
+                                        <div class="d-flex align-items-center w-75">
+                                            <span class="bg-light p-2 rounded-2 me-4 d-inline-block">
+                                                <span class="icon icon-md icon-microsoft m-0"></span>
+                                            </span>
+                                            <div>
+                                                <span class="d-block text-dark font-weight-700 fs-6 text-uppercase">Connected with Microsoft Account</span>
+                                                <p class="m-0 opacity-50">johndoe@microsoft.com
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-check form-switch justify-content-end ms-2 w-25">
+                                            <button class="btn btn-tertiary rounded-pill py-0 text-capitalize">Disconnect</button>
+                                            <!-- <input class="form-check-input icon-md w-50" type="checkbox" role="switch"
+                                                id="2faCheckboxSos"> -->
+                                            <!-- <label class="form-check-label" for="flexSwitchCheckChecked"></label> -->
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- microsoft logIn  end-->
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- google auth end -->
+                        <!-- 2FA -->
                         <div class="border-bottom py-4">
                             <h4>Two-Factor Authentication (2FA)</h4>
                             <p>Keep your account secure by enabling 2FA by using a temporary one-time
@@ -279,7 +370,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- 2FA end -->
                         <div class="d-flex justify-content-end py-4">
                             <button type="button" class="btn btn-info px-3 rounded-3" data-bs-toggle="modal"
                                 data-bs-target="#withoutSavingModal">
@@ -936,15 +1027,23 @@
         <!-- Search Modal Ends -->
 
         <script>
-                document.getElementById('2faCheckbox').addEventListener('click', function() {
-                var twoFAContents = document.getElementById('2fa-contents');
-                if (this.checked) {
-                    twoFAContents.classList.remove('d-none');
-                } else {
-                    twoFAContents.classList.add('d-none');
-                }
-            });
+            function toggleElementVisibility(checkboxId, targetId) {
+                var checkbox = document.getElementById(checkboxId);
+                var target = document.getElementById(targetId);
+                checkbox.addEventListener('click', function() {
+                    if (this.checked) {
+                        target.classList.remove('d-none');
+                    } else {
+                        target.classList.add('d-none');
+                    }
+                });
+            }
+        
+            toggleElementVisibility('2faCheckbox', '2fa-contents');
+            toggleElementVisibility('googleToggle', 'googleLogged');
+            toggleElementVisibility('microsoftToggle', 'microsoftLogged');
         </script>
+        
 
 
         <script src="../dist/js/plugins.min.js"></script>
