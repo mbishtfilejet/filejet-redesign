@@ -113,7 +113,7 @@
                                 </a>
                             </li>
                             <li class="nav-link active">
-                                <a href="securities.html" class="text-decoration-none ps-3 py-3 d-block font-weight-500">
+                                <a href="account-security.html" class="text-decoration-none ps-3 py-3 d-block font-weight-500">
                                     <span class="text nav-text">Account Security</span>
                                     <span class="d-inline-block d-lg-none">
                                         <span class="icon icon-policy-dark normal-icon"></span>
@@ -208,7 +208,7 @@
                             <div class="row pb-3">
                                 <div class="col-md-6">
                                     <!-- google logIn -->
-                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm">
+                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3" id="connectDivGoogle">
                                         <div class="d-flex align-items-center w-75">
                                             <span class="bg-light p-2 rounded-2 me-4 d-inline-block">
                                                 <span class="icon icon-md icon-google m-0"></span>
@@ -220,14 +220,13 @@
                                         </div>
                                         <div class="form-check form-switch justify-content-end ms-2 w-25">
                                             
-                                            <input class="form-check-input icon-md w-50" type="checkbox" role="switch"
-                                                id="googleToggle">
+                                            <button class="btn btn-tertiary rounded-pill py-0 text-capitalize" id="googleConnect">Connect</button>
                                             
                                         </div>
                                         
                                     </div>
                                     
-                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3 d-none" id="googleLogged">
+                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3 d-none" id="googleDisconnect">
                                         <div class="d-flex align-items-center w-75">
                                             <span class="bg-light p-2 rounded-2 me-4 d-inline-block">
                                                 <span class="icon icon-md icon-google m-0"></span>
@@ -248,7 +247,7 @@
                                     </div>
                                    <!-- google logIn end-->
                                     <!-- microsoft logIn -->
-                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3">
+                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3" id="connectDivMs">
                                         <div class="d-flex align-items-center w-75">
                                             <span class="bg-light p-2 rounded-2 me-4 d-inline-block">
                                                 <span class="icon icon-md icon-microsoft m-0"></span>
@@ -260,14 +259,13 @@
                                         </div>
                                         <div class="form-check form-switch justify-content-end ms-2 w-25">
                                             
-                                            <input class="form-check-input icon-md w-50" type="checkbox" role="switch"
-                                                id="microsoftToggle">
+                                            <button class="btn btn-tertiary rounded-pill py-0 text-capitalize" id="microsoftConnect">Connect</button>
                                             
                                         </div>
                                         
                                     </div>
                                     
-                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3 d-none" id="microsoftLogged">
+                                    <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm mt-3 d-none" id="microsoftDisconnect">
                                         <div class="d-flex align-items-center w-75">
                                             <span class="bg-light p-2 rounded-2 me-4 d-inline-block">
                                                 <span class="icon icon-md icon-microsoft m-0"></span>
@@ -994,8 +992,26 @@
             }
         
             toggleElementVisibility('2faCheckbox', '2fa-contents');
-            toggleElementVisibility('googleToggle', 'googleLogged');
-            toggleElementVisibility('microsoftToggle', 'microsoftLogged');
+        </script>
+        <script>
+            function toggleElementVisibility(connectId, disconnectId) {
+                var connectId = document.getElementById(connectId);
+                var disconnectId = document.getElementById(disconnectId);
+                var connectDivMs = document.getElementById('connectDivMs');
+                var connectDivGoogle = document.getElementById('connectDivGoogle');
+                connectId.addEventListener('click', function() {
+                    if (this.click) {
+                        disconnectId.classList.remove('d-none');
+                        connectDivMs.classList.add('d-none');
+                        connectDivGoogle.classList.add('d-none');
+                    } else {
+                        disconnectId.classList.add('d-none');
+                    }
+                });
+            }
+        
+            toggleElementVisibility('googleConnect', 'googleDisconnect');
+            toggleElementVisibility('microsoftConnect', 'microsoftDisconnect');
         </script>
         
 
