@@ -238,7 +238,7 @@
                                             </div>
                                         </div>
                                         <div class="form-check form-switch justify-content-end ms-2 w-25">
-                                            <button class="btn btn-tertiary rounded-pill py-0 text-capitalize">Disconnect</button>
+                                            <button class="btn btn-tertiary rounded-pill py-0 text-capitalize" id="disConnectBtn">Disconnect</button>
                                             <!-- <input class="form-check-input icon-md w-50" type="checkbox" role="switch"
                                                 id="2faCheckboxSos"> -->
                                             <!-- <label class="form-check-label" for="flexSwitchCheckChecked"></label> -->
@@ -277,7 +277,7 @@
                                             </div>
                                         </div>
                                         <div class="form-check form-switch justify-content-end ms-2 w-25">
-                                            <button class="btn btn-tertiary rounded-pill py-0 text-capitalize">Disconnect</button>
+                                            <button class="btn btn-tertiary rounded-pill py-0 text-capitalize" id="disConnectBtn">Disconnect</button>
                                             <!-- <input class="form-check-input icon-md w-50" type="checkbox" role="switch"
                                                 id="2faCheckboxSos"> -->
                                             <!-- <label class="form-check-label" for="flexSwitchCheckChecked"></label> -->
@@ -993,27 +993,30 @@
         
             toggleElementVisibility('2faCheckbox', '2fa-contents');
         </script>
-        <script>
-            function toggleElementVisibility(connectId, disconnectId) {
-                var connectId = document.getElementById(connectId);
-                var disconnectId = document.getElementById(disconnectId);
-                var connectDivMs = document.getElementById('connectDivMs');
-                var connectDivGoogle = document.getElementById('connectDivGoogle');
-                connectId.addEventListener('click', function() {
-                    if (this.click) {
-                        disconnectId.classList.remove('d-none');
-                        connectDivMs.classList.add('d-none');
-                        connectDivGoogle.classList.add('d-none');
-                    } else {
-                        disconnectId.classList.add('d-none');
-                    }
-                });
-            }
-        
-            toggleElementVisibility('googleConnect', 'googleDisconnect');
-            toggleElementVisibility('microsoftConnect', 'microsoftDisconnect');
-        </script>
-        
+       <script>
+        function toggleElementVisibility(connectId, disconnectId, connectDivId1, connectDivId2) {
+            var connectBtn = document.getElementById(connectId);
+            var disconnectBtn = document.getElementById(disconnectId);
+            var connectDiv1 = document.getElementById(connectDivId1);
+            var connectDiv2 = document.getElementById(connectDivId2);
+    
+            connectBtn.addEventListener('click', function() {
+                disconnectBtn.classList.remove('d-none');
+                connectDiv1.classList.add('d-none');
+                connectDiv2.classList.add('d-none');
+            });
+    
+            disconnectBtn.addEventListener('click', function() {
+                connectDiv1.classList.remove('d-none');
+                connectDiv2.classList.remove('d-none');
+                disconnectBtn.classList.add('d-none');
+            });
+        }
+    
+        toggleElementVisibility('googleConnect', 'googleDisconnect', 'connectDivGoogle', 'connectDivMs');
+        toggleElementVisibility('microsoftConnect', 'microsoftDisconnect', 'connectDivMs', 'connectDivGoogle');
+    </script>
+    
 
 
         <script src="../dist/js/plugins.min.js"></script>
