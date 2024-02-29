@@ -252,7 +252,7 @@
                             <div class="d-flex position-relative w-100 pe-3">
                                 <span
                                     class="icon icon-search-grey icon-sm opacity-25 position-absolute ms-4 h-100"></span>
-                                <input type="text" placeholder="Search by License Name, Entity Name, City, County"
+                                <input type="text" placeholder="Search by License Name, Entity Name, State, County"
                                     class="form-control white-bg py-4 ps-5 pe-4 shadow mb-0" />
                             </div>
                             <div class="d-flex justify-content-between ps-3">
@@ -275,9 +275,9 @@
                             <div class="col-12 d-flex justify-content-between align-items-center">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item">
-                                        <a href="javascript:void(0)" id="bl-all-tab" class="nav-link active"
-                                            data-bs-toggle="tab" data-bs-target="#bl-all" role="tab"
-                                            aria-controls="bl-all" aria-selected="true">ALL</a>
+                                        <a href="javascript:void(0)" id="bl-pending-tab" class="nav-link active"
+                                            data-bs-toggle="tab" data-bs-target="#bl-pending" role="tab"
+                                            aria-controls="bl-all" aria-selected="true">Pending</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="javascript:void(0)" id="bl-inprogress-tab" class="nav-link"
@@ -289,7 +289,7 @@
                             </div>
                             <div class="col-12 tab-content" id="">
                                 <div class="tab-content bg-white rounded-2">
-                                    <div class="tab-pane fade show active" id="bl-all" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="bl-pending" role="tabpanel"
                                         aria-labelledby="bl-all-tab">
                                         <div class="">
                                             <table id="bl-all-table" class="table table-striped w-100  table-nowrap">
@@ -1855,6 +1855,16 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Due & Registered date  -->
+                        <div class="mb-3">
+                            <div class="font-weight-700 text-uppercase">DUE DATE</div>
+
+                            <div
+                                class="custom-date-range-picker calendar-input form-group position-relative w-100 shadow-lg mt-2">
+                                <input class="form-control" type="text" name="datefilter" value="" autocomplete="off" />
+                                <span class="icon icon-calender-outline-dark position-absolute"></span>
+                            </div>
+                        </div>
                         <div class="mb-3 mt-4">
                             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                                 <div class="me-4 font-weight-700">STATE (51 SELECTED)</div>
@@ -3330,6 +3340,26 @@
             $('#bl-inprogress-table tbody').on('click', 'td.dt-control', handleTable(inProgressTable));
         });
     </script>
+    <script type="text/javascript">
+        $(function () {
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                drops: 'up',
+                applyButtonClasses: 'btn-info',
+                parentEl: $('.calendar-input'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'auto',
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+        });
+</script>
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
     <!-- Scripts End-->
