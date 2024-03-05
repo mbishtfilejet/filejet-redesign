@@ -664,7 +664,7 @@
                                                         <th class="fixed-max-width">Entity Name</th>
                                                         <th class="fixed-max-width">Group Name</th>
                                                         <th>State</th>
-                                                        <th>Due Date</th>
+                                                        <th>Submitted Date</th>
                                                         <th class="fixed-max-width">Status</th>
 
                                                     </tr>
@@ -1865,6 +1865,21 @@
                                 <span class="icon icon-calender-outline-dark position-absolute"></span>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <div class="font-weight-700 text-uppercase">Registered Date</div>
+
+
+                            <div
+                                class="custom-date-range-picker calendar-input-registered form-group position-relative w-100 shadow-lg mt-2">
+                                <input class="form-control" type="text" name="submittedDate" value=""
+                                    autocomplete="off" />
+                                <span class="icon icon-calender-outline-dark position-absolute"></span>
+                            </div>
+
+
+
+                        </div>
+                        <!-- end -->
                         <div class="mb-3 mt-4">
                             <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                                 <div class="me-4 font-weight-700">STATE (51 SELECTED)</div>
@@ -3359,6 +3374,25 @@
                 $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
             });
         });
+        $(function () {
+            $('input[name="submittedDate"]').daterangepicker({
+                autoUpdateInput: false,
+                drops: 'up',
+                applyButtonClasses: 'btn-info',
+                parentEl: $('.calendar-input-registered'),
+                showDropdowns: true,
+                applyButtonClasses: 'btn-info',
+                drops: 'auto',
+                locale: {
+                    cancelLabel: 'Clear'
+                }
+            });
+
+            $('input[name="submittedDate"]').on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+        });
+
 </script>
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
