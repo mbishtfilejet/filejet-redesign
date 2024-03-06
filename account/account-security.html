@@ -227,13 +227,13 @@
                                                 </div>
                                                 <div class="form-check form-switch justify-content-end ms-2 w-25">
                                                     <input class="form-check-input icon-md w-50" type="checkbox"
-                                                        role="switch" id="2faCheckbox">
+                                                        role="switch" id="ssoCheckbox">
 
                                                 </div>
 
                                             </div>
                                             <div class="my-3 mb-0 rounded-2 shadow-sm bg-white p-4 d-none d-flex gap-3 align-items-center"
-                                                id="2fa-contents">
+                                                id="ssoContents">
                                                 <div class="w-100">
 
                                                     <div class="mb-5">
@@ -1094,6 +1094,22 @@
 
             toggleElementVisibility('2faCheckbox', '2fa-contents');
         </script>
+         <script>
+            function toggleElementVisibility(checkboxId, targetId) {
+                var checkbox = document.getElementById(checkboxId);
+                var target = document.getElementById(targetId);
+                checkbox.addEventListener('click', function () {
+                    if (this.checked) {
+                        target.classList.remove('d-none');
+                    } else {
+                        target.classList.add('d-none');
+                    }
+                });
+            }
+
+            toggleElementVisibility('ssoCheckbox', 'ssoContents');
+        </script>
+
         <script>
             function toggleElementVisibility(connectId, disconnectId, connectDivId1, connectDivId2) {
                 var connectBtn = document.getElementById(connectId);
