@@ -236,70 +236,46 @@
                                                 id="ssoContents">
                                                 <div class="w-100">
 
-                                                    <div class="mb-5">
-                                                        <div class="fw-bold fs-9 mt-4 mb-2">Select Identity Provider
-                                                        </div>
-                                                        <select class="form-select form-control">
-                                                            <option selected="">Select Identity Provider</option>
-                                                            <option value="1">Google Provider</option>
-                                                            <option value="2">MIcrosoft Provider</option>
-                                                        </select>
-                                                    </div>
+
 
                                                     <div>
 
                                                         <div class="w-100 py-4 pt-0">
 
-                                                            <div class="">
-                                                                <div
-                                                                    class="w-100 d-flex align-items-center justify-content-between gap-2">
-                                                                    <input type="text"
-                                                                        class="form-control mb-0 w-75 h-50 min-height-auto me-4"
-                                                                        placeholder="Enter Domain Name"
-                                                                        style="height: 50px !important;">
 
-                                                                    <button
-                                                                        class="btn btn-info  py-3 px-5 text-capitalize">ADD</button>
+
+
+                                                            <div class="list-group shadow-none mt-3" id="domainList">
+                                                                <div class="list-group-item">
+                                                                    <div
+                                                                        class="w-100 d-flex align-items-center justify-content-between gap-2">
+                                                                        <input type="text"
+                                                                            class="form-control mb-0 w-75 h-50 min-height-auto me-4"
+                                                                            placeholder="Enter Domain Name"
+                                                                            id="domainInput"
+                                                                            style="height: 50px !important;">
+
+                                                                        <button
+                                                                            class="btn btn-info  py-3 px-5 text-capitalize"
+                                                                            id="addDomainBtn">ADD</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-
-
-                                                            <div class="list-group shadow-none mt-3">
-
 
                                                                 <div
-                                                                    class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                                                                    class="list-group-item list-group-item-action d-flex align-items-center justify-content-between border">
                                                                     <p class="mb-0">filejet.com</p>
 
                                                                     <button
                                                                         class="btn btn-primary rounded-pill py-0 text-capitalize">Remove</button>
                                                                 </div>
-                                                                <div
-                                                                    class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                                                                    <p class="mb-0">filejet.ui.com</p>
 
-                                                                    <button
-                                                                        class="btn btn-primary rounded-pill py-0 text-capitalize">Remove</button>
-                                                                </div>
-                                                                <div
-                                                                    class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                                                                    <p class="mb-0">filejet.dev.com</p>
-
-                                                                    <button
-                                                                        class="btn btn-primary rounded-pill py-0 text-capitalize">Remove</button>
-                                                                </div>
-                                                                <div
-                                                                    class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                                                                    <p class="mb-0">filejet.env.com</p>
-
-                                                                    <button
-                                                                        class="btn btn-primary rounded-pill py-0 text-capitalize">Remove</button>
-                                                                </div>
 
 
                                                             </div>
                                                             <div class="text-end mt-3">
-                                                                <button class="btn btn-info  py-3 px-4 text-uppercase">Save Changes</button>
+                                                                <button
+                                                                    class="btn btn-info  py-3 px-4 text-uppercase">Save
+                                                                    Changes</button>
                                                             </div>
 
                                                         </div>
@@ -1097,7 +1073,7 @@
 
             toggleElementVisibility('2faCheckbox', '2fa-contents');
         </script>
-         <script>
+        <script>
             function toggleElementVisibility(checkboxId, targetId) {
                 var checkbox = document.getElementById(checkboxId);
                 var target = document.getElementById(targetId);
@@ -1137,7 +1113,31 @@
             toggleElementVisibility('microsoftConnect', 'microsoftDisconnect', 'connectDivMs', 'connectDivGoogle');
         </script>
 
+        <script>
+            const domainInput = document.getElementById('domainInput');
+            const addDomainBtn = document.getElementById('addDomainBtn');
+            const domainList = document.getElementById('domainList');
 
+            addDomainBtn.addEventListener('click', () => {
+                const domainName = domainInput.value.trim();
+                if (domainName !== '') {
+                    const domainItem = document.createElement('div');
+                    domainItem.classList.add('list-group-item', 'list-group-item-action', 'd-flex', 'align-items-center', 'justify-content-between');
+                    domainItem.innerHTML = `
+                        <p class="mb-0">${domainName}</p>
+                        <button class="btn btn-primary rounded-pill py-0 text-capitalize removeBtn">Remove</button>
+                    `;
+                    domainList.appendChild(domainItem);
+                    domainInput.value = '';
+                }
+            });
+
+            domainList.addEventListener('click', (event) => {
+                if (event.target.classList.contains('removeBtn')) {
+                    event.target.parentElement.remove();
+                }
+            });
+        </script>
 
         <script src="../dist/js/plugins.min.js"></script>
         <script src="../dist/js/custom.min.js"></script>
