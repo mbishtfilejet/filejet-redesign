@@ -129,7 +129,7 @@
             </div>
 
             <div class="main-content-wrapper">
-                <div class="container">
+                <div class="container-fluid container-lg">
                     <div class="header py-1">
                         <div class="row align-items-center">
                             <div class="col col-xl-3 col-lg-4">
@@ -200,7 +200,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="container">
+                <div class="container-fluid container-lg">
                     <div class="main-content pt-3 d-flex flex-column justify-content-between h-75">
 
                         <!-- google auth start -->
@@ -211,7 +211,7 @@
                                 <div class="col-md-12">
                                     <div class="row pb-5">
                                        
-                                            <div class="col-md-6">
+                                            <div class="col-md-8 col-xl-6">
                                                 <h4>Single Sign-On (SSO)</h4>
                                                 <p>When enabled, users will be forced to use SSO option for signing into Filejet.</p>
                                                 <div class="d-flex align-items-center justify-content-between bg-white p-4 rounded-3 shadow-sm">
@@ -234,7 +234,7 @@
                                     </div>
                                     <div class="row pb-4">
                                         
-                                            <div class="col-md-6">
+                                            <div class="col-md-8 col-xl-6">
                                                 <h4>Limit SSO to Domains</h4>
                                                 <p>When enabled, users will be forced to use email for SSO that matches with added domain names.</p>
                                                 <div class="d-flex align-items-center bg-white p-4 rounded-3 shadow-sm">
@@ -277,7 +277,7 @@
                                                                         <p class="mb-0">filejet.com</p>
     
                                                                         <button
-                                                                            class="btn btn-primary rounded-pill py-0 text-capitalize" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#deleteDocument">Remove</button>
+                                                                            class="btn btn-primary rounded-pill py-0 text-capitalize removeBtn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#deleteDocument">Remove</button>
                                                                     </div>
     
     
@@ -1097,7 +1097,7 @@
                         data-bs-dismiss="modal">
                         CANCEL
                     </button>
-                    <button type="button" class="btn btn-danger px-5 py-3 removeBtn" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-danger px-5 py-3" id="confirmRemove" data-bs-dismiss="modal">
                         Confirm Remove
                     </button>
                 </div>
@@ -1180,10 +1180,11 @@
                     domainInput.value = '';
                 }
             });
-
-            domainList.addEventListener('click', (event) => {
-                if (event.target.classList.contains('removeBtn')) {
-                    event.target.parentElement.remove();
+            document.getElementById('confirmRemove').addEventListener('click', () => {
+                const removeBtn = document.querySelector('.removeBtn[data-bs-target="#deleteDocument"]');
+                if (removeBtn) {
+                    const domainItem = removeBtn.parentElement;
+                    domainItem.remove();
                 }
             });
         </script>
