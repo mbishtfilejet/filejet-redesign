@@ -178,7 +178,7 @@
                     <div class="header py-1">
 
                         <div class="row align-items-center">
-                            <div class="col col-xl-3 col-lg-3">
+                            <div class="col col-xl-3 col-lg-3 col-md-4">
                                 <h3 class="m-0">
                                     <strong>
                                         Business Licenses
@@ -186,7 +186,7 @@
                                 </h3>
                             </div>
                             <div
-                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
+                                class="col col-md-8 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
                                 <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-3 py-md-2 search-bar"
                                     data-bs-toggle="modal" data-bs-target="#searchModal">
                                     <span class="icon icon-search-grey icon-smd opacity-50"></span>
@@ -2347,6 +2347,7 @@
     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-black opacity-75 border-0">
+                <button type="button" class="btn-close btn-close-white ms-auto pe-3" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body d-flex flex-column align-items-center">
                     <div class="w-50 text-white">
                         <form autocomplete="off">
@@ -2970,23 +2971,23 @@
                             <h3 class="fs-3 m-0 mt-2">Preview</h3>
                         </div>
                     </div>
-                    <div class="row pt-4 w-100">
+                    <div class="row pt-4 w-100 btn-tab">
                         <div class="col-4">
-                            <button type="button" class="btn btn-info text-capitalize py-2 px-4 shadow-lg w-100"><span
+                            <button type="button" data-id="articles-of-Organization" class="active btn-link btn btn-info text-capitalize py-2 px-4 shadow-lg w-100 font-weight-600"><span
                                     class="text-wrap">Articles of
                                     Organization</span></button>
                         </div>
                         <div class="col-4">
                             <button type="button"
-                                class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100 text-wrap"
-                                data-bs-target="#previewModal" data-bs-toggle="modal" disabled="disabled"><span
+                                class="btn btn-light btn-link text-capitalize py-2 px-4 shadow-lg w-100 text-wrap font-weight-600"
+                                 data-id="statement-of-information" disabled="disabled"><span
                                     class="text-wrap">Statement of
                                     Information</span></button>
                         </div>
                         <div class="col-4">
                             <button type="button"
-                                class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100 text-wrap"
-                                data-bs-target="#previewModal" data-bs-toggle="modal" disabled="disabled"><span
+                                class="btn btn-light btn-link text-capitalize py-2 px-4 shadow-lg w-100 text-wrap font-weight-600"
+                                data-id="custom-Operating-Agreement" disabled="disabled"><span
                                     class="text-wrap">Custom
                                     Operating Agreement</span></button>
                         </div>
@@ -2997,7 +2998,13 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <div class="">
+                    <div id="articles-of-Organization" class="btn-tab-content active" style="display: block;">
+                        <img src="dist/images/preview-img.jpg" alt="">
+                    </div>
+                    <div id="statement-of-information" class="btn-tab-content">
+                        <img src="dist/images/preview-img.jpg" alt="">
+                    </div>
+                    <div id="custom-Operating-Agreement" class="btn-tab-content">
                         <img src="dist/images/preview-img.jpg" alt="">
                     </div>
                 </div>
