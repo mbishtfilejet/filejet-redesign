@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Jet : Login</title>
+  <!-- Styles -->
+  <link rel="stylesheet" href="dist/css/filejet-style.css">
+  <script src="dist/js/jquery.min.js"></script>
+  <!-- Scripts -->
+</head>
+
+<body>
+
+  <div class="login-page position-relative min-vh-100 d-flex align-items-center">
+    <div class="container-fluid">
+      <div class="row px-3 py-4 px-md-5 py-md-0 align-items-center">
+        <div class="col-12 col-md-6 col-lg-6 col-xl-5 position-relative">
+          <div class="card">
+            <div class="card-body p-5 py-4 py-xxxl-5">
+              <div class="mb-3">
+                <a href="/" class="pb-1 d-inline-block">
+                  <img src="dist/images/logo.png">
+                </a>
+              </div>
+              <div class="mb-3">
+                <h1 class="mb-0">
+                  <strong class="fw-bold">Welcome to Filejet</strong>
+                </h1>
+                <span>Login to access your account.</span>
+              </div>
+              <form>
+                <div class="form-group mb-3">
+                  <label class="mb-2" for="email">Email</label>
+                  <input type="email" class="form-control form-control-lg grey-input shadow-none min-height-auto"
+                    id="email" aria-describedby="emailHelp" placeholder="Email address">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="mb-2" for="password">Password</label>
+                  <div class="position-relative">
+                    <input type="password" class="form-control form-control-lg grey-input shadow-none min-height-auto"
+                      id="password" placeholder="Password">
+                    <a href="javascript:void(0)"> <span
+                        class="icon icon-eye position-absolute mt-0 grey-input me-0 px-3"></span></a>
+                  </div>
+                  <!-- <span class="icon icon-eye-slash position-absolute"></span> -->
+                </div>
+                <div class="d-flex align-items-center form-group mb-3">
+                  <input class="form-check-input" type="checkbox" id="rememberMeInput">
+                  <label class="form-check-label fs-6 fw-normal text-inherit m-0 ms-2" for="rememberMeInput">
+                    Remember me
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-3 mt-2">CONFIRM</button>
+                <div class="text-end text-uppercase mt-2 mb-3">
+
+                  <div class="position-relative">
+                    <hr class=" w-25 position-absolute start-50 translate-middle mt-3 border border-dark">
+
+                    <h6
+                      class="position-absolute start-50 translate-middle top-50 bg-white rounded-circle px-2 mb-0 mt-3">
+                      OR</h6>
+                  </div>
+
+                  <small>
+                    <a href="./forget-password.html">Forgot password?
+                    </a>
+                  </small>
+                </div>
+
+                <button type="button" class="btn w-100 py-3 mt-2 btn-tertiary border" data-bs-target="#ssoLogInModal"
+                  data-bs-toggle="modal">
+
+                  Sign In with SSO
+                </button>
+
+              </form>
+              <div class="pt-4 cursor-pointer">
+                <p class="d-flex align-items-center mb-0" data-bs-toggle="modal" data-bs-target="#needHelpModal">
+                  <span class="icon icon-help"></span>Need some help?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-6 col-xl-7 position-relative ps-5">
+          <div class="ps-5 col-xl-6 d-none d-md-block">
+            <h2 class="large-text text-white mb-4 pb-3">
+              <strong>
+                One
+                Platform,
+                All Your Business
+                Entities
+              </strong>
+            </h2>
+            <h4 class="text-white">
+              Welcome to Filejet! Where entity management just got a whole lot simpler! Let's jet!
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Need help Modal Starts -->
+  <div class="modal fade" id="needHelpModal" tabindex="-1" aria-labelledby="needHelpModalLabel" aria-hidden="true">
+    <div class="modal-dialog my-0 modal-md modal-dialog-centered min-vh-100">
+      <div class="modal-content border-0 rounded-2 bg-white">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body pb-0">
+          <form>
+            <div class="form-group mb-3">
+              <label class="mb-3" for="sender-email">From</label>
+              <input type="email" class="form-control form-control-lg grey-input shadow-none" id="sender-email"
+                aria-describedby="emailHelp" placeholder="Email address">
+            </div>
+            <div class="form-group mb-3">
+              <label class="mb-3" for="message">Add Message</label>
+              <textarea class="form-control form-control-lg grey-input shadow-none" id="message"
+                placeholder="add message" name="message"></textarea>
+          </form>
+
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary px-5 py-3 mt-2" data-bs-dismiss="modal">Send</button>
+        </div>
+        </form>
+      </div>
+
+      <!-- Modal Body Ends-->
+    </div>
+  </div>
+  </div>
+  <!-- Need help Modal Ends -->
+
+  <!-- SSO Login Modal Starts -->
+  <div class="modal fade sessionExpireModal" id="ssoLogInModal" tabindex="-1" aria-labelledby="ssoLogInModalLabel" aria-hidden="true">
+    <div class="modal-dialog my-0 modal-dialog-centered min-vh-100">
+      <div class="modal-content border-0 rounded-2 bg-white">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body pb-0">
+
+          <div class=" py-4 pt-0">
+           <div class="text-center">
+            <h4 class="fw-bold mb-2">Sign In with Single Sign-On (SSO)</h4>
+          
+           </div>
+            <div class="row pb-3 mt-4">
+              <form>
+                <div class="form-group mb-3 position-relative">
+                  <label class="mb-3" for="domain">Company Domain</label>
+                  <input type="text" class="form-control form-control-lg grey-input shadow-none" id="" placeholder="Enter Company Domain">
+                </div>
+
+                <div class="form-group mb-3">
+                  <label class="mb-3" for="email">Email</label>
+                  <input type="email" class="form-control form-control-lg grey-input shadow-none" id="email" aria-describedby="emailHelp" placeholder="Enter Email address">
+                </div>
+               
+               
+                <button type="submit" class="btn btn-primary w-100 py-3 mt-3">CONTINUE</button>
+              
+              </form>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Modal Body Ends-->
+    </div>
+  </div>
+  <!-- sso login modal end -->
+  <script>
+    function toggleElementVisibility(connectId, disconnectId, connectDivId1, connectDivId2) {
+      var connectBtn = document.getElementById(connectId);
+      var disconnectBtn = document.getElementById(disconnectId);
+      var connectDiv1 = document.getElementById(connectDivId1);
+      var connectDiv2 = document.getElementById(connectDivId2);
+
+      connectBtn.addEventListener('click', function () {
+        disconnectBtn.classList.remove('d-none');
+        connectDiv1.classList.add('d-none');
+        connectDiv2.classList.add('d-none');
+      });
+
+      disconnectBtn.addEventListener('click', function () {
+        connectDiv1.classList.remove('d-none');
+        connectDiv2.classList.remove('d-none');
+        disconnectBtn.classList.add('d-none');
+      });
+    }
+
+    toggleElementVisibility('googleConnect', 'googleDisconnect', 'connectDivGoogle', 'connectDivMs');
+    toggleElementVisibility('microsoftConnect', 'microsoftDisconnect', 'connectDivMs', 'connectDivGoogle');
+  </script>
+  <script src="dist/js/plugins.min.js"></script>
+  <script src="dist/js/custom.min.js"></script>
+  <!-- Scripts End-->
+
+</body>
+
+</html>

@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Jet: Additional Services</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="dist/css/filejet-style.css" />
+    <script src="dist/js/jquery.min.js"></script>
+    <!-- Scripts -->
+</head>
+
+<body>
+
+    <div class="grey-bg dashboard-page min-vh-100">
+        <div class="container-fluid p-0">
+            <div class="sidebar-wrapper">
+                <div class="sidebar min-vh-100 py-3 ps-3">
+                    <div class="ps-2 pb-4">
+                        <a href="/" class="logo">
+                            <img src="dist/images/logo.png" class="d-none d-lg-block" alt="FileJet">
+                            <img src="dist/images/filejet-pinLogo.png" class="d-block d-lg-none" alt="FileJet">
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="menu-link p-0 m-0">
+                            <!-- Dashboard -->
+                            <li class="nav-link">
+                                <a href="./index.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-dashboard normal-icon"></span>
+                                        <span class="icon icon-dashboard-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text">Dashboard</span>
+                                </a>
+                            </li>
+                            <!-- Entities -->
+                            <li class="nav-link">
+                                <a href="./entities.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-entities normal-icon"></span>
+                                        <span class="icon icon-entities-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Entities
+
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Groups -->
+                            <li class="nav-link">
+                                <a href="./groups.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-group normal-icon"></span>
+                                        <span class="icon icon-group-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Groups</span>
+                                </a>
+                            </li>
+                            <!-- Calendar -->
+                            <li class="nav-link">
+                                <a href="." class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-calender normal-icon"></span>
+                                        <span class="icon icon-calender-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Calendar</span>
+                                </a>
+                            </li>
+                            <!-- Registered Agent -->
+                            <li class="nav-link">
+                                <a href="./registered-agent.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-users-check normal-icon"></span>
+                                        <span class="icon icon-users-check-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Registered Agent
+                                        <span class="count-notification position-absolute">12</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Business Licenses -->
+                            <li class="nav-link">
+                                <a href="./business-licences.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-business normal-icon"></span>
+                                        <span class="icon icon-business-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">Business Licenses
+                                        <span class="count-notification position-absolute">3</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Fictitious / Trade Name -->
+                            <li class="nav-link">
+                                <a href="./trade.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-certificate-black normal-icon"></span>
+                                        <span class="icon icon-certificate-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">Fictitious / Trade Name
+                                        <span class="count-notification position-absolute">6</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Organization Charts  -->
+                            <li class="nav-link">
+                                <a href="org-chart-list.html"
+                                    class="text-decoration-none ps-3 py-3 d-flex align-items-center" data-bs-toggle="#"
+                                    data-bs-target="#organizationChartModal">
+                                    <span>
+                                        <span class="icon icon-chart normal-icon"></span>
+                                        <span class="icon icon-chart-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block">
+                                        Organization Charts
+
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- CTA -->
+                            <li class="nav-link">
+                                <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#ctaTableModal">
+                                    <span>
+                                        <span class="icon icon-cta normal-icon"></span>
+                                        <span class="icon icon-cta-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text position-relative">
+                                        Corporate Transparency Act
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Cap Table -->
+                            <li class="nav-link">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#capTableModal">
+                                    <span>
+                                        <span class="icon icon-table normal-icon"></span>
+                                        <span class="icon icon-table-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block position-relative">
+                                        Cap Table
+                                        <span class="small-tag">Coming soon</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Reports -->
+                            <li class="nav-link">
+                                <a href="./reports.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-report normal-icon"></span>
+                                        <span class="icon icon-report-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Reports </span>
+                                </a>
+                            </li>
+                            <!-- Additional Services -->
+                            <li class="nav-link active">
+                                <a href="#" class="text-decoration-none ps-3 py-3 d-block" data-bs-toggle="modal"
+                                    data-bs-target="#servicesModal">
+                                    <span>
+                                        <span class="icon icon-services normal-icon"></span>
+                                        <span class="icon icon-services-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Additional Services </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content-wrapper">
+                <div class="containerfluid container-lg">
+                    <div class="header py-1">
+
+                        <div class="row align-items-center">
+                            <div class="col col-xl-3 col-lg-3">
+                                <h3 class="m-0">
+                                    <strong>
+                                        Additional Services
+                                    </strong>
+                                </h3>
+                            </div>
+                            <div
+                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
+                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-3 py-md-2 search-bar"
+                                    data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                                    <span class="text-placeholder w-100 d-none d-md-block">What are you looking
+                                        for?</span>
+                                </div>
+                                <div class="notification position-relative px-4">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#notificationModal">
+                                        <span class="icon icon-bell m-0"></span>
+                                        <span class="notification-dot"></span>
+                                    </a>
+                                </div>
+                                <div class="profile-nav">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg ms-n3">
+                                                <img src="../dist/images/avatar.png" alt="" />
+                                            </span>
+                                            <span class="user-name">Roman</span>
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <span
+                                                    class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                                    Account
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="./account/settings.html">
+                                                    <span class="avatar avatar-sm me-4">
+                                                        <img src="dist/images/avatar.png" alt="">
+                                                    </span>
+                                                    View Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center"
+                                                    href="../../login.html">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="container-fluid container-lg">
+                    <!---New Entity--->
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                                <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                                    <span class="icon icon-md icon-cart-white m-0"></span>
+                                </span>
+                                <div>
+                                    <span class="fs-3 fw-bold">Select Entity</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="flex-wrap">
+                                <div class="step-group step-space-1 mb-0">
+                                    <div class="completed step">
+                                        <div>
+                                            <span class="icon icon-white-tick me-0"></span>
+                                            1
+                                        </div>
+                                        <span class="text">Setup</span>
+                                    </div>
+                                    <div class="active step">
+                                        <div>
+                                            <span class="icon icon-white-tick me-0"></span>
+                                            2
+                                        </div>
+                                        <span class="text">Options</span>
+                                    </div>
+                                    <div class="step">
+                                        <div>3</div>
+                                        <span class="text">Details</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="d-flex align-items-center justify-content-end" data-bs-toggle="modal"
+                                data-bs-target="#serviceSetUpModal">
+                                <span class="rounded-2 white-bg p-2">
+                                    <span class="icon icon-history-clock me-0"></span>
+                                </span>
+                                <div class="ms-3">
+                                    <span class="fw-bold fs-10 d-block">HISTORY</span>
+                                    <span class="fw-normal d-block">1 Update</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---New Entity End--->
+
+                    <!---form 1-->
+                    <div class="step-section pt-3" id="stepFirst">
+                        <!--Setup Entity Ends -->
+                        <div class="border-bottom pt-5 pb-4">
+                            <div class="d-flex mb-3 align-items-center">
+                                <div class="me-5">
+                                    <div class="fw-normal fs-5 lh-1">Select</div>
+                                </div>
+                                <div class="ms-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="setupSection"
+                                            id="selectEntity" value="" checked>
+                                        <label class="form-check-label top-0" for="selectEntity">Entity</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="setupSection"
+                                            id="selectGroup" value="">
+                                        <label class="form-check-label top-0" for="selectGroup">Group</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--Setup Entity Ends -->
+
+                        <!--Entity Details Start-->
+                        <div class="border-bottom pb-4">
+                            <div class="fw-bold mt-4 fs-6">Select Group or Entity</div>
+                            <select class="form-select form-control w-25 mt-4">
+                                <option selected>Select</option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                                <option value="3"></option>
+                            </select>
+                        </div>
+                        <!--Entity Details End-->
+
+                        <!--footer Buttons-->
+                        <div class="modal-footer mt-3 pb-0 position-absolute bottom-0 end-0 me-5 mb-3">
+                            <div class="d-flex justify-content-end">
+                                <a href="" type="button" class="btn btn-link px-2 py-3 text-uppercase">
+                                    SAVE AND EXIT
+                                </a>
+                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection"
+                                    onclick="toggleSection(this)">
+                                    NEXT
+                                </button>
+                            </div>
+                        </div>
+                        <!--footer Buttons Ends-->
+                    </div>
+                    <!----form 1 end-->
+
+                    <!-----form 2----->
+                    <div class="step-section collapse mt-5" id="stepSecond">
+                        <!---Accordian-->
+                        <div class="accordion" id="accordionExample">
+                            <!--ACCORDION 1 START-->
+                            <div class="accordion-item bg-transparent shadow-none">
+                                <h2 class="accordion-header border-bottom pb-4" id="headingOne">
+                                    <button
+                                        class="accordion-button fw-normal fs-5 bg-transparent position-relative px-0"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                        Filings
+                                        <span
+                                            class="fw-bold fs-8 opacity-50 ms-auto position-absolute end-0 me-5">Section
+                                            01</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse border-0 collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionGroup">
+                                    <div class="accordion-body px-0">
+                                        <div class="fw-bold fs-5 my-4 pb-2">Business Compliance</div>
+
+                                        <div class="bg-white shadow rounded-2 p-3">
+                                            <form action="">
+                                                <div class="">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckDefault">
+                                                    <label
+                                                        class="form-check-label fw-normal fs-6 text-inherit ms-3 mb-0"
+                                                        for="flexCheckDefault">
+                                                        Preparation and Filing of Entity Documents (State Filing Fee
+                                                        $90)
+                                                        <div class="opacity-50 fw-normal fs-8 mt-2 mb-4">At no extra
+                                                            cost, Filejet advances the
+                                                            state fee as part of our services!</div>
+                                                    </label>
+                                                </div>
+
+                                                <div class="ms-5">
+                                                    <div class="border-bottom border-top">
+                                                        <div class="mt-4 d-flex">
+                                                            <div class="col-10">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="flexRadioDefault" id="flexRadioDefault1">
+                                                                <label
+                                                                    class="form-check-label fs-6 fw-normal text-inherit ms-3 mb-0"
+                                                                    for="flexRadioDefault1">
+                                                                    Prepare and File Entity Documents
+                                                                </label>
+                                                            </div>
+                                                            <div class="fw-bold fs-8 col-2 text-end">$562.30</div>
+                                                        </div>
+
+                                                        <div class="mt-4 d-flex mb-4">
+                                                            <div class="col-10">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="flexRadioDefault" id="onlyFileArticle">
+                                                                <label
+                                                                    class="form-check-label fs-6 fw-normal text-inherit ms-3 mb-0"
+                                                                    for="onlyFileArticle">
+                                                                    Only File Articles of Entity
+                                                                </label>
+                                                            </div>
+                                                            <div class="fw-bold opacity-50 fs-8 col-2 text-end">
+                                                                <del>5558.60</del>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mt-3 d-flex align-items-center">
+                                                        <div class="">
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                id="certifiedCopy">
+                                                            <label
+                                                                class="form-check-label fs-6 fw-normal text-inherit ms-3 mb-0"
+                                                                for="certifiedCopy">
+                                                                Certified Copy
+                                                            </label>
+                                                        </div>
+                                                        <div class="d-flex ms-auto align-items-center">
+                                                            <div class="fs-6 fw-normal me-3">Quantity</div>
+                                                            <div
+                                                                class="me-4 rounded-3 text-purple px-3 py-2 purple-bg-light">
+                                                                <span>1</span>
+                                                                <span
+                                                                    class="icon icon-xs icon-arrow-triangle-left-purple me-1"></span>
+                                                                <span
+                                                                    class="icon icon-xs icon-arrow-triangle-right-purple me-0"></span>
+                                                            </div>
+                                                            <div class="fw-bold fs-8 ps-3">$6.00</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+
+                                        <div class="border-bottom bg-white shadow rounded-2 mt-3 p-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="reverseVerify">
+                                            <label class="form-check-label fs-6 fw-normal top-0 mb-0 ms-3 text-inherit"
+                                                for="reverseVerify">
+                                                Reserve or Verify Business Name
+                                            </label>
+                                        </div>
+
+                                        <div class="fw-bold fs-5 mt-5 border-top py-4">Taxes & Licenses</div>
+
+                                        <div class="d-flex mt-3 bg-white shadow rounded-2 p-3">
+                                            <div class="col-10">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="obtainFedralEmployer">
+                                                <label
+                                                    class="form-check-label fw-normal fs-6 top-0 mb-0 ms-3 text-inherit"
+                                                    for="obtainFedralEmployer">
+                                                    Obtain Fedral Employer Tax ID(EIN #)
+                                                </label>
+                                            </div>
+                                            <div class="col-2 fw-bold fs-8 text-end">$45.00</div>
+                                        </div>
+
+                                        <div class="d-flex mt-3 bg-white shadow rounded-2 p-3">
+                                            <div class="col-10">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="convertSub">
+                                                <label
+                                                    class="form-check-label fw-normal fs-6 top-0 mb-0 ms-3 text-inherit"
+                                                    for="convertSub">
+                                                    Convert to Sub S Selection(S Corp)
+                                                </label>
+                                            </div>
+                                            <div class="col-2 fw-bold fs-8 text-end">$45.00</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--ACCORDION 1 END-->
+
+                            <!--ACCORDION 2 START-->
+                            <div class="accordion-item bg-transparent shadow-none">
+                                <h2 class="accordion-header border-bottom pb-4" id="headingTwo">
+                                    <button
+                                        class="accordion-button fw-normal fs-5 bg-transparent position-relative collapsed px-0"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">
+                                        Registered Agent
+                                        <span
+                                            class="fw-bold fs-8 opacity-50 ms-auto position-absolute end-0 me-5">Section
+                                            02</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse border-0 collapse"
+                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body px-0">
+                                        <strong>This is the second item's accordion body.</strong> It is hidden by
+                                        default, until the
+                                        collapse plugin adds the appropriate classes that we use to style each element.
+                                        These classes
+                                        control the overall appearance, as well as the showing and hiding via CSS
+                                        transitions. You can
+                                        modify any of this with custom CSS or overriding our default variables. It's
+                                        also worth noting
+                                        that
+                                        just about any HTML can go within the <code>.accordion-body</code>, though the
+                                        transition does
+                                        limit
+                                        overflow.
+                                    </div>
+                                </div>
+                            </div>
+                            <!--ACCORDION 2 END-->
+
+                            <!--ACCORDION 3 START-->
+                            <div class="accordion-item bg-transparent shadow-none">
+                                <h2 class="accordion-header border-bottom pb-4" id="headingThree">
+                                    <button
+                                        class="accordion-button fw-normal fs-5 bg-transparent position-relative collapsed px-0"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                        aria-expanded="false" aria-controls="collapseThree">
+                                        Kits & Certificates
+                                        <span
+                                            class="fw-bold fs-8 opacity-50 ms-auto position-absolute end-0 me-5">Section
+                                            03</span>
+                                    </button>
+
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse border-0 collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body px-0">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by
+                                        default, until the
+                                        collapse plugin adds the appropriate classes that we use to style each element.
+                                        These classes
+                                        control the overall appearance, as well as the showing and hiding via CSS
+                                        transitions. You can
+                                        modify any of this with custom CSS or overriding our default variables. It's
+                                        also worth noting
+                                        that
+                                        just about any HTML can go within the <code>.accordion-body</code>, though the
+                                        transition does
+                                        limit
+                                        overflow.
+                                    </div>
+                                </div>
+                            </div>
+                            <!--ACCORDION 3 END-->
+                        </div>
+                        <!---Accordian End-->
+
+                        <!--Accordian Page footer-->
+                        <div class="d-flex justify-content-between">
+                            <div class="mt-3">
+                                <label class="form-label  ">Total</label>
+                                <div class="fw-bold fs-6">$245.00</div>
+                            </div>
+                            <div class="py-3">
+                                <a href="" type="button" class="btn btn-link px-2 py-3 text-uppercase"
+                                    data-bs-toggle="modal" data-bs-target="#exitModal">
+                                    SAVE AND EXIT
+                                </a>
+                                <button class="btn btn-info py-3 px-5 rounded-3 ms-3 toggleSection"
+                                    onclick="toggleSection(this)">
+                                    NEXT
+                                </button>
+                            </div>
+                        </div>
+                        <!--Accordian Page footer End-->
+                    </div>
+                    <!-----form 2 end---->
+
+                    <!----Form 3 start-->
+                    <div class="step-section mt-5 collapse" id="stepThird">
+                        <!---form 3 main div-->
+                        <!--form 3 header-->
+                        <h6 class="fw-normal fs-5">Entity Details</h6>
+                        <!-----Tabber Code-->
+                        <div class="white-bg d-flex px-3 py-3 pb-0 mt-2 shadow rounded-2">
+                            <div class="w-100">
+                                <ul class="nav list-full-width flex-wrap w-100">
+                                    <li class="nav-item">
+                                        <a class="nav-link active fs-5 fw-bold" href="javascript:void(0);"
+                                            id="general-tab" data-bs-toggle="tab" data-bs-target="#general" role="tab"
+                                            aria-controls="general" aria-selected="true">01-GENERAL INFO</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-bold" href="javascript:void(0);" id="registered-tab"
+                                            data-bs-toggle="tab" data-bs-target="#registered" role="tab"
+                                            aria-controls="registered" aria-selected="true">02-REGISTERED AGENT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-bold" href="javascript:void(0);" id="statement-tab"
+                                            data-bs-toggle="tab" data-bs-target="#statement" role="tab"
+                                            aria-controls="statement" aria-selected="true">03-STATEMENT
+                                            OF INFO</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-bold" href="javascript:void(0);" id="agreement-tab"
+                                            data-bs-toggle="tab" data-bs-target="#agreement" role="tab"
+                                            aria-controls="agreement" aria-selected="true">04-AGREEMENT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-bold" href="javascript:void(0);" id="client-tab"
+                                            data-bs-toggle="tab" data-bs-target="#client" role="tab"
+                                            aria-controls="client" aria-selected="true">05-CLIENT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-bold" href="javascript:void(0);" id="client-tab"
+                                            data-bs-toggle="tab" data-bs-target="#client" role="tab"
+                                            aria-controls="client" aria-selected="true">06-CLIENT-NEXT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-bold" href="javascript:void(0);" id="client-tab"
+                                            data-bs-toggle="tab" data-bs-target="#client" role="tab"
+                                            aria-controls="client" aria-selected="true">06-CLIENT-NEXT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 fw-bold" href="javascript:void(0);" id="client-tab"
+                                            data-bs-toggle="tab" data-bs-target="#client" role="tab"
+                                            aria-controls="client" aria-selected="true">06-CLIENT-NEXT</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="nav-tabContent">
+                            <!-- First Tab Starts -->
+                            <div class="tab-pane fade show active" id="general" role="tabpanel"
+                                aria-labelledby="general-tab">
+                                <div class=" mt-5  d-flex justify-content-between  border-bottom">
+                                    <h6 class="fw-normal fs-5">General Info</h6>
+                                    <div class="  opacity-50 ">Section 01</div>
+                                </div>
+                                <!--form 3 header end-->
+
+                                <!--form 3 body Starts-->
+                                <form action="">
+
+                                    <div class="fw-bold fs-6 mt-4">Basic Info</div>
+                                    <div class="mb-4 mt-4">
+                                        <label for="exampleFormControlInput1" class="form-label">NAME OF ENTITY</label>
+                                        <input type="text" class="form-control fw-normal fs-6"
+                                            id="exampleFormControlInput1" placeholder="Keegan Corp.">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <label for="" class="form-label">Business address</label>
+                                            </div>
+                                            <div class="col-3 text-end">
+                                                <div class="form-check d-inline-block">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="sameAsMail2" checked />
+                                                    <label class="form-check-label form-label top-0" for="sameAsMail2">
+                                                        SAME AS MAILING ADDRESS?
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="" placeholder="Address Line 1" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="" placeholder="Address Line 2" />
+                                    </div>
+                                    <div class="row g-4">
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="City">
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-control mb-2  fw-normal fs-6"
+                                                aria-label=".form-select-lg example">
+                                                <option selected>State</option>
+                                                <option value="1"></option>
+                                                <option value="2"></option>
+                                                <option value="3"></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Country">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Zip">
+                                        </div>
+                                    </div>
+
+                                    <label for="exampleFormControlInput1" class="form-label mt-4 mb-4">AGENT OF SALE OF
+                                        PROCESS</label>
+                                    <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">An Individual</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">Corporate Agent</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-4 mb-2">
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Agent's Suffix">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Agent First Name">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Agent Middle Name">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Agent Last Name">
+                                        </div>
+                                    </div>
+
+                                    <input type="text" class="form-control fw-normal fs-6 mb-3"
+                                        id="exampleFormControlInput1" placeholder="Address Line 1">
+                                    <input type="text" class="form-control fw-normal fs-6 mb-3"
+                                        id="exampleFormControlInput1" placeholder="Address Line 2">
+
+
+                                    <div class="row g-4">
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="City">
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-control mb-2  fw-normal fs-6"
+                                                aria-label=".form-select-lg example">
+                                                <option selected>State</option>
+                                                <option value="1"></option>
+                                                <option value="2"></option>
+                                                <option value="3"></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Country">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Zip">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 mt-4">
+                                        <label for="exampleFormControlInput1" class="form-label">NUMBER OF SHARES
+                                            AUTHORIZED TO ISSUE</label>
+                                        <input type="email" class="form-control fw-normal fs-6"
+                                            id="exampleFormControlInput1" placeholder="Number of Shares">
+                                    </div>
+
+
+                                    <div class="mb-4 mt-4 border-bottom">
+                                        <label for="exampleFormControlInput1" class="form-label">PER VALUE</label>
+                                        <input type="email" class="form-control fw-normal fs-6 mb-4"
+                                            id="exampleFormControlInput1" placeholder="$per Value">
+                                    </div>
+
+
+                                    <div class="fw-bold fs-6 mt-4">Sign</div>
+                                    <div class="mb-4 mt-4">
+                                        <label for="exampleFormControlInput1" class="form-label">FILEJET WILL SIGN ON
+                                            YOUR BEHALF</label>
+                                        <input type="email" class="form-control fw-normal fs-6"
+                                            id="exampleFormControlInput1" placeholder="Authorized Signer">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <label for="" class="form-label">ORGANISER ADDRESS</label>
+                                            </div>
+                                            <div class="col-3 text-end">
+                                                <div class="form-check d-inline-block">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="sameAsMail" checked />
+                                                    <label class="form-check-label form-label top-0" for="sameAsMail">
+                                                        SAME AS MAILING ADDRESS?
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="" placeholder="Address Line 1" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="" placeholder="Address Line 2" />
+                                    </div>
+                                    <div class="row g-4 border-bottom">
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="City">
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="form-select form-control mb-2  fw-normal fs-6"
+                                                aria-label=".form-select-lg example">
+                                                <option selected>State</option>
+                                                <option value="1"></option>
+                                                <option value="2"></option>
+                                                <option value="3"></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6"
+                                                id="exampleFormControlInput1" placeholder="Country">
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="text" class="form-control fw-normal fs-6 mb-4"
+                                                id="exampleFormControlInput1" placeholder="Zip">
+                                        </div>
+                                    </div>
+
+                                    <div class="fw-bold fs-6 mt-4 ">Special Instruction</div>
+                                    <div class="mb-4 mt-4 border-bottom">
+                                        <label for="exampleFormControlInput1" class="form-label">SPECIAL INSTRUCTION FOR
+                                            OUR TEAM?</label>
+                                        <input type="email" class="form-control fw-normal fs-6 mb-4"
+                                            id="exampleFormControlInput1" placeholder="Your Message">
+                                    </div>
+                                </form>
+                                <!--form 3 body end-->
+
+                                <!---form 3 footer Starts -->
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col mt-3">
+                                            <label class="form-label  ">Total</label>
+                                            <div class="fw-bold fs-6">$245.00</div>
+                                        </div>
+                                        <div class="col-md-auto modal-footer mt-3 pb-0 mb-3">
+                                            <a href="" type="button" class="btn btn-link px-2 py-3 text-uppercase"
+                                                data-bs-toggle="modal" data-bs-target="#exitModal">
+                                                SAVE AND EXIT
+                                            </a>
+                                            <button type="button"
+                                                class="btn btn-tertiary text-uppercase py-3 px-5 rounded-3 ms-3"
+                                                data-bs-target="#previewModal" data-bs-toggle="modal"
+                                                data-bs-dismiss="modal">
+                                                PREVIEW
+                                            </button>
+                                            <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3"
+                                                data-bs-target="#submitModal" data-bs-toggle="modal"
+                                                data-bs-dismiss="modal">
+                                                SUBMIT
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---form 3 footer Ends -->
+                            </div>
+                            <!-- First Tab Ends -->
+
+                            <!-- Second Tab Starts -->
+                            <div class="tab-pane fade" id="registered" role="tabpanel" aria-labelledby="registered-tab">
+                                <div class=" mt-5  d-flex justify-content-between  border-bottom">
+                                    <h6 class="fw-normal fs-5">REGISTERED AGENT</h6>
+                                    <div class="  opacity-50 ">Section 02</div>
+                                </div>
+                            </div>
+                            <!-- Second Tab Ends -->
+
+                            <!-- Third Tab Starts -->
+                            <div class="tab-pane fade" id="statement" role="tabpanel" aria-labelledby="statement-tab">
+                                <div class=" mt-5  d-flex justify-content-between  border-bottom">
+                                    <h6 class="fw-normal fs-5">STATEMENT OF INFO</h6>
+                                    <div class="  opacity-50 ">Section 03</div>
+                                </div>
+                            </div>
+                            <!-- Third Tab Ends -->
+
+                            <!-- Fourth Tab Starts -->
+                            <div class="tab-pane fade" id="agreement" role="tabpanel" aria-labelledby="agreement-tab">
+                                <div class=" mt-5  d-flex justify-content-between  border-bottom">
+                                    <h6 class="fw-normal fs-5">AGREEMENT</h6>
+                                    <div class="  opacity-50 ">Section 04</div>
+                                </div>
+                            </div>
+                            <!-- Fourth Tab Ends -->
+
+                            <!-- Fifith Tab Starts -->
+                            <div class="tab-pane fade" id="client" role="tabpanel" aria-labelledby="client-tab">
+                                <div class=" mt-5  d-flex justify-content-between  border-bottom">
+                                    <h6 class="fw-normal fs-5">CLIENT</h6>
+                                    <div class="  opacity-50 ">Section 05</div>
+                                </div>
+                            </div>
+                            <!-- Fifth Tab Ends -->
+
+
+                        </div>
+                    </div>
+                    <!----Form 3 start end-->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--Save and exit Button Form-->
+    <div class="modal modal-right fade" id="exitModal" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="red-bg p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-delete-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">CANCEL</span>
+                            <h3 class="fs-3 m-0 mt-2 fw-bold">Are You Sure You Want to Save and Exit?</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="fs-6 fw-normal">
+                        <p>Your changes will be saved as an In Process Service so that you can resume from where you
+                            left
+                            off.</p>
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <!-- Modal Body footer-->
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-uppercase text-decoration-none font-weight-600 "
+                            data-bs-toggle="modal">
+                            Go Back
+                        </button>
+                        <button type="button" class="btn btn-primary text-white text-uppercase py-3 px-3 rounded-3 ms-3"
+                            data-bs-dismiss="modal">
+                            SAVE AND EXIT
+                        </button>
+                    </div>
+                </div>
+                <!-- Modal Body footer ends-->
+
+            </div>
+        </div>
+    </div>
+    <!--Save and exit Button form end-->
+
+    <!---PAYMENT MODEL START-->
+    <div class="modal modal-right fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="purple-bg p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-card-white  m-0"></span>
+                        </span>
+
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">PAYMENT</span>
+                            <h3 class="fs-3 m-0 mt-2 fw-bold">Confirm Your Payment</h3>
+                        </div>
+                    </div>
+
+                    <div class="fs-6 fw-normal border-bottom  mt-3">
+                        <p>This is the Annual Recurring Platform Fee(formerly known as maintenance fee) for this
+                            individual
+                            Entity based on your subscription plan.</p>
+                        <p>Upon completion of payment, you will have access to the Entity's Profile and will recieve
+                            Compliance Notifications. </p>
+                    </div>
+
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!--MODAL BODY-->
+                <div class="modal-body">
+                    <form action="">
+
+                        <h6 class="fw-bold fs-5 mb-4 ">Payment Method</h6>
+                        <h6 class="fw-bold fs-9">SELECT METHOD</h6>
+
+                        <div class="white-bg mb-2 rounded-1 broder-px-3 py-3 ps-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="yourBilling"
+                                    value="option1">
+                                <label class="form-check-label" for="yourBilling">Your Billing</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    id="newPaymentOption" value="option2">
+                                <label class="form-check-label" for="newPaymentOption">New Payment Option</label>
+                            </div>
+                        </div>
+
+                        <div class="fw-bold fs-9 mt-4 mb-2">NEW PAYMENT OPTION</div>
+                        <select class="form-select form-control mb-4">
+                            <option selected>xxxx4242 Visa</option>
+                            <option value="1"></option>
+                            <option value="2"></option>
+                            <option value="3"></option>
+                        </select>
+
+                        <div class="border-top">
+                            <h6 class="fw-bold fs-5 mt-4">Order Summary</h6>
+                            <div class="white-bg mb-3 rounded-1 broder-px-3 py-3 ps-2 row align-items-center">
+                                <div class="fs-6 fw-normal col-10">
+                                    Platform Fee
+                                </div>
+                                <div class="fs-8 fw-bold col-2">$100</div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <!--MODAL BODY END-->
+
+                <!--MODAL BODY Footer-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col mt-3">
+                            <label class="form-label  ">Total</label>
+                            <div class="fw-bold fs-6">$245.00</div>
+                        </div>
+                        <div class="col-md-auto modal-footer mt-3 pb-0">
+                            <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase"
+                                data-bs-toggle="modal" data-bs-target="#exitModal">
+                                GO BACK
+                            </a>
+                            <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3"
+                                data-bs-target="#paysuccessModal" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                PAY
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--MODAL BODY Footer End-->
+            </div>
+        </div>
+    </div>
+    <!---PAYMENT MODEL END-->
+
+    <!-- Success Modal Starts -->
+    <div class="modal modal-right fade" id="paysuccessModal" tabindex="-1" aria-labelledby="paysuccessModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="green-bg p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-white-tick m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SUCCESS</span>
+                            <h3 class="fs-3 m-0 mt-2">&lt &lt Service &gt &gt Setup Complete!</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="">
+                        <p>You have successfully setup the &lt &lt Service &gt &gt on your account.</p>
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <a href="" type="button" class="btn btn-link px-5 py-3 text-uppercase" data-bs-toggle="modal"
+                            data-bs-target="">
+                            PERFORM ANOTHER
+                        </a>
+                        <button type="button" class="btn btn-info px-5 py-3 rounded-3 ms-3" data-bs-dismiss="modal">
+                            VIEW
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Success Modal Ends -->
+
+    <!-- Organization Chart Starts -->
+    <div class="modal fade" id="organizationChartModal" tabindex="-1" aria-labelledby="organizationChartModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+            <div class="modal-content border-0 rounded-2 bg-white">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb breadcrumb-default mb-0">
+                                <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                                <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Organization charts</li>
+                            </ol>
+                        </nav>
+                        <div>
+                            <a href="/" class="text-decoration-none">
+                                <span class="icon icon-sm icon-link-dark"></span>
+                                Permalink
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end w-100 justify-content-between">
+                        <div>
+                            <h2 class="mb-0 fs-3 h1">Organization charts</h2>
+                            <span class="btn btn-sm btn-quaternary rounded-4 fw-normal d-inline fs-9 py-1 px-4">Coming
+                                soon</span>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-dark px-4 py-3 rounded-3 ms-3">
+                                <span class="icon icon-sm icon-mail-filled-dark"></span>
+                                <span class="icon icon-sm icon-mail-filled-white"></span>
+                                Get Notified
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body pb-0">
+                    <div class="two-col-video">
+                        <div class="col-md-12 video-wrapper">
+                            <video preload="auto" poster="./dist/images/video-poster.svg" autoplay>
+                                <source src="movie.mp4" type="video/mp4">
+                                <source src="movie.ogg" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
+                                lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
+                                Aliquam finibus a purus vel ullamcorper. Integer vitae pellentesque mauris. </p>
+                            <p>Fusce elementum tortor id erat consequat, vel dignissim nisi maximus. Aliquam sagittis
+                                vestibulum lacinia. Nam vel convallis sapien. Morbi at lorem sed neque commodo
+                                dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
+                                diam.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+            </div>
+        </div>
+    </div>
+    <!-- Organization Chart Ends -->
+
+    <!-- Cap Table Starts -->
+    <div class="modal fade" id="capTableModal" tabindex="-1" aria-labelledby="capTableModalLabel" aria-hidden="true">
+        <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+            <div class="modal-content border-0 rounded-2 bg-white">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb breadcrumb-default mb-0">
+                                <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                                <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Departments</li>
+                            </ol>
+                        </nav>
+                        <div>
+                            <a href="/" class="text-decoration-none">
+                                <span class="icon icon-sm icon-link-dark"></span>
+                                Permalink
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end w-100 justify-content-between">
+                        <div>
+                            <h2 class="mb-0 fs-3 h1">Cap Table</h2>
+                            <span
+                                class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success px-4 py-3 rounded-3 ms-3"
+                                data-bs-dismiss="modal">
+                                <span class="icon icon-sm icon-cart-white"></span>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body pb-0">
+                    <div class="two-col-video">
+                        <div class="col-md-12 video-wrapper">
+                            <video preload="auto" poster="./dist/images/cap-table.svg" autoplay>
+                                <source src="movie.mp4" type="video/mp4">
+                                <source src="movie.ogg" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget sem eget nisl
+                                lacinia tristique. Vestibulum finibus lectus metus, vitae blandit dolor sagittis quis.
+                                Aliquam finibus a purus vel ullamcorper. Integer vitae pellentesque mauris. </p>
+                            <p>Fusce elementum tortor id erat consequat, vel dignissim nisi maximus. Aliquam sagittis
+                                vestibulum lacinia. Nam vel convallis sapien. Morbi at lorem sed neque commodo
+                                dignissim. Praesent pulvinar, est sit amet tristique fringilla, lorem odio vestibulum
+                                diam.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+            </div>
+        </div>
+    </div>
+    <!-- Cap Table Ends -->
+    <!-- CTA Table Starts -->
+    <div class="modal fade" id="ctaTableModal" tabindex="-1" aria-labelledby="ctaTableModalLabel" aria-hidden="true">
+        <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+            <div class="modal-content border-0 rounded-2 bg-white">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <!-- <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-default mb-0">
+                            <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                            <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Departments</li>
+                        </ol>
+                    </nav>
+                    
+                </div> -->
+                    <div class="d-flex align-items-end w-100 justify-content-between mt-3 mt-xl-0">
+                        <div>
+                            <h2 class="mb-0 fs-3 h1">CTA- Corporate Transparency Act</h2>
+                            <!-- <span
+                            class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body pb-0">
+                    <div class="two-col-video">
+                        <div class="col-12 col-md-12 video-wrapper">
+                            <video preload="auto" poster="./dist/images/cta-table.svg" autoplay>
+                                <source src="movie.mp4" type="video/mp4">
+                                <source src="movie.ogg" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <p>"Filejet is now offering Beneficial Ownership Information (BOI) filings for the Corporate
+                                Transparency Act !</p>
+                            <p>Filejet is providing the initial BOI filing (if applicable) and <b><span
+                                class="text-decoration-underline">unlimited update filings</span></b> for any
+                                non-exempt reporting companies for only $100 per year per entity. Billing is an annual
+                                subscription fee, per your existing Terms & Conditions.</p>
+                            <p>It is fast and easy. Please click below to get started! "</p>
+
+                            <div class="text-center mt-5 mb-3">
+                                <button type="button" onclick="window.location.href ='./cta.html';"
+                                    class="btn btn-success px-3 px-md-4 py-3 rounded-3" data-bs-dismiss="modal">
+                                    Get Started
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+            </div>
+        </div>
+    </div>
+    <!-- CTA Table Ends -->
+    <!-- Service Setup Modal Starts -->
+    <div class="modal modal-right fade" id="serviceSetUpModal" tabindex="-1" aria-labelledby="serviceSetUpModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon icon-history-clock-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">History</span>
+                            <h3 class="fs-3 m-0 mt-2">Service Setup History</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="border-bottom pb-3 mb-3">
+                        <div class="dropdown mb-3">
+                            <p class="mb-0 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Friday, November 5th
+                            </p>
+                            <ul class="dropdown-menu">
+                                <li><span class="dropdown-item py-2 fs-9 fw-bold">jump to...</span></li>
+                                <li><a class="dropdown-item py-2" href="#">Last Week</a></li>
+                                <li><a class="dropdown-item py-2" href="#">Last month</a></li>
+                                <li><a class="dropdown-item py-2" href="#">The Beginning</a></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom py-3 mb-3">
+                        <div class="dropdown mb-3">
+                            <p class="mb-0 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Friday, November 6th
+                            </p>
+                            <ul class="dropdown-menu">
+                                <li><span class="dropdown-item py-2 fs-9 fw-bold">jump to...</span></li>
+                                <li><a class="dropdown-item py-2" href="#">Last Week</a></li>
+                                <li><a class="dropdown-item py-2" href="#">Last month</a></li>
+                                <li><a class="dropdown-item py-2" href="#">The Beginning</a></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                        <div class="bg-white shadow rounded-3 d-flex p-3 mb-3">
+                            <div class="me-3 rounded-circle overflow-hidden">
+                                <img src="dist/images/avatar-2.png" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex flex-wrap">
+                                    <span class="me-4 mb-2">Jennifer Jenkins</span>
+                                    <span class="fs-7 opacity-50">11:15 AM</span>
+                                </div>
+                                <p class="m-0">Modified field name - Entity Name to << change>> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info px-5 py-3 rounded-3 ms-3" data-bs-dismiss="modal">
+                            CLOSE
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Service Setup Modal Ends -->
+    <!-- Preview Modal Starts -->
+    <div class="modal modal-right fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100 modal-xl">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-settings m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">PREVIEW</span>
+                            <h3 class="fs-3 m-0 mt-2">Preview</h3>
+                        </div>
+                    </div>
+                    <div class="row pt-4 w-100">
+                        <div class="col-4">
+                            <button type="button"
+                                class="btn btn-info text-capitalize py-2 px-4 shadow-lg w-100">Articles of
+                                Organization</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100"
+                                data-bs-target="#previewModal" data-bs-toggle="modal" disabled="disabled">Statement of
+                                Information</button>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-light text-capitalize py-2 px-4 shadow-lg w-100"
+                                data-bs-target="#previewModal" data-bs-toggle="modal" disabled="disabled">Custom
+                                Operating Agreement</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="">
+                        <img src="dist/images/preview-img.jpg" alt="">
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-link py-3 px-5 text-decoration-none font-weight-600"
+                            data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-tertiary py-3 px-5 rounded-3 ms-3"
+                            data-bs-target="#actionModalSecond" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            GO BACK
+                        </button>
+                        <button type="button" class="btn btn-info py-3 px-5 rounded-3 ms-3"
+                            data-bs-target="#successModal" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Modal Starts -->
+    <div class="modal modal-right fade" id="servicesModal" tabindex="-1" aria-labelledby="servicesModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-cart-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Additional
+                                Services</span>
+                            <h3 class="fs-3 m-0 mt-2 fw-bold">Select a Service</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100 shadow">
+                        <span class="icon icon-search-grey"></span>
+                        <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                            placeholder="Find a Service">
+                    </div>
+                    <div class="d-flex pt-4 w-100 btn-tab">
+                        <button data-id="new" type="button"
+                            class="active btn btn-light text-capitalize w-100 me-2 py-2">New</button>
+                        <button data-id="inProcess" type="button" class="btn btn-light text-capitalize w-100 py-2">In
+                            Progress</button>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div id="new" class="btn-tab-content" style="display: block;">
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-bag-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">Annual Recurring
+                                    Service</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These tasks are added onto your portal
+                                for
+                                ongoing annual compliance automation.</p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Create New Entity</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Add Existing Entity</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">DBA|FBN</a></li>
+                                <li class="list-group-item"><a href="./additional-services.html"
+                                        class="text-decoration-none">Existing DBA|FBN</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Statement of Information (CA)</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Annual Report (outside of CA)</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Franchise Tax report</a></li>
+                                <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                                        class="text-decoration-none">Registered Agent</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-document-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">ONE-OFF FILINGs</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These tasks are for events that do not
+                                happen
+                                regularly.</p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item">Amendments</li>
+                                <li class="list-group-item">Dissolutions</li>
+                                <li class="list-group-item">Restated articles</li>
+                                <li class="list-group-item">Corrections</li>
+                                <li class="list-group-item">EIN</li>
+                                <li class="list-group-item">25102f</li>
+                                <li class="list-group-item">Conversion</li>
+                                <li class="list-group-item">Certificate of status retrieval</li>
+                                <li class="list-group-item">Document Retrievals (assorted)</li>
+                                <li class="list-group-item">Name Reservation\Verify</li>
+                                <li class="list-group-item">Business license renewal</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="mb-3">
+                                <span class="me-2 d-inline-block">
+                                    <span class="icon icon-folder-black m-0"></span>
+                                </span>
+                                <span class="text-uppercase font-weight-700 fs-9">PRODUCTS</span>
+                            </div>
+                            <p class="fs-7 opacity-50 font-weight-500">These products are for a suite of
+                                documents.
+                            </p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Corporate kits
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" data-placement="top"
+                                            title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Stocks & Certificates
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                                    data-bs-toggle="modal" data-bs-target="#customizedKits">
+                                    Custom Tabs
+                                    <span class="badge">
+                                        <span class="me-2 d-inline-block" data-toggle="tooltip" title="Service Info">
+                                            <span class="icon icon-info m-0"></span>
+                                        </span>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">Corporate books (1.5" 2.0")</li>
+                                <li class="list-group-item">Estate Planning books</li>
+                                <li class="list-group-item">Minutes & Bylaws</li>
+                                <li class="list-group-item">Operating Agreement</li>
+                                <li class="list-group-item">Corporate seals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="inProcess" class="btn-tab-content">
+                        <div class="d-flex align-items-center pt-1">
+                            <span class="icon icon-sm icon-bag-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">annual recurring
+                                serviceS</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These tasks are added onto your portal
+                            for
+                            ongoing annual compliance automation.</p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span>Bluebird Business Strategies (DE)</span>
+                                                <span class="fs-10 d-block text-secondary">Registered Agent</span>
+                                            </div>
+                                        </td>
+                                        <td>10/14/2023</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="60" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width:40%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-orange">60%</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><span>Elite Enterprises (DE)</span>
+                                                <span class="fs-10 d-block text-secondary">Annual Report
+                                                    Filing</span>
+                                            </div>
+                                        </td>
+                                        <td>10/14/2023</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-green" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-green">80%</span></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="d-flex align-items-center pt-3">
+                            <span class="icon icon-sm icon-document-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">ONE-OFF FILINGs</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These tasks are for events that do not
+                            happen
+                            regularly.</p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>Quantum Quest Solutions (TX)</span>
+                                            <span class="fs-10 d-block text-secondary">Prepare and File
+                                                Dissolution</span>
+                                        </td>
+                                        <td>10/14/2023</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-red" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-red" style="width: 20%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-red">20%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Envision Endurance LLC (CA)</span>
+                                            <span class="fs-10 d-block text-secondary">Prepare and File Amendments
+                                                Article</span>
+                                        </td>
+                                        <td>10/14/2023</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-green" style="width: 80%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="text-green">80%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex align-items-center pt-3">
+                            <span class="icon icon-sm icon-folder-black"></span>
+                            <span class="text-uppercase fs-9 fw-bold letter-spacing-2">PRODUCTS</span>
+                        </div>
+                        <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These products are for a suite of
+                            documents.
+                        </p>
+                        <div class="bg-white shadow rounded-2 mb-4">
+                            <table class="table table-spacing">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>Ollivander's Tier Technologies (AK)</span>
+                                            <span class="fs-10 d-block text-secondary">Space Saver Kit</span>
+                                        </td>
+                                        <td>09/18/2023</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width: 40%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-orange">40%</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Fortitude Finance Co. (NV)</span>
+                                            <span class="fs-10 d-block text-secondary">Short Form</span>
+                                        </td>
+                                        <td>09/18/2023</td>
+                                        <td width="84px" class="p-0">
+                                            <div class="progress progress-xs progress-orange" role="progressbar"
+                                                aria-label="Service" aria-valuenow="25" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-orange" style="width: 60%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-orange">60%</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Service Modal Ends -->
+
+
+    <!-- Search Modal Starts-->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-black opacity-75 border-0">
+                <button type="button" class="btn-close btn-close-white ms-auto pe-3" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                <div class="modal-body d-flex flex-column align-items-center">
+                    <div class="w-50 text-white">
+                        <form autocomplete="off">
+                            <div class="d-flex align-items-center white-bg px-4 py-3 rounded-pill">
+                                <span class="icon icon-search-grey icon-lg"></span>
+                                <input class="w-100 p-0 rounded-5 border-0 fs-3" id="search" type="text" name="seach"
+                                    placeholder="Search">
+                            </div>
+                        </form>
+                        <div class="fw-bold fs-4 mt-5 d-flex align-items-center"> <span
+                                class="icon icon-circular icon-lg icon-clock-dark mr-4"></span>
+                            Search results</div>
+                        <div class="my-4">
+                            <div class="font-weight-600 fs-6">Domain Inc (England) - 20% in progress</div>
+                            <div class="fs-8 mt-1">Entity</div>
+                        </div>
+                        <div class="my-4">
+                            <div class="font-weight-600 fs-6">Mainsail Industries (AL) </div>
+                            <div class="fs-8 mt-1">Entity</div>
+                        </div>
+                        <div class="my-4">
+                            <div class="font-weight-600 fs-6">The Main Group </div>
+                            <div class="fs-8 mt-1">Group</div>
+                        </div>
+                        <div class="my-4">
+                            <div class="font-weight-600 fs-6">The Main Sail (Irvine/Orange, CA) </div>
+                            <div class="font-weight-600 fs-6">Mainsail Industries Inc (CA) </div>
+                            <div class="fs-8 mt-1">Business License</div>
+                        </div>
+                        <div class="my-4">
+                            <div class="font-weight-600 fs-6">Shoes R Us (Los Angeles, CA)</div>
+                            <div class="font-weight-600 fs-6">Mainshoe Industries Inc (CA)</div>
+                            <div class="fs-8 mt-1">Fictitious / Trade Name</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Modal Ends -->
+
+     <!-- Notification Modal Starts -->
+     <div class="modal modal-right fade" id="notificationModal" tabindex="-1" aria-labelledby="searchModalLabel"
+     aria-hidden="true">
+     <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+             <!-- Modal Header -->
+             <div class="modal-header flex-wrap">
+                 <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                     <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                         <span class="icon icon-sm icon-bell-white m-0"></span>
+                     </span>
+                     <div>
+                         <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Notifications</span>
+                         <h3 class="fs-3 m-0 mt-2">Your Notifications</h3>
+                     </div>
+                 </div>
+                 <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100 shadow">
+                     <span class="icon icon-search-grey opacity-25"></span>
+                     <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                         placeholder="Find a Notification">
+                 </div>
+             </div>
+
+             <!-- Modal Header Ends -->
+
+             <!-- Modal Body -->
+             <div class="modal-body">
+                 <div class="d-flex justify-content-between align-items-center">
+                     <ul class="nav nav-tabs pt-2" id="notificationTab" role="tablist">
+                         <li class="nav-item" role="presentation">
+                             <button class="nav-link active border-0 text-uppercase" id="unread-notification-tab"
+                                 data-bs-toggle="tab" data-bs-target="#unread-notification" type="button" role="tab"
+                                 aria-controls="unreadNotification" aria-selected="true">UNREAD</button>
+                         </li>
+                         <li class="nav-item" role="presentation">
+                             <button class="nav-link border-0 text-uppercase" id="read-notification-tab"
+                                 data-bs-toggle="tab" data-bs-target="#read-notification" type="button" role="tab"
+                                 aria-controls="readNotification" aria-selected="false">READ</button>
+                         </li>
+                     </ul>
+                     <div class="d-flex gap-3">
+                        <a href="#" class="text-purple text-decoration-none d-inline-block text-uppercase"> ALL</a>
+                        <a href="#" class="text-purple text-decoration-none d-inline-block text-uppercase"> None</a>
+
+                    </div>
+                 </div>
+                 <div class="tab-content bg-white" id="notificationTabContent">
+
+                     <!-- Unread Notification -->
+                     <div class="tab-pane fade show active" id="unread-notification" role="tabpanel"
+                         aria-labelledby="unread-notification-tab">
+                         <ul class="list-group m-0 p-0 border-0 list-table">
+                             <li
+                                 class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                 <div class="flex-fill">
+                                     <div class="dropdown white-bg p-0 rounded-5">
+
+                                         <a class="nav-link px-0">
+                                             <span class="fw-bold">Notification</span>
+                                         </a>
+                                     </div>
+                                 </div>
+                                 <div>
+                                     <div class="dropdown white-bg p-0 rounded-5">
+
+                                         <a class="nav-link dropdown-toggle show px-0" href="#"
+                                             data-bs-toggle="dropdown" aria-expanded="true">
+                                             <span class="user-name">Date</span>
+                                         </a>
+                                     </div>
+                                 </div>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                         </ul>
+                         <div class="px-4 mb-3 pt-5 mt-2">
+                             <p class="text-uppercase mb-0">Notifications based on Partner inviting a Client </p>
+                         </div>
+                         <ul class="list-group m-0 p-0 border-0 list-table">
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                         </ul>
+                     </div>
+                     <!-- Unread Notification -->
+
+                     <!-- Read Notification -->
+                     <div class="tab-pane fade" id="read-notification" role="tabpanel"
+                         aria-labelledby="read-notification-tab">
+                         <ul class="list-group m-0 p-0 border-0 list-table">
+                             <li
+                                 class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                 <div class="flex-fill">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link px-0">
+                                            <span class="fw-bold">Notification</span>
+                                        </a>
+                                        <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                            <li>
+                                                <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                    Latest
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                    Older
+                                                </a>
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                                 <div>
+                                     <div class="dropdown white-bg p-0 rounded-5">
+
+                                         <a class="nav-link dropdown-toggle show px-0" href="#"
+                                             data-bs-toggle="dropdown" aria-expanded="true">
+                                             <span class="user-name">Date</span>
+                                         </a>
+                                         <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                             <li>
+                                                 <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                     Past date
+                                                 </a>
+                                             </li>
+                                             <li>
+                                                 <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                     Latest Date
+                                                 </a>
+                                             </li>
+                                         </ul> -->
+                                     </div>
+                                 </div>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                         </ul>
+                     </div>
+                     <!-- Read Notification -->
+                 </div>
+             </div>
+
+             <!-- Modal Body Ends-->
+
+             <div class="modal-footer mt-3 pb-0">
+                 <div class="d-flex justify-content-end">
+                     <button type="button" class="btn btn-info px-5 py-3 me-3" id="markAsReadBtn">Mark as Read</button>
+                     <button type="button" class="btn btn-info px-5 py-3 me-3 d-none" id="markAsUnreadBtn">Mark as UnRead</button>
+                     <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                 </div>
+             </div>
+
+         </div>
+     </div>
+ </div>
+ <!-- Notification Modal Ends -->
+    <script>
+        // this function for stepper to redirect to second step in pages additional services/select
+        window.onload = () => additionalServicesOptionTab($('.toggleSection')[0])
+
+    </script>
+    <!-- Preview Modal Ends -->
+    <!-- Notification tabs button when click show and hide footer button -->
+    <script>
+        const markAsReadBtn = document.getElementById('markAsReadBtn');
+        const markAsUnreadBtn = document.getElementById('markAsUnreadBtn');
+      
+        document.querySelectorAll('.nav-link').forEach(button => {
+          button.addEventListener('click', () => {
+            markAsReadBtn.classList.add('d-none');
+            markAsUnreadBtn.classList.add('d-none');
+            
+            if (button.id === 'unread-notification-tab') {
+                markAsReadBtn.classList.remove('d-none');
+            } else if (button.id === 'read-notification-tab') {
+                markAsUnreadBtn.classList.remove('d-none');
+            }
+          });
+        });
+    </script>
+    <!-- end -->
+    <script src="dist/js/plugins.min.js"></script>
+    <script src="dist/js/custom.min.js"></script>
+
+</body>
+
+</html>

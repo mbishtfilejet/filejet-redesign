@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Jet: Org-Chart</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="dist/css/filejet-style.css" />
+    <script src="dist/js/jquery.min.js"></script>
+    <!-- Scripts -->
+    <!-- org script -->
+    <script src="./src/js/lib/orgchart.js"></script>
+    <!-- Org Scripts end -->
+</head>
+
+<body>
+    <div class="grey-bg dashboard-page min-vh-100">
+        <div class="container-fluid p-0">
+            <div class="sidebar-wrapper">
+                <div class="sidebar min-vh-100 py-3 ps-3">
+                    <div class="ps-2 pb-4">
+                        <a href="/">
+                            <img src="dist/images/logo.png">
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="menu-link p-0 m-0">
+                            <!-- Dashboard -->
+                            <li class="nav-link">
+                                <a href="./index.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-dashboard normal-icon"></span>
+                                        <span class="icon icon-dashboard-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text">Dashboard</span>
+                                </a>
+                            </li>
+                            <!-- Entities -->
+                            <li class="nav-link">
+                                <a href="./entities.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-entities normal-icon"></span>
+                                        <span class="icon icon-entities-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Entities
+
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Groups -->
+                            <li class="nav-link">
+                                <a href="./groups.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-group normal-icon"></span>
+                                        <span class="icon icon-group-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Groups</span>
+                                </a>
+                            </li>
+                            <!-- Calendar -->
+                            <li class="nav-link">
+                                <a href="./calender-view.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-calender normal-icon"></span>
+                                        <span class="icon icon-calender-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Calendar</span>
+                                </a>
+                            </li>
+                            <!-- Registered Agent -->
+                            <li class="nav-link">
+                                <a href="./registered-agent.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-users-check normal-icon"></span>
+                                        <span class="icon icon-users-check-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Registered Agent
+                                        <span class="count-notification position-absolute">12</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Business Licenses -->
+                            <li class="nav-link">
+                                <a href="./business-licences.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-business normal-icon"></span>
+                                        <span class="icon icon-business-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">Business Licenses
+                                        <span class="count-notification position-absolute">3</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Fictitious / Trade Name -->
+                            <li class="nav-link">
+                                <a href="./trade.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-certificate-black normal-icon"></span>
+                                        <span class="icon icon-certificate-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">Fictitious / Trade Name
+                                        <span class="count-notification position-absolute">6</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Organization Charts  -->
+                            <li class="nav-link active">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#organizationChartModal">
+                                    <span>
+                                        <span class="icon icon-chart normal-icon"></span>
+                                        <span class="icon icon-chart-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block">
+                                        Organization Charts
+
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- CTA -->
+                            <li class="nav-link">
+                                <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#ctaTableModal">
+                                    <span>
+                                        <span class="icon icon-cta normal-icon"></span>
+                                        <span class="icon icon-cta-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text position-relative">
+                                        Corporate Transparency Act
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Cap Table -->
+                            <li class="nav-link">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#capTableModal">
+                                    <span>
+                                        <span class="icon icon-table normal-icon"></span>
+                                        <span class="icon icon-table-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block position-relative">
+                                        Cap Table
+                                        <span class="small-tag">Coming soon</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Reports -->
+                            <li class="nav-link">
+                                <a href="./reports.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-report normal-icon"></span>
+                                        <span class="icon icon-report-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Reports </span>
+                                </a>
+                            </li>
+                            <!-- Additional Services -->
+                            <li class="nav-link">
+                                <a href="#" class="text-decoration-none ps-3 py-3 d-block" data-bs-toggle="modal"
+                                    data-bs-target="#servicesModal">
+                                    <span>
+                                        <span class="icon icon-services normal-icon"></span>
+                                        <span class="icon icon-services-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Additional Services </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-wrapper">
+                <div class="container-fluid container-lg">
+                    <div class="header py-1">
+                        <div class="row align-items-center">
+                            <div class="col col-xl-3 col-lg-3">
+                                <h3 class="m-0">
+                                    <strong>
+                                        Organization Chart List
+                                    </strong>
+                                </h3>
+                            </div>
+                            <div
+                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
+                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-3 py-md-2 search-bar"
+                                    data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                                    <span class="text-placeholder w-100 d-none d-md-block">What are you looking
+                                        for?</span>
+                                </div>
+                                <div class="notification position-relative px-4">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#notificationModal">
+                                        <span class="icon icon-bell m-0"></span>
+                                        <span class="notification-dot"></span>
+                                    </a>
+                                </div>
+                                <div class="profile-nav">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg ms-n3">
+                                                <img src="../dist/images/avatar.png" alt="" />
+                                            </span>
+                                            <span class="user-name">Roman</span>
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <span
+                                                    class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                                    Account
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="./account/settings.html">
+                                                    <span class="avatar avatar-sm me-4">
+                                                        <img src="dist/images/avatar.png" alt="">
+                                                    </span>
+                                                    View Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center"
+                                                    href="../../login.html">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="container-fluid container-lg">
+                    <div class="main-content">
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="org-chart-option">
+                                <div class="row gx-4">
+                                    <div class="col-md-4">
+                                        <div class="rounded-3 border-0 purple-bg p-4 shadow h-100 d-flex align-content-between flex-wrap"
+                                            style="min-height:224px;">
+                                            <div
+                                                class="d-flex justify-content-between align-items-center flex-fill w-100">
+                                                <div>
+                                                    <h4 class="mb-0 text-white font-weight-700 fs-3">Hunt Group</h4>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6 class="mb-0 text-white font-weight-700 fs-7">Action Required
+                                                        <span class="icon icon-warning-yellow"></span>
+                                                    </h6>
+                                                    <div>
+                                                        <div class="dropdown">
+                                                            <button class="btn border-0 p-0 m-0" type="button"
+                                                                id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                <span
+                                                                    class="icon m-0 icon-xxl icon-option-white"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu rounded-3 shadow"
+                                                                aria-labelledby="dropdownMenuButton1">
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4 pt-3"
+                                                                        href="org-chart.html"><span
+                                                                            class="icon icon-open-chart"></span> Open
+                                                                        Chart</a></li>
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4"
+                                                                        href="#"><span
+                                                                            class="icon icon-duplicate-chart"></span>
+                                                                        Duplicate Chart</a></li>
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4"
+                                                                        href="#"><span
+                                                                            class="icon icon-delete-chart"></span>
+                                                                        Delete Chart</a></li>
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4"
+                                                                        href="#"><span
+                                                                            class="icon icon-export-chart"></span>
+                                                                        Export to PDF</a></li>
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4 pb-3"
+                                                                        href="#"><span
+                                                                            class="icon icon-export-chart"></span> PDF
+                                                                        Preview</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex justify-content-between align-items-center flex-fill w-100">
+                                                <div>
+                                                    <p class="font-weight-400 fs-4 mb-0 text-white">12/07/2023</p>
+                                                </div>
+                                                <div>
+                                                    <a href=""><span
+                                                            class="icon icon-xxl icon-forward-white me-0"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div
+                                            class="rounded-3 border-0 p-4 shadow h-100 d-flex align-content-between flex-wrap">
+                                            <div
+                                                class="d-flex justify-content-between align-items-center flex-fill w-100">
+                                                <div>
+                                                    <h4 class="mb-0 text-black-primary font-weight-700 fs-3">Company
+                                                        Chart</h4>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center">
+
+                                                    <div>
+                                                        <div class="dropdown">
+                                                            <button class="btn border-0 p-0 m-0" type="button"
+                                                                id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                <span class="icon m-0 icon-xxl icon-option-grey"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu rounded-3 shadow"
+                                                                aria-labelledby="dropdownMenuButton1">
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4 pt-3"
+                                                                        href="org-chart.html"><span
+                                                                            class="icon icon-open-chart"></span> Open
+                                                                        Chart</a></li>
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4"
+                                                                        href="#"><span
+                                                                            class="icon icon-duplicate-chart"></span>
+                                                                        Duplicate Chart</a></li>
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4"
+                                                                        href="#"><span
+                                                                            class="icon icon-delete-chart"></span>
+                                                                        Delete Chart</a></li>
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4"
+                                                                        href="#"><span
+                                                                            class="icon icon-export-chart"></span>
+                                                                        Export to PDF</a></li>
+                                                                <li><a class="dropdown-item rounded-3 fs-6 text-black-primary font-weight-400 bg-white py-2 px-4 pb-3"
+                                                                        href="#"><span
+                                                                            class="icon icon-export-chart"></span> PDF
+                                                                        Preview</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex justify-content-between align-items-center flex-fill w-100">
+                                                <div>
+                                                    <p class="font-weight-400 fs-4 mb-0 text-black-primary">12/07/2023
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <a href=""><span
+                                                            class="icon icon-xxl icon-forward-black-2 me-0"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div
+                                            class="rounded-3 border-0 p-4 shadow h-100 d-flex align-content-between flex-wrap">
+
+                                            <div
+                                                class="d-flex justify-content-center align-items-center h-100 flex-fill w-100">
+                                                <a href="#" class="text-decoration-none" data-bs-toggle="modal"
+                                                    data-bs-target="#firstOrgModal">
+                                                    <div>
+                                                        <h4 class="mb-0 text-black-primary font-weight-700 fs-3"><span
+                                                                class="icon icon-xxl icon-add-chart"></span> Add New
+                                                            Chart</h4>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal Welcome to first Org Chart-->
+    <div class="modal fade first-org-chart-modal" id="firstOrgModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-xxl">
+            <div class="modal-content">
+                <!-- <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div> -->
+                <div class="modal-body">
+                    <div class="pt-5">
+                        <h1 class="font-weight-700 text-center lh-sm welcomeText">
+                            Welcome to your first <br> Organization Chart!</h1>
+                    </div>
+                    <div class="py-4">
+                        <p class="fs-4 font-weight-400 text-center selectOptionText">Select one
+                            of the options below to get started!</p>
+                    </div>
+                    <div class="row py-4 selectOption">
+                        <div class="col-md-3">
+                            <div class="purple-bg p-4 rounded-3 shadow h-100">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <span class="icon icon-xxl icon-generate-entity-chart"></span>
+                                    </div>
+                                    <div>
+                                        <h4 class="fs-2 font-weight-700 mb-0 text-white lh-1">
+                                            Generate Entity Chart</h4>
+                                    </div>
+                                </div>
+                                <div class="pt-4">
+                                    <p class="fs-5 text-white font-weight-500">
+                                        Generate a chart from your existing
+                                        entity structure</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="border-purple p-4 rounded-3 shadow h-100">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <span class="icon icon-xxl icon-create-new-chart"></span>
+                                    </div>
+                                    <div>
+                                        <h4 class="fs-2 font-weight-700 mb-0 lh-1">
+                                            Create a new Chart</h4>
+                                    </div>
+                                </div>
+                                <div class="pt-4">
+                                    <p class="fs-5 text-black-primary font-weight-400">
+                                        Start by creating a chart from scratch
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" class="text-decoration-none" data-bs-toggle="modal"
+                                data-bs-target="#firstOrgModal2">
+                                <div class="border-purple p-4 rounded-3 shadow h-100">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <span class="icon icon-xxl icon-import-purple-chart"></span>
+                                        </div>
+                                        <div>
+                                            <h4 class="fs-2 font-weight-700 mb-0 lh-1">
+                                                Import <br> Chart</h4>
+                                        </div>
+                                    </div>
+                                    <div class="pt-4">
+                                        <p class="fs-5 text-black-primary font-weight-400">
+                                            Import your organization
+                                            chart to our system.
+                                        </p>
+                                        <small class="fs-11">File extensions
+                                            accepted: CSV, XML or JSON.</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" class="text-decoration-none" data-bs-toggle="modal"
+                                data-bs-target="#downloadTemplatesModal">
+                                <div class="border-purple p-4 rounded-3 shadow h-100">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <span class="icon icon-xxl icon-download-template"></span>
+                                        </div>
+                                        <div>
+                                            <h4 class="fs-2 font-weight-700 mb-0 lh-1">
+                                                Download template</h4>
+                                        </div>
+                                    </div>
+                                    <div class="pt-4">
+                                        <p class="fs-5 text-black-primary font-weight-400">
+                                            <b>Easy & simple.</b> Use one of our
+                                            chart templates to start now.
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="py-4 text-center">
+                        <a href="org-chart.html" class="fs-5 text-center selectOptionText text-decoration-none">Skip
+                            for now and use sample chart →</a>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- end -->
+    <!-- modal file upload -->
+    <div class="modal fade first-org-chart-modal" id="firstOrgModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content p-5">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close icon icon-md opacity-100 me-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="pt-5">
+                        <h1 class="font-weight-700 text-center lh-sm welcomeText" id="textTitle">
+                            File Upload</h1>
+                    </div>
+                    <div class="py-0">
+                        <p class="fs-4 font-weight-400 text-center selectOptionText" id="extensionOption">Extensions
+                            accepted: JSON, CSV
+                            or XML</p>
+                    </div>
+                    <div class="py-4 uploadFile">
+                        <div class="border-purple text-center rounded-3 p-5 mx-4 position-relative">
+                            <form action="" method="post">
+                                <span class="icon icon-xl icon-file-upload-chart" id="successIcon"></span>
+                                <h4 class="fs-2 font-weight-700 mb-0 py-4" id="fileInfo">Select a file or drag here
+                                </h4>
+                                <button type="button" id="uploadButton"
+                                    class="btn btn-info my-4 px-5 text-capitalize fs-5 font-weight-600">Select
+                                    a file</button>
+                                <input type="file" id="fileUpload" name="fileUpload"
+                                    class="position-absolute top-0 start-0 bottom-0 end-0 opacity-0">
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--end file upload  -->
+
+    <!-- modal download/choose templates -->
+    <div class="modal fade first-org-chart-modal" id="downloadTemplatesModal" tabindex="-1"
+        aria-labelledby="downloadTemplatesModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content p-5">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close icon icon-md opacity-100 me-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="pt-4">
+                        <h1 class="font-weight-700 text-center lh-sm welcomeText" id="textTitle">
+                            Choose a template</h1>
+                    </div>
+                    <div class="py-0">
+                        <p class="fs-4 font-weight-400 text-center selectOptionText" id="extensionOption">Choose between
+                            one of our templates and choose the <br>
+                            best layout to represent your organization chart.</p>
+                    </div>
+                    <div class="py-4 chooseTemplate">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="text-center border-purple rounded-3 p-5 templates" role="button"
+                                    data-bs-toggle="button">
+                                    <span class="me-0 icon icon-xl icon-align-mixed"></span>
+                                    <h4 class="fs-2 font-weight-700 my-3">1 Column</h4>
+                                    <p class="mb-0 fs-6 font-weight-400">Lorem ipsum dolor sit amet <br> consectetur.
+                                        Habitasse amet.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center border-purple rounded-3 p-5 templates" role="button"
+                                    data-bs-toggle="button">
+                                    <span class="me-0 icon icon-xl icon-align-normal"></span>
+                                    <h4 class="fs-2 font-weight-700 my-3">2 Column</h4>
+                                    <p class="mb-0 fs-6 font-weight-400">Lorem ipsum dolor sit amet <br> consectetur.
+                                        Habitasse amet.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center border-purple rounded-3 p-5 templates" role="button"
+                                    data-bs-toggle="button">
+                                    <span class="me-0 icon icon-xl icon-align-tree"></span>
+                                    <h4 class="fs-2 font-weight-700 my-3">Multiple Rows</h4>
+                                    <p class="mb-0 fs-6 font-weight-400">Lorem ipsum dolor sit amet <br> consectetur.
+                                        Habitasse amet.</p>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-5">
+                                <button type="button" class="btn btn-info py-4 text-capitalize fs-4 font-weight-400"
+                                    data-bs-toggle="modal" data-bs-target="#downloadSuccessModal"><span
+                                        class="icon icon-md icon-download-template-button"></span> Download
+                                    tempaltes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end file upload  -->
+
+    <!-- modal success download/choose templates -->
+    <div class="modal fade first-org-chart-modal" id="downloadSuccessModal" tabindex="-1"
+        aria-labelledby="downloadSucessModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content p-5">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close icon icon-md opacity-100 me-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="pt-4">
+                        <h1 class="font-weight-700 text-center lh-sm welcomeText" id="textTitle">
+                            Success</h1>
+                    </div>
+                    <div class="py-0">
+                        <p class="fs-4 font-weight-400 text-center selectOptionText" id="extensionOption">You downloaded
+                            the template successfully.</p>
+                    </div>
+                    <div class="text-center mt-5">
+                        <button type="button" class="btn btn-info px-5 text-capitalize fs-4 font-weight-400">Start
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end success download templates  -->
+
+     <!-- Notification Modal Starts -->
+     <div class="modal modal-right fade" id="notificationModal" tabindex="-1" aria-labelledby="searchModalLabel"
+     aria-hidden="true">
+     <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+             <!-- Modal Header -->
+             <div class="modal-header flex-wrap">
+                 <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                     <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                         <span class="icon icon-sm icon-bell-white m-0"></span>
+                     </span>
+                     <div>
+                         <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Notifications</span>
+                         <h3 class="fs-3 m-0 mt-2">Your Notifications</h3>
+                     </div>
+                 </div>
+                 <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100 shadow">
+                     <span class="icon icon-search-grey opacity-25"></span>
+                     <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                         placeholder="Find a Notification">
+                 </div>
+             </div>
+
+             <!-- Modal Header Ends -->
+
+             <!-- Modal Body -->
+             <div class="modal-body">
+                 <div class="d-flex justify-content-between align-items-center">
+                     <ul class="nav nav-tabs pt-2" id="notificationTab" role="tablist">
+                         <li class="nav-item" role="presentation">
+                             <button class="nav-link active border-0 text-uppercase" id="unread-notification-tab"
+                                 data-bs-toggle="tab" data-bs-target="#unread-notification" type="button" role="tab"
+                                 aria-controls="unreadNotification" aria-selected="true">UNREAD</button>
+                         </li>
+                         <li class="nav-item" role="presentation">
+                             <button class="nav-link border-0 text-uppercase" id="read-notification-tab"
+                                 data-bs-toggle="tab" data-bs-target="#read-notification" type="button" role="tab"
+                                 aria-controls="readNotification" aria-selected="false">READ</button>
+                         </li>
+                     </ul>
+                     <div class="d-flex gap-3">
+                        <a href="#" class="text-purple text-decoration-none d-inline-block text-uppercase"> ALL</a>
+                        <a href="#" class="text-purple text-decoration-none d-inline-block text-uppercase"> None</a>
+
+                    </div>
+                 </div>
+                 <div class="tab-content bg-white" id="notificationTabContent">
+
+                     <!-- Unread Notification -->
+                     <div class="tab-pane fade show active" id="unread-notification" role="tabpanel"
+                         aria-labelledby="unread-notification-tab">
+                         <ul class="list-group m-0 p-0 border-0 list-table">
+                             <li
+                                 class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                 <div class="flex-fill">
+                                     <div class="dropdown white-bg p-0 rounded-5">
+
+                                         <a class="nav-link px-0">
+                                             <span class="fw-bold">Notification</span>
+                                         </a>
+                                     </div>
+                                 </div>
+                                 <div>
+                                     <div class="dropdown white-bg p-0 rounded-5">
+
+                                         <a class="nav-link dropdown-toggle show px-0" href="#"
+                                             data-bs-toggle="dropdown" aria-expanded="true">
+                                             <span class="user-name">Date</span>
+                                         </a>
+                                     </div>
+                                 </div>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                         </ul>
+                         <div class="px-4 mb-3 pt-5 mt-2">
+                             <p class="text-uppercase mb-0">Notifications based on Partner inviting a Client </p>
+                         </div>
+                         <ul class="list-group m-0 p-0 border-0 list-table">
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="">
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                         </ul>
+                     </div>
+                     <!-- Unread Notification -->
+
+                     <!-- Read Notification -->
+                     <div class="tab-pane fade" id="read-notification" role="tabpanel"
+                         aria-labelledby="read-notification-tab">
+                         <ul class="list-group m-0 p-0 border-0 list-table">
+                             <li
+                                 class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                 <div class="flex-fill">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link px-0">
+                                            <span class="fw-bold">Notification</span>
+                                        </a>
+                                        <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                            <li>
+                                                <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                    Latest
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                    Older
+                                                </a>
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                                 <div>
+                                     <div class="dropdown white-bg p-0 rounded-5">
+
+                                         <a class="nav-link dropdown-toggle show px-0" href="#"
+                                             data-bs-toggle="dropdown" aria-expanded="true">
+                                             <span class="user-name">Date</span>
+                                         </a>
+                                         <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                             <li>
+                                                 <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                     Past date
+                                                 </a>
+                                             </li>
+                                             <li>
+                                                 <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                     Latest Date
+                                                 </a>
+                                             </li>
+                                         </ul> -->
+                                     </div>
+                                 </div>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                 <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                     href="">
+                                     <div>
+                                         <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                     </div>
+                                     <div>
+                                         <p class="mb-2">10 / 29 / 2021</p>
+                                         <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                     </div>
+                                 </a>
+                             </li>
+                         </ul>
+                     </div>
+                     <!-- Read Notification -->
+                 </div>
+             </div>
+
+             <!-- Modal Body Ends-->
+
+             <div class="modal-footer mt-3 pb-0">
+                 <div class="d-flex justify-content-end">
+                     <button type="button" class="btn btn-info px-5 py-3 me-3" id="markAsReadBtn">Mark as Read</button>
+                     <button type="button" class="btn btn-info px-5 py-3 me-3 d-none" id="markAsUnreadBtn">Mark as UnRead</button>
+                     <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                 </div>
+             </div>
+
+         </div>
+     </div>
+ </div>
+ <!-- Notification Modal Ends -->
+
+    <!-- Search Modal Starts-->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-black opacity-75 border-0">
+                <button type="button" class="btn-close btn-close-white ms-auto pe-3" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                <div class="modal-body d-flex flex-column align-items-center">
+                    <div class="w-50 text-white">
+                        <form autocomplete="off">
+                            <div class="d-flex align-items-center white-bg px-4 py-3 rounded-pill">
+                                <span class="icon icon-search-grey icon-lg"></span>
+                                <input class="w-100 p-0 rounded-5 border-0 fs-3" id="search" type="text" name="seach"
+                                    placeholder="Search">
+                            </div>
+                        </form>
+                        <div class="fw-bold fs-4 mt-5 d-flex align-items-center"> <span
+                                class="icon icon-circular icon-lg icon-clock-dark mr-4"></span>
+                            Search results</div>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">Domain Inc (England) - 20% in progress</div>
+                                <div class="fs-8 mt-1">Entity</div>
+                            </div>
+                        </a>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">Mainsail Industries (AL) </div>
+                                <div class="fs-8 mt-1">Entity</div>
+                            </div>
+                        </a>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">The Main Group </div>
+                                <div class="fs-8 mt-1">Group</div>
+                            </div>
+                        </a>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">The Main Sail (Irvine/Orange, CA) </div>
+                                <div class="font-weight-600 fs-6">Mainsail Industries Inc (CA) </div>
+                                <div class="fs-8 mt-1">Business License</div>
+                            </div>
+                        </a>
+                        <a href="#" class="text-decoration-none text-white">
+                            <div class="my-4">
+                                <div class="font-weight-600 fs-6">Shoes R Us (Los Angeles, CA)</div>
+                                <div class="font-weight-600 fs-6">Mainshoe Industries Inc (CA)</div>
+                                <div class="fs-8 mt-1">Fictitious / Trade Name</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Modal Ends -->
+    <!-- CTA Table Starts -->
+    <div class="modal fade" id="ctaTableModal" tabindex="-1" aria-labelledby="ctaTableModalLabel" aria-hidden="true">
+        <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+            <div class="modal-content border-0 rounded-2 bg-white">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <!-- <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb breadcrumb-default mb-0">
+                                <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                                <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Departments</li>
+                            </ol>
+                        </nav>
+                        
+                    </div> -->
+                    <div class="d-flex align-items-end w-100 justify-content-between mt-3 mt-xl-0">
+                        <div>
+                            <h2 class="mb-0 fs-3 h1">CTA- Corporate Transparency Act</h2>
+                            <!-- <span
+                                class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body pb-0">
+                    <div class="two-col-video">
+                        <div class="col-12 col-md-12 video-wrapper">
+                            <video preload="auto" poster="./dist/images/cta-table.svg" autoplay>
+                                <source src="movie.mp4" type="video/mp4">
+                                <source src="movie.ogg" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <p>"Filejet is now offering Beneficial Ownership Information (BOI) filings for the Corporate
+                                Transparency Act !</p>
+                            <p>Filejet is providing the initial BOI filing (if applicable) and <b><span
+                                class="text-decoration-underline">unlimited update filings</span></b> for any
+                                non-exempt reporting companies for only $100 per year per entity. Billing is an annual
+                                subscription fee, per your existing Terms & Conditions.</p>
+                            <p>It is fast and easy. Please click below to get started! "</p>
+
+                            <div class="text-center mt-5 mb-3">
+                                <button type="button" onclick="window.location.href ='./cta.html';"
+                                    class="btn btn-success px-3 px-md-4 py-3 rounded-3" data-bs-dismiss="modal">
+                                    Get Started
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+            </div>
+        </div>
+    </div>
+    <!-- CTA Table Ends -->
+
+
+    <style>
+        .boc-light .boc-chart-menu [data-item]:hover {
+            background-color: #fff !important;
+            color: #AB65EF !important;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // file upload script
+        document.addEventListener("DOMContentLoaded", function () {
+            var successIcon = document.getElementById("successIcon");
+            var extensionOption = document.getElementById('extensionOption');
+            var textTitle = document.getElementById("textTitle");
+            var fileUpload = document.getElementById("fileUpload");
+            var fileInfo = document.getElementById("fileInfo");
+            var uploadButton = document.getElementById("uploadButton");
+            fileUpload.addEventListener("change", function () {
+                var file = fileUpload.files[0];
+                if (file) {
+                    fileInfo.innerHTML = file.name;
+                    document.title = "Uploaded: " + file.name;
+                    uploadButton.textContent = "Start Now";
+                    textTitle.textContent = "Success !";
+                    extensionOption.textContent = "File uploaded successfuly";
+                    successIcon.classList.add("icon-success-uploaded");
+                    successIcon.classList.remove("icon-file-upload-chart");
+                } else {
+                    fileInfo.innerHTML = "";
+                    document.title = "Select a file or drag here";
+                    uploadButton.textContent = "Select a file";
+                }
+            });
+        });
+    </script>
+    <!-- org script -->
+    <script src="./src/js/custom-org-chart.js"></script>
+    <!-- org script end -->
+    <!-- Notification tabs button when click show and hide footer button -->
+    <script>
+        const markAsReadBtn = document.getElementById('markAsReadBtn');
+        const markAsUnreadBtn = document.getElementById('markAsUnreadBtn');
+      
+        document.querySelectorAll('.nav-link').forEach(button => {
+          button.addEventListener('click', () => {
+            markAsReadBtn.classList.add('d-none');
+            markAsUnreadBtn.classList.add('d-none');
+            
+            if (button.id === 'unread-notification-tab') {
+                markAsReadBtn.classList.remove('d-none');
+            } else if (button.id === 'read-notification-tab') {
+                markAsUnreadBtn.classList.remove('d-none');
+            }
+          });
+        });
+    </script>
+    <!-- end -->
+    <script src="dist/js/plugins.min.js"></script>
+    <script src="dist/js/custom.min.js"></script>
+    <!-- Scripts End-->
+</body>
+
+</html>
