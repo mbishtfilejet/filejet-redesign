@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Jet: Org-Chart</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="dist/css/filejet-style.css" />
+    <script src="dist/js/jquery.min.js"></script>
+    <!-- Scripts -->
+    <!-- org script -->
+    <script src="./src/js/lib/orgchart.js"></script>
+    <!-- Org Scripts end -->
+</head>
+
+<body>
+    <div class="grey-bg dashboard-page min-vh-100">
+        <div class="container-fluid p-0">
+            <div class="sidebar-wrapper">
+                <div class="sidebar min-vh-100 py-3 ps-3">
+                    <div class="ps-2 pb-4">
+                        <a href="/">
+                            <img src="dist/images/logo.png">
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="menu-link p-0 m-0">
+                            <!-- Dashboard -->
+                            <li class="nav-link">
+                                <a href="./index.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-dashboard normal-icon"></span>
+                                        <span class="icon icon-dashboard-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text">Dashboard</span>
+                                </a>
+                            </li>
+                            <!-- Entities -->
+                            <li class="nav-link">
+                                <a href="./entities.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-entities normal-icon"></span>
+                                        <span class="icon icon-entities-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Entities
+
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Groups -->
+                            <li class="nav-link">
+                                <a href="./groups.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-group normal-icon"></span>
+                                        <span class="icon icon-group-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Groups</span>
+                                </a>
+                            </li>
+                            <!-- Calendar -->
+                            <li class="nav-link">
+                                <a href="./calender-view.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-calender normal-icon"></span>
+                                        <span class="icon icon-calender-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Calendar</span>
+                                </a>
+                            </li>
+                            <!-- Registered Agent -->
+                            <li class="nav-link">
+                                <a href="./registered-agent.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-users-check normal-icon"></span>
+                                        <span class="icon icon-users-check-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Registered Agent
+                                        <span class="count-notification position-absolute">12</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Business Licenses -->
+                            <li class="nav-link">
+                                <a href="./business-licences.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-business normal-icon"></span>
+                                        <span class="icon icon-business-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">Business Licenses
+                                        <span class="count-notification position-absolute">3</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Fictitious / Trade Name -->
+                            <li class="nav-link">
+                                <a href="./trade.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-certificate-black normal-icon"></span>
+                                        <span class="icon icon-certificate-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">Fictitious / Trade Name
+                                        <span class="count-notification position-absolute">6</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Organization Charts  -->
+                            <li class="nav-link active">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#organizationChartModal">
+                                    <span>
+                                        <span class="icon icon-chart normal-icon"></span>
+                                        <span class="icon icon-chart-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block">
+                                        Organization Charts
+
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- CTA -->
+                            <li class="nav-link">
+                                <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#ctaTableModal">
+                                    <span>
+                                        <span class="icon icon-cta normal-icon"></span>
+                                        <span class="icon icon-cta-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text position-relative">
+                                        Corporate Transparency Act
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Cap Table -->
+                            <li class="nav-link">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#capTableModal">
+                                    <span>
+                                        <span class="icon icon-table normal-icon"></span>
+                                        <span class="icon icon-table-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block position-relative">
+                                        Cap Table
+                                        <span class="small-tag">Coming soon</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Reports -->
+                            <li class="nav-link">
+                                <a href="./reports.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-report normal-icon"></span>
+                                        <span class="icon icon-report-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Reports </span>
+                                </a>
+                            </li>
+                            <!-- Additional Services -->
+                            <li class="nav-link">
+                                <a href="#" class="text-decoration-none ps-3 py-3 d-block" data-bs-toggle="modal"
+                                    data-bs-target="#servicesModal">
+                                    <span>
+                                        <span class="icon icon-services normal-icon"></span>
+                                        <span class="icon icon-services-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Additional Services </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-wrapper">
+                <div class="container-fluid container-lg">
+                    <div class="header py-1">
+                        <div class="row align-items-center">
+                            <div class="col col-xl-3 col-lg-3">
+                                <h3 class="m-0">
+                                    <strong>
+                                        Organization Chart
+                                    </strong>
+                                </h3>
+                            </div>
+                            <div
+                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
+                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-3 py-md-2 search-bar"
+                                    data-bs-toggle="modal" data-bs-target="#searchModal">
+                                    <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                                    <span class="text-placeholder w-100 d-none d-md-block">What are you looking
+                                        for?</span>
+                                </div>
+                                <div class="notification position-relative px-4">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                        data-bs-target="#notificationModal">
+                                        <span class="icon icon-bell m-0"></span>
+                                        <span class="notification-dot"></span>
+                                    </a>
+                                </div>
+                                <div class="profile-nav">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link dropdown-toggle show px-3" href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg ms-n3">
+                                                <img src="../dist/images/avatar.png" alt="" />
+                                            </span>
+                                            <span class="user-name">Roman</span>
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <span
+                                                    class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                                    Account
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="./account/settings.html">
+                                                    <span class="avatar avatar-sm me-4">
+                                                        <img src="dist/images/avatar.png" alt="">
+                                                    </span>
+                                                    View Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center"
+                                                    href="../../login.html">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="container-fluid container-lg">
+                    <div class="main-content">
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="orgCustomToolbar d-flex align-items-center justify-content-end gap-3 mb-3">
+                                <div class="btnOrientation">
+                                    <div class="org-custom-select shadow rounded-2" id="orienation"
+                                        style="min-width:195px;">
+                                        <div class="org-select-selected"><span
+                                                class="icon icon-xl icon-layout"></span>Orientation</div>
+                                        <div class="org-select-items shadow">
+                                            <div class="row">
+
+                                                <div id="0"
+                                                    class="col-3 div1 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-orientaion-top"></span><span
+                                                        class="d-none fw-bold ms-3">Top</span>
+                                                </div>
+                                                <div id="1"
+                                                    class="col-3 div1 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-orientaion-bottom"></span><span
+                                                        class="d-none fw-bold ms-3">Bottom</span>
+                                                </div>
+                                                <div id="3"
+                                                    class="col-3 div1 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-orientaion-right"></span><span
+                                                        class="d-none fw-bold ms-3">Right</span>
+                                                </div>
+
+                                                <div id="2"
+                                                    class="col-3 div1 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-orientaion-left"></span><span
+                                                        class="d-none fw-bold ms-3">Left</span>
+                                                </div>
+                                                <hr class="my-3">
+
+                                                <div id="7"
+                                                    class="col-3 div1 d-flex align-items-center justify-content-center p-2">
+                                                    <span
+                                                        class="me-0 icon icon-xl icon-orientaion-right-top"></span><span
+                                                        class="d-none fw-bold ms-3">Right Top</span>
+                                                </div>
+                                                <div id="6"
+                                                    class="col-3 div1 d-flex align-items-center justify-content-center p-2">
+                                                    <span
+                                                        class="me-0 icon icon-xl icon-orientaion-left-top"></span><span
+                                                        class="d-none fw-bold ms-3">Left Top</span>
+                                                </div>
+                                                <div id="5"
+                                                    class="col-3 div1 d-flex align-items-center justify-content-center p-2">
+                                                    <span
+                                                        class="me-0 icon icon-xl icon-orientaion-bottom-right"></span><span
+                                                        class="d-none fw-bold ms-3">Bottom Right</span>
+                                                </div>
+                                                <div id="4"
+                                                    class="col-3 div1 d-flex align-items-center justify-content-center p-2">
+                                                    <span
+                                                        class="me-0 icon icon-xl icon-orientaion-bottom-left"></span><span
+                                                        class="d-none fw-bold ms-3">Bottom Left</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btnLayout">
+                                    <div class="org-custom-select org-custom-select2 shadow rounded-2">
+                                        <div class="org-select-selected org-select-selected2"><span
+                                                class="icon icon-xl icon-layout"></span>Layout</div>
+                                        <div class="org-select-items org-select-items2 shadow rounded-2" id="layout">
+                                            <div class="row" class="">
+                                                <div id="0"
+                                                    class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-align-normal"></span><span
+                                                        class="d-none fw-bold ms-3">Normal</span>
+                                                </div>
+                                                <div id="1"
+                                                    class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-align-mixed"></span><span
+                                                        class="d-none fw-bold ms-3">Mixed</span>
+                                                </div>
+                                                <div id="2"
+                                                    class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-align-tree"></span><span
+                                                        class="d-none fw-bold ms-3">Tree</span>
+                                                </div>
+                                                <hr class="my-3">
+                                                <div id="3"
+                                                    class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-align-left"></span><span
+                                                        class="d-none fw-bold ms-3">Left</span>
+                                                </div>
+                                                <div id="4"
+                                                    class="col-4 div1 div2 d-flex align-items-center justify-content-center p-2">
+                                                    <span class="me-0 icon icon-xl icon-align-right"></span><span
+                                                        class="d-none fw-bold ms-3">Right</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="btnSearch">
+                                    <!-- <div>
+                                        <div class="d-flex position-relative shadow rounded-2" data-boc-input>
+                                            <span
+                                                class="icon icon-search-grey icon-sm opacity-50 position-absolute ms-4 h-100 end-0 me-4"></span>
+                                            <input type="text" placeholder="Search"
+                                                class="form-control rounded-2 py-0 pe-5 m-0">
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="btnFilter">
+                                    <button class="btn btn-light rounded-circle h-100 w-100 shadow p-3">
+                                        <span class="icon icon-xl p-2 icon-org-filter d-block me-0"></span>
+                                    </button>
+                                </div>
+                                <div class="btnMenu">
+                                    <div>
+
+                                        <span class="icon icon-xl"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 mb-4">
+
+                            <div>
+                                <!-- skeleton for chart -->
+                                <div id="loadPlaceholder">
+                                    <div class="col-md-3 rounded-3 border bg-white shadow p-4 m-auto">
+                                        <div>
+                                            <div class="d-flex flex-column">
+                                                <h3 class="placeholder placeholder-wave placeholder-xs col-10"></h3>
+                                                <h5 class="placeholder placeholder-wave placeholder-xs col-4"></h5>
+                                                <h5 class="placeholder placeholder-wave placeholder-xs col-3 mb-0"></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-5 mt-5">
+                                        <div class="mx-5 col-md-3 rounded-3 border bg-white shadow p-4 ms-auto">
+                                            <div>
+                                                <div class="d-flex flex-column">
+                                                    <h3 class="placeholder placeholder-wave placeholder-xs col-10"></h3>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-4"></h5>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-3 mb-0">
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 rounded-3 border bg-white shadow p-4 me-auto">
+                                            <div>
+                                                <div class="d-flex flex-column">
+                                                    <h3 class="placeholder placeholder-wave placeholder-xs col-10"></h3>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-4"></h5>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-3 mb-0">
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-5 mt-5">
+                                        <div class="mx-5 col-md-3 rounded-3 border bg-white shadow p-4 ms-auto">
+                                            <div>
+                                                <div class="d-flex flex-column">
+                                                    <h3 class="placeholder placeholder-wave placeholder-xs col-10"></h3>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-4"></h5>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-3 mb-0">
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 rounded-3 border bg-white shadow p-4 me-auto"
+                                            id="loadPlaceholder">
+                                            <div>
+                                                <div class="d-flex flex-column">
+                                                    <h3 class="placeholder placeholder-wave placeholder-xs col-10"></h3>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-4"></h5>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-3 mb-0">
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 rounded-3 border bg-white shadow p-4 me-auto"
+                                            id="loadPlaceholder">
+                                            <div>
+                                                <div class="d-flex flex-column">
+                                                    <h3 class="placeholder placeholder-wave placeholder-xs col-10"></h3>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-4"></h5>
+                                                    <h5 class="placeholder placeholder-wave placeholder-xs col-3 mb-0">
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <!--html for no data found when no nodes present  -->
+                                <!-- <div class="pt-5">
+                                    <div class="text-center py-3 bg-white mt-5 dnone">
+                                        <img src="./dist/images/no-record-found.jpg" width="30%" alt="No Record found">
+                                        <h2 class="opacity-50">No results found</h2>
+                                        <h5 class="opacity-50 pt-2"> Try adjusting your search or filter to find what you're
+                                            looking for.</h5>
+                                    </div>
+                                </div> -->
+                                <!-- end -->
+                                <div class="w-100 bg-light" id="tree"></div>
+                            </div>
+                            <div class="">
+                                <!-- skeleton for edit entity form -->
+                                <!-- <div class="editForm custotm-edit-form bg-white d-flex flex-column h-100 d-none"
+                                    id="editForm">
+                                    <div class="custom-header  placeholder placeholder-wave h-100 pb-5 mb-5">
+                                        <div class="pb-5">
+                                            <div class="p-4 pb-5 mb-5 d-flex justify-content-between align-items-start">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-form-body shadow">
+                                        <div class="formHeight">
+                                            <div class="p-4">
+                                                <h4 class="font-weight-700 fs-5 opacity-50">Entity Summary</h4>
+                                                <div class="bg-light rounded-2 my-3">
+                                                    <div
+                                                        class="py-4 rounded-2 placeholder placeholder-wave col-md-12 placeholder-md">
+                                                        <div class="py-2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-light rounded-2 my-3">
+                                                    <div
+                                                        class="py-4 rounded-2 placeholder placeholder-wave col-md-12 placeholder-md">
+                                                        <div class="py-2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-light rounded-2 my-3">
+                                                    <div
+                                                        class="py-4 rounded-2 placeholder placeholder-wave col-md-12 placeholder-md">
+                                                        <div class="py-2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-light rounded-2 my-3">
+                                                    <div
+                                                        class="py-4 rounded-2 placeholder placeholder-wave col-md-12 placeholder-md">
+                                                        <div class="py-2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-light rounded-2 my-3">
+                                                    <div
+                                                        class="py-4 rounded-2 placeholder placeholder-wave col-md-12 placeholder-md">
+                                                        <div class="py-2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-light rounded-2 my-3">
+                                                    <div
+                                                        class="py-4 rounded-2 placeholder placeholder-wave col-md-12 placeholder-md">
+                                                        <div class="py-2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-light rounded-2 my-3">
+                                                    <div
+                                                        class="py-4 rounded-2 placeholder placeholder-wave col-md-12 placeholder-md">
+                                                        <div class="py-2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="bg-light rounded-2 my-3">
+                                                    <div
+                                                        class="py-4 rounded-2 placeholder placeholder-wave col-md-12 placeholder-md">
+                                                        <div class="py-2"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="accordion w-100 mt-5" id="accordionPanelsStayOpenExample">
+                                                <div class="accordion-item shadow-none">
+                                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                        <button
+                                                            class="accordion-button text-uppercase black-primary fs-6"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#panelsStayOpen-collapseOne"
+                                                            aria-expanded="true"
+                                                            aria-controls="panelsStayOpen-collapseOne"
+                                                            style="text-transform:uppercase !important;">
+                                                            Compliance Status
+                                                        </button>
+                                                    </h2>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div> -->
+                                <!-- end -->
+                                <!-- custom entity or summary form -->
+                                <div class="editForm custotm-edit-form bg-white d-flex flex-column h-100 d-none"
+                                    id="editForm">
+                                    <div class="custom-header pb-5 mb-5">
+                                        <div class="pb-5">
+                                            <div class="p-4 pb-5 mb-5 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <a href="#"><span
+                                                            class="icon icon-edit-white icon-lg me-0"></span></a>
+                                                </div>
+                                                <div>
+                                                    <h4
+                                                        class="text-white font-weight-600 fs-2 ps-3 pe-3 text-center lh-1">
+                                                        CLPF 9TH ST. TRIUMPH COMMERCE LP</h4>
+                                                </div>
+                                                <div>
+                                                    <a href="#" id="cancel"><span
+                                                            class="icon icon-forward-white icon-lg"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-form-body shadow">
+                                        <div class="formHeight">
+                                            <div class="p-4">
+                                                <h4 class="font-weight-700 fs-5 opacity-50">Entity Summary</h4>
+
+                                                <div class="bg-light p-2 my-3 rounded-2">
+                                                    <label class="mb-0" for="entity-name">Entity Name</label>
+                                                    <span class="icon icon-info-black me-0 ms-1"></span>
+                                                    <div class="fs-5" id="entity-name">Entity Name here..</div>
+                                                </div>
+                                                <div class="bg-light p-2 my-3 rounded-2">
+                                                    <label class="mb-0" for="EntityType">Entity Type</label>
+                                                    <span class="icon icon-info-black me-0 ms-1"></span>
+                                                    <div class="fs-5" id="EntityType">LLP</div>
+                                                </div>
+                                                <div class="bg-light p-2 my-3 rounded-2">
+                                                    <label class="mb-0" for="JuriState">Jurisdiction State</label>
+                                                    <span class="icon icon-info-black me-0 ms-1"></span>
+                                                    <div class="fs-5" id="JuriState">California</div>
+                                                </div>
+                                                <div class="bg-light p-2 my-3 rounded-2">
+                                                    <label class="mb-0" for="JuriState">Jurisdiction State</label>
+                                                    <span class="icon icon-info-black me-0 ms-1"></span>
+                                                    <div class="fs-5" id="JuriState">California</div>
+                                                </div>
+
+                                                <div class="bg-light p-2 my-3 rounded-2">
+                                                    <label class="mb-0" for="JuriState">Jurisdiction State</label>
+                                                    <span class="icon icon-info-black me-0 ms-1"></span>
+                                                    <div class="fs-5" id="JuriState">California</div>
+                                                </div>
+
+                                                <div class="bg-light p-2 my-3 rounded-2">
+                                                    <label class="mb-0" for="JuriState">Jurisdiction State</label>
+                                                    <span class="icon icon-info-black me-0 ms-1"></span>
+                                                    <div class="fs-5" id="JuriState">California</div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="accordion w-100 mt-5" id="accordionPanelsStayOpenExample">
+                                                <div class="accordion-item shadow-none">
+                                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                        <button
+                                                            class="accordion-button text-uppercase black-primary fs-6"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#panelsStayOpen-collapseOne"
+                                                            aria-expanded="true"
+                                                            aria-controls="panelsStayOpen-collapseOne"
+                                                            style="text-transform:uppercase !important;">
+                                                            Compliance Status
+                                                        </button>
+                                                    </h2>
+                                                    <div id="panelsStayOpen-collapseOne"
+                                                        class="accordion-collapse collapse border-0 show"
+                                                        aria-labelledby="panelsStayOpen-headingOne">
+                                                        <div class="accordion-body pt-0">
+                                                            <div>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex  align-items-center gap-2 py-1">
+                                                                        <h5
+                                                                            class="mb-0 font-weight-500 fs-5 text-black-primary">
+                                                                            Name</h5>
+                                                                        <p
+                                                                            class="mb-0 font-weight-500 opacity-50 text-black-primary fs-6">
+                                                                            12/25/2022</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex align-items-center gap-2 py-1">
+                                                                        <h5
+                                                                            class="mb-0 font-weight-500 fs-5 text-black-primary">
+                                                                            Business License</h5>
+                                                                        <p
+                                                                            class="mb-0 font-weight-500 opacity-50 text-black-primary fs-6">
+                                                                            10/05/2022</p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button
+                                                                            class="btn btn-primary py-1 px-2 text-white fw-medium"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#actionModal"><span
+                                                                                class="icon icon-warning-white me-1"></span>Take
+                                                                            action</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex justify-content-between mt-4">
+                                                                    <div>
+                                                                        <h5 class="text-uppercase fs-6">Registered Agent
+                                                                            <span class="icon icon-info-black"></span>
+                                                                        </h5>
+                                                                        <div class="d-flex align-items-center gap-2">
+                                                                            <h5
+                                                                                class="mb-0 font-weight-500 fs-5 text-black-primary">
+                                                                                Name</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item shadow-none">
+                                                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                                        <button
+                                                            class="accordion-button text-uppercase black-primary fs-6"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#panelsStayOpen-collapseTwo"
+                                                            aria-expanded="true"
+                                                            aria-controls="panelsStayOpen-collapseTwo"
+                                                            style="text-transform:uppercase !important;">
+                                                            Stakeholders
+                                                        </button>
+                                                    </h2>
+                                                    <div id="panelsStayOpen-collapseTwo"
+                                                        class="accordion-collapse collapse show border-0"
+                                                        aria-labelledby="panelsStayOpen-headingTwo">
+                                                        <div class="accordion-body pt-0">
+
+                                                            <div class="">
+                                                                <div class="d-flex  align-items-center gap-2 py-1">
+                                                                    <h5
+                                                                        class="mb-0 font-weight-500 fs-5 text-black-primary">
+                                                                        Sally James,</h5>
+                                                                    <p
+                                                                        class="mb-0 font-weight-500 text-black-primary fs-6">
+                                                                        President</p>
+                                                                </div>
+                                                                <div class="d-flex  align-items-center gap-2 py-1">
+                                                                    <h5
+                                                                        class="mb-0 font-weight-500 fs-5 text-black-primary">
+                                                                        John Smith,</h5>
+                                                                    <p
+                                                                        class="mb-0 font-weight-500 text-black-primary fs-6">
+                                                                        Manager</p>
+                                                                </div>
+                                                                <div class="d-flex  align-items-center gap-2 py-1">
+                                                                    <h5
+                                                                        class="mb-0 font-weight-500 fs-5 text-black-primary">
+                                                                        Patch Adams,</h5>
+                                                                    <p
+                                                                        class="mb-0 font-weight-500 text-black-primary fs-6">
+                                                                        Product Manager</p>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item shadow-none">
+                                                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                                        <button
+                                                            class="accordion-button text-uppercase black-primary fs-6"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#panelsStayOpen-collapseThree"
+                                                            aria-expanded="true"
+                                                            aria-controls="panelsStayOpen-collapseThree"
+                                                            style="text-transform:uppercase !important;">
+                                                            Shares 1000
+                                                        </button>
+                                                    </h2>
+                                                    <div id="panelsStayOpen-collapseThree"
+                                                        class="accordion-collapse collapse show border-0"
+                                                        aria-labelledby="panelsStayOpen-headingThree">
+                                                        <div class="accordion-body pt-0">
+                                                            <div class="">
+                                                                <div class="d-flex  align-items-center gap-2 py-1">
+                                                                    <h5
+                                                                        class="mb-0 font-weight-500 fs-5 text-black-primary">
+                                                                        Stuart 230</h5>
+                                                                </div>
+                                                                <div class="d-flex  align-items-center gap-2 py-1">
+                                                                    <h5
+                                                                        class="mb-0 font-weight-500 fs-5 text-black-primary">
+                                                                        Sally 125</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+         <!-- Notification Modal Starts -->
+        <div class="modal modal-right fade" id="notificationModal" tabindex="-1" aria-labelledby="searchModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
+        <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+                <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                    <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                        <span class="icon icon-sm icon-bell-white m-0"></span>
+                    </span>
+                    <div>
+                        <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Notifications</span>
+                        <h3 class="fs-3 m-0 mt-2">Your Notifications</h3>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100 shadow">
+                    <span class="icon icon-search-grey opacity-25"></span>
+                    <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                        placeholder="Find a Notification">
+                </div>
+            </div>
+
+            <!-- Modal Header Ends -->
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <ul class="nav nav-tabs pt-2" id="notificationTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active border-0 text-uppercase" id="unread-notification-tab"
+                                data-bs-toggle="tab" data-bs-target="#unread-notification" type="button" role="tab"
+                                aria-controls="unreadNotification" aria-selected="true">UNREAD</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link border-0 text-uppercase" id="read-notification-tab"
+                                data-bs-toggle="tab" data-bs-target="#read-notification" type="button" role="tab"
+                                aria-controls="readNotification" aria-selected="false">READ</button>
+                        </li>
+                    </ul>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-purple text-decoration-none d-inline-block text-uppercase"> ALL</a>
+                        <a href="#" class="text-purple text-decoration-none d-inline-block text-uppercase"> None</a>
+
+                    </div>
+                </div>
+                <div class="tab-content bg-white" id="notificationTabContent">
+
+                    <!-- Unread Notification -->
+                    <div class="tab-pane fade show active" id="unread-notification" role="tabpanel"
+                        aria-labelledby="unread-notification-tab">
+                        <ul class="list-group m-0 p-0 border-0 list-table">
+                            <li
+                                class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                <div class="flex-fill">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link px-0">
+                                            <span class="fw-bold">Notification</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link dropdown-toggle show px-0" href="#"
+                                            data-bs-toggle="dropdown" aria-expanded="true">
+                                            <span class="user-name">Date</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="px-4 mb-3 pt-5 mt-2">
+                            <p class="text-uppercase mb-0">Notifications based on Partner inviting a Client </p>
+                        </div>
+                        <ul class="list-group m-0 p-0 border-0 list-table">
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="">
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Unread Notification -->
+
+                    <!-- Read Notification -->
+                    <div class="tab-pane fade" id="read-notification" role="tabpanel"
+                        aria-labelledby="read-notification-tab">
+                        <ul class="list-group m-0 p-0 border-0 list-table">
+                            <li
+                                class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                                <div class="flex-fill">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link px-0">
+                                            <span class="fw-bold">Notification</span>
+                                        </a>
+                                        <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                            <li>
+                                                <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                    Latest
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                    Older
+                                                </a>
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link dropdown-toggle show px-0" href="#"
+                                            data-bs-toggle="dropdown" aria-expanded="true">
+                                            <span class="user-name">Date</span>
+                                        </a>
+                                        <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                            <li>
+                                                <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                    Past date
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                    Latest Date
+                                                </a>
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                                <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                                    href="">
+                                    <div>
+                                        <input type="checkbox" class="form-check-input" name="" id="" checked>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                                    </div>
+                                    <div>
+                                        <p class="mb-2">10 / 29 / 2021</p>
+                                        <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Read Notification -->
+                </div>
+            </div>
+
+            <!-- Modal Body Ends-->
+
+            <div class="modal-footer mt-3 pb-0">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-info px-5 py-3 me-3" id="markAsReadBtn">Mark as Read</button>
+                    <button type="button" class="btn btn-info px-5 py-3 me-3 d-none" id="markAsUnreadBtn">Mark as UnRead</button>
+                    <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        </div>
+        <!-- Notification Modal Ends -->
+
+        <!-- Search Modal Starts-->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content bg-black opacity-75 border-0">
+                    <button type="button" class="btn-close btn-close-white ms-auto pe-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    <div class="modal-body d-flex flex-column align-items-center">
+                        <div class="w-50 text-white">
+                            <form autocomplete="off">
+                                <div class="d-flex align-items-center white-bg px-4 py-3 rounded-pill">
+                                    <span class="icon icon-search-grey icon-lg"></span>
+                                    <input class="w-100 p-0 rounded-5 border-0 fs-3" id="search" type="text"
+                                        name="seach" placeholder="Search">
+                                </div>
+                            </form>
+                            <div class="fw-bold fs-4 mt-5 d-flex align-items-center"> <span
+                                    class="icon icon-circular icon-lg icon-clock-dark mr-4"></span>
+                                Search results</div>
+                            <a href="#" class="text-decoration-none text-white">
+                                <div class="my-4">
+                                    <div class="font-weight-600 fs-6">Domain Inc (England) - 20% in progress</div>
+                                    <div class="fs-8 mt-1">Entity</div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-decoration-none text-white">
+                                <div class="my-4">
+                                    <div class="font-weight-600 fs-6">Mainsail Industries (AL) </div>
+                                    <div class="fs-8 mt-1">Entity</div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-decoration-none text-white">
+                                <div class="my-4">
+                                    <div class="font-weight-600 fs-6">The Main Group </div>
+                                    <div class="fs-8 mt-1">Group</div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-decoration-none text-white">
+                                <div class="my-4">
+                                    <div class="font-weight-600 fs-6">The Main Sail (Irvine/Orange, CA) </div>
+                                    <div class="font-weight-600 fs-6">Mainsail Industries Inc (CA) </div>
+                                    <div class="fs-8 mt-1">Business License</div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-decoration-none text-white">
+                                <div class="my-4">
+                                    <div class="font-weight-600 fs-6">Shoes R Us (Los Angeles, CA)</div>
+                                    <div class="font-weight-600 fs-6">Mainshoe Industries Inc (CA)</div>
+                                    <div class="fs-8 mt-1">Fictitious / Trade Name</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search Modal Ends -->
+        <!-- CTA Table Starts -->
+        <div class="modal fade" id="ctaTableModal" tabindex="-1" aria-labelledby="ctaTableModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog my-0 modal-lg modal-dialog-centered min-vh-100">
+                <div class="modal-content border-0 rounded-2 bg-white">
+                    <!-- Modal Header -->
+                    <div class="modal-header flex-wrap">
+                        <!-- <div class="d-flex align-items-center w-100 pb-0 justify-content-between">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb breadcrumb-default mb-0">
+                                <li class="breadcrumb-item"><a href="#">Filejet</a></li>
+                                <li class="breadcrumb-item"><a href="#">What’s new</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Departments</li>
+                            </ol>
+                        </nav>
+                        
+                    </div> -->
+                        <div class="d-flex align-items-end w-100 justify-content-between mt-3 mt-xl-0">
+                            <div>
+                                <h2 class="mb-0 fs-3 h1">CTA- Corporate Transparency Act</h2>
+                                <!-- <span
+                                class="btn btn-sm btn-quaternary rounded-4 fw-normal f-9 py-1 px-3 d-inline green-bg">New</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Header Ends -->
+
+                    <!-- Modal Body -->
+                    <div class="modal-body pb-0">
+                        <div class="two-col-video">
+                            <div class="col-12 col-md-12 video-wrapper">
+                                <video preload="auto" poster="./dist/images/cta-table.svg" autoplay>
+                                    <source src="movie.mp4" type="video/mp4">
+                                    <source src="movie.ogg" type="video/ogg">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <p>"Filejet is now offering Beneficial Ownership Information (BOI) filings for the
+                                    Corporate
+                                    Transparency Act !</p>
+                                <p>Filejet is providing the initial BOI filing (if applicable) and <b><a
+                                            href="javascript:void(0)">unlimited update filings</a></b> for any
+                                    non-exempt reporting companies for only $100 per year per entity. Billing is an
+                                    annual
+                                    subscription fee, per your existing Terms & Conditions.</p>
+                                <p>It is fast and easy. Please click below to get started! "</p>
+
+                                <div class="text-center mt-5 mb-3">
+                                    <button type="button" onclick="window.location.href ='./cta.html';"
+                                        class="btn btn-success px-3 px-md-4 py-3 rounded-3" data-bs-dismiss="modal">
+                                        Get Started
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Modal Body Ends-->
+                </div>
+            </div>
+        </div>
+        <!-- CTA Table Ends -->
+
+
+        <style>
+            .boc-light .boc-chart-menu [data-item]:hover {
+                background-color: #fff !important;
+                color: #AB65EF !important;
+                cursor: pointer;
+            }
+
+            .filter rect,
+            .filter image,
+            .filter text,
+            .filter use {
+                opacity: 0.3;
+            }
+        </style>
+
+        <!-- org script -->
+        <script src="./src/js/custom-org-chart-subsidiary.js"></script>
+        <!-- org script end -->
+        <!-- Notification tabs button when click show and hide footer button -->
+        <script>
+            const markAsReadBtn = document.getElementById('markAsReadBtn');
+            const markAsUnreadBtn = document.getElementById('markAsUnreadBtn');
+        
+            document.querySelectorAll('.nav-link').forEach(button => {
+            button.addEventListener('click', () => {
+                markAsReadBtn.classList.add('d-none');
+                markAsUnreadBtn.classList.add('d-none');
+                
+                if (button.id === 'unread-notification-tab') {
+                    markAsReadBtn.classList.remove('d-none');
+                } else if (button.id === 'read-notification-tab') {
+                    markAsUnreadBtn.classList.remove('d-none');
+                }
+            });
+            });
+        </script>
+        <!-- end -->
+        <script src="dist/js/plugins.min.js"></script>
+        <script src="dist/js/custom.min.js"></script>
+        <!-- Scripts End-->
+</body>
+
+</html>
