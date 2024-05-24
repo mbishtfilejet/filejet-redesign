@@ -78,6 +78,10 @@ OrgChart.templates.polyTemplate.size = [200, 185];
 OrgChart.templates.polyTemplate.node = 
     '<polygon points="100,10 0,180 200,180" fill="#fff" stroke-width="1" stroke="#aeaeae"></polygon>';
 
+
+OrgChart.templates.polyTemplate.name = '<text style="font-size: 24px;" fill="#000" x="100" y="90" text-anchor="middle">{val}</text>';
+OrgChart.templates.polyTemplate.company = '<text style="font-size: 16px;" fill="#000" x="100" y="60" text-anchor="middle">{val}</text>';
+            
 // OrgChart.templates.polyTemplate.defs = '';
 
 // 
@@ -90,6 +94,10 @@ OrgChart.templates.ellipseTemplate = Object.assign({}, OrgChart.templates.ana);
 OrgChart.templates.ellipseTemplate.size = [230, 185];
 OrgChart.templates.ellipseTemplate.node = 
     '<ellipse rx="150" ry="90" cx="120" cy="90" style="fill:#fff;stroke:grey;stroke-width:1" />';
+
+OrgChart.templates.ellipseTemplate.name = '<text style="font-size: 24px;" fill="#000" x="100" y="90" text-anchor="middle">{val}</text>';
+OrgChart.templates.ellipseTemplate.company = '<text style="font-size: 16px;" fill="#000" x="100" y="60" text-anchor="middle">{val}</text>';
+   
 // custom end
 
 /* Edit Form */
