@@ -71,7 +71,26 @@ OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae"
 
 // OrgChart.templates.decision.node = '<path d="M 100,0 L 0,50 L 100,100 L 200,50 L 100,0 Z" fill="#96d1ab" stroke="#96d1ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 0"/>'
 
+// custom templates
+OrgChart.templates.polyTemplate = Object.assign({}, OrgChart.templates.ana);
+// 
+OrgChart.templates.polyTemplate.size = [200, 185];
+OrgChart.templates.polyTemplate.node = 
+    '<polygon points="100,10 0,180 200,180" fill="#fff" stroke-width="1" stroke="#aeaeae"></polygon>';
 
+// OrgChart.templates.polyTemplate.defs = '';
+
+// 
+// OrgChart.templates.polyTemplate.ripple = {
+//     radius: 100,
+//     color: "#e6e6e6",
+//     rect: null
+// };
+OrgChart.templates.ellipseTemplate = Object.assign({}, OrgChart.templates.ana);   
+OrgChart.templates.ellipseTemplate.size = [230, 185];
+OrgChart.templates.ellipseTemplate.node = 
+    '<ellipse rx="150" ry="90" cx="120" cy="90" style="fill:#fff;stroke:grey;stroke-width:1" />';
+// custom end
 
 /* Edit Form */
 
@@ -124,7 +143,7 @@ editForm.prototype.hide = function (showldUpdateTheNode) {
 // closed
 OrgChart.SEARCH_PLACEHOLDER = "Search";
 OrgChart.RES.IT_IS_LONELY_HERE_LINK = "Loading...";
-OrgChart.CLINK_CURVE = 1.5;
+OrgChart.CLINK_CURVE = 1.2;
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     columns: 6,
@@ -132,6 +151,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.scroll,
     align: OrgChart.align.orientation,
+    movable: OrgChart.movable.node,
     // scaleInitial: OrgChart.match.boundary,
     lazyLoading: true,
     enableSearch: true,
@@ -160,6 +180,14 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     level: 1,
     //     allChildren: true
     // },
+    tags: {
+        "Subs C": {
+            template: "polyTemplate",
+        },
+        "Subs D": {
+            template: "ellipseTemplate",
+        },
+    },
     filterBy: ['DBA', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status'],
 
     nodeMenu: {
@@ -201,17 +229,17 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
     
     clinks: [
-        { from: 8, to: 7, template: 'yellow', label: 'Subsiadiary E to D' },
-        { from: 9, to: 6, template: 'blue', label: 'Subsiadiary F to C' },
+        { from: 8, to: 7, template: 'blue', label: 'Subsiadiary E to D' },
+        { from: 9, to: 6, template: 'yellow', label: 'Subsiadiary F to C' },
     ],
     
     editUI: new editForm(),
     // edit form
-    tags: {
-        filter: {
-            template: 'dot'
-        }
-    },
+    // tags: {
+    //     filter: {
+    //         template: 'dot'
+    //     }
+    // },
 });
 
 function pdf(nodeId) {
