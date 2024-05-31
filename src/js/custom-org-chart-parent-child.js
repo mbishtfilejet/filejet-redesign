@@ -230,8 +230,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
     
     clinks: [
-        { from: 2, to: 4, template: 'blue', label: 'Subsiadiary E to D' },
-        { from: 10, to: 7, template: 'yellow', label: 'Subsiadiary F to C' },
+        { from: 2, to: 4, template: 'blue', label: 'Sub Parent to Unmanaged' },
+        { from: 10, to: 7, template: 'yellow', label: 'Sub-children2 to child-2' },
     ],
     
     editUI: new editForm(),
