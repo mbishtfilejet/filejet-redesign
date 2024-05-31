@@ -229,10 +229,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
         // Statu:"Status",
     },
     
-    // clinks: [
-    //     { from: 8, to: 7, template: 'blue', label: 'Subsiadiary E to D' },
-    //     { from: 9, to: 6, template: 'yellow', label: 'Subsiadiary F to C' },
-    // ],
+    clinks: [
+        { from: 2, to: 4, template: 'blue', label: 'Subsiadiary E to D' },
+        { from: 10, to: 7, template: 'yellow', label: 'Subsiadiary F to C' },
+    ],
     
     editUI: new editForm(),
     // edit form
