@@ -43,7 +43,7 @@ OrgChart.templates.olivia.company = '<text data-width="240" class="fs-5 font-wei
 OrgChart.templates.olivia.name = '<text data-width="240" class="fs-5" fill="#000000" x="15" y="30">{val}</text>';
 OrgChart.templates.olivia.description = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="60">{val}</text>';
 OrgChart.templates.olivia.html = 
-    `<foreignobject class="node" x="15" y="40" width="200" height="100">{val}</foreignobject>`;
+    `<foreignobject class="node" x="15" y="40" width="200" height="150">{val}</foreignobject>`;
 OrgChart.templates.olivia.title = '<text style="font-size:13px";fill="#000000" f x="15" y="70">{val}</text>';
 OrgChart.templates.olivia.img_0 =
     '<clipPath id="ulaImg">'
@@ -73,8 +73,7 @@ OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,220,47)
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
 // OrgChart.templates.ula.name = '<text style="font-size: 24px;" fill="#000" x="100" y="40" text-anchor="middle">{val}</text>';
 OrgChart.templates.ula.size = [250, 300];
-OrgChart.templates.ula.html = 
-    `<foreignobject class="node bg-white" x="15" y="40" width="200" height="250">{val}</foreignobject>`;
+OrgChart.templates.ula.html = `<foreignobject class="node bg-white" x="15" y="40" width="200" height="250">{val}</foreignobject>`;
 // OrgChart.templates.decision.node = '<path d="M 100,0 L 0,50 L 100,100 L 200,50 L 100,0 Z" fill="#96d1ab" stroke="#96d1ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 0"/>'
 
         
@@ -181,6 +180,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
         "Subs C": {
             template: "ula",
         },
+        filter: {
+            template: 'dot'
+        },
         "subLevels0": {
             subLevels: 0
         },
@@ -244,11 +246,11 @@ var chart = new OrgChart(document.getElementById("tree"), {
     
     editUI: new editForm(),
     // edit form
-    tags: {
-        filter: {
-            template: 'dot'
-        }
-    },
+    // tags: {
+    //     filter: {
+    //         template: 'dot'
+    //     }
+    // },
 });
 
 function pdf(nodeId) {
