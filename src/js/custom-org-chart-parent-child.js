@@ -237,10 +237,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
         // Statu:"Status",
     },
     
-    clinks: [
-        { from: 2, to: 4, template: 'blue', label: 'Sub Parent to Unmanaged' },
-        { from: 10, to: 7, template: 'yellow', label: 'Sub-children2 to child-2 22222' },
-    ],
+    // clinks: [
+    //     { from: 2, to: 4, template: 'blue', label: 'Sub Parent to Unmanaged' },
+    //     { from: 10, to: 7, template: 'yellow', label: 'Sub-children2 to child-2 22222' },
+    // ],
     
     editUI: new editForm(),
     // edit form
