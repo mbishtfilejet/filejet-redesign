@@ -194,7 +194,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
             subLevels: 3
         }
     },
-    filterBy: ['DBA', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status'],
+    // filterBy: ['Entity_Name', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'Subsidiary'],
+    filterBy: ['Entity_Name', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status','Status', 'Subsidiary'],
 
     nodeMenu: {
         action: {
@@ -227,7 +228,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     
     nodeBinding: {
         img_0: "img",
-        name: "Name",
+        name: "Entity_Name",
         description: "Description",
         html: "html",
         title: "Jurisdiction",
@@ -243,11 +244,11 @@ var chart = new OrgChart(document.getElementById("tree"), {
     
     editUI: new editForm(),
     // edit form
-    // tags: {
-    //     filter: {
-    //         template: 'dot'
-    //     }
-    // },
+    tags: {
+        filter: {
+            template: 'dot'
+        }
+    },
 });
 
 function pdf(nodeId) {
