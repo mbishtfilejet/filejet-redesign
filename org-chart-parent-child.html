@@ -12,6 +12,10 @@
     <!-- org script -->
     <script src="./src/js/lib/orgchart.js"></script>
     <!-- Org Scripts end -->
+    <!-- select2 library -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- select2 library -->
 </head>
 
 <body>
@@ -1869,6 +1873,28 @@
                 }
             });
             });
+        </script>
+        <!-- end -->
+         <!-- select2 init -->
+        <script>
+            // In your Javascript (external .js resource or <script> tag)
+                $('.js-example-basic-single1').select2({
+                    dropdownParent: $('#subsidiaryEntity')
+                });
+        </script>
+        <!-- select2 init end-->
+           <!-- this script for questionaries to select Yes/No -->
+        <script>
+            function toggleDivs(checkYes1) {
+                var questionnaireToggleYes = document.getElementById('questionnaireToggleYes');
+                var questionnaireToggleNo = document.getElementById('questionnaireToggleNo');
+
+                questionnaireToggleYes.classList.toggle('d-block', checkYes1);
+                questionnaireToggleYes.classList.toggle('d-none', !checkYes1);
+
+                questionnaireToggleNo.classList.toggle('d-block', !checkYes1);
+                questionnaireToggleNo.classList.toggle('d-none', checkYes1);
+            }
         </script>
         <!-- end -->
         <script src="dist/js/plugins.min.js"></script>
