@@ -152,7 +152,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     // scaleInitial: OrgChart.match.boundary,
     lazyLoading: true,
     enableSearch: true,
-    miniMap: false,
+    miniMap: true,
     layout: OrgChart.mixed,
     // dottedLines: [
     //     { from: 11, to: 0,},
@@ -163,9 +163,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
     // },
     toolbar: {
         layout: false,
-        zoom: false,
-        fit: false,
-        expandAll: false,
+        zoom: true,
+        fit: true,
+        expandAll: true,
     },
     menu: {
         pdf: { text: "Download Templates", icon: downloadTempMenu, onClick: pdf },
@@ -218,6 +218,11 @@ var chart = new OrgChart(document.getElementById("tree"), {
             text: "Entity Summary",
             icon: summaryEntity,
         },
+        subsidiary:{
+            text: "Add Subsidiary",
+            icon: addEntity,
+            onClick: callHandler,
+        }
         // add: {
         //     text: "Add Entity",
         //     icon: addEntity
@@ -253,7 +258,14 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     }
     // },
 });
-
+// hyperlink to nodes
+ 
+function callHandler(nodeId) {
+    let nodeData = chart.get(nodeId);
+     // Open the Bootstrap modal
+     $('#subsidiaryEntity').modal('show');
+}
+// hyperlinks end
 function pdf(nodeId) {
     OrgChart.pdfPrevUI.show(chart, {
         format: "A4",
