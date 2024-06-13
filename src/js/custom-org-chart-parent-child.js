@@ -205,16 +205,17 @@ var chart = new OrgChart(document.getElementById("tree"), {
             text: "Take Action",
             icon: actionIcon
         },
-        details: {
+        open_entity: {
             text: "Open Entity",
             icon: openEntity,
         },
         edit: {
             text: "Update Entity",
             icon: updateEntity,
+            onClick : callHandler1,
         },
 
-        entity_summary: {
+        details: {
             text: "Entity Summary",
             icon: summaryEntity,
         },
@@ -265,6 +266,12 @@ function callHandler(nodeId) {
      // Open the Bootstrap modal
      $('#subsidiaryEntity').modal('show');
 }
+function callHandler1(nodeId) {
+    let nodeData = chart.get(nodeId);
+     // Open the Bootstrap modal
+     $('#update-profile-modal').modal('show');
+}
+
 // hyperlinks end
 function pdf(nodeId) {
     OrgChart.pdfPrevUI.show(chart, {
