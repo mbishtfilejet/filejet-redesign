@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Jet: Event Remainder</title>
+    <link rel="icon" type="image/x-icon" href="dist/images/logo-round.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+</head>
+
+<body>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: montserrat;
+        }
+
+        .border-secondary{
+            border: 1px solid #cccccc;
+        }
+        .border-danger{
+            border: 1px solid #ff0d00;
+        }
+        .border-mango{
+            border: 1px solid #e68209;
+        }
+        .border-success{
+            border: 1px solid #62bf24;
+        }
+        .border-warning{
+            border: 1px solid #e8c309;
+        }
+        .divider-secondary {
+            background: #dadada;
+        }
+        .divider-danger{
+            background: #ff0d00;
+        }
+        .divider-mango {
+            background: #e68209;
+        }
+        .divider-success {
+            background: #62bf24;
+        }
+        .divider-warning {
+            background: #e8c309;
+        }
+        .text-danger{
+            color: #eb5028;
+        }
+
+        .w-50 {
+            width: 50%;
+        }
+        .m-auto {
+            margin: auto;
+        }
+
+        .p-5 {
+            padding: 3rem;
+        }
+
+        .mb-0 {
+            margin-bottom: 0px;
+        }
+
+        .mt-0 {
+            margin-top: 0px;
+        }
+
+        .mt-1 {
+            margin-top: 0.25rem;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mt-3 {
+            margin-top: 1rem;
+        }
+
+        .mt-4 {
+            margin-top: 1.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mt-5 {
+            margin-top: 3rem;
+        }
+
+        .mb-5 {
+            margin-bottom: 3rem;
+        }
+        .d-none{
+            display: none;
+        }
+
+        header nav img {
+            width: 95px;
+            height: 96px;
+        }
+
+        .title-small {
+            font-size: 20px;
+            color: #000000;
+            text-decoration: none solid rgb(0, 0, 0);
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .title-heading {
+            font-size: 32px;
+            color: #000000;
+            text-decoration: none solid rgb(0, 0, 0);
+            font-weight: 600;
+        }
+
+        .divider {
+            width: 334px;
+            height: 4px;
+        }
+
+        .descriptionText {
+            font-size: 20px;
+            color: #000000;
+            text-decoration: none solid rgb(0, 0, 0);
+            font-weight: 600;
+            line-height: 35px;
+        }
+
+        .upcomingEvent {
+            font-size: 20px;
+            color: #000000;
+            text-decoration: underline solid rgb(0, 0, 0);
+            line-height: 16px;
+            font-weight: 700;
+        }
+
+        .entityName,
+        .eventTitle {
+            font-weight: 600;
+            font-size: 20px;
+            color: #000000;
+            text-decoration: none solid rgb(0, 0, 0);
+            line-height: 16px;
+        }
+
+        .shortDescription {
+            font-size: 12px;
+            color: #000000;
+            text-decoration: none solid rgb(0, 0, 0);
+            line-height: 16px;
+        }
+
+        .shortDescription span {
+            color: #eb5028;
+            font-weight: 700;
+        }
+
+        .eventAction h5 a {
+            font-size: 14px;
+            color: #eb5028;
+            text-decoration: underline solid rgb(235, 80, 40);
+            line-height: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .eventAction h6 a {
+            font-size: 12px;
+            color: #c7c7c7;
+            text-decoration: underline solid rgb(199, 199, 199);
+            line-height: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        footer div p{
+            font-size: 15px;
+            color: #000000;
+            font-style: italic;
+            text-decoration: none solid rgb(0, 0, 0);
+            line-height: 16px;
+        }
+
+        footer div p:last-child {
+            color: #eb5028;
+        }
+        @media (min-width:1450px){
+            .eventDiv{
+                width: 40%;
+            }
+        }
+        /* table style */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding-left: 8px;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        } 
+        .letter-avatar {
+            font-size: 1.2rem;
+            line-height: 1rem;
+            letter-spacing: .1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            color: #fff;
+            background: #4E4E5C;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .red-bg{
+            background-color: #E73B18;
+        }
+        .text-danger{
+            color: #E73B18;
+        }
+        .d-flex{
+            display: flex;
+        }
+        .align-items-center{
+            align-items: center;
+        }
+        .gap{
+            gap: 10px;
+        }
+        .icon{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    </style>
+
+    <div class="w-50 eventDiv border-secondary m-auto p-5 mt-4 mb-4">
+        <header>
+            <nav>
+                <a href="javascript:void(0)"><img src="dist/images/logo-round (1).png" alt=""></a>
+            </nav>
+        </header>
+        <section>
+            <div>
+                <div>
+                    <h6 class="mb-0 mt-4 title-small">SUMMARY</h6>
+                    <h1 class="mt-3 title-heading">You have an upcoming Summary <br><span class="d-none"><span>in</span> <b>90 Days</b></span></h1>
+                </div>
+                <div class="divider divider-secondary"></div>
+                <div>
+                    <p class="descriptionText mt-5 mb-5">This is a courtesy reminder that you have a filing event
+                      <br>  deadline on your Filejet calendar:</p>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="upcomingEvent">Upcoming Summary:</a>
+
+                    <div>
+                        <table class="mt-3">
+                           
+                            <tr>
+                                <td width="70">
+                                    <div class="ms-2"><span class="letter-avatar red-bg">B</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="m-0 mb-0 mt-0">Bluebird Business Strategies (DE)</h5><span class="text-opacity-70">Annual Report Filing</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap">
+                                        <span> <img class="icon" src="dist/images/icons/alert.svg" alt=""></span>
+                                        <h5 class="text-danger mt-3">Overdue</h5>
+                                    </div>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td width="70">
+                                    <div class="ms-2"><span class="letter-avatar red-bg">B</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="m-0 mb-0 mt-0">Bluebird Business Strategies (DE)</h5><span class="text-opacity-70">Annual Report Filing</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap">
+                                        <span> <img class="icon" src="dist/images/icons/alert.svg" alt=""></span>
+                                        <h5 class="text-danger mt-3">Overdue</h5>
+                                    </div>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td width="70">
+                                    <div class="ms-2"><span class="letter-avatar red-bg">B</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="m-0 mb-0 mt-0">Bluebird Business Strategies (DE)</h5><span class="text-opacity-70">Annual Report Filing</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap">
+                                        <span> <img class="icon" src="dist/images/icons/alert.svg" alt=""></span>
+                                        <h5 class="text-danger mt-3">Overdue</h5>
+                                    </div>
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td width="70">
+                                    <div class="ms-2"><span class="letter-avatar red-bg">B</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5 class="m-0 mb-0 mt-0">Bluebird Business Strategies (DE)</h5><span class="text-opacity-70">Annual Report Filing</span>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap">
+                                        <span> <img class="icon" src="dist/images/icons/alert.svg" alt=""></span>
+                                        <h5 class="text-danger mt-3">Overdue</h5>
+                                    </div>
+                                </td>
+                               
+                            </tr>
+                          </table>
+                    </div>
+                    
+                </div>
+                <div>
+                    <p class="shortDescription mt-5 mb-5"><span><</span>
+                             Tasks like this take less than 60 secs on average for Filejet customers
+                    <span>></span></p>
+                </div>
+                <div class="eventAction">
+                    <h5><a href="index.html">Let's Get started</a></h5>
+                    <!--  -->
+                </div>
+            </div>
+        </section>
+       
+    </div>
+
+
+</body>
+
+</html>
