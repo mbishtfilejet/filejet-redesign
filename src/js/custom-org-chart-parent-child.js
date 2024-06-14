@@ -198,7 +198,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         }
     },
     // filterBy: ['Entity_Name', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'Subsidiary'],
-    filterBy: ['Entity_Name', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status','Status', 'Subsidiary'],
+    filterBy: ['Business_License', 'Entity_Type', 'Group_Name','Jurisdiction', 'Status','Status', 'Subsidiary'],
 
     nodeMenu: {
         action: {
@@ -271,6 +271,9 @@ function callHandler1(nodeId) {
      // Open the Bootstrap modal
      $('#update-profile-modal').modal('show');
 }
+chart.onDrop((args) => {
+    alert("Chart node number: " + args.dragId + " position has been changed and dropped it to parent node : " + args.dropId );
+});
 
 // hyperlinks end
 function pdf(nodeId) {
