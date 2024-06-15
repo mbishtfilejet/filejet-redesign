@@ -569,7 +569,7 @@ $(document).ready(function () {
   var searchInput = document.querySelector('input[role="combobox"]');
 
   // Add a custom attribute called "placeholder" with the value "some value"
-  searchInput.setAttribute('placeholder', 'Search');
+  // searchInput.setAttribute('placeholder', 'Search');
 }
 
 // Attach the function to the window.onload event
