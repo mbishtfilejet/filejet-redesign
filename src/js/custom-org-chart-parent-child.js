@@ -45,6 +45,7 @@ OrgChart.templates.olivia.state = '<text data-width="240" class="fs-6" fill="#00
 //OrgChart.templates.olivia.html = 
     //`<foreignobject class="node" x="15" y="40" width="200" height="150">{val}</foreignobject>`;
 OrgChart.templates.olivia.company = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="70">{val}</text>';
+OrgChart.templates.olivia.ownership = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="90">{val}</text>';
 OrgChart.templates.olivia.img_0 =
     '<clipPath id="ulaImg">'
     + '<circle cx="46" cy="46" r="30"></circle>'
@@ -67,11 +68,11 @@ OrgChart.miniMap.position = {
     right: 'padding',
     bottom: 'padding',
 }
-OrgChart.templates.olivia.size = [320, 92];
+OrgChart.templates.olivia.size = [320, 100];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
 //OrgChart.templates.ula.name = '<text style="font-size: 24px;" fill="#000" x="100" y="40" text-anchor="middle">{val}</text>';
-OrgChart.templates.ula.size = [320, 92];
+OrgChart.templates.ula.size = [320, 110];
 OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.ula.entityName = `<foreignobject data-marrk-field="name1" data-width="230" class="fs-5 font-weight-500" x="15" y="0" width="240" height="25" fill="#000000">{val}</foreignobject>`;
 OrgChart.templates.ula.entityType = '<text data-width="240" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" x="15" y="35">{val}</text>';
@@ -249,6 +250,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         entityType:"Entity_Type",
         state: "State",
         company:"Company",
+        ownership:"Ownership",
         // company: "Select_Entity",
         // Compliance: "Compliance",
         // Statu:"Status",
