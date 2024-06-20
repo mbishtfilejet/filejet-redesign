@@ -39,12 +39,12 @@ var exportJPG = '<span class="icon icon-md me-0 icon-export-jpg"></span>';
 OrgChart.templates.olivia.Compliance = '<svg width="24" height="24" x="215" y="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<path d="M10.9085 2.78216C11.9483 2.20625 13.2463 2.54089 13.8841 3.5224L13.9669 3.66023L21.7259 17.6685C21.9107 18.0021 22.0076 18.3773 22.0076 18.7587C22.0076 19.9495 21.0825 20.9243 19.9117 21.0035L19.7576 21.0087H4.24187C3.86056 21.0087 3.4855 20.9118 3.15192 20.7271C2.11208 20.1513 1.70704 18.8734 2.20059 17.812L2.27349 17.6687L10.0303 3.66046C10.2348 3.2911 10.5391 2.98674 10.9085 2.78216ZM12.0004 16.0018C11.4489 16.0018 11.0018 16.4489 11.0018 17.0004C11.0018 17.552 11.4489 17.9991 12.0004 17.9991C12.552 17.9991 12.9991 17.552 12.9991 17.0004C12.9991 16.4489 12.552 16.0018 12.0004 16.0018ZM11.9983 7.99806C11.4854 7.99825 11.0629 8.38444 11.0053 8.8818L10.9986 8.99842L11.0004 13.9993L11.0072 14.1159C11.0652 14.6132 11.488 14.9991 12.0008 14.9989C12.5136 14.9988 12.9362 14.6126 12.9938 14.1152L13.0004 13.9986L12.9986 8.9977L12.9919 8.88108C12.9339 8.38376 12.5111 7.99788 11.9983 7.99806Z" fill="#E73B18"/>' +
     '</svg>';
-OrgChart.templates.olivia.company = '<text data-width="240" class="fs-5 font-weight-500" data-text-overflow="ellipsis" fill="#000000" x="15" y="30">{val}</text>';
-OrgChart.templates.olivia.name = `<foreignobject data-marrk-field="name1" data-width="230" class="fs-5" x="10" y="15" width="240" height="25" fill="#000000">{val}</foreignobject>`;
-OrgChart.templates.olivia.description = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="60">{val}</text>';
-OrgChart.templates.olivia.html = 
-    `<foreignobject class="node" x="15" y="40" width="200" height="150">{val}</foreignobject>`;
-// OrgChart.templates.olivia.title = '<text style="font-size:13px";fill="#000000" f x="15" y="70">{val}</text>';
+OrgChart.templates.olivia.entityName = `<foreignobject data-marrk-field="name1" data-width="230" class="fs-5 font-weight-500" x="15" y="0" width="240" height="25" fill="#000000">{val}</foreignobject>`;
+OrgChart.templates.olivia.entityType = '<text data-width="240" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" x="15" y="35">{val}</text>';
+OrgChart.templates.olivia.state = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="52">{val}</text>';
+//OrgChart.templates.olivia.html = 
+    //`<foreignobject class="node" x="15" y="40" width="200" height="150">{val}</foreignobject>`;
+OrgChart.templates.olivia.company = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="70">{val}</text>';
 OrgChart.templates.olivia.img_0 =
     '<clipPath id="ulaImg">'
     + '<circle cx="46" cy="46" r="30"></circle>'
@@ -67,13 +67,20 @@ OrgChart.miniMap.position = {
     right: 'padding',
     bottom: 'padding',
 }
-// OrgChart.templates.olivia.size = [320, 92];
-OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,220,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
-
+OrgChart.templates.olivia.size = [320, 92];
+OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
-// OrgChart.templates.ula.name = '<text style="font-size: 24px;" fill="#000" x="100" y="40" text-anchor="middle">{val}</text>';
-OrgChart.templates.ula.size = [250, 300];
-OrgChart.templates.ula.html = `<foreignobject class="node bg-white" x="15" y="40" width="200" height="250">{val}</foreignobject>`;
+//OrgChart.templates.ula.name = '<text style="font-size: 24px;" fill="#000" x="100" y="40" text-anchor="middle">{val}</text>';
+OrgChart.templates.ula.size = [320, 92];
+OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
+OrgChart.templates.ula.entityName = `<foreignobject data-marrk-field="name1" data-width="230" class="fs-5 font-weight-500" x="15" y="0" width="240" height="25" fill="#000000">{val}</foreignobject>`;
+OrgChart.templates.ula.entityType = '<text data-width="240" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" x="15" y="35">{val}</text>';
+OrgChart.templates.ula.state = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="52">{val}</text>';
+//OrgChart.templates.olivia.html = 
+    //`<foreignobject class="node" x="15" y="40" width="200" height="150">{val}</foreignobject>`;
+OrgChart.templates.ula.company = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="70">{val}</text>';
+
+// OrgChart.templates.ula.html = `<foreignobject class="node bg-white" x="15" y="40">{val}</foreignobject>`;
 // OrgChart.templates.decision.node = '<path d="M 100,0 L 0,50 L 100,100 L 200,50 L 100,0 Z" fill="#96d1ab" stroke="#96d1ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 0"/>'
 
         
@@ -230,20 +237,17 @@ var chart = new OrgChart(document.getElementById("tree"), {
         //     icon: addEntity
         // }
     },
-    // nodeBinding: {
-    //     field_0: "name",
-    //     field_1: "title",
-    //     img_0: "img"
-    // },
     
     nodeBinding: {
-        img_0: "img",
-        name: "Select_Entity",
-        description: "Description",
-        html: "html",
-        title: "Jurisdiction",
+        // img_0: "img",
+        entityName: "Select_Entity",
+        // description: "Description",
+        // html: "html",
+        entityType:"Entity_Type",
+        state: "State",
+        company:"Company",
         // company: "Select_Entity",
-        Compliance: "Compliance",
+        // Compliance: "Compliance",
         // Statu:"Status",
     },
     
