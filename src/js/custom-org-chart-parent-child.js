@@ -79,6 +79,9 @@ OrgChart.templates.ula.state = '<text data-width="240" class="fs-6" fill="#00000
 //OrgChart.templates.olivia.html = 
     //`<foreignobject class="node" x="15" y="40" width="200" height="150">{val}</foreignobject>`;
 OrgChart.templates.ula.company = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="70">{val}</text>';
+OrgChart.templates.ula.node = 
+    `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffffff" stroke-width="1" stroke="#aeaeae"></rect>
+    <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;
 
 // OrgChart.templates.ula.html = `<foreignobject class="node bg-white" x="15" y="40">{val}</foreignobject>`;
 // OrgChart.templates.decision.node = '<path d="M 100,0 L 0,50 L 100,100 L 200,50 L 100,0 Z" fill="#96d1ab" stroke="#96d1ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 0"/>'
