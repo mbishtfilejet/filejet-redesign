@@ -159,6 +159,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     align: OrgChart.align.orientation,
     movable: OrgChart.movable.node,
     enableDragDrop: true,
+    searchDisplayField: 'Select_Entity',
     // scaleInitial: OrgChart.match.boundary,
     lazyLoading: true,
     enableSearch: true,
