@@ -78,10 +78,21 @@ OrgChart.templates.ula.entityType = '<foreignobject data-width="240" data-marrk-
 OrgChart.templates.ula.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="240" height="25" x="15" y="35">{val}</foreignobject>';
 OrgChart.templates.ula.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="52">{val}</foreignobject>';
 OrgChart.templates.ula.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="70">{val}</foreignobject>';
-
 OrgChart.templates.ula.node = 
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffffff" stroke-width="1" stroke="#aeaeae"></rect>
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;
+
+// OrgChart.templates.polina.size = [320, 105];
+OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,40)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
+OrgChart.templates.polina.entityName = `<foreignobject data-marrk-field="Select_Entity" data-width="230" class="fs-5 font-weight-500" data-text-overflow="ellipsis" x="25" y="0" width="240" height="25" fill="#000000">{val}</foreignobject>`;
+OrgChart.templates.polina.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="240" height="25" x="25" y="18">{val}</foreignobject>';
+OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="240" height="25" x="25" y="35">{val}</foreignobject>';
+OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="25" y="52">{val}</foreignobject>';
+OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="25" y="70">{val}</foreignobject>';
+// OrgChart.templates.polina.node = 
+//         `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffffff" stroke-width="1" stroke="#aeaeae"></rect>
+//         <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;    
+
 
 // OrgChart.templates.ula.html = `<foreignobject class="node bg-white" x="15" y="40">{val}</foreignobject>`;
 // OrgChart.templates.decision.node = '<path d="M 100,0 L 0,50 L 100,100 L 200,50 L 100,0 Z" fill="#96d1ab" stroke="#96d1ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 0"/>'
@@ -191,6 +202,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
     tags: {
         "Subs C": {
             template: "ula",
+        },
+        "subsidiary_node":{
+            template: "polina",
         },
         filter: {
             template: 'dot'
