@@ -298,7 +298,12 @@ chart.searchUI.on('show-items', function(sender){
         sender.instance.draw();
     }
 });
-
+chart.searchUI.on('searchclick', function (sender, args) {
+    let node = chart.get(args.nodeId);
+    node.tags = ['match'];
+    chart.updateNode(node)
+    // return false; 
+});  
 function callHandler(nodeId) {
     let nodeData = chart.get(nodeId);
      // Open the Bootstrap modal
