@@ -301,7 +301,8 @@ chart.searchUI.on('show-items', function(sender){
 chart.searchUI.on('searchclick', function (sender, args) {
     let node = chart.get(args.nodeId);
     node.tags = ['match'];
-    chart.updateNode(node)
+    chart.updateNode(node);
+    sender.instance.searchUI.hide();
     // return false; 
 });  
 function callHandler(nodeId) {
