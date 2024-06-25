@@ -303,7 +303,8 @@ chart.searchUI.on('searchclick', function (sender, args) {
     let node = chart.get(args.nodeId);
     node.tags = ['match'];
     chart.updateNode(node);
-    sender.instance.searchUI.hide();
+    // sender.instance.searchUI.hide();
+    sender.searchTableWrapper.style.display = 'none';
     // return false; 
 });  
 function callHandler(nodeId) {
