@@ -299,14 +299,29 @@ chart.searchUI.on('show-items', function(sender){
         sender.instance.draw();
     }
 });
+
+// all search action feature start
+let highlightedId = 0; 
+
+chart.onInit(function() {
+    this.searchUI.input.addEventListener('input', function(){
+        chart.searchUI.searchTableWrapper.style.display = '';
+    })
+})
 chart.searchUI.on('searchclick', function (sender, args) {
+    if (highlightedId != 0) {
+        let oldNode = chart.get(highlightedId);
+        oldNode.tags = [];
+        chart.updateNode(oldNode)
+    }
+    highlightedId = args.nodeId
     let node = chart.get(args.nodeId);
     node.tags = ['match'];
     chart.updateNode(node);
-    // sender.instance.searchUI.hide();
     sender.searchTableWrapper.style.display = 'none';
-    // return false; 
 });  
+// search action end for chart
+
 function callHandler(nodeId) {
     let nodeData = chart.get(nodeId);
      // Open the Bootstrap modal
