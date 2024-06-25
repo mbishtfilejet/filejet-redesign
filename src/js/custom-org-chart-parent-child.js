@@ -171,6 +171,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     movable: OrgChart.movable.node,
     enableDragDrop: true,
     searchDisplayField: 'Select_Entity',
+    
     // scaleInitial: OrgChart.match.boundary,
     lazyLoading: true,
     enableSearch: true,
@@ -224,7 +225,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
 
     filterBy: ['DBA', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status','Subsidiary'],
-
+    searchFields: ["Select_Entity","Entity_Type","State","Company","Ownership","Compliance","Manager","Product_Manager","President"],
 
     nodeMenu: {
         action: {
