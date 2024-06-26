@@ -224,8 +224,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
         }
     },
 
-    filterBy: ['DBA', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status','Subsidiary'],
-    searchFields: ["Select_Entity","Entity_Type","State","Company","Ownership","Compliance","Manager","Product_Manager","President"],
+    filterBy: ['DBA', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status','Subsidiary','Parent_Entity'],
+    searchFields: ["Select_Entity","Entity_Type","State","Company","Ownership","Compliance","Manager","Product_Manager","President","Parent_Entity"],
 
     nodeMenu: {
         action: {
@@ -260,6 +260,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     nodeBinding: {
         // img_0: "img",
         entityName: "Select_Entity",
+        parentEntity:"Parent_Entity",
         // description: "Description",
         // html: "html",
         entityType:"Entity_Type",
