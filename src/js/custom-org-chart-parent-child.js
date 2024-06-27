@@ -312,15 +312,22 @@ chart.onInit(function() {
 chart.searchUI.on('searchclick', function (sender, args) {
     if (highlightedId != 0) {
         let oldNode = chart.get(highlightedId);
-        oldNode.tags = [];
+        if (oldNode.tags) {
+            oldNode.tags.pop("match");
+        }
         chart.updateNode(oldNode)
     }
     highlightedId = args.nodeId
     let node = chart.get(args.nodeId);
-    node.tags = ['match'];
+    if (node.tags) {
+        node.tags.push("match");
+    }
+    else {
+        node.tags = ["match"]
+    }
     chart.updateNode(node);
     sender.searchTableWrapper.style.display = 'none';
-});  
+}); 
 // search action end for chart
 
 function callHandler(nodeId) {
