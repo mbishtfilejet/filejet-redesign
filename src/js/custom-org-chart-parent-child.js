@@ -70,7 +70,6 @@ OrgChart.miniMap.position = {
 OrgChart.templates.olivia.size = [320, 105];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
-//OrgChart.templates.ula.name = '<text style="font-size: 24px;" fill="#000" x="100" y="40" text-anchor="middle">{val}</text>';
 OrgChart.templates.ula.size = [320, 105];
 OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.ula.entityName = `<foreignobject data-marrk-field="Select_Entity" data-width="230" class="fs-5 font-weight-500" data-text-overflow="ellipsis" x="15" y="0" width="240" height="25" fill="#000000">{val}</foreignobject>`;
@@ -93,29 +92,15 @@ OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae"
 OrgChart.templates.polina.node = 
 `<rect x="0" y="0" height="105" width="320" fill="#039BE5" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;    
 
+OrgChart.SEARCH_PLACEHOLDER = "Search";
+OrgChart.RES.IT_IS_LONELY_HERE_LINK = "Loading...";
+OrgChart.CLINK_CURVE = 1.2;
+OrgChart.FILTER_ALPHABETICALLY = false;
 
-// OrgChart.templates.ula.html = `<foreignobject class="node bg-white" x="15" y="40">{val}</foreignobject>`;
-// OrgChart.templates.decision.node = '<path d="M 100,0 L 0,50 L 100,100 L 200,50 L 100,0 Z" fill="#96d1ab" stroke="#96d1ab" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 0"/>'
-
-        
-// OrgChart.templates.polyTemplate.defs = '';
-
-// 
-// OrgChart.templates.polyTemplate.ripple = {
-//     radius: 100,
-//     color: "#e6e6e6",
-//     rect: null
-// };
- 
-// custom end
-
-/* Edit Form */
-
+/* Edit Form start */
 var editForm = function () {
     this.nodeId = null;
 };
-
-
 editForm.prototype.init = function (obj) {
     var that = this;
     this.obj = obj;
@@ -130,8 +115,6 @@ editForm.prototype.init = function (obj) {
         that.hide();
     });
 };
-
-
 editForm.prototype.show = function (nodeId) {
     this.nodeId = nodeId;
 
@@ -145,23 +128,18 @@ editForm.prototype.show = function (nodeId) {
 
     OrgChart.animate(this.editForm, { opacity: 0 }, { opacity: 1 }, 300, OrgChart.anim.inOutSin);
 };
-
 editForm.prototype.content = function (id, detailsMode, dontAnim, width, dontRenderButtons) {
     var div = document.createElement('div');
     div.innerHTML = $('#editForm').html();
     //div.innerHTML += '<style>#close{display:none !important;}</style>';
     return { element: div, focusId: '', title: '', shareText: '' };
 };
-
 editForm.prototype.hide = function (showldUpdateTheNode) {
     this.editForm.addClass("d-none");
 
 };
-// closed
-OrgChart.SEARCH_PLACEHOLDER = "Search";
-OrgChart.RES.IT_IS_LONELY_HERE_LINK = "Loading...";
-OrgChart.CLINK_CURVE = 1.2;
-OrgChart.FILTER_ALPHABETICALLY = false;
+//edit form closed
+
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     columns: 6,
@@ -289,6 +267,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     }
     // },
 });
+
+
 // hyperlink to nodes
 chart.searchUI.on('show-items', function(sender){
     if (sender.lastSearch.length){
@@ -353,10 +333,9 @@ function pdf(nodeId) {
         footer: 'My Footer. Page {current-page} of {total-pages}'
     });
 }
-chart.on('init', function (sender) {
-    document.getElementById("loadPlaceholder").style.display = "none";
-});
+
 chart.on('init', function (sender, args) {
+    document.getElementById("loadPlaceholder").style.display = "none";
     sender.searchUI.find('');
     // simulate Enter
     let element = document.querySelector('input');
@@ -365,11 +344,6 @@ chart.on('init', function (sender, args) {
     }, 100)
 })
 
-// setTimeout(function () {
-//     chart.load(response.json);
-// }, 100);
-
-// Assuming `chart` is your chart object
 
 // Make a fetch request to the JSON file
 fetch('data3.json')
@@ -434,8 +408,6 @@ document.addEventListener("click", function (e) {
     }
 });
 
-// 
-// 
 // custom org select2
 // JavaScript to handle the custom select behavior
 var selectContainer2 = document.querySelector(".org-custom-select2");
@@ -524,17 +496,7 @@ function skipFunction() {
 }
 // end skip org chart
 
-
-
-
-  // remove_Underscore from filter
-  function removeUnderscores(element) {
-    const originalText = element.textContent;
-    const updatedText = originalText.replace(/_/g, ' '); // Use regular expression with global flag to replace all underscores
-    element.textContent = updatedText;
-}
-
-  // remove_Underscore from filter
+// remove_Underscore from filter
   function removeUnderscores(element) {
     const originalText = element.textContent;
     const updatedText = originalText.replace(/_/g, ' '); // Use regular expression with global flag to replace all underscores
