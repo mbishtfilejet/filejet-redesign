@@ -161,6 +161,7 @@ editForm.prototype.hide = function (showldUpdateTheNode) {
 OrgChart.SEARCH_PLACEHOLDER = "Search";
 OrgChart.RES.IT_IS_LONELY_HERE_LINK = "Loading...";
 OrgChart.CLINK_CURVE = 1.2;
+OrgChart.FILTER_ALPHABETICALLY = false;
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     columns: 6,
@@ -224,7 +225,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         }
     },
 
-    filterBy: ['DBA', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status','Subsidiary','Parent_Entity'],
+    filterBy: ['DBA', 'Business_License','Group_Name', 'Compliance', 'Jurisdiction', 'Status','Select_Entity','Entity_Type','Parent_Entity','Subsidiary'],
     searchFields: ["Select_Entity","Entity_Type","State","Company","Ownership","Compliance","Manager","Product_Manager","President","Parent_Entity"],
 
     nodeMenu: {
