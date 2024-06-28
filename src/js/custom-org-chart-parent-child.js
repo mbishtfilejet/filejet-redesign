@@ -80,6 +80,8 @@ OrgChart.templates.ula.ownership = '<foreignobject data-marrk-field="Ownership" 
 OrgChart.templates.ula.node = 
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffffff" stroke-width="1" stroke="#aeaeae"></rect>
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;
+OrgChart.templates.ula.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
+    + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';    
 
 OrgChart.templates.polina.size = [320, 105];
 OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,52)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
@@ -91,6 +93,8 @@ OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownershi
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.polina.node = 
 `<rect x="0" y="0" height="105" width="320" fill="#039BE5" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;    
+OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
+    + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 
 OrgChart.SEARCH_PLACEHOLDER = "Search";
 OrgChart.RES.IT_IS_LONELY_HERE_LINK = "Loading...";
