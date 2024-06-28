@@ -292,6 +292,13 @@ let highlightedId = 0;
 chart.onInit(function() {
     this.searchUI.input.addEventListener('input', function(){
         chart.searchUI.searchTableWrapper.style.display = '';
+        if (highlightedId != 0) {
+            let oldNode = chart.get(highlightedId);
+            if (oldNode.tags) {
+                oldNode.tags.pop("match");
+            }
+            chart.updateNode(oldNode)
+        }
     })
 })
 chart.searchUI.on('searchclick', function (sender, args) {
