@@ -1,6 +1,6 @@
 //JavaScript
 
-var expandAllIcon ='<span class="icon me-0 icon-expand-all"></span>';
+var expandAllIcon = '<span class="icon me-0 icon-expand-all"></span>';
 
 var fitIcon = '<span class="icon me-0 icon-fit"></span>';
 
@@ -39,12 +39,11 @@ var exportJPG = '<span class="icon icon-md me-0 icon-export-jpg"></span>';
 OrgChart.templates.olivia.compliance = '<svg width="24" height="24" x="275" y="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<path d="M10.9085 2.78216C11.9483 2.20625 13.2463 2.54089 13.8841 3.5224L13.9669 3.66023L21.7259 17.6685C21.9107 18.0021 22.0076 18.3773 22.0076 18.7587C22.0076 19.9495 21.0825 20.9243 19.9117 21.0035L19.7576 21.0087H4.24187C3.86056 21.0087 3.4855 20.9118 3.15192 20.7271C2.11208 20.1513 1.70704 18.8734 2.20059 17.812L2.27349 17.6687L10.0303 3.66046C10.2348 3.2911 10.5391 2.98674 10.9085 2.78216ZM12.0004 16.0018C11.4489 16.0018 11.0018 16.4489 11.0018 17.0004C11.0018 17.552 11.4489 17.9991 12.0004 17.9991C12.552 17.9991 12.9991 17.552 12.9991 17.0004C12.9991 16.4489 12.552 16.0018 12.0004 16.0018ZM11.9983 7.99806C11.4854 7.99825 11.0629 8.38444 11.0053 8.8818L10.9986 8.99842L11.0004 13.9993L11.0072 14.1159C11.0652 14.6132 11.488 14.9991 12.0008 14.9989C12.5136 14.9988 12.9362 14.6126 12.9938 14.1152L13.0004 13.9986L12.9986 8.9977L12.9919 8.88108C12.9339 8.38376 12.5111 7.99788 11.9983 7.99806Z" fill="#E73B18"/>' +
     '</svg>';
-OrgChart.templates.olivia.entityName = `<foreignobject data-marrk-field="Select_Entity" data-width="230" class="fs-5 font-weight-500" data-text-overflow="ellipsis" x="15" y="0" width="240" height="25" fill="#000000">{val}</foreignobject>`;
+OrgChart.templates.olivia.entityName = `<foreignobject data-marrk-field="Select_Entity" data-width="270" class="fs-5 font-weight-500" data-text-overflow="ellipsis" x="15" y="0" width="280" height="25" fill="#000000">{val}</foreignobject>`;
 OrgChart.templates.olivia.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="240" height="25" x="15" y="18">{val}</foreignobject>';
 OrgChart.templates.olivia.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="240" height="25" x="15" y="35">{val}</foreignobject>';
 OrgChart.templates.olivia.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="52">{val}</foreignobject>';
 OrgChart.templates.olivia.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="70">{val}</foreignobject>';
-
 OrgChart.templates.olivia.img_0 =
     '<clipPath id="ulaImg">'
     + '<circle cx="46" cy="46" r="30"></circle>'
@@ -77,11 +76,11 @@ OrgChart.templates.ula.entityType = '<foreignobject data-width="240" data-marrk-
 OrgChart.templates.ula.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="240" height="25" x="15" y="35">{val}</foreignobject>';
 OrgChart.templates.ula.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="52">{val}</foreignobject>';
 OrgChart.templates.ula.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="70">{val}</foreignobject>';
-OrgChart.templates.ula.node = 
+OrgChart.templates.ula.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffffff" stroke-width="1" stroke="#aeaeae"></rect>
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;
 OrgChart.templates.ula.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
-    + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';    
+    + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 
 OrgChart.templates.polina.size = [320, 105];
 OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,52)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
@@ -91,8 +90,8 @@ OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-fi
 OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="25" y="52">{val}</foreignobject>';
 OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="25" y="70">{val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
-OrgChart.templates.polina.node = 
-`<rect x="0" y="0" height="105" width="320" fill="#039BE5" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;    
+OrgChart.templates.polina.node =
+    `<rect x="0" y="0" height="105" width="320" fill="#039BE5" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
 OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 
@@ -154,7 +153,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     movable: OrgChart.movable.node,
     enableDragDrop: true,
     searchDisplayField: 'Select_Entity',
-    
+
     // scaleInitial: OrgChart.match.boundary,
     lazyLoading: true,
     enableSearch: true,
@@ -187,7 +186,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         "Subs C": {
             template: "ula",
         },
-        "subsidiary_node":{
+        "subsidiary_node": {
             template: "polina",
         },
         filter: {
@@ -207,8 +206,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
         }
     },
 
-    filterBy: ['DBA', 'Business_License','Group_Name', 'Compliance', 'Jurisdiction', 'Status','Select_Entity','Entity_Type','Parent_Entity','Subsidiary'],
-    searchFields: ["Select_Entity","Entity_Type","State","Company","Ownership","Compliance","Manager","Product_Manager","President","Parent_Entity"],
+    filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'Select_Entity', 'Entity_Type', 'Parent_Entity', 'Subsidiary'],
+    searchFields: ["Select_Entity", "Entity_Type", "State", "Company", "Ownership", "Compliance", "Manager", "Product_Manager", "President", "Parent_Entity"],
 
     nodeMenu: {
         action: {
@@ -222,14 +221,14 @@ var chart = new OrgChart(document.getElementById("tree"), {
         edit: {
             text: "Update Entity",
             icon: updateEntity,
-            onClick : callHandler1,
+            onClick: callHandler1,
         },
 
         details: {
             text: "Entity Summary",
             icon: summaryEntity,
         },
-        subsidiary:{
+        subsidiary: {
             text: "Add Subsidiary",
             icon: addEntity,
             onClick: callHandler,
@@ -239,30 +238,26 @@ var chart = new OrgChart(document.getElementById("tree"), {
         //     icon: addEntity
         // }
     },
-    
+
     nodeBinding: {
         // img_0: "img",
         entityName: "Select_Entity",
-        parentEntity:"Parent_Entity",
-        // description: "Description",
-        // html: "html",
-        entityType:"Entity_Type",
+        parentEntity: "Parent_Entity",
+        entityType: "Entity_Type",
         state: "State",
-        company:"Company",
-        ownership:"Ownership",
-        // company: "Select_Entity",
+        company: "Company",
+        ownership: "Ownership",
         compliance: "Compliance",
         manager_0: "Manager",
-        product_manager:"Product_Manager",
-        president:"President"
-        // Statu:"Status",
+        product_manager: "Product_Manager",
+        president: "President"
     },
-    
+
     // clinks: [
     //     { from: 2, to: 4, template: 'blue', label: 'Sub Parent to Unmanaged' },
     //     { from: 10, to: 7, template: 'yellow', label: 'Sub-children2 to child-2 22222' },
     // ],
-    
+
     editUI: new editForm(),
     // edit form
     // tags: {
@@ -274,23 +269,23 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 
 // hyperlink to nodes
-chart.searchUI.on('show-items', function(sender){
-    if (sender.lastSearch.length){
-        for (var item of sender.lastSearch){
+chart.searchUI.on('show-items', function (sender) {
+    if (sender.lastSearch.length) {
+        for (var item of sender.lastSearch) {
             var fieldElement = sender.instance.element.querySelector(`[data-n-id="${item.id}"] [data-marrk-field="${item.__searchField}"]`);
             fieldElement.innerHTML = item.__searchMarks;
         }
     }
-    else{
+    else {
         sender.instance.draw();
     }
 });
 
 // all search action feature start
-let highlightedId = 0; 
+let highlightedId = 0;
 
-chart.onInit(function() {
-    this.searchUI.input.addEventListener('input', function(){
+chart.onInit(function () {
+    this.searchUI.input.addEventListener('input', function () {
         chart.searchUI.searchTableWrapper.style.display = '';
         if (highlightedId != 0) {
             let oldNode = chart.get(highlightedId);
@@ -319,21 +314,21 @@ chart.searchUI.on('searchclick', function (sender, args) {
     }
     chart.updateNode(node);
     sender.searchTableWrapper.style.display = 'none';
-}); 
+});
 // search action end for chart
 
 function callHandler(nodeId) {
     let nodeData = chart.get(nodeId);
-     // Open the Bootstrap modal
-     $('#subsidiaryEntity').modal('show');
+    // Open the Bootstrap modal
+    $('#subsidiaryEntity').modal('show');
 }
 function callHandler1(nodeId) {
     let nodeData = chart.get(nodeId);
-     // Open the Bootstrap modal
-     $('#update-profile-modal').modal('show');
+    // Open the Bootstrap modal
+    $('#update-profile-modal').modal('show');
 }
 chart.onDrop((args) => {
-    alert("Chart node number: " + args.dragId + " position has been changed and dropped it to parent node : " + args.dropId );
+    alert("Chart node number: " + args.dragId + " position has been changed and dropped it to parent node : " + args.dropId);
 });
 
 // hyperlinks end
@@ -358,32 +353,32 @@ chart.on('init', function (sender, args) {
 
 // Make a fetch request to the JSON file
 fetch('data3.json')
-  .then(response => {
-    // Check if the request was successful
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    // Parse the JSON response
-    return response.json();
-  })
-  .then(data => {
-    // Load the JSON data into the chart after a delay of 100 milliseconds
-    setTimeout(function () {
-      chart.load(data);
-    }, 1000);
-  })
-  .catch(error => {
-    console.error('There has been a problem with your fetch operation:', error);
-  });
+    .then(response => {
+        // Check if the request was successful
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // Parse the JSON response
+        return response.json();
+    })
+    .then(data => {
+        // Load the JSON data into the chart after a delay of 100 milliseconds
+        setTimeout(function () {
+            chart.load(data);
+        }, 1000);
+    })
+    .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
 
-  chart.on('node-layout', function (sender, args) {
+chart.on('node-layout', function (sender, args) {
     if (args.pnode.id == 6) {
         args.layout = OrgChart.treeLeftOffset;
     }
     // else if (args.pnode.id == 14) {
     //     args.layout = OrgChart.treeRightOffset;
     // }
-   
+
 });
 // end filtered chart js
 
@@ -508,7 +503,7 @@ function skipFunction() {
 // end skip org chart
 
 // remove_Underscore from filter
-  function removeUnderscores(element) {
+function removeUnderscores(element) {
     const originalText = element.textContent;
     const updatedText = originalText.replace(/_/g, ' '); // Use regular expression with global flag to replace all underscores
     element.textContent = updatedText;
@@ -519,7 +514,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var btnFilter = document.querySelector('.btnFilter button');
     var filterIcon = document.querySelector('.btnFilter button span');
     let bocFilter;
-    
+
     btnFilter.addEventListener('click', function () {
         bocFilter = document.querySelector('.boc-filter');
         bocTree = document.querySelector('#tree');
@@ -532,29 +527,29 @@ document.addEventListener("DOMContentLoaded", function () {
         const elementsToProcess = document.querySelectorAll('[data-filter-field]');
         const listMenu = document.querySelectorAll('.boc-filter-menu');
 
-        elementsToProcess.forEach(element => { 
+        elementsToProcess.forEach(element => {
             removeUnderscores(element);
 
             // org-chart filter menu's dropdown open/close script
-            element.addEventListener('click', function(){
+            element.addEventListener('click', function () {
                 const menuId = element.getAttribute('data-filter-field');
                 const menu = document.querySelector(`[data-filter-menu="${menuId}"]`);
-                
+
                 if (menu) {
-                    listMenu.forEach(ele2 =>{
+                    listMenu.forEach(ele2 => {
                         if (ele2 !== menu) {
                             ele2.classList.add('d-none');
                         }
                     });
-                    
+
                     menu.classList.toggle('d-none');
                 }
             });
         });
 
         // remove_Underscore from filter end
-       
-       
+
+
     });
 
 });
