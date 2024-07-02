@@ -130,6 +130,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.scroll,
     align: OrgChart.align.orientation,
+    searchDisplayField: 'Select_Entity',
     lazyLoading: true,
     enableSearch: true,
     miniMap: true,
@@ -151,7 +152,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     allChildren: true
     // },
     filterBy: ['DBA', 'Business_License', 'Select_Entity', 'Entity_Type', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status'],
-
     nodeMenu: {
         action: {
             text: "Take Action",
@@ -193,6 +193,57 @@ var chart = new OrgChart(document.getElementById("tree"), {
         }
     },
 });
+
+// hyperlink to nodes
+chart.searchUI.on('show-items', function (sender) {
+    if (sender.lastSearch.length) {
+        for (var item of sender.lastSearch) {
+            var fieldElement = sender.instance.element.querySelector(`[data-n-id="${item.id}"] [data-marrk-field="${item.__searchField}"]`);
+            fieldElement.innerHTML = item.__searchMarks;
+        }
+    }
+    else {
+        sender.instance.draw();
+    }
+});
+
+// all search action feature start
+let highlightedId = 0;
+
+chart.onInit(function () {
+    this.searchUI.input.addEventListener('input', function () {
+        chart.searchUI.searchTableWrapper.style.display = '';
+        if (highlightedId != 0) {
+            let oldNode = chart.get(highlightedId);
+            if (oldNode.tags) {
+                oldNode.tags.pop("match");
+            }
+            chart.updateNode(oldNode)
+        }
+    })
+})
+chart.searchUI.on('searchclick', function (sender, args) {
+    if (highlightedId != 0) {
+        let oldNode = chart.get(highlightedId);
+        if (oldNode.tags) {
+            oldNode.tags.pop("match");
+        }
+        chart.updateNode(oldNode)
+    }
+    highlightedId = args.nodeId
+    let node = chart.get(args.nodeId);
+    if (node.tags) {
+        node.tags.push("match");
+    }
+    else {
+        node.tags = ["match"]
+    }
+    chart.updateNode(node);
+    sender.searchTableWrapper.style.display = 'none';
+});
+// search action end for chart
+
+
 function callHandler(nodeId) {
     let nodeData = chart.get(nodeId);
      // Open the Bootstrap modal
