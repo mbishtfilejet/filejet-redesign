@@ -77,6 +77,7 @@ OrgChart.templates.ula.entityType = '<foreignobject data-width="240" data-marrk-
 OrgChart.templates.ula.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="240" height="25" x="15" y="35">{val}</foreignobject>';
 OrgChart.templates.ula.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="52">{val}</foreignobject>';
 OrgChart.templates.ula.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="70">{val}</foreignobject>';
+OrgChart.templates.ula.html_0 = '<foreignobject data-width="90" class="d-block text-end" fill="#000000" width="80" height="25" x="217" y="2">{val}</foreignobject>';
 OrgChart.templates.ula.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffffff" stroke-width="1" stroke="#aeaeae"></rect>
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;
@@ -91,6 +92,7 @@ OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-fi
 OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="25" y="52">{val}</foreignobject>';
 OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="25" y="70">{val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.polina.html_0 = '<foreignobject data-width="90" class="d-block text-end" fill="#000000" width="80" height="25" x="217" y="2">{val}</foreignobject>';
 OrgChart.templates.polina.node =
     `<rect x="0" y="0" height="105" width="320" fill="#039BE5" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
 OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
