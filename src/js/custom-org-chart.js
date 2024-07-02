@@ -42,6 +42,8 @@ OrgChart.templates.olivia.Compliance = '<svg width="24" height="24" x="280" y="1
 OrgChart.templates.olivia.company = ` <foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-5 font-weight-500" data-text-overflow="ellipsis" fill="#000000" width="240" height="25" x="15" y="10">{val}</foreignobject>`;
 OrgChart.templates.olivia.name = '<text data-width="240" class="fs-6" fill="#000000" x="15" y="52">{val}</text>';
 OrgChart.templates.olivia.title = '<text style="font-size:13px";fill="#000000" f x="15" y="70">{val}</text>';
+OrgChart.templates.olivia.html_0 = '<foreignobject data-width="90" class="d-block text-end" fill="#000000" width="80" height="25" x="222" y="5">{val}</foreignobject>';
+
 OrgChart.templates.olivia.img_0 =
     '<clipPath id="ulaImg">'
     + '<circle cx="46" cy="46" r="30"></circle>'
@@ -183,6 +185,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         title: "Jurisdiction",
         company: "Select_Entity",
         Compliance: "Compliance",
+        html_0: "html"
         // Statu:"Status",
     },
     editUI: new editForm(),
