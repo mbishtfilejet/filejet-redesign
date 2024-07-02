@@ -51,7 +51,8 @@ OrgChart.templates.olivia.img_0 =
     + '</clipPath>'
     + '<image preserveAspectRatio="xMidYMid slice" clip-path="url(#ulaImg)" xlink:href="{val}" x="14" y="15" width="65" height="65">'
     + '</image>';
-
+OrgChart.templates.olivia.node =
+    `<rect x="0" y="0" height="{h}" width="{w}" fill="#fff" stroke-width="1" stroke="#aeaeae" rx="7" ry="7"></rect>`;
 OrgChart.templates.olivia.plus = '<circle cx="15" cy="15" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 OrgChart.toolbarUI.expandAllIcon = expandAllIcon;
@@ -79,7 +80,7 @@ OrgChart.templates.ula.company = '<foreignobject data-marrk-field="Company" data
 OrgChart.templates.ula.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="15" y="70">{val}</foreignobject>';
 OrgChart.templates.ula.html_0 = '<foreignobject data-width="90" class="d-block text-end" fill="#000000" width="80" height="25" x="217" y="2">{val}</foreignobject>';
 OrgChart.templates.ula.node =
-    `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffffff" stroke-width="1" stroke="#aeaeae"></rect>
+    `<rect x="0" y="0" height="{h}" width="{w}" fill="#fff" stroke-width="1" stroke="#aeaeae"></rect>
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;
 OrgChart.templates.ula.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
@@ -92,9 +93,9 @@ OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-fi
 OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="25" y="52">{val}</foreignobject>';
 OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="240" height="25" x="25" y="70">{val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
-OrgChart.templates.polina.html_0 = '<foreignobject data-width="90" class="d-block text-end" fill="#000000" width="80" height="25" x="217" y="2">{val}</foreignobject>';
+OrgChart.templates.polina.html_0 = '<text data-width="90" class="d-block text-end" fill="#000000" width="80" height="25" x="217" y="2">{val}</text>';
 OrgChart.templates.polina.node =
-    `<rect x="0" y="0" height="105" width="320" fill="#039BE5" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
+    `<rect x="0" y="0" height="105" width="320" fill="#fff" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
 OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 
