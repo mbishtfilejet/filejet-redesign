@@ -277,14 +277,22 @@ var chart = new OrgChart(document.getElementById("tree"), {
 chart.searchUI.on('show-items', function (sender) {
     if (sender.lastSearch.length) {
         for (var item of sender.lastSearch) {
-            var fieldElement = sender.instance.element.querySelector(`[data-n-id="${item.id}"] [data-marrk-field="${item.__searchField}"]`);
-            fieldElement.innerHTML = item.__searchMarks;
+            console.log(`Processing item with id: ${item.id} and searchField: ${item.__searchField}`);
+            var fieldElements = sender.instance.element.querySelectorAll(`[data-n-id="${item.id}"] [data-marrk-field="${item.__searchField}"]`);
+            
+            if (fieldElements.length) {
+                fieldElements.forEach(function(fieldElement) {
+                    fieldElement.innerHTML = item.__searchMarks;
+                });
+            } else {
+                console.error(`Element not found for id: ${item.id} and searchField: ${item.__searchField}`);
+            }
         }
-    }
-    else {
+    } else {
         sender.instance.draw();
     }
 });
+
 
 // all search action feature start
 let highlightedId = 0;
