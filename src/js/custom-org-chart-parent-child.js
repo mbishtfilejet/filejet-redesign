@@ -44,7 +44,7 @@ OrgChart.templates.olivia.entityType = '<foreignobject data-width="240" data-mar
 OrgChart.templates.olivia.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="230" height="25" x="15" y="35">{val}</foreignobject>';
 OrgChart.templates.olivia.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="230" height="25" x="15" y="52">{val} a ,b</foreignobject>';
 OrgChart.templates.olivia.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="230" height="25" x="15" y="70">{val}</foreignobject>';
-OrgChart.templates.olivia.html_0 = '<foreignobject data-width="60" class="d-block" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
+OrgChart.templates.olivia.html_0 = '<foreignobject data-width="60" class="d-block bg-transparent" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
 OrgChart.templates.olivia.img_0 =
     '<clipPath id="ulaImg">'
     + '<circle cx="46" cy="46" r="30"></circle>'
@@ -78,7 +78,7 @@ OrgChart.templates.ula.entityType = '<foreignobject data-width="240" data-marrk-
 OrgChart.templates.ula.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="230" height="25" x="15" y="35">{val}</foreignobject>';
 OrgChart.templates.ula.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="230" height="25" x="15" y="52">{val}</foreignobject>';
 OrgChart.templates.ula.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="230" height="25" x="15" y="70">{val}</foreignobject>';
-OrgChart.templates.ula.html_0 = '<foreignobject data-width="60" class="d-block" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
+OrgChart.templates.ula.html_0 = '<foreignobject data-width="60" class="d-block bg-transparent" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
 OrgChart.templates.ula.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#fff" stroke-width="1" stroke="#aeaeae"></rect>
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;
@@ -93,7 +93,7 @@ OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-fi
 OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="230" height="25" x="25" y="52">{val}</foreignobject>';
 OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-6" fill="#000000" width="230" height="25" x="25" y="70">{val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
-OrgChart.templates.polina.html_0 = '<foreignobject data-width="60" class="d-block" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
+OrgChart.templates.polina.html_0 = '<foreignobject data-width="60" class="d-block bg-transparent" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
 OrgChart.templates.polina.node =
     `<rect x="0" y="0" height="105" width="320" fill="#fff" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
 OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
@@ -274,21 +274,15 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 
 // hyperlink to nodes
+// hyperlink to nodes
 chart.searchUI.on('show-items', function (sender) {
     if (sender.lastSearch.length) {
         for (var item of sender.lastSearch) {
-            console.log(`Processing item with id: ${item.id} and searchField: ${item.__searchField}`);
-            var fieldElements = sender.instance.element.querySelectorAll(`[data-n-id="${item.id}"] [data-marrk-field="${item.__searchField}"]`);
-            
-            if (fieldElements.length) {
-                fieldElements.forEach(function(fieldElement) {
-                    fieldElement.innerHTML = item.__searchMarks;
-                });
-            } else {
-                console.error(`Element not found for id: ${item.id} and searchField: ${item.__searchField}`);
-            }
+            var fieldElement = sender.instance.element.querySelector(`[data-n-id="${item.id}"] [data-marrk-field="${item.__searchField}"]`);
+            fieldElement.innerHTML = item.__searchMarks;
         }
-    } else {
+    }
+    else {
         sender.instance.draw();
     }
 });
