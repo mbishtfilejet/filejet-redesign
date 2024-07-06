@@ -42,7 +42,7 @@ OrgChart.templates.olivia.Compliance = '<svg width="24" height="24" x="280" y="1
 OrgChart.templates.olivia.company = ` <foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-5 font-weight-500" data-text-overflow="ellipsis" fill="#000000" width="240" height="25" x="15" y="10">{val}</foreignobject>`;
 OrgChart.templates.olivia.entityType = '<foreignObject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="25" x="15" y="30">{val}</foreignObject>';
 OrgChart.templates.olivia.title = '<foreignObject data-width="240" data-marrk-field="Jurisdiction" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="240" height="25" x="15" y="50">{val}</foreignObject>';
-OrgChart.templates.olivia.html_0 = '<foreignobject data-width="90" class="d-block text-end" fill="#000000" width="80" height="25" x="222" y="5">{val}</foreignobject>';
+OrgChart.templates.olivia.html_0 = '<foreignobject data-width="60" class="d-block text-end" fill="#000000" width="60" height="28" x="245" y="10">{val}</foreignobject>';
 
 OrgChart.templates.olivia.img_0 =
     '<clipPath id="ulaImg">'
@@ -81,7 +81,7 @@ OrgChart.templates.polina.title = '<foreignobject data-width="240" data-marrk-fi
 OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="34">&#10625; {val}</foreignobject>';
 OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="46">&#10625; {val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
-OrgChart.templates.polina.html_0 = '<foreignobject data-width="60" class="d-block bg-transparent" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
+OrgChart.templates.polina.html_0 = '<foreignobject data-width="60" class="d-block text-end" fill="#000000" width="60" height="28" x="245" y="10">{val}</foreignobject>';
 OrgChart.templates.polina.node =
     `<rect x="0" y="0" height="70" width="280" fill="#fff" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
 OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
