@@ -88,10 +88,10 @@ OrgChart.templates.ula.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" str
 OrgChart.templates.polina.size = [280, 70];
 OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,250,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.polina.entityName = '<foreignobject data-marrk-field="Select_Entity" data-width="230" class="fs-7 font-weight-500" data-text-overflow="ellipsis" x="25" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.polina.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-9 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="25" x="25" y="12">&#10625; {val}</foreignobject>';
-OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-9" fill="#000000" width="230" height="25" x="25" y="24">&#10625; {val}</foreignobject>';
-OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="34">&#10625; {val}</foreignobject>';
-OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="46">&#10625; {val}</foreignobject>';
+OrgChart.templates.polina.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-9 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="25" x="25" y="12">{val}</foreignobject>';
+OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-9" fill="#000000" width="230" height="25" x="25" y="24">{val}</foreignobject>';
+OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="34">{val}</foreignobject>';
+OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="46">{val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.polina.html_0 = '<foreignobject data-width="60" class="d-block bg-transparent" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
 OrgChart.templates.polina.node =
