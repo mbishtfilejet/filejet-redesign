@@ -150,6 +150,7 @@ editForm.prototype.hide = function (showldUpdateTheNode) {
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     columns: 6,
+    sticky: false,
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.scroll,
@@ -300,7 +301,13 @@ chart.onInit(function () {
                 oldNode.tags.pop("match");
             }
             chart.updateNode(oldNode)
+            if($(".btnFilter").find("button").hasClass('active')){
+                $(".btnFilter").find("button").trigger('click').addClass('active')
+                $(".btnFilter").find("span").addClass('icon-org-filter-white');
+                $("#tree").addClass('pt-10');
+            }
         }
+        
     })
 })
 chart.searchUI.on('searchclick', function (sender, args) {
@@ -321,9 +328,14 @@ chart.searchUI.on('searchclick', function (sender, args) {
     }
     chart.updateNode(node);
     if($(".btnFilter").find("button").hasClass('active')){
-        $(".boc-filter").addClass("d-block")
+        $(".btnFilter").find("button").trigger('click').addClass('active')
+        $(".btnFilter").find("span").addClass('icon-org-filter-white');
+        $("#tree").addClass('pt-10');
     }
     sender.searchTableWrapper.style.display = 'none';
+    sender.instance.center(args.nodeId, null, function(){
+        // sender.instance.zoom(2);
+    });
 });
 // search action end for chart
 
@@ -533,7 +545,6 @@ document.addEventListener("DOMContentLoaded", function () {
         bocFilter.classList.toggle("d-block");
         bocTree.classList.toggle("pt-10");
         bocTree.classList.toggle("vh-100");
-
         // remove_Underscore from filter end
         const elementsToProcess = document.querySelectorAll('[data-filter-field]');
         const listMenu = document.querySelectorAll('.boc-filter-menu');
