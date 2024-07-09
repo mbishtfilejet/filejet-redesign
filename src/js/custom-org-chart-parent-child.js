@@ -320,6 +320,9 @@ chart.searchUI.on('searchclick', function (sender, args) {
         node.tags = ["match"]
     }
     chart.updateNode(node);
+    if($(".btnFilter").find("button").hasClass('active')){
+        $(".boc-filter").addClass("d-block")
+    }
     sender.searchTableWrapper.style.display = 'none';
 });
 // search action end for chart
