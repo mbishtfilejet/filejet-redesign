@@ -463,6 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
         filterIcon.classList.toggle("icon-org-filter-white");
         bocFilter.classList.toggle("d-block");
         bocTree.classList.toggle("pt-10");
+        bocTree.classList.toggle("vh-100");
 
         // remove_Underscore from filter end
         const elementsToProcess = document.querySelectorAll('[data-filter-field]');
