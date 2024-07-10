@@ -338,6 +338,13 @@ chart.searchUI.on('searchclick', function (sender, args) {
     });
 });
 // search action end for chart
+// when click anywhere close filter dropdown option
+chart.element.addEventListener('click', function(event){
+    if (event.target == chart.getSvg()){
+        chart.filterUI.hide();
+    }
+});
+// end
 
 function callHandler(nodeId) {
     let nodeData = chart.get(nodeId);
