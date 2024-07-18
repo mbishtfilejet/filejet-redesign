@@ -291,8 +291,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
 
     slinks: [
-        { from: 1, to: 10, template: 'blue', label: 'Sub Parent to Unmanaged' },
-        { from: 2, to: 11, template: 'yellow', label: 'Sub-children2 to child-2 22222' },
+        { from: 1, to: 10, template: 'blue', label: 'child-1 to additional owner child-1' },
+        { from: 2, to: 11, template: 'yellow', label: 'child-2 to additional owner child-2' },
     ],
 
     editUI: new editForm(),
