@@ -73,9 +73,17 @@ OrgChart.templates.olivia.size = [320, 105];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.ula.size = [320, 105];
+OrgChart.templates.ula.min = Object.assign({}, OrgChart.templates.ula);
+OrgChart.templates.ula.min.size = [320, 60];
 OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.ula.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
 OrgChart.templates.ula.entityDescription = '<foreignobject data-width="240" data-marrk-field="entityDescription" class="fs-6 font-weight-400" data-text-overflow="ellipsis" x="15" y="20" width="230" height="25" fill="#000000">{val}</foreignobject>';
+
+OrgChart.templates.ula.min.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
+OrgChart.templates.ula.min.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.ula.min.entityDescription = '<foreignobject data-width="240" data-marrk-field="entityDescription" class="fs-6 font-weight-400" data-text-overflow="ellipsis" x="15" y="20" width="230" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.ula.moreDescription = '<foreignobject data-width="240" data-marrk-field="moreDescription" class="fs-6 font-weight-400" data-text-overflow="ellipsis" x="15" y="40" width="230" height="25" fill="#000000">{val}</foreignobject>';
+
 OrgChart.templates.ula.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="25" x="15" y="18">{val}</foreignobject>';
 OrgChart.templates.ula.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="230" height="25" x="15" y="35">{val}</foreignobject>';
 OrgChart.templates.ula.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-6" fill="#000000" width="230" height="25" x="15" y="52">{val}</foreignobject>';
@@ -84,6 +92,9 @@ OrgChart.templates.ula.html_0 = '<foreignobject data-width="60" class="d-block b
 OrgChart.templates.ula.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffd6c9" stroke-width="1" stroke="#f7673b"></rect>
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;
+OrgChart.templates.ula.min.node =
+    `<rect x="0" y="0" height="{h}" width="{w}" fill="#ffd6c9" stroke-width="1" stroke="#f7673b"></rect>
+    <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;    
 OrgChart.templates.ula.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 
@@ -188,6 +199,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     enableSearch: true,
     miniMap: true,
     layout: OrgChart.mixed,
+    min:true,
     // dottedLines: [
     //     { from: 11, to: 0,},
     //     { from: 12, to: 0,},
@@ -278,6 +290,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         // img_0: "img",
         entityName: "entityName",
         entityDescription: "entityDescription",
+        moreDescription:"moreDescription",
         parentEntity: "Parent_Entity",
         entityType: "Entity_Type",
         state: "State",
@@ -288,6 +301,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
         manager_0: "Manager",
         product_manager: "Product_Manager",
         president: "President"
+    },
+    linkBinding: {
+        link_field_0: "createdAt"
     },
 
     slinks: [
@@ -305,7 +321,15 @@ var chart = new OrgChart(document.getElementById("tree"), {
 });
 
 // MAXIMIZE/MINIMIZE NODES
-
+chart.on('click', function (sender, args) {
+    if (args.node.min) {
+        sender.maximize(args.node.id);
+    }
+    else {
+        sender.minimize(args.node.id);
+    }
+    return false;
+});
 //END
 // hyperlink to nodes
 // hyperlink to nodes
