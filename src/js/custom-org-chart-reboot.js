@@ -72,7 +72,7 @@ OrgChart.miniMap.position = {
 }
 OrgChart.templates.olivia.size = [320, 105];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
-OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#000000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.ula.size = [320, 105];
 OrgChart.templates.ula.min = Object.assign({}, OrgChart.templates.ula);
 OrgChart.templates.ula.min.size = [320, 60];
@@ -107,7 +107,7 @@ OrgChart.templates.polina.entityType = '<foreignobject data-width="240" data-mar
 OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-9" fill="#000000" width="230" height="25" x="25" y="24">{val}</foreignobject>';
 OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="34">{val}</foreignobject>';
 OrgChart.templates.polina.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="46">{val}</foreignobject>';
-OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.polina.html_0 = '<foreignobject data-width="60" class="d-block bg-transparent" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
 OrgChart.templates.polina.node =
     `<rect x="0" y="0" height="70" width="280" fill="#e0e0e0" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
@@ -119,12 +119,12 @@ OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);
 OrgChart.templates.additionalOwners.size = [280, 105];
 OrgChart.templates.additionalOwners.nodeMenuButton = '<g transform="matrix(1,0,0,1,250,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.additionalOwners.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.entityDescription = '<foreignobject data-width="240" data-marrk-field="entityDescription" class="fs-6 font-weight-400" data-text-overflow="ellipsis" x="15" y="20" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-9 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="25" x="25" y="12">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-9" fill="#000000" width="230" height="25" x="25" y="24">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.entityDescription = '<foreignobject data-width="240" data-marrk-field="entityDescription" class="fs-6 font-weight-400" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="25" x="15" y="20">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="230" height="25" x="15" y="35">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.company = '<foreignobject data-marrk-field="Company" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="34">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.ownership = '<foreignobject data-marrk-field="Ownership" data-width="240" class="fs-9" fill="#000000" width="230" height="25" x="25" y="46">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.additionalOwners.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="000" d="{rounded}" />';
 OrgChart.templates.additionalOwners.html_0 = '<foreignobject data-width="60" class="d-block bg-transparent" fill="#000000" width="62" height="28" x="236" y="5">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.node =
     `
@@ -134,6 +134,9 @@ OrgChart.templates.additionalOwners.node =
         <line x1="260" y1="0" x2="280" y2="20" stroke="#52e34b" stroke-width="1"></line>
     </svg>
     `;
+
+ 
+
 // hidden templates
 OrgChart.templates.hidden = Object.assign({}, OrgChart.templates.polina);
 OrgChart.templates.hidden.node = "";
@@ -213,7 +216,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     enableSearch: true,
     miniMap: true,
     layout: OrgChart.mixed,
-    min:true,
+    min:false,
     // dottedLines: [
     //     { from: 11, to: 0,},
     //     { from: 12, to: 0,},
@@ -307,8 +310,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
     nodeBinding: {
         // img_0: "img",
         entityName: "entityName",
-        entityDescription: "entityDescription",
-        moreDescription:"moreDescription",
+        // entityDescription: "entityDescription",
+        // moreDescription:"moreDescription",
         parentEntity: "Parent_Entity",
         entityType: "Entity_Type",
         state: "State",
@@ -325,8 +328,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
 
     slinks: [
-        { from: 1, to: 10, template: 'blue', label: 'child-1 to additional owner child-1' },
-        { from: 2, to: 11, template: 'yellow', label: 'child-2 to additional owner child-2' },
+        { from: 1, to: 10, label: 'child-1 to additional owner' },
+        { from: 2, to: 11, label: 'child-2 to additional owner' },
     ],
 
     editUI: new editForm(),
@@ -345,6 +348,7 @@ chart.on('click', function (sender, args) {
     }
     else {
         sender.minimize(args.node.id);
+        
     }
     return false;
 });
