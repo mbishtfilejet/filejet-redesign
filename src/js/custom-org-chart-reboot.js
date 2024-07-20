@@ -56,6 +56,7 @@ OrgChart.templates.olivia.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#d2fcf8" stroke-width="1" stroke="#18d6c3" rx="0" ry="0"></rect>`;
 OrgChart.templates.olivia.plus = '<circle cx="15" cy="15" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
+
 OrgChart.toolbarUI.expandAllIcon = expandAllIcon;
 OrgChart.toolbarUI.fitIcon = fitIcon;
 OrgChart.toolbarUI.zoomInIcon = zoomInIcon;
@@ -133,6 +134,19 @@ OrgChart.templates.additionalOwners.node =
         <line x1="260" y1="0" x2="280" y2="20" stroke="#52e34b" stroke-width="1"></line>
     </svg>
     `;
+// hidden templates
+OrgChart.templates.hidden = Object.assign({}, OrgChart.templates.polina);
+OrgChart.templates.hidden.node = "";
+OrgChart.templates.hidden.link = "";
+OrgChart.templates.hidden.size = [0,0];
+OrgChart.templates.hidden.entityName = "";
+OrgChart.templates.hidden.entityDescription = "";
+OrgChart.templates.hidden.nodeMenuButton = "";
+
+OrgChart.slinkTemplates.hiddenSlinks = Object.assign({}, OrgChart.slinkTemplates.orange);
+OrgChart.slinkTemplates.hiddenSlinks.link = '';
+
+// hidden teamplates end
 
 OrgChart.SEARCH_PLACEHOLDER = "Search";
 OrgChart.RES.IT_IS_LONELY_HERE_LINK = "Loading...";
@@ -224,6 +238,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     allChildren: true
     // },
     tags: {
+       
         "Subs C": {
             template: "ula",
         },
@@ -233,8 +248,11 @@ var chart = new OrgChart(document.getElementById("tree"), {
         "partnerNode": {
             template: "polina",
         },
-        "addtionalOwners":{
+        "additionalOwners":{
             template: "additionalOwners",
+        },
+        "hidden": {
+            template: "hidden"
         },
         filter: {
             template: 'dot'
@@ -331,8 +349,66 @@ chart.on('click', function (sender, args) {
     return false;
 });
 //END
-// hyperlink to nodes
-// hyperlink to nodes
+// toggle button show/hide partner & slinks nodes
+document.querySelector('#partnerBtn').addEventListener('click', function () {
+    if (chart.config.tags.partnerNode.template == "polina") {
+        chart.config.tags = {
+            "partnerNode": {
+                template: "hidden"
+            },
+            "hidden": {
+                template: "hidden"
+            },
+            "additionalOwners":{
+                template: "additionalOwners"
+            },
+
+        }
+        chart.draw()
+    }
+    else {
+        chart.config.tags = {        
+            "partnerNode":{
+                template: "polina"
+            },
+            "additionalOwners":{
+                template: "additionalOwners"
+            },
+            "hidden": {
+                template: "hidden"
+            }
+        }
+        chart.draw()
+    }
+});
+
+let slinks = [];
+document.querySelector('#slinkBtn').addEventListener('click', function () {
+    if (chart.config.slinks.length > 0) {
+        slinks = chart.config.slinks;
+        chart.config.slinks = [];
+        slinks.forEach(slink => {
+            let node = chart.get(slink.to);
+            if (node.tags.includes("additionalOwners")) {
+                node.tags = ["hidden"]
+            }
+            chart.update(node);
+        })
+        chart.draw();
+    }
+    else {
+        chart.config.slinks = slinks;
+        slinks.forEach(slink => {
+            let node = chart.get(slink.to);
+            node.tags = ["additionalOwners"];
+            chart.update(node);
+        })
+        chart.draw()
+    }
+
+
+});
+// end
 chart.searchUI.on('show-items', function (sender) {
     if (sender.lastSearch.length) {
         for (var item of sender.lastSearch) {
