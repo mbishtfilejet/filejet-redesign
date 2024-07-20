@@ -70,9 +70,10 @@ OrgChart.templates.olivia.size = [320, 92];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,285,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#aeaeae" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.olivia.node =
+    `<rect x="0" y="0" height="{h}" width="{w}" fill="#fff" stroke-width="1" stroke="#aeaeae" rx="7" ry="7"></rect>`;
 
 // oval shape nodes
-
 OrgChart.templates.polina.size = [280, 70];
 OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,250,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.polina.company = '<foreignobject data-marrk-field="Select_Entity" data-width="230" class="fs-7 font-weight-500" data-text-overflow="ellipsis" x="25" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
