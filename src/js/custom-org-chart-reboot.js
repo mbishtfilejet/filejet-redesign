@@ -131,6 +131,21 @@ OrgChart.slinkTemplates.hiddenSlinks = Object.assign({}, OrgChart.slinkTemplates
 OrgChart.slinkTemplates.hiddenSlinks.link = '';
 
 // hidden teamplates end
+// label color change
+OrgChart.slinkTemplates.orange.label =
+        `<text style="font-size: 15px;" dominant-baseline="middle" fill="#000" alignment-baseline="middle" text-anchor="middle" x="{x}" y="{y}">{val}</text>`;
+
+OrgChart.slinkTemplates.orange.link =
+        `<path stroke-dasharray="4, 2" marker-start="url(#dotSlinkOrange)" marker-end="url(#arrowSlinkOrange)"
+            stroke-linejoin="round" stroke="#000" stroke-width="2" fill="none" d="{d}" />`;
+OrgChart.slinkTemplates.orange.defs =
+        `<marker id="arrowSlinkOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse"><path fill="#000" d="M 0 0 L 10 5 L 0 10 z" />
+        </marker> 
+        <marker id="dotSlinkOrange" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5">
+            <circle cx="5" cy="5" r="5" fill="#000" />
+        </marker>`            
+// end
 
 OrgChart.SEARCH_PLACEHOLDER = "Search";
 OrgChart.RES.IT_IS_LONELY_HERE_LINK = "Loading...";
@@ -191,7 +206,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     movable: OrgChart.movable.node,
     enableDragDrop: true,
     searchDisplayField: 'entityName',
-
+    orderBy: "order",
     // scaleInitial: OrgChart.match.boundary,
     lazyLoading: true,
     enableSearch: true,
@@ -299,8 +314,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
 
     slinks: [
-        { from: 1, to: 10, label: 'child-1 to additional owner' },
-        { from: 2, to: 11, label: 'child-2 to additional owner' },
+        { from: 1, to: 10, label: 'BlueSky Innovations to additional owner' },
+        { from: 2, to: 11, label: 'Boldly Better Business to additional owner' },
     ],
 
     editUI: new editForm(),
