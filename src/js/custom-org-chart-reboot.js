@@ -133,7 +133,7 @@ OrgChart.slinkTemplates.hiddenSlinks.link = '';
 // hidden teamplates end
 // label color change
 OrgChart.slinkTemplates.orange.label =
-        `<text style="font-size: 15px;" dominant-baseline="middle" fill="#000" alignment-baseline="middle" text-anchor="middle" x="{x}" y="{y}">{val}</text>`;
+        `<text style="font-size: 16px;" dominant-baseline="middle" fill="#000" alignment-baseline="middle" text-anchor="middle" x="{x}" y="{y}">{val}</text>`;
 
 OrgChart.slinkTemplates.orange.link =
         `<path stroke-dasharray="4, 2" marker-start="url(#dotSlinkOrange)" marker-end="url(#arrowSlinkOrange)"
@@ -314,8 +314,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
 
     slinks: [
-        { from: 1, to: 10, label: 'BlueSky Innovations to additional owner' },
-        { from: 2, to: 11, label: 'Boldly Better Business to additional owner' },
+        { from: 1, to: 10, label: 'Additional Owner' },
+        { from: 2, to: 11, label: 'Additional Owner' },
     ],
 
     editUI: new editForm(),
