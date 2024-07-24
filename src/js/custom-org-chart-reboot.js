@@ -355,6 +355,9 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
             "additionalOwners":{
                 template: "additionalOwners"
             },
+            "externalChild":{
+                template: "ula",
+            },
 
         }
         chart.draw()
@@ -369,7 +372,10 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
             },
             "hidden": {
                 template: "hidden"
-            }
+            },
+            "externalChild":{
+                template: "ula",
+            },
         }
         chart.draw()
     }
