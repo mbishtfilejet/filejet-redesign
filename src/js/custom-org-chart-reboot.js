@@ -135,6 +135,7 @@ OrgChart.templates.hidden.entityDescription = "";
 OrgChart.templates.hidden.nodeMenuButton = "";
 OrgChart.templates.hidden.state = "";
 OrgChart.templates.hidden.entityType = "";
+OrgChart.templates.hidden.visualIndicator = "";
 OrgChart.slinkTemplates.hiddenSlinks = Object.assign({}, OrgChart.slinkTemplates.orange);
 OrgChart.slinkTemplates.hiddenSlinks.link = '';
 // hidden teamplates end
