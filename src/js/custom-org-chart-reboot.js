@@ -301,7 +301,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
             icon: summaryEntity,
         },
         subsidiary: {
-            text: "Add Subsidiary",
+            text: "Add Owners",
             icon: addEntity,
             onClick: callHandler,
         }
@@ -490,7 +490,7 @@ chart.element.addEventListener('click', function(event){
 function callHandler(nodeId) {
     let nodeData = chart.get(nodeId);
     // Open the Bootstrap modal
-    $('#subsidiaryEntity').modal('show');
+    $('#addOwnersEntity').modal('show');
 }
 function callHandler1(nodeId) {
     let nodeData = chart.get(nodeId);
