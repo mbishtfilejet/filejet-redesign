@@ -115,7 +115,7 @@ OrgChart.templates.additionalOwners.visualIndicator = '<foreignobject data-width
 
 OrgChart.templates.additionalOwners.node =
     `
-    <svg width="300" height="95" xmlns="http://www.w3.org/2000/svg">
+    <svg id="resizableSvg" width="300" height="95" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0 H260 Q280 20 280 20 V95 H0 Z" fill="#cdfaca" stroke="#52e34b" stroke-width="1"></path>
         <polygon points="260,0 280,0 280,20" fill="#F3F5F8"></polygon>
         <line x1="260" y1="0" x2="280" y2="20" stroke="#52e34b" stroke-width="1"></line>
@@ -256,6 +256,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         },
         "additionalOwners":{
             template: "additionalOwners",
+            
         },
         "hidden": {
             template: "hidden"
@@ -550,7 +551,6 @@ chart.on('node-layout', function (sender, args) {
 
 });
 // end filtered chart js
-
 // custom org select
 // JavaScript to handle the custom select behavior
 var selectContainer = document.querySelector(".org-custom-select");
