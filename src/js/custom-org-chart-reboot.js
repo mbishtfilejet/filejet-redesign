@@ -106,10 +106,9 @@ OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" 
 // start additional owner >green one edge cut rectangle > additional owner
 OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);       
 OrgChart.templates.additionalOwners.size = [280, 95];
-OrgChart.templates.additionalOwners.nodeMenuButton = '<g transform="matrix(1,0,0,1,250,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
 OrgChart.templates.additionalOwners.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 fst-italic" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-7 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="25" x="15" y="14">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.html = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="50" x="15" y="35">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-7 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="18">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.html = '<foreignobject data-width="240" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems" data-text-overflow="ellipsis" fill="#000000" width="230" height="54" x="15" y="40">{val}</foreignobject>';
 // OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" data-marrk-field="State" class="fs-6" fill="#000000" width="230" height="25" x="134" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.additionalOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
