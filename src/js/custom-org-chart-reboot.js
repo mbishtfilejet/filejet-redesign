@@ -201,6 +201,48 @@ editForm.prototype.hide = function (showldUpdateTheNode) {
 
 };
 //edit form closed
+// edit form/summary form for external entity
+var editFormExternalEntity = function () {
+    this.nodeId = null;
+};
+editFormExternalEntity.prototype.init = function (obj) {
+    var that = this;
+    this.obj = obj;
+    this.editFormExternalEntity = $("#editFormExternalEntity");
+    this.entityName = $("#entity-name");
+    this.JuriState = $("#JuriState");
+    this.EntityType = $("#EntityType");
+
+    this.cancelButton = $("#cancel");
+
+    this.cancelButton.on("click", function () {
+        that.hide();
+    });
+};
+editFormExternalEntity.prototype.show = function (nodeId) {
+    this.nodeId = nodeId;
+
+    var left = document.body.offsetWidth / 2 - 150;
+    var node = chart.get(nodeId);
+
+    if (!node) return;
+    this.entityName.html(node.entityName ? node.entityName : "");
+
+    this.editFormExternalEntity.removeClass("d-none");
+
+    OrgChart.animate(this.editFormExternalEntity, { opacity: 0 }, { opacity: 1 }, 300, OrgChart.anim.inOutSin);
+};
+editFormExternalEntity.prototype.content = function (id, detailsMode, dontAnim, width, dontRenderButtons) {
+    var div = document.createElement('div');
+    div.innerHTML = $('#editFormExternalEntity').html();
+    //div.innerHTML += '<style>#close{display:none !important;}</style>';
+    return { element: div, focusId: '', title: '', shareText: '' };
+};
+editFormExternalEntity.prototype.hide = function (showldUpdateTheNode) {
+    this.editFormExternalEntity.addClass("d-none");
+
+};
+// end edit form/summary form for external entity
 
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
@@ -248,8 +290,26 @@ var chart = new OrgChart(document.getElementById("tree"), {
         "Subs C": {
             template: "ula",
         },
-        "externalChild":{
+        "externalEntityNode":{
             template: "ula",
+            nodeMenu: {
+                edit: {
+                    text: "Update Entity",
+                    icon: updateEntity,
+                    onClick: updateEntityExternalNode,
+                },
+        
+                details: {
+                    text: "Entity Summary",
+                    icon: summaryEntity,
+                    onClick: externalEntitySummaryForm,
+                },
+                subsidiary: {
+                    text: "Add Owners",
+                    icon: addEntity,
+                    onClick: callHandler,
+                }
+            },
         },
         "partnerNode": {
             template: "polina",
@@ -364,7 +424,7 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
             "additionalOwners":{
                 template: "additionalOwners"
             },
-            "externalChild":{
+            "externalEntityNode":{
                 template: "ula",
             },
 
@@ -382,7 +442,7 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
             "hidden": {
                 template: "hidden"
             },
-            "externalChild":{
+            "externalEntityNode":{
                 template: "ula",
             },
         }
@@ -496,6 +556,16 @@ function callHandler1(nodeId) {
     let nodeData = chart.get(nodeId);
     // Open the Bootstrap modal
     $('#update-profile-modal').modal('show');
+}
+function updateEntityExternalNode(nodeId) {
+    let nodeData = chart.get(nodeId);
+    // Open the Bootstrap modal
+    $('#update-entity-external-node').modal('show');
+}
+function externalEntitySummaryForm(nodeId){
+    let nodeData = chart.get(nodeId);
+    // Open the Bootstrap modal
+    $('#externalEntitySummaryEditForm').modal('show');
 }
 chart.onDrop((args) => {
     alert("Chart node number: " + args.dragId + " position has been changed and dropped it to parent node : " + args.dropId);
