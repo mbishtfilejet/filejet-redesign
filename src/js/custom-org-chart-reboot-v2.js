@@ -260,11 +260,13 @@ editFormExternalEntity.prototype.hide = function (showldUpdateTheNode) {
 var chart = new OrgChart(document.getElementById("tree"), {
     template: 'olivia',
     columns: 6,
+    siblingSeparation: 50,
+    levelSeparation: 50,
     sticky: false,
     showYScroll: OrgChart.scroll.visible,
     showXScroll: OrgChart.scroll.visible,
     mouseScrool: OrgChart.action.scroll,
-    align: OrgChart.align.orientation,
+    align: OrgChart.align.center,
     movable: OrgChart.movable.node,
     enableDragDrop: true,
     searchDisplayField: 'entityName',
@@ -609,7 +611,7 @@ chart.on('init', function (sender, args) {
 
 
 // Make a fetch request to the JSON file
-fetch('data-reboot-replica.json')
+fetch('data-reboot-v2.json')
     .then(response => {
         // Check if the request was successful
         if (!response.ok) {
