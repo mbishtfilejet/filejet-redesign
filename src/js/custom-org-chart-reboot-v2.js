@@ -304,6 +304,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
        
         "Subs C": {
             template: "ula",
+          
         },
         "externalEntityNode":{
             template: "ula",
@@ -328,6 +329,35 @@ var chart = new OrgChart(document.getElementById("tree"), {
         },
         "partnerNode": {
             template: "polina",
+            nodeMenu: {
+                action: {
+                    text: "Take Action",
+                    icon: actionIcon
+                },
+                open_entity: {
+                    text: "Open Entity",
+                    icon: openEntity,
+                },
+                edit: {
+                    text: "Update Entity",
+                    icon: updateEntity,
+                    onClick: callHandler1,
+                },
+        
+                details: {
+                    text: "Entity Summary",
+                    icon: summaryEntity,
+                },
+                // subsidiary: {
+                //     text: "Add Owners",
+                //     icon: addEntity,
+                //     onClick: callHandler,
+                // }
+                // add: {
+                //     text: "Add Entity",
+                //     icon: addEntity
+                // }
+            },
         },
         "additionalOwners":{
             template: "additionalOwners",
