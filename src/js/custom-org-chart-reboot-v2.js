@@ -383,7 +383,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         }
     },
 
-    filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'entityName', 'Entity_Type', 'Parent_Entity', 'Subsidiary'],
+    filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'entityName', 'Entity_Type', 'Parent_Entity'],
     searchFields: ["entityName", "Entity_Type", "State", "Company", "Ownership", "Compliance", "Manager", "Product_Manager", "President", "Parent_Entity"],
 
     nodeMenu: {
