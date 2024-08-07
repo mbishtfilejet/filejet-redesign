@@ -275,7 +275,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     lazyLoading: true,
     enableSearch: true,
     miniMap: true,
-    layout: OrgChart.mixed,
+    layout: OrgChart.normal,
     min:false,
     // dottedLines: [
     //     { from: 11, to: 0,},
