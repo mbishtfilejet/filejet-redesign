@@ -567,9 +567,6 @@ function externalEntitySummaryForm(nodeId){
     // Open the Bootstrap modal
     $('#externalEntitySummaryEditForm').modal('show');
 }
-chart.onDrop((args) => {
-    alert("Chart node number: " + args.dragId + " position has been changed and dropped it to parent node : " + args.dropId);
-});
 
 // hyperlinks end
 function pdf(nodeId) {
