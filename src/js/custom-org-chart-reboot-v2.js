@@ -66,7 +66,7 @@ OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#000000"
 // end olivia > cyan color rectangle templates
 
 // start ula >red rectangle templates > unmanaged entity
-OrgChart.templates.ula.size = [320, 105];
+OrgChart.templates.ula.size = [320, 90];
 OrgChart.templates.ula.min = Object.assign({}, OrgChart.templates.ula);
 OrgChart.templates.ula.min.size = [320, 60];
 OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#000"></circle><circle cx="7" cy="0" r="2" fill="#000"></circle><circle cx="14" cy="0" r="2" fill="#000"></circle></g>';
@@ -141,10 +141,10 @@ OrgChart.slinkTemplates.hiddenSlinks.link = '';
 // label color change for additioanl owner entity
 // OrgChart.slinkTemplates.orange.labelPosition = 'end';
 OrgChart.slinkTemplates.orange.label =
-        `<text style="font-size: 16px;" dominant-baseline="middle" fill="#000" alignment-baseline="middle" text-anchor="end" x="{x}" y="{y}">{val}</text>`;
+        `<text style="font-size: 16px;" dominant-baseline="middle" fill="#a1a1a1" alignment-baseline="middle" text-anchor="end" x="{x}" y="{y}">{val}</text>`;
 OrgChart.slinkTemplates.orange.link =
         `<path stroke-dasharray="4, 2" marker-start="url(#dotSlinkOrange)" marker-end="url(#arrowSlinkOrange)"
-            stroke-linejoin="round" stroke="#000" stroke-width="2" fill="none" d="{d}" />`;
+            stroke-linejoin="round" stroke="#a8a8a8" stroke-width="2" fill="none" d="{d}" />`;
 OrgChart.slinkTemplates.orange.defs =
         `<marker id="arrowSlinkOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
             orient="auto-start-reverse"><path fill="#000" d="M 0 0 L 10 5 L 0 10 z" />
