@@ -289,6 +289,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
        
         "Subs C": {
             template: "ula",
+          
         },
         "externalEntityNode":{
             template: "ula",
@@ -313,6 +314,35 @@ var chart = new OrgChart(document.getElementById("tree"), {
         },
         "partnerNode": {
             template: "polina",
+            nodeMenu: {
+                action: {
+                    text: "Take Action",
+                    icon: actionIcon
+                },
+                open_entity: {
+                    text: "Open Entity",
+                    icon: openEntity,
+                },
+                edit: {
+                    text: "Update Entity",
+                    icon: updateEntity,
+                    onClick: callHandler1,
+                },
+        
+                details: {
+                    text: "Entity Summary",
+                    icon: summaryEntity,
+                },
+                // subsidiary: {
+                //     text: "Add Owners",
+                //     icon: addEntity,
+                //     onClick: callHandler,
+                // }
+                // add: {
+                //     text: "Add Entity",
+                //     icon: addEntity
+                // }
+            },
         },
         "additionalOwners":{
             template: "additionalOwners",
@@ -338,7 +368,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         }
     },
 
-    filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'entityName', 'Entity_Type', 'Parent_Entity', 'Subsidiary'],
+    filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'entityName', 'Entity_Type', 'Parent_Entity'],
     searchFields: ["entityName", "Entity_Type", "State", "Company", "Ownership", "Compliance", "Manager", "Product_Manager", "President", "Parent_Entity"],
 
     nodeMenu: {

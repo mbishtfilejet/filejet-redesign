@@ -473,12 +473,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
 
     slinks: [
-        { "from": 1, "to": 5, "template":"myTemplate3", "label": "10% ownership"},
-        { "from": 1, "to": 8, "label": "Additional owner"},
-        { "from": 0, "to": 2, "template":"myTemplate3", "label": "20% ownership"},
-        { "from": 9, "to": 10, "template":"myTemplate3", "label": "50% ownership"},
-        { "from": 9, "to": 11, "label": "Additional owner"},
-        { "from": 13, "to": 12, "template":"myTemplate3", "label": "20% ownership"},
+        { "from": 0, "to": "add-8", "label": "Additional owners"},
+        { "from": "ext-2", "to": "add-10", "label": "Additional owners"},
+        { "from": "9", "to": "add-11", "label": "Additional owners"}
     ],
 
     editUI: new editForm(),
