@@ -58,8 +58,17 @@ OrgChart.templates.olivia.entityName = '<foreignobject data-width="240" data-mar
 OrgChart.templates.olivia.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6" fill="#000000" width="65" height="25" x="15" y="18">{val}</foreignobject>';
 OrgChart.templates.olivia.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="18">{val}</foreignobject>';
 OrgChart.templates.olivia.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
-OrgChart.templates.olivia.node =
-    `<rect x="0" y="0" height="{h}" width="{w}" fill="#1f84a8" stroke-width="1" stroke="#18d6c3" rx="10" ry="10"></rect>`;
+// OrgChart.templates.olivia.node =
+//     `<rect x="0" y="0" height="{h}" width="{w}" fill="#1f84a8" stroke-width="1" stroke="#18d6c3" rx="10" ry="10"></rect>`;
+OrgChart.templates.olivia.node = `
+    <defs>
+        <linearGradient id="gradOlivia" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1f84a8;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <rect x="0" y="0" height="{h}" width="{w}" fill="url(#gradOlivia)" stroke-width="1" stroke="#18d6c3" rx="10" ry="10"></rect>`;
+
 OrgChart.templates.olivia.plus = '<circle cx="15" cy="15" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#000000" stroke-width="1px" fill="none" d="{rounded}" />';
@@ -78,8 +87,17 @@ OrgChart.templates.ula.entityType = '<foreignobject data-width="240" data-marrk-
 OrgChart.templates.ula.externalEntity= '<foreignobject data-width="240" data-marrk-field="externalEntity" class="fs-6 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="120" y="18">{val}</foreignobject>';
 OrgChart.templates.ula.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
 
-OrgChart.templates.ula.node =
-    `<rect x="0" y="0" height="{h}" width="{w}" fill="#ec9b87" stroke-width="1" stroke="#f7673b"  rx="10" ry="10"></rect>`;
+// OrgChart.templates.ula.node =
+//     `<rect x="0" y="0" height="{h}" width="{w}" fill="#ec9b87" stroke-width="1" stroke="#f7673b"  rx="10" ry="10"></rect>`;
+OrgChart.templates.ula.node = `
+    <defs>
+        <linearGradient id="gradUla" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fefefe;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#d6654a;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <rect x="0" y="0" height="{h}" width="{w}" fill="url(#gradUla)" stroke-width="1" stroke="#f7673b" rx="10" ry="10"></rect>`;
+
 OrgChart.templates.ula.min.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#ec9b87" stroke-width="1" stroke="#f7673b"></rect>
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;    
@@ -96,8 +114,17 @@ OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-fi
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.polina.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
 
-OrgChart.templates.polina.node =
-    `<rect x="0" y="0" height="70" width="280" fill="#b1b9b4" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
+OrgChart.templates.polina.node = `
+    <defs>
+        <linearGradient id="grayNode" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color: #fcfcfc;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#b1b9b4;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <rect x="0" y="0" height="70" width="280" fill="url(#grayNode)" stroke-width="1" stroke="#686868" rx="40" ry="40"></rect>`;
+
+
+
 OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 // end polina >gray rounded shape templates > foreign entity
@@ -112,14 +139,28 @@ OrgChart.templates.additionalOwners.html = '<foreignobject data-width="240" data
 OrgChart.templates.additionalOwners.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.additionalOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
 
-OrgChart.templates.additionalOwners.node =
-    `
+// OrgChart.templates.additionalOwners.node =
+//     `
+//     <svg id="resizableSvg" width="300" height="95" xmlns="http://www.w3.org/2000/svg">
+//         <path d="M0 0 H260 Q280 20 280 20 V95 H0 Z" fill="#69dc9a" stroke="#52e34b" stroke-width="1"></path>
+//         <polygon points="260,0 280,0 280,20" fill="#F3F5F8"></polygon>
+//         <line x1="260" y1="0" x2="280" y2="20" stroke="#52e34b" stroke-width="1"></line>
+//     </svg>
+//     `;
+OrgChart.templates.additionalOwners.node = `
     <svg id="resizableSvg" width="300" height="95" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0 H260 Q280 20 280 20 V95 H0 Z" fill="#69dc9a" stroke="#52e34b" stroke-width="1"></path>
+        <defs>
+            <linearGradient id="gradAdditionalOwners" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#bdfab5ed;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#11660d;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <path d="M0 0 H260 Q280 20 280 20 V95 H0 Z" fill="url(#gradAdditionalOwners)" stroke="#52e34b" stroke-width="1"></path>
         <polygon points="260,0 280,0 280,20" fill="#F3F5F8"></polygon>
         <line x1="260" y1="0" x2="280" y2="20" stroke="#52e34b" stroke-width="1"></line>
     </svg>
     `;
+
 // start additional owner >green one edge cut rectangle > additional owner
  
 
