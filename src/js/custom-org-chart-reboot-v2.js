@@ -134,7 +134,7 @@ OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);
 OrgChart.templates.additionalOwners.size = [280, 95];
 OrgChart.templates.additionalOwners.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 fst-italic" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-7 font-weight-400" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="18">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.html = '<foreignobject data-width="240" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems" data-text-overflow="ellipsis" fill="#000000" width="265" height="54" x="15" y="40">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.html = '<foreignobject data-width="240" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems" data-text-overflow="ellipsis" fill="#000000" width="255" height="54" x="15" y="40">{val}</foreignobject>';
 // OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6" fill="#000000" width="65" height="25" x="134" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.additionalOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
@@ -155,11 +155,13 @@ OrgChart.templates.additionalOwners.node = `
                 <stop offset="100%" style="stop-color:#11660d;stop-opacity:1" />
             </linearGradient>
         </defs>
-        <path d="M0 0 H260 Q280 20 280 20 V95 H0 Z" fill="url(#gradAdditionalOwners)" stroke="#52e34b" stroke-width="1"></path>
-        <polygon points="260,0 280,0 280,20" fill="#F3F5F8"></polygon>
-        <line x1="260" y1="0" x2="280" y2="20" stroke="#52e34b" stroke-width="1"></line>
+        <path d="M10 0 H250 Q270 0 270 20 V85 Q270 95 260 95 H10 Q0 95 0 85 V10 Q0 0 10 0 Z" 
+              fill="url(#gradAdditionalOwners)" stroke="#52e34b" stroke-width="1"></path>
+        <polygon points="250,0 270,0 270,20" fill="#F3F5F8"></polygon>
+        <line x1="250" y1="0" x2="270" y2="20" stroke="#52e34b" stroke-width="1"></line>
     </svg>
     `;
+
 
 // start additional owner >green one edge cut rectangle > additional owner
  
