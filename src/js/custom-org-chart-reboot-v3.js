@@ -55,8 +55,8 @@ OrgChart.miniMap.position = {
 OrgChart.templates.olivia.size = [320, 90];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,45)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.olivia.entityName = '<foreignobject data-width="240" data-marrk-field="entityName" class="fs-5 font-weight-500 text-white" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.olivia.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="15" y="18">{val}</foreignobject>';
-OrgChart.templates.olivia.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="18">{val}</foreignobject>';
+OrgChart.templates.olivia.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="15" y="28">{val}</foreignobject>';
+OrgChart.templates.olivia.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="28">{val}</foreignobject>';
 OrgChart.templates.olivia.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
 OrgChart.templates.olivia.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#039BE5" stroke-width="1" stroke="#039BE5" rx="10" ry="10"></rect>`;
@@ -74,9 +74,9 @@ OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" d
 OrgChart.templates.ula.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
 OrgChart.templates.ula.min.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.ula.min.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.ula.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="15" y="18">{val}</foreignobject>';
-OrgChart.templates.ula.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="18">{val}</foreignobject>';
-OrgChart.templates.ula.externalEntity= '<foreignobject data-width="240" data-marrk-field="externalEntity" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="120" y="18">{val}</foreignobject>';
+OrgChart.templates.ula.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="15" y="28">{val}</foreignobject>';
+OrgChart.templates.ula.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="28">{val}</foreignobject>';
+OrgChart.templates.ula.externalEntity= '<foreignobject data-width="240" data-marrk-field="externalEntity" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="120" y="28">{val}</foreignobject>';
 OrgChart.templates.ula.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
 
 OrgChart.templates.ula.node =
@@ -89,12 +89,12 @@ OrgChart.templates.ula.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" str
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 // end ula >red rectangle templates > unmanaged entity
 
-// start polina >gray rounded shape templates > foreign entity
+// start polina >yellow rounded shape templates > foreign entity
 OrgChart.templates.polina.size = [280, 70];
 OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,250,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.polina.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white" data-text-overflow="ellipsis" x="25" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.polina.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="18">{val}</foreignobject>';
-OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-9 text-white" fill="#000000" width="65" height="25" x="25" y="18">{val}</foreignobject>';
+OrgChart.templates.polina.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="22">{val}</foreignobject>';
+OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="25" y="22">{val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.polina.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
 
@@ -117,7 +117,7 @@ OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" 
 OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);       
 OrgChart.templates.additionalOwners.size = [280, 95];
 OrgChart.templates.additionalOwners.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 fst-italic text-white" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-7 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="18">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.html = '<foreignobject data-width="240" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems text-white" data-text-overflow="ellipsis" fill="#000000" width="255" height="54" x="15" y="40">{val}</foreignobject>';
 // OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="134" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
