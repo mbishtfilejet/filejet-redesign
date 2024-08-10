@@ -89,7 +89,7 @@ OrgChart.templates.ula.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" str
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 // end ula >red rectangle templates > unmanaged entity
 
-// start polina >yellow rounded shape templates > foreign entity
+// start polina >gary rounded shape templates > foreign entity
 OrgChart.templates.polina.size = [280, 70];
 OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,250,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.polina.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white" data-text-overflow="ellipsis" x="25" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
@@ -101,8 +101,8 @@ OrgChart.templates.polina.visualIndicator = '<foreignobject data-width="30" data
 OrgChart.templates.polina.node = `
     <defs>
         <linearGradient id="grayNode" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#FFCA28;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#FFCA28;stop-opacity:1" />
+            <stop offset="0%" style="stop-color:#4D4D4D;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#4D4D4D;stop-opacity:1" />
         </linearGradient>
     </defs>
     <rect x="0" y="0" height="70" width="280" fill="url(#grayNode)" stroke-width="1" stroke="#aeaeae" rx="40" ry="40"></rect>`;
