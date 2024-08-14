@@ -64,6 +64,8 @@ OrgChart.templates.olivia.node =
 OrgChart.templates.olivia.plus = '<circle cx="15" cy="15" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
 OrgChart.templates.olivia.link = '<path stroke-linejoin="round" stroke="#000000" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.olivia.icons_0 = '<foreignobject data-width="60" class="d-block text-end" fill="#000000" width="60" height="28" x="245" y="10">{val}</foreignobject>';
+
 // end olivia > cyan color rectangle templates
 
 // start ula >red rectangle templates > unmanaged entity
@@ -87,7 +89,9 @@ OrgChart.templates.ula.min.node =
     <line x1="0" y1="0" x2="320" y2="0" stroke-width="2" stroke="#E73B18"></line>`;    
 OrgChart.templates.ula.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
-// end ula >red rectangle templates > unmanaged entity
+OrgChart.templates.ula.icons_0 = '<foreignobject data-width="60" class="d-block text-end" fill="#000000" width="60" height="28" x="245" y="10">{val}</foreignobject>';
+
+    // end ula >red rectangle templates > unmanaged entity
 
 // start polina >gary rounded shape templates > foreign entity
 OrgChart.templates.polina.size = [280, 70];
@@ -101,8 +105,8 @@ OrgChart.templates.polina.visualIndicator = '<foreignobject data-width="30" data
 OrgChart.templates.polina.node = `
     <defs>
         <linearGradient id="grayNode" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#4D4D4D;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#4D4D4D;stop-opacity:1" />
+            <stop offset="0%" style="stop-color:#929394;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#929394;stop-opacity:1" />
         </linearGradient>
     </defs>
     <rect x="0" y="0" height="70" width="280" fill="url(#grayNode)" stroke-width="1" stroke="#aeaeae" rx="40" ry="40"></rect>`;
@@ -451,6 +455,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         entityTitle:"entityTitle",
         externalEntity:"externalEntity",
         html:"html",
+        // icons_0: "html",
         visualIndicator:"visualIndicator",
     },
     linkBinding: {
