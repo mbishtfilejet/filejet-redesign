@@ -455,7 +455,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         entityTitle:"entityTitle",
         externalEntity:"externalEntity",
         html:"html",
-        // icons_0: "html",
+        icons_0: "html",
         visualIndicator:"visualIndicator",
     },
     linkBinding: {
