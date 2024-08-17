@@ -1,5 +1,7 @@
 //JavaScript
 
+// const { template } = require("grunt");
+
 var expandAllIcon = '<span class="icon me-0 icon-expand-all"></span>';
 
 var fitIcon = '<span class="icon me-0 icon-fit"></span>';
@@ -52,9 +54,14 @@ OrgChart.miniMap.position = {
 }
 
 // start olivia > cyan color rectangle templates
+var tooltip = 
+  `<g data-t-id="{id}" transform="matrix(0.001,0,0,0.001,{x},{y})" >
+  {text}</g>`;
+var tooltipText = '<text text-anchor="middle" data-width="130" fill="#000" class="bg-dark fs-7" x="0" y="0">{val}</text>';
+
 OrgChart.templates.olivia.size = [320, 90];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,45)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
-OrgChart.templates.olivia.entityName = '<foreignobject data-width="240" data-marrk-field="entityName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="15" width="230" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.olivia.entityName = '<foreignobject data-width="240" data-marrk-field="entityName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="15" width="230" height="25" fill="#000000"><div>{val}</div></foreignobject>';
 OrgChart.templates.olivia.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="15" y="45">{val}</foreignobject>';
 OrgChart.templates.olivia.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="45">{val}</foreignobject>';
 OrgChart.templates.olivia.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
@@ -68,12 +75,34 @@ OrgChart.templates.olivia.icons_0 = '<foreignobject data-width="60" class="d-blo
 
 // end olivia > cyan color rectangle templates
 
+// 
+OrgChart.templates.individualOwners = Object.assign({}, OrgChart.templates.olivia); 
+OrgChart.templates.individualOwners.size = [320, 110];
+OrgChart.templates.individualOwners.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,55)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
+OrgChart.templates.individualOwners.entityName = '<foreignobject data-width="240" data-marrk-field="entityName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="5" width="230" height="25" fill="#000000"><div>{val}</div></foreignobject>';
+OrgChart.templates.individualOwners.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="15" y="25">{val}</foreignobject>';
+OrgChart.templates.individualOwners.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="25">{val}</foreignobject>';
+
+OrgChart.templates.individualOwners.individualOwnerName = '<foreignobject data-width="240" data-marrk-field="individualOwnerName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="55" width="230" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.individualOwners.individualType = '<foreignobject data-width="240" data-marrk-field="individualType" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="75" width="230" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.individualOwners.ownershipPercentage = '<foreignobject data-width="240" data-marrk-field="ownershipPercentage" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="120" y="75" width="230" height="25" fill="#000000">{val}</foreignobject>';
+
+OrgChart.templates.individualOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
+OrgChart.templates.individualOwners.node =
+    `<rect x="0" y="0" height="{h}" width="{w}" fill="#039BE5" stroke-width="1" stroke="#039BE5" rx="10" ry="10"></rect>`;
+OrgChart.templates.individualOwners.plus = '<circle cx="15" cy="15" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>'
+    + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
+OrgChart.templates.individualOwners.link = '<path stroke-linejoin="round" stroke="#000000" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.individualOwners.icons_0 = '<foreignobject data-width="60" class="d-block text-end" fill="#000000" width="60" height="28" x="245" y="10">{val}</foreignobject>';
+
+// 
+
 // start ula >red rectangle templates > unmanaged entity
 OrgChart.templates.ula.size = [320, 90];
 OrgChart.templates.ula.min = Object.assign({}, OrgChart.templates.ula);
 OrgChart.templates.ula.min.size = [320, 60];
 OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
-OrgChart.templates.ula.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="15" width="230" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.ula.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="15" width="230" height="25" fill="#000000"><div>{val}</div></foreignobject>';
 OrgChart.templates.ula.min.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.ula.min.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="0" width="230" height="25" fill="#000000">{val}</foreignobject>';
 OrgChart.templates.ula.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="15" y="45">{val}</foreignobject>';
@@ -94,9 +123,9 @@ OrgChart.templates.ula.icons_0 = '<foreignobject data-width="60" class="d-block 
     // end ula >red rectangle templates > unmanaged entity
 
 // start polina >gary rounded shape templates > foreign entity
-OrgChart.templates.polina.size = [280, 70];
-OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,250,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
-OrgChart.templates.polina.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="25" y="8" width="285" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.polina.size = [300, 70];
+OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,270,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
+OrgChart.templates.polina.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="25" y="8" width="285" height="25" fill="#000000"><div>{val}</div></foreignobject>';
 OrgChart.templates.polina.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="30">{val}</foreignobject>';
 OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="25" y="30">{val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
@@ -109,7 +138,7 @@ OrgChart.templates.polina.node = `
             <stop offset="100%" style="stop-color:#929394;stop-opacity:1" />
         </linearGradient>
     </defs>
-    <rect x="0" y="0" height="70" width="280" fill="url(#grayNode)" stroke-width="1" stroke="#aeaeae" rx="40" ry="40"></rect>`;
+    <rect x="0" y="0" height="70" width="300" fill="url(#grayNode)" stroke-width="1" stroke="#aeaeae" rx="40" ry="40"></rect>`;
 
 
 
@@ -120,7 +149,7 @@ OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" 
 // start additional owner >green one edge cut rectangle > additional owner
 OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);       
 OrgChart.templates.additionalOwners.size = [280, 95];
-OrgChart.templates.additionalOwners.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 fst-italic text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="0" width="285" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 fst-italic text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="0" width="285" height="25" fill="#000000"><div>{val}</div></foreignobject>';
 OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.html = '<foreignobject data-width="240" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems text-white" data-text-overflow="ellipsis" fill="#000000" width="255" height="54" x="15" y="40">{val}</foreignobject>';
@@ -332,7 +361,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     allChildren: true
     // },
     tags: {
-       
+       "individualOwners":{
+        template:"individualOwners",
+       },
         "Subs C": {
             template: "ula",
           
@@ -457,6 +488,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
         html:"html",
         icons_0: "html",
         visualIndicator:"visualIndicator",
+        tooltip: 'tooltip',
+        individualOwnerName:"individualOwnerName",
+        individualType: "individualType",
+        ownershipPercentage:"ownershipPercentage",
     },
     linkBinding: {
         link_field_0: "createdAt"
@@ -476,6 +511,50 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     }
     // },
 });
+
+// tooltip on entity name
+chart.on('redraw', function (sender) {
+    var fieldElements = sender.element.querySelectorAll('[data-n-id] foreignobject div');
+    for (var i = 0; i < fieldElements.length; i++) {
+      var fieldElement = fieldElements[i];
+        console.log(fieldElements)
+      fieldElement.addEventListener('mouseenter', function () {
+        var id = this.parentElement.parentElement.getAttribute('data-n-id');
+        var tooltipElement = document.querySelector('[data-t-id="' + id + '"]');
+        if (!tooltipElement) return;
+        var transformStart = OrgChart._getTransform(tooltipElement);
+        var transformEnd = transformStart.slice(0);
+        transformEnd[0] = 1;
+        transformEnd[3] = 1;
+        OrgChart.animate(tooltipElement, { transform: transformStart }, { transform: transformEnd }, 300, OrgChart.anim.outBack);
+      });
+      fieldElement.addEventListener('mouseleave', function () {
+        var id = this.parentElement.parentElement.getAttribute('data-n-id');
+        var tooltipElement = document.querySelector('[data-t-id="' + id + '"]');
+        if (!tooltipElement) return;
+        var transformStart = OrgChart._getTransform(tooltipElement);
+        var transformEnd = transformStart.slice(0);
+        transformEnd[0] = 0.001;
+        transformEnd[3] = 0.001;
+        OrgChart.animate(tooltipElement, { transform: transformStart }, { transform: transformEnd }, 300, OrgChart.anim.inBack);
+      });
+    }
+});
+OrgChart.events.on('render', function (sender, args) {
+    for (var i = 0; i < args.res.visibleNodeIds.length; i++) {
+      var node = sender.getNode(args.res.visibleNodeIds[i]);
+      var data = sender.get(node.id);
+      if (data.tooltip) {
+        args.content += tooltip
+          .replace('{x}', node.x + node.w / 2)
+          .replace('{y}', node.y + 5)
+          .replace('{id}', node.id)
+          // .replace('{text}', tooltipText.replace('{val}', OrgChart.wrapText(data.tooltip, tooltipText)));
+          .replace('{text}', tooltipText.replace('{val}', data.tooltip));
+      }
+    }
+});
+// 
 
 // MAXIMIZE/MINIMIZE NODES
 chart.on('click', function (sender, args) {
