@@ -934,3 +934,118 @@
 //         color: #ab65ef !important;
 //     }
 // }
+
+.tooltip-entity {
+    position: absolute;
+    z-index: 999;
+    width: 2.2em;
+    height: 2.2em;
+    cursor: pointer;
+}
+
+/* Trigger item */
+
+
+@-webkit-keyframes pulse {
+    from { -webkit-transform: scale3d(0.5,0.5,1); }
+    to { -webkit-transform: scale3d(1,1,1); }
+}
+
+@keyframes pulse {
+    from { -webkit-transform: scale3d(0.5,0.5,1); transform: scale3d(0.5,0.5,1); }
+    to { -webkit-transform: scale3d(1,1,1); transform: scale3d(1,1,1); }
+}
+
+// .tooltip-entity:first-child {
+//     top: 20%;
+//     left: 20%;
+// }
+
+// .tooltip-entity:nth-child(2) {
+//     top: 50%;
+//     left: 10%;
+// }
+
+// .tooltip-entity:nth-child(3) {
+//     top: 40%;
+//     left: 50%;
+// }
+
+// .tooltip-entity:nth-child(4) {
+//     top: 70%;
+//     left: 70%;
+// }
+
+/* Tooltip */
+
+.tooltip-entity-content {
+    z-index: 9999;
+    width: 200px;
+    margin-bottom: -1em;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
+    @extend .p-2,.fs-7,.rounded-3,.text-white,.position-absolute,.purple-bg,.bottom-50,.text-center;
+}
+
+.tooltip-entity-west .tooltip-entity-content {
+    left: 33px;
+    -webkit-transform-origin: -2em 50%;
+    transform-origin: -2em 50%;
+    -webkit-transform: translate3d(0,50%,0) rotate3d(1,1,1,30deg);
+    transform: translate3d(0,50%,0) rotate3d(1,1,1,30deg);
+}
+
+.tooltip-entity-east .tooltip-entity-content {
+    right: 4em;
+    -webkit-transform-origin: calc(100% + 2em) 50%;
+    transform-origin: calc(100% + 2em) 50%;
+    -webkit-transform: translate3d(0,50%,0) rotate3d(1,1,1,-30deg);
+    transform: translate3d(0,50%,0) rotate3d(1,1,1,-30deg);
+}
+
+.visible .tooltip-entity .tooltip-entity-content {
+    opacity: 1;
+    -webkit-transform: translate3d(0,50%,0) rotate3d(0,0,0,0);
+    transform: translate3d(0,50%,0) rotate3d(0,0,0,0);
+    pointer-events: auto;
+}
+
+/* Gap "bridge" and arrow */
+
+.tooltip-entity-content::before,
+.tooltip-entity-content::after {
+    content: '';
+    position: absolute;
+}
+
+.tooltip-entity-content::before {
+    height: 100%;
+    width: 3em;
+}
+
+.tooltip-entity-content::after {
+            @extend .end-100,.bottom-50;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            rotate: 90deg;
+            border-color: #6E72EE transparent transparent transparent;
+}
+
+.tooltip-entity-west .tooltip-entity-content::before,
+.tooltip-entity-west .tooltip-entity-content::after {
+    right: 99%; /* because of FF, otherwise we have a gap */
+}
+
+.tooltip-entity-east .tooltip-entity-content::before,
+.tooltip-entity-east .tooltip-entity-content::after {
+    left: 99%; /* because of FF, otherwise we have a gap */
+}
+
+.tooltip-entity-east .tooltip-entity-content::after {
+    -webkit-transform: scale3d(-1,1,1);
+    transform: scale3d(-1,1,1);
+}

@@ -54,11 +54,22 @@ OrgChart.miniMap.position = {
 }
 
 // start olivia > cyan color rectangle templates
-var tooltip = 
-  `<g data-t-id="{id}" transform="matrix(0.001,0,0,0.001,{x},{y})" >
-  {text}</g>`;
-var tooltipText = '<text text-anchor="middle" data-width="130" fill="#000" class="bg-dark fs-7" x="0" y="0">{val}</text>';
-
+// var tooltip = 
+//   `<g data-t-id="{id}" transform="matrix(0.001,0,0,0.001,{x},{y})" >
+//   {text}</g>`;
+// var tooltipText = '<text text-anchor="middle" data-width="130" fill="#000" class="bg-dark fs-7" x="0" y="0">{val}</text>';
+// var tooltipText = `
+//   <defs>
+//     <filter x="0" y="0" width="1" height="1.5" id="solid">
+//       <feFlood flood-color="#000" result="bg" />
+//       <feMerge>
+//         <feMergeNode in="bg"/>
+//         <feMergeNode in="SourceGraphic"/>
+//       </feMerge>
+//     </filter>
+//   </defs>
+//   '<text filter="url(#solid)" text-anchor="middle" class="font-weight-400 fs-7" data-width="130" data-text-overflow="multiline" fill="#fff" x="0" y="-10">{val}</text>'
+// `
 OrgChart.templates.olivia.size = [320, 90];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,45)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.olivia.entityName = '<foreignobject data-width="240" data-marrk-field="entityName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="15" width="230" height="25" fill="#000000"><div>{val}</div></foreignobject>';
@@ -125,11 +136,12 @@ OrgChart.templates.ula.icons_0 = '<foreignobject data-width="60" class="d-block 
 // start polina >gary rounded shape templates > foreign entity
 OrgChart.templates.polina.size = [300, 70];
 OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,270,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
-OrgChart.templates.polina.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="25" y="8" width="285" height="25" fill="#000000"><div>{val}</div></foreignobject>';
+OrgChart.templates.polina.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white" data-text-overflow="ellipsis" x="25" y="8" width="225" height="25" fill="#000000"><div>{val}</div></foreignobject>';
 OrgChart.templates.polina.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="30">{val}</foreignobject>';
 OrgChart.templates.polina.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="25" y="30">{val}</foreignobject>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.polina.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
+OrgChart.templates.polina.icons_0 = '<foreignobject data-width="60" class="d-block text-end" fill="#000000" width="60" height="28" x="225" y="5">{val}</foreignobject>';
 
 OrgChart.templates.polina.node = `
     <defs>
@@ -514,47 +526,37 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 // tooltip on entity name
 chart.on('redraw', function (sender) {
-    var fieldElements = sender.element.querySelectorAll('[data-n-id] foreignobject div');
+    var fieldElements = sender.element.querySelectorAll('[data-n-id] [data-marrk-field="entityName"]');
     for (var i = 0; i < fieldElements.length; i++) {
-      var fieldElement = fieldElements[i];
-        console.log(fieldElements)
-      fieldElement.addEventListener('mouseenter', function () {
-        var id = this.parentElement.parentElement.getAttribute('data-n-id');
-        var tooltipElement = document.querySelector('[data-t-id="' + id + '"]');
-        if (!tooltipElement) return;
-        var transformStart = OrgChart._getTransform(tooltipElement);
-        var transformEnd = transformStart.slice(0);
-        transformEnd[0] = 1;
-        transformEnd[3] = 1;
-        OrgChart.animate(tooltipElement, { transform: transformStart }, { transform: transformEnd }, 300, OrgChart.anim.outBack);
-      });
-      fieldElement.addEventListener('mouseleave', function () {
-        var id = this.parentElement.parentElement.getAttribute('data-n-id');
-        var tooltipElement = document.querySelector('[data-t-id="' + id + '"]');
-        if (!tooltipElement) return;
-        var transformStart = OrgChart._getTransform(tooltipElement);
-        var transformEnd = transformStart.slice(0);
-        transformEnd[0] = 0.001;
-        transformEnd[3] = 0.001;
-        OrgChart.animate(tooltipElement, { transform: transformStart }, { transform: transformEnd }, 300, OrgChart.anim.inBack);
-      });
+        var fieldElement = fieldElements[i];
+        fieldElement.addEventListener('mouseover', function (e) {
+            var nodeElement = this;
+            while(!nodeElement.hasAttribute('data-n-id')){
+                nodeElement = nodeElement.parentNode;
+            }
+            var id = nodeElement.getAttribute('data-n-id');
+            var tooltip = document.getElementById("orgChartTooltip");
+            var tooltipContent = document.querySelector(".tooltip-entity-content");
+
+            var position = OrgChart._menuPosition(this, tooltip, sender.getSvg());
+
+            tooltipContent.innerHTML = sender.get(id).tooltip;
+            tooltip.style.left = position.x + 150 + "px";
+            tooltip.style.top = position.y + "px";
+            tooltip.classList.add("visible");
+
+        });
+
+        fieldElement.addEventListener('mouseleave', function () {
+            var tooltip = document.getElementById("orgChartTooltip");
+            if (tooltip) {
+                tooltip.classList.remove('visible');
+            }
+        });
     }
 });
-OrgChart.events.on('render', function (sender, args) {
-    for (var i = 0; i < args.res.visibleNodeIds.length; i++) {
-      var node = sender.getNode(args.res.visibleNodeIds[i]);
-      var data = sender.get(node.id);
-      if (data.tooltip) {
-        args.content += tooltip
-          .replace('{x}', node.x + node.w / 2)
-          .replace('{y}', node.y + 5)
-          .replace('{id}', node.id)
-          // .replace('{text}', tooltipText.replace('{val}', OrgChart.wrapText(data.tooltip, tooltipText)));
-          .replace('{text}', tooltipText.replace('{val}', data.tooltip));
-      }
-    }
-});
-// 
+
+// end
 
 // MAXIMIZE/MINIMIZE NODES
 chart.on('click', function (sender, args) {
