@@ -665,6 +665,7 @@ chart.onInit(function () {
                 $(".btnFilter").find("button").trigger('click').addClass('active')
                 $(".btnFilter").find("span").addClass('icon-org-filter-white');
                 $("#tree").addClass('pt-10');
+                orgChartTooltip.classList.toggle("mt-10");
             }
         }
         
@@ -691,6 +692,7 @@ chart.searchUI.on('searchclick', function (sender, args) {
         $(".btnFilter").find("button").trigger('click').addClass('active')
         $(".btnFilter").find("span").addClass('icon-org-filter-white');
         $("#tree").addClass('pt-10');
+        orgChartTooltip.classList.toggle("mt-10");
     }
     sender.searchTableWrapper.style.display = 'none';
     sender.instance.center(args.nodeId, null, function(){
@@ -928,10 +930,12 @@ document.addEventListener("DOMContentLoaded", function () {
     btnFilter.addEventListener('click', function () {
         bocFilter = document.querySelector('.boc-filter');
         bocTree = document.querySelector('#tree');
+        orgChartTooltip = document.querySelector('#orgChartTooltip');
         this.classList.toggle("active");
         filterIcon.classList.toggle("icon-org-filter-white");
         bocFilter.classList.toggle("d-block");
         bocTree.classList.toggle("pt-10");
+        orgChartTooltip.classList.toggle("mt-10");
         bocTree.classList.toggle("vh-100");
         // remove_Underscore from filter end
         const elementsToProcess = document.querySelectorAll('[data-filter-field]');
