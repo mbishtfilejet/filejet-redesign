@@ -89,13 +89,13 @@ OrgChart.templates.olivia.icons_0 = '<foreignobject data-width="60" class="d-blo
 OrgChart.templates.individualOwners = Object.assign({}, OrgChart.templates.olivia); 
 OrgChart.templates.individualOwners.size = [320, 110];
 OrgChart.templates.individualOwners.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,55)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
-OrgChart.templates.individualOwners.entityName = '<foreignobject data-width="240" data-marrk-field="entityName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="5" width="230" height="25" fill="#000000"><div>{val}</div></foreignobject>';
-OrgChart.templates.individualOwners.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" x="15" y="25">{val}</foreignobject>';
-OrgChart.templates.individualOwners.entityType = '<foreignobject data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="180" height="25" x="85" y="25">{val}</foreignobject>';
+OrgChart.templates.individualOwners.entityName = '<text data-width="240" data-marrk-field="entityName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="25" width="230" height="25" fill="#fff">{val}</text>';
+OrgChart.templates.individualOwners.state = '<text data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#fff" x="15" y="45">{val}</text>';
+OrgChart.templates.individualOwners.entityType = '<text data-width="240" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="45">{val}</text>';
 
-OrgChart.templates.individualOwners.individualOwnerName = '<foreignobject data-width="240" data-marrk-field="individualOwnerName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="55" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.individualOwners.individualType = '<foreignobject data-width="240" data-marrk-field="individualType" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="75" width="230" height="25" fill="#000000">{val}</foreignobject>';
-OrgChart.templates.individualOwners.ownershipPercentage = '<foreignobject data-width="240" data-marrk-field="ownershipPercentage" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="120" y="75" width="230" height="25" fill="#000000">{val}</foreignobject>';
+OrgChart.templates.individualOwners.individualOwnerName = '<text data-width="240" data-marrk-field="individualOwnerName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="75" width="230" height="25" fill="#fff">{val}</text>';
+OrgChart.templates.individualOwners.individualType = '<text data-width="240" data-marrk-field="individualType" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
+OrgChart.templates.individualOwners.ownershipPercentage = '<text data-width="240" data-marrk-field="ownershipPercentage" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
 
 OrgChart.templates.individualOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
 OrgChart.templates.individualOwners.node =
@@ -180,7 +180,7 @@ OrgChart.templates.additionalOwners.node = `
             </linearGradient>
         </defs>
         <path d="M10 0 H250 Q270 0 270 20 V85 Q270 95 260 95 H10 Q0 95 0 85 V10 Q0 0 10 0 Z" 
-              fill="url(#gradAdditionalOwners)" stroke="#52e34b" stroke-width="1"></path>
+              fill="#48af56" stroke="#52e34b" stroke-width="1"></path>
         <polygon points="250,0 270,0 270,20" fill="#F3F5F8"></polygon>
         <line x1="250" y1="0" x2="270" y2="20" stroke="#52e34b" stroke-width="1"></line>
     </svg>
