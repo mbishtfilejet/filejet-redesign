@@ -154,38 +154,33 @@ OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" 
 // end polina >gray rounded shape templates > foreign entity
 
 // start additional owner >green one edge cut rectangle > additional owner
-OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);       
-OrgChart.templates.additionalOwners.size = [280, 95];
-OrgChart.templates.additionalOwners.entityName = '<text data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 fst-italic text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="20" fill="#fff">{val}</text>';
+OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);
+OrgChart.templates.additionalOwners.size = [270, 95];
+OrgChart.templates.additionalOwners.entityName = '<foreignobject data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 fst-italic text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="0" width="285" height="25" fill="#000000"><div>{val}</div></foreignobject>';
+OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.html = '<foreignobject data-width="240" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems text-white" data-text-overflow="ellipsis" fill="#000000" width="255" height="54" x="15" y="40">{val}</foreignobject>';
 // OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="134" y="20">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
-OrgChart.templates.additionalOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
-
-// OrgChart.templates.additionalOwners.node =
-//     `
-//     <svg id="resizableSvg" width="300" height="95" xmlns="http://www.w3.org/2000/svg">
-//         <path d="M0 0 H260 Q280 20 280 20 V95 H0 Z" fill="#69dc9a" stroke="#52e34b" stroke-width="1"></path>
-//         <polygon points="260,0 280,0 280,20" fill="#F3F5F8"></polygon>
-//         <line x1="260" y1="0" x2="280" y2="20" stroke="#52e34b" stroke-width="1"></line>
-//     </svg>
-//     `;
+OrgChart.templates.additionalOwners.link = '<path marker-start="url(#dotSlinkYellow)" marker-end="url(#arrowSlinkYellow)"  stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.additionalOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18D6C3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.defs =
+        `<marker id="arrowSlinkYellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse"><path fill="#000" d="M 0 0 L 10 5 L 0 10 z" />
+        </marker>`
 OrgChart.templates.additionalOwners.node = `
-    <svg id="resizableSvg" width="300" height="95" xmlns="http://www.w3.org/2000/svg">
+    <svg id="resizableSvg" width="320" height="95" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <linearGradient id="gradAdditionalOwners" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" style="stop-color:#48af56;stop-opacity:1" />
                 <stop offset="100%" style="stop-color:#48af56;stop-opacity:1" />
             </linearGradient>
         </defs>
-        <path d="M10 0 H250 Q270 0 270 20 V85 Q270 95 260 95 H10 Q0 95 0 85 V10 Q0 0 10 0 Z" 
-              fill="#48af56" stroke="#52e34b" stroke-width="1"></path>
+        <path d="M10 0 H250 Q270 0 270 20 V85 Q270 95 260 95 H10 Q0 95 0 85 V10 Q0 0 10 0 Z"
+              fill="#48AF56" stroke="#52E34B" stroke-width="0"></path>
         <polygon points="250,0 270,0 270,20" fill="#F3F5F8"></polygon>
-        <line x1="250" y1="0" x2="270" y2="20" stroke="#52e34b" stroke-width="1"></line>
+        <line x1="250" y1="0" x2="270" y2="20" stroke="#52E34B" stroke-width="1"></line>
     </svg>
     `;
-
 
 // start additional owner >green one edge cut rectangle > additional owner
  
@@ -204,6 +199,7 @@ OrgChart.templates.hidden.visualIndicator = "";
 OrgChart.templates.hidden.icons_0 = "";
 OrgChart.slinkTemplates.hiddenSlinks = Object.assign({}, OrgChart.slinkTemplates.orange);
 OrgChart.slinkTemplates.hiddenSlinks.link = '';
+OrgChart.templates.hidden.html = "";
 // hidden teamplates end
 
 // label color change for additioanl owner entity
@@ -539,119 +535,97 @@ chart.on('click', function (sender, args) {
 });
 //END
 // toggle button show/hide partner & slinks nodes
+// toggle button show/hide partner & slinks nodes
+// toggle button show/hide partner & slinks nodes
+let partnerNodeState = 'polina';
+let additionalOwnersState = 'additionalOwners';
 document.querySelector('#partnerBtn').addEventListener('click', function () {
-    if (chart.config.tags.partnerNode.template == "polina") {
-        chart.config.tags = {
-            "partnerNode": {
-                template: "hidden"
-            },
-            "hidden": {
-                template: "hidden"
-            },
-            "additionalOwners":{
-                template: "additionalOwners"
-            },
-            "externalEntityNode":{
-                template: "ula",
-            },
-            "individualOwners":{
-                template: "individualOwners",
-            },
-
-        }
-        chart.draw()
-    }
-    else {
-        chart.config.tags = {        
-            "partnerNode":{
-                template: "polina"
-            },
-            "additionalOwners":{
-                template: "additionalOwners"
-            },
-            "hidden": {
-                template: "hidden"
-            },
-            "externalEntityNode":{
-                template: "ula",
-            },
-            "individualOwners":{
-                template: "individualOwners",
-            },
-        }
-        chart.draw()
-    }
+  if (chart.config.tags.partnerNode.template == "polina") {
+    partnerNodeState = 'hidden';
+      chart.config.tags = {
+          "partnerNode": {
+              template: "hidden"
+          },
+          "hidden": {
+              template: "hidden"
+          },
+          "additionalOwners":{
+              template: additionalOwnersState
+          },
+          "externalEntityNode":{
+              template: "ula",
+          },
+          "individualOwners":{
+              template: "individualOwners",
+          },
+      }
+      chart.draw()
+  }
+  else {
+    partnerNodeState = 'polina'
+      chart.config.tags = {
+          "partnerNode":{
+              template: "polina"
+          },
+          "additionalOwners":{
+              template: additionalOwnersState
+          },
+          "hidden": {
+              template: "hidden"
+          },
+          "externalEntityNode":{
+              template: "ula",
+          },
+          "individualOwners":{
+              template: "individualOwners",
+          },
+      }
+      chart.draw()
+  }
 });
-
-// let slinks = [];
-// document.querySelector('#slinkBtn').addEventListener('click', function () {
-//     if (chart.config.slinks.length > 0) {
-//         slinks = chart.config.slinks;
-//         chart.config.slinks = [];
-//         slinks.forEach(slink => {
-//             let node = chart.get(slink.to);
-//             if (node.tags.includes("additionalOwners")) {
-//                 node.tags = ["hidden"]
-//             }
-//             chart.update(node);
-//         })
-//         chart.draw();
-//     }
-//     else {
-//         chart.config.slinks = slinks;
-//         slinks.forEach(slink => {
-//             let node = chart.get(slink.to);
-//             node.tags = ["additionalOwners"];
-//             chart.update(node);
-//         })
-//         chart.draw()
-//     }
-
-
-// });
-
-document.querySelector('#slinkBtn').addEventListener('click', function () {
-    if (chart.config.tags.additionalOwners.template == "additionalOwners") {
-        chart.config.tags = {
-            "additionalOwners": {
-                template: "hidden"
-            },
-            "hidden": {
-                template: "hidden"
-            },
-            "partnerNode":{
-                template: "polina"
-            },
-            "externalEntityNode":{
-                template: "ula",
-            },
-            "individualOwners":{
-                template: "individualOwners",
-            },
-
-        }
-        chart.draw()
-    }
-    else {
-        chart.config.tags = {        
-            "additionalOwners":{
-                template: "additionalOwners"
-            },
-            "partnerNode":{
-                template: "polina"
-            },
-            "hidden": {
-                template: "hidden"
-            },
-            "externalEntityNode":{
-                template: "ula",
-            },
-            "individualOwners":{
-                template: "individualOwners",
-            },
-        }
-        chart.draw()
-    }
+ document.querySelector('#slinkBtn').addEventListener('click', function () {
+  if (chart.config.tags.additionalOwners.template == "additionalOwners") {
+    additionalOwnersState = 'hidden';
+      chart.config.tags = {
+          "partnerNode": {
+              template: partnerNodeState
+          },
+          "hidden": {
+              template: "hidden"
+          },
+          "additionalOwners":{
+              template: "hidden"
+          },
+          "externalEntityNode":{
+              template: "ula",
+          },
+          "individualOwners":{
+              template: "individualOwners",
+          },
+      }
+      chart.draw()
+  }
+  else {
+    additionalOwnersState = 'additionalOwners';
+      chart.config.tags = {
+          "partnerNode":{
+              template: partnerNodeState
+          },
+          "additionalOwners":{
+              template: "additionalOwners"
+          },
+          "hidden": {
+              template: "hidden"
+          },
+          "externalEntityNode":{
+              template: "ula",
+          },
+          "individualOwners":{
+              template: "individualOwners",
+          },
+      }
+      chart.draw()
+  }
 });
 
 // end
