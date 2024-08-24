@@ -201,6 +201,7 @@ OrgChart.templates.hidden.nodeMenuButton = "";
 OrgChart.templates.hidden.state = "";
 OrgChart.templates.hidden.entityType = "";
 OrgChart.templates.hidden.visualIndicator = "";
+OrgChart.templates.hidden.icons_0 = "";
 OrgChart.slinkTemplates.hiddenSlinks = Object.assign({}, OrgChart.slinkTemplates.orange);
 OrgChart.slinkTemplates.hiddenSlinks.link = '';
 // hidden teamplates end
@@ -553,6 +554,9 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
             "externalEntityNode":{
                 template: "ula",
             },
+            "individualOwners":{
+                template: "individualOwners",
+            },
 
         }
         chart.draw()
@@ -571,37 +575,85 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
             "externalEntityNode":{
                 template: "ula",
             },
+            "individualOwners":{
+                template: "individualOwners",
+            },
         }
         chart.draw()
     }
 });
 
-let slinks = [];
+// let slinks = [];
+// document.querySelector('#slinkBtn').addEventListener('click', function () {
+//     if (chart.config.slinks.length > 0) {
+//         slinks = chart.config.slinks;
+//         chart.config.slinks = [];
+//         slinks.forEach(slink => {
+//             let node = chart.get(slink.to);
+//             if (node.tags.includes("additionalOwners")) {
+//                 node.tags = ["hidden"]
+//             }
+//             chart.update(node);
+//         })
+//         chart.draw();
+//     }
+//     else {
+//         chart.config.slinks = slinks;
+//         slinks.forEach(slink => {
+//             let node = chart.get(slink.to);
+//             node.tags = ["additionalOwners"];
+//             chart.update(node);
+//         })
+//         chart.draw()
+//     }
+
+
+// });
+
 document.querySelector('#slinkBtn').addEventListener('click', function () {
-    if (chart.config.slinks.length > 0) {
-        slinks = chart.config.slinks;
-        chart.config.slinks = [];
-        slinks.forEach(slink => {
-            let node = chart.get(slink.to);
-            if (node.tags.includes("additionalOwners")) {
-                node.tags = ["hidden"]
-            }
-            chart.update(node);
-        })
-        chart.draw();
-    }
-    else {
-        chart.config.slinks = slinks;
-        slinks.forEach(slink => {
-            let node = chart.get(slink.to);
-            node.tags = ["additionalOwners"];
-            chart.update(node);
-        })
+    if (chart.config.tags.additionalOwners.template == "additionalOwners") {
+        chart.config.tags = {
+            "additionalOwners": {
+                template: "hidden"
+            },
+            "hidden": {
+                template: "hidden"
+            },
+            "partnerNode":{
+                template: "polina"
+            },
+            "externalEntityNode":{
+                template: "ula",
+            },
+            "individualOwners":{
+                template: "individualOwners",
+            },
+
+        }
         chart.draw()
     }
-
-
+    else {
+        chart.config.tags = {        
+            "additionalOwners":{
+                template: "additionalOwners"
+            },
+            "partnerNode":{
+                template: "polina"
+            },
+            "hidden": {
+                template: "hidden"
+            },
+            "externalEntityNode":{
+                template: "ula",
+            },
+            "individualOwners":{
+                template: "individualOwners",
+            },
+        }
+        chart.draw()
+    }
 });
+
 // end
 chart.searchUI.on('show-items', function (sender) {
     if (sender.lastSearch.length) {
