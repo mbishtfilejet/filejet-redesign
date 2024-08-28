@@ -115,13 +115,12 @@ OrgChart.templates.externalIndividualOwners.icons_0 = '<foreignobject data-width
 
 // start ula >red rectangle templates > unmanaged entity
 OrgChart.templates.ula.size = [320, 90];
-OrgChart.templates.ula.min = Object.assign({}, OrgChart.templates.ula);
-OrgChart.templates.ula.min.size = [320, 60];
+OrgChart.templates.ula = Object.assign({}, OrgChart.templates.ula);
 OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.ula.entityName = '<text data-marrk-field="entityName" data-width="230" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="30" fill="#fff">{val}</text>';
 OrgChart.templates.ula.state = '<text data-width="65" data-marrk-field="state" class="fs-6 text-white" fill="#fff" x="15" y="60">{val}</text>';
 OrgChart.templates.ula.entityType = '<text data-width="50" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="60">{val}</text>';
-OrgChart.templates.ula.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="60">{val}</foreignobject>';
+OrgChart.templates.ula.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="60">{val}</text>';
 
 OrgChart.templates.ula.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#F57C00" stroke-width="1" stroke="#F57C00"  rx="10" ry="10"></rect>`;
@@ -371,6 +370,23 @@ var chart = new OrgChart(document.getElementById("tree"), {
        },
        "externalIndividualOwners":{
         template:"externalIndividualOwners",
+        nodeMenu: {
+            details: {
+                text: "Entity Summary",
+                icon: summaryEntity,
+                onClick: externalEntitySummaryForm,
+            },
+            edit: {
+                text: "Update Entity",
+                icon: updateEntity,
+                onClick: updateEntityExternalNode,
+            },
+            subsidiary: {
+                text: "Add Owners",
+                icon: addEntity,
+                onClick: callHandler,
+            }
+        },
        },
         "Subs C": {
             template: "ula",
@@ -379,16 +395,15 @@ var chart = new OrgChart(document.getElementById("tree"), {
         "externalEntityNode":{
             template: "ula",
             nodeMenu: {
-                edit: {
-                    text: "Update Entity",
-                    icon: updateEntity,
-                    onClick: updateEntityExternalNode,
-                },
-        
                 details: {
                     text: "Entity Summary",
                     icon: summaryEntity,
                     onClick: externalEntitySummaryForm,
+                },
+                edit: {
+                    text: "Update Entity",
+                    icon: updateEntity,
+                    onClick: updateEntityExternalNode,
                 },
                 subsidiary: {
                     text: "Add Owners",
@@ -400,6 +415,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
         "partnerNode": {
             template: "polina",
             nodeMenu: {
+                details: {
+                    text: "Entity Summary",
+                    icon: summaryEntity,
+                },
                 action: {
                     text: "Take Action",
                     icon: actionIcon
@@ -413,20 +432,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
                     icon: updateEntity,
                     onClick: callHandler1,
                 },
-        
-                details: {
-                    text: "Entity Summary",
-                    icon: summaryEntity,
-                },
-                // subsidiary: {
-                //     text: "Add Owners",
-                //     icon: addEntity,
-                //     onClick: callHandler,
-                // }
-                // add: {
-                //     text: "Add Entity",
-                //     icon: addEntity
-                // }
             },
         },
         "additionalOwners":{
@@ -457,6 +462,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
     searchFields: ["Entity_Name", "Entity_Type", "State", "Company", "Ownership", "Compliance", "Manager", "Product_Manager", "President", "Parent_Entity"],
 
     nodeMenu: {
+        details: {
+            text: "Entity Summary",
+            icon: summaryEntity,
+        },
         action: {
             text: "Take Action",
             icon: actionIcon
@@ -470,20 +479,11 @@ var chart = new OrgChart(document.getElementById("tree"), {
             icon: updateEntity,
             onClick: callHandler1,
         },
-
-        details: {
-            text: "Entity Summary",
-            icon: summaryEntity,
-        },
         subsidiary: {
             text: "Add Owners",
             icon: addEntity,
             onClick: callHandler,
         }
-        // add: {
-        //     text: "Add Entity",
-        //     icon: addEntity
-        // }
     },
     dottedLines: [
         { "from": "add-10","to": "1"},
@@ -526,13 +526,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
     // },
 });
 
-// onclick on node dont open summary form
-chart.onNodeClick((args) => {
-    //chart.editUI.show(args.node.id, false); 
-    sender.editUI.show(args.node.id, true); 
-    return false; //to cansel the click event
-});
-// end
 
 // toggle button show/hide partner & slinks nodes
 let partnerNodeState = 'polina';
