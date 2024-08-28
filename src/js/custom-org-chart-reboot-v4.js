@@ -768,18 +768,27 @@ chart.on('node-layout', function (sender, args) {
 
 });
 // end filtered chart js
-// create ellipsis for long entity name on nodes
-window.addEventListener('DOMContentLoaded', function() {
-    const entityContainers = document.querySelectorAll('.entityNameEllipsis');
-    entityContainers.forEach(entityContainer => {
-      if (entityContainer.scrollWidth > entityContainer.clientWidth) {
-        entityContainer.style.textOverflow = 'ellipsis';
-      } else {
-        entityContainer.style.textOverflow = 'clip';
-      }
-    });
-});  
-// end ellipsis
+
+chart.onNodeClick((args) => {
+    const nodeId = String(args.node.id); // Ensure it's a string
+    
+    if (nodeId.startsWith('balkan_dotted')) {
+        return false; // Do nothing and cancel the click event
+    }
+
+    chart.editUI.show(args.node.id, false); 
+    return false; // Cancel the click event
+});
+
+
+
+
+
+
+
+
+
+
 // custom org select
 // JavaScript to handle the custom select behavior
 var selectContainer = document.querySelector(".org-custom-select");
