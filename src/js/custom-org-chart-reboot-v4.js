@@ -99,11 +99,13 @@ OrgChart.templates.externalIndividualOwners.size = [320, 110];
 OrgChart.templates.externalIndividualOwners.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,55)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.externalIndividualOwners.entityName = '<text data-width="240" data-marrk-field="entityName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="25" width="230" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.state = '<text data-width="63" data-marrk-field="state" class="fs-6 text-white" fill="#fff" x="15" y="45">{val}</text>';
-OrgChart.templates.externalIndividualOwners.entityType = '<text data-width="220" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="45">{val}</text>';
+OrgChart.templates.externalIndividualOwners.entityType = '<text data-width="50" data-marrk-field="Entity_Type" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="45">{val}</text>';
 OrgChart.templates.externalIndividualOwners.individualOwnerName = '<text data-width="240" data-marrk-field="individualOwnerName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="75" width="230" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.individualType = '<text data-width="110" data-marrk-field="individualType" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.ownershipPercentage = '<text data-width="180" data-marrk-field="ownershipPercentage" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
+OrgChart.templates.externalIndividualOwners.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="45">{val}</text>';
+
 OrgChart.templates.externalIndividualOwners.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#F57C00" stroke-width="1" stroke="#F57C00" rx="10" ry="10"></rect>`;
 OrgChart.templates.externalIndividualOwners.plus = '<circle cx="15" cy="15" r="15" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>'
