@@ -139,17 +139,8 @@ OrgChart.templates.polina.entityType = '<text data-width="240" class="fs-6 font-
 OrgChart.templates.polina.state = '<text data-width="60" class="fs-6 text-white" fill="#fff" x="25" y="50">{val}</text>';
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.polina.icons_0 = '<foreignobject data-width="60" class="d-block text-end" fill="#000000" width="60" height="28" x="225" y="5">{val}</foreignobject>';
-
-OrgChart.templates.polina.node = `
-    <defs>
-        <linearGradient id="grayNode" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#929394;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#929394;stop-opacity:1" />
-        </linearGradient>
-    </defs>
-    <rect x="0" y="0" height="70" width="300" fill="url(#grayNode)" stroke-width="1" stroke="#aeaeae" rx="40" ry="40"></rect>`;
-
-
+OrgChart.templates.polina.node =
+    `<rect x="0" y="0" height="70" width="300" fill="#929394" stroke-width="1" stroke="#929394" rx="40" ry="40"></rect>`;
 
 OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" stroke="#AEAEAE" stroke-width="1"></circle>'
     + '<text text-anchor="middle" style="font-size: 18px;cursor:pointer;" fill="#757575" x="15" y="22">{collapsed-children-count}</text>';
