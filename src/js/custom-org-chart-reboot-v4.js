@@ -445,7 +445,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     },
 
     filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'Entity_Name', 'Entity_Type', 'Parent_Entity'],
-    searchFields: ["Entity_Name", "Entity_Type", "State", "Company", "Ownership", "Compliance", "Manager", "Product_Manager", "President", "Parent_Entity"],
+    searchFields: ["Entity_Name", "Entity_Type", "state","externalEntity","individualOwnerName","individualType","ownershipPercentage", "Company", "Ownership", "Compliance", "Manager", "Product_Manager", "President", "Parent_Entity"],
 
     nodeMenu: {
         details: {
@@ -485,7 +485,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
         externalEntity:"externalEntity",
         html:"html",
         icons_0: "html",
-        visualIndicator:"visualIndicator",
         tooltip: 'tooltip',
         individualOwnerName:"individualOwnerName",
         individualType: "individualType",
