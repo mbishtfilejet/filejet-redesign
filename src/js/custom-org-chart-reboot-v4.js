@@ -367,11 +367,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
                 icon: updateEntity,
                 onClick: updateEntityExternalNode,
             },
-            subsidiary: {
-                text: "Add Owners",
-                icon: addEntity,
-                onClick: callHandler,
-            }
         },
        },
         "Subs C": {
@@ -391,11 +386,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
                     icon: updateEntity,
                     onClick: updateEntityExternalNode,
                 },
-                subsidiary: {
-                    text: "Add Owners",
-                    icon: addEntity,
-                    onClick: callHandler,
-                }
             },
         },
         "partnerNode": {
