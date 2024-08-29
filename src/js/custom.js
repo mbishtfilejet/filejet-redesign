@@ -70,6 +70,18 @@ $(function () {
     "scrollX": true,
     "scrollY": "50vh",
   })
+  $('.data-table-listing-auto').DataTable({
+    
+    "lengthChange": false,
+    "pagingType": "simple_numbers",
+    "processing": true,
+    "language": {
+      "processing": '<div  role="status"> </div>',
+    },
+    "responsive": true,
+    "scrollX": true,
+    "scrollY": "auto",
+  })
   $('.data-table-listing-folder').DataTable({
     
     "lengthChange": false,
@@ -397,6 +409,7 @@ function showAchInfo() {
 function adjustDataTable() {
   // table header alignment when table have multiple tabs
   $('.data-table-listing').DataTable().columns.adjust();
+  $('.data-table-listing-auto').DataTable().columns.adjust();
   $('#trade-inprogress-table').DataTable().columns.adjust();
   $('#bl-inprogress-table').DataTable().columns.adjust();
   $('#ra-other-table').DataTable().columns.adjust();
