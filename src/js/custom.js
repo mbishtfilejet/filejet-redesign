@@ -80,7 +80,9 @@ $(function () {
     },
     "responsive": true,
     "scrollX": true,
-    "scrollY": "auto",
+    "scrollY": "50vh",
+    "scrollCollapse": true,
+    "autoWidth": false,
   })
   $('.data-table-listing-folder').DataTable({
     
