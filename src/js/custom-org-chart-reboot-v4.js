@@ -82,7 +82,6 @@ OrgChart.templates.individualOwners.individualOwnerName = '<text data-width="240
 OrgChart.templates.individualOwners.individualType = '<text data-width="110" data-marrk-field="individualType" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.individualOwners.ownershipPercentage = '<text data-width="180" data-marrk-field="ownershipPercentage" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
 
-OrgChart.templates.individualOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
 OrgChart.templates.individualOwners.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#039BE5" stroke-width="1" stroke="#039BE5" rx="10" ry="10"></rect>`;
 
@@ -103,7 +102,6 @@ OrgChart.templates.externalIndividualOwners.entityType = '<text data-width="50" 
 OrgChart.templates.externalIndividualOwners.individualOwnerName = '<text data-width="240" data-marrk-field="individualOwnerName" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="75" width="230" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.individualType = '<text data-width="110" data-marrk-field="individualType" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.ownershipPercentage = '<text data-width="180" data-marrk-field="ownershipPercentage" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.externalIndividualOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18d6c3" width="30" height="25" x="282" y="0">{val}</foreignobject>';
 OrgChart.templates.externalIndividualOwners.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="45">{val}</text>';
 
 OrgChart.templates.externalIndividualOwners.node =
@@ -165,7 +163,6 @@ OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="24
 OrgChart.templates.additionalOwners.html = '<foreignobject data-width="230" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems text-white" data-text-overflow="ellipsis" fill="#000000" width="255" height="54" x="15" y="40">{val}</foreignobject>';
 // OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" data-marrk-field="state" class="fs-6 text-white" fill="#000000" width="65" height="25" x="134" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.link = '<path marker-start="url(#dotSlinkYellow)" marker-end="url(#arrowSlinkYellow)"  stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
-OrgChart.templates.additionalOwners.visualIndicator = '<foreignobject data-width="30" data-marrk-field="visualIndicator" class="fs-5 font-weight-500 text-dark" data-text-overflow="ellipsis" fill="#18D6C3" width="30" height="25" x="250" y="0">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.defs =
         `<marker id="arrowSlinkYellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
             orient="auto-start-reverse"><path fill="#000" d="M 0 0 L 10 5 L 0 10 z" />
@@ -337,19 +334,10 @@ var chart = new OrgChart(document.getElementById("tree"), {
     enableDragDrop: true,
     searchDisplayField: 'entityName',
     orderBy: "order",
-    // scaleInitial: OrgChart.match.boundary,
     lazyLoading: true,
     enableSearch: true,
     miniMap: true,
     layout: OrgChart.normal,
-    // min:false,
-    // dottedLines: [
-    //     { from: 11, to: 0,},
-    //     { from: 12, to: 0,},
-    // ],
-    // linkBinding: {
-    //     link_field_0: "createdAt"
-    // },
     toolbar: {
         layout: false,
         zoom: true,
@@ -362,10 +350,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
         png: { text: "Export JPG", icon: exportJPG },
 
     },
-    // collapse: {
-    //     level: 1,
-    //     allChildren: true
-    // },
     tags: {
        "individualOwners":{
         template:"individualOwners",
@@ -494,7 +478,6 @@ var chart = new OrgChart(document.getElementById("tree"), {
     ],
 
     nodeBinding: {
-        // img_0: "img",
         entityName: "Entity_Name",
         entityType: "Entity_Type",
         state: "state",
@@ -507,25 +490,11 @@ var chart = new OrgChart(document.getElementById("tree"), {
         individualOwnerName:"individualOwnerName",
         individualType: "individualType",
         ownershipPercentage:"ownershipPercentage",
-       
     },
     linkBinding: {
         link_field_0: "createdAt"
     },
-
-    // slinks: [
-    //     { "from": 0, "to": "add-8", "label": "Additional owners"},
-    //     { "from": "ext-2", "to": "add-10", "label": "Additional owners"},
-    //     { "from": "9", "to": "add-11", "label": "Additional owners"}
-    // ],
-
     editUI: new editForm(),
-    // edit form
-    // tags: {
-    //     filter: {
-    //         template: 'dot'
-    //     }
-    // },
 });
 
 
@@ -714,9 +683,6 @@ function externalEntitySummaryForm(nodeId){
     // Open the Bootstrap modal
     $('#externalEntitySummaryEditForm').modal('show');
 }
-// chart.onDrop((args) => {
-//     alert("Chart node number: " + args.dragId + " position has been changed and dropped it to parent node : " + args.dropId);
-// });
 
 // hyperlinks end
 function pdf(nodeId) {
@@ -762,13 +728,11 @@ chart.on('node-layout', function (sender, args) {
     if (args.pnode.id == 6) {
         args.layout = OrgChart.treeLeftOffset;
     }
-    // else if (args.pnode.id == 14) {
-    //     args.layout = OrgChart.treeRightOffset;
-    // }
 
 });
 // end filtered chart js
 
+// when click on nodes open summary form
 chart.onNodeClick((args) => {
     const nodeId = String(args.node.id); // Ensure it's a string
     
@@ -779,14 +743,7 @@ chart.onNodeClick((args) => {
     chart.editUI.show(args.node.id, false); 
     return false; // Cancel the click event
 });
-
-
-
-
-
-
-
-
+// end
 
 
 // custom org select
