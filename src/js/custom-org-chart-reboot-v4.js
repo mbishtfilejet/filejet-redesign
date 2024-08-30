@@ -2,6 +2,8 @@
 
 // const { template } = require("grunt");
 
+// const { template } = require("grunt");
+
 var expandAllIcon = '<span class="icon me-0 icon-expand-all"></span>';
 
 var fitIcon = '<span class="icon me-0 icon-fit"></span>';
@@ -510,6 +512,9 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
           "individualOwners":{
               template: "individualOwners",
           },
+          "externalIndividualOwners":{
+            template:"externalIndividualOwners",
+          }
       }
       chart.draw()
   }
@@ -531,6 +536,9 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
           "individualOwners":{
               template: "individualOwners",
           },
+          "externalIndividualOwners":{
+            template:"externalIndividualOwners",
+          }
       }
       chart.draw()
   }
@@ -554,6 +562,9 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
           "individualOwners":{
               template: "individualOwners",
           },
+          "externalIndividualOwners":{
+            template:"externalIndividualOwners",
+          }
       }
       chart.draw()
   }
@@ -575,6 +586,9 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
           "individualOwners":{
               template: "individualOwners",
           },
+          "externalIndividualOwners":{
+            template:"externalIndividualOwners",
+          }
       }
       chart.draw()
   }
