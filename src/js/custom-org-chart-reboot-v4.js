@@ -152,10 +152,16 @@ OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" 
 OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);
 OrgChart.templates.additionalOwners.size = [270, 95];
 OrgChart.templates.additionalOwners.entityName = '<text data-width="230" class="fs-5 font-weight-500 fst-italic text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="20" width="285" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#000000" width="230" height="22" x="15" y="20">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.html = '<foreignobject data-width="230" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems text-white" data-text-overflow="ellipsis" fill="#000000" width="255" height="54" x="15" y="40">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#ffffff" width="230" height="22" x="15" y="20">{val}</foreignobject>';
+OrgChart.templates.additionalOwners.html = '<foreignobject data-width="230" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems text-white" data-text-overflow="ellipsis" fill="#ffffff" width="255" height="54" x="15" y="40">{val}</foreignobject>';
 // OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" class="fs-6 text-white" fill="#000000" width="65" height="25" x="134" y="20">{val}</foreignobject>';
-OrgChart.templates.additionalOwners.link = '<path marker-start="url(#dotSlinkYellow)" marker-end="url(#arrowSlinkYellow)"  stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
+// OrgChart.templates.additionalOwners.link = '<path marker-start="url(#dotSlinkYellow)" marker-end="url(#arrowSlinkYellow)"  stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
+OrgChart.templates.additionalOwners.link = `
+  <path marker-start="url(#dotSlinkYellow)" marker-end="url(#arrowSlinkYellow)"
+    stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" 
+    stroke-dasharray="2, 2" />
+`;
+
 OrgChart.templates.additionalOwners.defs =
         `<marker id="arrowSlinkYellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
             orient="auto-start-reverse"><path fill="#000" d="M 0 0 L 10 5 L 0 10 z" />
@@ -464,11 +470,11 @@ var chart = new OrgChart(document.getElementById("tree"), {
             onClick: callHandler,
         }
     },
-    dottedLines: [
-        { "from": "add-10","to": "1"},
-        { "from": "add-8", "to": "0" },
-        { "from": "add-11", "to": "9" },
-    ],
+    // dottedLines: [
+    //     { "from": "add-10","to": "1"},
+    //     { "from": "add-8", "to": "0" },
+    //     { "from": "add-11", "to": "9" },
+    // ],
 
     nodeBinding: {
         entityName: "Entity_Name",
@@ -749,7 +755,11 @@ chart.onNodeClick((args) => {
 });
 // end
 
-
+// 
+chart.on('exportstart', function (sender, args) {
+    args.styles += document.getElementById('exportStyles').outerHTML;
+});
+// 
 // custom org select
 // JavaScript to handle the custom select behavior
 var selectContainer = document.querySelector(".org-custom-select");
