@@ -330,6 +330,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     mouseScrool: OrgChart.action.scroll,
     align: OrgChart.align.center,
     movable: OrgChart.movable.node,
+    movable: OrgChart.movable.tree,
     enableDragDrop: true,
     searchDisplayField: 'entityName',
     orderBy: "order",
@@ -744,9 +745,9 @@ chart.on('node-layout', function (sender, args) {
 
 // when click on nodes open summary form
 chart.onNodeClick((args) => {
-    const nodeId = String(args.node.id); // Ensure it's a string
-    
-    if (nodeId.startsWith('balkan_dotted')) {
+    const nodeElement = document.querySelector(`[data-n-id='${args.node.id}']`);
+
+    if (nodeElement && nodeElement.classList.contains('additionalOwners')) {
         return false; // Do nothing and cancel the click event
     }
 
