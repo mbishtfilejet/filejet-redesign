@@ -36,7 +36,8 @@ var summaryEntity = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"
 
 var addEntity = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
     '<path d="M7.91012 3.00806L8 3C8.24546 3 8.44961 3.17688 8.49194 3.41012L8.5 3.5V7.5H12.5C12.7455 7.5 12.9496 7.67688 12.9919 7.91012L13 8C13 8.24546 12.8231 8.44961 12.5899 8.49194L12.5 8.5H8.5V12.5C8.5 12.7455 8.32312 12.9496 8.08988 12.9919L8 13C7.75454 13 7.55039 12.8231 7.50806 12.5899L7.5 12.5V8.5H3.5C3.25454 8.5 3.05039 8.32312 3.00806 8.08988L3 8C3 7.75454 3.17688 7.55039 3.41012 7.50806L3.5 7.5H7.5V3.5C7.5 3.25454 7.67688 3.05039 7.91012 3.00806L8 3L7.91012 3.00806Z"/>' +
-    '</svg>';
+    '</svg>'; 
+var deleteIcon = '<span class="icon icon-sm icon-delete m-0"></span>'
 var downloadTempMenu = '<span class="icon me-0 icon-md icon-download-template-menu"></span>';
 var exportCSV = '<span class="icon icon-md me-0 icon-export-csv"></span>';
 var exportJPG = '<span class="icon icon-md me-0 icon-export-jpg"></span>';
@@ -371,7 +372,12 @@ var chart = new OrgChart(document.getElementById("tree"), {
                 text: "Add Owners",
                 icon: addEntity,
                 onClick: callHandler,
-            }
+            },
+            deleteIcon: {
+                text: "Delete",
+                icon: deleteIcon,
+                onClick: deleteEntity,
+            },
         },
        },
         "Subs C": {
@@ -395,7 +401,12 @@ var chart = new OrgChart(document.getElementById("tree"), {
                     text: "Add Owners",
                     icon: addEntity,
                     onClick: callHandler,
-                }
+                },
+                deleteIcon: {
+                    text: "Delete",
+                    icon: deleteIcon,
+                    onClick: deleteEntity,
+                },
             },
         },
         "partnerNode": {
@@ -694,7 +705,11 @@ function externalEntitySummaryForm(nodeId){
     // Open the Bootstrap modal
     $('#externalEntitySummaryEditForm').modal('show');
 }
-
+function deleteEntity(nodeId) {
+    let nodeData = chart.get(nodeId);
+    // Open the Bootstrap modal
+    $('#deleteEntity').modal('show');
+}
 // hyperlinks end
 function pdf(nodeId) {
     OrgChart.pdfPrevUI.show(chart, {
