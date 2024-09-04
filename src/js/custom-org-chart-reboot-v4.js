@@ -102,10 +102,13 @@ OrgChart.templates.externalIndividualOwners.nodeMenuButton = '<g transform="matr
 OrgChart.templates.externalIndividualOwners.entityName = '<text data-width="240" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="25" width="230" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.state = '<text data-width="63" class="fs-6 text-white" fill="#fff" x="15" y="45">{val}</text>';
 OrgChart.templates.externalIndividualOwners.entityType = '<text data-width="50" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="45">{val}</text>';
+
 OrgChart.templates.externalIndividualOwners.individualOwnerName = '<text data-width="240" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="75" width="230" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.individualType = '<text data-width="110" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.ownershipPercentage = '<text data-width="180" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.externalIndividualOwners.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="45">{val}</text>';
+
+// OrgChart.templates.externalIndividualOwners.entityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="15" y="60">{val}</text>';
 
 OrgChart.templates.externalIndividualOwners.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#F57C00" stroke-width="1" stroke="#F57C00" rx="10" ry="10"></rect>`;
@@ -121,9 +124,11 @@ OrgChart.templates.ula.size = [320, 90];
 OrgChart.templates.ula = Object.assign({}, OrgChart.templates.ula);
 OrgChart.templates.ula.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,47)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.ula.entityName = '<text data-width="230" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="30" fill="#fff">{val}</text>';
-OrgChart.templates.ula.state = '<text data-width="65" class="fs-6 text-white" fill="#fff" x="15" y="60">{val}</text>';
-OrgChart.templates.ula.entityType = '<text data-width="50" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="60">{val}</text>';
-OrgChart.templates.ula.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="60">{val}</text>';
+// OrgChart.templates.ula.state = '<text data-width="65" class="fs-6 text-white" fill="#fff" x="15" y="60">{val}</text>';
+// OrgChart.templates.ula.entityType = '<text data-width="50" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="60">{val}</text>';
+// OrgChart.templates.ula.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="60">{val}</text>';
+
+OrgChart.templates.ula.entityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="15" y="60">{val}</text>';
 
 OrgChart.templates.ula.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#F57C00" stroke-width="1" stroke="#F57C00"  rx="10" ry="10"></rect>`;
@@ -491,6 +496,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     nodeBinding: {
         entityName: "Entity_Name",
         entityType: "Entity_Type",
+        entityData:"entityData",
         state: "state",
         entityTitle:"entityTitle",
         externalEntity:"externalEntity",
