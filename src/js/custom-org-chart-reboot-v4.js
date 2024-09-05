@@ -477,7 +477,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
             subLevels: 3
         }
     },
-
+        
     filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'Entity_Name', 'Entity_Type'],
     searchFields: ["Entity_Name", "Entity_Type", "state","externalEntity","individualOwnerName","individualType","ownershipPercentage", "Company", "Ownership", "Compliance", "Manager", "Product_Manager", "President", "Parent_Entity"],
 
@@ -536,8 +536,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
 // toggle button show/hide partner & slinks nodes
 let partnerNodeState = 'polina';
 let additionalOwnersState = 'additionalOwners';
-document.querySelector('#partnerBtn').addEventListener('click', function () {
-  if (chart.config.tags.partnerNode.template == "polina") {
+$(document).on('click', '#partnerBtn',function () {
+  if (!$(this).is(":checked") && chart.config.tags.partnerNode.template == "polina") {
     partnerNodeState = 'hidden';
       chart.config.tags = {
           "partnerNode": {
@@ -551,13 +551,15 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
           },
           "externalEntityNode":{
               template: "ula",
+              nodeMenu: externalNodeMenu()
+          },
+          "externalIndividualOwners":{
+            template:"externalIndividualOwners",
+            nodeMenu: externalNodeMenu()
           },
           "individualOwners":{
               template: "individualOwners",
           },
-          "externalIndividualOwners":{
-            template:"externalIndividualOwners",
-          }
       }
       chart.draw()
   }
@@ -565,7 +567,26 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
     partnerNodeState = 'polina'
       chart.config.tags = {
           "partnerNode":{
-              template: "polina"
+              template: "polina",
+              nodeMenu: {
+                details: {
+                    text: "Entity Summary",
+                    icon: summaryEntity,
+                },
+                action: {
+                    text: "Take Action",
+                    icon: actionIcon
+                },
+                open_entity: {
+                    text: "Open Entity",
+                    icon: openEntity,
+                },
+                edit: {
+                    text: "Update Entity",
+                    icon: updateEntity,
+                    onClick: callHandler1,
+                },
+            },
           },
           "additionalOwners":{
               template: additionalOwnersState
@@ -575,23 +596,44 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
           },
           "externalEntityNode":{
               template: "ula",
+              nodeMenu: externalNodeMenu()
+          },
+          "externalIndividualOwners":{
+            template:"externalIndividualOwners",
+            nodeMenu: externalNodeMenu()
           },
           "individualOwners":{
               template: "individualOwners",
           },
-          "externalIndividualOwners":{
-            template:"externalIndividualOwners",
-          }
       }
       chart.draw()
   }
-});
- document.querySelector('#slinkBtn').addEventListener('click', function () {
-  if (chart.config.tags.additionalOwners.template == "additionalOwners") {
+}).change();
+$(document).on('click', '#slinkBtn',function () {
+  if (!$(this).is(":checked") &&  chart.config.tags.additionalOwners.template == "additionalOwners") {
     additionalOwnersState = 'hidden';
       chart.config.tags = {
           "partnerNode": {
-              template: partnerNodeState
+              template: partnerNodeState,
+              nodeMenu: {
+                details: {
+                    text: "Entity Summary",
+                    icon: summaryEntity,
+                },
+                action: {
+                    text: "Take Action",
+                    icon: actionIcon
+                },
+                open_entity: {
+                    text: "Open Entity",
+                    icon: openEntity,
+                },
+                edit: {
+                    text: "Update Entity",
+                    icon: updateEntity,
+                    onClick: callHandler1,
+                },
+            },
           },
           "hidden": {
               template: "hidden"
@@ -601,13 +643,15 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
           },
           "externalEntityNode":{
               template: "ula",
+              nodeMenu: externalNodeMenu()
+          },
+          "externalIndividualOwners":{
+            template:"externalIndividualOwners",
+            nodeMenu: externalNodeMenu()
           },
           "individualOwners":{
               template: "individualOwners",
           },
-          "externalIndividualOwners":{
-            template:"externalIndividualOwners",
-          }
       }
       chart.draw()
   }
@@ -615,7 +659,26 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
     additionalOwnersState = 'additionalOwners';
       chart.config.tags = {
           "partnerNode":{
-              template: partnerNodeState
+              template: partnerNodeState,
+              nodeMenu: {
+                details: {
+                    text: "Entity Summary",
+                    icon: summaryEntity,
+                },
+                action: {
+                    text: "Take Action",
+                    icon: actionIcon
+                },
+                open_entity: {
+                    text: "Open Entity",
+                    icon: openEntity,
+                },
+                edit: {
+                    text: "Update Entity",
+                    icon: updateEntity,
+                    onClick: callHandler1,
+                },
+            },
           },
           "additionalOwners":{
               template: "additionalOwners"
@@ -625,18 +688,45 @@ document.querySelector('#partnerBtn').addEventListener('click', function () {
           },
           "externalEntityNode":{
               template: "ula",
+              nodeMenu: externalNodeMenu()
+          },
+          "externalIndividualOwners":{
+            template:"externalIndividualOwners",
+            nodeMenu: externalNodeMenu()
           },
           "individualOwners":{
               template: "individualOwners",
           },
-          "externalIndividualOwners":{
-            template:"externalIndividualOwners",
-          }
       }
       chart.draw()
   }
 });
-
+let externalNodeMenu = function() {
+  let nodeMenu= {
+        details: {
+            text: "Entity Summary",
+            icon: summaryEntity,
+            onClick: externalEntitySummaryForm,
+        },
+        edit: {
+            text: "Update Entity",
+            icon: updateEntity,
+            onClick: updateEntityExternalNode,
+        },
+        subsidiary: {
+            text: "Add Owners",
+            icon: addEntity,
+            onClick: callHandler,
+        },
+        remove: {
+            text: "Delete",
+            onClick: deleteEntity,
+        },
+    }
+ 
+  return nodeMenu;
+}
+// 
 // end
 chart.searchUI.on('show-items', function (sender) {
     if (sender.lastSearch.length) {
@@ -769,6 +859,8 @@ fetch('data-reboot-v2.json')
         // Load the JSON data into the chart after a delay of 100 milliseconds
         setTimeout(function () {
             chart.load(data);
+            $("#partnerBtn").trigger('click');
+            $("#slinkBtn").trigger('click');
         }, 100);
     })
     .catch(error => {
