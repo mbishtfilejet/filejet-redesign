@@ -218,7 +218,8 @@ OrgChart.templates.hidden.entityDescription = "";
 OrgChart.templates.hidden.nodeMenuButton = "";
 OrgChart.templates.hidden.state = "";
 OrgChart.templates.hidden.entityType = "";
-OrgChart.templates.hidden.visualIndicator = "";
+OrgChart.templates.hidden.entityData = "";
+OrgChart.templates.hidden.additionalEntityData = "";
 OrgChart.templates.hidden.icons_0 = "";
 OrgChart.slinkTemplates.hiddenSlinks = Object.assign({}, OrgChart.slinkTemplates.orange);
 OrgChart.slinkTemplates.hiddenSlinks.link = '';
@@ -374,6 +375,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         png: { text: "Export JPG", icon: exportJPG },
 
     },
+    
     tags: {
        "individualOwners":{
         template:"individualOwners",
@@ -396,9 +398,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
                 icon: addEntity,
                 onClick: callHandler,
             },
-            deleteIcon: {
+            remove: {
                 text: "Delete",
-                icon: deleteIcon,
                 onClick: deleteEntity,
             },
         },
@@ -425,9 +426,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
                     icon: addEntity,
                     onClick: callHandler,
                 },
-                deleteIcon: {
+                remove: {
                     text: "Delete",
-                    icon: deleteIcon,
                     onClick: deleteEntity,
                 },
             },
