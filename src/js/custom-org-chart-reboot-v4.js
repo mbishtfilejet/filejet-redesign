@@ -61,8 +61,11 @@ OrgChart.miniMap.position = {
 OrgChart.templates.olivia.size = [320, 90];
 OrgChart.templates.olivia.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,45)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.olivia.entityName = '<text data-width="240" class="fs-5 font-weight-500 text-white" data-text-overflow="ellipsis" x="15" y="30" fill="#fff">{val}</text>';
-OrgChart.templates.olivia.state = '<text data-width="70" class="fs-6 text-white" fill="#fff" x="15" y="60">{val}</text>';
-OrgChart.templates.olivia.entityType = '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" width="180" height="25" x="85" y="60">{val}</text>';
+// OrgChart.templates.olivia.state = '<text data-width="70" class="fs-6 text-white" fill="#fff" x="15" y="60">{val}</text>';
+// OrgChart.templates.olivia.entityType = '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" width="180" height="25" x="85" y="60">{val}</text>';
+
+OrgChart.templates.olivia.entityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="15" y="60">{val}</text>';
+
 OrgChart.templates.olivia.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#039BE5" stroke-width="1" stroke="#039BE5" rx="10" ry="10"></rect>`;
 
@@ -78,12 +81,16 @@ OrgChart.templates.individualOwners = Object.assign({}, OrgChart.templates.olivi
 OrgChart.templates.individualOwners.size = [320, 110];
 OrgChart.templates.individualOwners.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,55)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.individualOwners.entityName = '<text data-width="240" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="25" width="230" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.individualOwners.state = '<text data-width="63" class="fs-6 text-white" fill="#fff" x="15" y="45">{val}</text>';
-OrgChart.templates.individualOwners.entityType = '<text data-width="180" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="45">{val}</text>';
+// OrgChart.templates.individualOwners.state = '<text data-width="63" class="fs-6 text-white" fill="#fff" x="15" y="45">{val}</text>';
+// OrgChart.templates.individualOwners.entityType = '<text data-width="180" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="45">{val}</text>';
+
+OrgChart.templates.individualOwners.entityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="15" y="45">{val}</text>';
 
 OrgChart.templates.individualOwners.individualOwnerName = '<text data-width="240" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="75" width="230" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.individualOwners.individualType = '<text data-width="110" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.individualOwners.ownershipPercentage = '<text data-width="180" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
+// OrgChart.templates.individualOwners.individualType = '<text data-width="110" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
+// OrgChart.templates.individualOwners.ownershipPercentage = '<text data-width="180" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
+
+OrgChart.templates.individualOwners.additionalEntityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="15" y="92">{val}</text>';
 
 OrgChart.templates.individualOwners.node =
     `<rect x="0" y="0" height="{h}" width="{w}" fill="#039BE5" stroke-width="1" stroke="#039BE5" rx="10" ry="10"></rect>`;
@@ -100,13 +107,21 @@ OrgChart.templates.externalIndividualOwners = Object.assign({}, OrgChart.templat
 OrgChart.templates.externalIndividualOwners.size = [320, 110];
 OrgChart.templates.externalIndividualOwners.nodeMenuButton = '<g transform="matrix(1,0,0,1,280,55)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#fff" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.externalIndividualOwners.entityName = '<text data-width="240" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="25" width="230" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.externalIndividualOwners.state = '<text data-width="63" class="fs-6 text-white" fill="#fff" x="15" y="45">{val}</text>';
-OrgChart.templates.externalIndividualOwners.entityType = '<text data-width="50" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="45">{val}</text>';
+// OrgChart.templates.externalIndividualOwners.state = '<text data-width="63" class="fs-6 text-white" fill="#fff" x="15" y="45">{val}</text>';
+// OrgChart.templates.externalIndividualOwners.entityType = '<text data-width="50" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="45">{val}</text>';
+
+OrgChart.templates.externalIndividualOwners.entityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="15" y="45">{val}</text>';
 
 OrgChart.templates.externalIndividualOwners.individualOwnerName = '<text data-width="240" class="fs-5 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="75" width="230" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.externalIndividualOwners.individualType = '<text data-width="110" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.externalIndividualOwners.ownershipPercentage = '<text data-width="180" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
-OrgChart.templates.externalIndividualOwners.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="45">{val}</text>';
+
+
+// OrgChart.templates.externalIndividualOwners.individualType = '<text data-width="110" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="92" width="150" height="25" fill="#fff">{val}</text>';
+// OrgChart.templates.externalIndividualOwners.ownershipPercentage = '<text data-width="180" class="fs-6 font-weight-500 text-white entityNameEllipsis" data-text-overflow="ellipsis" x="140" y="92" width="230" height="25" fill="#fff">{val}</text>';
+
+OrgChart.templates.externalIndividualOwners.additionalEntityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="15" y="92">{val}</text>';
+
+
+// OrgChart.templates.externalIndividualOwners.externalEntity= '<text data-width="200" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="140" y="45">{val}</text>';
 
 // OrgChart.templates.externalIndividualOwners.entityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="15" y="60">{val}</text>';
 
@@ -143,8 +158,11 @@ OrgChart.templates.ula.icons_0 = '<foreignobject data-width="60" class="d-block 
 OrgChart.templates.polina.size = [300, 70];
 OrgChart.templates.polina.nodeMenuButton = '<g transform="matrix(1,0,0,1,270,35)" data-ctrl-n-menu-id="{id}"><rect x="-4" y="-10" fill="#000000" fill-opacity="0" width="22" height="22"></rect><circle cx="0" cy="0" r="2" fill="#fff"></circle><circle cx="7" cy="0" r="2" fill="#fff"></circle><circle cx="14" cy="0" r="2" fill="#fff"></circle></g>';
 OrgChart.templates.polina.entityName = '<text data-width="200" class="fs-5 font-weight-500 text-white" data-text-overflow="ellipsis" x="25" y="25" fill="#fff">{val}</text>';
-OrgChart.templates.polina.entityType = '<text data-width="240" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="50">{val}</text>';
-OrgChart.templates.polina.state = '<text data-width="60" class="fs-6 text-white" fill="#fff" x="25" y="50">{val}</text>';
+// OrgChart.templates.polina.entityType = '<text data-width="240" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="85" y="50">{val}</text>';
+// OrgChart.templates.polina.state = '<text data-width="60" class="fs-6 text-white" fill="#fff" x="25" y="50">{val}</text>';
+
+OrgChart.templates.polina.entityData= '<text data-width="250" class="fs-6 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#fff" x="25" y="50">{val}</text>';
+
 OrgChart.templates.polina.link = '<path stroke-linejoin="round" stroke="#000" stroke-width="1px" fill="none" d="{rounded}" />';
 OrgChart.templates.polina.icons_0 = '<foreignobject data-width="60" class="d-block text-end" fill="#000000" width="60" height="28" x="225" y="5">{val}</foreignobject>';
 OrgChart.templates.polina.node =
@@ -497,6 +515,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
         entityName: "Entity_Name",
         entityType: "Entity_Type",
         entityData:"entityData",
+        additionalEntityData:"additionalEntityData",
         state: "state",
         entityTitle:"entityTitle",
         externalEntity:"externalEntity",
