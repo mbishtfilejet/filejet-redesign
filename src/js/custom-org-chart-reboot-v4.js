@@ -175,7 +175,7 @@ OrgChart.templates.polina.plus = '<circle cx="15" cy="15" r="15" fill="#FFFFFF" 
 // start additional owner >green one edge cut rectangle > additional owner
 OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);
 OrgChart.templates.additionalOwners.size = [270, 95];
-OrgChart.templates.additionalOwners.entityName = '<text data-width="230" class="fs-5 font-weight-500 fst-italic text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="20" width="285" height="25" fill="#fff">{val}</text>';
+OrgChart.templates.additionalOwners.additionalEntityName = '<text data-width="230" class="fs-5 font-weight-500 fst-italic text-white entityNameEllipsis" data-text-overflow="ellipsis" x="15" y="20" width="285" height="25" fill="#fff">{val}</text>';
 OrgChart.templates.additionalOwners.entityTitle = '<foreignobject data-width="240" data-marrk-field="EntityTitle" class="fs-9 font-weight-400 text-white" data-text-overflow="ellipsis" fill="#ffffff" width="230" height="22" x="15" y="20">{val}</foreignobject>';
 OrgChart.templates.additionalOwners.html = '<foreignobject data-width="230" data-marrk-field="html" class="fs-7 font-weight-400 pt-0 additionalItems text-white" data-text-overflow="ellipsis" fill="#ffffff" width="255" height="54" x="15" y="40">{val}</foreignobject>';
 // OrgChart.templates.additionalOwners.state = '<foreignobject data-width="240" class="fs-6 text-white" fill="#000000" width="65" height="25" x="134" y="20">{val}</foreignobject>';
@@ -462,7 +462,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
             template: "hidden"
         },
         filter: {
-            template: 'dot'
+            template: 'dot',
         },
         "subLevels0": {
             subLevels: 0
@@ -512,6 +512,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     // ],
 
     nodeBinding: {
+        additionalEntityName:"Entity_Name",
         entityName: "Entity_Name",
         entityType: "Entity_Type",
         entityData:"entityData",
@@ -540,6 +541,9 @@ $(document).on('click', '#partnerBtn',function () {
   if (!$(this).is(":checked") && chart.config.tags.partnerNode.template == "polina") {
     partnerNodeState = 'hidden';
       chart.config.tags = {
+            filter: {
+                template: 'dot',
+            },
           "partnerNode": {
               template: "hidden"
           },
@@ -566,6 +570,9 @@ $(document).on('click', '#partnerBtn',function () {
   else {
     partnerNodeState = 'polina'
       chart.config.tags = {
+            filter: {
+                template: 'dot',
+            },
           "partnerNode":{
               template: "polina",
               nodeMenu: {
@@ -613,6 +620,9 @@ $(document).on('click', '#slinkBtn',function () {
   if (!$(this).is(":checked") &&  chart.config.tags.additionalOwners.template == "additionalOwners") {
     additionalOwnersState = 'hidden';
       chart.config.tags = {
+        filter: {
+            template: 'dot',
+        },
           "partnerNode": {
               template: partnerNodeState,
               nodeMenu: {
@@ -658,6 +668,9 @@ $(document).on('click', '#slinkBtn',function () {
   else {
     additionalOwnersState = 'additionalOwners';
       chart.config.tags = {
+        filter: {
+            template: 'dot',
+        },
           "partnerNode":{
               template: partnerNodeState,
               nodeMenu: {
