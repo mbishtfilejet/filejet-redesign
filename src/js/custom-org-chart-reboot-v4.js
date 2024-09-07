@@ -903,6 +903,43 @@ chart.onNodeClick((args) => {
 
 // 
 chart.on('exportstart', function (sender, args) {
+    OrgChart.templates.additionalOwners.node =
+    `<rect x="0" y="0" height="{h}" width="{w}" fill="#48AF56" stroke-width="1" stroke="#48AF56"  rx="10" ry="10"></rect>`;
+    chart.on('field', function (sender, args) {
+        if (args.name == 'html') {
+            let html = args.data["html"];
+           
+    
+            args.value = `<foreignobject x="10" y="10" width="200" height="900">
+                                <div class="fields h-100" xmlns="http://www.w3.org/1999/xhtml" >
+                                    ${html ? html  : ''}
+    
+                                </div>
+                            </foreignobject>`;
+        }
+    });
+    
+    chart.on('node-initialized', function (sender, args) {
+        let node = args.node;
+        let data = chart._get(node.id);
+        console.log(data)
+        if (data.html) {
+            let html = data["html"];
+    
+            let sss = `<foreignobject  x="10" y="10" width="200" height="900">
+                                <div class="fields">
+                                    ${html ? html : ''}
+                                </div>
+                            </foreignobject>`;
+    
+            document.getElementById('test_height').innerHTML = sss;
+    
+            let rect1 = document.querySelector('#test_height .fields').getBoundingClientRect();
+    
+            node.h = rect1.height + 60;
+        }
+    });
+
     args.styles += document.getElementById('exportStyles').outerHTML;
 });
 // 
