@@ -839,13 +839,8 @@ function deleteEntity(nodeId) {
     $('#deleteEntity').modal('show');
 }
 // hyperlinks end
-function pdf(nodeId) {
-    OrgChart.pdfPrevUI.show(chart, {
-        format: "A4",
-        header: 'My Header',
-        footer: 'My Footer. Page {current-page} of {total-pages}'
-    });
-}
+
+
 
 chart.on('init', function (sender, args) {
     document.getElementById("loadPlaceholder").style.display = "none";
@@ -901,6 +896,120 @@ chart.onNodeClick((args) => {
 });
 // end
 
+// pdf preview start
+function pdf(nodeId) {
+    OrgChart.pdfPrevUI.show(chart, {
+        format: "fit",
+        header: 'My Header',
+        footer: 'My Footer. Page {current-page} of {total-pages}'
+    });
+}
+OrgChart.pdfPrevUI._show = OrgChart.pdfPrevUI.show;
+OrgChart.pdfPrevUI.show = function (chart, options) {
+    OrgChart.pdfPrevUI._show(chart, options);
+    chart.element.querySelector('#boc-prev-cancel').addEventListener('click', function(){
+        // start additional owner >green one edge cut rectangle > additional owner
+       
+        OrgChart.templates.additionalOwners.node = `
+        <svg id="resizableSvg" width="320" height="95" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="gradAdditionalOwners" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#48af56;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#48af56;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <path d="M10 0 H250 Q270 0 270 20 V85 Q270 95 260 95 H10 Q0 95 0 85 V10 Q0 0 10 0 Z"
+                  fill="#48AF56" stroke="#52E34B" stroke-width="0"></path>
+            <polygon points="250,0 270,0 270,20" fill="#F3F5F8"></polygon>
+            <line x1="250" y1="0" x2="270" y2="20" stroke="#52E34B" stroke-width="1"></line>
+        </svg>
+        `;
+        chart.on('field', function (sender, args) {
+            if (args.name == 'html') {
+                let html = args.data["html"];
+            
+        
+                args.value = `
+                                        ${html ? html  : ''}
+                                `;
+            }
+        });
+        chart.on('node-initialized', function (sender, args) {
+            let node = args.node;
+            let data = chart._get(node.id);
+            console.log(data)
+            if (data.html) {
+                let html = data["html"];
+        
+                let sss = `
+                                <div class="fields h-auto">
+                                        ${html ? html : ''}
+                                </div>
+                            `;
+        
+                document.getElementById('test_height').innerHTML = sss;
+        
+                let rect1 = document.querySelector('#test_height .fields').getBoundingClientRect();
+        
+                node.h = rect1.height + 90;
+            }
+        });
+    });
+};
+function preview() {
+    OrgChart.pdfPrevUI.show(chart, {});
+}
+// pdf preview end
+// export end
+chart.on('exportend', function () {
+
+    OrgChart.templates.additionalOwners.node = `
+    <svg id="resizableSvg" width="320" height="95" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="gradAdditionalOwners" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#48af56;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#48af56;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <path d="M10 0 H250 Q270 0 270 20 V85 Q270 95 260 95 H10 Q0 95 0 85 V10 Q0 0 10 0 Z"
+              fill="#48AF56" stroke="#52E34B" stroke-width="0"></path>
+        <polygon points="250,0 270,0 270,20" fill="#F3F5F8"></polygon>
+        <line x1="250" y1="0" x2="270" y2="20" stroke="#52E34B" stroke-width="1"></line>
+    </svg>
+    `;
+    chart.on('field', function (sender, args) {
+        if (args.name == 'html') {
+            let html = args.data["html"];
+        
+
+            args.value = `
+                                    ${html ? html  : ''}
+                            `;
+        }
+    });
+    chart.on('node-initialized', function (sender, args) {
+        let node = args.node;
+        let data = chart._get(node.id);
+        console.log(data)
+        if (data.html) {
+            let html = data["html"];
+
+            let sss = `
+                                <div class="fields h-auto">
+                                    ${html ? html : ''}
+                                </div>
+                        `;
+
+            document.getElementById('test_height').innerHTML = sss;
+
+            let rect1 = document.querySelector('#test_height .fields').getBoundingClientRect();
+
+            node.h = rect1.height + 90;
+        }
+    });
+   
+})
+// export end
 // 
 chart.on('exportstart', function (sender, args) {
     OrgChart.templates.additionalOwners.node =
@@ -936,11 +1045,13 @@ chart.on('exportstart', function (sender, args) {
     
             let rect1 = document.querySelector('#test_height .fields').getBoundingClientRect();
     
-            node.h = rect1.height + 60;
+            node.h = rect1.height + 90;
         }
     });
 
     args.styles += document.getElementById('exportStyles').outerHTML;
+  
+
 });
 // 
 // custom org select
