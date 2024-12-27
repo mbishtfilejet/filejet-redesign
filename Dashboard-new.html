@@ -175,7 +175,7 @@
             </div>
             <div class="main-content-wrapper">
                 <div class="container-fluid container-lg">
-                    <div class="header py-1">
+                    <div class="header py-2">
                         <!-- <div class="mobile-header d-block d-lg-none text-end mb-3">
                             <div class="row align-items-center mt-3">
                                 <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-2 search-bar col-7"
@@ -238,12 +238,16 @@
                             </div>
                             <div
                                 class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
-                                <div class="border border-1 rounded-5 m-0 white-bg d-flex align-items-center px-3 py-3 py-md-2 search-bar"
-                                    data-bs-toggle="modal" data-bs-target="#searchModal">
-                                    <span class="icon icon-search-grey icon-smd opacity-50"></span>
-                                    <span class="text-placeholder w-100 d-none d-md-block">What are you looking
-                                        for?</span>
-                                </div>
+                                <div class="dropdown border border-1 rounded-2 shadow  m-0 white-bg  px-3 py-2 py-md-2 w-50">
+                                    <button class=" p-1 w-100 dropdown-toggle d-flex align-items-center justify-content-between text-placeholder-d2 border-0 white-bg" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Group
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                      <li><a class="dropdown-item" href="#">Action</a></li>
+                                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                  </div>
                                 <div class="notification position-relative px-4">
                                     <a href="javascript:void(0)" data-bs-toggle="modal"
                                         data-bs-target="#notificationModal">
@@ -298,1060 +302,423 @@
                         </div>
                     </div>
                 </div>
-                <hr>
                 <div class="container-fluid container-lg">
                     <div class="main-content pt-3">
-                        <!-- Card Section Start -->
-                        <div class="d-flex mb-5 flex-wrap">
-                            <div class="col-12 col-lg-4 px-1 mb-2">
-                                <div class="card card-red h-100">
-                                    <div class="card-body d-flex justify-content-between">
-                                        <div class="d-flex flex-column justify-content-between col-6 col-sm-7 col-lg-6">
-                                            <h4>Compliance Summary</h4>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                    <span
-                                                        class="red-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                    <span>2 Overdue</span>
-                                                </li>
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                    <span
-                                                        class="blue-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                    <span>3 Upcoming</span>
-                                                </li>
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                    <span
-                                                        class="green-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                    <span>5 Completed</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-6 col-sm-4 col-lg-6">
-                                            <img src="dist/images/pie.svg" alt="">
-                                        </div>
+                        <!-- Quick Action Start -->
+                        <div class="d-flex flex-column mb-5 p-3 border rounded-4 flex-wrap quick-actions">
+                            <div class="m-0 fs-5 fw-normal text-light">Quick Actions</div>
+                            <div class=" d-flex mt-3 actions">
+                                <div class="col-12 col-lg-3 px-1 mb-2">
+                                    <div class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 ">
+                                        <span class="text-placeholder-d2">New Group</span>
+                                        <span class="icon icon-search-grey icon-smd opacity-50"></span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-lg-4 px-1 mb-2">
-                                <div class="card card-purple h-100">
-                                    <div class="card-body">
-                                        <a href="/entities.html"
-                                            class="d-flex flex-column h-100 justify-content-between">
-                                            <h4 class="text-white">Total Entities</h4>
-                                            <div class="d-flex justify-content-between align-items-end pt-4 mt-4">
-                                                <div class="text-white text-xl">12</div>
-                                                <span class="icon icon-lg icon-arrow-right-white"></span>
-                                            </div>
-                                        </a>
+
+                                <div class="col-12 col-lg-3 px-1 mb-2">
+                                    <div class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2">
+                                        <span class="text-placeholder-d2">New Entity Registration</span>
+                                        <span class="icon icon-search-grey icon-smd opacity-50"></span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-lg-4 px-1 mb-2">
-                                <div class="card card-green h-100">
-                                    <div class="card-body">
-                                        <a href="javascript:void(0)"
-                                            class="d-flex flex-column h-100 justify-content-between"
-                                            data-bs-toggle="modal" data-bs-target="#inProgressModal">
-                                            <h4>In Progress</h4>
-                                            <div class="d-flex justify-content-between align-items-end pt-4 mt-4">
-                                                <div class="text-xl">6</div>
-                                                <span class="icon icon-lg icon-arrow-forward-black"></span>
-                                            </div>
-                                        </a>
+
+                                <div class="col-12 col-lg-3 px-1 mb-2">
+                                    <div class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 ">
+                                        <span class="text-placeholder-d2">Add Existing Entity</span>
+                                        <span class="icon icon-search-grey icon-smd opacity-50"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-3 px-1 mb-2">
+                                    <div class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2">
+                                        <span class="text-placeholder-d2">Other</span>
+                                        <span class="icon icon-search-grey icon-smd opacity-50"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Card Section End -->
+                        <!-- Quick Action  End -->
 
-                        <div>
-                            <div class="d-flex justify-content-between pb-4 mb-2 align-items-center flex-wrap">
-                                <span class="m-0 fs-4 fw-normal">Compliance Tasks</span>
-                                <ul class="nav nav-tabs nav-circluar" id="compliance" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="ct1" data-toggle="tab" href="#ct-1" role="tab"
-                                            aria-controls="ct-1" aria-selected="true">ALL</a>
+
+                        <!-- Card Start -->
+                        <div class="row mt-5">
+                            <div class="col-12 d-flex justify-content-between align-items-center">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item position-relative curve-bottom-right-edge">
+                                        <a href="javascript:void(0)" id="ra-detail-tab" class="nav-link active"
+                                            data-bs-toggle="tab" data-bs-target="#ra-detail" role="tab"
+                                            aria-controls="ra-detail" aria-selected="true">Filejet as RA</a>
+
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="ct2" data-toggle="tab" href="#ct-2" role="tab"
-                                            aria-controls="ct-2" aria-selected="false">
-                                            Overdue
-                                            <span class="count count-grey">2</span>
-                                        </a>
+                                    <li class="nav-item position-relative curve-bottom-edge">
+                                        <a href="javascript:void(0)" id="ra-other-tab" class="nav-link"
+                                            data-bs-toggle="tab" data-bs-target="#ra-other" role="tab"
+                                            aria-controls="ra-other" aria-selected="true">Others</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="ct3" data-toggle="tab" href="#ct-3" role="tab"
-                                            aria-controls="ct-3" aria-selected="false">
-                                            Upcoming
-                                            <span class="count count-grey">3</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="ct4" data-toggle="tab" href="#ct-4" role="tab"
-                                            aria-controls="ct-4" aria-selected="false">
-                                            Submitted
-                                            <span class="count count-grey">2</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="ct5" data-toggle="tab" href="#ct-5" role="tab"
-                                            aria-controls="ct-5" aria-selected="false">
-                                            Sent To State
-                                            <span class="count count-grey">2</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="ct6" data-toggle="tab" href="#ct-6" role="tab"
-                                            aria-controls="ct-6" aria-selected="false">
-                                            Recently Completed
-                                            <span class="count count-grey">5</span>
-                                        </a>
+                                    <li class="nav-item position-relative curve-bottom-edge">
+                                        <a href="javascript:void(0)" id="ra-progress-tab" class="nav-link"
+                                            data-bs-toggle="tab" data-bs-target="#ra-progress" role="tab"
+                                            aria-controls="ra-progress" aria-selected="true">In Progress</a>
                                     </li>
                                 </ul>
+                                <a href="#" class="text-purple text-decoration-none d-inline-block"> Export CSV</a>
                             </div>
+                            <div class="col-12 tab-content" id="">
+                                <div class="tab-content bg-white rounded-2 shadow">
+                                    <div class="tab-pane fade show active" id="ra-detail" role="tabpanel"
+                                        aria-labelledby="ra-detail-tab">
+                                        <div class="">
+                                            <table id="ra-detail-table" class="table table-striped w-100 table-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="fixed-max-width">Entity Name</th>
+                                                        <th>State</th>
+                                                        <th>Date Received</th>
+                                                        <th>Date Acknowledged</th>
+                                                        <th>Type of SOP</th>
+                                                        <th class="sorting-none"></th>
+                                                    </tr>
+                                                </thead>
 
-                            <div class="tab-content border rounded-3 overflow-hidden white-bg" id="complianceContent">
-                                <div class="tab-pane fade show active" id="ct-1" role="tabpanel" aria-labelledby="ct1">
-                                    <div class="">
-                                        <table class="table dashboard-data-table w-100">
-                                            <thead class="d-none"></thead>
-                                            <tbody>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar red-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon--tick"></span></td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                            <span class="text-red h5 mb-0">Overdue</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-red h5 mb-0">-32 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="-32" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-red"
-                                                                style="width: 100%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-primary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25754/form"
-                                                            data-service="annual_report" data-trade-name=""
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25754/79/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
+                                                <tbody>
+                                                    <tr class="odd">
+                                                        <td><a href="/entities-details.html">Bluebird Business
+                                                                Strategies</a></td>
+                                                        <td>DE</td>
+                                                        <td class="sorting_1">10/14/2023</td>
+                                                        <td>10/09/2023</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <a href="#" class="d-flex" data-bs-toggle="modal"
+                                                                    data-bs-target="#acknowledgementPreview"
+                                                                    data-ajax-url="/qa/registered-agents/25765/documents/pending?action=acknowledge">Certified
+                                                                    mail
+                                                                </a>
+                                                                <div
+                                                                    class="bg-danger rounded-5 sop-count text-white d-flex align-items-center justify-content-center fs-10 ms-2">
+                                                                    3</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-end pe-4">
+                                                                <span class="icon icon-stop-hand-danger me-4"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#previewModal" data-toggle="tooltip"
+                                                                    aria-label="Preview"
+                                                                    data-bs-original-title="Preview"></span>
+                                                                <a href="javascript:void(0);" class="dt-control">
+                                                                    <span
+                                                                        class="icon icon-folder-upload-purple me-4"></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <td><a href="/entities-details.html">Inspired Ideals LLC</a>
+                                                        </td>
+                                                        <td>AZ</td>
+                                                        <td class="sorting_1">10/12/2023</td>
+                                                        <td>--</td>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <a href="#" class="d-flex" data-bs-toggle="modal"
+                                                                    data-bs-target="#acknowledgementPreview"
+                                                                    data-ajax-url="/qa/registered-agents/25765/documents/pending?action=acknowledge">Certified
+                                                                    Mail
+                                                                </a>
+                                                                <div
+                                                                    class="bg-danger rounded-5 sop-count text-white d-flex align-items-center justify-content-center fs-10 ms-2">
+                                                                    3</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-end pe-4">
+                                                                <span class="icon icon-stop-hand-danger me-4"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#previewModal" data-toggle="tooltip"
+                                                                    aria-label="Preview"
+                                                                    data-bs-original-title="Preview"></span>
+                                                                <a href="javascript:void(0);" class="dt-control">
+                                                                    <span
+                                                                        class="icon icon-folder-upload-purple me-4"></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <td><a href="/entities-details.html">Ignite Ideas LLC</a></td>
+                                                        <td>ME</td>
+                                                        <td class="sorting_1">10/13/2023</td>
+                                                        <td>--</td>
+                                                        <td>
 
+                                                            <div class="d-flex">
+                                                                <a href="#" class="d-flex" data-bs-toggle="modal"
+                                                                    data-bs-target="#acknowledgementPreview"
+                                                                    data-ajax-url="/qa/registered-agents/25765/documents/pending?action=acknowledge">Summons
+                                                                </a>
+                                                                <div
+                                                                    class="bg-danger rounded-5 sop-count text-white d-flex align-items-center justify-content-center fs-10 ms-2">
+                                                                    3</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
 
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar red-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Beyond Boundaries Ventures (WY)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon--tick"></span></td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                            <span class="text-red h5 mb-0">Overdue</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-red h5 mb-0">-13 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="-13" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-red"
-                                                                style="width: 100%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-primary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25756/form"
-                                                            data-service="annual_report" data-trade-name=""
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25756/79/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
-
-
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar ">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">DBA/FBN Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon--tick"></span></td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                            <span class="text-grey h5 mb-0">Upcoming</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-grey h5 mb-0">17 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="17" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-grey"
-                                                                style="width: 17%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-secondary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25754/form"
-                                                            data-service="fictitious_or_trade" data-trade-name="542"
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25754/160/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar ">N</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">NextWave Industries (ID)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon--tick"></span></td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                            <span class="text-grey h5 mb-0">Upcoming</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-grey h5 mb-0">17 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="17" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-grey"
-                                                                style="width: 17%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-secondary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25760/form"
-                                                            data-service="annual_report" data-trade-name=""
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25760/79/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar ">E</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Envision Endurance LLC (CA)</h5><span
-                                                            class="text-opacity-70">Statement of Information
-                                                            Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon--tick"></span></td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                            <span class="text-grey h5 mb-0">Upcoming</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-grey h5 mb-0">49 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="49" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-grey"
-                                                                style="width: 49%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-secondary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25752/form"
-                                                            data-service="file_statement_with_ca" data-trade-name=""
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25752/11/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
-
-
-                                                    </td>
-                                                </tr>
-
-
-
-
-
-
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar blue-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">DBA/FBN Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-blue-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-upload-blue"></span>
-                                                            <span class="text-blue h5 mb-0">Order Submitted</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-blue m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar blue-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Beyond Boundaries Ventures (WY)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-blue-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-upload-blue"></span>
-                                                            <span class="text-blue h5 mb-0">Order Submitted</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-blue m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-
-
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar purple-bg">N</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">NextWave Industries (ID)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span
-                                                            class="icon icon-circular icon-lg icon-purple-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-certificate"></span>
-                                                            <span class="text-purple h5 mb-0">Sent To State</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-purple m-0">10/13/2023</h6>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar purple-bg">F</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Fortitude Finance Co. (NV)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td><span
-                                                            class="icon icon-circular icon-lg icon-purple-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-certificate"></span>
-                                                            <span class="text-purple h5 mb-0">Sent To State</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-purple m-0">10/04/2023</h6>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">E</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Envision Endurance LLC (CA)</h5><span
-                                                            class="text-opacity-70">Statement of Information</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Recently Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td class="text-center"><a
-                                                            download-url="/qa/dashboard/documents/4859"
-                                                            class="download_documents_new ls"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a><a
-                                                            href="javascript: void(0)"
-                                                            class="text-decoration-none text-dark preview-dashboard-service"
-                                                            data-toggle="tooltip" title="Preview"
-                                                            data-ajax-url="/qa/dashboard/preview/4859"
-                                                            data-preview-id="15399"> </a></td>
-                                                </tr>
-
-
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Recently Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td class="text-center"><a
-                                                            download-url="/qa/dashboard/documents/4886"
-                                                            class="download_documents_new ls"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a><a
-                                                            href="javascript: void(0)"
-                                                            class="text-decoration-none text-dark preview-dashboard-service"
-                                                            data-toggle="tooltip" title="Preview"
-                                                            data-ajax-url="/qa/dashboard/preview/4886"
-                                                            data-preview-id="15464"> </a></td>
-                                                </tr>
-
-
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Recently Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td class="text-center"><a
-                                                            download-url="/qa/dashboard/documents/4861"
-                                                            class="download_documents_new ls"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a><a
-                                                            href="javascript: void(0)"
-                                                            class="text-decoration-none text-dark preview-dashboard-service"
-                                                            data-toggle="tooltip" title="Preview"
-                                                            data-ajax-url="/qa/dashboard/preview/4861"
-                                                            data-preview-id="15405"> </a></td>
-                                                </tr>
-
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">BrightPath Enterprises (FL)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Recently Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td class="text-center"><a
-                                                            download-url="/qa/dashboard/documents/4877"
-                                                            class="download_documents_new ls"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a><a
-                                                            href="javascript: void(0)"
-                                                            class="text-decoration-none text-dark preview-dashboard-service"
-                                                            data-toggle="tooltip" title="Preview"
-                                                            data-ajax-url="/qa/dashboard/preview/4877"
-                                                            data-preview-id="15444"> </a></td>
-                                                </tr>
-
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">I</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Inspired Ideals LLC (AZ)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Recently Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td class="text-center"><a
-                                                            download-url="/qa/dashboard/documents/4890"
-                                                            class="download_documents_new ls"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a><a
-                                                            href="javascript: void(0)"
-                                                            class="text-decoration-none text-dark preview-dashboard-service"
-                                                            data-toggle="tooltip" title="Preview"
-                                                            data-ajax-url="/qa/dashboard/preview/4890"
-                                                            data-preview-id="15472"> </a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                            <div class="d-flex justify-content-end pe-4">
+                                                                <span class="icon icon-stop-hand-danger me-4"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#previewModal" data-toggle="tooltip"
+                                                                    aria-label="Preview"
+                                                                    data-bs-original-title="Preview"></span>
+                                                                <a href="javascript:void(0);" class="dt-control">
+                                                                    <span
+                                                                        class="icon icon-folder-upload-purple me-4"></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        <td><a href="/entities-details.html">Fortitude Finance Co.</a>
+                                                        </td>
+                                                        <td>NV</td>
+                                                        <td class="sorting_1">--</td>
+                                                        <td>--</td>
+                                                        <td>--</td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-end pe-4">
+                                                                <span class="icon icon-stop-hand-danger me-4"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#previewModal" data-toggle="tooltip"
+                                                                    aria-label="Preview"
+                                                                    data-bs-original-title="Preview"></span>
+                                                                <a href="javascript:void(0);" class="dt-control">
+                                                                    <span
+                                                                        class="icon icon-folder-upload-purple me-4"></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        <td><a href="/entities-details.html">Synergy Solutions
+                                                                Consulting</a></td>
+                                                        <td>ID</td>
+                                                        <td class="sorting_1">--</td>
+                                                        <td>--</td>
+                                                        <td>--</td>
+                                                        <td>
+                                                            <div class="d-flex justify-content-end pe-4">
+                                                                <span class="icon icon-stop-hand-danger me-4"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#previewModal" data-toggle="tooltip"
+                                                                    aria-label="Preview"
+                                                                    data-bs-original-title="Preview"></span>
+                                                                <a href="javascript:void(0);" class="dt-control">
+                                                                    <span
+                                                                        class="icon icon-folder-upload-purple me-4"></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane fade" id="ct-2" role="tabpanel" aria-labelledby="ct2">
-                                    <div class="">
-                                        <table class="table dashboard-data-table w-100">
-                                            <thead class="d-none"></thead>
-                                            <tbody>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar red-bg">B</span>
-                                                        </div>
-                                                    </td>
+                                    <div class="tab-pane fade" id="ra-other" role="tabpanel"
+                                        aria-labelledby="ra-other-tab">
+                                        <div class="">
+                                            <table id="ra-other-table" class="table table-striped w-100 table-nowrap">
+                                                <thead>
+                                                    <tr>
 
+                                                        <th class="fixed-max-width"><span class="me-4 pe-3 ps-1"></span>
+                                                            Entity Name</th>
+                                                        <th class="fixed-max-width">State</th>
+                                                        <th class="fixed-max-width">Reg. Agent Name</th>
+                                                        <th class="fixed-max-width">Reg. Agent Address</th>
+                                                        <th class="sorting-none" width="200"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
 
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon--tick"></span></td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                            <span class="text-red h5 mb-0">Overdue</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-red h5 mb-0">-32 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="-32" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-red"
-                                                                style="width: 100%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-primary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25754/form"
-                                                            data-service="annual_report" data-trade-name=""
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25754/79/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
+                                                    <tr>
 
+                                                        <td>
+                                                            <div class="d-flex ">
+                                                                <div class="">
+                                                                    <a href="javascript:void(0);" class="dt-control">
+                                                                        <span
+                                                                            class="icon icon-folder-upload-purple me-4"></span>
+                                                                    </a>
+                                                                </div>
+                                                                <a href="./entities-details.html">Envision Endurance
+                                                                    LLC</a>
 
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar red-bg">B</span>
-                                                        </div>
-                                                    </td>
+                                                            </div>
+                                                        </td>
+                                                        <td> CA</td>
+                                                        <td>Evan Walsh</td>
+                                                        <td>5901 center dr, , los angles, CA 90045</td>
+                                                        <td width="200">
+                                                            <div class="d-flex justify-content-end pe-4">
+                                                                <button class="btn btn-info text-purple bg-light">Use
+                                                                    Filejet</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
 
-
-                                                    <td>
-                                                        <h5 class="m-0">Beyond Boundaries Ventures (WY)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon--tick"></span></td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-alert"></span>
-                                                            <span class="text-red h5 mb-0">Overdue</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-red h5 mb-0">-13 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="-13" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-red"
-                                                                style="width: 100%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-primary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25756/form"
-                                                            data-service="annual_report" data-trade-name=""
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25756/79/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
-
-
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div>
+                                                                    <div class="">
+                                                                        <a href="javascript:void(0);"
+                                                                            class="dt-control">
+                                                                            <span
+                                                                                class="icon icon-folder-upload-purple me-4"></span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <a href="./entities-details.html">NextWave
+                                                                    Industries</a>
+                                                            </div>
+                                                        </td>
+                                                        <td>ID</td>
+                                                        <td>Evan Walsh</td>
+                                                        <td>5901 center dr, , los angles, ID 90045</td>
+                                                        <td width="200">
+                                                            <div class="d-flex justify-content-end pe-4">
+                                                                <button class="btn btn-info text-purple bg-light">Use
+                                                                    Filejet</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane fade" id="ct-3" role="tabpanel" aria-labelledby="ct3">
-                                    <div class="">
-                                        <table class="table dashboard-data-table w-100">
-                                            <thead class="d-none"></thead>
-                                            <tbody>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar ">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">DBA/FBN Filing</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="icon"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                            <span class="text-grey h5 mb-0">Upcoming</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-grey h5 mb-0">17 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="17" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-grey"
-                                                                style="width: 17%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-secondary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25754/form"
-                                                            data-service="fictitious_or_trade" data-trade-name="542"
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25754/160/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
+                                    <div class="tab-pane fade" id="ra-progress" role="tabpanel"
+                                        aria-labelledby="ra-progress">
+                                        <div class="">
+                                            <table id="ra-progress-table"
+                                                class="table table-striped w-100 table-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="fixed-max-width"><span class="ms-4 pe-3 ps-1"></span>
+                                                            Entity Name</th>
+                                                        <th class="fixed-max-width">State</th>
+                                                        <th class="fixed-max-width">Date Received</th>
+                                                        <th class="fixed-max-width">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="odd">
 
+                                                        <td class="sorting_1">
+                                                            <div class="d-flex">
+                                                                <div class="">
+                                                                    <a href="javascript:void(0);" class="dt-control">
+                                                                        <span
+                                                                            class="icon icon-folder-upload-purple me-4"></span>
+                                                                    </a>
+                                                                </div>
+                                                                <a href="/entities-details.html">Beyond
+                                                                    Boundaries Ventures</a>
+                                                            </div>
+                                                        </td>
+                                                        <td>WY</td>
+                                                        <td>10/14/2023</td>
+                                                        <td><span class="text-blue" data-toggle="tooltip"
+                                                                data-bs-original-title="10/14/2023">Order
+                                                                Submitted</span></td>
+                                                    </tr>
+                                                    <tr class="even">
 
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar ">N</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">NextWave Industries (ID)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="icon"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                            <span class="text-grey h5 mb-0">Upcoming</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-grey h5 mb-0">17 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="17" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-grey"
-                                                                style="width: 17%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-secondary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25760/form"
-                                                            data-service="annual_report" data-trade-name=""
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25760/79/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
+                                                        <td class="sorting_1">
+                                                            <div class="d-flex">
+                                                                <div class="">
+                                                                    <a href="javascript:void(0);" class="dt-control">
+                                                                        <span
+                                                                            class="icon icon-folder-upload-purple me-4"></span>
+                                                                    </a>
+                                                                </div>
+                                                                <a href="/entities-details.html">Fortitude
+                                                                    Finance Co.</a>
+                                                            </div>
+                                                        </td>
+                                                        <td>NV</td>
+                                                        <td>10/14/2023</td>
+                                                        <td><span class="text-blue" data-toggle="tooltip"
+                                                                data-bs-original-title="10/14/2023">Sent To State</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="odd">
 
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar ">E</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Envision Endurance LLC (CA)</h5><span
-                                                            class="text-opacity-70">Statement of Information
-                                                            Filing</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="icon"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-circular icon-lg icon-clock"></span>
-                                                            <span class="text-grey h5 mb-0">Upcoming</span>
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="text-grey h5 mb-0">49 days</span>
-                                                        <div class="progress" role="progressbar" aria-label="Upcoming"
-                                                            aria-valuenow="49" aria-valuemin="0" aria-valuemax="90">
-                                                            <div class="progress-bar progress-bar-grey"
-                                                                style="width: 49%"></div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-secondary text-light outside-filing-no"
-                                                            role="button" href="javascript:;"
-                                                            data-ajax-url="http://13.64.144.136/qa/entity-profile/25752/form"
-                                                            data-service="file_statement_with_ca" data-trade-name=""
-                                                            data-service-url="http://13.64.144.136/qa/entity-compliance-task/25752/11/form"
-                                                            data-bs-toggle="modal" data-bs-target="#actionModal">Take
-                                                            action</a>
-
-
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="ct-4" role="tabpanel" aria-labelledby="ct4">
-                                    <div class="">
-                                        <table class="table dashboard-data-table w-100">
-                                            <thead class="d-none"></thead>
-                                            <tbody>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar blue-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Beyond Boundaries Ventures (WY)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="icon"></span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-blue-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-upload-blue"></span>
-                                                            <span class="text-blue h5 mb-0">Order Submitted</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-blue m-0">10/14/2023</h6>
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar blue-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">DBA/FBN Filing</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="icon"></span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-blue-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-upload-blue"></span>
-                                                            <span class="text-blue h5 mb-0">Order Submitted</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-blue m-0">10/14/2023</h6>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="ct-5" role="tabpanel" aria-labelledby="ct5">
-                                    <div class="">
-                                        <table class="table dashboard-data-table w-100">
-                                            <thead class="d-none"></thead>
-                                            <tbody>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar purple-bg">N</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">NextWave Industries (ID)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span
-                                                            class="icon icon-circular icon-lg icon-purple-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-certificate"></span>
-                                                            <span class="text-purple h5 mb-0">Sent To State</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-purple m-0">10/13/2023</h6>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar purple-bg">F</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Fortitude Finance Co. (NV)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td><span
-                                                            class="icon icon-circular icon-lg icon-purple-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-certificate"></span>
-                                                            <span class="text-purple h5 mb-0">Sent To State</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-purple m-0">10/04/2023</h6>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="ct-6" role="tabpanel" aria-labelledby="ct6">
-                                    <div class="">
-                                        <table class="table dashboard-data-table w-100">
-                                            <thead class="d-none"></thead>
-                                            <tbody>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">I</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Inspired Ideals LLC (AZ)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td>
-                                                        <a download-url="/qa/dashboard/documents/4890"
-                                                            class="download_documents_new"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a>
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal"
-                                                            data-bs-target="#previewModal" data-toggle="tooltip"
-                                                            aria-label="Preview"
-                                                            data-bs-original-title="Preview"></span>
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">S</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Synergy Solutions Consulting (ID)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td>
-                                                        <a download-url="/qa/dashboard/documents/4889"
-                                                            class="download_documents_new"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a>
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal"
-                                                            data-bs-target="#previewModal" data-toggle="tooltip"
-                                                            aria-label="Preview"
-                                                            data-bs-original-title="Preview"></span>
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Bluebird Business Strategies (DE)</h5><span
-                                                            class="text-opacity-70">Annual Franchise Tax Report</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td>
-                                                        <a download-url="/qa/dashboard/documents/4886"
-                                                            class="download_documents_new"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a>
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal"
-                                                            data-bs-target="#previewModal" data-toggle="tooltip"
-                                                            aria-label="Preview"
-                                                            data-bs-original-title="Preview"></span>
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">I</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">Ignite Ideas LLC (ME)</h5><span
-                                                            class="text-opacity-70">Registered Agent</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td>
-                                                        <a download-url="/qa/dashboard/documents/4887"
-                                                            class="download_documents_new"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a>
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal"
-                                                            data-bs-target="#previewModal" data-toggle="tooltip"
-                                                            aria-label="Preview"
-                                                            data-bs-original-title="Preview"></span>
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="sorting_1" width="70">
-                                                        <div class="ms-2"><span class="letter-avatar green-bg">B</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="m-0">BrightPath Enterprises (FL)</h5><span
-                                                            class="text-opacity-70">Annual Report Filing</span>
-                                                    </td>
-                                                    <td><span class="icon icon-circular icon-lg icon-green-tick"></span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span
-                                                                class="icon icon-circular icon-lg icon-green-dot"></span>
-                                                            <span class="text-green h5 mb-0">Completed</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <h6 class="text-green m-0">10/14/2023</h6>
-                                                    </td>
-                                                    <td>
-                                                        <a download-url="/qa/dashboard/documents/4877"
-                                                            class="download_documents_new"> <span
-                                                                class="icon icon-circular icon-lg icon-download-green"></span></a>
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal"
-                                                            data-bs-target="#previewModalBrightPathEnterprises"
-                                                            data-toggle="tooltip" aria-label="Preview"
-                                                            data-bs-original-title="Preview"></span>
-
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                        <td class="sorting_1">
+                                                            <div class="d-flex">
+                                                                <div class="">
+                                                                    <a href="javascript:void(0);" class="dt-control">
+                                                                        <span
+                                                                            class="icon icon-folder-upload-purple me-4"></span>
+                                                                    </a>
+                                                                </div>
+                                                                <a href="/entities-details.html">Wonka
+                                                                    Finance Co.</a>
+                                                            </div>
+                                                        </td>
+                                                        <td>HI</td>
+                                                        <td>10/14/2023</td>
+                                                        <td><span class="text-blue" data-toggle="tooltip"
+                                                                data-bs-original-title="10/14/2023">Order
+                                                                Submitted</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Card End -->
+
+  <!--                         <div class="row mt-5">
+                            <div class="col-12 d-flex justify-content-between align-items-center">
+                                <nav>
+                                    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+                                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+                                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
+                                    </div>
+                                </nav>
+                                <div class="tab-content p-3 border bg-light" id="nav-tabContent">
+                                    <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                        <p><strong>This is some placeholder content the Home tab's associated content.</strong>
+                                            Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps
+                                            classes to control the content visibility and styling. You can use it with tabs, pills, and any
+                                            other <code>.nav</code>-powered navigation.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                        <p><strong>This is some placeholder content the Profile tab's associated content.</strong>
+                                            Clicking another tab will toggle the visibility of this one for the next.
+                                            The tab JavaScript swaps classes to control the content visibility and styling. You can use it with
+                                            tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                        <p><strong>This is some placeholder content the Contact tab's associated content.</strong>
+                                            Clicking another tab will toggle the visibility of this one for the next.
+                                            The tab JavaScript swaps classes to control the content visibility and styling. You can use it with
+                                            tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div> -->
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>
