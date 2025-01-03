@@ -3088,6 +3088,56 @@
           });
         });
     </script>
+
+      <!-- chart script start -->
+      <script>
+        // Data for the chart
+        var options = {
+          series: [10, 5, 5], // Values for each section
+          chart: {
+          type: 'donut',
+          width: '100%', // Full width of the container
+          height: 'auto', // Auto height to maintain aspect ratio
+         },
+          labels: ['Overdue', 'Upcoming', 'Future Tasks'], // Labels
+          colors: ['#e74c3c', '#3498db', '#2ecc71'], // Colors
+          dataLabels: {
+            enabled: true,
+            style: {
+              fontSize: '12px',
+              fontWeight: 'normal',
+            },
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                size: '65%',
+                labels: {
+                  show: true,
+                  total: {
+                    show: true,
+                    label: 'Total',
+                    formatter: () => '20', // Display total in the center
+                    style: {
+                      fontSize: '14px',
+                      fontWeight: 'normal',
+                    },
+                  },
+                },
+              },
+            },
+          },
+          legend: {
+            show: false, // Hide ApexCharts' default legend
+          },
+        };
+  
+        // Render the chart
+        var chart = new ApexCharts(document.querySelector('#chart'), options);
+        chart.render();
+      </script>
+
+      <!-- chart script end -->
     <!-- end -->
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
