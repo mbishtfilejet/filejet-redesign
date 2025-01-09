@@ -360,7 +360,7 @@
                             <div class="row px-2 mt-3 actions">
                                 <div class="col-12 col-lg-3 px-1 mb-2">
                                     <div>
-                                        <a href=""class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none ">
+                                        <a href="groups.html"class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none ">
                                          <span class="text-placeholder-d2">New Group</span>
                                          <span class="icon icon-arrow-forward-black icon-smd m-0 opacity-50"></span>
                                         </a>
@@ -369,7 +369,7 @@
 
                                 <div class="col-12 col-lg-3 px-1 mb-2">
                                     <div>
-                                        <a href="" class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none">
+                                        <a href="additional-services.html" class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none">
                                          <span class="text-placeholder-d2">New Entity Registration</span>
                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
                                         </a>
@@ -378,7 +378,7 @@
 
                                 <div class="col-12 col-lg-3 px-1 mb-2">
                                     <div>
-                                        <a href="" class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none ">
+                                        <a href="./additional-services.html" class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none ">
                                             <span class="text-placeholder-d2">Add Existing Entity</span>
                                             <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
                                         </a>
@@ -507,8 +507,13 @@
                                             data-bs-toggle="tab" data-bs-target="#ra-detail" role="tab"
                                             aria-controls="ra-detail" aria-selected="true">
                                             <div class="card card-d2 border-0 bg-transparent">
-                                                <div class="card-body p-0 d-flex flex-column justify-content-justify-content-start">
-                                                    <span class="card-headerd2 m-0 p-2 ps-2">Open Tasks</span>
+                                                <div class="card-body p-0 d-flex flex-column justify-content-start">
+                                                    <div class="card-headerd2 m-0 p-2 ps-2 d-flex justify-content-between align-items-center">
+                                                    <span>Open Tasks</span>
+                                                    <span class="icon icon-angle-bottom icon-smd opacity-50 m-0"></span>
+                                                    <span class="icon icon-angle-top icon-smd opacity-50 m-0"></span>
+                                                    </div>
+                                                    
 
                                                     <div class="chart-container d-flex justify-content-center align-items-center w-100 mt-4">
                                                         <!-- Legend -->
@@ -549,7 +554,11 @@
                                             aria-controls="ra-other" aria-selected="true">
                                             <div class="card card-d2 border-0 bg-transparent">
                                                 <div class="card-body p-0 d-flex flex-column justify-content-start">
-                                                    <span class="card-headerd2 m-0 p-2 ps-2">Entity Registrations</span>
+                                                    <div class="card-headerd2 m-0 p-2 ps-2 d-flex justify-content-between align-items-center">
+                                                        <span>Entity Registrations</span>
+                                                        <span class="icon icon-angle-bottom icon-smd opacity-50 m-0"></span>
+                                                        <span class="icon icon-angle-top icon-smd opacity-50 m-0"></span>
+                                                        </div>
 
                                                     <div class="chart-container d-flex justify-content-center align-items-center w-100 mt-4">
                                                         <!-- Legend -->
@@ -615,8 +624,12 @@
                                             data-bs-toggle="tab" data-bs-target="#ra-progress" role="tab"
                                             aria-controls="ra-progress" aria-selected="true">
                                             <div class="card card-d2 border-0 bg-transparent">
-                                                <div class="card-body p-0 d-flex flex-column justify-content-justify-content-start">
-                                                    <span class="card-headerd2 m-0 p-2 ps-2">Order Status</span>
+                                                <div class="card-body p-0 d-flex flex-column justify-content-start">
+                                                    <div class="card-headerd2 m-0 p-2 ps-2 d-flex justify-content-between align-items-center">
+                                                        <span>Order Status</span>
+                                                        <span class="icon icon-angle-bottom icon-smd opacity-50 m-0"></span>
+                                                        <span class="icon icon-angle-top icon-smd opacity-50 m-0"></span>
+                                                        </div>
 
                                                     <div class="chart-container d-flex justify-content-center align-items-center w-100 mt-4">
                                                         <!-- Legend -->
@@ -3244,56 +3257,45 @@
         });
     </script>
 
-   <script type="text/javascript">
+<script type="text/javascript">
     // Load Google Charts
     google.charts.load("current", { packages: ["corechart"] });
   
     // Draw the charts
     google.charts.setOnLoadCallback(() => {
-      drawChart(
-        "donut_chart",
-        [
-          ["Task", "Count"],
-          ["Overdue", 10],
-          ["Upcoming", 5],
-          ["Future Tasks", 5],
-        ],
-        ["#E73B18", "#3498db", "#00BA70"]
-      );
+      drawDonutChart("donut_chart", [
+        ["Task", "Count", { role: "tooltip" }],
+        ["Overdue", 2, "2"],
+        ["Upcoming", 3, "3"],
+        ["Future Tasks", 5, "5"],
+      ], ["#E73B18", "#3498db", "#00BA70"]);
   
-      drawChart(
-        "donut_chart_2",
-        [
-          ["Status", "Count"],
-          ["In Good Standing", 20],
-          ["Not in Good Standing", 3],
-          ["Inactive", 3],
-          ["Dissolved", 2],
-          ["Archived", 1],
-        ],
-        ["#00BA70", "#E73B18", "#FFE6DE", "#1080F8", "#1C085A"]
-      );
+      drawDonutChart("donut_chart_2", [
+        ["Status", "Count", { role: "tooltip" }],
+        ["In Good Standing", 20, "20"],
+        ["Not in Good Standing", 3, "3"],
+        ["Inactive", 3, "3"],
+        ["Dissolved", 2, "2"],
+        ["Archived", 1, "1"],
+      ], ["#00BA70", "#E73B18", "#FFE6DE", "#1080F8", "#1C085A"]);
   
-      drawChart(
-        "donut_chart_3",
-        [
-          ["Task", "Count"],
-          ["In Process", 5],
-          ["Sent", 5],
-          ["Completed", 5],
-        ],
-        ["#6E72EE", "#3498db", "#00BA70"]
-      );
+      drawDonutChart("donut_chart_3", [
+        ["Task", "Count", { role: "tooltip" }],
+        ["In Process", 5, "5"],
+        ["Sent", 5, "5"],
+        ["Completed", 5, "5"],
+      ], ["#6E72EE", "#3498db", "#00BA70"]);
     });
   
-    function drawChart(elementId, chartData, colors) {
-      // Convert data into a DataTable
-      const data = google.visualization.arrayToDataTable(chartData);
+    // Reusable function to draw a donut chart
+    function drawDonutChart(containerId, chartData, colors) {
+      // Convert data to DataTable format
+      var data = google.visualization.arrayToDataTable(chartData);
   
       // Chart options
-      const options = {
+      var options = {
         pieHole: 0.5, // Donut hole size
-        colors: colors, // Dynamic colors
+        colors: colors, // Custom colors
         legend: "none", // Disable legend
         pieSliceText: "none", // Hide text on slices
         backgroundColor: "transparent", // Transparent background
@@ -3301,12 +3303,11 @@
       };
   
       // Create and draw the chart
-      const chart = new google.visualization.PieChart(
-        document.getElementById(elementId)
-      );
+      var chart = new google.visualization.PieChart(document.getElementById(containerId));
       chart.draw(data, options);
     }
   </script>
+  
   
 
     <!-- end -->
