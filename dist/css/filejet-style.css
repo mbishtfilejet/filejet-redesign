@@ -4,7 +4,9 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import"https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap";
+/* @import"https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap"; */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
 :root {
     --bs-blue: #165A8B;
@@ -63,9 +65,9 @@
     --bs-body-bg-rgb: 255, 255, 255;
     --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-font-robotoFlex: Roboto Flex;
+    --bs-font-sora: "Sora", serif;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    --bs-body-font-family: var(--bs-font-robotoFlex);
+    --bs-body-font-family: var(--bs-font-sora);
     --bs-body-font-size: 1rem;
     --bs-body-font-weight: 500;
     --bs-body-line-height: 1.5;
@@ -84,7 +86,7 @@
     --bs-link-color: #0D2C36;
     --bs-link-hover-color: #0D2C36;
     --bs-code-color: #d63384;
-    --bs-highlight-bg: #fff3cd
+    --bs-highlight-bg: #fff3cd;
 }
 
 *,
@@ -302,7 +304,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: var(--bs-font-robotoFlex);
+    font-family: var(--bs-font-sora);
     font-size: 1em
 }
 
@@ -3689,7 +3691,7 @@ textarea.form-control.is-invalid,
 .boc-light #boc-ppdf-btns #boc-prev-save {
     --bs-btn-padding-x: 1.25rem;
     --bs-btn-padding-y: 0.9375rem;
-    --bs-btn-font-family: var(--bs-font-robotoFlex);
+    --bs-btn-font-family: var(--bs-font-sora);
     --bs-btn-font-size: 1rem;
     --bs-btn-font-weight: 600;
     --bs-btn-line-height: 1.875rem;
@@ -7119,7 +7121,7 @@ body .jconfirm-box-container .jconfirm-box {
     display: block;
     padding: var(--bs-tooltip-arrow-height);
     margin: var(--bs-tooltip-margin);
-    font-family: var(--bs-font-robotoFlex);
+    font-family: var(--bs-font-sora);
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -7240,7 +7242,7 @@ body .jconfirm-box-container .jconfirm-box {
     z-index: var(--bs-popover-zindex);
     display: block;
     max-width: var(--bs-popover-max-width);
-    font-family: var(--bs-font-robotoFlex);
+    font-family: var(--bs-font-sora);
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -10127,11 +10129,11 @@ input[type=time]:invalid:before {
 }
 
 .font-monospace {
-    font-family: var(--bs-font-robotoFlex) !important
+    font-family: var(--bs-font-sora) !important
 }
 
 .font-robotoslab {
-    font-family: var(--bs-font-robotoFlex) !important
+    font-family: var(--bs-font-sora) !important
 }
 
 .fs-1 {
@@ -22253,6 +22255,9 @@ body .caledar-event-upcoming {
   .sidebar-v2 .menu-link .nav-link.active a::after {
     background-image: radial-gradient(circle at 100% 0, white 0%, white 2rem, #d0d0e8 2rem);
   }
+  .indigo-bg {
+    background-color: var(--bs-purple-indigo);
+  }
 
  .light-blue-bg {
     background-color: var(--bs-light-blue);
@@ -22387,9 +22392,10 @@ body .caledar-event-upcoming {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: var(--bs-dark);
+    letter-spacing: -0.9px;
 
   }
   
@@ -22431,7 +22437,7 @@ body .caledar-event-upcoming {
     color: #fff;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    font-size: 20px;
+    font-size: 18px;
     text-transform: none;
     line-height: normal;
   }
@@ -22444,7 +22450,7 @@ body .caledar-event-upcoming {
   .cardcontainer-d2 .card-d2 .list-group-flush {
     border-radius: 0;
     font-weight: 400;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .cardcontainer-d2 .icon-status {
     background-image: url("../../../dist/images/icons/status.svg");
@@ -22461,6 +22467,7 @@ body .caledar-event-upcoming {
   .card-table-d2 .dataTables_wrapper tbody td{
     font-weight: 400;
     color: var(--bs-black-primary);
+    font-size: 0.9rem;
   }
   .card-table-d2 .dataTables_wrapper tbody td a {
     font-weight: 400;
@@ -22504,9 +22511,12 @@ body .caledar-event-upcoming {
     height: 2rem;
   }
   .card-table-d2 .rounded-pill {
-    font-size: 11px;
+    font-size: 10px;
   }
-
+  .entity-card-table .dataTables_scrollBody {
+    max-height: 100vh !important;
+    height: auto !important;
+  }
 
 
 
