@@ -4,9 +4,8 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-/* @import"https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap"; */
+@import"https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap";
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
 :root {
     --bs-blue: #165A8B;
@@ -65,9 +64,9 @@
     --bs-body-bg-rgb: 255, 255, 255;
     --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --bs-font-sora: "Sora", serif;
+    --bs-font-robotoFlex: Roboto Flex;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    --bs-body-font-family: var(--bs-font-sora);
+    --bs-body-font-family: var(--bs-font-robotoFlex);
     --bs-body-font-size: 1rem;
     --bs-body-font-weight: 500;
     --bs-body-line-height: 1.5;
@@ -304,7 +303,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: var(--bs-font-sora);
+    font-family: var(--bs-font-robotoflex);
     font-size: 1em
 }
 
@@ -3691,7 +3690,7 @@ textarea.form-control.is-invalid,
 .boc-light #boc-ppdf-btns #boc-prev-save {
     --bs-btn-padding-x: 1.25rem;
     --bs-btn-padding-y: 0.9375rem;
-    --bs-btn-font-family: var(--bs-font-sora);
+    --bs-btn-font-family: var(--bs-font-robotoflex);
     --bs-btn-font-size: 1rem;
     --bs-btn-font-weight: 600;
     --bs-btn-line-height: 1.875rem;
@@ -7121,7 +7120,7 @@ body .jconfirm-box-container .jconfirm-box {
     display: block;
     padding: var(--bs-tooltip-arrow-height);
     margin: var(--bs-tooltip-margin);
-    font-family: var(--bs-font-sora);
+    font-family: var(--bs-font-robotoflex);
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -7242,7 +7241,7 @@ body .jconfirm-box-container .jconfirm-box {
     z-index: var(--bs-popover-zindex);
     display: block;
     max-width: var(--bs-popover-max-width);
-    font-family: var(--bs-font-sora);
+    font-family: var(--bs-font-robotoflex);
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -10129,11 +10128,11 @@ input[type=time]:invalid:before {
 }
 
 .font-monospace {
-    font-family: var(--bs-font-sora) !important
+    font-family: var(--bs-font-robotoflex) !important
 }
 
 .font-robotoslab {
-    font-family: var(--bs-font-sora) !important
+    font-family: var(--bs-font-robotoflex) !important
 }
 
 .fs-1 {
@@ -22366,16 +22365,39 @@ body .caledar-event-upcoming {
     max-height: 250px;
     overflow-y: auto;
   }
-  
-  /* .notification-dot-v2 {
-    top: 12px;
-    right: 2.7rem;
-    width: 0.6rem;
-    height: 0.6rem;
-    border-radius: 0.9375rem;
-    background: var(--bs-red);
+  .filter2-dropdown .dropdown-icon-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  .filter2-dropdown .dropdown-icon {
     position: absolute;
-  } */
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  .filter2-dropdown .select2-container--default .select2-selection--multiple {
+    padding-right: 30px;
+    border: none;
+    height: 30px;
+    min-height: 30px;
+  }
+  .filter2-dropdown.select2-container .select2-search--inline .select2-search__field {
+    margin-top: 6px !important;
+    margin-left: 15px !important;
+    font-family: inherit !important;
+  }
+  .filter2-dropdown .select2-container .select2-selection--multiple .select2-selection__rendered {
+    display: flex;
+    margin: 0px;
+  }
+  .export-csv-col {
+    height: 31px;
+  }
+ 
   
   .profile-nav-v2 {
     min-width: 40px;
@@ -22424,6 +22446,7 @@ body .caledar-event-upcoming {
   .cardcontainer-d2 .icon-angle-bottom {
     display: none;
   }
+  
   .cardcontainer-d2 .nav-link:not(.active) {
     opacity: 100%;
     background: #F2F2FF;
@@ -22442,7 +22465,7 @@ body .caledar-event-upcoming {
     display: block;
   }
   .cardcontainer-d2 .card-d2 {
-    height: 233px;
+    height: 238px;
   }
   .cardcontainer-d2 .card-d2 .card-headerd2 {
     background-color: var(--bs-purple-indigo);
@@ -22517,6 +22540,10 @@ body .caledar-event-upcoming {
   } */
   .card-table-d2 .dataTables_wrapper .dataTable thead th {
     text-transform: capitalize !important;
+  }
+  .card-table-d2 .dataTables_wrapper .dataTable tbody td {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
   .card-table-d2 .table-status span {
     width: 2rem;

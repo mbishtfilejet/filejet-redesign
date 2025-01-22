@@ -10,6 +10,11 @@
     <script src="dist/js/jquery.min.js"></script>
     <!-- Scripts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    
+
 
 </head>
 
@@ -240,70 +245,20 @@
                             </div>
                             <div class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
                                 
-                                <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm me-4 w-50">
-                                    <button class="btn btn-custom dropdown-toggle w-100 py-2 d-flex align-items-center justify-content-between" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Group</button>
-                                    <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                        <!-- Search Bar -->
-                                        <li>
-                                            <input type="text" class="form-control dropdown-search py-0" id="dropdownSearch" placeholder="Search...">
-                                        </li>
-                                        <!-- Options -->
-                                        <li>
-                                            <div class="form-check border-bottom py-3">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                <label class="form-check-label text-placeholder-d2" for="group-all">All</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check border-bottom py-3">
-                                                <input class="form-check-input" type="radio" name="group" id="group-all" value="All">
-                                                <label class="form-check-label text-placeholder-d2" for="group-all">None</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check border-bottom py-3">
-                                                <input class="form-check-input" type="radio" name="group" id="group-1" value="Group 1">
-                                                <label class="form-check-label" for="group-1">Group 1</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check border-bottom  py-3">
-                                                <input class="form-check-input" type="radio" name="group" id="group-2" value="Group 2">
-                                                <label class="form-check-label" for="group-2">Group 2</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check border-bottom py-3">
-                                                <input class="form-check-input" type="radio" name="group" id="group-3" value="Group 3">
-                                                <label class="form-check-label" for="group-3">Group 3</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check border-bottom py-3">
-                                                <input class="form-check-input" type="radio" name="group" id="group-4" value="Group 4">
-                                                <label class="form-check-label" for="group-4">Group 4</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check border-bottom py-3">
-                                                <input class="form-check-input" type="radio" name="group" id="group-4" value="Group 4">
-                                                <label class="form-check-label" for="group-4">Group 4</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check border-bottom py-3">
-                                                <input class="form-check-input" type="radio" name="group" id="group-4" value="Group 4">
-                                                <label class="form-check-label" for="group-4">Group 4</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check border-bottom py-3">
-                                                <input class="form-check-input" type="radio" name="group" id="group-4" value="Group 4">
-                                                <label class="form-check-label" for="group-4">Group 4</label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                  </div>
+                                <div class= "filter2-dropdown w-50 px-1 mb-2 me-3">
+                                    <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm dropdown-icon-container">
+                                        <select id="Group-Select" class="form-select w-100 " multiple="multiple">
+                                            <option value="all">All</option>
+                                            <option value="none">None</option>
+                                            <option value="group-1">Group-1</option>
+                                            <option value="group-2">Group-2</option>
+                                            <option value="group-3">Group-3</option>
+                                            <option value="group-4">Group-4</option>
+                                            
+                                        </select>
+                                        <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                    </div>
+                                </div>
                                 <!-- <div class="notification position-relative px-4">
                                     <a href="javascript:void(0)" data-bs-toggle="modal"
                                         data-bs-target="#notificationModal">
@@ -508,8 +463,8 @@
                         <div class="row mt-5">
                             <div class="col-12 d-flex justify-content-between align-items-center">
                                 <ul class="nav nav-tabs w-100 cardcontainer-d2 justify-content-between" role="tablist">
-                                    <li class="nav-item position-relative curve-bottom-right-edge">
-                                        <a href="javascript:void(0)" id="ra-detail-tab" class="nav-link p-0 border-0 active"
+                                    <li class="nav-item position-relative">
+                                        <a href="javascript:void(0)" id="ra-detail-tab" class="nav-link p-0 border-bottom-0 active"
                                             data-bs-toggle="tab" data-bs-target="#ra-detail" role="tab"
                                             aria-controls="ra-detail" aria-selected="true">
                                             <div class="card card-d2 border-0 bg-transparent">
@@ -554,8 +509,8 @@
                                         </a>
 
                                     </li>
-                                    <li class="nav-item position-relative curve-bottom-edge">
-                                        <a href="javascript:void(0)" id="ra-other-tab" class="nav-link border-0 p-0"
+                                    <li class="nav-item position-relative">
+                                        <a href="javascript:void(0)" id="ra-other-tab" class="nav-link border-bottom-0 p-0"
                                             data-bs-toggle="tab" data-bs-target="#ra-other" role="tab"
                                             aria-controls="ra-other" aria-selected="true">
                                             <div class="card card-d2 border-0 bg-transparent">
@@ -623,8 +578,8 @@
                                             </div></a>
                                             
                                     </li>
-                                    <li class="nav-item position-relative curve-bottom-left-edge">
-                                        <a href="javascript:void(0)" id="ra-progress-tab" class="nav-link border-0 p-0"
+                                    <li class="nav-item position-relative">
+                                        <a href="javascript:void(0)" id="ra-progress-tab" class="nav-link border-bottom-0 p-0"
                                             data-bs-toggle="tab" data-bs-target="#ra-progress" role="tab"
                                             aria-controls="ra-progress" aria-selected="true">
                                             <div class="card card-d2 border-0 bg-transparent">
@@ -679,109 +634,47 @@
                                             </div>
                                         </div>
         
-                                        <div class="col-12 col-lg-3 px-1 mb-2">
-                                            <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm">
-                                                <button class="btn btn-custom dropdown-toggle w-100 py-1 d-flex align-items-center justify-content-between" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Jurisdiction</button>
-                                                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton" >
-                                                    <!-- Options -->
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-all" value="All">
-                                                            <label class="form-check-label text-placeholder-d2" for="group-all">All</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-1" value="Group 1">
-                                                            <label class="form-check-label" for="group-1">CA</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom  py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-2" value="Group 2">
-                                                            <label class="form-check-label" for="group-2">NV</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-3" value="Group 3">
-                                                            <label class="form-check-label" for="group-3">FL</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-4" value="Group 4">
-                                                            <label class="form-check-label" for="group-4">MN</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-4" value="Group 4">
-                                                            <label class="form-check-label" for="group-4">OR</label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                              </div>
+                                        <div class= "filter2-dropdown col-12 col-lg-3 px-1 mb-2">
+                                            <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm dropdown-icon-container">
+                                                <select id="Jurisdiction-Select" class="form-select form-control w-100 " multiple="multiple">
+                                                    <option value="all">All</option>
+                                                    <option value="none">None</option>
+                                                    <option value="CA">CA</option>
+                                                    <option value="NV">NV</option>
+                                                    <option value="FL">FL</option>
+                                                    <option value="MN">MN</option>
+                                                    <option value="OR">OR</option>
+                                                </select>
+                                                <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            </div>
                                         </div>
         
-                                        <div class="col-12 col-lg-2 px-1 mb-2">
-                                            <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm">
-                                                <button class="btn btn-custom dropdown-toggle w-100 py-1 d-flex align-items-center justify-content-between" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Task</button>
-                                                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton" >
-                                                    <!-- Options -->
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-all" value="All">
-                                                            <label class="form-check-label text-placeholder-d2" for="group-all">Annual Report</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-1" value="Group 1">
-                                                            <label class="form-check-label" for="group-1">CTA BOI</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom  py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-2" value="Group 2">
-                                                            <label class="form-check-label" for="group-2">SOP</label>
-                                                        </div>
-                                                    </li>
+                                        <div class= "filter2-dropdown col-12 col-lg-2 px-1 mb-2">
+                                            <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm dropdown-icon-container">
+                                                <select id="Task-Select" class="form-select w-100 " multiple="multiple">
+                                                    <option value="Annual Report">Annual Report</option>
+                                                    <option value="CTA BOI">CTA BOI</option>
+                                                    <option value="SOP">SOP</option>
                                                     
-                                                </ul>
-                                              </div>
+                                                </select>
+                                                <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            </div>
                                         </div>
         
-                                        <div class="col-12 col-lg-2 px-1 mb-2">
-                                            <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm">
-                                                <button class="btn btn-custom dropdown-toggle w-100 py-1 d-flex align-items-center justify-content-between" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Status</button>
-                                                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton" >
-                                                    <!-- Options -->
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-all" value="All">
-                                                            <label class="form-check-label text-placeholder-d2" for="group-all">In Progress</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-1" value="Group 1">
-                                                            <label class="form-check-label" for="group-1">Sent to State</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check border-bottom  py-3">
-                                                            <input class="form-check-input" type="radio" name="group" id="group-2" value="Group 2">
-                                                            <label class="form-check-label" for="group-2">Recently Completed</label>
-                                                        </div>
-                                                    </li>
+                                        <div class= "filter2-dropdown col-12 col-lg-2 px-1 mb-2">
+                                            <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm dropdown-icon-container">
+                                                <select id="Status-Select" class="form-select w-100 " multiple="multiple">
+                                                    <option value="Overdue">Overdue</option>
+                                                    <option value="Upcoming">Upcoming</option>
+                                                    <option value="Future">Future</option>
                                                     
-                                                </ul>
-                                              </div>
+                                                </select>
+                                                <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            </div>
                                         </div>
     
-                                        <div class="col-12 col-lg-1 px-1 mb-2 export-csv-col">
-                                                <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm py-1">
+                                        <div class="col-12 col-lg-1 px-1 mb-2 ">
+                                                <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm py-1 export-csv-col">
                                                     <a href="#" class="text-purple text-decoration-none d-flex justify-content-center align-items-center"> 
                                                         <span class="icon m-0 icon-export-csv icon-lg"></span>
                                                     </a>
@@ -794,13 +687,6 @@
                                             <table id="ra-detail-table" class="table table-striped w-100 table-nowrap data-table-listing table-v2-scroll">
                                                 <thead>
                                                     <tr>
-                                                        <td class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </td>
                                                         <th class="fixed-max-width-150">Group<span class="text-light">...........</span></th>
                                                         <th class="fixed-max-width-150">Entity Name<span class="text-light">...........</span></th>
                                                         <th class="fixed-max-width">Jurisdictions</th>
@@ -814,13 +700,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr class="even">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                       
                                                         <td class="fixed-max-width-150">Group name abc group</td>
                                                         <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
                                                             Boundaries Ventures</a>
@@ -841,13 +721,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr class="odd">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                        
                                                         <td class="fixed-max-width-150">Group name abcdef group</td>
                                                         <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Check all service prices Group 1 LLC</a>
                                                         </td>
@@ -867,13 +741,7 @@
                                                  </td>
                                                     </tr>
                                                     <tr class="even">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                        
                                                         <td class="fixed-max-width-150">Unassigned</td>
                                                         <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Entity All Services 7th Jan LLC</a>
                                                         </td>
@@ -893,13 +761,7 @@
                                                  </td>
                                                     </tr>
                                                     <tr class="odd">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                        
                                                         <td class="fixed-max-width-150">Group name abcdefgh group </td>
                                                         <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
                                                             Boundaries Ventures</a>
@@ -920,13 +782,89 @@
                                                         </td>
                                                     </tr>
                                                     <tr class="even">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                        
+                                                        <td>Unassigned</td>
+                                                        <td class="sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
+                                                            Boundaries Ventures</a>
+                                                        </td>
+                                                        <td>CA</td>
+                                                        <td>GP</td>
+                                                        <td>Foreign</td>
+                                                        <td>CTA BOI</td>
+                                                        <td>10/09/2023</td>
+                                                        <td>
+                                                            <div class="d-flex align-items-center p-1 red-bg rounded-pill">
+                                                                <span class="icon icon-circular icon-alert-light"></span>
+                                                                <span class="text-light  mb-0">Overdue</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>    
+                                                            <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">Take action</a>
+                                                 </td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        
+                                                        <td class="fixed-max-width-150">Group name abcdef group</td>
+                                                        <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Check all service prices Group 1 LLC</a>
+                                                        </td>
+                                                        <td class="fixed-max-width">CA</td>
+                                                        <td class="fixed-max-width">Non Profit Corporation</td>
+                                                        <td class="fixed-max-width">Domestic</td>
+                                                        <td class="fixed-max-width">SOP</td>
+                                                        <td class="fixed-max-width">10/09/2023</td>
+                                                        <td class="fixed-max-width">
+                                                            <div class="d-flex align-items-center p-1 red-bg rounded-pill">
+                                                                <span class="icon icon-circular icon-alert-light"></span>
+                                                                <span class="text-light  mb-0">Overdue</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>    
+                                                            <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">Take action</a>
+                                                 </td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        
+                                                        <td class="fixed-max-width-150">Unassigned</td>
+                                                        <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Entity All Services 7th Jan LLC</a>
+                                                        </td>
+                                                        <td class="fixed-max-width">CA</td>
+                                                        <td class="fixed-max-width">LLP</td>
+                                                        <td class="fixed-max-width">Foreign</td>
+                                                        <td class="fixed-max-width">Annual Report</td>
+                                                        <td class="fixed-max-width">10/09/2023</td>
+                                                        <td class="fixed-max-width">
+                                                            <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
+                                                                <span class="icon icon-circular icon-status-upcoming"></span>
+                                                                <span class="text-light pe-2  mb-0">Upcoming</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>    
+                                                            <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">Take action</a>
+                                                 </td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        
+                                                        <td class="fixed-max-width-150">Group name abcdefgh group </td>
+                                                        <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
+                                                            Boundaries Ventures</a>
+                                                        </td>
+                                                        <td class="fixed-max-width">CA</td>
+                                                        <td class="fixed-max-width">Profit Corporation</td>
+                                                        <td class="fixed-max-width">Domestic</td>
+                                                        <td class="fixed-max-width">Annual Report</td>
+                                                        <td class="fixed-max-width">10/09/2023</td>
+                                                        <td class="fixed-max-width">
+                                                            <div class="d-flex align-items-center p-1 green-bg rounded-pill">
+                                                                <span class="icon icon-circular icon-status-future"></span>
+                                                                <span class="text-light  mb-0">Future</span>
+                                                            </div>
+                                                        </td>
+                                                        <td class="fixed-max-width">    
+                                                            <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">Take action</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                        
                                                         <td>Unassigned</td>
                                                         <td class="sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
                                                             Boundaries Ventures</a>
@@ -970,10 +908,8 @@
                                               </thead>
                                                 <tbody>
 
-                                                 <tr data-bs-toggle="collapse" data-bs-target="#details2" class="clickable odd">
-                                                    <td>
-                                                      <span class="icon m-0 icon-angle-right"></span>
-                                                    </td>
+                                                 <tr>
+                                                    <td><span class="expand-icon icon-angle-right"></span></td>
                                                     <td class="fixed-max-width-150">Group name abc group</td>
                                                     <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
                                                         Boundaries Ventures</a>
@@ -992,98 +928,7 @@
                                                       <span class="meta-blue-bg status-circle px-2 rounded-circle">0</span>
                                                   </div>
                                                   </td>
-                                                </tr>
-                                                
-                                                <tr class="collapse even" id="details2">
-                                                  <td>
-                                                  </td>
-                                                  <td class="fixed-max-width-150">Group name abc group</td>
-                                                  <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
-                                                      Boundaries Ventures</a>
-                                                  </td>
-                                                  <td class="fixed-max-width">CA</td>
-                                                  <td class="fixed-max-width">Profit Corporation</td>
-                                                  <td class="fixed-max-width">Domestic</td>
-                                                  <td class="fixed-max-width">8</td>
-                                                  <td class="fixed-max-width">1</td>
-                                                  <td>
-                                                      <div class="d-flex align-items-center justify-content-center p-1 green-bg rounded-pill">
-                                                          <span class="text-light mb-0">In Good Standing</span>
-                                                      </div>
-                                                  </td>
-                                                </tr>
-                                                <tr class="collapse odd" id="details2">
-                                                  <td>
-                                                  </td>
-                                                  <td class="fixed-max-width-150">Group name abc group</td>
-                                                  <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
-                                                      Boundaries Ventures</a>
-                                                  </td>
-                                                  <td class="fixed-max-width">CA</td>
-                                                  <td class="fixed-max-width">Profit Corporation</td>
-                                                  <td class="fixed-max-width">Domestic</td>
-                                                  <td class="fixed-max-width">8</td>
-                                                  <td class="fixed-max-width">1</td>
-                                                  <td>
-                                                      <div class="d-flex align-items-center justify-content-center p-1 green-bg rounded-pill">
-                                                          <span class="text-light mb-0">In Good Standing</span>
-                                                      </div>
-                                                  </td>
-                                                </tr>
-                                                <tr class="collapse even" id="details2">
-                                                  <td>
-                                                  </td>
-                                                  <td class="fixed-max-width-150">Group name abc group</td>
-                                                  <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
-                                                      Boundaries Ventures</a>
-                                                  </td>
-                                                  <td class="fixed-max-width">CA</td>
-                                                  <td class="fixed-max-width">Profit Corporation</td>
-                                                  <td class="fixed-max-width">Domestic</td>
-                                                  <td class="fixed-max-width">8</td>
-                                                  <td class="fixed-max-width">1</td>
-                                                  <td>
-                                                      <div class="d-flex align-items-center justify-content-center p-1 maroon-bg rounded-pill">
-                                                          <span class="text-light  mb-0">Not in Good Standing</span>
-                                                      </div>
-                                                  </td>
-                                                </tr>
-                                                <tr class="collapse odd" id="details2">
-                                                  <td>
-                                                  </td>
-                                                  <td class="fixed-max-width-150">Group name abc group</td>
-                                                  <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
-                                                      Boundaries Ventures</a>
-                                                  </td>
-                                                  <td class="fixed-max-width">CA</td>
-                                                  <td class="fixed-max-width">Profit Corporation</td>
-                                                  <td class="fixed-max-width">Domestic</td>
-                                                  <td class="fixed-max-width">8</td>
-                                                  <td class="fixed-max-width">1</td>
-                                                  <td>
-                                                      <div class="d-flex align-items-center justify-content-center p-1 dark-gray-bg rounded-pill">
-                                                          <span class="text-light mb-0">In active</span>
-                                                      </div>
-                                                  </td>
-                                                </tr>
-                                                <tr class="collapse even" id="details2">
-                                                  <td>
-                                                  </td>
-                                                  <td class="fixed-max-width-150">Group name abc group</td>
-                                                  <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
-                                                      Boundaries Ventures</a>
-                                                  </td>
-                                                  <td class="fixed-max-width">CA</td>
-                                                  <td class="fixed-max-width">Profit Corporation</td>
-                                                  <td class="fixed-max-width">Domestic</td>
-                                                  <td class="fixed-max-width">8</td>
-                                                  <td class="fixed-max-width">1</td>
-                                                  <td>
-                                                      <div class="d-flex align-items-center justify-content-center p-1 meta-blue-bg rounded-pill">
-                                                          <span class="text-light mb-0">Dissolved</span>
-                                                      </div>
-                                                  </td>
-                                                </tr>
+                                                </tr>                                                
                                                 </tbody>
                                               </table>
                                         </div>
@@ -1094,13 +939,6 @@
                                             <table id="ra-progress-table" class="table table-striped w-100 table-nowrap data-table-listing table-v2-scroll">
                                                 <thead>
                                                     <tr>
-                                                        <td class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </td>
                                                         <th class="fixed-max-width-150">Group<span class="text-light">...........</span></th>
                                                         <th class="fixed-max-width-150">Entity Name<span class="text-light">...........</span></th>
                                                         <th class="fixed-max-width">Jurisdictions</th>
@@ -1108,19 +946,13 @@
                                                         <th class="fixed-max-width">Registrations</th>
                                                         <th class="fixed-max-width">Tasks</th>
                                                         <th class="fixed-max-width">Due Date</th>
-                                                        <th class="fixed-max-width">Status</th>
+                                                        <th class="fixed-max-width-150">Status</th>
                                                         <th class="fixed-max-width">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr class="even">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                        
                                                         <td class="fixed-max-width-150">Group name abc group</td>
                                                         <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
                                                             Boundaries Ventures</a>
@@ -1141,13 +973,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr class="odd">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                        
                                                         <td class="fixed-max-width-150">Group name abcdef group</td>
                                                         <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Check all service prices Group 1 LLC</a>
                                                         </td>
@@ -1167,13 +993,7 @@
                                                  </td>
                                                     </tr>
                                                     <tr class="even">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                    
                                                         <td class="fixed-max-width-150">Unassigned</td>
                                                         <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Entity All Services 7th Jan LLC</a>
                                                         </td>
@@ -1193,13 +1013,7 @@
                                                  </td>
                                                     </tr>
                                                     <tr class="odd">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                        
                                                         <td class="fixed-max-width-150">Group name abcdefgh group </td>
                                                         <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
                                                             Boundaries Ventures</a>
@@ -1220,13 +1034,89 @@
                                                         </td>
                                                     </tr>
                                                     <tr class="even">
-                                                        <th class="check-box-max-width">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                                <label class="form-check-label" for="flexCheckDefault">
-                                                                </label>
-                                                              </div>
-                                                        </th>
+                                                       
+                                                        <td>Unassigned</td>
+                                                        <td class="sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
+                                                            Boundaries Ventures</a>
+                                                        </td>
+                                                        <td>CA</td>
+                                                        <td>GP</td>
+                                                        <td>Foreign</td>
+                                                        <td>CTA BOI</td>
+                                                        <td>10/09/2023</td>
+                                                        <td class="fixed-max-width-150">
+                                                            <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
+                                                                <span class="icon icon-circle-check-white"></span>
+                                                                <span class="text-light  mb-0">Sent to State</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>    
+                                                            <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">View</a>
+                                                 </td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        
+                                                        <td class="fixed-max-width-150">Group name abcdef group</td>
+                                                        <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Check all service prices Group 1 LLC</a>
+                                                        </td>
+                                                        <td class="fixed-max-width">CA</td>
+                                                        <td class="fixed-max-width">Non Profit Corporation</td>
+                                                        <td class="fixed-max-width">Domestic</td>
+                                                        <td class="fixed-max-width">SOP</td>
+                                                        <td class="fixed-max-width">10/09/2023</td>
+                                                        <td class="fixed-max-width-150">
+                                                            <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
+                                                                <span class="icon icon-circle-check-white"></span>
+                                                                <span class="text-light  mb-0">Sent to State</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>    
+                                                            <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">View</a>
+                                                 </td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                    
+                                                        <td class="fixed-max-width-150">Unassigned</td>
+                                                        <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Entity All Services 7th Jan LLC</a>
+                                                        </td>
+                                                        <td class="fixed-max-width">CA</td>
+                                                        <td class="fixed-max-width">LLP</td>
+                                                        <td class="fixed-max-width">Foreign</td>
+                                                        <td class="fixed-max-width">Annual Report</td>
+                                                        <td class="fixed-max-width">10/09/2023</td>
+                                                        <td class="fixed-max-width-150">
+                                                            <div class="d-flex align-items-center p-1 indigo-bg rounded-pill">
+                                                                <span class="icon icon-in-process-white"></span>
+                                                                <span class="text-light pe-2 mb-0">In Process</span>
+                                                            </div>
+                                                        </td>
+                                                        <td>    
+                                                            <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">View</a>
+                                                 </td>
+                                                    </tr>
+                                                    <tr class="odd">
+                                                        
+                                                        <td class="fixed-max-width-150">Group name abcdefgh group </td>
+                                                        <td class="fixed-max-width-150 sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
+                                                            Boundaries Ventures</a>
+                                                        </td>
+                                                        <td class="fixed-max-width">CA</td>
+                                                        <td class="fixed-max-width">Profit Corporation</td>
+                                                        <td class="fixed-max-width">Domestic</td>
+                                                        <td class="fixed-max-width">Annual Report</td>
+                                                        <td class="fixed-max-width">10/09/2023</td>
+                                                        <td class="fixed-max-width-150">
+                                                            <div class="d-flex align-items-center p-1 indigo-bg rounded-pill">
+                                                                <span class="icon icon-in-process-white"></span>
+                                                                <span class="text-light  mb-0">In Process</span>
+                                                            </div>
+                                                        </td>
+                                                        <td class="fixed-max-width">    
+                                                            <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">View</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="even">
+                                                       
                                                         <td>Unassigned</td>
                                                         <td class="sorting_1"><a href="/entities-details-beyond-boundaries-ventures.html">Beyond
                                                             Boundaries Ventures</a>
@@ -3389,65 +3279,13 @@
         });
     </script>
     <!-- end -->
-
-    <!-- google chart script start -->
-    <script>
-    // Load Google Charts
-    google.charts.load("current", { packages: ["corechart"] });
-  
-    // Draw the charts
-    google.charts.setOnLoadCallback(() => {
-      drawDonutChart("donut_chart", [
-        ["Task", "Count", { role: "tooltip" }],
-        ["Overdue", 50, "50"],
-        ["Upcoming", 30, "30"],
-        ["Future Tasks", 25, "25"],
-      ], ["#E73B18", "#3498db", "#00BA70"]);
-  
-      drawDonutChart("donut_chart_2", [
-        ["Status", "Count", { role: "tooltip" }],
-        ["In Good Standing", 15, "15"],
-        ["Not in Good Standing", 8, "8"],
-        ["Inactive", 3, "3"],
-        ["Dissolved", 2, "2"],
-        ["Archived", 1, "1"],
-      ], ["#00BA70", "#BB0F23", "#8690A0", "#1080F8", "#1A4D9E"]);
-  
-      drawDonutChart("donut_chart_3", [
-        ["Task", "Count", { role: "tooltip" }],
-        ["In Process", 5, "5"],
-        ["Sent", 5, "5"],
-        ["Completed", 5, "5"],
-      ], ["#4744D1", "#3498db", "#00BA70"]);
-    });
-  
-    // Reusable function to draw a donut chart
-    function drawDonutChart(containerId, chartData, colors) {
-      // Convert data to DataTable format
-      var data = google.visualization.arrayToDataTable(chartData);
-  
-      // Chart options
-      var options = {
-        pieHole: 0.5, // Donut hole size
-        colors: colors, // Custom colors
-        legend: "none", // Disable legend
-        pieSliceText: "none", // Hide text on slices
-        backgroundColor: "transparent", // Transparent background
-        chartArea: { width: "90%", height: "90%", backgroundColor: "none" }, // Adjust chart area
-      };
-  
-      // Create and draw the chart
-      var chart = new google.visualization.PieChart(document.getElementById(containerId));
-      chart.draw(data, options);
-    }
-    </script>
-    <!-- google chart script end -->
-    
     <!-- Scripts start-->
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
+    <script src="dist/js/dashboard-v2.js"></script>
     <!-- Scripts End-->
-    <script src="/lib/datatable/custom.datatable.js?1736409192"></script>
+    
+
 </body>
 
 </html>
