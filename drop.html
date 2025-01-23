@@ -4,73 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expandable DataTable</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
     <style>
-        /* Main Table Styles */
-        .table {
+        /* General table styling */
+        table {
             width: 100%;
             border-collapse: collapse;
         }
-
-        .expand-icon {
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .icon-angle-right::before {
-            content: '\25B6'; /* Right arrow */
-        }
-
-        .icon-angle-down::before {
-            content: '\25BC'; /* Down arrow */
-        }
-
-        /* Expanded Row Styles */
-        .expanded-content {
-            font-size: 0.9em;
-            background-color: #f9f9f9;
+        thead th {
+            background-color: #f8f9fa;
+            text-align: left;
             padding: 10px;
-            border: 1px solid #ddd;
-            width: 100%;
+        }
+        tbody td {
+            padding: 10px;
         }
 
-        /* Status Circles */
-        .status-badges span {
+        /* Styling for expandable rows */
+        .expand-row td {
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .inner-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            table-layout: fixed;
+        }
+
+        .inner-table td {
+            padding: 8px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Status badges */
+        .badge {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #fff;
             display: inline-block;
-            margin-right: 5px;
+        }
+
+        .badge-success {
+            background-color: #00ba70;
+        }
+
+        .badge-danger {
+            background-color: #e73b18;
+        }
+
+        .badge-gray {
+            background-color: #8690a0;
+        }
+
+        /* Colored status dots */
+        .status-dots {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .status-dot {
             width: 20px;
             height: 20px;
-            line-height: 20px;
-            text-align: center;
             border-radius: 50%;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
         }
 
-        .green-circle {
-            background-color: #28a745;
+        .status-green {
+            background-color: #00ba70;
         }
 
-        .red-circle {
-            background-color: #dc3545;
+        .status-red {
+            background-color: #e73b18;
         }
 
-        .gray-circle {
-            background-color: #6c757d;
+        .status-gray {
+            background-color: #8690a0;
         }
 
-        .blue-circle {
-            background-color: #007bff;
+        .status-blue {
+            background-color: #3498db;
         }
     </style>
 </head>
 <body>
-
-    <table id="example-table" class="table table-striped w-100">
+    <table id="ra-other-table" class="display responsive nowrap">
         <thead>
             <tr>
                 <th></th>
@@ -84,95 +105,88 @@
                 <th>Status</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td><span class="expand-icon icon-angle-right"></span></td>
-                <td>ABC Group</td>
-                <td>Algorithm Computers</td>
-                <td>Profit Corporation</td>
-                <td>CA</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
-                <td>
-                    <div class="status-badges">
-                        <span class="green-circle">6</span>
-                        <span class="red-circle">3</span>
-                        <span class="gray-circle">2</span>
-                        <span class="blue-circle">0</span>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
     </table>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
     <script>
+        // Formatting function for expandable rows
+        function format(d) {
+            return `
+                <tr class="expand-row">
+                    <td colspan="9">
+                        <table class="inner-table">
+                            <tr>
+                                <td>${d.group}</td>
+                                <td>${d.entity_name}</td>
+                                <td>${d.type}</td>
+                                <td>${d.jurisdictions}</td>
+                                <td>${d.registrations}</td>
+                                <td>${d.dbas}</td>
+                                <td>${d.bus_licenses}</td>
+                                <td>
+                                    <span class="badge badge-${d.status.class}">${d.status.label}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            `;
+        }
+
+        // Initialize DataTable
         $(document).ready(function () {
-            // Initialize DataTable
-            var table = $('#example-table').DataTable({
-                paging: true,
-                info: true,
-                ordering: false,
-                columnDefs: [
-                    { targets: 0, orderable: false }, // Disable sorting for the expand column
+            let table = $('#ra-other-table').DataTable({
+                ajax: "data4.json",
+                columns: [
+                    {
+                        className: 'dt-control',
+                        orderable: false,
+                        data: null,
+                        defaultContent: ''
+                    },
+                    { data: 'group' },
+                    { data: 'entity_name' },
+                    { data: 'type' },
+                    { data: 'jurisdictions' },
+                    { data: 'registrations' },
+                    { data: 'dbas' },
+                    { data: 'bus_licenses' },
+                    { 
+                        data: 'status', 
+                        render: renderDots 
+                    }
                 ],
+                order: [[1, 'asc']]
             });
 
-            // Handle row expansion
-            $('#example-table tbody').on('click', '.expand-icon', function () {
-                var tr = $(this).closest('tr');
-                var row = table.row(tr);
+            // Handle row click
+            $('#ra-other-table tbody').on('click', 'td.dt-control', function () {
+                let tr = $(this).closest('tr');
+                let row = table.row(tr);
 
                 if (row.child.isShown()) {
-                    // Collapse row
                     row.child.hide();
-                    $(this).removeClass('icon-angle-down').addClass('icon-angle-right');
+                    tr.removeClass('expanded-row');
                 } else {
-                    // Expand row
-                    row.child(formatChildRow(row.data())).show();
-                    $(this).removeClass('icon-angle-right').addClass('icon-angle-down');
+                    row.child(format(row.data())).show();
+                    tr.addClass('expanded-row');
                 }
             });
-
-            // Format child row content
-            function formatChildRow(data) {
-                return `
-                    <table class="expanded-content">
-                        <tr>
-                            <td></td>
-                            <td>ABC Group</td>
-                            <td>Beyond Boundaries Ventures</td>
-                            <td>Profit Corporation</td>
-                            <td>CA</td>
-                            <td>Domestic</td>
-                            <td>8</td>
-                            <td>1</td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-center p-1 green-bg rounded-pill">
-                                    <span class="text-light mb-0">In Good Standing</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>ABC Group</td>
-                            <td>Beyond Boundaries Ventures</td>
-                            <td>Profit Corporation</td>
-                            <td>CA</td>
-                            <td>Domestic</td>
-                            <td>8</td>
-                            <td>1</td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-center p-1 green-bg rounded-pill">
-                                    <span class="text-light mb-0">In Good Standing</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                `;
-            }
         });
+
+        // Render dots for status column in the parent row
+        function renderDots(data) {
+            return `
+                <div class="status-dots">
+                    <div class="status-dot status-green"></div>
+                    <div class="status-dot status-red"></div>
+                    <div class="status-dot status-gray"></div>
+                    <div class="status-dot status-blue"></div>
+                </div>
+            `;
+        }
     </script>
-  
 </body>
 </html>
