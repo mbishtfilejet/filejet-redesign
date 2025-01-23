@@ -60,14 +60,24 @@ $(document).ready(function () {
     // Initialize Select2 for Group
     initializeSelect2('#Group-Select', "Group");
 
-    // Initialize Select2 for Jurisdictions
+    // Initialize Select2 for open task
     initializeSelect2('#Jurisdiction-Select', "Jurisdictions");
 
-    // Initialize Select2 for Task
     initializeSelect2('#Task-Select', "Task");
 
-    // Initialize Select2 for Status
     initializeSelect2('#Status-Select', "Status");
+
+     // Initialize Select2 for Entity 
+     initializeSelect2('#Entity-Jurisdiction-Select', "Jurisdictions");
+
+    initializeSelect2('#Entity-Status-Select', "Status");
+
+    // Initialize Select2 for Order status
+    initializeSelect2('#Order-Jurisdiction-Select', "Jurisdictions");
+
+    initializeSelect2('#Order-Task-Select', "Task");
+    
+    initializeSelect2('#Order-Status-Select', "Status");
 
     // Function to initialize Select2 with checkboxes
     function initializeSelect2(selector, placeholderText) {
