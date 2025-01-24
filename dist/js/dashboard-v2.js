@@ -69,7 +69,7 @@ function drawDonutChart(containerId, chartData, colors) {
 // select2 dropdown filter start
 $(document).ready(function () {
   // Initialize Select2 for Group
-  initializeSelect2("#Group-Select", "Group");
+
 
   // Initialize Select2 for open task
   initializeSelect2("#Jurisdiction-Select", "Jurisdictions");
@@ -150,13 +150,7 @@ $(document).ready(function () {
       })
       .get();
 
-    if (selectedValue === "all") {
-      // Select all options
-      $select.val(allValues).trigger("change");
-    } else if (selectedValue === "none") {
-      // Deselect all options
-      $select.val(null).trigger("change");
-    }
+
   }
 });
 // select2 dropdown filter end
