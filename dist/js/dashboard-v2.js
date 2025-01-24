@@ -169,7 +169,7 @@ $(document).ready(function () {
             return `
                 <tr class="expand-row">
                     <td colspan="9">
-                        <table class="table table-striped w-100 table-nowrap inner-table">
+                        <table class="inner-table">
                             <tr>
                                 <td>${d.group}</td>
                                 <td>${d.entity_name}</td>
@@ -280,3 +280,6 @@ $(document).ready(function () {
             `;
         }
 // expand table end
+
+
+
