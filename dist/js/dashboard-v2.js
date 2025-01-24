@@ -68,8 +68,6 @@ function drawDonutChart(containerId, chartData, colors) {
 
 // select2 dropdown filter start
 $(document).ready(function () {
-  // Initialize Select2 for Group
-
 
   // Initialize Select2 for open task
   initializeSelect2("#Jurisdiction-Select", "Jurisdictions");
