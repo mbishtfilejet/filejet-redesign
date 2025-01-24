@@ -159,17 +159,18 @@ $(document).ready(function () {
         // Formatting function for expandable rows
         function format(d) {
             return `
-                <tr class="expand-row">
-                    <td colspan="9">
+                <tr class="expand-row" style="padding: 0px !important;">
+                    <td colspan="9" style="padding: 0px !important;">
                         <table class="inner-table">
                             <tr>
-                                <td>${d.group}</td>
-                                <td>${d.entity_name}</td>
-                                <td>${d.type}</td>
-                                <td>${d.jurisdictions}</td>
-                                <td>${d.registrations}</td>
-                                <td>${d.dbas}</td>
-                                <td>${d.bus_licenses}</td>
+                                <td style="width:5px;"></td>
+                                <td style="width:70px;">${d.group}</td>
+                                <td style="width:155px;">${d.entity_name}</td>
+                                <td style="width:115px">${d.type}</td>
+                                <td style="width:30px">${d.jurisdictions}</td>
+                                <td style="width:80px">${d.registrations}</td>
+                                <td style="width:35px">${d.dbas}</td>
+                                <td style="width:85px">${d.bus_licenses}</td>
                                 <td>
                                     <span class="badge badge-${d.status.class}">${d.status.label}</span>
                                 </td>
@@ -177,17 +178,18 @@ $(document).ready(function () {
                         </table>
                     </td>
                 </tr> ,
-                <tr class="expand-row">
-                    <td colspan="9">
-                        <table class="table table-striped w-100 table-nowrap inner-table">
+                <tr class="expand-row" style="padding: 0px !important;">
+                    <td colspan="9" style="padding: 0px !important;">
+                        <table class="inner-table">
                             <tr>
-                                <td>${d.group}</td>
-                                <td>${d.entity_name}</td>
-                                <td>${d.type}</td>
-                                <td>${d.jurisdictions}</td>
-                                <td>${d.registrations}</td>
-                                <td>${d.dbas}</td>
-                                <td>${d.bus_licenses}</td>
+                                <td style="width:5px;"></td>
+                                <td style="width:70px;">${d.group}</td>
+                                <td style="width:155px;">${d.entity_name}</td>
+                                <td style="width:115px">${d.type}</td>
+                                <td style="width:30px">${d.jurisdictions}</td>
+                                <td style="width:80px">${d.registrations}</td>
+                                <td style="width:35px">${d.dbas}</td>
+                                <td style="width:85px">${d.bus_licenses}</td>
                                 <td>
                                     <span class="badge badge-${d.status.class}">${d.status.label}</span>
                                 </td>
@@ -195,17 +197,18 @@ $(document).ready(function () {
                         </table>
                     </td>
                 </tr> ,
-                <tr class="expand-row">
-                    <td colspan="9">
-                        <table class="table table-striped w-100 table-nowrap inner-table">
+                <tr class="expand-row" style="padding: 0px !important;">
+                    <td colspan="9" style="padding: 0px !important;">
+                        <table class="inner-table">
                             <tr>
-                                <td>${d.group}</td>
-                                <td>${d.entity_name}</td>
-                                <td>${d.type}</td>
-                                <td>${d.jurisdictions}</td>
-                                <td>${d.registrations}</td>
-                                <td>${d.dbas}</td>
-                                <td>${d.bus_licenses}</td>
+                                <td style="width:5px;"></td>
+                                <td style="width:70px;">${d.group}</td>
+                                <td style="width:155px;">${d.entity_name}</td>
+                                <td style="width:115px">${d.type}</td>
+                                <td style="width:30px">${d.jurisdictions}</td>
+                                <td style="width:80px">${d.registrations}</td>
+                                <td style="width:35px">${d.dbas}</td>
+                                <td style="width:85px">${d.bus_licenses}</td>
                                 <td>
                                     <span class="badge badge-${d.status.class}">${d.status.label}</span>
                                 </td>
