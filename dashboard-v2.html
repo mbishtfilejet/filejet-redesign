@@ -7,12 +7,13 @@
     <title>File Jet: Dashboard</title>
     <!-- Styles -->
     <link rel="stylesheet" href="dist/css/filejet-style.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <!-- Scripts -->
     <script src="dist/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
 </head>
 
 <body>
@@ -627,49 +628,104 @@
                                             <div class="col-12 col-lg-4 px-1 mb-2 search-table-col">
                                                 <div class="table-search-feild d-flex align-items-center border border-1 border-secondary rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2">
                                                     <span class="icon icon-search-grey icon-sm opacity-25"></span>
-                                                    <input type="text" placeholder="Search" class="text-placeholder-d2 border-0 p-0 w-100">
+                                                    <input type="text" class="custom-search-input border-0 p-0 w-100" placeholder="Search" >
                                                 </div>
                                             </div>
             
-                                            <div class= "filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2">
-                                                <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
-                                                    <select id="Jurisdiction-Select" class="form-select form-control w-100 " multiple="multiple">
-                                                        <option value="all">All</option>
-                                                        <option value="none">None</option>
-                                                        <option value="CA">CA</option>
-                                                        <option value="NV">NV</option>
-                                                        <option value="FL">FL</option>
-                                                        <option value="MN">MN</option>
-                                                        <option value="OR">OR</option>
-                                                    </select>
-                                                    <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            <div class="filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2">
+                                                <div class="d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg position-relative">
+                                                    <input type="text" class="custom-filter-input form-control dropdown-toggle p-3 py-0 m-0 w-100" id="JurisdictionDropdown" placeholder="Jurisdictions" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" data-placeholder="Jurisdictions">
+                                                    <ul class="dropdown-menu w-100 jurisdiction-dropdown-menu" aria-labelledby="JurisdictionDropdown" >
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="jurisdiction-select-all" class="form-check-input me-2">All
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="CA"> CA
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="NV"> NV
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="FL"> FL
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="MN"> MN
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="OR"> OR
+                                                            </label>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
-            
-                                            <div class= "filter2-dropdown col-12 col-lg-2 task-table-col px-1 mb-2">
-                                                <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
-                                                    <select id="Task-Select" class="form-select w-100 " multiple="multiple">
-                                                        <option value="Annual Report">Annual Report</option>
-                                                        <option value="CTA BOI">CTA BOI</option>
-                                                        <option value="SOP">SOP</option>
-                                                        
-                                                    </select>
-                                                    <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            
+                                            <div class="filter2-dropdown col-12 col-lg-3 task-table-col px-1 mb-2">
+                                                <div class="d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg position-relative">
+                                                    <input type="text" class="custom-filter-input form-control dropdown-toggle p-3 py-0 m-0 w-100" id="TaskDropdown" placeholder="Task" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" data-placeholder="Task">
+                                                    <ul class="dropdown-menu w-100 task-dropdown-menu" aria-labelledby="TaskDropdown">
+                                                        <!-- <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="task-select-all" class="form-check-input me-2">All
+                                                            </label>
+                                                        </li> -->
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 task-checkbox" value="Annual Report">Annual Report
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 task-checkbox" value="CTA BOI">CTA BOI
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 task-checkbox" value="SOP">SOP
+                                                            </label>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
-            
-                                            <div class= "filter2-dropdown col-12 col-lg-2 status-table-col px-1 mb-2">
-                                                <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
-                                                    <select id="Status-Select" class="form-select w-100 " multiple="multiple">
-                                                        <option selected>Overdue</option>
-                                                        <option selected>Upcoming</option>
-                                                        <option value="Future">Future</option>
-                                                        
-                                                    </select>
-                                                    <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            
+                                            <div class="filter2-dropdown col-12 col-lg-3 status-table-col px-1 mb-2">
+                                                <div class="d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg position-relative">
+                                                    <input type="text" class="custom-filter-input form-control dropdown-toggle p-3 py-0 m-0 w-100" id="StatusDropdown" placeholder="Status" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" data-placeholder="Status">
+                                                    <ul class="dropdown-menu w-100 status-dropdown-menu" aria-labelledby="StatusDropdown">
+                                                        <!-- <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="status-select-all" class="form-check-input me-2">All
+                                                            </label>
+                                                        </li> -->
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input checked active me-2 status-checkbox" value="Overdue">Overdue
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 status-checkbox" value="Upcoming">Upcoming
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 status-checkbox" value="Future">Future
+                                                            </label>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
-        
+                                            
                                             <div class="col-12 col-lg-1 export-table-col px-1 mb-2 ">
                                                     <div class="group-search-d2 dropdown border border-1 rounded-2 shadow-sm py-1 export-csv-col">
                                                         <a href="#" class="text-purple text-decoration-none d-flex justify-content-center align-items-center"> 
@@ -893,35 +949,81 @@
                                                     <input type="text" placeholder="Search" class="text-placeholder-d2 border-0 p-0 w-100">
                                                 </div>
                                             </div>
-                                            
-            
-                                            <div class= "filter2-dropdown col-12 col-lg-3 entity-Jurisdiction-table-col px-1 mb-2">
-                                                <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
-                                                    <select id="Entity-Jurisdiction-Select" class="form-select form-control w-100 " multiple="multiple">
-                                                        <option value="all">All</option>
-                                                        <option value="none">None</option>
-                                                        <option value="CA">CA</option>
-                                                        <option value="NV">NV</option>
-                                                        <option value="FL">FL</option>
-                                                        <option value="MN">MN</option>
-                                                        <option value="OR">OR</option>
-                                                    </select>
-                                                    <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+
+                                            <div class="filter2-dropdown col-12 col-lg-3 entity-Jurisdiction-table-col px-1 mb-2">
+                                                <div class="d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg position-relative">
+                                                    <input type="text" class="custom-filter-input form-control dropdown-toggle p-3 py-0 m-0 w-100" id="EntityJurisdictionDropdown" placeholder="Jurisdictions" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" data-placeholder="EntityJurisdictions">
+                                                    <ul class="dropdown-menu w-100 entity-jurisdiction-dropdown-menu" aria-labelledby="EntityJurisdictionDropdown">
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="entity-jurisdiction-select-all" class="form-check-input me-2">All
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-jurisdiction-checkbox" value="CA"> CA
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-jurisdiction-checkbox" value="NV"> NV
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-jurisdiction-checkbox" value="FL"> FL
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-jurisdiction-checkbox" value="MN"> MN
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-jurisdiction-checkbox" value="OR"> OR
+                                                            </label>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
             
-            
-                                            <div class= "filter2-dropdown col-12 col-lg-2 entity-status-table-col px-1 mb-2">
-                                                <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
-                                                    <select id="Entity-Status-Select" class="form-select w-100 " multiple="multiple">
-                                                        <option value="Overdue">Good standing</option>
-                                                        <option value="Upcoming">Not in good Standing</option>
-                                                        <option value="Future">Inactive</option>
-                                                        <option value="Future">Dissolved</option>
-                                                        <option value="Future">Archived</option>
-                                                        
-                                                    </select>
-                                                    <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            <div class="filter2-dropdown col-12 col-lg-2 entity-status-table-col px-1 mb-2">
+                                                <div  class="d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg position-relative">
+                                                    <input type="text" class="custom-filter-input form-control dropdown-toggle p-3 py-0 m-0 w-100" id="EntityStatusDropdown" placeholder="Select Status" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off">
+                                                    <ul class="dropdown-menu w-100 entity-status-dropdown-menu" aria-labelledby="EntityStatusDropdown">
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="entity-status-select-all" class="form-check-input me-2"> Select All
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-status-checkbox" value="Good standing"> Good standing
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-status-checkbox" value="Not in good Standing"> Not in good Standing
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-status-checkbox" value="Inactive"> Inactive
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-status-checkbox" value="Dissolved"> Dissolved
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 entity-status-checkbox" value="Archived"> Archived
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="selected-items-container mt-2"></div>
                                                 </div>
                                             </div>
         
@@ -961,42 +1063,97 @@
                                                 </div>
                                             </div>
             
-                                            <div class= "filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2">
-                                                <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
-                                                    <select id="Order-Jurisdiction-Select" class="form-select form-control w-100 " multiple="multiple">
-                                                        <option value="all">All</option>
-                                                        <option value="none">None</option>
-                                                        <option value="CA">CA</option>
-                                                        <option value="NV">NV</option>
-                                                        <option value="FL">FL</option>
-                                                        <option value="MN">MN</option>
-                                                        <option value="OR">OR</option>
-                                                    </select>
-                                                    <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            <div class="filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2">
+                                                <div class="d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg position-relative">
+                                                    <input type="text" class="custom-filter-input form-control dropdown-toggle p-3 py-0 m-0 w-100" id="OrderJurisdictionDropdown" placeholder="Jurisdictions" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" data-placeholder="OrderJurisdictions">
+                                                    <ul class="dropdown-menu w-100 order-jurisdiction-dropdown-menu" aria-labelledby="OrderJurisdictionDropdown" >
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="order-jurisdiction-select-all" class="form-check-input me-2">All
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-jurisdiction-checkbox" value="CA"> CA
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-jurisdiction-checkbox" value="NV"> NV
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-jurisdiction-checkbox" value="FL"> FL
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-jurisdiction-checkbox" value="MN"> MN
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-jurisdiction-checkbox" value="OR"> OR
+                                                            </label>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
-            
-                                            <div class= "filter2-dropdown col-12 col-lg-2 task-table-col px-1 mb-2">
-                                                <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
-                                                    <select id="Order-Task-Select" class="form-select w-100 " multiple="multiple">
-                                                        <option value="Annual Report">Annual Report</option>
-                                                        <option value="CTA BOI">CTA BOI</option>
-                                                        <option value="SOP">SOP</option>
-                                                        
-                                                    </select>
-                                                    <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            
+                                            <div class="filter2-dropdown col-12 col-lg-3 task-table-col px-1 mb-2">
+                                                <div class="d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg position-relative">
+                                                    <input type="text" class="custom-filter-input form-control dropdown-toggle p-3 py-0 m-0 w-100" id="OrderTaskDropdown" placeholder="Task" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" data-placeholder="OrderTask">
+                                                    <ul class="dropdown-menu w-100 order-task-dropdown-menu" aria-labelledby="OrderTaskDropdown">
+                                                        <!-- <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="task-select-all" class="form-check-input me-2">All
+                                                            </label>
+                                                        </li> -->
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-task-checkbox" value="Annual Report">Annual Report
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-task-checkbox" value="CTA BOI">CTA BOI
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-task-checkbox" value="SOP">SOP
+                                                            </label>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
-            
-                                            <div class= "filter2-dropdown col-12 col-lg-2 status-table-col px-1 mb-2">
-                                                <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
-                                                    <select id="Order-Status-Select" class="form-select w-100 " multiple="multiple">
-                                                        <option value="Overdue">In process</option>
-                                                        <option value="Upcoming">Sent to state</option>
-                                                        <option value="Future">Recentaly completed</option>
-                                                        
-                                                    </select>
-                                                    <span class="dropdown-icon icon icon-arrow-triangle-bottom-dark"></span>
+                                            
+                                            <div class="filter2-dropdown col-12 col-lg-3 status-table-col px-1 mb-2">
+                                                <div class="d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg position-relative">
+                                                    <input type="text" class="custom-filter-input form-control dropdown-toggle p-3 py-0 m-0 w-100" id="OrderStatusDropdown" placeholder="Status" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off" data-placeholder="OrderStatus">
+                                                    <ul class="dropdown-menu w-100 order-status-dropdown-menu" aria-labelledby="OrderStatusDropdown">
+                                                        <!-- <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="status-select-all" class="form-check-input me-2">All
+                                                            </label>
+                                                        </li> -->
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input checked active me-2 order-status-checkbox" value="In Process">In Process
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-status-checkbox" value="Sent to State">Sent to State
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" class="form-check-input me-2 order-status-checkbox" value="Recently Completed">Recently Completed
+                                                            </label>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
         

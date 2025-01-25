@@ -64,101 +64,127 @@ function drawDonutChart(containerId, chartData, colors) {
 }
 // google chart script end
 
-
-
-// select2 dropdown filter start
+// filter dropdown start
 $(document).ready(function () {
-
-  // Initialize Select2 for open task
-  initializeSelect2("#Jurisdiction-Select", "Jurisdictions");
-
-  initializeSelect2("#Task-Select", "Task");
-
-  initializeSelect2("#Status-Select", "Status");
-
-  // Initialize Select2 for Entity
-  initializeSelect2("#Entity-Jurisdiction-Select", "Jurisdictions");
-
-  initializeSelect2("#Entity-Status-Select", "Status");
-
-  // Initialize Select2 for Order status
-  initializeSelect2("#Order-Jurisdiction-Select", "Jurisdictions");
-
-  initializeSelect2("#Order-Task-Select", "Task");
-
-  initializeSelect2("#Order-Status-Select", "Status");
-
-  // Function to initialize Select2 with checkboxes
-  function initializeSelect2(selector, placeholderText) {
-    $(selector).select2({
-      placeholder: placeholderText,
-      allowClear: true, // Allows clearing the selection
-      closeOnSelect: false, // Keeps dropdown open for multi-select
-      templateResult: formatOption, // Custom option rendering with checkboxes
-      templateSelection: formatSelection, // Custom selection rendering
-    });
-
-    // Add event listeners for "All" and "None" options
-    $(selector).on("select2:select select2:unselect", function (e) {
-      handleSelectAllOrNone(selector, e.params.data.id);
-      synchronizeCheckboxState(selector); // Update checkbox states
-    });
-  }
-
-  // Custom rendering for dropdown options with checkboxes
-  function formatOption(option) {
-    if (!option.id) {
-      return option.text;
-    }
-    return $(
-      '<span><input type="checkbox" class="form-check-input me-2"/> ' +
-        option.text +
-        "</span>"
+  function initializeDropdown(
+    dropdownId,
+    selectAllId,
+    checkboxClass,
+    dropdownMenuClass
+  ) {
+    const dropdownInput = $(dropdownId);
+    const dropdownMenu = $(dropdownMenuClass);
+    const checkboxes = $(checkboxClass);
+    const selectAllCheckbox = $(selectAllId);
+    const selectedItemsContainer = $(
+      '<div class="filter-selected-items-container"></div>'
     );
+
+    // Attach selected items container to the dropdown input field
+    dropdownInput.after(selectedItemsContainer);
+
+    function updateInputText() {
+      const selectedOptions = checkboxes
+        .filter(":checked")
+        .map(function () {
+          return $(this).val();
+        })
+        .get();
+
+      // Clear previous selected items
+      selectedItemsContainer.empty();
+
+      if (selectedOptions.length === 0) {
+        dropdownInput.val("");
+        dropdownInput.attr("placeholder", "Select items");
+      } else {
+        const visibleItems = selectedOptions.slice(0, 2); // Limit to first 2 items
+        const remainingCount = selectedOptions.length - visibleItems.length;
+
+        // Add the visible items
+        visibleItems.forEach((option) => {
+          const selectedItem = $('<span class="filter-selected-item"></span>').text(
+            option
+          );
+          const clearIcon = $('<span class="filter-clear-icon">X</span>');
+
+          // Attach the clear icon and item
+          selectedItem.append(clearIcon);
+          selectedItemsContainer.append(selectedItem);
+
+          // Clear item click handler
+          clearIcon.on("click", function () {
+            $(`input[value="${option}"]`).prop("checked", false);
+            updateInputText();
+          });
+        });
+
+        // Show the summary if there are more than 3 items selected
+        if (remainingCount > 0) {
+          const summary = $('<span class="more-items-summary"></span>').text(
+            `+ ${remainingCount}`
+          );
+          selectedItemsContainer.append(summary);
+        }
+
+        // Update dropdown input with no placeholder if items are selected
+        dropdownInput.attr("placeholder", "");
+      }
+    }
+
+    // Filter dropdown options based on input
+    dropdownInput.on("input", function () {
+      const searchValue = $(this).val().toLowerCase();
+      dropdownMenu.find("label").each(function () {
+        const label = $(this).text().toLowerCase();
+        $(this).toggle(label.includes(searchValue));
+      });
+    });
+
+    // Handle checkbox changes
+    checkboxes.on("change", function () {
+      updateInputText();
+    });
+
+    // Handle "Select All" checkbox
+    selectAllCheckbox.on("change", function () {
+      const isChecked = $(this).is(":checked");
+      checkboxes.prop("checked", isChecked);
+      updateInputText();
+    });
+
+    // Sync "Select All" checkbox state
+    checkboxes.on("change", function () {
+      const allChecked =
+        checkboxes.length === checkboxes.filter(":checked").length;
+      selectAllCheckbox.prop("checked", allChecked);
+    });
+
+    // Prevent dropdown from closing on click inside
+    dropdownMenu.on("click", function (e) {
+      e.stopPropagation();
+    });
   }
 
-  // Custom rendering for selected items
-  function formatSelection(selection) {
-    return selection.text;
-  }
+  // Initialize all dropdowns with unique identifiers
+  initializeDropdown( "#JurisdictionDropdown","#jurisdiction-select-all",".jurisdiction-checkbox","jurisdiction-dropdown-menu" );
+  initializeDropdown("#TaskDropdown","#task-select-all",".task-checkbox",".task-dropdown-menu");
+  initializeDropdown("#StatusDropdown","#status-select-all",".status-checkbox",".status-dropdown-menu");
 
-  // Synchronize checkbox state with selection
-  function synchronizeCheckboxState(selector) {
-    $(selector)
-      .next(".select2")
-      .find(
-        '.select2-results__option[aria-selected="true"] input[type="checkbox"]'
-      )
-      .prop("checked", true);
-    $(selector)
-      .next(".select2")
-      .find(
-        '.select2-results__option[aria-selected="false"] input[type="checkbox"]'
-      )
-      .prop("checked", false);
-  }
+  initializeDropdown("#EntityJurisdictionDropdown","#entity-jurisdiction-select-all",".entity-jurisdiction-checkbox","entity-jurisdiction-dropdown-menu" );
+  initializeDropdown("#EntityStatusDropdown","#entity-status-select-all",".entity-status-checkbox",".entity-status-dropdown-menu");
 
-  // Handle "Select All" and "Deselect All" functionality
-  function handleSelectAllOrNone(selector, selectedValue) {
-    const $select = $(selector);
-    const allValues = $select
-      .find("option")
-      .map(function () {
-        return this.value;
-      })
-      .get();
+  initializeDropdown( "#OrderJurisdictionDropdown","#order-jurisdiction-select-all",".order-jurisdiction-checkbox","order-jurisdiction-dropdown-menu" );
+  initializeDropdown("#OrderTaskDropdown","#order-task-select-all",".order-task-checkbox",".order-task-dropdown-menu");
+  initializeDropdown("#OrderStatusDropdown","#order-status-select-all",".order-status-checkbox",".order-status-dropdown-menu");
 
-
-  }
 });
-// select2 dropdown filter end
-
-
+// filter dropdown end
 
 // expand table start
-        // Formatting function for expandable rows
-        function format(d) {
-            return `
+// Formatting function for expandable rows
+function format(d) {
+  return `
                 <tr class="expand-row" style="padding: 0px !important;">
                     <td colspan="9" style="padding: 0px !important;">
                         <table class="inner-table">
@@ -217,54 +243,53 @@ $(document).ready(function () {
                     </td>
                 </tr>
             `;
-            
-        }
+}
 
-        // Initialize DataTable
-        $(document).ready(function () {
-            let table = $('#ra-other-table').DataTable({
-                ajax: "data4.json",
-                columns: [
-                    {
-                        className: 'dt-control',
-                        orderable: false,
-                        data: null,
-                        defaultContent: ''
-                    },
-                    { data: 'group' },
-                    { data: 'entity_name' },
-                    { data: 'type' },
-                    { data: 'jurisdictions' },
-                    { data: 'registrations' },
-                    { data: 'dbas' },
-                    { data: 'bus_licenses' },
-                    { 
-                        data: 'status', 
-                        render: renderDots 
-                    }
-                ],
-                order: [[1, 'asc']],
-                lengthChange: false
-            });
+// Initialize DataTable
+$(document).ready(function () {
+  let table = $("#ra-other-table").DataTable({
+    ajax: "data4.json",
+    columns: [
+      {
+        className: "dt-control",
+        orderable: false,
+        data: null,
+        defaultContent: "",
+      },
+      { data: "group" },
+      { data: "entity_name" },
+      { data: "type" },
+      { data: "jurisdictions" },
+      { data: "registrations" },
+      { data: "dbas" },
+      { data: "bus_licenses" },
+      {
+        data: "status",
+        render: renderDots,
+      },
+    ],
+    order: [[1, "asc"]],
+    lengthChange: false,
+  });
 
-            // Handle row click
-            $('#ra-other-table tbody').on('click', 'td.dt-control', function () {
-                let tr = $(this).closest('tr');
-                let row = table.row(tr);
+  // Handle row click
+  $("#ra-other-table tbody").on("click", "td.dt-control", function () {
+    let tr = $(this).closest("tr");
+    let row = table.row(tr);
 
-                if (row.child.isShown()) {
-                    row.child.hide();
-                    tr.removeClass('expanded-row');
-                } else {
-                    row.child(format(row.data())).show();
-                    tr.addClass('expanded-row');
-                }
-            });
-        });
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("expanded-row");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("expanded-row");
+    }
+  });
+});
 
-        // Render dots for status column in the parent row
-        function renderDots(data) {
-            return `
+// Render dots for status column in the parent row
+function renderDots(data) {
+  return `
                 <div class="status-dots">
                     <div class="status-dot status-good">2</div>
                     <div class="status-dot status-not-good">1</div>
@@ -273,8 +298,5 @@ $(document).ready(function () {
                     <div class="status-dot status-archived">1</div>
                 </div>
             `;
-        }
+}
 // expand table end
-
-
-

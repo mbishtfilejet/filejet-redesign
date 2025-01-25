@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiselect Dropdown with Integrated Search</title>
+    <link rel="stylesheet" href="dist/css/filejet-style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .dropdown-menu {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .dropdown-icon-container {
+            position: relative;
+        }
+
+        .dropdown-menu label {
+            cursor: pointer;
+        }
+
+        .dropdown-toggle::after {
+            content: '\f0d7'; /* Unicode for downwards chevron icon */
+            font-family: 'Font Awesome 5 Free'; /* Font Awesome icon font */
+            font-weight: 900;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        /* Style for input field when items are selected */
+/* Container for selected items */
+.selected-items-container {
+position: absolute;
+top: 5px;
+left: 15px;
+}
+
+/* Style for individual selected items */
+.selected-item {
+    background-color: #D8DDDF;
+    padding: 3px 5px;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #6E7683;
+    margin-right: 5px;
+    font-weight: 500;
+}
+
+/* Clear icon style inside selected item */
+.clear-icon {
+    cursor: pointer;
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0px 5px;
+    background-color: black;
+    border-radius: 4px;
+
+}
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <!-- Jurisdiction Dropdown -->
+    <div class="filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2">
+        <div class="group-search-d2 dropdown rounded-2 shadow-sm dropdown-icon-container">
+            <input type="text" class="form-control dropdown-toggle w-100" id="JurisdictionDropdown" placeholder="Jurisdictions" data-bs-toggle="dropdown" aria-expanded="false" autocomplete="off">
+            <ul class="dropdown-menu w-100 jurisdiction-dropdown-menu" aria-labelledby="JurisdictionDropdown">
+                <li>
+                    <label class="dropdown-item">
+                        <input type="checkbox" id="jurisdiction-select-all" class="form-check-input me-2"> Select All
+                    </label>
+                </li>
+                <li>
+                    <label class="dropdown-item">
+                        <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="CA"> CA
+                    </label>
+                </li>
+                <li>
+                    <label class="dropdown-item">
+                        <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="NV"> NV
+                    </label>
+                </li>
+                <li>
+                    <label class="dropdown-item">
+                        <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="FL"> FL
+                    </label>
+                </li>
+                <li>
+                    <label class="dropdown-item">
+                        <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="MN"> MN
+                    </label>
+                </li>
+                <li>
+                    <label class="dropdown-item">
+                        <input type="checkbox" class="form-check-input me-2 jurisdiction-checkbox" value="OR"> OR
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Repeat similar structure for Task and Status dropdowns as above -->
+    
+    
+</div>
+
+<script>
+   $(document).ready(function () {
+    function initializeDropdown(dropdownId, selectAllId, checkboxClass, dropdownMenuClass) {
+        const dropdownInput = $(dropdownId);
+        const dropdownMenu = $(dropdownMenuClass);
+        const checkboxes = $(checkboxClass);
+        const selectAllCheckbox = $(selectAllId);
+        const selectedItemsContainer = $('<div class="selected-items-container"></div>');
+
+        // Attach selected items container to the dropdown input field
+        dropdownInput.after(selectedItemsContainer);
+
+        function updateInputText() {
+            const selectedOptions = checkboxes.filter(":checked").map(function () {
+                return $(this).val();
+            }).get();
+
+            // Clear previous selected items
+            selectedItemsContainer.empty();
+
+            if (selectedOptions.length === 0) {
+                dropdownInput.val("");
+                dropdownInput.attr("placeholder", "Select items");
+            } else {
+                const visibleItems = selectedOptions.slice(0, 3); // Limit to first 3 items
+                const remainingCount = selectedOptions.length - visibleItems.length;
+
+                // Add the visible items
+                visibleItems.forEach(option => {
+                    const selectedItem = $('<span class="selected-item"></span>').text(option);
+                    const clearIcon = $('<span class="clear-icon">X</span>');
+
+                    // Attach the clear icon and item
+                    selectedItem.append(clearIcon);
+                    selectedItemsContainer.append(selectedItem);
+
+                    // Clear item click handler
+                    clearIcon.on('click', function () {
+                        $(`input[value="${option}"]`).prop("checked", false);
+                        updateInputText();
+                    });
+                });
+
+                // Show the summary if there are more than 3 items selected
+                if (remainingCount > 0) {
+                    const summary = $('<span class="more-items-summary"></span>').text(`+ ${remainingCount} more selected`);
+                    selectedItemsContainer.append(summary);
+                }
+
+                // Update dropdown input with no placeholder if items are selected
+                dropdownInput.attr("placeholder", "");
+            }
+        }
+
+        // Filter dropdown options based on input
+        dropdownInput.on("input", function () {
+            const searchValue = $(this).val().toLowerCase();
+            dropdownMenu.find("label").each(function () {
+                const label = $(this).text().toLowerCase();
+                $(this).toggle(label.includes(searchValue));
+            });
+        });
+
+        // Handle checkbox changes
+        checkboxes.on("change", function () {
+            updateInputText();
+        });
+
+        // Handle "Select All" checkbox
+        selectAllCheckbox.on("change", function () {
+            const isChecked = $(this).is(":checked");
+            checkboxes.prop("checked", isChecked);
+            updateInputText();
+        });
+
+        // Sync "Select All" checkbox state
+        checkboxes.on("change", function () {
+            const allChecked = checkboxes.length === checkboxes.filter(":checked").length;
+            selectAllCheckbox.prop("checked", allChecked);
+        });
+
+        // Prevent dropdown from closing on click inside
+        dropdownMenu.on("click", function (e) {
+            e.stopPropagation();
+        });
+    }
+
+    // Initialize all dropdowns with unique identifiers
+    initializeDropdown("#JurisdictionDropdown", "#jurisdiction-select-all", ".jurisdiction-checkbox", ".jurisdiction-dropdown-menu");
+    initializeDropdown("#TaskDropdown", "#task-select-all", ".task-checkbox", ".task-dropdown-menu");
+    initializeDropdown("#StatusDropdown", "#status-select-all", ".status-checkbox", ".status-dropdown-menu");
+});
+
+</script>
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<!-- Scripts start-->
+<script src="dist/js/plugins.min.js"></script>
+<script src="dist/js/custom.min.js"></script>
+
+</body>
+</html>
