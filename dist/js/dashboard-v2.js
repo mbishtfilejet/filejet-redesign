@@ -106,7 +106,7 @@ $(document).ready(function () {
           const selectedItem = $('<span class="filter-selected-item"></span>').text(
             option
           );
-          const clearIcon = $('<span class="filter-clear-icon">X</span>');
+          const clearIcon = $('<span class="filter-clear-icon"><img src="dist/images/icons/filter-close.svg" alt="Clear" class="clear-icon-image"/</span>');
 
           // Attach the clear icon and item
           selectedItem.append(clearIcon);

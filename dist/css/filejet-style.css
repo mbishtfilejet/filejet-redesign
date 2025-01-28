@@ -22598,15 +22598,15 @@ body .caledar-event-upcoming {
   
   .filter-selected-items-container {
     position: absolute;
-    top: 3px;
-    left: 15px;
+    top: 5px;
+    left: 13px;
     max-height: 24px;
     overflow: hidden;
   }
   
   .filter-selected-item {
     background-color: #D8DDDF;
-    padding: 4px 5px;
+    padding: 3px 5px;
     border-radius: 2px;
     display: inline-flex;
     align-items: center;
@@ -22617,14 +22617,12 @@ body .caledar-event-upcoming {
     font-weight: 500;
   }
   
-  .filter-clear-icon {
+  .clear-icon-image {
+    width: 14px; 
+    height: 14px;
     cursor: pointer;
-    font-size: 10px;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 0px 4px;
-    background-color: black;
-    border-radius: 4px;
+    vertical-align: middle;
+    display: flex;
   }
   
   .custom-filter-input::-moz-placeholder {
@@ -22659,6 +22657,14 @@ body .caledar-event-upcoming {
   .card-table-d2 .table {
     font-weight: 400;
     color: var(--bs-black-primary);
+    width: auto;
+    overflow: scroll;
+  }
+  .card-table-d2 table.dataTable thead > tr > th.sorting_asc:before {
+    background-image: url("../../../dist/images/icons/sort.svg") !important;
+  }
+  .card-table-d2 .dataTables_wrapper .dataTable thead th.sorting::after {
+    background-image: url("../../../dist/images/icons/sort.svg") !important;
   }
   .card-table-d2 .card-table-d2 .dataTables_wrapper tbody td {
     font-weight: 400;
@@ -22705,12 +22711,10 @@ body .caledar-event-upcoming {
   .card-table-d2 .rounded-pill {
     font-size: 10px;
     text-align: center;
-  }
-  .card-table-d2 .rounded-pill .icon, .card-table-d2 .rounded-pill .previewSlides .owl-carousel .owl-nav .owl-prev, .previewSlides .owl-carousel .owl-nav .card-table-d2 .rounded-pill .owl-prev, .card-table-d2 .rounded-pill .previewSlides .owl-carousel .owl-nav .owl-next, .previewSlides .owl-carousel .owl-nav .card-table-d2 .rounded-pill .owl-next, .card-table-d2 .rounded-pill .boc-light .boc-filter > div div::after, .boc-light .boc-filter > div .card-table-d2 .rounded-pill div::after, .card-table-d2 .rounded-pill .boc-light .boc-search .boc-form-field .boc-input::after, .boc-light .boc-search .boc-form-field .card-table-d2 .rounded-pill .boc-input::after, .card-table-d2 .rounded-pill .boc-light div[data-boc-input] label::after, .boc-light div[data-boc-input] .card-table-d2 .rounded-pill label::after {
-    display: none;
+    width: max-content;
   }
   .card-table-d2 .rounded-pill .text-light {
-    width: 85px;
+    padding-right: 4px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

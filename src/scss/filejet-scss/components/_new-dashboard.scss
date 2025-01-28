@@ -359,14 +359,15 @@ thead, tbody, tfoot, tr{
 
 .filter-selected-items-container {
     position: absolute;
-    top: 3px;
-    left: 15px;
+    top: 5px;
+    left: 13px;
     max-height: 24px;
     overflow: hidden;
-    }
-.filter-selected-item {
+  }
+  
+  .filter-selected-item {
     background-color: #D8DDDF;
-    padding: 4px 5px;
+    padding: 3px 5px;
     border-radius: 2px;
     display: inline-flex;
     align-items: center;
@@ -375,18 +376,16 @@ thead, tbody, tfoot, tr{
     color: #6E7683;
     margin-right: 5px;
     font-weight: 500;
-    }
-.filter-clear-icon {
+  }
+  
+  .clear-icon-image {
+    width: 14px; 
+    height: 14px;
     cursor: pointer;
-    font-size: 10px;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 0px 4px;
-    background-color: black;
-    border-radius: 4px;
-    
-    }
-    .custom-filter-input::placeholder {
+    vertical-align: middle;
+    display: flex;
+  }
+  .custom-filter-input::placeholder {
         color: #0D2C36;
         opacity: 100; 
         font-weight: normal;
@@ -407,6 +406,14 @@ thead, tbody, tfoot, tr{
   .table {
     font-weight: 400;
     color: var(--bs-black-primary);
+    width: auto;
+    overflow: scroll;
+  }
+  table.dataTable thead>tr>th.sorting_asc:before{
+    background-image: url("../../../dist/images/icons/sort.svg") !important;
+  }
+  .dataTables_wrapper .dataTable thead th.sorting::after{
+    background-image: url("../../../dist/images/icons/sort.svg") !important;
   }
   .card-table-d2 .dataTables_wrapper tbody td {
     font-weight: 400;
@@ -458,12 +465,9 @@ thead, tbody, tfoot, tr{
   .rounded-pill {
     font-size: 10px;
     text-align: center;
-
-    .icon {
-      display: none;
-    }
+    width: max-content;
     .text-light {
-      width: 85px;
+      padding-right: 4px;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
