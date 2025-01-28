@@ -187,7 +187,7 @@ function format(d) {
   return `
                 <tr class="expand-row" style="padding: 0px !important;border:0px !important;">
                     <td colspan="9" style="padding: 0px !important;">
-                        <table class="inner-table table table-striped w-100 table-nowrap data-table-listing table-v2-scrol">
+                        <table class="inner-table table table-striped w-100 table-nowrap table-v2-scrol">
                             <tr>
                                 <td style="width:5px;"></td>
                                 <td style="width:70px;">${d.group}</td>
@@ -206,7 +206,7 @@ function format(d) {
                 </tr> ,
                 <tr class="expand-row" style="padding: 0px !important;border:0px !important;">
                     <td colspan="9" style="padding: 0px !important;">
-                        <table class="inner-table table table-striped w-100 table-nowrap data-table-listing table-v2-scrol">
+                        <table class="inner-table table table-striped w-100 table-nowrap table-v2-scrol">
                             <tr>
                                 <td style="width:5px;"></td>
                                 <td style="width:70px;">${d.group}</td>
@@ -225,7 +225,7 @@ function format(d) {
                 </tr> ,
                 <tr class="expand-row" style="padding: 0px !important;border:0px !important;">
                     <td colspan="9" style="padding: 0px !important;">
-                        <table class="inner-table table table-striped w-100 table-nowrap data-table-listing table-v2-scrol">
+                        <table class="inner-table table table-striped w-100 table-nowrap table-v2-scrol">
                             <tr>
                                 <td style="width:5px;"></td>
                                 <td style="width:70px;">${d.group}</td>
@@ -244,7 +244,7 @@ function format(d) {
                 </tr>,
                 <tr class="expand-row" style="padding: 0px !important; border:0px !important;">
                     <td colspan="9" style="padding: 0px !important;">
-                        <table class="inner-table table table-striped w-100 table-nowrap data-table-listing table-v2-scrol">
+                        <table class="inner-table table table-striped w-100 table-nowrap table-v2-scrol">
                             <tr>
                                 <td style="width:5px;"></td>
                                 <td style="width:70px;">${d.group}</td>
