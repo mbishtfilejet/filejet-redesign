@@ -193,10 +193,10 @@ function format(d) {
                                 <td style="width:70px;">${d.group}</td>
                                 <td style="width:155px;">${d.entity_name}</td>
                                 <td style="width:115px">${d.type}</td>
-                                <td style="width:30px">${d.state}</td>
+                                <td style="width:30px">${d.jurisdiction}</td>
                                 <td style="width:80px">${d.registrations}</td>
                                 <td style="width:35px">${d.dbas}</td>
-                                <td style="width:85px">${d.bus_licenses}</td>
+                                <td style="width:85px">${d.business_licenses}</td>
                                 <td>
                                     <span class="badge badge-${d.status.class}">${d.status.label}</span>
                                 </td>
@@ -212,10 +212,10 @@ function format(d) {
                                 <td style="width:70px;">${d.group}</td>
                                 <td style="width:155px;">${d.entity_name}</td>
                                 <td style="width:115px">${d.type}</td>
-                                <td style="width:30px">${d.state}</td>
+                                <td style="width:30px">${d.jurisdiction}</td>
                                 <td style="width:80px">${d.registrations}</td>
                                 <td style="width:35px">${d.dbas}</td>
-                                <td style="width:85px">${d.bus_licenses}</td>
+                                <td style="width:85px">${d.business_licenses}</td>
                                 <td>
                                     <span class="badge badge-${d.status.class}">${d.status.label}</span>
                                 </td>
@@ -231,10 +231,10 @@ function format(d) {
                                 <td style="width:70px;">${d.group}</td>
                                 <td style="width:155px;">${d.entity_name}</td>
                                 <td style="width:115px">${d.type}</td>
-                                <td style="width:30px">${d.state}</td>
+                                <td style="width:30px">${d.jurisdiction}</td>
                                 <td style="width:80px">${d.registrations}</td>
                                 <td style="width:35px">${d.dbas}</td>
-                                <td style="width:85px">${d.bus_licenses}</td>
+                                <td style="width:85px">${d.business_licenses}</td>
                                 <td>
                                     <span class="badge badge-${d.status.class}">${d.status.label}</span>
                                 </td>
@@ -259,10 +259,10 @@ $(document).ready(function () {
       { data: "group" },
       { data: "entity_name" },
       { data: "type" },
-      { data: "state" },
+      { data: "jurisdiction" },
       { data: "registrations" },
       { data: "dbas" },
-      { data: "bus_licenses" },
+      { data: "business_licenses" },
       {
         data: "status",
         render: renderDots,
