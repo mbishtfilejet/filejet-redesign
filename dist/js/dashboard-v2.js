@@ -121,7 +121,7 @@ $(document).ready(function () {
 
         // Show the summary if there are more than 3 items selected
         if (remainingCount > 0) {
-          const summary = $('<span class="more-items-summary"></span>').text(
+          const summary = $('<span class="more-items-summary ms-3"></span>').text(
             `+ ${remainingCount}`
           );
           selectedItemsContainer.append(summary);
@@ -166,15 +166,15 @@ $(document).ready(function () {
     });
   }
 
-  // Initialize all dropdowns with unique identifiers
-  initializeDropdown( "#JurisdictionDropdown","#jurisdiction-select-all",".jurisdiction-checkbox","jurisdiction-dropdown-menu" );
+  // Initialize all dropdowns with unique identifiers 
+  initializeDropdown( "#JurisdictionDropdown","#jurisdiction-select-all",".jurisdiction-checkbox",".jurisdiction-dropdown-menu" );
   initializeDropdown("#TaskDropdown","#task-select-all",".task-checkbox",".task-dropdown-menu");
   initializeDropdown("#StatusDropdown","#status-select-all",".status-checkbox",".status-dropdown-menu");
 
-  initializeDropdown("#EntityJurisdictionDropdown","#entity-jurisdiction-select-all",".entity-jurisdiction-checkbox","entity-jurisdiction-dropdown-menu" );
+  initializeDropdown("#EntityJurisdictionDropdown","#entity-jurisdiction-select-all",".entity-jurisdiction-checkbox",".entity-jurisdiction-dropdown-menu" );
   initializeDropdown("#EntityStatusDropdown","#entity-status-select-all",".entity-status-checkbox",".entity-status-dropdown-menu");
 
-  initializeDropdown( "#OrderJurisdictionDropdown","#order-jurisdiction-select-all",".order-jurisdiction-checkbox","order-jurisdiction-dropdown-menu" );
+  initializeDropdown( "#OrderJurisdictionDropdown","#order-jurisdiction-select-all",".order-jurisdiction-checkbox",".order-jurisdiction-dropdown-menu" );
   initializeDropdown("#OrderTaskDropdown","#order-task-select-all",".order-task-checkbox",".order-task-dropdown-menu");
   initializeDropdown("#OrderStatusDropdown","#order-status-select-all",".order-status-checkbox",".order-status-dropdown-menu");
 
@@ -193,7 +193,7 @@ function format(d) {
                                 <td style="width:70px;">${d.group}</td>
                                 <td style="width:155px;">${d.entity_name}</td>
                                 <td style="width:115px">${d.type}</td>
-                                <td style="width:30px">${d.jurisdictions}</td>
+                                <td style="width:30px">${d.state}</td>
                                 <td style="width:80px">${d.registrations}</td>
                                 <td style="width:35px">${d.dbas}</td>
                                 <td style="width:85px">${d.bus_licenses}</td>
@@ -212,7 +212,7 @@ function format(d) {
                                 <td style="width:70px;">${d.group}</td>
                                 <td style="width:155px;">${d.entity_name}</td>
                                 <td style="width:115px">${d.type}</td>
-                                <td style="width:30px">${d.jurisdictions}</td>
+                                <td style="width:30px">${d.state}</td>
                                 <td style="width:80px">${d.registrations}</td>
                                 <td style="width:35px">${d.dbas}</td>
                                 <td style="width:85px">${d.bus_licenses}</td>
@@ -231,7 +231,7 @@ function format(d) {
                                 <td style="width:70px;">${d.group}</td>
                                 <td style="width:155px;">${d.entity_name}</td>
                                 <td style="width:115px">${d.type}</td>
-                                <td style="width:30px">${d.jurisdictions}</td>
+                                <td style="width:30px">${d.state}</td>
                                 <td style="width:80px">${d.registrations}</td>
                                 <td style="width:35px">${d.dbas}</td>
                                 <td style="width:85px">${d.bus_licenses}</td>
@@ -259,7 +259,7 @@ $(document).ready(function () {
       { data: "group" },
       { data: "entity_name" },
       { data: "type" },
-      { data: "jurisdictions" },
+      { data: "state" },
       { data: "registrations" },
       { data: "dbas" },
       { data: "bus_licenses" },
