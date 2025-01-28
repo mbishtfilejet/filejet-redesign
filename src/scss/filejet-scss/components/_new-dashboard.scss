@@ -414,8 +414,19 @@ thead, tbody, tfoot, tr{
   .card-table-d2 .dataTables_wrapper tbody td {
     font-weight: 400;
     color: var(--bs-black-primary);
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
   }
+  .dataTables_wrapper .dataTable thead th.sorting::after {
+    height: auto !important;
+    right: 12px;
+    top: 25px;
+    margin-left: 0rem !important; 
+    content: "▼" !important;
+    transform: none !important;
+}
+.dataTables_wrapper .dataTable thead th{
+    text-transform: capitalize !important;
+}
   .dataTables_wrapper tbody td a {
     font-weight: 400;
   }
@@ -566,13 +577,12 @@ thead, tbody, tfoot, tr{
         background-color: #1c085a;
     }
     table.dataTable td.dt-control:before {
-        content: "›" !important;
-        font-size: 20px !important;
+        content: "►" !important;
+        font-size: 10px !important;
     }
     table.dataTable tr.dt-hasChild td.dt-control:before {
-        content: "˅" !important;
-        font-size: 11px !important;
-        font-weight: bolder !important;
+        content: "▼" !important;
+        font-size: 10px !important;
     }
 }
 
