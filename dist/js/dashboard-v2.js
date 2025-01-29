@@ -121,7 +121,7 @@ $(document).ready(function () {
 
         // Show the summary if there are more than 3 items selected
         if (remainingCount > 0) {
-          const summary = $('<span class="more-items-summary ms-3"></span>').text(
+          const summary = $('<span class="more-items-summary ms-2"></span>').text(
             `+ ${remainingCount}`
           );
           selectedItemsContainer.append(summary);

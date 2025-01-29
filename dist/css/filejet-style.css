@@ -4238,7 +4238,7 @@ fieldset:disabled .boc-light #boc-ppdf-btns #boc-prev-save,
     margin-left: .255em;
     vertical-align: .255em;
     content: "";
-    border-top: .3em solid;
+    border-top: .3em solid gray;
     border-right: .3em solid rgba(0, 0, 0, 0);
     border-bottom: 0;
     border-left: .3em solid rgba(0, 0, 0, 0)
@@ -22250,13 +22250,15 @@ body .caledar-event-upcoming {
     --bs-purple-filejet: #d9d9f1;
     --bs-purple-indigo: #4744d1;
   }
-  thead, tbody, tfoot, tr{
-    border:1px solid var(--bs-gray-400);
-}
-  table.dataTable.display>tbody>tr>td{
-     white-space: normal;
-     box-shadow: none !important;
-}
+  
+  thead, tbody, tfoot, tr {
+    border: 1px solid var(--bs-gray-400);
+  }
+  
+  table.dataTable.display > tbody > tr > td {
+    white-space: normal;
+    box-shadow: none !important;
+  }
   
   .indigo-bg {
     background-color: var(--bs-purple-indigo);
@@ -22302,11 +22304,12 @@ body .caledar-event-upcoming {
   .icon-in-process-white {
     background-image: url("../../../dist/images/icons/in-process-white.svg");
   }
-  .icon-arrow-triangle-bottom-dark{
+  
+  .icon-arrow-triangle-bottom-dark {
     background-image: url("../../../dist/images/icons/arrow-triangle-bottom-dark.svg");
     width: 6px;
     margin: 0px;
-}
+  }
   
   .maroon-bg {
     background-color: #bb0f23;
@@ -22341,6 +22344,7 @@ body .caledar-event-upcoming {
   .sidebar-v2 .menu-link .nav-link:hover a {
     color: #1c085a;
   }
+  
   .group-search-d2 {
     height: 30px !important;
   }
@@ -22483,8 +22487,6 @@ body .caledar-event-upcoming {
   }
   .cardcontainer-d2 .nav-link:not(.active) .list-group-flush > .list-group-item {
     border-bottom: 1px solid white;
-    display: flex;
-    align-items: center;
   }
   .cardcontainer-d2 .nav-link:not(.active) .icon-angle-top-white {
     display: none;
@@ -22514,7 +22516,6 @@ body .caledar-event-upcoming {
     border-radius: 0;
     font-weight: 400;
     font-size: 0.8rem;
-    
   }
   .cardcontainer-d2 .icon-status {
     background-image: url("../../../dist/images/icons/status.svg");
@@ -22556,23 +22557,24 @@ body .caledar-event-upcoming {
   }
   .tab-content-v2 .entity-status-table-col {
     width: 32%;
-  }  
-
-
-
-  .filter2-dropdown ::after{
+  }
+  
+  .filter2-dropdown > div::after {
     font-weight: 900;
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     content: "";
-    border-top: 0.3em solid;
-    border-right: .3em solid rgba(0, 0, 0, 0);
+    border-top: 0.3em solid gray;
+    border-right: 0.3em solid rgba(0, 0, 0, 0);
     border-bottom: 0;
-    border-left: .3em solid rgba(0, 0, 0, 0);
+    border-left: 0.3em solid rgba(0, 0, 0, 0);
   }
-  
+  .filter2-dropdown .dropdown-menu::after,
+  .filter2-dropdown .dropdown-menu ul::before {
+    display: none !important;
+  }
   .filter2-dropdown .dropdown-menu {
     max-height: 250px;
     overflow-y: auto;
@@ -22628,7 +22630,7 @@ body .caledar-event-upcoming {
   }
   
   .clear-icon-image {
-    width: 14px; 
+    width: 14px;
     height: 14px;
     cursor: pointer;
     vertical-align: middle;
@@ -22670,21 +22672,24 @@ body .caledar-event-upcoming {
     width: auto;
     overflow: scroll;
   }
-  .card-table-d2 .dataTables_wrapper .dataTable thead th.sorting::after {
-    height: auto !important;
-    right: 12px;
-    top: 25px;
-    margin-left: 0rem !important; 
-    content: "▼" !important;
-    transform: none !important;
-}
-.card-table-d2 .dataTables_wrapper .dataTable thead th{
-    text-transform: capitalize !important;
-}
-  .card-table-d2 .dataTables_wrapper tbody td {
+  .card-table-d2 .card-table-d2 .dataTables_wrapper tbody td {
     font-weight: 400;
     color: var(--bs-black-primary);
     font-size: 0.9rem !important;
+  }
+  .card-table-d2 .dataTables_wrapper .dataTable thead th.sorting::after {
+    height: auto !important;
+    right: 10px;
+    top: 25px;
+    margin-left: 0rem !important;
+    content: "▼" !important;
+    transform: none !important;
+    background-image: none !important;
+    line-height: normal !important;
+    width: auto !important;
+  }
+  .card-table-d2 .dataTables_wrapper .dataTable thead th {
+    text-transform: capitalize !important;
   }
   .card-table-d2 .dataTables_wrapper tbody td a {
     font-weight: 400;
@@ -22718,7 +22723,6 @@ body .caledar-event-upcoming {
   .card-table-d2 .dataTables_scroll .dataTables_scrollBody {
     height: auto !important;
   }
-
   .card-table-d2 .table-status span {
     width: 2rem;
     height: 2rem;
@@ -22726,6 +22730,7 @@ body .caledar-event-upcoming {
   .card-table-d2 .rounded-pill {
     font-size: 10px;
     text-align: center;
+    width: -moz-max-content;
     width: max-content;
   }
   .card-table-d2 .rounded-pill .text-light {
@@ -22734,21 +22739,22 @@ body .caledar-event-upcoming {
     white-space: nowrap;
     overflow: hidden;
   }
-  .entity-regestration-card .table {
-    font-weight: 400;
-    color: var(--bs-black-primary);
-    width: auto;
-    overflow: scroll;
-  }
   
   .entity-card-table .dataTables_scrollBody {
     max-height: 100vh !important;
     height: auto !important;
   }
   
+  .entity-regestration-card .table {
+    font-weight: 400;
+    color: var(--bs-black-primary);
+    width: auto;
+    overflow: scroll;
+  }
   .entity-regestration-card .expand-row td {
+    padding: 0px !important;
     background-color: #f4f4f4;
-    border: none; 
+    border: none;
   }
   .entity-regestration-card .inner-table {
     width: 100%;
@@ -22758,13 +22764,10 @@ body .caledar-event-upcoming {
     margin: 0;
     padding: 0;
   }
-  
   .entity-regestration-card .inner-table td {
     border-top: 1px solid #ddd;
     text-align: left;
-    white-space: normal !important;
   }
-
   .entity-regestration-card .badge {
     padding: 5px 10px;
     border-radius: 12px;

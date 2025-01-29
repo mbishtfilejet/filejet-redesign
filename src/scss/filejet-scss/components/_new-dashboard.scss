@@ -311,17 +311,21 @@ thead, tbody, tfoot, tr{
 }
 
 .filter2-dropdown{
-    ::after{
+       > div::after{
         font-weight: 900;
         position: absolute;
         right: 10px;
         top: 50%;
         transform: translateY(-50%);
         content: "";
-        border-top: 0.3em solid;
+        border-top: 0.3em solid gray;
         border-right: .3em solid rgba(0, 0, 0, 0);
         border-bottom: 0;
         border-left: .3em solid rgba(0, 0, 0, 0);
+      }
+    .dropdown-menu::after,
+    .dropdown-menu ul::before {
+        display: none !important;
       }
     .dropdown-menu {
         max-height: 250px;
@@ -421,11 +425,14 @@ thead, tbody, tfoot, tr{
   }
   .dataTables_wrapper .dataTable thead th.sorting::after {
     height: auto !important;
-    right: 12px;
+    right: 10px;
     top: 25px;
     margin-left: 0rem !important; 
     content: "▼" !important;
     transform: none !important;
+    background-image: none !important;
+    line-height: normal !important;
+    width: auto !important;
 }
 .dataTables_wrapper .dataTable thead th{
     text-transform: capitalize !important;
