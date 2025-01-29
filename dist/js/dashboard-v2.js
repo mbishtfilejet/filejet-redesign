@@ -184,119 +184,84 @@ $(document).ready(function () {
 // expand table start
 // Formatting function for expandable rows
 function format(d) {
-  return `
-                <tr class="expand-row" >
-                    <td colspan="9" style="padding: 0px !important;">
-                        <table class="inner-table table table-striped w-100 table-nowrap table-v2-scrol">
-                            <tr>
-                                <td style="width:10px;"></td>
-                                <td>${d.group}</td>
-                                <td>${d.entity_name}</td>
-                                <td>${d.type}</td>
-                                <td>${d.jurisdiction}</td>
-                                <td>${d.registrations}</td>
-                                <td>${d.dbas}</td>
-                                <td>${d.business_licenses}</td>
-                                <td>
-                                    <span class="badge badge-${d.status.class}">${d.status.label}</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr> ,
-                <tr class="expand-row">
-                    <td colspan="9" style="padding: 0px !important;">
-                        <table class="inner-table table table-striped w-100 table-nowrap table-v2-scrol">
-                            <tr>
-                                 <td style="width:10px;"></td>
-                                <td>${d.group}</td>
-                                <td>${d.entity_name}</td>
-                                <td>${d.type}</td>
-                                <td>${d.jurisdiction}</td>
-                                <td>${d.registrations}</td>
-                                <td>${d.dbas}</td>
-                                <td>${d.business_licenses}</td>
-                                <td>
-                                    <span class="badge badge-${d.status.class}">${d.status.label}</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr> ,
-                <tr class="expand-row" style="padding: 0px !important;border:0px !important;">
-                    <td colspan="9" style="padding: 0px !important;">
-                        <table class="inner-table table table-striped w-100 table-nowrap table-v2-scrol">
-                            <tr>
-                                 <td style="width:10px;"></td>
-                                <td>${d.group}</td>
-                                <td>${d.entity_name}</td>
-                                <td>${d.type}</td>
-                                <td>${d.jurisdiction}</td>
-                                <td>${d.registrations}</td>
-                                <td>${d.dbas}</td>
-                                <td>${d.business_licenses}</td>
-                                <td>
-                                    <span class="badge badge-${d.status.class}">${d.status.label}</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            `;
+    let expandedRows = d.expanded_rows.map(row => `
+        <tr class="expand-row">
+            <td colspan="9" style="padding: 0px !important;">
+                <table class="inner-table">
+                    <tr>
+                        <td style="width:10px;"></td>
+                        <td>${d.group}</td>
+                        <td>${d.entity_name}</td>
+                        <td>${d.type}</td>
+                        <td>${d.jurisdiction}</td>
+                        <td>${d.registrations}</td>
+                        <td>${d.dbas}</td>
+                        <td>${d.business_licenses}</td>
+                        <td>
+                            <span class="badge badge-${row.status.class}">${row.status.label}</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    `).join(""); // Join all rows together
+
+    return expandedRows; // Return the dynamically generated rows
 }
 
 // Initialize DataTable
 $(document).ready(function () {
-  let table = $("#ra-other-table").DataTable({
-    ajax: "data4.json",
-    columns: [
-      {
-        className: "dt-control",
-        orderable: false,
-        data: null,
-        defaultContent: "",
-      },
-      { data: "group" },
-      { data: "entity_name" },
-      { data: "type" },
-      { data: "jurisdiction" },
-      { data: "registrations" },
-      { data: "dbas" },
-      { data: "business_licenses" },
-      {
-        data: "status",
-        render: renderDots,
-      },
-    ],
-    order: [[1, "asc"]],
-    lengthChange: false,
-  });
+    let table = $("#ra-other-table").DataTable({
+        ajax: "data4.json",
+        columns: [
+            {
+                className: "dt-control",
+                orderable: false,
+                data: null,
+                defaultContent: "",
+            },
+            { data: "group" },
+            { data: "entity_name" },
+            { data: "type" },
+            { data: "jurisdiction" },
+            { data: "registrations" },
+            { data: "dbas" },
+            { data: "business_licenses" },
+            {
+                data: "status",
+                render: renderDots,
+            },
+        ],
+        order: [[1, "asc"]],
+        lengthChange: false,
+    });
 
-  // Handle row click
-  $("#ra-other-table tbody").on("click", "td.dt-control", function () {
-    let tr = $(this).closest("tr");
-    let row = table.row(tr);
+    // Handle row click
+    $("#ra-other-table tbody").on("click", "td.dt-control", function () {
+        let tr = $(this).closest("tr");
+        let row = table.row(tr);
 
-    if (row.child.isShown()) {
-      row.child.hide();
-      tr.removeClass("expanded-row");
-    } else {
-      row.child(format(row.data())).show();
-      tr.addClass("expanded-row");
-    }
-  });
+        if (row.child.isShown()) {
+            row.child.hide();
+            tr.removeClass("expanded-row");
+        } else {
+            row.child(format(row.data())).show();
+            tr.addClass("expanded-row");
+        }
+    });
 });
 
 // Render dots for status column in the parent row
 function renderDots(data) {
-  return `
-                <div class="status-dots">
-                    <div class="status-dot status-good">2</div>
-                    <div class="status-dot status-not-good">1</div>
-                    <div class="status-dot status-inactive">1</div>
-                    <div class="status-dot status-dissolved">2</div>
-                    <div class="status-dot status-archived">1</div>
-                </div>
-            `;
+    return `
+        <div class="status-dots">
+            <div class="status-dot status-good">2</div>
+            <div class="status-dot status-not-good">1</div>
+            <div class="status-dot status-inactive">1</div>
+            <div class="status-dot status-dissolved">2</div>
+            <div class="status-dot status-archived">1</div>
+        </div>
+    `;
 }
+
 // expand table end
