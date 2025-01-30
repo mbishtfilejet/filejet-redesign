@@ -279,7 +279,7 @@ $(document).ready(function () {
                         lengthChange: false,
                         pageLength: 10, // Controls number of rows per page
                         ordering: false,
-                        info: false,
+                        info: true,
                         autoWidth: false,
                         scrollX: false,
                     });
