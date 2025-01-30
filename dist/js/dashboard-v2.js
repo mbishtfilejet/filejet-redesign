@@ -280,8 +280,8 @@ $(document).ready(function () {
                         pageLength: 10, // Controls number of rows per page
                         ordering: false,
                         info: false,
-                        autoWidth: false, // Prevents auto-resizing
-                        scrollX: false, // No horizontal scroll
+                        autoWidth: false,
+                        scrollX: false,
                     });
                 }
             }, 200); // Small delay ensures DOM is updated before DataTable initializes
