@@ -184,10 +184,27 @@ $(document).ready(function () {
 // expand table start
 // Formatting function for expandable rows
 function format(d) {
-    let expandedRows = d.expanded_rows.map(row => `
-                <table class="table table-striped w-100 table-nowrap inner-table">
-                 <tbody>
+    let uniqueTableId = `inner-table-${d.id}`; // Unique ID for each expanded row's table
+
+    let expandedRows = `
+        <div class="inner-table-container">
+            <table id="${uniqueTableId}" class="display inner-table w-100 ">
+                <thead style="display: none;">
                     <tr>
+                        <th></th>
+                        <th>Group</th>
+                        <th>Entity Name</th>
+                        <th>Type</th>
+                        <th>Jurisdiction</th>
+                        <th>Registrations</th>
+                        <th>DBAs</th>
+                        <th>Business Licenses</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${d.expanded_rows.map(row => `
+                        <tr>
                         <td style="width:10px;"></td>
                         <td style="width:150px;">${row.group || d.group}</td>
                         <td style="width:150px;">${row.entity_name || d.entity_name}</td>
@@ -199,15 +216,18 @@ function format(d) {
                         <td>
                             <span class="badge badge-${row.status.class}">${row.status.label}</span>
                         </td>
-                    </tr>
-                 </tbody>
-                </table>
-    `).join("");
+                        </tr>
+                    `).join("")}
+                </tbody>
+            </table>
+        </div>
+    `;
 
     return expandedRows;
 }
 
-// Initialize DataTable
+
+// Initialize Main DataTable
 $(document).ready(function () {
     let table = $("#ra-other-table").DataTable({
         ajax: "data4.json",
@@ -234,7 +254,7 @@ $(document).ready(function () {
         lengthChange: false,
     });
 
-    // Handle row click
+    // Handle row expansion click
     $("#ra-other-table tbody").on("click", "td.dt-control", function () {
         let tr = $(this).closest("tr");
         let row = table.row(tr);
@@ -243,8 +263,28 @@ $(document).ready(function () {
             row.child.hide();
             tr.removeClass("expanded-row");
         } else {
-            row.child(format(row.data())).show();
+            let childContent = format(row.data());
+            row.child(childContent).show();
             tr.addClass("expanded-row");
+
+            // Get unique table ID
+            let tableId = `#inner-table-${row.data().id}`;
+
+            // Ensure DataTable initializes only once after the child row is inserted
+            setTimeout(() => {
+                if (!$.fn.DataTable.isDataTable(tableId)) {
+                    $(tableId).DataTable({
+                        paging: true,
+                        searching: false,
+                        lengthChange: false,
+                        pageLength: 3, // Controls number of rows per page
+                        ordering: false,
+                        info: false,
+                        autoWidth: false, // Prevents auto-resizing
+                        scrollX: false, // No horizontal scroll
+                    });
+                }
+            }, 200); // Small delay ensures DOM is updated before DataTable initializes
         }
     });
 });
@@ -253,13 +293,15 @@ $(document).ready(function () {
 function renderDots(data) {
     return `
         <div class="status-dots">
-            <div class="status-dot status-good">2</div>
+            <div class="status-dot status-good">1</div>
             <div class="status-dot status-not-good">1</div>
             <div class="status-dot status-inactive">1</div>
-            <div class="status-dot status-dissolved">2</div>
+            <div class="status-dot status-dissolved">1</div>
             <div class="status-dot status-archived">1</div>
         </div>
     `;
 }
+
+
 
 // expand table end
