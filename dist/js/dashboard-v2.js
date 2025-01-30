@@ -185,28 +185,26 @@ $(document).ready(function () {
 // Formatting function for expandable rows
 function format(d) {
     let expandedRows = d.expanded_rows.map(row => `
-        <tr class="expand-row">
-            <td colspan="9" style="padding: 0px !important;">
-                <table class="inner-table">
+                <table class="table table-striped w-100 table-nowrap inner-table">
+                 <tbody>
                     <tr>
                         <td style="width:10px;"></td>
-                        <td>${d.group}</td>
-                        <td>${d.entity_name}</td>
-                        <td>${d.type}</td>
-                        <td>${d.jurisdiction}</td>
-                        <td>${d.registrations}</td>
-                        <td>${d.dbas}</td>
-                        <td>${d.business_licenses}</td>
+                        <td style="width:150px;">${row.group || d.group}</td>
+                        <td style="width:150px;">${row.entity_name || d.entity_name}</td>
+                        <td style="width:69px;">${row.type || d.type}</td>
+                        <td style="width:82px;">${row.jurisdiction || d.jurisdiction}</td>
+                        <td style="width:83px;">${row.registrations || d.registrations}</td>
+                        <td style="width:39px;">${row.dbas || d.dbas}</td>
+                        <td style="width:112px;">${row.business_licenses || d.business_licenses}</td>
                         <td>
                             <span class="badge badge-${row.status.class}">${row.status.label}</span>
                         </td>
                     </tr>
+                 </tbody>
                 </table>
-            </td>
-        </tr>
-    `).join(""); // Join all rows together
+    `).join("");
 
-    return expandedRows; // Return the dynamically generated rows
+    return expandedRows;
 }
 
 // Initialize DataTable
