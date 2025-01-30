@@ -277,7 +277,7 @@ $(document).ready(function () {
                         paging: true,
                         searching: false,
                         lengthChange: false,
-                        pageLength: 3, // Controls number of rows per page
+                        pageLength: 10, // Controls number of rows per page
                         ordering: false,
                         info: false,
                         autoWidth: false, // Prevents auto-resizing
