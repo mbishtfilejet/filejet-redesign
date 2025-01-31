@@ -22344,12 +22344,31 @@ body .caledar-event-upcoming {
   .sidebar-v2 .menu-link .nav-link:hover a {
     color: #1c085a;
   }
+
+  .custom-select:focus {
+    border-color: var(--bs-purple-indigo);
+    background-color: var(--bs-purple-indigo); 
+    color: #fff;
+  }
+  .custom-select option {
+    background: white;
+    color: black;
+  }
   
   .group-search-d2 {
     height: 30px !important;
   }
   .group-search-d2 .form-select, .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-size, .boc-light #boc-ppdf-btns .group-search-d2 #boc-ppdf-size, .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-layout, .boc-light #boc-ppdf-btns .group-search-d2 #boc-ppdf-layout, .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-scale, .boc-light #boc-ppdf-btns .group-search-d2 #boc-ppdf-scale {
     background-size: 7px 10px !important;
+    background-image: url("../../../dist/images/icons/icon-angle-bottom.svg") !important;
+
+  }
+  .group-search-d2 button:focus:not(:focus-visible){
+    background-color: var(--bs-purple-indigo);
+    color: white;
+  }
+  .group-search-d2 button:focus:not(:focus-visible)::after{
+    color: white;
   }
   .group-search-d2 .dropdown-toggle {
     text-transform: capitalize !important;
@@ -22361,6 +22380,19 @@ body .caledar-event-upcoming {
     font-weight: normal;
     background-color: white;
   }
+  .group-search-d2 .dropdown-toggle::after {
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+    top: 15%;
+    content: "˅";
+    transform: scaleX(1.8);
+    display: inline-block;
+    font-size: 8px;
+    border: none;
+
+  }
+
   .group-search-d2 .btn-check:checked + .btn, .boc-light #boc-ppdf-btns .group-search-d2 .btn-check:checked + #boc-prev-save, .boc-light #boc-ppdf-btns .group-search-d2 .btn-check:checked + #boc-prev-cancel,
   .group-search-d2 .boc-light #boc-ppdf-btns .btn-check:checked + #boc-prev-cancel,
   .group-search-d2 .boc-light #boc-ppdf-btns .btn-check:checked + #boc-prev-save,
@@ -22420,7 +22452,7 @@ body .caledar-event-upcoming {
     text-overflow: ellipsis;
   }
   .group-search-d2 .dropdown-menu.show {
-    max-height: 250px;
+    max-height: 270px;
     overflow-y: scroll;
   }
   
@@ -22563,13 +22595,11 @@ body .caledar-event-upcoming {
     font-weight: 900;
     position: absolute;
     right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    content: "";
-    border-top: 0.3em solid gray;
-    border-right: 0.3em solid rgba(0, 0, 0, 0);
-    border-bottom: 0;
-    border-left: 0.3em solid rgba(0, 0, 0, 0);
+    top: 35%;
+    content: "˅";
+    transform: scaleX(1.8);
+    display: inline-block;
+    font-size: 8px;
   }
   .filter2-dropdown .dropdown-menu::after,
   .filter2-dropdown .dropdown-menu ul::before {
@@ -22750,6 +22780,16 @@ body .caledar-event-upcoming {
     white-space: nowrap;
     overflow: hidden;
   }
+  .entity-regestration-card .entity-card-table{
+    height: 50vh;
+    max-height: 50vh;
+  }
+  .entity-regestration-card #ra-other-table thead{
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 3;
+  }
   
   .entity-regestration-card .dt-hasChild {
     background-color: #5B5559 !important;
@@ -22891,12 +22931,5 @@ body .caledar-event-upcoming {
   .inner-table-container .dataTables_wrapper>.row:last-child{
     background-color: #D8DDDF;
   }
-
-
-
-
-
-
-
 
 /*# sourceMappingURL=filejet-style.css.map */
