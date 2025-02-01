@@ -208,11 +208,11 @@ function format(d) {
                         <td style="width:10px;"></td>
                         <td style="width:150px;">${row.group || d.group}</td>
                         <td style="width:150px;">${row.entity_name || d.entity_name}</td>
-                        <td style="width:69px;">${row.type || d.type}</td>
-                        <td style="width:82px;">${row.jurisdiction || d.jurisdiction}</td>
-                        <td style="width:83px;">${row.registrations || d.registrations}</td>
-                        <td style="width:39px;">${row.dbas || d.dbas}</td>
-                        <td style="width:112px;">${row.business_licenses || d.business_licenses}</td>
+                        <td style="width:78px;">${row.type || d.type}</td>
+                        <td style="width:94px;">${row.jurisdiction || d.jurisdiction}</td>
+                        <td style="width:96px;">${row.registrations || d.registrations}</td>
+                        <td style="width:46px;">${row.dbas || d.dbas}</td>
+                        <td style="width:130px;">${row.business_licenses || d.business_licenses}</td>
                         <td>
                             <span class="badge badge-${row.status.class}">${row.status.label}</span>
                         </td>

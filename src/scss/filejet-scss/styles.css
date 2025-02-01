@@ -19000,13 +19000,6 @@ body .caledar-event-upcoming {
   --bs-purple-indigo: #4744d1;
 }
 
-thead,
-tbody,
-tfoot,
-tr {
-  border: 1px solid var(--bs-gray-400);
-}
-
 table.dataTable.display > tbody > tr > td {
   white-space: normal;
   box-shadow: none !important;
@@ -19097,11 +19090,30 @@ table.dataTable.display > tbody > tr > td {
   color: #1c085a;
 }
 
+.custom-select:focus {
+  border-color: var(--bs-purple-indigo);
+  background-color: var(--bs-purple-indigo);
+  color: #fff;
+}
+
+.custom-select option {
+  background: white;
+  color: black;
+}
+
 .group-search-d2 {
   height: 30px !important;
 }
 .group-search-d2 .form-select, .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-size, .boc-light #boc-ppdf-btns .group-search-d2 #boc-ppdf-size, .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-layout, .boc-light #boc-ppdf-btns .group-search-d2 #boc-ppdf-layout, .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-scale, .boc-light #boc-ppdf-btns .group-search-d2 #boc-ppdf-scale {
   background-size: 7px 10px !important;
+  background-image: url("../../../dist/images/icons/icon-angle-bottom.svg") !important;
+}
+.group-search-d2 button:focus:not(:focus-visible) {
+  background-color: var(--bs-purple-indigo);
+  color: white;
+}
+.group-search-d2 button:focus:not(:focus-visible)::after {
+  color: white;
 }
 .group-search-d2 .dropdown-toggle {
   text-transform: capitalize !important;
@@ -19112,6 +19124,17 @@ table.dataTable.display > tbody > tr > td {
   cursor: pointer;
   font-weight: normal;
   background-color: white;
+}
+.group-search-d2 .dropdown-toggle::after {
+  font-weight: 900;
+  position: absolute;
+  right: 10px;
+  top: 15%;
+  content: "˅";
+  transform: scaleX(1.8);
+  display: inline-block;
+  font-size: 8px;
+  border: none;
 }
 .group-search-d2 .btn-check:checked + .btn, .boc-light #boc-ppdf-btns .group-search-d2 .btn-check:checked + #boc-prev-save, .boc-light #boc-ppdf-btns .group-search-d2 .btn-check:checked + #boc-prev-cancel,
 .group-search-d2 .boc-light #boc-ppdf-btns .btn-check:checked + #boc-prev-cancel,
@@ -19172,7 +19195,7 @@ table.dataTable.display > tbody > tr > td {
   text-overflow: ellipsis;
 }
 .group-search-d2 .dropdown-menu.show {
-  max-height: 250px;
+  max-height: 270px;
   overflow-y: scroll;
 }
 
@@ -19311,17 +19334,19 @@ table.dataTable.display > tbody > tr > td {
   width: 32%;
 }
 
+.filter2-dropdown input[type=text]:focus-visible {
+  background-color: var(--bs-purple-indigo);
+  color: #fff;
+}
 .filter2-dropdown > div::after {
   font-weight: 900;
   position: absolute;
   right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  content: "";
-  border-top: 0.3em solid gray;
-  border-right: 0.3em solid rgba(0, 0, 0, 0);
-  border-bottom: 0;
-  border-left: 0.3em solid rgba(0, 0, 0, 0);
+  top: 35%;
+  content: "˅";
+  transform: scaleX(1.8);
+  display: inline-block;
+  font-size: 8px;
 }
 .filter2-dropdown .dropdown-menu::after,
 .filter2-dropdown .dropdown-menu ul::before {
@@ -19496,9 +19521,14 @@ table.dataTable.display > tbody > tr > td {
   text-align: center;
   width: -moz-max-content;
   width: max-content;
+  font-weight: 600;
+}
+.card-table-d2 .rounded-pill .icon, .card-table-d2 .rounded-pill .previewSlides .owl-carousel .owl-nav .owl-prev, .previewSlides .owl-carousel .owl-nav .card-table-d2 .rounded-pill .owl-prev, .card-table-d2 .rounded-pill .previewSlides .owl-carousel .owl-nav .owl-next, .previewSlides .owl-carousel .owl-nav .card-table-d2 .rounded-pill .owl-next, .card-table-d2 .rounded-pill .boc-light .boc-filter > div div::after, .boc-light .boc-filter > div .card-table-d2 .rounded-pill div::after, .card-table-d2 .rounded-pill .boc-light .boc-search .boc-form-field .boc-input::after, .boc-light .boc-search .boc-form-field .card-table-d2 .rounded-pill .boc-input::after, .card-table-d2 .rounded-pill .boc-light div[data-boc-input] label::after, .boc-light div[data-boc-input] .card-table-d2 .rounded-pill label::after {
+  margin-right: 0px !important;
 }
 .card-table-d2 .rounded-pill .text-light {
-  padding-right: 4px;
+  padding-right: 10px;
+  padding-left: 5px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -19547,8 +19577,8 @@ table.dataTable.display > tbody > tr > td {
   text-align: left;
 }
 .entity-regestration-card .badge {
-  padding: 5px 10px;
-  border-radius: 12px;
+  padding: 8px 10px;
+  border-radius: 30px;
   font-size: 10px;
   color: #fff;
   display: inline-block;
@@ -19574,14 +19604,16 @@ table.dataTable.display > tbody > tr > td {
   align-items: center;
 }
 .entity-regestration-card .status-dot {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
 }
 .entity-regestration-card .status-good {
   background: var(--bs-green);
@@ -19663,4 +19695,8 @@ table.dataTable.display > tbody > tr > td {
 
 .inner-table-container .dataTables_wrapper > .row:last-child, .inner-table-container .boc-light .boc-filter.dataTables_wrapper > div:last-child, .boc-light .inner-table-container .boc-filter.dataTables_wrapper > div:last-child {
   background-color: #d8dddf;
+}
+
+.external-dashboard-v2-page .external-bg {
+  background-color: #EBECED;
 }/*# sourceMappingURL=styles.css.map */
