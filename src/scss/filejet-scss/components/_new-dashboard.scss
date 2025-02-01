@@ -244,7 +244,7 @@ table.dataTable.display > tbody > tr > td {
   .nav-link.active {
     color: var(--bs-nav-tabs-link-active-color);
     background-color: var(--bs-nav-tabs-link-active-bg);
-    border: 5px solid #4744d1;
+    border: 5px solid var(--bs-purple-indigo);
     border-bottom: 0px solid #fff;
     z-index: 1;
     position: relative;
@@ -303,7 +303,7 @@ table.dataTable.display > tbody > tr > td {
 .tab-content-v2 {
   position: relative;
   top: -4px;
-  border: 5px solid #4744d1;
+  border: 5px solid var(--bs-purple-indigo);
 
   .search-table-col {
     width: 28%;
@@ -464,18 +464,6 @@ table.dataTable.display > tbody > tr > td {
     font-weight: 400;
     color: var(--bs-black-primary);
     font-size: 0.9rem !important;
-  }
-  .dataTables_wrapper .dataTable thead th.sorting::after {
-    height: auto !important;
-    right: 10px;
-    top: 45%;
-    margin-left: 0rem !important;
-    content: "▼" !important;
-    transform: none !important;
-    background-image: none !important;
-    line-height: normal !important;
-    width: auto !important;
-    margin-top: 4px;
   }
   .dataTables_wrapper .dataTable thead th {
     text-transform: capitalize !important;
@@ -666,6 +654,18 @@ table.dataTable.display > tbody > tr > td {
     max-width: 200px;
   }
 }
+.dataTables_wrapper .dataTable thead th.sorting::after {
+  height: auto !important;
+  right: 10px;
+  top: 45%;
+  margin-left: 0rem !important;
+  content: "▼" !important;
+  transform: none !important;
+  background-image: none !important;
+  line-height: normal !important;
+  width: auto !important;
+  margin-top: 4px;
+}
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   padding: 0px !important;
@@ -710,13 +710,24 @@ table.dataTable.display > tbody > tr > td {
 
 
 
-// External dashboard css start
-.external-dashboard-v2-page{
+  /* External dashboard css start */
   .external-bg{
     background-color: #EBECED;
   }
-
-
+  .external-cardcontainer-d2 .nav-link:not(.active) {
+    opacity: 100%;
+    background: #fff;
 }
+  .external-sidebar-v2 .menu-link .nav-link.active a {
+    background: #EBECED;
+    color: #1c085a;
+}
+  .external-sidebar-v2 .menu-link .nav-link.active a::after {
+    background-image: radial-gradient(circle at 100% 0, white 0%, white 2rem, #dfe0e1 2rem);
+}
+  .external-sidebar-v2 .menu-link .nav-link.active a::before {
+    background-image: radial-gradient(circle at 100% 0, white 0%, white 2rem, #dfe0e1 2rem);
+}
+  
 
-// External dashboard css end
+/* External dashboard css end */

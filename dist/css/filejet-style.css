@@ -6,6 +6,9 @@
  */
 @import"https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap";
 
+@import url("https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css");
+
+
 
 :root {
     --bs-blue: #165A8B;
@@ -20,8 +23,6 @@
     --bs-black: #000;
     --bs-purple: #6E72EE;
     --bs-purple-100: #6741DF;
-    --bs-purple-filejet: #D9D9F1;
-    --bs-purple-indigo: #4744D1;
     --bs-purple-secondry: #DDDFF5;
     --bs-purple-light: rgba(110, 114, 238, 0.24);
     --bs-black-primary: #0D2C36;
@@ -22506,7 +22507,7 @@ body .caledar-event-upcoming {
   .cardcontainer-d2 .nav-link.active {
     color: var(--bs-nav-tabs-link-active-color);
     background-color: var(--bs-nav-tabs-link-active-bg);
-    border: 5px solid #4744d1;
+    border: 5px solid var(--bs-purple-indigo);
     border-bottom: 0px solid #fff;
     z-index: 1;
     position: relative;
@@ -22561,7 +22562,7 @@ body .caledar-event-upcoming {
   .tab-content-v2 {
     position: relative;
     top: -4px;
-    border: 5px solid #4744d1;
+    border: 5px solid var(--bs-purple-indigo);
   }
   .tab-content-v2 .search-table-col {
     width: 28%;
@@ -22721,18 +22722,7 @@ body .caledar-event-upcoming {
     color: var(--bs-black-primary);
     font-size: 0.9rem !important;
   }
-  .card-table-d2 .dataTables_wrapper .dataTable thead th.sorting::after {
-    height: auto !important;
-    right: 10px;
-    top: 45%;
-    margin-left: 0rem !important;
-    content: "▼" !important;
-    transform: none !important;
-    background-image: none !important;
-    line-height: normal !important;
-    width: auto !important;
-    margin-top: 4px;
-  }
+
   .card-table-d2 .dataTables_wrapper .dataTable thead th {
     text-transform: capitalize !important;
   }
@@ -22903,6 +22893,18 @@ body .caledar-event-upcoming {
     min-width: 150px;
     max-width: 200px;
   }
+  .dataTables_wrapper .dataTable thead th.sorting::after {
+    height: auto !important;
+    right: 10px;
+    top: 45%;
+    margin-left: 0rem !important;
+    content: "▼" !important;
+    transform: none !important;
+    background-image: none !important;
+    line-height: normal !important;
+    width: auto !important;
+    margin-top: 4px;
+  }
   .dataTables_wrapper .dataTables_paginate .paginate_button{
     padding: 0px !important;
   }
@@ -22953,15 +22955,15 @@ body .caledar-event-upcoming {
     opacity: 100%;
     background: #fff;
 }
-.external-cardcontainer-d2 .nav-link.active{
-    border: 5px solid #3E484A;
-    border-bottom: 0px solid #fff;
+  .external-sidebar-v2 .menu-link .nav-link.active a {
+    background: #EBECED;
+    color: #1c085a;
 }
-.external-cardcontainer-d2 .card-d2 .card-headerd2 {
-    background-color: #3E484A;
+  .external-sidebar-v2 .menu-link .nav-link.active a::after {
+    background-image: radial-gradient(circle at 100% 0, white 0%, white 2rem, #dfe0e1 2rem);
 }
-.external-tab-content-v2{
-    border: 5px solid #3E484A;
+  .external-sidebar-v2 .menu-link .nav-link.active a::before {
+    background-image: radial-gradient(circle at 100% 0, white 0%, white 2rem, #dfe0e1 2rem);
 }
   
 
