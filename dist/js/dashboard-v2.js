@@ -181,7 +181,11 @@ $(document).ready(function () {
 });
 // filter dropdown end
 
+
+
+
 // expand table start
+
 // Formatting function for expandable rows
 function format(d) {
     let uniqueTableId = `inner-table-${d.id}`; // Unique ID for each expanded row's table
@@ -225,7 +229,6 @@ function format(d) {
 
     return expandedRows;
 }
-
 
 // Initialize Main DataTable
 $(document).ready(function () {
@@ -302,6 +305,131 @@ function renderDots(data) {
     `;
 }
 
+// expand table end
 
+
+// expand table start
+
+// Formatting function for expandable rows
+function format(d) {
+  let uniqueTableId = `inner-table-${d.id}`; // Unique ID for each expanded row's table
+
+  let expandedRows = `
+      <div class="inner-table-container">
+          <table id="${uniqueTableId}" class="display inner-table w-100 ">
+              <thead style="display: none;">
+                  <tr>
+                      <th></th>
+                      <th>Group</th>
+                      <th>Entity Name</th>
+                      <th>Type</th>
+                      <th>Jurisdiction</th>
+                      <th>Registrations</th>
+                      <th>DBAs</th>
+                      <th>Business Licenses</th>
+                      <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  ${d.expanded_rows.map(row => `
+                      <tr>
+                      <td style="width:10px;"></td>
+                      <td style="width:150px;">${row.group || d.group}</td>
+                      <td style="width:150px;">${row.entity_name || d.entity_name}</td>
+                      <td style="width:78px;">${row.type || d.type}</td>
+                      <td style="width:94px;">${row.jurisdiction || d.jurisdiction}</td>
+                      <td style="width:96px;">${row.registrations || d.registrations}</td>
+                      <td style="width:46px;">${row.dbas || d.dbas}</td>
+                      <td style="width:130px;">${row.business_licenses || d.business_licenses}</td>
+                      <td>
+                          <span class="badge badge-${row.status.class}">${row.status.label}</span>
+                      </td>
+                      </tr>
+                  `).join("")}
+              </tbody>
+          </table>
+      </div>
+  `;
+
+  return expandedRows;
+}
+
+// Initialize Main DataTable
+$(document).ready(function () {
+  let table = $("#ra-other-table-pro").DataTable({
+      ajax: "data5.json",
+      columns: [
+          {
+              className: "dt-control",
+              orderable: false,
+              data: null,
+              defaultContent: "",
+          },
+          { data: "group" },
+          { data: "entity_name" },
+          { data: "type" },
+          { data: "jurisdiction" },
+          { data: "registrations" },
+          { data: "dbas" },
+          { data: "business_licenses" },
+          {
+              data: "status",
+              render: renderDots,
+          },
+      ],
+      order: [[1, "asc"]],
+      lengthChange: false,
+  });
+
+  // Handle row expansion click
+  $("#ra-other-table-pro tbody").on("click", "td.dt-control", function () {
+      let tr = $(this).closest("tr");
+      let row = table.row(tr);
+
+      if (row.child.isShown()) {
+          row.child.hide();
+          tr.removeClass("expanded-row");
+      } else {
+          let childContent = format(row.data());
+          row.child(childContent).show();
+          tr.addClass("expanded-row");
+
+          // Get unique table ID
+          let tableId = `#inner-table-${row.data().id}`;
+
+          // Ensure DataTable initializes only once after the child row is inserted
+          setTimeout(() => {
+              if (!$.fn.DataTable.isDataTable(tableId)) {
+                  $(tableId).DataTable({
+                      paging: true,
+                      searching: false,
+                      lengthChange: false,
+                      pageLength: 10, // Controls number of rows per page
+                      ordering: false,
+                      info: true,
+                      autoWidth: false,
+                      scrollX: false,
+                  });
+              }
+          }, 200); // Small delay ensures DOM is updated before DataTable initializes
+      }
+  });
+});
+
+// Render dots for status column in the parent row
+function renderDots(data) {
+  return `
+      <div class="status-dots">
+          <div class="status-dot status-good">1</div>
+          <div class="status-dot status-not-good">1</div>
+          <div class="status-dot status-inactive">1</div>
+          <div class="status-dot status-dissolved">1</div>
+          <div class="status-dot status-archived">1</div>
+          <div class="status-dot status-externally-managed">1</div>
+
+      </div>
+  `;
+}
 
 // expand table end
+
