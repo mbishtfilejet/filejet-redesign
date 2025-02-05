@@ -193,6 +193,7 @@ function formatTable1(d) {
           <table id="${uniqueTableId}" class="display inner-table w-100">
               <thead style="display: none;">
                   <tr>
+                      <th></th>
                       <th>Group</th>
                       <th>Entity Name</th>
                       <th>Type</th>
@@ -206,6 +207,7 @@ function formatTable1(d) {
               <tbody>
                   ${d.expanded_rows.map(row => `
                       <tr>
+                      <td></td>
                       <td>${row.group || d.group}</td>
                       <td>${row.entity_name || d.entity_name}</td>
                       <td>${row.type || d.type}</td>
@@ -233,6 +235,7 @@ function formatTable2(d) {
           <table id="${uniqueTableId}" class="display inner-table w-100">
               <thead style="display: none;">
                   <tr>
+                      <th></th>
                       <th>Group</th>
                       <th>Entity Name</th>
                       <th>Type</th>
@@ -246,6 +249,7 @@ function formatTable2(d) {
               <tbody>
                   ${d.expanded_rows.map(row => `
                       <tr>
+                      <td></td>
                       <td>${row.group || d.group}</td>
                       <td>${row.entity_name || d.entity_name}</td>
                       <td>${row.type || d.type}</td>
