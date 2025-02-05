@@ -1,7 +1,7 @@
 // google chart script start
 // Load Google Charts
 google.charts.load("current", { packages: ["corechart"] });
-
+let lastClickedChart = null; 
 // Draw the charts
 google.charts.setOnLoadCallback(() => {
   drawDonutChart(
@@ -12,7 +12,8 @@ google.charts.setOnLoadCallback(() => {
       ["Upcoming", 30, "30"],
       ["Future Tasks", 25, "25"],
     ],
-    ["#E73B18", "#3498db", "#00BA70"]
+    ["#E73B18", "#3498db", "#00BA70"],
+    '90%' , '90%',
   );
 
   drawDonutChart(
@@ -25,7 +26,8 @@ google.charts.setOnLoadCallback(() => {
       ["Dissolved", 2, "2"],
       ["Archived", 1, "1"],
     ],
-    ["#00BA70", "#BB0F23", "#8690A0", "#1080F8", "#1A4D9E"]
+    ["#00BA70", "#BB0F23", "#8690A0", "#1080F8", "#1A4D9E"],
+    '90%' , '90%',
   );
 
   drawDonutChart(
@@ -36,12 +38,15 @@ google.charts.setOnLoadCallback(() => {
       ["Sent", 5, "5"],
       ["Completed", 5, "5"],
     ],
-    ["#4744D1", "#3498db", "#00BA70"]
+    ["#4744D1", "#3498db", "#00BA70"],
+    '90%' , '90%',
   );
+  attachClickEvents();
 });
 
 // Reusable function to draw a donut chart
-function drawDonutChart(containerId, chartData, colors) {
+function drawDonutChart(containerId, chartData, colors,width, height) {
+  
   // Convert data to DataTable format
   var data = google.visualization.arrayToDataTable(chartData);
 
@@ -52,7 +57,7 @@ function drawDonutChart(containerId, chartData, colors) {
     legend: "none", // Disable legend
     pieSliceText: "none", // Hide text on slices
     backgroundColor: "transparent", // Transparent background
-    chartArea: { width: "90%", height: "90%", backgroundColor: "none" }, // Adjust chart area
+    chartArea: { width: width, height:height, backgroundColor: "none" }, // Adjust chart area
     pieSliceBorderColor: "transparent",
   };
 
@@ -62,6 +67,65 @@ function drawDonutChart(containerId, chartData, colors) {
   );
   chart.draw(data, options);
 }
+
+function attachClickEvents() {
+  document.querySelectorAll(".nav-item").forEach((li) => {
+    li.addEventListener("click", function () {
+      if (lastClickedChart) {
+        // document.getElementById(lastClickedChart).style.width = "90%";
+        // document.getElementById(lastClickedChart).style.height = "90%";
+        redrawChart(lastClickedChart, '90%', '90%'); // Redraw with normal size
+      }
+
+      // Find the chart inside the clicked li
+      const chartId = this.querySelector(".piechart").id;
+      // document.getElementById(chartId).style.width = "120%";
+      // document.getElementById(chartId).style.height = "120%";
+
+      // Redraw chart with increased size
+      redrawChart(chartId, '140%', '140%');
+
+      // Update lastClickedChart to track previous selection
+      lastClickedChart = chartId;
+    });
+  });
+}
+
+// Function to redraw chart with increased size
+function redrawChart(chartId,width,height) {
+  let chartData, colors;
+
+  if (chartId === "donut_chart") {
+    chartData = [
+      ["Task", "Count", { role: "tooltip" }],
+      ["Overdue", 50, "50"],
+      ["Upcoming", 30, "30"],
+      ["Future Tasks", 25, "25"],
+    ];
+    colors = ["#E73B18", "#3498db", "#00BA70"],width,height;
+  } else if (chartId === "donut_chart_2") {
+    chartData = [
+      ["Status", "Count", { role: "tooltip" }],
+      ["In Good Standing", 15, "15"],
+      ["Not in Good Standing", 8, "8"],
+      ["Inactive", 3, "3"],
+      ["Dissolved", 2, "2"],
+      ["Archived", 1, "1"],
+    ];
+    colors = ["#00BA70", "#BB0F23", "#8690A0", "#1080F8", "#1A4D9E"],width,height;
+  } else if (chartId === "donut_chart_3") {
+    chartData = [
+      ["Task", "Count", { role: "tooltip" }],
+      ["In Process", 5, "5"],
+      ["Sent", 5, "5"],
+      ["Completed", 5, "5"],
+    ];
+    colors = ["#4744D1", "#3498db", "#00BA70"],width,height;
+  }
+
+  drawDonutChart(chartId, chartData, colors,width,height);
+}
+
 // google chart script end
 
 // filter dropdown start
