@@ -112,7 +112,7 @@ function redrawChart(chartId,width,height) {
       ["Dissolved", 2, "2"],
       ["Archived", 1, "1"],
     ];
-    colors = ["#00BA70", "#BB0F23", "#8690A0", "#1080F8", "#1A4D9E"],width,height;
+    colors = ["#00BA70", "#E73B18", "#8690A0", "#1080F8", "#1A4D9E"],width,height;
   } else if (chartId === "donut_chart_3") {
     chartData = [
       ["Task", "Count", { role: "tooltip" }],
