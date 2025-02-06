@@ -26,7 +26,7 @@ google.charts.setOnLoadCallback(() => {
       ["Dissolved", 2, "2"],
       ["Archived", 1, "1"],
     ],
-    ["#00BA70", "#BB0F23", "#8690A0", "#1080F8", "#1A4D9E"],
+    ["#00BA70", "#E73B18", "#8690A0", "#1080F8", "#1A4D9E"],
     '90%' , '90%',
   );
 
@@ -38,7 +38,7 @@ google.charts.setOnLoadCallback(() => {
       ["Sent", 5, "5"],
       ["Completed", 5, "5"],
     ],
-    ["#4744D1", "#3498db", "#00BA70"],
+    ["#62539F", "#3498db", "#00BA70"],
     '90%' , '90%',
   );
   attachClickEvents();
@@ -120,7 +120,7 @@ function redrawChart(chartId,width,height) {
       ["Sent", 5, "5"],
       ["Completed", 5, "5"],
     ];
-    colors = ["#4744D1", "#3498db", "#00BA70"],width,height;
+    colors = ["#62539F", "#3498db", "#00BA70"],width,height;
   }
 
   drawDonutChart(chartId, chartData, colors,width,height);
@@ -257,7 +257,7 @@ function formatTable1(d) {
           <table id="${uniqueTableId}" class="display inner-table w-100">
               <thead style="display: none;">
                   <tr>
-                      <th></th>
+                      <th class="dt-control"></th>
                       <th>Group</th>
                       <th>Entity Name</th>
                       <th>Type</th>
@@ -271,7 +271,7 @@ function formatTable1(d) {
               <tbody>
                   ${d.expanded_rows.map(row => `
                       <tr>
-                      <td></td>
+                      <td style="width:10px;"></td>
                       <td>${row.group || d.group}</td>
                       <td>${row.entity_name || d.entity_name}</td>
                       <td>${row.type || d.type}</td>
@@ -313,7 +313,7 @@ function formatTable2(d) {
               <tbody>
                   ${d.expanded_rows.map(row => `
                       <tr>
-                      <td></td>
+                      <td style="width:10px;"></td>
                       <td>${row.group || d.group}</td>
                       <td>${row.entity_name || d.entity_name}</td>
                       <td>${row.type || d.type}</td>
@@ -374,12 +374,13 @@ $(document).ready(function () {
                       pageLength: 5, // Controls number of rows per page
                       ordering: false,
                       info: true,
-                      autoWidth: false,
+                      autoWidth: true,
                       scrollX: false,
                   });
-              }
-          }, 200);
-      }
+                }
+                matchInnerTableWidth("ra-other-table", tableId);
+            }, 200);
+        }
   });
 
   // Initialize DataTable for #ra-other-table-pro
@@ -423,12 +424,13 @@ $(document).ready(function () {
                       pageLength: 5, // Controls number of rows per page
                       ordering: false,
                       info: true,
-                      autoWidth: false,
+                      autoWidth: true,
                       scrollX: false,
                   });
-              }
-          }, 200);
-      }
+                }
+                matchInnerTableWidth("ra-other-table-pro", tableId);
+            }, 200);
+        }
   });
 
   // Enable Bootstrap tooltips (instant appearance)
