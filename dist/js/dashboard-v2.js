@@ -1,7 +1,7 @@
-// google chart script start
-// Load Google Charts
+// Google Chart Script Start
 google.charts.load("current", { packages: ["corechart"] });
-let lastClickedChart = null; 
+let lastClickedChart = null;
+
 // Draw the charts
 google.charts.setOnLoadCallback(() => {
   drawDonutChart(
@@ -14,7 +14,7 @@ google.charts.setOnLoadCallback(() => {
       ["Unknowledged", 10, "10"],
     ],
     ["#E73B18", "#3498db", "#00BA70", "#62539F"],
-    '90%' , '90%',
+    '75%', '75%'
   );
 
   drawDonutChart(
@@ -26,8 +26,8 @@ google.charts.setOnLoadCallback(() => {
       ["Inactive", 3, "3"],
       ["Externally Managed", 1, "1"],
     ],
-    ["#00BA70", "#E73B18", "#1080F8", "#1a4d9e"],
-    '90%' , '90%',
+    ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"],
+    '75%', '75%'
   );
 
   drawDonutChart(
@@ -39,60 +39,50 @@ google.charts.setOnLoadCallback(() => {
       ["Completed", 5, "5"],
     ],
     ["#62539F", "#3498db", "#00BA70"],
-    '90%' , '90%',
+    '75%', '75%'
   );
+
   attachClickEvents();
 });
 
 // Reusable function to draw a donut chart
-function drawDonutChart(containerId, chartData, colors,width, height) {
-  
-  // Convert data to DataTable format
+function drawDonutChart(containerId, chartData, colors, width, height) {
   var data = google.visualization.arrayToDataTable(chartData);
 
-  // Chart options
+  // Dynamically adjust chartArea for larger size
+  var chartAreaSize = width === '160%' ? { right: "5%", left:"5%" , bottom: "5%", top:"5%" , width: "160%", height: "160%" } : { width: width, height: height };
+
   var options = {
-    pieHole: 0.5, // Donut hole size
-    colors: colors, // Custom colors
-    legend: "none", // Disable legend
-    pieSliceText: "none", // Hide text on slices
-    backgroundColor: "transparent", // Transparent background
-    chartArea: { width: width, height:height, backgroundColor: "none" }, // Adjust chart area
+    pieHole: 0.5,
+    colors: colors,
+    legend: "none",
+    pieSliceText: "none",
+    backgroundColor: "transparent",
+    chartArea: chartAreaSize, // Adjusted dynamically
     pieSliceBorderColor: "transparent",
   };
 
-  // Create and draw the chart
-  var chart = new google.visualization.PieChart(
-    document.getElementById(containerId)
-  );
+  var chart = new google.visualization.PieChart(document.getElementById(containerId));
   chart.draw(data, options);
 }
 
+// Attach click events to increase chart size on click
 function attachClickEvents() {
   document.querySelectorAll(".nav-item").forEach((li) => {
     li.addEventListener("click", function () {
       if (lastClickedChart) {
-        // document.getElementById(lastClickedChart).style.width = "90%";
-        // document.getElementById(lastClickedChart).style.height = "90%";
-        redrawChart(lastClickedChart, '90%', '90%'); // Redraw with normal size
+        redrawChart(lastClickedChart, '75%', '75%'); // Reset previous chart size
       }
 
-      // Find the chart inside the clicked li
       const chartId = this.querySelector(".piechart").id;
-      // document.getElementById(chartId).style.width = "120%";
-      // document.getElementById(chartId).style.height = "120%";
-
-      // Redraw chart with increased size
-      redrawChart(chartId, '140%', '140%');
-
-      // Update lastClickedChart to track previous selection
+      redrawChart(chartId, '160%', '160%'); // Increase clicked chart size
       lastClickedChart = chartId;
     });
   });
 }
 
-// Function to redraw chart with increased size
-function redrawChart(chartId,width,height) {
+// Function to redraw the chart with increased size
+function redrawChart(chartId, width, height) {
   let chartData, colors;
 
   if (chartId === "donut_chart") {
@@ -102,9 +92,8 @@ function redrawChart(chartId,width,height) {
       ["Upcoming", 30, "30"],
       ["Future Tasks", 25, "25"],
       ["Unknowledged", 10, "10"],
-
     ];
-    colors = ["#E73B18", "#3498db", "#00BA70", "#62539F"],width,height;
+    colors = ["#E73B18", "#3498db", "#00BA70", "#62539F"];
   } else if (chartId === "donut_chart_2") {
     chartData = [
       ["Status", "Count", { role: "tooltip" }],
@@ -113,7 +102,7 @@ function redrawChart(chartId,width,height) {
       ["Inactive", 3, "3"],
       ["Externally Managed", 1, "1"],
     ];
-    colors = ["#00BA70", "#E73B18", "#1080F8", "#1a4d9e"],width,height;
+    colors = ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"];
   } else if (chartId === "donut_chart_3") {
     chartData = [
       ["Task", "Count", { role: "tooltip" }],
@@ -121,13 +110,14 @@ function redrawChart(chartId,width,height) {
       ["Sent", 5, "5"],
       ["Completed", 5, "5"],
     ];
-    colors = ["#62539F", "#3498db", "#00BA70"],width,height;
+    colors = ["#62539F", "#3498db", "#00BA70"];
   }
 
-  drawDonutChart(chartId, chartData, colors,width,height);
+  drawDonutChart(chartId, chartData, colors, width, height);
 }
+// google chart end
 
-// google chart script end
+
 
 // filter dropdown start
 $(document).ready(function () {
@@ -233,7 +223,7 @@ $(document).ready(function () {
   }
 
   // Initialize dropdowns with default checked values
-  initializeDropdown("#StatusDropdown", "#status-select-all", ".status-checkbox", ".status-dropdown-menu", ["Overdue", "Upcoming", "Unacknowledged SOPS"]);
+  initializeDropdown("#StatusDropdown", "#status-select-all", ".status-checkbox", ".status-dropdown-menu", ["Overdue", "Upcoming", "Unacknowledged"]);
   initializeDropdown("#JurisdictionDropdown", "#jurisdiction-select-all", ".jurisdiction-checkbox", ".jurisdiction-dropdown-menu");
   initializeDropdown("#TaskDropdown", "#task-select-all", ".task-checkbox", ".task-dropdown-menu");
   initializeDropdown("#EntityJurisdictionDropdown", "#entity-jurisdiction-select-all", ".entity-jurisdiction-checkbox", ".entity-jurisdiction-dropdown-menu");
@@ -246,8 +236,7 @@ $(document).ready(function () {
 // filter dropdown end
 
 
-
-
+// entity table start
 $(document).ready(function () {
   let table1 = $("#ra-other-table").DataTable({
       ajax: "data4.json",
@@ -360,12 +349,12 @@ function renderDotsTable1(data) {
   return `
       <div class="status-dots">
           <div class="status-dot status-good" data-bs-toggle="tooltip" title="In Good Standing">1</div>
-          <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not in Good Standing">1</div>
+          <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not Good Standing">1</div>
           <div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">1</div>
       </div>
   `;
 }
-
+// entity table end
 
 
 
