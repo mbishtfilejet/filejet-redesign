@@ -363,7 +363,6 @@ function renderDotsTable1(data) {
           <div class="status-dot status-good" data-bs-toggle="tooltip" title="In Good Standing">1</div>
           <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not in Good Standing">1</div>
           <div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">1</div>
-          <div class="status-dot status-externally-managed" data-bs-toggle="tooltip" title="Externally Managed">1</div>
       </div>
   `;
 }
