@@ -135,67 +135,69 @@ $(document).ready(function () {
     dropdownId,
     selectAllId,
     checkboxClass,
-    dropdownMenuClass
+    dropdownMenuClass,
+    defaultCheckedValues = []
   ) {
     const dropdownInput = $(dropdownId);
     const dropdownMenu = $(dropdownMenuClass);
     const checkboxes = $(checkboxClass);
     const selectAllCheckbox = $(selectAllId);
-    const selectedItemsContainer = $(
-      '<div class="filter-selected-items-container"></div>'
-    );
+    const selectedItemsContainer = $('<div class="filter-selected-items-container"></div>');
 
     // Attach selected items container to the dropdown input field
     dropdownInput.after(selectedItemsContainer);
 
     function updateInputText() {
-      const selectedOptions = checkboxes
-        .filter(":checked")
-        .map(function () {
-          return $(this).val();
-        })
-        .get();
+      const selectedOptions = checkboxes.filter(":checked").map(function () {
+        return $(this).val();
+      }).get();
 
       // Clear previous selected items
       selectedItemsContainer.empty();
 
       if (selectedOptions.length === 0) {
-        dropdownInput.val("");
-        dropdownInput.attr("placeholder", "Select items");
+        selectedItemsContainer.hide();
       } else {
-        const visibleItems = selectedOptions.slice(0, 2); // Limit to first 2 items
+        selectedItemsContainer.show();
+        const visibleItems = selectedOptions.slice(0, 2); // Show only first 2 items
         const remainingCount = selectedOptions.length - visibleItems.length;
 
-        // Add the visible items
+        // Add the visible selected items
         visibleItems.forEach((option) => {
-          const selectedItem = $('<span class="filter-selected-item"></span>').text(
-            option
-          );
-          const clearIcon = $('<span class="filter-clear-icon"><img src="dist/images/icons/filter-close.svg" alt="Clear" class="clear-icon-image"/</span>');
+          const selectedItem = $('<span class="filter-selected-item"></span>').text(option);
+          const clearIcon = $('<span class="filter-clear-icon"><img src="dist/images/icons/filter-close.svg" alt="Clear" class="clear-icon-image"/></span>');
 
-          // Attach the clear icon and item
+          // Attach the clear icon to item
           selectedItem.append(clearIcon);
           selectedItemsContainer.append(selectedItem);
 
-          // Clear item click handler
+          // Remove item when clicking the clear icon
           clearIcon.on("click", function () {
             $(`input[value="${option}"]`).prop("checked", false);
             updateInputText();
           });
         });
 
-        // Show the summary if there are more than 3 items selected
+        // Show "+1" summary if more than 2 items selected
         if (remainingCount > 0) {
-          const summary = $('<span class="more-items-summary ms-2"></span>').text(
-            `+ ${remainingCount}`
-          );
+          const summary = $('<span class="more-items-summary ms-2"></span>').text(`+ ${remainingCount}`);
           selectedItemsContainer.append(summary);
         }
-
-        // Update dropdown input with no placeholder if items are selected
-        dropdownInput.attr("placeholder", "");
       }
     }
+
+    // Ensure default items are checked
+    checkboxes.each(function () {
+      const checkboxValue = $(this).val();
+      const checkboxLabel = $(this).closest("label").text().trim(); // Get label text
+
+      if (defaultCheckedValues.includes(checkboxValue) || defaultCheckedValues.includes(checkboxLabel)) {
+        $(this).prop("checked", true);
+      }
+    });
+
+    // Trigger input update after setting default checked values
+    updateInputText();
 
     // Filter dropdown options based on input
     dropdownInput.on("input", function () {
@@ -220,8 +222,7 @@ $(document).ready(function () {
 
     // Sync "Select All" checkbox state
     checkboxes.on("change", function () {
-      const allChecked =
-        checkboxes.length === checkboxes.filter(":checked").length;
+      const allChecked = checkboxes.length === checkboxes.filter(":checked").length;
       selectAllCheckbox.prop("checked", allChecked);
     });
 
@@ -231,17 +232,15 @@ $(document).ready(function () {
     });
   }
 
-  // Initialize all dropdowns with unique identifiers 
-  initializeDropdown( "#JurisdictionDropdown","#jurisdiction-select-all",".jurisdiction-checkbox",".jurisdiction-dropdown-menu" );
-  initializeDropdown("#TaskDropdown","#task-select-all",".task-checkbox",".task-dropdown-menu");
-  initializeDropdown("#StatusDropdown","#status-select-all",".status-checkbox",".status-dropdown-menu");
-
-  initializeDropdown("#EntityJurisdictionDropdown","#entity-jurisdiction-select-all",".entity-jurisdiction-checkbox",".entity-jurisdiction-dropdown-menu" );
-  initializeDropdown("#EntityStatusDropdown","#entity-status-select-all",".entity-status-checkbox",".entity-status-dropdown-menu");
-
-  initializeDropdown( "#OrderJurisdictionDropdown","#order-jurisdiction-select-all",".order-jurisdiction-checkbox",".order-jurisdiction-dropdown-menu" );
-  initializeDropdown("#OrderTaskDropdown","#order-task-select-all",".order-task-checkbox",".order-task-dropdown-menu");
-  initializeDropdown("#OrderStatusDropdown","#order-status-select-all",".order-status-checkbox",".order-status-dropdown-menu");
+  // Initialize dropdowns with default checked values
+  initializeDropdown("#StatusDropdown", "#status-select-all", ".status-checkbox", ".status-dropdown-menu", ["Overdue", "Upcoming", "Unacknowledged SOPS"]);
+  initializeDropdown("#JurisdictionDropdown", "#jurisdiction-select-all", ".jurisdiction-checkbox", ".jurisdiction-dropdown-menu");
+  initializeDropdown("#TaskDropdown", "#task-select-all", ".task-checkbox", ".task-dropdown-menu");
+  initializeDropdown("#EntityJurisdictionDropdown", "#entity-jurisdiction-select-all", ".entity-jurisdiction-checkbox", ".entity-jurisdiction-dropdown-menu");
+  initializeDropdown("#EntityStatusDropdown", "#entity-status-select-all", ".entity-status-checkbox", ".entity-status-dropdown-menu");
+  initializeDropdown("#OrderJurisdictionDropdown", "#order-jurisdiction-select-all", ".order-jurisdiction-checkbox", ".order-jurisdiction-dropdown-menu");
+  initializeDropdown("#OrderTaskDropdown", "#order-task-select-all", ".order-task-checkbox", ".order-task-dropdown-menu");
+  initializeDropdown("#OrderStatusDropdown", "#order-status-select-all", ".order-status-checkbox", ".order-status-dropdown-menu");
 
 });
 // filter dropdown end
