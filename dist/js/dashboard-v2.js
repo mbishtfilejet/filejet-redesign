@@ -21,7 +21,7 @@ google.charts.setOnLoadCallback(() => {
     "donut_chart_2",
     [
       ["Task", "Count"],
-      ["Good Standing", 15],
+      ["In Good Standing", 15],
       ["Not Good Standing", 8],
       ["Inactive", 3],
       ["Externally Managed", 1],
@@ -112,7 +112,7 @@ function redrawChart(chartId, width, height) {
   } else if (chartId === "donut_chart_2") {
     chartData = [
       ["Task", "Count"],
-      ["Good Standing", 15],
+      ["In Good Standing", 15],
       ["Not Good Standing", 8],
       ["Inactive", 3],
       ["Externally Managed", 1],
