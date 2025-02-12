@@ -2,55 +2,59 @@
 google.charts.load("current", { packages: ["corechart"] });
 let lastClickedChart = null;
 
-// Draw the charts
 google.charts.setOnLoadCallback(() => {
   drawDonutChart(
     "donut_chart",
     [
-      ["Task", "Count", { role: "tooltip" }],
-      ["Overdue", 50, "50"],
-      ["Upcoming", 30, "30"],
-      ["Future Tasks", 25, "25"],
-      ["Unknowledged", 10, "10"],
+      ["Task", "Count"],
+      ["Overdue", 50],
+      ["Upcoming", 30],
+      ["Future Tasks", 25],
+      ["Unacknowledged", 10],
     ],
     ["#E73B18", "#3498db", "#00BA70", "#62539F"],
-    '75%', '75%'
+    "78%",
+    "78%"
   );
 
   drawDonutChart(
     "donut_chart_2",
     [
-      ["Status", "Count", { role: "tooltip" }],
-      ["In Good Standing", 15, "15"],
-      ["Not in Good Standing", 8, "8"],
-      ["Inactive", 3, "3"],
-      ["Externally Managed", 1, "1"],
+      ["Task", "Count"],
+      ["Good Standing", 15],
+      ["Not Good Standing", 8],
+      ["Inactive", 3],
+      ["Externally Managed", 1],
     ],
     ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"],
-    '75%', '75%'
+    "78%",
+    "78%"
   );
 
   drawDonutChart(
     "donut_chart_3",
     [
-      ["Task", "Count", { role: "tooltip" }],
-      ["In Process", 5, "5"],
-      ["Sent", 5, "5"],
-      ["Completed", 5, "5"],
+      ["Task", "Count"],
+      ["In Process", 5],
+      ["Sent", 5],
+      ["Completed", 5],
     ],
     ["#62539F", "#3498db", "#00BA70"],
-    '75%', '75%'
+    "78%",
+    "78%"
   );
 
   attachClickEvents();
 });
 
-// Reusable function to draw a donut chart
+// Function to draw a donut chart
 function drawDonutChart(containerId, chartData, colors, width, height) {
   var data = google.visualization.arrayToDataTable(chartData);
 
-  // Dynamically adjust chartArea for larger size
-  var chartAreaSize = width === '160%' ? { right: "5%", left:"5%" , bottom: "5%", top:"5%" , width: "160%", height: "160%" } : { width: width, height: height };
+  var chartAreaSize =
+    width === "140%"
+      ? { right: "5%", left: "5%", bottom: "5%", top: "5%", width: "140%", height: "140%" }
+      : { width: width, height: height };
 
   var options = {
     pieHole: 0.5,
@@ -58,11 +62,22 @@ function drawDonutChart(containerId, chartData, colors, width, height) {
     legend: "none",
     pieSliceText: "none",
     backgroundColor: "transparent",
-    chartArea: chartAreaSize, // Adjusted dynamically
+    chartArea: chartAreaSize,
     pieSliceBorderColor: "transparent",
+    tooltip: { trigger: "none" }, // Disable tooltip
   };
 
   var chart = new google.visualization.PieChart(document.getElementById(containerId));
+
+  // Add click event listener to each chart
+  google.visualization.events.addListener(chart, "select", function () {
+    var selectedItem = chart.getSelection()[0];
+    if (selectedItem) {
+      var sliceLabel = chartData[selectedItem.row + 1][0]; // Get clicked slice label
+      highlightStatus(sliceLabel);
+    }
+  });
+
   chart.draw(data, options);
 }
 
@@ -71,11 +86,11 @@ function attachClickEvents() {
   document.querySelectorAll(".nav-item").forEach((li) => {
     li.addEventListener("click", function () {
       if (lastClickedChart) {
-        redrawChart(lastClickedChart, '75%', '75%'); // Reset previous chart size
+        redrawChart(lastClickedChart, "78%", "78%"); // Reset previous chart size
       }
 
       const chartId = this.querySelector(".piechart").id;
-      redrawChart(chartId, '160%', '160%'); // Increase clicked chart size
+      redrawChart(chartId, "140%", "140%"); // Increase clicked chart size
       lastClickedChart = chartId;
     });
   });
@@ -87,35 +102,51 @@ function redrawChart(chartId, width, height) {
 
   if (chartId === "donut_chart") {
     chartData = [
-      ["Task", "Count", { role: "tooltip" }],
-      ["Overdue", 50, "50"],
-      ["Upcoming", 30, "30"],
-      ["Future Tasks", 25, "25"],
-      ["Unknowledged", 10, "10"],
+      ["Task", "Count"],
+      ["Overdue", 50],
+      ["Upcoming", 30],
+      ["Future Tasks", 25],
+      ["Unacknowledged", 10],
     ];
     colors = ["#E73B18", "#3498db", "#00BA70", "#62539F"];
   } else if (chartId === "donut_chart_2") {
     chartData = [
-      ["Status", "Count", { role: "tooltip" }],
-      ["In Good Standing", 15, "15"],
-      ["Not in Good Standing", 8, "8"],
-      ["Inactive", 3, "3"],
-      ["Externally Managed", 1, "1"],
+      ["Task", "Count"],
+      ["Good Standing", 15],
+      ["Not Good Standing", 8],
+      ["Inactive", 3],
+      ["Externally Managed", 1],
     ];
     colors = ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"];
   } else if (chartId === "donut_chart_3") {
     chartData = [
-      ["Task", "Count", { role: "tooltip" }],
-      ["In Process", 5, "5"],
-      ["Sent", 5, "5"],
-      ["Completed", 5, "5"],
+      ["Task", "Count"],
+      ["In Process", 5],
+      ["Sent", 5],
+      ["Completed", 5],
     ];
     colors = ["#62539F", "#3498db", "#00BA70"];
   }
 
   drawDonutChart(chartId, chartData, colors, width, height);
 }
-// google chart end
+
+// Function to highlight status when a pie slice is clicked
+function highlightStatus(status) {
+  // Remove existing highlights
+  document.querySelectorAll(".list-group-item").forEach((item) => {
+    item.classList.remove("active-status");
+  });
+
+  // Find and highlight the matching status
+  document.querySelectorAll(".list-group-item").forEach((item) => {
+    if (item.textContent.toLowerCase().includes(status.toLowerCase())) {
+      item.classList.add("active-status"); // Add highlight class
+    }
+  });
+}
+
+// Google Chart Script End
 
 
 
