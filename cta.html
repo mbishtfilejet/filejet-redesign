@@ -4945,72 +4945,6 @@
                                 </div>
 
                             </div>
-                            <div class="addBeneficialOwner my-4">
-                                <div class="accordion" id="accordionExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="accordionHeader">
-                                            <button class="accordion-button ps-2" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#accordionContent"
-                                                aria-expanded="false" aria-controls="accordionContent">
-                                                Added Beneficial Owner
-                                            </button>
-                                        </h2>
-                                        <div id="accordionContent" class="accordion-collapse collapse show">
-                                            <div>
-                                                <div class="bg-white">
-                                                    <table
-                                                        class="table table-striped w-100 table-nowrap dataTable no-footer">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="width:20%"><strong>Name</strong></td>
-                                                                <td style="width:20%"><strong>Type</strong></td>
-                                                                <td style="width:30%"><strong>Address</strong></td>
-                                                                <td style="width:20%"><strong>FinCEN ID</strong></td>
-                                                                <td style="width:10%"><strong>Action</strong></td>
-                                                            </tr>
-                                                            <tr class="soi-user-listing-member">
-                                                                <td>
-                                                                    <div>John Doe</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div>Beneficial Owner</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div>9350 East Flair Dr. El Monte, CA 91731</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div>#23249</div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex">
-                                                                        <a href="javascript:;" data-key="id"
-                                                                            data-value="528" data-bs-toggle="modal"
-                                                                            data-bs-target="#addBeneficialModal"
-                                                                            class="user-btn ">
-                                                                            <span class="icon icon-edit cursor-pointer"
-                                                                                data-toggle="tooltip"
-                                                                                title="EDIT"></span></a>
-
-                                                                        <a href="javascript:;" data-key="id"
-                                                                            data-value="528" data-type="member"
-                                                                            data-mode="delete" class="delete-user-btn ">
-                                                                            <span
-                                                                                class="icon icon-delete me-3 cursor-pointer"
-                                                                                data-toggle="tooltip"
-                                                                                title="DELETE"></span>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end  -->
-                            </div>
                         </div>
                         
 
@@ -5101,16 +5035,15 @@
                                                             </div>
                                                         </h3>
                                                         <div class="d-flex mt-3">
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="checkYes1" value="option1" onclick="toggleDivs(true)">
-                                                                <label class="form-check-label" for="">Individual</label>
+                                                            <div class="form-check me-3">
+                                                                <input type="radio" class="form-check-input" name="formType" id="individual" value="individual" checked>
+                                                                <label class="form-check-label" for="individual">Individual</label>
                                                             </div>
-                                                            <div class="form-check form-check-inline me-0">
-                                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="checkNo1" value="option2" onclick="toggleDivs(false)">
-                                                                <label class="form-check-label" for="">Corporate</label>
+                                                            <div class="form-check">
+                                                                <input type="radio" class="form-check-input" name="formType" id="corporate" value="corporate">
+                                                                <label class="form-check-label" for="corporate">Corporate</label>
                                                             </div>
-                        
-                                                        </div>
+                                                            </div>
 
                     </div>
 
@@ -5125,7 +5058,7 @@
                 <!-- Modal Header Ends -->
 
                 <!-- Modal Body -->
-                <div class="modal-body">
+                <div class="modal-body" id="individual-form">
                     <form class="border-top" action="">
 
                         <div class="mb-3 mt-3">
@@ -5337,7 +5270,72 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="addBeneficialOwner mb-3">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="accordionHeader">
+                                        <button class="accordion-button ps-2" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#accordionContent"
+                                            aria-expanded="false" aria-controls="accordionContent">
+                                            Added Beneficial Owner
+                                        </button>
+                                    </h2>
+                                    <div id="accordionContent" class="accordion-collapse collapse show">
+                                        <div>
+                                            <div class="bg-white">
+                                                <table
+                                                    class="table table-striped w-100 table-nowrap dataTable no-footer">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width:20%"><strong>Name</strong></td>
+                                                            <td style="width:20%"><strong>Type</strong></td>
+                                                            <td style="width:30%"><strong>Address</strong></td>
+                                                            <td style="width:20%"><strong>FinCEN ID</strong></td>
+                                                            <td style="width:10%"><strong>Action</strong></td>
+                                                        </tr>
+                                                        <tr class="soi-user-listing-member">
+                                                            <td>
+                                                                <div>John Doe</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>Beneficial Owner</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>9350 East Flair Dr. El Monte, CA 91731</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>#23249</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <a href="javascript:;" data-key="id"
+                                                                        data-value="528" data-bs-toggle="modal"
+                                                                        data-bs-target="#addBeneficialModal"
+                                                                        class="user-btn ">
+                                                                        <span class="icon icon-edit cursor-pointer"
+                                                                            data-toggle="tooltip"
+                                                                            title="EDIT"></span></a>
 
+                                                                    <a href="javascript:;" data-key="id"
+                                                                        data-value="528" data-type="member"
+                                                                        data-mode="delete" class="delete-user-btn ">
+                                                                        <span
+                                                                            class="icon icon-delete me-3 cursor-pointer"
+                                                                            data-toggle="tooltip"
+                                                                            title="DELETE"></span>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end  -->
+                        </div>
                         <div class="mb-3">
                             <div class="position-relative">
                                 <div class="dropzone dz-clickable bg-white py-4 rounded-2 shadow-sm">
@@ -5351,9 +5349,20 @@
                                 </div>
                             </div>
                         </div>
+                    </form>
+                </div>
 
+                <div class="modal-body d-none" id="corporate-form">
+                    <form class="border-top" action="">
 
-
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <label for="" class="form-label">ENTITY NAME</label>
+                                    <input type="text" class="form-control" id="" placeholder="Entity Name">
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
 
@@ -5665,7 +5674,7 @@
                         </button>
                         <button type="button"
                         class="btn btn-info px-5 py-3"
-                        data-bs-toggle="modal" data-bs-target="#detailsModal"> Next </button>
+                        data-bs-toggle="modal" data-bs-target="#addCompanyApplicantModal2"> Next </button>
 
                     </div>
                 </div>
@@ -5674,6 +5683,300 @@
         </div>
     </div>
     <!-- add company applicant Modal Ends -->
+
+     <!-- disable text entity 2024 add company applicant Modal Starts -->
+     <div class="modal modal-right fade" id="addCompanyApplicantModal2" tabindex="-1"
+     aria-labelledby="addCompanyApplicantModalLabel2" aria-hidden="true">
+     <div class="modal-dialog modal-lg modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+             <!-- Modal Header -->
+             <div class="modal-header flex-wrap">
+                 <!-- stepper start -->
+                 <div class="step-group step-space-1 mb-3">
+                     <div class="completed step">
+                         <div class="ms-0">
+                             <a href="javascript:void(0)" class="text-decoration-none text-white">
+                                 <span class="icon icon-white-tick me-0"></span>
+                                 1
+                             </a>
+                         </div>
+                     </div>
+
+                     <div class="completed step">
+                         <div>
+                             <a href="javascript:void(0)" class="text-decoration-none text-white">
+                                 <span class="icon icon-white-tick me-0"></span>
+                                 2
+                             </a>
+                         </div>
+                     </div>
+                     <div class="completed step">
+                         <div>
+                             <a href="javascript:void(0)" class="text-decoration-none text-white">
+                                 <span class="icon icon-white-tick me-0"></span>
+                                 3
+                             </a>
+                         </div>
+                     </div>
+                     <div class="active step">
+                         <div>
+                             <a href="javascript:void(0)" class="text-decoration-none text-white">
+                                 <span class="icon icon-warning-white m-0"></span>
+                                 4
+                             </a>
+                         </div>
+                     </div>
+
+                 </div>
+                 <!-- stepper end -->
+                 <div class="w-100 mb-3 pb-2">
+                     <div>
+                         <h3 class="fs-3 m-0 mt-2">Add Company Applicant <span class="icon icon-question-dark"
+                                 data-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom"
+                                 data-bs-original-title="<div class='text-start'>Company Applicant does not apply to entities registered prior to January
+                             1,2024. </div>"></span>
+                         </h3>
+
+
+                     </div>
+                 </div>
+                 <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100 shadow">
+                     <span class="icon icon-search-grey"></span>
+                     <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach" placeholder="Find Company Applicant">
+                 </div>
+                 <!-- <div class="d-flex pt-4 w-100">
+              <button type="button" class="btn btn-tertiary text-capitalize me-2 py-2 px-4">Yes</button>
+              <button type="button" class="btn btn-info text-capitalize py-2 px-4"
+                  data-bs-target="#previewModal" data-bs-toggle="modal">No, See Preview</button>
+          </div> -->
+             </div>
+
+             <!-- Modal Header Ends -->
+
+             <!-- Modal Body -->
+             <div class="modal-body">
+                 <form class="border-top" action="">
+                     <!-- <h3>General Info</h3> -->
+                     <div class="mb-3 mt-3">
+                         <fieldset disabled="disabled">
+                             <label for="" class="form-label">FinCEN ID Number <span>(Optional)*</span>
+                                 <small class="d-block fs-10">(IF YOU DO NOT HAVE A FINCEN ID NUMBER, PLEASE UPLOAD
+                                     INDENTIFYING DOCUMENT AND PERSONAL INFORMATION)</small>
+                             </label>
+                             <input type="text" class="form-control" id="" value="" placeholder="FinCEN ID Number">
+                         </fieldset>
+                     </div>
+
+
+                     <div class="row mt-3">
+                         <div class="col-md-4">
+                             <div class="mb-3">
+                                <fieldset disabled="disabled">
+                                    <label for="" class="form-label">First Name</label>
+                                     <input type="text" class="form-control" id="" value="" placeholder="First Name">
+                                 </fieldset>
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="mb-3">
+                                <fieldset disabled="disabled">
+                                    <label for="" class="form-label">Middle Name</label>
+
+                                     <input type="text" class="form-control" id="" value=""
+                                         placeholder="Middle Name">
+                                 </fieldset>
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="mb-3">
+                                <fieldset disabled="disabled">
+                                    <label for="" class="form-label">Last Name</label>
+
+                                     <input type="text" class="form-control" id="" value="" placeholder="Last Name">
+                                 </fieldset>
+                             </div>
+                         </div>
+                         <!-- <div class="col-md-6 ">
+                             <div class="mb-3 position-relative calender-input-dob">
+                                 <input type="text" class="form-control" name="dateOfBirth" id="" value=""
+                                     placeholder="Date of Birth">
+                                 <span class="position-absolute top-50 end-0 pb-1 translate-middle">
+                                     <span class="icon icon-calender-lined"></span>
+                                 </span>
+                             </div>
+                         </div> -->
+                         <div class="col-md-6">
+                             <div class="mb-3">
+                                <fieldset disabled="disabled">
+                                    <label for="" class="form-label">Email Address (Optional)*</label>
+
+                                     <input type="text" class="form-control" id="" value=""
+                                         placeholder="Email Address">
+                                 </fieldset>
+                             </div>
+                         </div>
+                         <div class="col-md-6">
+                             <div class="mb-3">
+                                <fieldset disabled="disabled">
+                                    <label for="" class="form-label">Address</label>
+
+                                     <input type="text" class="form-control" id="" value="" placeholder="Address">
+                                 </fieldset>
+                             </div>
+                         </div>
+
+                     </div>
+
+                     <div class="mb-3">
+                         <div class="row">
+                             <div class="col-md-4">
+                                 <label for="" class="form-label">City</label>
+
+                                 <input type="text" class="form-control" id="" placeholder="City">
+                             </div>
+                             <div class="col-md-4">
+                                 <label for="" class="form-label">State</label>
+
+                                 <select class="form-select form-control">
+                                     <option value="">Select State</option>
+                                     <option value="1">Alabama</option>
+                                     <option value="2">Alaska</option>
+                                     <option value="3">Arizona</option>
+                                     <option value="4">Arkansas</option>
+                                     <option value="5">California</option>
+                                     <option value="6">Colorado</option>
+                                     <option value="7">Connecticut</option>
+                                     <option value="8">Delaware</option>
+                                     <option value="9">District of Columbia</option>
+                                     <option value="10">Florida</option>
+                                     <option value="11">Georgia</option>
+                                     <option value="12">Hawaii</option>
+                                     <option value="13">Idaho</option>
+                                     <option value="14">Illinois</option>
+                                     <option value="15">Indiana</option>
+                                     <option value="16">Iowa</option>
+                                     <option value="17">Kansas</option>
+                                     <option value="18">Kentucky</option>
+                                     <option value="19">Louisiana</option>
+                                     <option value="20">Maine</option>
+                                     <option value="21">Maryland</option>
+                                     <option value="22">Massachusetts</option>
+                                     <option value="23">Michigan</option>
+                                     <option value="24">Minnesota</option>
+                                     <option value="25">Mississippi</option>
+                                     <option value="26">Missouri</option>
+                                     <option value="27">Montana</option>
+                                     <option value="28">Nebraska</option>
+                                     <option value="29">Nevada</option>
+                                     <option value="30">New Hampshire</option>
+                                     <option value="31">New Jersey</option>
+                                     <option value="32">New Mexico</option>
+                                     <option value="33">New York</option>
+                                     <option value="34">North Carolina</option>
+                                     <option value="35">North Dakota</option>
+                                     <option value="36">Ohio</option>
+                                     <option value="37">Oklahoma</option>
+                                     <option value="38">Oregon</option>
+                                     <option value="39">Pennsylvania</option>
+                                     <option value="40">Rhode Island</option>
+                                     <option value="41">South Carolina</option>
+                                     <option value="42">South Dakota</option>
+                                     <option value="43">Tennessee</option>
+                                     <option value="44">Texas</option>
+                                     <option value="45">Utah</option>
+                                     <option value="46">Vermont</option>
+                                     <option value="47">Virginia</option>
+                                     <option value="48">Washington</option>
+                                     <option value="49">West Virginia</option>
+                                     <option value="50">Wisconsin</option>
+                                     <option value="51">Wyoming</option>
+                                 </select>
+                             </div>
+                             <div class="col-md-4">
+                                 <label for="" class="form-label">Zip</label>
+
+                                 <input type="text" class="form-control" id="" placeholder="Zip">
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="mb-3">
+                         <div class="row">
+                             <div class="col-md">
+                                 <label for="" class="form-label">Issue State</label>
+
+                                 <input type="text" class="form-control" id="" placeholder="Issue State">
+                             </div>
+                             <div class="col-md">
+                                 <fieldset disabled="disabled">
+                                     <label for="" class="form-label">Type</label>
+
+                                     <input type="text" class="form-control" id="" placeholder="Type" value="Type">
+                                 </fieldset>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="mb-3">
+                         <div class="row">
+                             <div class="col-md">
+                                 <label for="" class="form-label">ID Number</label>
+
+                                 <input type="text" class="form-control" id="" placeholder="ID Number">
+                             </div>
+                             <div class="col-md">
+                                 <div class="calendar-input5 position-relative">
+                                     <label for="" class="form-label">Expiration Date</label>
+
+                                     <input type="text" class="form-control" name="expireDate2" id=""
+                                         placeholder="MM/DD/YYYY" value="">
+                                     <span class="position-absolute top-50 end-0 mt-3 translate-middle d-flex">
+                                         <span class="icon icon-calender-lined"></span>
+                                     </span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="mb-3">
+                         <div class="position-relative">
+                             <div class="dropzone dz-clickable bg-white py-4 rounded-2 shadow-sm">
+                                 <div class=" drop-zone dynamicDropzone my-3 mx-4 dz-message h-auto py-4"
+                                     data-dz-message="">
+                                     <span class="drop-zone__prompt"> + Click Or Drop File Here To Upload
+                                         Documents</span>
+                                     <input type="file"
+                                         class="position-absolute top-0 start-0 end-0 bottom-0 opacity-0 cursor-pointer">
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+
+             <!-- Modal Body Ends-->
+
+             <div class="modal-footer">
+                 <div class="d-flex justify-content-end gap-3">
+                     <!-- <button type="button" class="btn btn-link px-5 py-3" data-bs-dismiss="modal">Cancel</button> -->
+
+                     <button type="button" class="btn btn-tertiary py-3 px-5 rounded-3 ms-3" data-bs-dismiss="modal">
+                         Save and Close
+                     </button>
+                     <button type="button" class="btn btn-tertiary py-3 px-5 rounded-3"
+                         data-bs-target="#previewModal" data-bs-toggle="modal" data-bs-dismiss="modal">
+                         SAVE &amp; PREVIEW
+                     </button>
+                     <button type="button"
+                     class="btn btn-info px-5 py-3"
+                     data-bs-toggle="modal" data-bs-target="#detailsModal"> Next </button>
+
+                 </div>
+             </div>
+
+         </div>
+     </div>
+ </div>
+ <!-- disable text entity 2024  add company applicant Modal Ends -->
 
     <!-- Exempt Action Modal Second Starts -->
     <div class="modal modal-right fade" id="exemptModal" tabindex="-1" aria-labelledby="exemptModalLabel"
@@ -7742,8 +8045,16 @@ aria-hidden="true">
     <script src="dist/js/custom.min.js"></script>
     <!-- Scripts End-->
 
-    <script
-        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js'></script>
+
+    <script>
+        document.querySelectorAll('input[name="formType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('individual-form').classList.toggle('d-none', this.value !== 'individual');
+                document.getElementById('corporate-form').classList.toggle('d-none', this.value !== 'corporate');
+            });
+        });
+    </script>
 
 </body>
 
