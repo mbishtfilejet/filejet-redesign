@@ -315,8 +315,8 @@ $(document).ready(function () {
               <td>${row.type || d.type}</td>
               <td>${row.jurisdiction || d.jurisdiction}</td>
               <td>${row.registrations || d.registrations}</td>
-              <td>${row.dbas || d.dbas}</td>
-              <td>${row.business_licenses || d.business_licenses}</td>
+              <td>${row.dbas ?? d.dbas}</td>
+              <td>${row.business_licenses ?? d.business_licenses}</td>
               <td><span class="badge badge-${row.status.class}">${row.status.label}</span></td>
           </tr>
       `).join("");
