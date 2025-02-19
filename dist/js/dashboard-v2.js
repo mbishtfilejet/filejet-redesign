@@ -17,15 +17,26 @@ google.charts.setOnLoadCallback(() => {
     "78%"
   );
 
+  // Modify the chart data for donut_chart_2 based on dashboardType
+  let donutChart2Data =
+    dashboardType === "dashboard1"
+      ? [
+          ["Task", "Count"],
+          ["In Good Standing", 15],
+          ["Not Good Standing", 8],
+          ["Inactive", 3],
+          ["Externally Managed", 1],
+        ]
+      : [
+          ["Task", "Count"],
+          ["In Good Standing", 15],
+          ["Not Good Standing", 8],
+          ["Inactive", 3],
+        ]; // Only 3 statuses for dashboard2
+
   drawDonutChart(
     "donut_chart_2",
-    [
-      ["Task", "Count"],
-      ["In Good Standing", 15],
-      ["Not Good Standing", 8],
-      ["Inactive", 3],
-      ["Externally Managed", 1],
-    ],
+    donutChart2Data,
     ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"],
     "78%",
     "78%"
@@ -110,13 +121,22 @@ function redrawChart(chartId, width, height) {
     ];
     colors = ["#E73B18", "#3498db", "#00BA70", "#62539F"];
   } else if (chartId === "donut_chart_2") {
-    chartData = [
-      ["Task", "Count"],
-      ["In Good Standing", 15],
-      ["Not Good Standing", 8],
-      ["Inactive", 3],
-      ["Externally Managed", 1],
-    ];
+    chartData =
+      dashboardType === "dashboard1"
+        ? [
+            ["Task", "Count"],
+            ["In Good Standing", 15],
+            ["Not Good Standing", 8],
+            ["Inactive", 3],
+            ["Externally Managed", 1],
+          ]
+        : [
+            ["Task", "Count"],
+            ["In Good Standing", 15],
+            ["Not Good Standing", 8],
+            ["Inactive", 3],
+          ]; // Only 3 statuses for dashboard2
+
     colors = ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"];
   } else if (chartId === "donut_chart_3") {
     chartData = [
