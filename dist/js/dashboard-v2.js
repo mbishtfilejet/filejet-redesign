@@ -9,34 +9,22 @@ google.charts.setOnLoadCallback(() => {
       ["Task", "Count"],
       ["Overdue", 50],
       ["Upcoming", 30],
-      ["Future Tasks", 25],
       ["Unacknowledged", 10],
     ],
-    ["#E73B18", "#3498db", "#00BA70", "#62539F"],
+    ["#E73B18", "#3498db", "#62539F"],
     "78%",
     "78%"
   );
 
-  // Modify the chart data for donut_chart_2 based on dashboardType
-  let donutChart2Data =
-    dashboardType === "dashboard1"
-      ? [
-          ["Task", "Count"],
-          ["In Good Standing", 15],
-          ["Not Good Standing", 8],
-          ["Inactive", 3],
-          ["Externally Managed", 1],
-        ]
-      : [
-          ["Task", "Count"],
-          ["In Good Standing", 15],
-          ["Not Good Standing", 8],
-          ["Inactive", 3],
-        ]; // Only 3 statuses for dashboard2
-
   drawDonutChart(
     "donut_chart_2",
-    donutChart2Data,
+    [
+      ["Task", "Count"],
+      ["In Good Standing", 15],
+      ["Not Good Standing", 8],
+      ["Inactive", 3],
+      ["Externally Managed", 1],
+    ],
     ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"],
     "78%",
     "78%"
@@ -116,27 +104,17 @@ function redrawChart(chartId, width, height) {
       ["Task", "Count"],
       ["Overdue", 50],
       ["Upcoming", 30],
-      ["Future Tasks", 25],
       ["Unacknowledged", 10],
     ];
-    colors = ["#E73B18", "#3498db", "#00BA70", "#62539F"];
+    colors = ["#E73B18", "#3498db", "#62539F"];
   } else if (chartId === "donut_chart_2") {
-    chartData =
-      dashboardType === "dashboard1"
-        ? [
-            ["Task", "Count"],
-            ["In Good Standing", 15],
-            ["Not Good Standing", 8],
-            ["Inactive", 3],
-            ["Externally Managed", 1],
-          ]
-        : [
-            ["Task", "Count"],
-            ["In Good Standing", 15],
-            ["Not Good Standing", 8],
-            ["Inactive", 3],
-          ]; // Only 3 statuses for dashboard2
-
+    chartData = [
+      ["Task", "Count"],
+      ["In Good Standing", 15],
+      ["Not Good Standing", 8],
+      ["Inactive", 3],
+      ["Externally Managed", 1],
+    ];
     colors = ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"];
   } else if (chartId === "donut_chart_3") {
     chartData = [
@@ -166,7 +144,7 @@ function highlightStatus(status) {
   });
 }
 
-// Google Chart Script End
+// Google Chart Script End 
 
 
 
@@ -286,9 +264,10 @@ $(document).ready(function () {
 });
 // filter dropdown end
 
-
-// entity table start
+// Entity table start
 $(document).ready(function () {
+  let isExternalDashboard = typeof dashboardType !== "undefined" && dashboardType === "external_dashboard";
+
   let table1 = $("#ra-other-table").DataTable({
       ajax: "data4.json",
       columns: [
@@ -298,8 +277,7 @@ $(document).ready(function () {
           { data: "type" },
           { data: "jurisdiction" },
           { data: "registrations" },
-          { data: "dbas" },
-          { data: "business_licenses" },
+          ...(!isExternalDashboard ? [{ data: "dbas" }, { data: "business_licenses" }] : []),
           { data: "status", render: renderDotsTable1 }
       ],
       order: [[1, "asc"]],
@@ -317,7 +295,7 @@ $(document).ready(function () {
           tr.removeClass("expanded-row");
       } else {
           // Expand: Insert new rows below
-          let expandedRows = formatExpandedRows(row.data(), rowId);
+          let expandedRows = formatExpandedRows(row.data(), rowId, isExternalDashboard);
           tr.after(expandedRows);
           tr.addClass("expanded-row");
 
@@ -326,31 +304,29 @@ $(document).ready(function () {
       }
   });
 
-  function formatExpandedRows(d, rowId) {
-      let rowsHtml = d.expanded_rows.map(row => `
+  function formatExpandedRows(d, rowId, hideDBAAndLicense) {
+      let rowsHtml = d.expanded_rows.map((row, index) => `
           <tr class="expanded-content" data-parent="${rowId}">
               <td></td>
-              <td>${row.group || d.group}</td>
+              <td>${index === 0 ? d.group : ""}</td> <!-- Show group name only for the first row -->
               <td>${row.entity_name || d.entity_name}</td>
               <td>${row.type || d.type}</td>
               <td>${row.jurisdiction || d.jurisdiction}</td>
               <td>${row.registrations || d.registrations}</td>
-              <td>${row.dbas ?? d.dbas}</td>
-              <td>${row.business_licenses ?? d.business_licenses}</td>
+              ${!hideDBAAndLicense ? `<td>${row.dbas ?? d.dbas}</td><td>${row.business_licenses ?? d.business_licenses}</td>` : ""}
               <td><span class="badge badge-${row.status.class}">${row.status.label}</span></td>
           </tr>
       `).join("");
 
-      // Pagination controls
       return `
           ${rowsHtml}
           <tr class="expanded-content pagination-row" data-parent="${rowId}">
-        <td colspan="9" class="text-center">
-            <button class="prev-page btn btn-md" data-parent="${rowId}">&lt;</button>
-            <span class="page-info" data-parent="${rowId}"></span>
-            <button class="next-page btn btn-md" data-parent="${rowId}">&gt;</button>
-        </td>
-    </tr>
+              <td colspan="${hideDBAAndLicense ? 7 : 9}" class="text-center">
+                  <button class="prev-page btn btn-md" data-parent="${rowId}">&lt;</button>
+                  <span class="page-info" data-parent="${rowId}"></span>
+                  <button class="next-page btn btn-md" data-parent="${rowId}">&gt;</button>
+              </td>
+          </tr>
       `;
   }
 
@@ -406,7 +382,6 @@ function renderDotsTable1(data) {
   `;
 }
 // entity table end
-
 
 
 
