@@ -601,12 +601,6 @@ table.dataTable.display > tbody > tr > td {
     background-color: #f4f4f4;
     border: none;
   }
-  .expanded-content {
-    border: 1.6px solid rgba(0, 0, 0, 0.3) !important;
-}
-.expanded-content td {
-  border-bottom: 1.6px solid rgba(0, 0, 0, 0.3) !important;
-}
   td[colspan="9"] {
     padding: 0 !important;
     border: none;
@@ -695,6 +689,29 @@ table.dataTable.display > tbody > tr > td {
     width: 150px;
     min-width: 150px;
   }
+   #ra-other-table-external th:nth-child(1),
+   #ra-other-table-external td:nth-child(1) {
+    width: 10px !important;
+    min-width: 10px;
+  }
+  #ra-other-table-external th:nth-child(3),
+  #ra-other-table-external td:nth-child(3) {
+    width: 150px;
+    min-width: 150px;
+  }
+
+  #ra-other-table-prof th:nth-child(1),
+  #ra-other-table-prof td:nth-child(1) {
+   width: 10px !important;
+   min-width: 10px;
+ }
+ #ra-other-table-prof th:nth-child(3),
+ #ra-other-table-prof td:nth-child(3) {
+   width: 150px;
+   min-width: 150px;
+ }
+
+
   .expanded-row{
     background-color: #5B5559 !important;
     color: #fff;
@@ -822,6 +839,14 @@ table.dataTable.display > tbody > tr > td {
 .filter2-dropdown .dropdown-item.active, .filter2-dropdown .dropdown-item:active {
     background-color: var(--bs-external-gray);
 }
+#ra-other-table-external thead {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 3;
+}
+
+
   }
 /* External dashboard css end */
 
@@ -873,20 +898,19 @@ table.dataTable.display > tbody > tr > td {
   .sidebar-v2 .menu-link .nav-link.active a::before {
     background-image: radial-gradient(circle at 100% 0, white 0%, white 2rem, #daedf4 2rem);
   }
-  .entity-regestration-card #ra-other-table-pro th:nth-child(1), .entity-regestration-card #ra-other-table-pro td:nth-child(1) {
-    min-width: 10px;
-    max-width: 20px;
-  }
-  .entity-regestration-card #ra-other-table-pro th:nth-child(3), .entity-regestration-card #ra-other-table-pro td:nth-child(3) {
-    min-width: 150px;
-    max-width: 200px;
-  }
-  .entity-regestration-card #ra-other-table-pro thead{
+  .entity-regestration-card #ra-other-table thead{
     position: sticky;
     top: 0;
     background-color: #fff;
     z-index: 3;
   }
+  #ra-other-table-prof thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 3;
+  }
+
   .filter2-dropdown input[type=text]:focus-visible {
     background-color: var(--bs-pro-blue);
   }
