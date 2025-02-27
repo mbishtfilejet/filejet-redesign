@@ -422,7 +422,7 @@ $(document).ready(function () {
 
   function formatExpandedRows(d, rowId, hideDBAAndLicense) {
       return d.expanded_rows.map((row, index, arr) => `
-          <tr class="expanded-content" data-parent="${rowId}" style="${index === arr.length - 1 ? 'border-bottom: 3px solid black;' : ''}">
+          <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
               <td></td>
               <td>${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only for Domestic -->
               <td>${row.entity_name || d.entity_name}</td>
@@ -486,10 +486,10 @@ $(document).ready(function () {
   });
 
   function formatExpandedRows(d, rowId, hideDBAAndLicense) {
-    return d.expanded_rows.map((row) => `
-        <tr class="expanded-content" data-parent="${rowId}">
+    return d.expanded_rows.map((row, index, arr) => `
+        <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
             <td></td>
-            <td>${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only if type is Domestic -->
+            <td>${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only for Domestic -->
             <td>${row.entity_name || d.entity_name}</td>
             <td>${row.type || d.type}</td>
             <td>${row.jurisdiction || d.jurisdiction}</td>
