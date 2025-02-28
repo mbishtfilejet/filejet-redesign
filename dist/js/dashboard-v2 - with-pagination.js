@@ -264,12 +264,132 @@ $(document).ready(function () {
 });
 // filter dropdown end
 
+// Entity table start
+$(document).ready(function () {
+  let hideDBAAndLicense = (dashboardType === "external_dashboard"); // Hide DBA & Business License for External Dashboard
+
+  let table1 = $("#ra-other-table").DataTable({
+      ajax: "data4.json",
+      columns: [
+          { className: "dt-control", orderable: false, data: null, defaultContent: "" },
+          { data: "group" },
+          { data: "entity_name" },
+          { data: "type" },
+          { data: "jurisdiction" },
+          { data: "registrations" },
+          ...(hideDBAAndLicense ? [] : [{ data: "dbas" }, { data: "business_licenses" }]), // Conditionally remove columns
+          { data: "status", render: renderDotsTable1 }
+      ],
+      order: [[1, "asc"]],
+      lengthChange: false,
+  });
+
+  $("#ra-other-table tbody").on("click", "td.dt-control", function () {
+      let tr = $(this).closest("tr");
+      let row = table1.row(tr);
+      let rowId = row.data().id;
+
+      if (tr.hasClass("expanded-row")) {
+          // Collapse: Remove expanded rows
+          $(`.expanded-content[data-parent="${rowId}"]`).remove();
+          tr.removeClass("expanded-row");
+      } else {
+          // Expand: Insert new rows below
+          let expandedRows = formatExpandedRows(row.data(), rowId);
+          tr.after(expandedRows);
+          tr.addClass("expanded-row");
+
+          // Apply pagination to the expanded rows
+          paginateExpandedRows(rowId);
+      }
+  });
+
+  function formatExpandedRows(d, rowId) {
+      let hasDomesticEntity = d.expanded_rows.some(row => row.type === "Domestic");
+
+      let rowsHtml = d.expanded_rows.map((row) => `
+          <tr class="expanded-content" data-parent="${rowId}">
+              <td></td>
+              <td>${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only for Domestic entity expanded row -->
+              <td>${row.entity_name || d.entity_name}</td>
+              <td>${row.type || d.type}</td>
+              <td>${row.jurisdiction || d.jurisdiction}</td>
+              <td>${row.registrations || d.registrations}</td>
+              ${hideDBAAndLicense ? "" : `<td>${row.dbas ?? d.dbas}</td><td>${row.business_licenses ?? d.business_licenses}</td>`}
+              <td><span class="badge badge-${row.status.class}">${row.status.label}</span></td>
+          </tr>
+      `).join("");
+
+      return `
+          ${rowsHtml}
+          <tr class="expanded-content pagination-row" data-parent="${rowId}">
+              <td colspan="${hideDBAAndLicense ? 7 : 9}" class="text-center">
+                  <button class="prev-page btn btn-md" data-parent="${rowId}">&lt;</button>
+                  <span class="page-info" data-parent="${rowId}"></span>
+                  <button class="next-page btn btn-md" data-parent="${rowId}">&gt;</button>
+              </td>
+          </tr>
+      `;
+  }
+
+  function paginateExpandedRows(rowId) {
+      const pageSize = 5;
+      let rows = $(`.expanded-content[data-parent="${rowId}"]:not(.pagination-row)`);
+      let totalRows = rows.length;
+      let currentPage = 0;
+
+      function showPage(page) {
+          rows.hide();
+          let start = page * pageSize;
+          let end = start + pageSize;
+          rows.slice(start, end).show();
+
+          // Update page info
+          let totalPages = Math.ceil(totalRows / pageSize);
+          $(`.page-info[data-parent="${rowId}"]`).text(`Page ${page + 1} of ${totalPages}`);
+
+          // Enable/disable buttons
+          $(`.prev-page[data-parent="${rowId}"]`).prop("disabled", page === 0);
+          $(`.next-page[data-parent="${rowId}"]`).prop("disabled", page === totalPages - 1);
+      }
+
+      // Initial page load
+      showPage(0);
+
+      // Handle pagination button clicks
+      $(document).on("click", `.prev-page[data-parent="${rowId}"]`, function () {
+          if (currentPage > 0) {
+              currentPage--;
+              showPage(currentPage);
+          }
+      });
+
+      $(document).on("click", `.next-page[data-parent="${rowId}"]`, function () {
+          if (currentPage < Math.ceil(totalRows / pageSize) - 1) {
+              currentPage++;
+              showPage(currentPage);
+          }
+      });
+  }
+});
+
+// Render dots for #ra-other-table
+function renderDotsTable1(data) {
+  return `
+      <div class="status-dots">
+          <div class="status-dot status-good" data-bs-toggle="tooltip" title="In Good Standing">1</div>
+          <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not Good Standing">1</div>
+          <div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">1</div>
+      </div>
+  `;
+}
+// entity table end
 
 // external entity table start
 $(document).ready(function () {
   let isExternalDashboard = typeof dashboardType !== "undefined" && dashboardType === "external_dashboard";
 
-  let table1 = $("#ra-other-table").DataTable({
+  let table1 = $("#ra-other-table-external").DataTable({
       ajax: "data4.json",
       columns: [
           { className: "dt-control", orderable: false, data: null, defaultContent: "" },
@@ -282,12 +402,10 @@ $(document).ready(function () {
           { data: "status", render: renderDotsTable1 }
       ],
       order: [[1, "asc"]],
-      lengthChange: false,  // Removed pagination
-      paging: false,  // Disable pagination
-      info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+      lengthChange: false,
   });
 
-  $("#ra-other-table tbody").on("click", "td.dt-control", function () {
+  $("#ra-other-table-external tbody").on("click", "td.dt-control", function () {
       let tr = $(this).closest("tr");
       let row = table1.row(tr);
       let rowId = row.data().id;
@@ -329,6 +447,69 @@ function renderDotsTable1(data) {
 }
 // external entity end
 
+// professional entity start
+
+$(document).ready(function () {
+  let isExternalDashboard = typeof dashboardType !== "undefined" && dashboardType === "external_dashboard";
+
+  let table1 = $("#ra-other-table-prof").DataTable({
+      ajax: "data4.json",
+      columns: [
+          { className: "dt-control", orderable: false, data: null, defaultContent: "" },
+          { data: "group" },
+          { data: "entity_name" },
+          { data: "type" },
+          { data: "jurisdiction" },
+          { data: "registrations" },
+          ...(!isExternalDashboard ? [{ data: "dbas" }, { data: "business_licenses" }] : []),
+          { data: "status", render: renderDotsTable1 }
+      ],
+      order: [[1, "asc"]],
+      lengthChange: false,  // Removed pagination
+      paging: false,  // Disable pagination
+      info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+  });
+
+  $("#ra-other-table-prof tbody").on("click", "td.dt-control", function () {
+      let tr = $(this).closest("tr");
+      let row = table1.row(tr);
+      let rowId = row.data().id;
+
+      if (tr.hasClass("expanded-row")) {
+          $(`.expanded-content[data-parent="${rowId}"]`).remove();
+          tr.removeClass("expanded-row");
+      } else {
+          let expandedRows = formatExpandedRows(row.data(), rowId, isExternalDashboard);
+          tr.after(expandedRows);
+          tr.addClass("expanded-row");
+      }
+  });
+
+  function formatExpandedRows(d, rowId, hideDBAAndLicense) {
+    return d.expanded_rows.map((row, index, arr) => `
+        <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
+            <td></td>
+            <td>${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only for Domestic -->
+            <td>${row.entity_name || d.entity_name}</td>
+            <td>${row.type || d.type}</td>
+            <td>${row.jurisdiction || d.jurisdiction}</td>
+            <td>${row.registrations || d.registrations}</td>
+            ${!hideDBAAndLicense ? `<td>${row.dbas ?? d.dbas}</td><td>${row.business_licenses ?? d.business_licenses}</td>` : ""}
+            <td><span class="badge badge-${row.status.class}">${row.status.label}</span></td>
+        </tr>
+    `).join("");
+}
+});
+
+function renderDotsTable1(data) {
+  return `
+      <div class="status-dots">
+          <div class="status-dot status-good" data-bs-toggle="tooltip" title="In Good Standing">1</div>
+          <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not Good Standing">1</div>
+          <div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">1</div>
+      </div>
+  `;
+}
 
 
 
