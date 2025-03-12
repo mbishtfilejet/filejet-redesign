@@ -46,13 +46,19 @@ google.charts.setOnLoadCallback(() => {
   attachClickEvents();
 });
 
-// Function to draw a donut chart
+// ✅ Fixed: Function to draw a donut chart
 function drawDonutChart(containerId, chartData, colors, width, height) {
+  let container = document.getElementById(containerId);
+  if (!container) {
+    console.error(`Error: Element with ID '${containerId}' not found.`);
+    return;
+  }
+
   var data = google.visualization.arrayToDataTable(chartData);
 
   var chartAreaSize =
     width === "140%"
-      ? { right: "5%", left: "5%", bottom: "5%", top: "5%", width: "140%", height: "140%" }
+      ? { width: "100%", height: "100%", top: 10, bottom: 10 }
       : { width: width, height: height };
 
   var options = {
@@ -66,13 +72,13 @@ function drawDonutChart(containerId, chartData, colors, width, height) {
     tooltip: { trigger: "none" }, // Disable tooltip
   };
 
-  var chart = new google.visualization.PieChart(document.getElementById(containerId));
+  var chart = new google.visualization.PieChart(container);
 
-  // Add click event listener to each chart
+  // ✅ Fixed: Prevent errors when no selection
   google.visualization.events.addListener(chart, "select", function () {
-    var selectedItem = chart.getSelection()[0];
-    if (selectedItem) {
-      var sliceLabel = chartData[selectedItem.row + 1][0]; // Get clicked slice label
+    var selection = chart.getSelection();
+    if (selection.length > 0) {
+      var sliceLabel = chartData[selection[0].row + 1][0];
       highlightStatus(sliceLabel);
     }
   });
@@ -80,22 +86,24 @@ function drawDonutChart(containerId, chartData, colors, width, height) {
   chart.draw(data, options);
 }
 
-// Attach click events to increase chart size on click
+// ✅ Fixed: Attach click events safely
 function attachClickEvents() {
   document.querySelectorAll(".nav-item").forEach((li) => {
+    let piechart = li.querySelector(".piechart");
+    if (!piechart) return; // Prevents errors
+
     li.addEventListener("click", function () {
       if (lastClickedChart) {
         redrawChart(lastClickedChart, "78%", "78%"); // Reset previous chart size
       }
 
-      const chartId = this.querySelector(".piechart").id;
-      redrawChart(chartId, "140%", "140%"); // Increase clicked chart size
-      lastClickedChart = chartId;
+      redrawChart(piechart.id, "140%", "140%"); // Increase clicked chart size
+      lastClickedChart = piechart.id;
     });
   });
 }
 
-// Function to redraw the chart with increased size
+// ✅ Fixed: Function to redraw the chart with increased size
 function redrawChart(chartId, width, height) {
   let chartData, colors;
 
@@ -129,20 +137,19 @@ function redrawChart(chartId, width, height) {
   drawDonutChart(chartId, chartData, colors, width, height);
 }
 
-// Function to highlight status when a pie slice is clicked
+// ✅ Fixed: Function to highlight status when a pie slice is clicked
 function highlightStatus(status) {
-  // Remove existing highlights
   document.querySelectorAll(".list-group-item").forEach((item) => {
     item.classList.remove("active-status");
   });
 
-  // Find and highlight the matching status
   document.querySelectorAll(".list-group-item").forEach((item) => {
     if (item.textContent.toLowerCase().includes(status.toLowerCase())) {
       item.classList.add("active-status"); // Add highlight class
     }
   });
 }
+
 
 // Google Chart Script End 
 
