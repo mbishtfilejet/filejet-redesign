@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step Progress Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Step Progress Bar */
+        .step-group {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+            position: relative;
+            padding-left: 0; /* No extra space at the front */
+        }
+
+        /* Step */
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        /* Line between steps */
+        .step::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #8690A0; /* Default Grey */
+            top: 12px;
+            left: 50%;
+            z-index: -1;
+        }
+
+        /* Green Line for Completed Steps */
+        .step.completed::after {
+            background-color: #00BA70;
+        }
+
+        /* Remove line from last step */
+        .step:last-child::after {
+            display: none;
+        }
+
+        /* Circle */
+        .circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid #8690A0;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+
+        /* Completed Circle (Green with White Tick) */
+        .circle.completed {
+            background-color: #00BA70;
+            border-color: #00BA70;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Active Circle (Purple with Double Dots) */
+        .circle.active {
+            background-color: #62539F;
+            border-color: #62539F;
+        }
+
+        /* Double Dots Effect for Active Step */
+        .circle.active::before {
+            content: "";
+            position: absolute;
+            width: 12px;  /* Outer dot */
+            height: 12px;
+            background-color: #A58AD7; /* Lighter purple */
+            border-radius: 50%;
+        }
+
+        .circle.active::after {
+            content: "";
+            position: absolute;
+            width: 6px; /* Inner dot */
+            height: 6px;
+            background-color: #ffffff; /* White inner dot */
+            border-radius: 50%;
+        }
+
+        /* Step Text */
+        .step-text {
+            margin-top: 5px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #8690A0;
+            text-align: center;
+            width: 80px;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Active Step Text */
+        .circle.active + .step-text {
+            color: #62539F;
+        }
+
+        /* Completed Step Text */
+        .circle.completed + .step-text {
+            color: #00BA70;
+        }
+    </style>
+</head>
+<body>
+
+<div class="step-group">
+    <div class="step completed">
+        <div class="circle completed">✔</div>
+        <span class="step-text">GROUP</span>
+    </div>
+    <div class="step completed">
+        <div class="circle active"></div>
+        <span class="step-text">USERS</span>
+    </div>
+    <div class="step">
+        <div class="circle"></div>
+        <span class="step-text">PAYMENT OPTIONS</span>
+    </div>
+    <div class="step">
+        <div class="circle"></div>
+        <span class="step-text">ASSIGN ENTITIES TO GROUP</span>
+    </div>
+</div>
+
+</body>
+</html>

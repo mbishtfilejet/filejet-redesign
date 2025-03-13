@@ -23129,47 +23129,139 @@ body .caledar-event-upcoming {
 
   /* service order css start */
 
-  .main-dashboard-v2 .modal-backdrop{
-      background: #565D67;
-      mix-blend-mode: multiply;
-      --bs-backdrop-opacity: 100%;
-  }
-
-  .main-dashboard-v2 .active-dot-circle{
-    border: 2px solid var(--bs-purple-indigo) !important;
-    background: transparent !important; 
-    color: var(--bs-purple-indigo) !important;
+  :root {
+    --bs-nw-gray-600: #6E7683;
+    --bs-nw-gray-400: #9EA6B3;
+    --bs-filejet-medium-gray:rgba(62, 72, 74, 0.50);
 
   }
-  .main-dashboard-v2 .active-dot-circle::before {
-    content: "";
-    width: 10px; 
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--bs-purple-indigo);
-    position: absolute;
-}
-.main-dashboard-v2 .step-group.step-space-1 .step>div:after {
-    width: 6rem;
-    left: auto;
-    right: 140%;
-    background-color: #9EA6B3;
-    height: 0.15rem;
-}
-.main-dashboard-v2 .filter-slideout {
+  
+  .main-dashboard-v2 .icon-light-white-check {
+    background-image: url("../../../dist/images/icons/light-white-check.svg");
+  }
+  .main-dashboard-v2 .icon-new-group {
+    background-image: url("../../../dist/images/icons/new-group.svg");
+  }
+  .main-dashboard-v2 .icon-input-edit {
+    background-image: url("../../../dist/images/icons/input-edit.svg");
+  }
+  .main-dashboard-v2 .modal-backdrop {
+    background: #565D67;
+    mix-blend-mode: multiply;
+    --bs-backdrop-opacity: 100%;
+  }
+  .main-dashboard-v2 .filter-slideout {
     --bs-modal-width: 500px;
-}
-.main-dashboard-v2 .step-group .step>div{
-    width: 2.2rem;
-    height: 2.2rem;
-    background-color: white;
-    border: 1.8px solid #6E7683;
   }
-
-  .main-dashboard-v2 .stepsinfo{
+  .main-dashboard-v2 .group-model fieldset .form-control, .main-dashboard-v2 .group-model fieldset .boc-light #boc-ppdf-btns #boc-ppdf-header, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-model fieldset #boc-ppdf-header, .main-dashboard-v2 .group-model fieldset .boc-light #boc-ppdf-btns #boc-ppdf-margin, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-model fieldset #boc-ppdf-margin, .main-dashboard-v2 .group-model fieldset .boc-light #boc-ppdf-btns #boc-ppdf-footer, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-model fieldset #boc-ppdf-footer {
+    min-height: 38px;
+    padding: 0px 10px;
+    font-size: 11px;
+    background-color: transparent;
+    border: 1px solid #D2D5DA;
+    border-radius: 4.5px;
+    margin-bottom: 0px;
+    box-shadow: none !important;
+    color:  var(--bs-filejet-medium-gray);
+  }
+  .main-dashboard-v2 .group-model input[type=text]:focus-visible {
+    border: 1px solid #D2D5DA !important;
+  }
+  .main-dashboard-v2 .group-model .form-control:focus, .main-dashboard-v2 .group-model .boc-light #boc-ppdf-btns #boc-ppdf-header:focus, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-model #boc-ppdf-header:focus, .main-dashboard-v2 .group-model .boc-light #boc-ppdf-btns #boc-ppdf-margin:focus, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-model #boc-ppdf-margin:focus, .main-dashboard-v2 .group-model .boc-light #boc-ppdf-btns #boc-ppdf-footer:focus, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-model #boc-ppdf-footer:focus {
+    color: var(--bs-dark);
+  }
+  .main-dashboard-v2 .group-model .form-label {
+    margin-bottom: 0.625rem;
+    font-size: 12px !important;
+    font-weight: bold;
+    color: var(--bs-gray-dark);
+  }
+  .main-dashboard-v2 .group-model .mandatory {
+    color: var(--bs-red);
+  }
+  .main-dashboard-v2 .group-model .service-step-group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
     position: relative;
-    top: 30px;
-    font-size: 12px;
-    text-transform: uppercase;
   }
+  .main-dashboard-v2 .group-model .service-step-group .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    left: -30px;
+  }
+  .main-dashboard-v2 .group-model .service-step-group .step::after {
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    background-color: var(--bs-nw-gray-400);
+    top: 12px;
+    left: 65%;
+    z-index: 1;
+  }
+  .main-dashboard-v2 .group-model .service-step-group .step.completed::after {
+    background-color: var(--bs-green);
+  }
+  .main-dashboard-v2 .group-model .service-step-group .step:last-child::after {
+    display: none;
+  }
+  .main-dashboard-v2 .group-model .service-step-group .circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid var(--bs-nw-gray-600);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .main-dashboard-v2 .group-model .service-step-group .circle.completed {
+    background-color: var(--bs-green);
+    border-color: var(--bs-green);
+    background-image: url("../../../dist/images/icons/light-white-check.svg");
+    background-repeat: no-repeat;
+  }
+  .main-dashboard-v2 .group-model .service-step-group .circle.active {
+    border-color: var(--bs-purple-indigo);
+  }
+  .main-dashboard-v2 .group-model .service-step-group .circle.active::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    background-color: #A8B1FF;
+    border-radius: 50%;
+  }
+  .main-dashboard-v2 .group-model .service-step-group .circle.active::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: var(--bs-purple-indigo);
+    border-radius: 50%;
+  }
+  .main-dashboard-v2 .group-model .service-step-group .step-text {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: normal;
+    color: var(--bs-nw-gray-600);
+    text-align: center;
+    width: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 115px;
+    letter-spacing: -0.04px;
+  }
+  .main-dashboard-v2 .group-model .service-step-group .circle.active + .step-text {
+    color: var(--bs-purple-indigo);
+    font-weight: bold;
+  }
+  
     
