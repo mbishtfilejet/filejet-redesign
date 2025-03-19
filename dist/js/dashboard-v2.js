@@ -229,11 +229,16 @@ document.addEventListener("DOMContentLoaded", function () {
               selectedOptionsContainer.appendChild(summarySpan);
           }
 
+<<<<<<< HEAD
           // 🔄 Preserve Placeholder in Search Input
+=======
+          // Add search input field after selection
+>>>>>>> 0e3b2625adf029d110a7dd1bca264fa9c1a2ea7f
           const input = document.createElement("input");
           input.type = "text";
           input.classList.add("search-input");
           input.id = searchInputId;
+<<<<<<< HEAD
           input.placeholder = selectedValues.length === 0 ? 
                               (containerId === "jurisdictionContainer" ? "Jurisdictions" : 
                                 containerId === "entityJurisdictionContainer" ? "Jurisdictions" : 
@@ -266,6 +271,22 @@ document.addEventListener("DOMContentLoaded", function () {
   // ✅ Set "Overdue" and "Upcoming" as default selected
   setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]);
 });
+=======
+          input.placeholder = "";
+          input.autocomplete = "off";
+          selectedOptionsContainer.appendChild(input);
+          input.focus();
+      }
+  }
+
+  setupMultiSelect("jurisdictionContainer", "jurisdictionDropdown", "jurisdictionSearch", "jurisdiction-checkbox", "jurisdictionSelectAll");
+  setupMultiSelect("taskContainer", "taskDropdown", "taskSearch", "task-checkbox", "taskSelectAll");
+  setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll");
+});
+
+
+
+>>>>>>> 0e3b2625adf029d110a7dd1bca264fa9c1a2ea7f
 // filter end
 
 
