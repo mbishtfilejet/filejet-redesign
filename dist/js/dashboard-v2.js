@@ -154,122 +154,121 @@ function highlightStatus(status) {
 // Google Chart Script End 
 
 
+// filter start
+document.addEventListener("DOMContentLoaded", function () {
+  function setupMultiSelect(containerId, dropdownId, searchInputId, checkboxClass, selectAllId, maxSelection = 2) {
+      const searchInput = document.getElementById(searchInputId);
+      const dropdown = document.getElementById(dropdownId);
+      const multiSelectContainer = document.getElementById(containerId);
+      const selectAllCheckbox = document.getElementById(selectAllId);
 
-// filter dropdown start
-$(document).ready(function () {
-  function initializeDropdown(
-    dropdownId,
-    selectAllId,
-    checkboxClass,
-    dropdownMenuClass,
-    defaultCheckedValues = []
-  ) {
-    const dropdownInput = $(dropdownId);
-    const dropdownMenu = $(dropdownMenuClass);
-    const checkboxes = $(checkboxClass);
-    const selectAllCheckbox = $(selectAllId);
-    const selectedItemsContainer = $('<div class="filter-selected-items-container"></div>');
+      // **Search filter inside dropdown**
+      searchInput.addEventListener("input", function () {
+          const filter = searchInput.value.toLowerCase();
+          const items = dropdown.querySelectorAll(".dropdown-item");
 
-    // Attach selected items container to the dropdown input field
-    dropdownInput.after(selectedItemsContainer);
-
-    function updateInputText() {
-      const selectedOptions = checkboxes.filter(":checked").map(function () {
-        return $(this).val();
-      }).get();
-
-      // Clear previous selected items
-      selectedItemsContainer.empty();
-
-      if (selectedOptions.length === 0) {
-        selectedItemsContainer.hide();
-      } else {
-        selectedItemsContainer.show();
-        const visibleItems = selectedOptions.slice(0, 2); // Show only first 2 items
-        const remainingCount = selectedOptions.length - visibleItems.length;
-
-        // Add the visible selected items
-        visibleItems.forEach((option) => {
-          const selectedItem = $('<span class="filter-selected-item"></span>').text(option);
-          const clearIcon = $('<span class="filter-clear-icon"><img src="dist/images/icons/filter-close.svg" alt="Clear" class="clear-icon-image"/></span>');
-
-          // Attach the clear icon to item
-          selectedItem.append(clearIcon);
-          selectedItemsContainer.append(selectedItem);
-
-          // Remove item when clicking the clear icon
-          clearIcon.on("click", function () {
-            $(`input[value="${option}"]`).prop("checked", false);
-            updateInputText();
+          items.forEach(item => {
+              const text = item.innerText.toLowerCase();
+              item.style.display = text.includes(filter) ? "" : "none";
           });
-        });
-
-        // Show "+1" summary if more than 2 items selected
-        if (remainingCount > 0) {
-          const summary = $('<span class="more-items-summary ms-2"></span>').text(`+ ${remainingCount}`);
-          selectedItemsContainer.append(summary);
-        }
-      }
-    }
-
-    // Ensure default items are checked
-    checkboxes.each(function () {
-      const checkboxValue = $(this).val();
-      const checkboxLabel = $(this).closest("label").text().trim(); // Get label text
-
-      if (defaultCheckedValues.includes(checkboxValue) || defaultCheckedValues.includes(checkboxLabel)) {
-        $(this).prop("checked", true);
-      }
-    });
-
-    // Trigger input update after setting default checked values
-    updateInputText();
-
-    // Filter dropdown options based on input
-    dropdownInput.on("input", function () {
-      const searchValue = $(this).val().toLowerCase();
-      dropdownMenu.find("label").each(function () {
-        const label = $(this).text().toLowerCase();
-        $(this).toggle(label.includes(searchValue));
       });
-    });
 
-    // Handle checkbox changes
-    checkboxes.on("change", function () {
-      updateInputText();
-    });
+      // **Handle individual checkbox selection**
+      dropdown.querySelectorAll(`.${checkboxClass}`).forEach(checkbox => {
+          checkbox.addEventListener("change", function () {
+              updateSelectedOptions();
+              checkSelectAllState();
+          });
+      });
 
-    // Handle "Select All" checkbox
-    selectAllCheckbox.on("change", function () {
-      const isChecked = $(this).is(":checked");
-      checkboxes.prop("checked", isChecked);
-      updateInputText();
-    });
+      // **Handle "Select All" checkbox**
+      if (selectAllCheckbox) {
+          selectAllCheckbox.addEventListener("change", function () {
+              const allCheckboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
+              const isChecked = selectAllCheckbox.checked;
 
-    // Sync "Select All" checkbox state
-    checkboxes.on("change", function () {
-      const allChecked = checkboxes.length === checkboxes.filter(":checked").length;
-      selectAllCheckbox.prop("checked", allChecked);
-    });
+              allCheckboxes.forEach(checkbox => {
+                  checkbox.checked = isChecked;
+              });
 
-    // Prevent dropdown from closing on click inside
-    dropdownMenu.on("click", function (e) {
-      e.stopPropagation();
-    });
+              updateSelectedOptions();
+          });
+      }
+
+      // **Check if "Select All" should be checked**
+      function checkSelectAllState() {
+          const allCheckboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
+          const checkedCheckboxes = dropdown.querySelectorAll(`.${checkboxClass}:checked`);
+
+          // If all individual checkboxes are checked, mark "Select All" as checked
+          selectAllCheckbox.checked = allCheckboxes.length === checkedCheckboxes.length;
+      }
+
+      function updateSelectedOptions() {
+          const selectedOptionsContainer = multiSelectContainer;
+          const selectedCheckboxes = dropdown.querySelectorAll(`.${checkboxClass}:checked`);
+          const selectedValues = Array.from(selectedCheckboxes).map(cb => cb.value);
+
+          // Clear previous selections
+          selectedOptionsContainer.innerHTML = "";
+
+          // Display selected values (limit to maxSelection)
+          selectedValues.slice(0, maxSelection).forEach(value => {
+              const span = document.createElement("span");
+              span.classList.add("selected-option");
+
+              // Create remove icon (image)
+              const removeImg = document.createElement("img");
+              removeImg.src = "filter-close.svg"; // Replace with actual image path
+              removeImg.alt = "Remove";
+              removeImg.classList.add("remove-option");
+              removeImg.style.width = "12px"; // Adjust icon size
+              removeImg.style.cursor = "pointer";
+
+              // Remove item when clicking the remove icon
+              removeImg.addEventListener("click", function () {
+                  const checkbox = dropdown.querySelector(`.${checkboxClass}[value="${value}"]`);
+                  checkbox.checked = false;
+                  updateSelectedOptions();
+                  checkSelectAllState();
+              });
+
+              span.innerHTML = `${value} `;
+              span.appendChild(removeImg);
+              selectedOptionsContainer.appendChild(span);
+          });
+
+          // Show "+1", "+2" for additional selections
+          if (selectedValues.length > maxSelection) {
+              const extraCount = selectedValues.length - maxSelection;
+              const summarySpan = document.createElement("span");
+              summarySpan.classList.add("selected-option");
+              summarySpan.innerHTML = `+${extraCount}`;
+              selectedOptionsContainer.appendChild(summarySpan);
+          }
+
+          // Add search input field after selection
+          const input = document.createElement("input");
+          input.type = "text";
+          input.classList.add("search-input");
+          input.id = searchInputId;
+          input.placeholder = "";
+          input.autocomplete = "off";
+          selectedOptionsContainer.appendChild(input);
+          input.focus();
+      }
   }
 
-  // Initialize dropdowns with default checked values
-  initializeDropdown("#StatusDropdown", "#status-select-all", ".status-checkbox", ".status-dropdown-menu", ["Overdue", "Upcoming", "Unacknowledged"]);
-  initializeDropdown("#JurisdictionDropdown", "#jurisdiction-select-all", ".jurisdiction-checkbox", ".jurisdiction-dropdown-menu");
-  initializeDropdown("#TaskDropdown", "#task-select-all", ".task-checkbox", ".task-dropdown-menu");
-  initializeDropdown("#EntityJurisdictionDropdown", "#entity-jurisdiction-select-all", ".entity-jurisdiction-checkbox", ".entity-jurisdiction-dropdown-menu");
-  initializeDropdown("#EntityStatusDropdown", "#entity-status-select-all", ".entity-status-checkbox", ".entity-status-dropdown-menu");
-  initializeDropdown("#OrderJurisdictionDropdown", "#order-jurisdiction-select-all", ".order-jurisdiction-checkbox", ".order-jurisdiction-dropdown-menu");
-  initializeDropdown("#OrderTaskDropdown", "#order-task-select-all", ".order-task-checkbox", ".order-task-dropdown-menu");
-  initializeDropdown("#OrderStatusDropdown", "#order-status-select-all", ".order-status-checkbox", ".order-status-dropdown-menu");
-
+  setupMultiSelect("jurisdictionContainer", "jurisdictionDropdown", "jurisdictionSearch", "jurisdiction-checkbox", "jurisdictionSelectAll");
+  setupMultiSelect("taskContainer", "taskDropdown", "taskSearch", "task-checkbox", "taskSelectAll");
+  setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll");
 });
-// filter dropdown end
+
+
+
+// filter end
+
+
 
 
 // external entity table start
