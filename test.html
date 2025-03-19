@@ -2,145 +2,166 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Collapsible Data Table</title>
-    
-    <!-- Bootstrap CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Select Dropdowns</title>
+        <link rel="stylesheet" href="dist/css/filejet-style.css">
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <!-- Custom Styles -->
     <style>
-        .table-container {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 10px;
-            background: #fff;
-        }
-        .table th {
-            background: #f8f9fa;
-        }
-        .form-check-input {
-            cursor: pointer;
-        }
-        .collapse-btn {
-            text-decoration: none;
+        .multi-select-container {
             display: flex;
+            gap: 5px;
+            padding: 5px;
+            min-height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: white;
             align-items: center;
+        }
+        .selected-option {
+            background-color: #d8dddf;
+    padding: 3px 5px;
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: #6e7683;
+    margin-right: 5px;
+    font-weight: 500;
+        }
+        .selected-option .remove-option {
+            margin-left: 5px;
+            cursor: pointer;
             font-weight: bold;
         }
-        .collapse-btn::after {
-            content: "▼";
-            font-size: 14px;
-            margin-left: 8px;
-            transition: transform 0.3s ease;
+        .search-input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            min-width: 50px;
         }
-        .collapsed .collapse-btn::after {
-            transform: rotate(-90deg);
+        .dropdown-menu {
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
         }
     </style>
 </head>
-<body class="p-4">
+<body>
 
-    <div class="container">
-        <!-- Collapsible Section -->
-        <div class="table-container">
-            <a class="collapse-btn text-dark" data-bs-toggle="collapse" href="#userTableCollapse" role="button" aria-expanded="true">
-                Assign User Access
-            </a>
-
-            <div class="collapse show" id="userTableCollapse">
-                <div class="table-responsive mt-3">
-                    <table id="userTable" class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th><input type="checkbox"></th>
-                                <th>User Name</th>
-                                <th>Role</th>
-                                <th>Email Address</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="checkbox" checked></td>
-                                <td>Carl Smith</td>
-                                <td>Super Admin</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" checked></td>
-                                <td>Anna Williams</td>
-                                <td>Admin</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" checked></td>
-                                <td>Felix Anderson</td>
-                                <td>Admin</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" checked></td>
-                                <td>Benjamin Brown</td>
-                                <td>Admin</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>Charlotte Taylor</td>
-                                <td>User</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>Greta Munsen</td>
-                                <td>User</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>Hector Vane</td>
-                                <td>User</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>Harrison James</td>
-                                <td>User</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>Ingrid Wille</td>
-                                <td>User</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<div class="container mt-4">
+    <!-- Jurisdictions Dropdown -->
+    <div class="filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2 dropdown">
+        <div class="multi-select-container" id="jurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false">
+            <input type="text" class="search-input" id="jurisdictionSearch" placeholder="Search Jurisdictions" autocomplete="off">
         </div>
+        <ul class="dropdown-menu" id="jurisdictionDropdown">
+            <li><label class="dropdown-item"><input type="checkbox" id="jurisdictionSelectAll" class="form-check-input me-2">All</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input jurisdiction-checkbox me-2" value="CA"> CA</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input jurisdiction-checkbox me-2" value="NV"> NV</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input jurisdiction-checkbox me-2" value="FL"> FL</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input jurisdiction-checkbox me-2" value="MN"> MN</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input jurisdiction-checkbox me-2" value="OR"> OR</label></li>
+        </ul>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    
-    <script>
-        $(document).ready(function () {
-            $('#userTable').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false
+    <!-- Task Dropdown -->
+    <div class="filter2-dropdown col-12 col-lg-3 task-table-col px-1 mb-2 dropdown">
+        <div class="multi-select-container" id="taskContainer" data-bs-toggle="dropdown" aria-expanded="false">
+            <input type="text" class="search-input" id="taskSearch" placeholder="Search Tasks" autocomplete="off">
+        </div>
+        <ul class="dropdown-menu" id="taskDropdown">
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input task-checkbox me-2" value="Annual Report"> Annual Report</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input task-checkbox me-2" value="CTA BOI"> CTA BOI</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input task-checkbox me-2" value="SOP"> SOP</label></li>
+        </ul>
+    </div>
+
+    <!-- Status Dropdown -->
+    <div class="filter2-dropdown col-12 col-lg-3 status-table-col px-1 mb-2 dropdown">
+        <div class="multi-select-container" id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false">
+            <input type="text" class="search-input" id="statusSearch" placeholder="Search Status" autocomplete="off">
+        </div>
+        <ul class="dropdown-menu" id="statusDropdown">
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input status-checkbox me-2" value="Overdue"> Overdue</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input status-checkbox me-2" value="Upcoming"> Upcoming</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input status-checkbox me-2" value="Unacknowledged"> Unacknowledged</label></li>
+            <li><label class="dropdown-item"><input type="checkbox" class="form-check-input status-checkbox me-2" value="Future"> Future</label></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function setupMultiSelect(containerId, dropdownId, searchInputId, checkboxClass, maxSelection = 2) {
+        const searchInput = document.getElementById(searchInputId);
+        const dropdown = document.getElementById(dropdownId);
+        const multiSelectContainer = document.getElementById(containerId);
+
+        searchInput.addEventListener("input", function () {
+            const filter = searchInput.value.toLowerCase();
+            const items = dropdown.querySelectorAll(".dropdown-item");
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                item.style.display = text.includes(filter) ? "" : "none";
             });
         });
-    </script>
 
+        dropdown.addEventListener("change", function (event) {
+            if (event.target.classList.contains(checkboxClass)) {
+                updateSelectedOptions();
+            }
+        });
+
+        function updateSelectedOptions() {
+            const selectedOptionsContainer = multiSelectContainer;
+            const selectedCheckboxes = document.querySelectorAll(`.${checkboxClass}:checked`);
+            const selectedValues = Array.from(selectedCheckboxes).map(cb => cb.value);
+
+            selectedOptionsContainer.innerHTML = "";
+
+            selectedValues.slice(0, maxSelection).forEach(value => {
+                const span = document.createElement("span");
+                span.classList.add("selected-option");
+                span.innerHTML = `${value} <span class="remove-option">&times;</span>`;
+
+                span.querySelector(".remove-option").addEventListener("click", function () {
+                    const checkbox = [...document.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.value === value);
+                    checkbox.checked = false;
+                    updateSelectedOptions();
+                });
+
+                selectedOptionsContainer.appendChild(span);
+            });
+
+            if (selectedValues.length > maxSelection) {
+                const extraCount = selectedValues.length - maxSelection;
+                const summarySpan = document.createElement("span");
+                summarySpan.classList.add("selected-option");
+                summarySpan.innerHTML = `+${extraCount}`;
+                selectedOptionsContainer.appendChild(summarySpan);
+            }
+
+            const input = document.createElement("input");
+            input.type = "text";
+            input.classList.add("search-input");
+            input.id = searchInputId;
+            input.placeholder = "";
+            input.autocomplete = "off";
+            selectedOptionsContainer.appendChild(input);
+            input.focus();
+        }
+    }
+
+    setupMultiSelect("jurisdictionContainer", "jurisdictionDropdown", "jurisdictionSearch", "jurisdiction-checkbox");
+    setupMultiSelect("taskContainer", "taskDropdown", "taskSearch", "task-checkbox");
+    setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox");
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
