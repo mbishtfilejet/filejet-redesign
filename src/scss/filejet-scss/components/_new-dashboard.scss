@@ -119,14 +119,9 @@ table.dataTable.display > tbody > tr > td {
 }
 
 .group-search-d2 {
-  height: 30px !important ;
   .form-select {
     background-size: 7px 10px !important;
     background-image: url("../../../dist/images/icons/icon-angle-bottom.svg") !important;
-  }
-  button:focus:not(:focus-visible){
-    background-color: var(--bs-purple-indigo);
-    color: white;
   }
   button:focus:not(:focus-visible)::after{
     color:white;
@@ -135,22 +130,29 @@ table.dataTable.display > tbody > tr > td {
     text-transform: capitalize !important;
     color: var(--bs-dark);
     font-size: 1rem;
+    min-width: -moz-max-content;
     min-width: max-content;
     cursor: pointer;
     font-weight: normal;
     background-color: white;
+    border-radius: var(--bs-border-radius) !important;
   }
   .dropdown-toggle::after {
     font-weight: bolder;
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 20%;
     content: "˅";
-    transform: scaleX(1.9);
+    transform: scaleX(2.4);
     display: inline-block;
     font-size: 10px;
     border: none;
 
+  }
+  .dropdown-toggle:focus-within {
+    background-color: var(--bs-purple-indigo);
+    color: white;
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-purple-indigo) !important;
   }
 
   .btn-check:checked + .btn,
@@ -205,7 +207,7 @@ table.dataTable.display > tbody > tr > td {
     text-overflow: ellipsis;
   }
   .dropdown-menu.show {
-    max-height: 270px;
+    max-height: 360px;
     overflow-y: scroll;
   }
 }
@@ -255,8 +257,9 @@ table.dataTable.display > tbody > tr > td {
     border-bottom: 0px solid #fff;
     z-index: 1;
     position: relative;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 236px;
   }
 
   .nav-link:not(.active) {
@@ -279,8 +282,8 @@ table.dataTable.display > tbody > tr > td {
     .card-headerd2 {
       background-color: var(--bs-purple-indigo);
       color: #fff;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
       font-size: 23px;
       font-weight: 600;
       text-transform: none;
@@ -299,6 +302,7 @@ table.dataTable.display > tbody > tr > td {
       font-size: 0.9rem;
     }
     .chart-container {
+      margin: 0px !important;
       .chart-legend ul {
         list-style-type: none;
         padding: 0;
@@ -326,7 +330,6 @@ table.dataTable.display > tbody > tr > td {
         font-size: 1.5rem;
         font-weight: bold;
         color: var(--bs-dark);
-        letter-spacing: -0.9px;
       }
       .list-group-flush>.list-group-item{
         border: 0px;
@@ -346,7 +349,7 @@ table.dataTable.display > tbody > tr > td {
 
 .tab-content-v2 {
   position: relative;
-  top: -2px;
+  top: -3px;
   border: 3.5px solid var(--bs-purple-indigo);
 
   .search-table-col {
@@ -395,7 +398,7 @@ table.dataTable.display > tbody > tr > td {
   right: 15px;
   top: 35%;
   content: "˅";
-  transform: scaleX(1.9);
+  transform: scaleX(2.4);
   display: inline-block;
   font-size: 10px;
   border: none;
@@ -449,7 +452,7 @@ table.dataTable.display > tbody > tr > td {
   background: transparent;
 }
 .dropdown-menu {
-  width: 97%;
+  width: 98%;
   max-height: 250px;
   overflow-y: auto;
 }
@@ -514,13 +517,15 @@ ul li label {
     overflow: scroll;
   }
 
-  .card-table-d2 .dataTables_wrapper tbody td {
+   .dataTables_wrapper tbody td {
     font-weight: 400;
     color: var(--bs-black-primary);
-    font-size: 0.9rem !important;
+    font-size: 12px !important;
+    padding: 0.5rem 0.9rem !important;
   }
   .dataTables_wrapper .dataTable thead th {
     text-transform: capitalize !important;
+    padding: 0.9rem !important;
   }
   .dataTables_wrapper tbody td a {
     font-weight: 400;
@@ -704,6 +709,7 @@ ul li label {
   #ra-other-table td:nth-child(1) {
     width: 10px !important;
     min-width: 10px;
+    padding: 0px 10px !important;
   }
   #ra-other-table th:nth-child(3),
   #ra-other-table td:nth-child(3) {
@@ -733,9 +739,9 @@ ul li label {
  }
 
 
-  .expanded-row{
+  .expanded-row td{
     background-color: #5B5559 !important;
-    color: #fff;
+    color: #fff !important;
   }
   .pagination-row{
     height: 50px;
@@ -815,14 +821,15 @@ ul li label {
 }
 .cardcontainer-d2 .card-d2 {
     border: 0px;
-    border-bottom: 3px solid #fff;
-    height: 233px;
+    height: 185px
 }
 
 .cardcontainer-d2 .nav-link.active {
     color: var(--bs-external-gray);
     border: 3.5px solid var(--bs-external-gray);
     border-bottom: 0px solid #fff;
+    height: 186px
+
 }
 .cardcontainer-d2 .card-d2 .card-headerd2 {
     background-color: var(--bs-external-gray);
@@ -850,8 +857,8 @@ ul li label {
 .sidebar-v2 .menu-link .nav-link.active a::before {
     background-image: radial-gradient(circle at 100% 0, white 0%, white 2rem, #dfe0e1 2rem);
 }
-.filter2-dropdown input[type=text]:focus-visible {
-    background-color: var(--bs-external-gray);
+.filter2-dropdown .multi-select-container:focus-within {
+  background-color: var(--bs-external-gray);
 }
 .filter2-dropdown .form-check-input[type=checkbox]:checked, .boc-light .boc-filter .boc-filter-menu fieldset div input[type=checkbox]:checked {
     border-color: var(--bs-external-gray);
@@ -886,8 +893,6 @@ ul li label {
   }
   .cardcontainer-d2 .card-d2 {
     border: 0px;
-    border-bottom: 3px solid #fff;
-    height: 267px;
   }
   .cardcontainer-d2 .card-d2 .card-headerd2 {
     background-color: var(--bs-pro-blue);
@@ -932,9 +937,9 @@ ul li label {
     z-index: 3;
   }
 
-  .filter2-dropdown input[type=text]:focus-visible {
+  .professional-dashboard .filter2-dropdown .multi-select-container:focus-within {
     background-color: var(--bs-pro-blue);
-  }
+}
   .filter2-dropdown .form-check-input[type=checkbox]:checked, .boc-light .boc-filter .boc-filter-menu fieldset div input[type=checkbox]:checked {
     border-color: var(--bs-pro-blue);
     background-color: var(--bs-pro-blue);
