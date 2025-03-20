@@ -144,7 +144,7 @@ table.dataTable.display > tbody > tr > td {
   .dropdown-toggle::after {
     font-weight: bolder;
     position: absolute;
-    right: 15px;
+    right: 11px;
     top: 20%;
     content: "˅";
     transform: scaleX(2.4);
@@ -600,6 +600,12 @@ ul li label {
     background-color: #fff;
     z-index: 3;
   }
+  table.dataTable td.dt-control:before {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.5);
+    content: "›";
+    font-size: 25px;
+}
 
   .dt-hasChild {
     background-color: #5b5559 !important;
@@ -611,7 +617,10 @@ ul li label {
   }
   tbody tr.expanded-row .dt-control::before {
     color: #fff !important;
-    content: "▼" !important;
+    content: "˅" !important;
+    font-size: 12px;
+    transform: scaleX(1.9);
+    font-weight: 600;
 
   }
   .expanded-content {
@@ -714,6 +723,7 @@ ul li label {
     width: 10px !important;
     min-width: 10px;
     padding: 0px 10px !important;
+    padding-right: 5px !important;
   }
   #ra-other-table th:nth-child(3),
   #ra-other-table td:nth-child(3) {
