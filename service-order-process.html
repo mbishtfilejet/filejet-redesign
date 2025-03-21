@@ -1487,7 +1487,216 @@
                             <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#NWGroup" data-bs-toggle="modal" data-bs-dismiss="modal">
                                 Back
                             </button>
-                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#NWUserinvite" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Next
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-right fade filter-slideout group-model" id="NWUserinvite" tabindex="-1" aria-labelledby="searchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                                <div class="d-flex aligh-items-center mb-4">
+                                    <span class="icon icon-new-group icon-md me-3"></span>
+                                    <h4 class="fw-bold m-0">Create New Group</h3>
+                                </div>
+                            <!-- stepper start -->
+                            <div class="service-step-group">
+                                <div class="step completed">
+                                    <div class="circle completed"></div>
+                                    <span class="step-text">GROUP</span>
+                                </div>
+                                <div class="step">
+                                    <div class="circle active"></div>
+                                    <span class="step-text">USERS</span>
+                                </div>
+                                <div class="step">
+                                    <div class="circle"></div>
+                                    <span class="step-text">PAYMENT<br>OPTIONS</span>
+                                </div>
+                                <div class="step">
+                                    <div class="circle"></div>
+                                    <span class="step-text">ASSIGN ENTITIES<br>TO GROUP</span>
+                                </div>
+                            </div>
+                            
+                            <!-- stepper end -->
+                        </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <div id="userSearchForm" class="user-search-bar  col-sm-12 search-field w-100 mb-3">
+                        <div class="bg-white rounded-2 shadow position-relative">
+                            <span class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                            <input type="text" class="search-bg reset-field form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border-0" name="term" data-redirect="<?php echo \Cake\Routing\Router::url(['_name' => 'getstarted.setup.entity']) ?>" data-src="<?php echo \Cake\Routing\Router::url(['_name'=> 'cta.user.search']) ?>" placeholder="Search">
+                        </div>
+                            <input type="hidden" name="euid" value="" class="reset-field" autocomplete="off">
+                            <div class="search-autocomplete-result"></div>
+                            <div class="no-search-result"></div>
+                        <a href="javascript:;" class="reset-search pull-right d-none">Reset Search</a>
+                    </div>
+                    <div class="accordion mb-3" id="accordionExample">
+                        <div class="accordion-item m-0">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Assign User Access
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse  border-0" aria-labelledby="headingOne">
+                            <div class="assign-user accordion-body pt-0">
+                                <div class="border rounded-3">
+                                    <div class="fade show active rounded-3 overflow-hidden" id="all">
+                                    <table id="userTable2" class="table table-striped w-100 long-data-table-listing border-1">
+                                        <thead>
+                                            <tr>
+                                                <th data-orderable="false"><input class="d-flex" type="checkbox"></th>
+                                                <th>User Name</th>
+                                                <th>Role</th>
+                                                <th>Email Address</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd">
+                                                <td><input class="d-flex" type="checkbox" checked disabled></td>
+                                                <td>Carl Smith</td>
+                                                <td>Super Admin</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td><input class="d-flex" type="checkbox" checked disabled></td>
+                                                <td>Anna Williams</td>
+                                                <td>Admin</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td><input class="d-flex" type="checkbox" checked disabled></td>
+                                                <td>Felix Anderson</td>
+                                                <td>Admin</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td><input class="d-flex" type="checkbox" checked disabled></td>
+                                                <td>Benjamin Brown</td>
+                                                <td>Admin</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td><input type="checkbox"></td>
+                                                <td>Charlotte Taylor</td>
+                                                <td>User</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td><input class="d-flex"  type="checkbox"></td>
+                                                <td>Greta Munsen</td>
+                                                <td>User</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td><input class="d-flex"  type="checkbox"></td>
+                                                <td>Hector Vane</td>
+                                                <td>User</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td><input class="d-flex"  type="checkbox"></td>
+                                                <td>Harrison James</td>
+                                                <td>User</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td><input class="d-flex"  type="checkbox"></td>
+                                                <td>Ingrid Wille</td>
+                                                <td>User</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td><input class="d-flex"  type="checkbox"></td>
+                                                <td>Ingrid Wille</td>
+                                                <td>User</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td><input class="d-flex"  type="checkbox"></td>
+                                                <td>Ingrid Wille</td>
+                                                <td>User</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td><input class="d-flex"  type="checkbox"></td>
+                                                <td>Ingrid Wille</td>
+                                                <td>User</td>
+                                                <td>abc@xyz.com</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="accordion" id="accordionExample">
+                        <div class="accordion-item m-0">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Invite External User
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne">
+                            <div class="accordion-body pt-0">
+                                    <div>
+                                        <div class="d-flex justify-content-between align-items-centermb-2">
+                                            <div>
+                                                <p class="fw-normal mb-0">Adam Smith</p>
+                                                <p class="fw-normal text-small mb-0">adamsmith@xyz.com</p>
+                                            </div>
+                                            <div>
+                                                <span class="icon icon-edit"></span>
+                                                <span class="icon icon-delete-dark me-3"></span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-centermb-2">
+                                            <div>
+                                                <p class="fw-normal mb-0">Adam Smith</p>
+                                                <p class="fw-normal text-small mb-0">adamsmith@xyz.com</p>
+                                            </div>
+                                            <div>
+                                                <span class="icon icon-edit"></span>
+                                                <span class="icon icon-delete-dark me-3"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#NWGroup" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Back
+                            </button>
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#NWUserinvite" data-bs-toggle="modal" data-bs-dismiss="modal">
                                 Next
                             </button>
                         </div>

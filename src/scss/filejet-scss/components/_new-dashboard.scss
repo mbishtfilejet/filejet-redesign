@@ -221,8 +221,9 @@ table.dataTable.display > tbody > tr > td {
 }
 .quick-actions {
   background-color: #1c085a;
+  padding: 10px 15px !important;
   .text-light{
-    font-size: 23px;
+    font-size: 18px;
     font-weight: 600;
   }
   .text-placeholder-d2 {
@@ -239,8 +240,6 @@ table.dataTable.display > tbody > tr > td {
     overflow: hidden;
   }
 }
-
-
 
 .cardcontainer-d2 {
   .nav-link {
@@ -281,14 +280,14 @@ table.dataTable.display > tbody > tr > td {
     }
   }
   .card-d2 {
-    height: 263px;
+    height: 235px;
 
     .card-headerd2 {
       background-color: var(--bs-purple-indigo);
       color: #fff;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
-      font-size: 23px;
+      font-size: 18px;
       font-weight: 600;
       text-transform: none;
       line-height: normal;
@@ -399,8 +398,8 @@ table.dataTable.display > tbody > tr > td {
 .multi-select-container::after {
   font-weight: bolder;
   position: absolute;
-  right: 15px;
-  top: 35%;
+  right: 20px;
+  top: 33%;
   content: "˅";
   transform: scaleX(2.4);
   display: inline-block;
@@ -411,8 +410,8 @@ table.dataTable.display > tbody > tr > td {
   content: "⌃";
   font-weight: lighter;
   position: absolute;
-  right: 15px;
-  top: 35%;
+  right: 20px;
+  top: 33%;
   transform: scaleX(1.9);
   display: inline-block;
   font-size: 14px;
@@ -501,8 +500,14 @@ ul li label {
 
  .card-table-d2{
 
-  th:nth-child(1),
-   td:nth-child(1),
+   th:nth-child(1),
+   td:nth-child(1){
+    width: 100px;
+    min-width: 100px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+   }
    th:nth-child(2),
    td:nth-child(2) {
     width: 150px;
@@ -563,6 +568,7 @@ ul li label {
   }
   .dataTables_scroll .dataTables_scrollBody {
     height: auto !important;
+    max-height: max-content !important;
   }
 
   .table-status {
@@ -591,8 +597,7 @@ ul li label {
 
 .entity-regestration-card {
   .entity-card-table {
-    height: 50vh;
-    max-height: 50vh;
+    overflow: unset !important;
   }
   #ra-other-table thead {
     position: sticky;
@@ -725,6 +730,11 @@ ul li label {
     padding: 0px 10px !important;
     padding-right: 5px !important;
   }
+  #ra-other-table th:nth-child(2),
+  #ra-other-table td:nth-child(2) {
+    width: 100px !important;
+    min-width: 100px;
+  }
   #ra-other-table th:nth-child(3),
   #ra-other-table td:nth-child(3) {
     width: 150px;
@@ -822,6 +832,9 @@ ul li label {
 }
 .inner-table-container .dataTables_wrapper > .row:last-child {
   background-color: #d8dddf;
+}
+.tab-pane{
+  margin-top: 0px !important;
 }
 }
 
