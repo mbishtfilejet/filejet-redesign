@@ -1487,7 +1487,7 @@
                             <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#NWGroup" data-bs-toggle="modal" data-bs-dismiss="modal">
                                 Back
                             </button>
-                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#NWUserinvite" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
                                 Next
                             </button>
                         </div>
@@ -1497,8 +1497,10 @@
             </div>
         </div>
     </div>
+    <!-- New group step-2 Modal End-->
 
-    <div class="modal modal-right fade filter-slideout group-model" id="NWUserinvite" tabindex="-1" aria-labelledby="searchModalLabel"
+    <!--Payment step-3 Modal start-->
+    <div class="modal modal-right fade filter-slideout group-model" id="NWPayment" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -1515,12 +1517,12 @@
                                     <div class="circle completed"></div>
                                     <span class="step-text">GROUP</span>
                                 </div>
-                                <div class="step">
-                                    <div class="circle active"></div>
+                                <div class="step completed">
+                                    <div class="circle completed"></div>
                                     <span class="step-text">USERS</span>
                                 </div>
                                 <div class="step">
-                                    <div class="circle"></div>
+                                    <div class="circle active"></div>
                                     <span class="step-text">PAYMENT<br>OPTIONS</span>
                                 </div>
                                 <div class="step">
@@ -1535,154 +1537,118 @@
                 <!-- Modal Header Ends -->
                 <!-- Modal Body Start-->
                 <div class="modal-body">
-                    <div id="userSearchForm" class="user-search-bar  col-sm-12 search-field w-100 mb-3">
-                        <div class="bg-white rounded-2 shadow position-relative">
-                            <span class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
-                            <input type="text" class="search-bg reset-field form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border-0" name="term" data-redirect="<?php echo \Cake\Routing\Router::url(['_name' => 'getstarted.setup.entity']) ?>" data-src="<?php echo \Cake\Routing\Router::url(['_name'=> 'cta.user.search']) ?>" placeholder="Search">
+                    <form class="" action="">
+                        <div class="mb-3 p-3 bg-white rounded-2">
+                            <fieldset>
+                                <label for="pricing-model" class="form-label">Pricing Model <span class="mandatory">*</span></label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select" id="pricing-model">
+                                        <option value="Account Default">Account Default</option>
+                                        <option value="Client Subscription">Client Subscription</option>
+                                    </select>
+                                </div>
+                            </fieldset>
                         </div>
-                            <input type="hidden" name="euid" value="" class="reset-field" autocomplete="off">
-                            <div class="search-autocomplete-result"></div>
-                            <div class="no-search-result"></div>
-                        <a href="javascript:;" class="reset-search pull-right d-none">Reset Search</a>
-                    </div>
-                    <div class="accordion mb-3" id="accordionExample">
-                        <div class="accordion-item m-0">
-                          <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            Assign User Access
-                            </button>
-                          </h2>
-                          <div id="collapseOne" class="accordion-collapse collapse  border-0" aria-labelledby="headingOne">
-                            <div class="assign-user accordion-body pt-0">
-                                <div class="border rounded-3">
-                                    <div class="fade show active rounded-3 overflow-hidden" id="all">
-                                    <table id="userTable2" class="table table-striped w-100 long-data-table-listing border-1">
-                                        <thead>
-                                            <tr>
-                                                <th data-orderable="false"><input class="d-flex" type="checkbox"></th>
-                                                <th>User Name</th>
-                                                <th>Role</th>
-                                                <th>Email Address</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="odd">
-                                                <td><input class="d-flex" type="checkbox" checked disabled></td>
-                                                <td>Carl Smith</td>
-                                                <td>Super Admin</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td><input class="d-flex" type="checkbox" checked disabled></td>
-                                                <td>Anna Williams</td>
-                                                <td>Admin</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td><input class="d-flex" type="checkbox" checked disabled></td>
-                                                <td>Felix Anderson</td>
-                                                <td>Admin</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td><input class="d-flex" type="checkbox" checked disabled></td>
-                                                <td>Benjamin Brown</td>
-                                                <td>Admin</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td><input type="checkbox"></td>
-                                                <td>Charlotte Taylor</td>
-                                                <td>User</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td><input class="d-flex"  type="checkbox"></td>
-                                                <td>Greta Munsen</td>
-                                                <td>User</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td><input class="d-flex"  type="checkbox"></td>
-                                                <td>Hector Vane</td>
-                                                <td>User</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td><input class="d-flex"  type="checkbox"></td>
-                                                <td>Harrison James</td>
-                                                <td>User</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td><input class="d-flex"  type="checkbox"></td>
-                                                <td>Ingrid Wille</td>
-                                                <td>User</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td><input class="d-flex"  type="checkbox"></td>
-                                                <td>Ingrid Wille</td>
-                                                <td>User</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td><input class="d-flex"  type="checkbox"></td>
-                                                <td>Ingrid Wille</td>
-                                                <td>User</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td><input class="d-flex"  type="checkbox"></td>
-                                                <td>Ingrid Wille</td>
-                                                <td>User</td>
-                                                <td>abc@xyz.com</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <div class="mb-3 p-3 bg-white rounded-2">
+                            <fieldset>
+                                <label for="pricing-model" class="form-label">Pricing Method <span class="mandatory">*</span></label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select" id="pricing-method">
+                                        <option value="account-default">Account Default (Visa 1111)</option>
+                                        <option value="on-file">On File</option>
+                                        <option value="add-new">Add New</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+
+                            <!-- <div id="account-default-content" class="mt-3">
+                                <div class="card p-3">
+                                    <p>💳 <strong>Account Default:</strong> Using Visa 1111 for transactions.</p>
+                                </div>
+                            </div> -->
+                        
+                            <div id="on-file-content" class="hidden-method mt-3">
+                                <div>
+                                    <div class="payment-card d-flex odd border rounded-top">
+                                        <div class="d-flex align-items-center">
+                                            <input type="checkbox">
+                                            <div class="ms-2 d-flex">
+                                                <div class="methodiv">Mastercard </div>
+                                                <div class="methodcard">Mastercard ...4444</div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="d-flex align-items-center">
+                                            <input class="form-check-input" type="radio" name="default-payment">
+                                            <span class="ms-2">Set as Default</span>
+                                        </div>
+                                
+                                        <div>
+                                            <span class="icon icon-new-edit me-3"></span>
+                                            <span class="icon icon-new-delete"></span>
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Payment Method 2 -->
+                                    <div class="payment-card d-flex even border border-top-0 border-bottom-0">
+                                        <div class="d-flex align-items-center">
+                                            <input type="checkbox">
+                                            <div class="ms-2 d-flex ">
+                                                <div class="methodiv">ACH Payment</div>
+                                                <div class="methodcard">Stripe Test Bank ...6789</div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="d-flex align-items-center">
+                                            <input class="form-check-input" type="radio" name="default-payment">
+                                            <span class="ms-2">Set as Default</span>
+                                        </div>
+                                
+                                        <div>
+                                            <span class="icon icon-new-edit me-3"></span>
+                                            <span class="icon icon-new-delete"></span>
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Payment Method 3 -->
+                                    <div class="payment-card d-flex odd border rounded-bottom ">
+                                        <div class="d-flex align-items-center">
+                                            <input type="checkbox">
+                                            <div class="ms-2 d-flex">
+                                                <div class="methodiv">Card 2</div>
+                                                <div class="methodcard">Mastercard ...1111</div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="d-flex align-items-center">
+                                            <input class="form-check-input" type="radio" name="default-payment">
+                                            <span class="ms-2">Set as Default</span>
+                                        </div>
+                                
+                                        <div>
+                                            <span class="icon icon-new-edit me-3"></span>
+                                            <span class="icon icon-new-delete"></span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                            SAVE AND CONTINUE
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div class="accordion" id="accordionExample">
-                        <div class="accordion-item m-0">
-                          <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            Invite External User
-                            </button>
-                          </h2>
-                          <div id="collapseOne" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne">
-                            <div class="accordion-body pt-0">
-                                    <div>
-                                        <div class="d-flex justify-content-between align-items-centermb-2">
-                                            <div>
-                                                <p class="fw-normal mb-0">Adam Smith</p>
-                                                <p class="fw-normal text-small mb-0">adamsmith@xyz.com</p>
-                                            </div>
-                                            <div>
-                                                <span class="icon icon-edit"></span>
-                                                <span class="icon icon-delete-dark me-3"></span>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-centermb-2">
-                                            <div>
-                                                <p class="fw-normal mb-0">Adam Smith</p>
-                                                <p class="fw-normal text-small mb-0">adamsmith@xyz.com</p>
-                                            </div>
-                                            <div>
-                                                <span class="icon icon-edit"></span>
-                                                <span class="icon icon-delete-dark me-3"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+                            
                             </div>
-                          </div>
+                        
+                            <div id="add-new-content" class="hidden-method mt-3">
+                                <div class="card p-3">
+                                    <p>➕ <strong>Add New:</strong> Enter new payment details.</p>
+                                    <input type="text" class="form-control" placeholder="Enter Card Number">
+                                </div>
+                            </div>
                         </div>
-                      </div>
+                       
+                    </form>
                 </div>
                 <!-- Modal Body End -->
 
@@ -1693,10 +1659,10 @@
                             CANCEL
                         </button>
                         <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#NWGroup" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#NWUser" data-bs-toggle="modal" data-bs-dismiss="modal">
                                 Back
                             </button>
-                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#NWUserinvite" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#NWAssign" data-bs-toggle="modal" data-bs-dismiss="modal">
                                 Next
                             </button>
                         </div>
@@ -1706,7 +1672,7 @@
             </div>
         </div>
     </div>
-    <!-- New group step-2 Modal End-->
+    <!-- Payment step-3 Modal End-->
 
 
     <!-- Search Modal Starts-->
@@ -3843,6 +3809,8 @@
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
     <script src="dist/js/dashboard-v2.js"></script>
+    <script src="dist/js/service-order-process.js"></script>
+
     <!-- Scripts End-->
 
     <script> let dashboardType = "dashboard1"; </script>
