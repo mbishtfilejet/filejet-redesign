@@ -164,14 +164,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const selectAllCheckbox = document.getElementById(selectAllId);
       const checkboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
 
-      // ✅ Set default selections
+      // ✅ Set default selections using data-value
       checkboxes.forEach(cb => {
-          if (defaultSelected.includes(cb.value)) {
+          if (defaultSelected.includes(cb.getAttribute("data-value"))) {
               cb.checked = true;
           }
       });
 
-      // ✅ Update selected options on load
       updateSelectedOptions(false); // Prevent auto-focus on page load
 
       // 🔍 Search Filtering
@@ -188,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // ✅ Handle Checkbox Clicks
       dropdown.addEventListener("change", function (event) {
           if (event.target.classList.contains(checkboxClass)) {
-              updateSelectedOptions(true); // Only focus when user interacts
+              updateSelectedOptions(true);
           }
       });
 
@@ -196,14 +195,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (selectAllCheckbox) {
           selectAllCheckbox.addEventListener("change", function () {
               checkboxes.forEach(cb => cb.checked = selectAllCheckbox.checked);
-              updateSelectedOptions(true); // Only focus when user interacts
+              updateSelectedOptions(true);
           });
       }
 
       function updateSelectedOptions(shouldFocus = true) {
           const selectedOptionsContainer = multiSelectContainer;
           const selectedCheckboxes = document.querySelectorAll(`.${checkboxClass}:checked`);
-          const selectedValues = Array.from(selectedCheckboxes).map(cb => cb.value);
+          const selectedValues = Array.from(selectedCheckboxes).map(cb => cb.getAttribute("data-value"));
 
           selectedOptionsContainer.innerHTML = "";
 
@@ -213,9 +212,9 @@ document.addEventListener("DOMContentLoaded", function () {
               span.innerHTML = `${value} <span class="remove-option"><img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img"></span>`;
 
               span.querySelector(".remove-option").addEventListener("click", function () {
-                  const checkbox = [...document.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.value === value);
+                  const checkbox = [...document.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
                   checkbox.checked = false;
-                  updateSelectedOptions(true); // Only focus when user interacts
+                  updateSelectedOptions(true);
               });
 
               selectedOptionsContainer.appendChild(span);
@@ -246,14 +245,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
           selectedOptionsContainer.appendChild(input);
 
-          // ✅ Focus on input only when user clicks, not on page load
           if (shouldFocus) {
               input.focus();
           }
       }
   }
 
-  // 🏷️ Initialize dropdowns with placeholders
+  // 🏷️ Initialize dropdowns
   setupMultiSelect("jurisdictionContainer", "jurisdictionDropdown", "jurisdictionSearch", "jurisdiction-checkbox", "jurisdictionSelectAll");
   setupMultiSelect("entityJurisdictionContainer", "entityJurisdictionDropdown", "entityJurisdictionSearch", "entityJurisdiction-checkbox", "entityJurisdictionSelectAll");
   setupMultiSelect("orderJurisdictionContainer", "orderJurisdictionDropdown", "orderJurisdictionSearch", "orderJurisdiction-checkbox", "orderJurisdictionSelectAll");
@@ -262,10 +260,10 @@ document.addEventListener("DOMContentLoaded", function () {
   setupMultiSelect("taskContainer", "taskDropdown", "taskSearch", "task-checkbox", "taskSelectAll");
   setupMultiSelect("orderTaskContainer", "orderTaskDropdown", "orderTaskSearch", "orderTask-checkbox", "orderTaskSelectAll");
 
-
   // ✅ Set "Overdue" and "Upcoming" as default selected
   setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]);
 });
+
 // filter end
 
 
