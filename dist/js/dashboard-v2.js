@@ -164,16 +164,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const selectAllCheckbox = document.getElementById(selectAllId);
       const checkboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
 
-      // ✅ Set default selections using data-value
+      function getMaxSelection() {
+          return window.innerWidth < 1300 ? 1 : maxSelection;
+      }
+
       checkboxes.forEach(cb => {
           if (defaultSelected.includes(cb.getAttribute("data-value"))) {
               cb.checked = true;
           }
       });
 
-      updateSelectedOptions(false); // Prevent auto-focus on page load
+      updateSelectedOptions(false);
 
-      // 🔍 Search Filtering
       searchInput.addEventListener("input", function () {
           const filter = searchInput.value.toLowerCase();
           const items = dropdown.querySelectorAll(".dropdown-item");
@@ -184,14 +186,12 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       });
 
-      // ✅ Handle Checkbox Clicks
       dropdown.addEventListener("change", function (event) {
           if (event.target.classList.contains(checkboxClass)) {
               updateSelectedOptions(true);
           }
       });
 
-      // ✅ Handle "Select All" Functionality
       if (selectAllCheckbox) {
           selectAllCheckbox.addEventListener("change", function () {
               checkboxes.forEach(cb => cb.checked = selectAllCheckbox.checked);
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           selectedOptionsContainer.innerHTML = "";
 
-          selectedValues.slice(0, maxSelection).forEach(value => {
+          selectedValues.slice(0, getMaxSelection()).forEach(value => {
               const span = document.createElement("span");
               span.classList.add("selected-option");
               span.innerHTML = `${value} <span class="remove-option"><img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img"></span>`;
@@ -220,8 +220,8 @@ document.addEventListener("DOMContentLoaded", function () {
               selectedOptionsContainer.appendChild(span);
           });
 
-          if (selectedValues.length > maxSelection) {
-              const extraCount = selectedValues.length - maxSelection;
+          if (selectedValues.length > getMaxSelection()) {
+              const extraCount = selectedValues.length - getMaxSelection();
               const summarySpan = document.createElement("span");
               summarySpan.classList.add("selected-option");
               summarySpan.innerHTML = `+${extraCount}`;
@@ -249,6 +249,9 @@ document.addEventListener("DOMContentLoaded", function () {
               input.focus();
           }
       }
+
+      // Recalculate maxSelection on window resize
+      window.addEventListener("resize", updateSelectedOptions);
   }
 
   // 🏷️ Initialize dropdowns
@@ -263,6 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ✅ Set "Overdue" and "Upcoming" as default selected
   setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]);
 });
+
 
 // filter end
 
