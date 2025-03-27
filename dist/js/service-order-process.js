@@ -1,4 +1,5 @@
 // Select payment method start
+
 $(document).ready(function() {
   // Hide all sections except "Account Default" on page load
   $('#account-default-content').show();
@@ -46,7 +47,6 @@ $(document).ready(function() {
   });
 });
 
-
 $(document).ready(function() {
   $('#addIndividual').on("change", function() {
       if (this.checked) {
@@ -61,8 +61,47 @@ $(document).ready(function() {
   });
 });
 
-
 // select payment method end
+
+
+document.getElementById("addBtn").addEventListener("click", function () {
+    let name = document.getElementById("groupName").value.trim();
+    let email = document.getElementById("groupEmail").value.trim();
+
+    if (name === "" || email === "") {
+        alert("Please fill in both fields.");
+        return;
+    }
+
+    // Hide the input form and show the filled state
+    document.querySelector(".fillingstate").style.display = "none";
+    document.querySelector(".filledstate").style.display = "flex";
+
+    // Fill in the user details
+    document.querySelector(".filledstate .groupName").textContent = name;
+    document.querySelector(".filledstate .groupEmail").textContent = email;
+});
+
+// Attach event listeners for edit and delete dynamically after the DOM loads
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".editUser").addEventListener("click", function () {
+        // Show input fields again and hide filled state
+        document.querySelector(".fillingstate").style.display = "block";
+        document.querySelector(".filledstate").style.display = "none";
+
+        // Populate input fields with existing values for editing
+        document.getElementById("groupName").value = document.querySelector(".filledstate .groupName").textContent;
+        document.getElementById("groupEmail").value = document.querySelector(".filledstate .groupEmail").textContent;
+    });
+
+    document.querySelector(".deleteUser").addEventListener("click", function () {
+        // Show input fields and clear them
+        document.querySelector(".fillingstate").style.display = "block";
+        document.querySelector(".filledstate").style.display = "none";
+        document.getElementById("groupName").value = "";
+        document.getElementById("groupEmail").value = "";
+    });
+});
 
 
 

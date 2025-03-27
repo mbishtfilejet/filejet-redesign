@@ -168,6 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return window.innerWidth < 1300 ? 1 : maxSelection;
       }
 
+      // Set default selected checkboxes
       checkboxes.forEach(cb => {
           if (defaultSelected.includes(cb.getAttribute("data-value"))) {
               cb.checked = true;
@@ -176,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       updateSelectedOptions(false);
 
+      // 🔍 Search functionality
       searchInput.addEventListener("input", function () {
           const filter = searchInput.value.toLowerCase();
           const items = dropdown.querySelectorAll(".dropdown-item");
@@ -186,40 +188,50 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       });
 
+      // 🎯 Listen for checkbox changes
       dropdown.addEventListener("change", function (event) {
           if (event.target.classList.contains(checkboxClass)) {
               updateSelectedOptions(true);
           }
       });
 
+      // ✅ Handle "Select All"
       if (selectAllCheckbox) {
           selectAllCheckbox.addEventListener("change", function () {
-              checkboxes.forEach(cb => cb.checked = selectAllCheckbox.checked);
+              checkboxes.forEach(cb => {
+                  cb.checked = selectAllCheckbox.checked;
+              });
               updateSelectedOptions(true);
           });
       }
 
       function updateSelectedOptions(shouldFocus = true) {
           const selectedOptionsContainer = multiSelectContainer;
-          const selectedCheckboxes = document.querySelectorAll(`.${checkboxClass}:checked`);
+          const selectedCheckboxes = dropdown.querySelectorAll(`.${checkboxClass}:checked`);
           const selectedValues = Array.from(selectedCheckboxes).map(cb => cb.getAttribute("data-value"));
 
+          // Clear previous selections
           selectedOptionsContainer.innerHTML = "";
 
+          // Add selected options
           selectedValues.slice(0, getMaxSelection()).forEach(value => {
               const span = document.createElement("span");
               span.classList.add("selected-option");
               span.innerHTML = `${value} <span class="remove-option"><img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img"></span>`;
 
+              // ❌ Remove item with confirmation alert
               span.querySelector(".remove-option").addEventListener("click", function () {
-                  const checkbox = [...document.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
-                  checkbox.checked = false;
-                  updateSelectedOptions(true);
+                  if (confirm(`Are you sure you want to remove "${value}"?`)) {
+                      const checkbox = [...dropdown.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
+                      if (checkbox) checkbox.checked = false;
+                      updateSelectedOptions(true);
+                  }
               });
 
               selectedOptionsContainer.appendChild(span);
           });
 
+          // Show "+x" when max selection exceeded
           if (selectedValues.length > getMaxSelection()) {
               const extraCount = selectedValues.length - getMaxSelection();
               const summarySpan = document.createElement("span");
@@ -233,14 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
           input.type = "text";
           input.classList.add("search-input");
           input.id = searchInputId;
-          input.placeholder = selectedValues.length === 0 ? 
-                              (containerId === "jurisdictionContainer" ? "Jurisdictions" : 
-                                containerId === "entityJurisdictionContainer" ? "Jurisdictions" : 
-                                containerId === "orderJurisdictionContainer" ? "Jurisdictions" : 
-                                containerId === "taskContainer" ? "Tasks" : 
-                                containerId === "orderTaskContainer" ? "Tasks" : 
-                                containerId === "entityStatusContainer" ? "Entity Status" : 
-                               "Status") : ""; // Keep placeholder if nothing is selected
+          input.placeholder = selectedValues.length === 0 ? getPlaceholder(containerId) : ""; 
           input.autocomplete = "off";
 
           selectedOptionsContainer.appendChild(input);
@@ -250,7 +255,24 @@ document.addEventListener("DOMContentLoaded", function () {
           }
       }
 
-      // Recalculate maxSelection on window resize
+      // Function to return placeholder based on container
+      function getPlaceholder(containerId) {
+          switch (containerId) {
+              case "jurisdictionContainer":
+              case "entityJurisdictionContainer":
+              case "orderJurisdictionContainer":
+                  return "Jurisdictions";
+              case "taskContainer":
+              case "orderTaskContainer":
+                  return "Tasks";
+              case "entityStatusContainer":
+                  return "Entity Status";
+              default:
+                  return "Status";
+          }
+      }
+
+      // 📏 Recalculate max selection on window resize
       window.addEventListener("resize", updateSelectedOptions);
   }
 
@@ -266,6 +288,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ✅ Set "Overdue" and "Upcoming" as default selected
   setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]);
 });
+
 
 
 // filter end

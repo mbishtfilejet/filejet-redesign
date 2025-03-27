@@ -324,10 +324,11 @@
 
                                 <div class="col-12 col-lg-3 px-1 mb-2">
                                     <div>
-                                        <a href="additional-services.html" class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none">
-                                         <span class="text-placeholder-d2">New Entity Registration</span>
-                                         <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                        </a>
+                                        <button data-bs-toggle="modal" data-bs-target="#NWEntity" type="button"
+                                        class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none ">
+                                        New Entity Registration                                          
+                                        <span class="icon icon-arrow-forward-black icon-smd m-0 opacity-50"></span>
+                                    </button>
                                     </div>
                                 </div>
 
@@ -1179,6 +1180,8 @@
     </div>
     </div>
 
+    <!-- create new grpop -->
+
     <!--New group step-1 Modal start-->
     <div class="modal modal-right fade filter-slideout group-model" id="NWGroup" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
@@ -1410,62 +1413,79 @@
                           <div id="collapseOne" class="accordion-collapse collapse border-0" aria-labelledby="headingOne">
                             <div class="accordion-body pt-0">
                                 <form class="" action="">
-                                    <div class="">
+                                    <div class="fillingstate">
                                         <fieldset class="mb-2" id="inviteUser">
                                             <input type="text" class="form-control mb-2" id="groupName" placeholder="Name">
-                                            <input type="text" class="form-control" id="" placeholder="Email Address">
+                                            <input type="text" class="form-control" id="groupEmail" placeholder="Email Address">
                                         </fieldset>
-                                    </div>
-                                    <div class="view-options mt-3">
-                                        <div class="d-flex justify-content-between mb-2">
-                                            <span class="view-label">RIGHTS</span>
-                                            <div class="d-flex">
-                                                <div class="form-check me-3">
-                                                    <input class="form-check-input" type="radio" name="rightsOptions" id="flexRadioDefault2" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault2"> View </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="rightsOptions" id="flexRadioDefault1">
-                                                    <label class="form-check-label non-active-check" for="flexRadioDefault1"> Edit </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="d-flex justify-content-between mb-2">
-                                            <span class="view-label">Notifications</span>
-                                            <div class="d-flex">
-                                                <div class="form-check me-3">
-                                                    <input class="form-check-input" type="radio" name="notificationsOptions" id="flexRadioDefault3" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault3"> Yes </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="notificationsOptions" id="flexRadioDefault6">
-                                                    <label class="form-check-label non-active-check" for="flexRadioDefault6"> No </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="d-flex justify-content-between">
-                                            <span class="view-label">Invoices</span>
-                                            <div class="d-flex">
-                                                <div class="form-check me-3">
-                                                    <input class="form-check-input" type="radio" name="invoicesOptions" id="flexRadioDefault4" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault4"> Yes </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="invoicesOptions" id="flexRadioDefault5">
-                                                    <label class="form-check-label non-active-check" for="flexRadioDefault5"> No </label>
-                                                </div>
-                                            </div>
-                                        </div>
 
+                                        <div class="view-options mt-3">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span class="view-label">RIGHTS</span>
+                                                <div class="d-flex">
+                                                    <div class="form-check me-3">
+                                                        <input class="form-check-input" type="radio" name="rightsOptions" id="flexRadioDefault2" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault2"> View </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="rightsOptions" id="flexRadioDefault1">
+                                                        <label class="form-check-label non-active-check" for="flexRadioDefault1"> Edit </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span class="view-label">Notifications</span>
+                                                <div class="d-flex">
+                                                    <div class="form-check me-3">
+                                                        <input class="form-check-input" type="radio" name="notificationsOptions" id="flexRadioDefault3" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault3"> Yes </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="notificationsOptions" id="flexRadioDefault6">
+                                                        <label class="form-check-label non-active-check" for="flexRadioDefault6"> No </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="d-flex justify-content-between">
+                                                <span class="view-label">Invoices</span>
+                                                <div class="d-flex">
+                                                    <div class="form-check me-3">
+                                                        <input class="form-check-input" type="radio" name="invoicesOptions" id="flexRadioDefault4" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault4"> Yes </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="invoicesOptions" id="flexRadioDefault5">
+                                                        <label class="form-check-label non-active-check" for="flexRadioDefault5"> No </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="mt-3">
+                                                <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn">
+                                                    ADD
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="filledstate "style="display: none;">
+                                        <div class="inputsfilled d-flex justify-content-between">
+                                            <div>
+                                                <p class="groupName m-0 mb-1 ">Adam Smith</p>
+                                                <p class="groupEmail m-0 fw-normal ">adamsmith@xyz.com</p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="icon icon-new-edit me-3 editUser border"></span>
+                                                <span class="icon icon-new-delete m-0 deleteUser border"></span>
+                                            </div>
+                                        </div>
                                         <div class="mt-3">
-                                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                                ADD
+                                            <button type="button" class="btn btn-link " id="addMoreBtn">
+                                               +Add More
                                             </button>
                                         </div>
                                     </div>
-                                    
                                 </form>
                             </div>
                           </div>
@@ -1537,7 +1557,7 @@
                     <form class="" action="">
                         <div class="mb-3 p-3 bg-white rounded-2">
                             <fieldset>
-                                <label for="pricing-model" class="form-label">Pricing Model <span class="mandatory">*</span></label>
+                                <label for="pricing-model" class="form-label">Pricing Model </label>
                                 <div class="custom-dropdown">
                                     <select class="form-select" id="pricing-model">
                                         <option value="Account Default">Account Default</option>
@@ -1548,7 +1568,7 @@
                         </div>
                         <div class="mb-3 p-3 bg-white rounded-2">
                             <fieldset>
-                                <label for="pricing-model" class="form-label">Pricing Method <span class="mandatory">*</span></label>
+                                <label for="pricing-model" class="form-label">Pricing Method</label>
                                 <div class="custom-dropdown">
                                     <select class="form-select" id="pricing-method">
                                         <option value="account-default">Account Default (Visa 1111)</option>
@@ -1748,8 +1768,8 @@
     </div>
     <!-- Payment step-3 Modal End-->
 
-        <!--New group step-2 Modal start-->
-        <div class="modal modal-right fade filter-slideout group-model" id="NWAssign" tabindex="-1" aria-labelledby="searchModalLabel"
+        <!--New assign step-4 Modal start-->
+    <div class="modal modal-right fade filter-slideout group-model" id="NWAssign" tabindex="-1" aria-labelledby="searchModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -1907,7 +1927,183 @@
             </div>
         </div>
     </div>
-    <!-- New assign step-2 Modal End-->
+    <!-- New assign step-4 Modal End-->
+
+    <!-- create new entity -->
+
+
+         <!--New group step-2 Modal start-->
+       <div class="modal modal-right fade filter-slideout group-model" id="NWEntity" tabindex="-1" aria-labelledby="searchModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+        <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+                <div class="d-flex flex-column w-100 mb-0">
+                            <div class="d-flex aligh-items-center mb-4">
+                                <span class="icon icon-new-group icon-md me-3"></span>
+                                <h4 class="fw-bold m-0">Form a New Entity</h3>
+                            </div>
+                        <!-- stepper start -->
+                        <div class="service-step-group">
+                            <div class="step ">
+                                <div class="circle active"></div>
+                                <span class="step-text">ENTITY</span>
+                            </div>
+                            <div class="step">
+                                <div class="circle "></div>
+                                <span class="step-text">DETAILS</span>
+                            </div>
+                            <div class="step">
+                                <div class="circle"></div>
+                                <span class="step-text">SERVICES</span>
+                            </div>
+                            <div class="step">
+                                <div class="circle"></div>
+                                <span class="step-text">SUMMARY</span>
+                            </div>
+                        </div>
+                        
+                        <!-- stepper end -->
+                    </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+                <div id="userSearchForm" class="user-search-bar  col-sm-12 search-field w-100 mb-3">
+                    <div class="bg-white rounded-2 shadow position-relative">
+                        <span class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                        <input type="text" class="search-bg reset-field form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border-0" name="term" data-redirect="<?php echo \Cake\Routing\Router::url(['_name' => 'getstarted.setup.entity']) ?>" data-src="<?php echo \Cake\Routing\Router::url(['_name'=> 'cta.user.search']) ?>" placeholder="Search">
+                    </div>
+                        <input type="hidden" name="euid" value="" class="reset-field" autocomplete="off">
+                        <div class="search-autocomplete-result"></div>
+                        <div class="no-search-result"></div>
+                    <a href="javascript:;" class="reset-search pull-right d-none">Reset Search</a>
+                </div>
+
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item m-0">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Entity
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse show border-0" aria-labelledby="headingOne">
+                        <div class="accordion-body pt-0">
+                            <form class="" action="">
+                                <div >
+                                    <fieldset class="mb-3">
+                                        <label for="" class="form-label">entity name <span class="mandatory">*</span></label>
+                                        <input type="text" class="form-control" id="" placeholder="Name of Entity">
+                                    </fieldset>
+        
+                                    <fieldset class="mb-3">
+                                        <label for="formation-model" class="form-label">formation state<span class="mandatory">*</span> </label>
+                                        <div class="custom-dropdown">
+                                            <select class="form-select" id="formation-model">
+                                                <option value="Entity Type">Select State</option>
+                                                <option value="Client Subscription">Europe</option>
+                                            </select>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <label for="entityType-model" class="form-label">Entity Type </label>
+                                        <div class="custom-dropdown">
+                                            <select class="form-select" id="entityType-model">
+                                                <option value="Account Default">Account Default</option>
+                                                <option value="Client Subscription">Select Entity Type</option>
+                                            </select>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 p-3 bg-white rounded-2 mt-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">DATE TO FILE</span>
+                        <div class="d-flex align-items-center">
+                            <div class="form-check gap-2 me-3">
+                                <input class="form-check-input payment-method" type="checkbox" id="asapheck" checked>
+                                <label class="form-check-label fw-normal" for="asap">ASAP</label>
+                            </div>
+                            <div class="form-check gap-2">
+                                <input class="form-check-input payment-method" type="checkbox" id="FuturedateCheck">
+                                <label class="form-check-label fw-normal text-capitalize" for="future date">Future Date</label>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mb-3 p-3 bg-white rounded-2 mt-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">USE CUSTOM ARTICLES </span>
+                        <div class="d-flex align-items-center">
+                            <div class="form-check gap-2 me-3">
+                                <input class="form-check-input payment-method" type="checkbox" id="asapheck" checked>
+                                <label class="form-check-label fw-normal" for="asap">No</label>
+                            </div>
+                            <div class="form-check gap-2">
+                                <input class="form-check-input payment-method" type="checkbox" id="FuturedateCheck">
+                                <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mb-3 p-3 bg-white rounded-2 mt-3">
+                    <fieldset>
+                        <label for="entityType-model" class="form-label">Additional Jurisdictions </label>
+                        <p class="fw-normal small" >A foreign entity registration is required when a business formed in one state plans to conduct business in another state, meaning it needs to register as a "foreign entity" in the state where it intends to operate, typically when it has a physical presence, employees, or is actively soliciting business within that state's borders. 
+                        <br>See <a class="link-primary " href="">State Specific Requirements</a> </p>
+                        <div class="custom-dropdown">
+                            <select class="form-select" id="entityType-model">
+                                <option value="Account Default">Select States</option>
+                                <option value="Client Subscription">Europe</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="mb-3 p-3 bg-white rounded-2 mt-3">
+                    <fieldset>
+                        <label for="entityType-model" class="form-label">add to group </label>
+                        <div class="custom-dropdown">
+                            <select class="form-select" id="entityType-model">
+                                <option value="Account Default">Name of Group</option>
+                                <option value="Client Subscription">Adept HR</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </div>
+
+
+            </div>
+            <!-- Modal Body End -->
+
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                    <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                        data-bs-dismiss="modal">
+                        CANCEL
+                    </button>
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            Next
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+       </div>
+<!-- New group step-2 Modal End-->
 
 
     <!-- Search Modal Starts-->
