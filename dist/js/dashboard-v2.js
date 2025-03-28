@@ -158,7 +158,6 @@ function highlightStatus(status) {
 
 document.addEventListener("DOMContentLoaded", function () {
   function setupMultiSelect(containerId, dropdownId, searchInputId, checkboxClass, selectAllId, defaultSelected = [], maxSelection = 2) {
-      const searchInput = document.getElementById(searchInputId);
       const dropdown = document.getElementById(dropdownId);
       const multiSelectContainer = document.getElementById(containerId);
       const selectAllCheckbox = document.getElementById(selectAllId);
@@ -167,6 +166,14 @@ document.addEventListener("DOMContentLoaded", function () {
       function getMaxSelection() {
           return window.innerWidth < 1300 ? 1 : maxSelection;
       }
+
+      // Insert the search box at the top of the dropdown
+      const searchInput = document.createElement("input");
+      searchInput.type = "text";
+      searchInput.classList.add("dropdown-search-input");
+      searchInput.placeholder = "Search...";
+      searchInput.autocomplete = "off";
+      dropdown.prepend(searchInput); // Adds it at the top of the dropdown
 
       // Set default selected checkboxes
       checkboxes.forEach(cb => {
@@ -177,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       updateSelectedOptions(false);
 
-      // 🔍 Search functionality
+      // 🔍 Search functionality inside dropdown
       searchInput.addEventListener("input", function () {
           const filter = searchInput.value.toLowerCase();
           const items = dropdown.querySelectorAll(".dropdown-item");
@@ -217,7 +224,14 @@ document.addEventListener("DOMContentLoaded", function () {
           selectedValues.slice(0, getMaxSelection()).forEach(value => {
               const span = document.createElement("span");
               span.classList.add("selected-option");
-              span.innerHTML = `${value} <span class="remove-option"><img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img"></span>`;
+
+              // ✅ Add a separate class for the text
+              span.innerHTML = `
+                  <span class="selected-option-text">${value}</span> 
+                  <span class="remove-option">
+                      <img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img">
+                  </span>
+              `;
 
               // ❌ Remove item with confirmation alert
               span.querySelector(".remove-option").addEventListener("click", function () {
@@ -239,43 +253,41 @@ document.addEventListener("DOMContentLoaded", function () {
               summarySpan.innerHTML = `+${extraCount}`;
               selectedOptionsContainer.appendChild(summarySpan);
           }
+     // 🔄 Preserve Placeholder in Search Input
+     const input = document.createElement("input");
+     input.type = "text";
+     input.classList.add("search-input");
+     input.id = searchInputId;
+     input.placeholder = selectedValues.length === 0 ? getPlaceholder(containerId) : ""; 
+     input.autocomplete = "off";
 
-          // 🔄 Preserve Placeholder in Search Input
-          const input = document.createElement("input");
-          input.type = "text";
-          input.classList.add("search-input");
-          input.id = searchInputId;
-          input.placeholder = selectedValues.length === 0 ? getPlaceholder(containerId) : ""; 
-          input.autocomplete = "off";
+     selectedOptionsContainer.appendChild(input);
 
-          selectedOptionsContainer.appendChild(input);
+     if (shouldFocus) {
+         input.focus();
+     }
+ }
 
-          if (shouldFocus) {
-              input.focus();
-          }
-      }
+ // Function to return placeholder based on container
+ function getPlaceholder(containerId) {
+     switch (containerId) {
+         case "jurisdictionContainer":
+         case "entityJurisdictionContainer":
+         case "orderJurisdictionContainer":
+             return "Jurisdictions";
+         case "taskContainer":
+         case "orderTaskContainer":
+             return "Tasks";
+         case "entityStatusContainer":
+             return "Entity Status";
+         default:
+             return "Status";
+     }
+ }
 
-      // Function to return placeholder based on container
-      function getPlaceholder(containerId) {
-          switch (containerId) {
-              case "jurisdictionContainer":
-              case "entityJurisdictionContainer":
-              case "orderJurisdictionContainer":
-                  return "Jurisdictions";
-              case "taskContainer":
-              case "orderTaskContainer":
-                  return "Tasks";
-              case "entityStatusContainer":
-                  return "Entity Status";
-              default:
-                  return "Status";
-          }
-      }
-
-      // 📏 Recalculate max selection on window resize
-      window.addEventListener("resize", updateSelectedOptions);
-  }
-
+ // 📏 Recalculate max selection on window resize
+ window.addEventListener("resize", updateSelectedOptions);
+}
   // 🏷️ Initialize dropdowns
   setupMultiSelect("jurisdictionContainer", "jurisdictionDropdown", "jurisdictionSearch", "jurisdiction-checkbox", "jurisdictionSelectAll");
   setupMultiSelect("entityJurisdictionContainer", "entityJurisdictionDropdown", "entityJurisdictionSearch", "entityJurisdiction-checkbox", "entityJurisdictionSelectAll");
@@ -288,6 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ✅ Set "Overdue" and "Upcoming" as default selected
   setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]);
 });
+
 
 
 
