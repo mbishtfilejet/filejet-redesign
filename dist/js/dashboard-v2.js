@@ -380,50 +380,39 @@ function renderDotsTable1(data) {
 // external entity end
 
 
-
+// group select dropdown
 document.addEventListener("DOMContentLoaded", function () {
   const select = document.getElementById("groupSelect");
 
-  function getMaxCharacters(selectElement) {
-      const testSpan = document.createElement("span");
-      testSpan.style.visibility = "hidden";
-      testSpan.style.position = "absolute";
-      testSpan.style.whiteSpace = "nowrap";
-      testSpan.style.font = window.getComputedStyle(selectElement).font;
-      document.body.appendChild(testSpan);
+  function getMaxCharacters(el) {
+      const span = Object.assign(document.createElement("span"), {
+          style: "visibility:hidden;position:absolute;white-space:nowrap;font:" + getComputedStyle(el).font
+      });
+      document.body.appendChild(span);
 
       let maxChars = 0;
-      for (let i = 5; i <= 100; i++) { // Test character length
-          testSpan.textContent = "A".repeat(i);
-          if (testSpan.offsetWidth > selectElement.clientWidth - 20) { // Adjust for padding
-              break;
-          }
+      for (let i = 5; i <= 100; i++) {
+          span.textContent = "A".repeat(i);
+          if (span.offsetWidth > el.clientWidth - 20) break;
           maxChars = i;
       }
-      document.body.removeChild(testSpan);
+      document.body.removeChild(span);
       return maxChars;
-  }
-
-  function truncateText(text, limit) {
-      return text.length > limit ? text.substring(0, limit) + "..." : text;
   }
 
   function applyTruncation() {
       const maxLength = getMaxCharacters(select);
-      Array.from(select.options).forEach(option => {
-          option.setAttribute("title", option.getAttribute("data-full-text") || option.text);
-          option.textContent = truncateText(option.getAttribute("data-full-text") || option.text, maxLength);
+      select.querySelectorAll("option").forEach(option => {
+          option.title = option.dataset.fullText || option.text;
+          option.textContent = option.title.length > maxLength ? option.title.slice(0, maxLength) + "..." : option.title;
       });
   }
 
-  // Store full text in data attribute
-  Array.from(select.options).forEach(option => {
-      option.setAttribute("data-full-text", option.text);
-  });
-
+  select.querySelectorAll("option").forEach(option => option.dataset.fullText = option.text);
   applyTruncation();
-  window.addEventListener("resize", applyTruncation); // Recalculate on resize
+  window.addEventListener("resize", applyTruncation);
 });
+
 
 
 
