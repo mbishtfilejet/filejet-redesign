@@ -381,4 +381,52 @@ function renderDotsTable1(data) {
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const select = document.getElementById("groupSelect");
+
+  function getMaxCharacters(selectElement) {
+      const testSpan = document.createElement("span");
+      testSpan.style.visibility = "hidden";
+      testSpan.style.position = "absolute";
+      testSpan.style.whiteSpace = "nowrap";
+      testSpan.style.font = window.getComputedStyle(selectElement).font;
+      document.body.appendChild(testSpan);
+
+      let maxChars = 0;
+      for (let i = 5; i <= 100; i++) { // Test character length
+          testSpan.textContent = "A".repeat(i);
+          if (testSpan.offsetWidth > selectElement.clientWidth - 20) { // Adjust for padding
+              break;
+          }
+          maxChars = i;
+      }
+      document.body.removeChild(testSpan);
+      return maxChars;
+  }
+
+  function truncateText(text, limit) {
+      return text.length > limit ? text.substring(0, limit) + "..." : text;
+  }
+
+  function applyTruncation() {
+      const maxLength = getMaxCharacters(select);
+      Array.from(select.options).forEach(option => {
+          option.setAttribute("title", option.getAttribute("data-full-text") || option.text);
+          option.textContent = truncateText(option.getAttribute("data-full-text") || option.text, maxLength);
+      });
+  }
+
+  // Store full text in data attribute
+  Array.from(select.options).forEach(option => {
+      option.setAttribute("data-full-text", option.text);
+  });
+
+  applyTruncation();
+  window.addEventListener("resize", applyTruncation); // Recalculate on resize
+});
+
+
+
+
+
 
