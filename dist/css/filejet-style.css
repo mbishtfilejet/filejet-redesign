@@ -22348,6 +22348,12 @@ body .caledar-event-upcoming {
   .main-dashboard-v2 .sidebar-v2 .menu-link .nav-link:hover a {
     color: #1c085a;
   }
+  .main-dashboard-v2 .custom-select{
+    width: 100%; /* Ensure select box fills container */
+    white-space: nowrap; /* Prevent expanding */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis;
+  }
   .main-dashboard-v2 .custom-select:focus {
     border-color: var(--bs-purple-indigo);
     background-color: var(--bs-purple-indigo);
@@ -22356,6 +22362,10 @@ body .caledar-event-upcoming {
   .main-dashboard-v2 .custom-select option {
     background: white;
     color: black;
+    white-space: normal !important; /* Allow text wrapping */
+    word-wrap: break-word; /* Break long words */
+    max-width: 100%; /* Restrict width */
+    overflow-wrap: break-word;
   }
   .main-dashboard-v2 .group-search-d2 .form-select, .main-dashboard-v2 .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-size, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-search-d2 #boc-ppdf-size, .main-dashboard-v2 .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-layout, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-search-d2 #boc-ppdf-layout, .main-dashboard-v2 .group-search-d2 .boc-light #boc-ppdf-btns #boc-ppdf-scale, .boc-light #boc-ppdf-btns .main-dashboard-v2 .group-search-d2 #boc-ppdf-scale {
     background-size: 7px 10px !important;
@@ -22622,6 +22632,7 @@ body .caledar-event-upcoming {
     min-height: 38px;
     align-items: center;
 }
+
 .main-dashboard-v2 .filter2-dropdown .multi-select-container::after {
     font-weight: bolder;
     position: absolute;
@@ -22698,10 +22709,10 @@ body .caledar-event-upcoming {
 .main-dashboard-v2 .filter2-dropdown .search-input {
     border: none;
     outline: none;
-    flex-grow: 1;
-    min-width: 42px;
     background: transparent;
     cursor: pointer;
+    width: 100%;
+    text-align: left;
 }
 .main-dashboard-v2 .filter2-dropdown .dropdown-menu {
     width: 98%;
@@ -22994,6 +23005,9 @@ body .caledar-event-upcoming {
   }
   .main-dashboard-v2 .entity-regestration-card .expanded-row td {
     background-color: #5B5559 !important;
+    color: #fff !important;
+  }
+  .main-dashboard-v2 .entity-regestration-card .expanded-row td a{
     color: #fff !important;
   }
   .main-dashboard-v2 .entity-regestration-card .pagination-row {

@@ -167,6 +167,10 @@ document.addEventListener("DOMContentLoaded", function () {
           return window.innerWidth < 1300 ? 1 : maxSelection;
       }
 
+      
+
+      
+
       // Insert the search box at the top of the dropdown
       const searchInput = document.createElement("input");
       searchInput.type = "text";
@@ -253,37 +257,39 @@ document.addEventListener("DOMContentLoaded", function () {
               summarySpan.innerHTML = `+${extraCount}`;
               selectedOptionsContainer.appendChild(summarySpan);
           }
-     // 🔄 Preserve Placeholder in Search Input
-     const input = document.createElement("input");
-     input.type = "text";
-     input.classList.add("search-input");
-     input.id = searchInputId;
-     input.placeholder = selectedValues.length === 0 ? getPlaceholder(containerId) : ""; 
-     input.autocomplete = "off";
+       // 🔄 Preserve Placeholder in Search Input
+    const input = document.createElement("input");
+    input.type = "button";
+    input.classList.add("search-input");
+    input.id = searchInputId;
 
-     selectedOptionsContainer.appendChild(input);
+    // ✅ Show placeholder ONLY when no filters are selected
+    input.value = selectedValues.length === 0 ? getPlaceholder(containerId) : "";  
+    input.autocomplete = "off";
 
-     if (shouldFocus) {
-         input.focus();
-     }
- }
+    selectedOptionsContainer.appendChild(input);
 
- // Function to return placeholder based on container
- function getPlaceholder(containerId) {
-     switch (containerId) {
-         case "jurisdictionContainer":
-         case "entityJurisdictionContainer":
-         case "orderJurisdictionContainer":
-             return "Jurisdictions";
-         case "taskContainer":
-         case "orderTaskContainer":
-             return "Tasks";
-         case "entityStatusContainer":
-             return "Entity Status";
-         default:
-             return "Status";
-     }
- }
+    if (shouldFocus) {
+        input.focus();
+    }
+    }
+
+    // Function to return placeholder based on container
+    function getPlaceholder(containerId) {
+        switch (containerId) {
+            case "jurisdictionContainer":
+            case "entityJurisdictionContainer":
+            case "orderJurisdictionContainer":
+                return "Jurisdictions";
+            case "taskContainer":
+            case "orderTaskContainer":
+                return "Tasks";
+            case "entityStatusContainer":
+                return "Entity Status";
+            default:
+                return "Status";
+        }
+    }
 
  // 📏 Recalculate max selection on window resize
  window.addEventListener("resize", updateSelectedOptions);
@@ -301,9 +307,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]);
 });
 
-
-
-
 // filter end
 
 
@@ -318,7 +321,10 @@ $(document).ready(function () {
       columns: [
           { className: "dt-control", orderable: false, data: null, defaultContent: "" },
           { data: "group" },
-          { data: "entity_name" },
+          { data: "entity_name",
+            render: function(data, type, row) {
+                return `<a href="/entities/${row.entity_id}">${data}</a>`;
+            }},
           { data: "type" },
           { data: "jurisdiction" },
           { data: "registrations" },
