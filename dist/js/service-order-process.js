@@ -64,6 +64,7 @@ $(document).ready(function() {
 // select payment method end
 
 
+// edit form start
 document.getElementById("addBtn").addEventListener("click", function () {
     let name = document.getElementById("groupName").value.trim();
     let email = document.getElementById("groupEmail").value.trim();
@@ -103,5 +104,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+
+// alert function start
+
+document.addEventListener("DOMContentLoaded", function () {
+    const entityInput = document.querySelector("#entityInput"); // Add an ID to your input field
+    const alertBox = document.querySelector(".alert-warning");
+
+    // Hide alert initially
+    alertBox.style.display = "none";
+
+    // Show alert when typing
+    entityInput.addEventListener("input", function () {
+        alertBox.style.display = "flex"; // Show alert
+    });
+});
 
 
