@@ -68,6 +68,7 @@ $(document).ready(function() {
 document.getElementById("addBtn").addEventListener("click", function () {
     let name = document.getElementById("groupName").value.trim();
     let email = document.getElementById("groupEmail").value.trim();
+    
 
     if (name === "" || email === "") {
         alert("Please fill in both fields.");
@@ -120,5 +121,27 @@ document.addEventListener("DOMContentLoaded", function () {
         alertBox.style.display = "flex"; // Show alert
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const individualRadio = document.getElementById("individual");
+    const corporateRadio = document.getElementById("corporate");
+    const individualForm = document.getElementById("individualForm");
+    const corporateForm = document.getElementById("corporateForm");
+
+    function toggleManagerForm() {
+        if (individualRadio.checked) {
+            individualForm.style.display = "block";
+            corporateForm.style.display = "none";
+        } else {
+            individualForm.style.display = "none";
+            corporateForm.style.display = "block";
+        }
+    }
+
+    individualRadio.addEventListener("change", toggleManagerForm);
+    corporateRadio.addEventListener("change", toggleManagerForm);
+});
+
 
 
