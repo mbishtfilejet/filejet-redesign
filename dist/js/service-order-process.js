@@ -1,5 +1,4 @@
 // Select payment method start
-
 $(document).ready(function() {
   // Hide all sections except "Account Default" on page load
   $('#account-default-content').show();
@@ -61,8 +60,6 @@ $(document).ready(function() {
   });
 });
 
-// select payment method end
-
 
 // edit form start
 document.getElementById("addBtn").addEventListener("click", function () {
@@ -108,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // alert function start
-
 document.addEventListener("DOMContentLoaded", function () {
     const entityInput = document.querySelector("#entityInput"); // Add an ID to your input field
     const alertBox = document.querySelector(".alert-warning");
@@ -123,6 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+// manager individual and corporate function function start
 document.addEventListener("DOMContentLoaded", function () {
     const individualRadio = document.getElementById("individual");
     const corporateRadio = document.getElementById("corporate");
