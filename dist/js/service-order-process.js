@@ -120,8 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
 // manager individual and corporate function function start
 document.addEventListener("DOMContentLoaded", function () {
     const individualRadio = document.getElementById("individual");
@@ -142,6 +140,29 @@ document.addEventListener("DOMContentLoaded", function () {
     individualRadio.addEventListener("change", toggleManagerForm);
     corporateRadio.addEventListener("change", toggleManagerForm);
 });
+
+
+// service enable disable form
+document.addEventListener("DOMContentLoaded", function() {
+        const serviceSections = document.querySelectorAll(".d-flex.align-items-center");
+
+        serviceSections.forEach(section => {
+            const enableCheck = section.querySelector(".enable-check");
+            const disableCheck = section.querySelector(".disable-check");
+
+            enableCheck.addEventListener("change", function() {
+                if (this.checked) {
+                    disableCheck.checked = false;
+                }
+            });
+
+            disableCheck.addEventListener("change", function() {
+                if (this.checked) {
+                    enableCheck.checked = false;
+                }
+            });
+        });
+    });
 
 
 

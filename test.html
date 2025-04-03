@@ -2,335 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Toggle Forms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Toggle</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body class="p-4">
+<body>
 
-            <div class="modal modal-right fade filter-slideout group-model" id="entityDetail" tabindex="-1" aria-labelledby="searchModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-                      <div class="modal-content border-0 rounded-0 min-vh-100">
-                          <!-- Modal Header -->
-                          <div class="modal-header flex-wrap">
-                              <div class="d-flex flex-column w-100 mb-0">
-                                          <div class="d-flex aligh-items-center mb-4">
-                                              <span class="icon icon-entity-icon icon-md me-3"></span>
-                                              <h4 class="fw-bold m-0">Form a New Entity</h4>
-                                          </div>
-                                      <!-- stepper start -->
-                                      <div class="service-step-group">
-                                          <div class="step completed ">
-                                              <div class="circle completed"></div>
-                                              <span class="step-text">ENTITY</span>
-                                          </div>
-                                          <div class="step">
-                                              <div class="circle active "></div>
-                                              <span class="step-text">DETAILS</span>
-                                          </div>
-                                          <div class="step">
-                                              <div class="circle"></div>
-                                              <span class="step-text">SERVICES</span>
-                                          </div>
-                                          <div class="step">
-                                              <div class="circle"></div>
-                                              <span class="step-text">SUMMARY</span>
-                                          </div>
-                                      </div>
-                                      
-                                      <!-- stepper end -->
-                                  </div>
-                          </div>
-                          <!-- Modal Header Ends -->
-                          <!-- Modal Body Start-->
-                          <div class="modal-body">
-                            <form class="mb-3" action="">
-                                <div class="mb-3 p-3 bg-white rounded-2">
-                                    <fieldset class="">
-                                        <label for="" class="form-label">Principal Address <span class="mandatory">*</span></label>
-                                        <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
-                                        <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
-                                        <div class="d-flex w-100 mb-3">
-                                            <input type="text" class="form-control me-2 " id="" placeholder="City">
-                                            <div class="w-100 me-2">
-                                                <select class="form-select" id="formation-model">
-                                                    <option value="Entity Type">Select State</option>
-                                                    <option value="Client Subscription">Europe</option>
-                                                </select>
-                                            </div>
-                                            <input type="text" class="form-control" id="" placeholder="Zipcode">
-                                        </div>
-
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span class="fw-bold">MAILING ADDRESS</span>
-                                            <div class="d-flex align-items-center ">
-                                                <div class="form-check gap-2">
-                                                    <input class="form-check-input payment-method" type="checkbox" id="asapheck" checked="">
-                                                    <label class="form-check-label fw-normal" for="asap">Same as Principal Address</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                               
-                            </form>
-
-                            <!-- Stakeholders Accordion -->
-                            <div class="accordion mb-3" id="accordionExample1">
-                                <div class="accordion-item m-0">
-                                    <h2 class="accordion-header" id="headingOne1">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                                            data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                                            Stakeholders <span class="icon icon-entity-required ms-2"></span>
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne1" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne1">
-                                        <div class="accordion-body pt-0">
-                                            <form action="">
-                                                <div class="stakeholdersform">
-                                                    <div class="alert alert-danger flex-column text-dark fw-normal py-2" role="alert">
-                                                        <div class="d-flex align-items-center mb-2">
-                                                            <span class="icon icon-alert-red"></span>
-                                                            <small>California requires CEO, CFO and Secretary details</small>
-                                                        </div>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="icon icon-alert-red"></span>
-                                                            <small>Texas requires XYZ</small>
-                                                        </div>
-                                                    </div>
-                            
-                                                    <!-- OFFICERS SECTION -->
-                                                    <div class="section mb-3 officeform">
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <label class="form-label m-0">officers <span class="mandatory">*</span></label>
-                                                            <a href="#" class="d-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#officerForm" aria-expanded="false">
-                                                                <span class="icon icon-add-circle-plus"></span> Add
-                                                            </a>
-                                                        </div>
-                                                        <!-- Form inside collapse -->
-                                                        <div id="officerForm" class="collapse mt-2">
-                                                            <input type="text" class="form-control" placeholder="Enter Officer Name">
-                                                        </div>
-                                                    </div>
-                            
-                                                    <hr>
-                            
-                                                    <!-- MANAGERS SECTION -->
-                                                    <div class="section">
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <label class="form-label m-0">MANAGERS <span class="mandatory">*</span></label>
-                                                            <a href="#" class="d-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#managerForm" aria-expanded="false">
-                                                                <span class="icon icon-add-circle-plus"></span> Add
-                                                            </a>
-                                                        </div>
-                                                    
-                                                        <!-- Form inside collapse -->
-                                                        <div id="managerForm" class="collapse mt-2">
-                                                            <fieldset>
-                                                                <!-- Radio buttons to select Individual or Corporate -->
-                                                                <div class="mb-3">
-                                                                    <div class="d-flex gap-3">
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="managerType" id="individual" value="individual" checked>
-                                                                            <label class="form-check-label" for="individual">Individual</label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="managerType" id="corporate" value="corporate">
-                                                                            <label class="form-check-label" for="corporate">Corporate</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                    
-                                                                <!-- Individual Form -->
-                                                                <div id="individualForm">
-                                                                    <fieldset class="fillingstate">
-                                                                        <input type="text" class="form-control mb-3" id="firstName" placeholder="First Name">
-                                                                        <div class="d-flex mb-3">
-                                                                            <input type="text" class="form-control " id="middleName" placeholder="Middle Name">
-                                                                            <input type="text" class="form-control ms-3" id="lastName" placeholder="Last Name">
-                                                                        </div>
-                                                                        <input type="text" class="form-control mb-3" id="managerEmail" placeholder="Email Address">
-                                                                        <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
-                                                                        <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
-                                                                        <div class="d-flex w-100 mb-3">
-                                                                            <input type="text" class="form-control me-2 " id="cityName" placeholder="City">
-                                                                            <div class="w-100 me-2">
-                                                                                <select class="form-select" id="formation-model">
-                                                                                    <option value="Entity Type">Select State</option>
-                                                                                    <option value="Client Subscription">Europe</option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
-                                                                        </div>
-                                                                        <div class="mt-3">
-                                                                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn">
-                                                                                ADD
-                                                                            </button>
-                                                                        </div>
-                                                                    </fieldset>
-                                                                    <div class="filledstate " style="display: none;">
-                                                                        <div class="inputsfilled d-flex justify-content-between">
-                                                                            <div>
-                                                                                <p class="groupName m-0 ">Adam Smith</p>
-                                                                                <p class="groupEmail m-0 mb-1 fw-normal ">adamsmith@xyz.com</p>
-                                                                                <p class="groupEmail m-0 fw-normal ">1234 Maple Street Springfield, IL 62704</p>
-                                                                            </div>
-                                                                            <div class="d-flex align-items-center">
-                                                                                <span class="icon icon-new-edit me-3 editUser"></span>
-                                                                                <span class="icon icon-new-delete m-0 deleteUser"></span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="mt-3">
-                                                                            <button type="button" class="btn btn-link addmorebtn " id="addMoreBtn">
-                                                                                <span class="icon icon-add-circle-plus"></span> Add
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                    
-                                                                <!-- Corporate Form (Initially Hidden) -->
-                                                                <div id="corporateForm" style="display: none;">
-                                                                    <fieldset class="">
-                                                                        <input type="text" class="form-control mb-3" id="" placeholder="Corporate Name">
-                                                                        <input type="text" class="form-control mb-3" id="" placeholder="Email Address">
-                                                                        <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
-                                                                        <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
-                                                                        <div class="d-flex w-100 mb-3">
-                                                                            <input type="text" class="form-control me-2 " id="" placeholder="City">
-                                                                            <div class="w-100 me-2">
-                                                                                <select class="form-select" id="formation-model">
-                                                                                    <option value="Entity Type">Select State</option>
-                                                                                    <option value="Client Subscription">Europe</option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <input type="text" class="form-control" id="" placeholder="Zipcode">
-                                                                        </div>
-                                                                        <div class="mt-3">
-                                                                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn">
-                                                                                ADD
-                                                                            </button>
-                                                                        </div>
-                                                                    </fieldset>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                           <!-- State 01 Specific Information Accordion -->
-                           <div class="accordion mb-3" id="accordionExample2">
-                            <div class="accordion-item m-0">
-                                <h2 class="accordion-header" id="headingTwo1">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                                        data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
-                                        State 01 Specific Information <span class="icon icon-entity-required ms-2"></span>
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo1" class="accordion-collapse collapse show border-0" aria-labelledby="headingTwo1">
-                                    <div class="accordion-body pt-0">
-                                        <fieldset>
-                                            <label class="form-label">Principal Address <span class="mandatory">*</span></label>
-                                            <input type="text" class="form-control mb-3" placeholder="Address Line 1">
-                                            <input type="text" class="form-control mb-3" placeholder="Address Line 2">
-                                            <div class="d-flex w-100 mb-3">
-                                                <input type="text" class="form-control me-2" placeholder="City">
-                                                <div class="w-100 me-2">
-                                                    <select class="form-select">
-                                                        <option value="">Select State</option>
-                                                        <option value="Europe">Europe</option>
-                                                    </select>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Zipcode">
-                                            </div>
-                        
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <span class="fw-bold">MAILING ADDRESS</span>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="form-check gap-2">
-                                                        <input class="form-check-input payment-method" type="checkbox" id="asapCheck1" checked>
-                                                        <label class="form-check-label fw-normal" for="asapCheck1">Same as Principal Address</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                      <!-- State 02 Specific Information Accordion -->
-
-                      <div class="accordion mb-3" id="accordionExample3">
-                        <div class="accordion-item m-0">
-                            <h2 class="accordion-header" id="headingThree1">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                                    data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
-                                    State 02 Specific Information <span class="icon icon-entity-required ms-2"></span>
-                                </button>
-                            </h2>
-                            <div id="collapseThree1" class="accordion-collapse collapse show border-0" aria-labelledby="headingThree1">
-                                <div class="accordion-body pt-0">
-                                    <fieldset>
-                                        <label class="form-label">Principal Address <span class="mandatory">*</span></label>
-                                        <input type="text" class="form-control mb-3" placeholder="Address Line 1">
-                                        <input type="text" class="form-control mb-3" placeholder="Address Line 2">
-                                        <div class="d-flex w-100 mb-3">
-                                            <input type="text" class="form-control me-2" placeholder="City">
-                                            <div class="w-100 me-2">
-                                                <select class="form-select">
-                                                    <option value="">Select State</option>
-                                                    <option value="Europe">Europe</option>
-                                                </select>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="Zipcode">
-                                        </div>
-                    
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span class="fw-bold">MAILING ADDRESS</span>
-                                            <div class="d-flex align-items-center">
-                                                <div class="form-check gap-2">
-                                                    <input class="form-check-input payment-method" type="checkbox" id="asapCheck2" checked>
-                                                    <label class="form-check-label fw-normal" for="asapCheck2">Same as Principal Address</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                        </div>
-                          <!-- Modal Body End -->
-              
-                          <div class="modal-footer">
-                              <div class="d-flex justify-content-between align-items-center w-100 m-0">
-                                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
-                                      data-bs-dismiss="modal">
-                                      CANCEL
-                                  </button>
-                                  <div class="d-flex align-items-center">
-                                    <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#NWEntity" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                        Back
-                                    </button>
-                                    <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#entityServices" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                        Next
-                                    </button>
-                                </div>
-                                  
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+<div class="container mt-4">
+    <div class="form-group">
+        <label class="fw-bold">Service Status:</label>
+        <div class="d-flex align-items-center">
+            <!-- Enabled Checkbox -->
+            <div class="form-check me-3">
+                <input class="form-check-input" type="checkbox" id="enabledCheck" checked>
+                <label class="form-check-label" for="enabledCheck">Enabled</label>
+            </div>
+            
+            <!-- Disabled Checkbox -->
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="disabledCheck">
+                <label class="form-check-label" for="disabledCheck">Disabled</label>
+            </div>
         </div>
+    </div>
 
+    <!-- Hidden Form -->
+    <div class="collapse mt-3" id="reasonForm">
+        <div class="card card-body">
+            <label for="reason" class="form-label">Reason for disabling:</label>
+            <input type="text" class="form-control" id="reason" placeholder="Enter reason">
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const enabledCheck = document.getElementById("enabledCheck");
+        const disabledCheck = document.getElementById("disabledCheck");
+        const reasonForm = document.getElementById("reasonForm");
+
+        // When Enabled is checked
+        enabledCheck.addEventListener("change", function () {
+            if (this.checked) {
+                disabledCheck.checked = false; // Uncheck "Disabled"
+                disabledCheck.disabled = true; // Disable "Disabled"
+                reasonForm.classList.remove("show"); // Hide form
+            } else {
+                disabledCheck.disabled = false; // Enable "Disabled"
+            }
+        });
+
+        // When Disabled is checked
+        disabledCheck.addEventListener("change", function () {
+            if (this.checked) {
+                enabledCheck.checked = false; // Uncheck "Enabled"
+                enabledCheck.disabled = true; // Disable "Enabled"
+                reasonForm.classList.add("show"); // Show form
+            } else {
+                enabledCheck.disabled = false; // Enable "Enabled"
+                reasonForm.classList.remove("show"); // Hide form
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
