@@ -11,7 +11,7 @@ google.charts.setOnLoadCallback(() => {
       ["Upcoming", 30],
       ["Unacknowledged", 10],
     ],
-    ["#E73B18", "#3498db", "#62539F"],
+    ["#E73B18", "#00B2EB", "#00BA70"],
     "78%",
     "78%"
   );
@@ -38,7 +38,7 @@ google.charts.setOnLoadCallback(() => {
       ["Sent", 5],
       ["Completed", 5],
     ],
-    ["#62539F", "#3498db", "#00BA70"],
+    ["#4744D1", "#00B2EB", "#00BA70"],
     "78%",
     "78%"
   );
@@ -62,13 +62,13 @@ function drawDonutChart(containerId, chartData, colors, width, height) {
       : { width: width, height: height };
 
   var options = {
-    pieHole: 0.5,
+    pieHole: 0.55,
     colors: colors,
     legend: "none",
     pieSliceText: "none",
     backgroundColor: "transparent",
     chartArea: chartAreaSize,
-    pieSliceBorderColor: "transparent",
+    pieSliceBorderColor: "#FFFFFF",
     tooltip: { trigger: "none" }, // Disable tooltip
   };
 
@@ -114,7 +114,7 @@ function redrawChart(chartId, width, height) {
       ["Upcoming", 30],
       ["Unacknowledged", 10],
     ];
-    colors = ["#E73B18", "#3498db", "#62539F"];
+    colors = ["#E73B18", "#00B2EB", "#00BA70"];
   } else if (chartId === "donut_chart_2") {
     chartData = [
       ["Task", "Count"],
@@ -131,7 +131,7 @@ function redrawChart(chartId, width, height) {
       ["Sent", 5],
       ["Completed", 5],
     ];
-    colors = ["#62539F", "#3498db", "#00BA70"];
+    colors = ["#4744D1", "#00B2EB", "#00BA70"];
   }
 
   drawDonutChart(chartId, chartData, colors, width, height);
@@ -382,37 +382,14 @@ function renderDotsTable1(data) {
 
 // group select dropdown
 document.addEventListener("DOMContentLoaded", function () {
-  const select = document.getElementById("groupSelect");
+  const maxLength = 50; // Maximum character limit
 
-  function getMaxCharacters(el) {
-      const span = Object.assign(document.createElement("span"), {
-          style: "visibility:hidden;position:absolute;white-space:nowrap;font:" + getComputedStyle(el).font
-      });
-      document.body.appendChild(span);
-
-      let maxChars = 0;
-      for (let i = 5; i <= 100; i++) {
-          span.textContent = "A".repeat(i);
-          if (span.offsetWidth > el.clientWidth - 20) break;
-          maxChars = i;
+  document.querySelectorAll("#groupSelect option").forEach(option => {
+      if (option.text.length > maxLength) {
+          option.text = option.text.substring(0, maxLength) + "...";
       }
-      document.body.removeChild(span);
-      return maxChars;
-  }
-
-  function applyTruncation() {
-      const maxLength = getMaxCharacters(select);
-      select.querySelectorAll("option").forEach(option => {
-          option.title = option.dataset.fullText || option.text;
-          option.textContent = option.title.length > maxLength ? option.title.slice(0, maxLength) + "..." : option.title;
-      });
-  }
-
-  select.querySelectorAll("option").forEach(option => option.dataset.fullText = option.text);
-  applyTruncation();
-  window.addEventListener("resize", applyTruncation);
+  });
 });
-
 
 
 
