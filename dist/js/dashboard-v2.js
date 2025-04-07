@@ -358,11 +358,11 @@ $(document).ready(function () {
               <td></td>
               <td>${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only for Domestic -->
               <td>${row.entity_name || d.entity_name}</td>
-              <td>${row.type || d.type}</td>
-              <td>${row.jurisdiction || d.jurisdiction}</td>
-              <td>${row.registrations || d.registrations}</td>
-              ${!hideDBAAndLicense ? `<td>${row.dbas ?? d.dbas}</td><td>${row.business_licenses ?? d.business_licenses}</td>` : ""}
-              <td><span class="badge badge-${row.status.class}">${row.status.label}</span></td>
+              <td class="fixed-max-width-150">${row.type || d.type}</td>
+              <td class="fixed-table-col-width">${row.jurisdiction || d.jurisdiction}</td>
+              <td class="fixed-table-col-width">${row.registrations || d.registrations}</td>
+              ${!hideDBAAndLicense ? `<td class="fixed-table-col-width">${row.dbas ?? d.dbas}</td><td class="fixed-max-width-150">${row.business_licenses ?? d.business_licenses}</td>` : ""}
+              <td class="fixed-max-width-150"><span class="badge badge-${row.status.class}">${row.status.label}</span></td>
           </tr>
       `).join("");
   }
