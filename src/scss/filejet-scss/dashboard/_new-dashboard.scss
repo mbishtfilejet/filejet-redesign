@@ -97,15 +97,7 @@
     height: 31px;
     border-radius: 100%;
 }
-.fixed-table-col-width-50{
-	width: 50px !important;
-}
-.fixed-table-col-width-100{
-	width: 100px !important;
-}
-.fixed-table-col-width-80{
-	width: 80px !important;
-}
+
 
   
   .sidebar-v2 {
@@ -149,7 +141,7 @@
   
   .group-search-d2 {
 	.form-select {
-	  background-size: 7px 10px !important;
+	  background-size: 12px 10px !important;
 	  background-image: url("../../../dist/images/icons/icon-angle-bottom.svg") !important;
 	}
   
@@ -576,6 +568,14 @@
 	  word-wrap: break-word;
 	  overflow-wrap: break-word;
 	}
+	th:nth-child(6),
+	td:nth-child(6) {
+	 width: 100px;
+	 min-width: 100px;
+	 white-space: normal;
+	 word-wrap: break-word;
+	 overflow-wrap: break-word;
+   }
 	.check-box-max-width {
 	  width: 50px;
 	}
@@ -656,6 +656,21 @@
    }
   
   .entity-regestration-card {
+	table{
+		.fixed-table-col-width-50{
+			width: 50px !important;
+		}
+		.fixed-table-col-width-100{
+			width: 100px !important;
+		}
+		.fixed-table-col-width-80{
+			width: 80px !important;
+		}
+		.fixed-table-col-width-120{
+			width: 80px !important;
+		}
+
+	}
 	.entity-card-table {
 	  overflow: unset !important;
 	}
@@ -788,12 +803,12 @@
 	 th:nth-child(2),
    td:nth-child(2) {
 	  width: 100px !important;
-	  min-width: 100px;
+	  min-width: 150px;
 	}
 	 th:nth-child(3),
 	 td:nth-child(3) {
 	  width: 150px;
-	  min-width: 150px;
+	  min-width: 190px;
 	}
   
   
@@ -908,6 +923,12 @@
 	border-bottom: 2px solid #dee2e6;
   
   }
+  @-moz-document url-prefix() {
+	#groupSelect {
+	  border-width: 0px !important;
+	  padding: 8px 12px !important;
+	}
+  }
   
   }
   
@@ -999,10 +1020,15 @@
   /* professional dashboard css end */
   
   @media (min-width: 1600px){
-    .main-dashboard-v2 .open-order-table th:nth-child(4),
+	.main-dashboard-v2 .open-order-table th:nth-child(3),
+    .main-dashboard-v2 .open-order-table td:nth-child(3) {
+      max-width: 80px;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
     .main-dashboard-v2 .open-order-table th:nth-child(5),
     .main-dashboard-v2 .open-order-table th:nth-child(7),
-    .main-dashboard-v2 .open-order-table td:nth-child(4),
     .main-dashboard-v2 .open-order-table td:nth-child(5),
     .main-dashboard-v2 .open-order-table td:nth-child(7) {
       max-width: 60px ;
@@ -1010,6 +1036,15 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
+	.main-dashboard-v2 .open-order-table th:nth-child(4),
+	.main-dashboard-v2 .open-order-table td:nth-child(4){
+		max-width: 40px ;
+		white-space: normal;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+
+
     .main-dashboard-v2 .open-order-table th:nth-child(6),
     .main-dashboard-v2 .open-order-table td:nth-child(6) {
       max-width: 90px;
@@ -1032,14 +1067,17 @@
       overflow-wrap: break-word;
     }
 
-    .entity-regestration-card .tabel .fixed-table-col-width-50  {
-        max-width: 30px !important;
-      }
-      .entity-regestration-card .table .fixed-table-col-width-100 {
-        max-width: 70px !important;
-      }
-      .entity-regestration-card .table .fixed-table-col-width-80 {
-        max-width: 50px !important;
-      }
-  
+	.main-dashboard-v2 .entity-regestration-card table .fixed-table-col-width-50 {
+		max-width: 20px !important;
+	  }
+	  .main-dashboard-v2 .entity-regestration-card table .fixed-table-col-width-100 {
+		max-width: 80px !important;
+	  }
+	  .main-dashboard-v2 .entity-regestration-card table .fixed-table-col-width-80 {
+		max-width: 60px !important;
+	  }
+	  .main-dashboard-v2 .entity-regestration-card table .fixed-table-col-width-120 {
+		max-width: 80px !important;
+	  }
+
   }
