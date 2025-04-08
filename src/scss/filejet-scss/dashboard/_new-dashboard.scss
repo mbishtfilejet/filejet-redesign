@@ -97,9 +97,16 @@
     height: 31px;
     border-radius: 100%;
 }
-.fixed-table-col-width{
-	width: 100px;
+.fixed-table-col-width-50{
+	width: 50px !important;
 }
+.fixed-table-col-width-100{
+	width: 100px !important;
+}
+.fixed-table-col-width-80{
+	width: 80px !important;
+}
+
   
   .sidebar-v2 {
 	.menu-link .nav-link.active a {
@@ -130,9 +137,9 @@
 	}
   }
   .custom-select:focus {
-	border-color: var(--bs-purple-indigo);
-	background-color: var(--bs-purple-indigo); 
-	color: #fff;
+	outline: none;
+    background-color: #d3d3d3;
+    color: #000;
   }
   
   .custom-select option {
@@ -364,7 +371,7 @@
 		.list-group-flush>.list-group-item{
 		  border: 0px;
 		  display: flex;
-		  align-items: flex-start;
+		  align-items: center;
 	  
 		}
   
@@ -987,12 +994,52 @@
 	  z-index: 3;
 	}
   
-	.custom-select:focus {
-	  border-color: var(--bs-pro-blue);
-	  background-color: var(--bs-pro-blue);
-	}
-  
   
   }
   /* professional dashboard css end */
   
+  @media (min-width: 1600px){
+    .main-dashboard-v2 .open-order-table th:nth-child(4),
+    .main-dashboard-v2 .open-order-table th:nth-child(5),
+    .main-dashboard-v2 .open-order-table th:nth-child(7),
+    .main-dashboard-v2 .open-order-table td:nth-child(4),
+    .main-dashboard-v2 .open-order-table td:nth-child(5),
+    .main-dashboard-v2 .open-order-table td:nth-child(7) {
+      max-width: 60px ;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .main-dashboard-v2 .open-order-table th:nth-child(6),
+    .main-dashboard-v2 .open-order-table td:nth-child(6) {
+      max-width: 90px;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .main-dashboard-v2 .open-order-table th:nth-child(8),
+    .main-dashboard-v2 .open-order-table td:nth-child(8) {
+      max-width: 110px;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .main-dashboard-v2 .open-order-table th:nth-child(9),
+    .main-dashboard-v2 .open-order-table td:nth-child(9) {
+      max-width: 70px;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .entity-regestration-card .tabel .fixed-table-col-width-50  {
+        max-width: 30px !important;
+      }
+      .entity-regestration-card .table .fixed-table-col-width-100 {
+        max-width: 70px !important;
+      }
+      .entity-regestration-card .table .fixed-table-col-width-80 {
+        max-width: 50px !important;
+      }
+  
+  }
