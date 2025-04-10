@@ -382,13 +382,31 @@ function renderDotsTable1(data) {
 
 // group select dropdown
 document.addEventListener("DOMContentLoaded", function () {
-  const maxLength = 50; // Maximum character limit
-
-  document.querySelectorAll("#groupSelect option").forEach(option => {
-      if (option.text.length > maxLength) {
-          option.text = option.text.substring(0, maxLength) + "...";
+  const select = document.getElementById("groupSelect");
+  function getMaxCharacters(el) {
+      const span = Object.assign(document.createElement("span"), {
+          style: "visibility:hidden;position:absolute;white-space:nowrap;font:" + getComputedStyle(el).font
+      });
+      document.body.appendChild(span);
+      let maxChars = 0;
+      for (let i = 5; i <= 100; i++) {
+          span.textContent = "A".repeat(i);
+          if (span.offsetWidth > el.clientWidth - 20) break;
+          maxChars = i;
       }
-  });
+      document.body.removeChild(span);
+      return maxChars;
+  }
+  function applyTruncation() {
+      const maxLength = getMaxCharacters(select);
+      select.querySelectorAll("option").forEach(option => {
+          option.title = option.dataset.fullText || option.text;
+          option.textContent = option.title.length > maxLength ? option.title.slice(0, maxLength) + "..." : option.title;
+      });
+  }
+  select.querySelectorAll("option").forEach(option => option.dataset.fullText = option.text);
+  applyTruncation();
+  window.addEventListener("resize", applyTruncation);
 });
 
 
