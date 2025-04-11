@@ -122,47 +122,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // manager individual and corporate function function start
 document.addEventListener("DOMContentLoaded", function () {
-    const individualRadio = document.getElementById("individual");
-    const corporateRadio = document.getElementById("corporate");
-    const individualForm = document.getElementById("individualForm");
-    const corporateForm = document.getElementById("corporateForm");
-
-    function toggleManagerForm() {
-        if (individualRadio.checked) {
-            individualForm.style.display = "block";
-            corporateForm.style.display = "none";
-        } else {
-            individualForm.style.display = "none";
-            corporateForm.style.display = "block";
-        }
+    // Function to toggle the display of forms based on the selected radio button
+    function toggleForms(event) {
+      const targetFormId = event.target.getAttribute("data-target");
+      const targetForm = document.getElementById(targetFormId);
+  
+      // Hide all forms within the same radio group
+      const radioGroup = event.target.closest('.radio-group');
+      const allForms = radioGroup.nextElementSibling.querySelectorAll('.toggle-form');
+      allForms.forEach(form => {
+        form.style.display = "none";
+      });
+  
+      // Show the target form
+      if (targetForm) {
+        targetForm.style.display = "block";
+      }
     }
-
-    individualRadio.addEventListener("change", toggleManagerForm);
-    corporateRadio.addEventListener("change", toggleManagerForm);
-});
-
-
-// service enable disable form
-document.addEventListener("DOMContentLoaded", function() {
-        const serviceSections = document.querySelectorAll(".d-flex.align-items-center");
-
-        serviceSections.forEach(section => {
-            const enableCheck = section.querySelector(".enable-check");
-            const disableCheck = section.querySelector(".disable-check");
-
-            enableCheck.addEventListener("change", function() {
-                if (this.checked) {
-                    disableCheck.checked = false;
-                }
-            });
-
-            disableCheck.addEventListener("change", function() {
-                if (this.checked) {
-                    enableCheck.checked = false;
-                }
-            });
-        });
+  
+    // Attach event listeners to all radio buttons with the class 'toggle-radio'
+    const radioButtons = document.querySelectorAll(".toggle-radio");
+    radioButtons.forEach(radio => {
+      radio.addEventListener("change", toggleForms);
     });
+  
+    // Initialize the forms' display state
+    radioButtons.forEach(radio => {
+      if (radio.checked) {
+        radio.dispatchEvent(new Event('change'));
+      }
+    });
+  });
+  
+
 
 
 
