@@ -282,6 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
             case "orderJurisdictionContainer":
                 return "Jurisdictions";
             case "taskContainer":
+              return "Tasks";
             case "orderTaskContainer":
                 return "Service";
             case "entityStatusContainer":
