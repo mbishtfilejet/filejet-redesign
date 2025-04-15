@@ -46,19 +46,7 @@ $(document).ready(function() {
   });
 });
 
-$(document).ready(function() {
-  $('#addIndividual').on("change", function() {
-      if (this.checked) {
-          $('#addCompany').prop("checked", false); // Uncheck "Company"
-      }
-  });
 
-  $('#addCompany').on("change", function() {
-      if (this.checked) {
-          $('#addIndividual').prop("checked", false); // Uncheck "Individual"
-      }
-  });
-});
 
 
 // edit form start
@@ -129,7 +117,7 @@ $(document).ready(function () {
     });
   });
 
-
+// toggle between entity services page start
 
   document.querySelectorAll('input[name="registeredAgentStatus"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
@@ -139,10 +127,17 @@ $(document).ready(function () {
     });
   });
 
-  // Optional: Trigger the change event on page load to initialize visibility
-  document.querySelector('input[name="registeredAgentStatus"]:checked').dispatchEvent(new Event('change'));
 
-  
+// toggle between all checkbox start
+ document.querySelectorAll('.single-check').forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+      if (this.checked) {
+        document.querySelectorAll('.single-check').forEach(cb => {
+          if (cb !== this) cb.checked = false;
+        });
+      }
+    });
+  });
 
   
 

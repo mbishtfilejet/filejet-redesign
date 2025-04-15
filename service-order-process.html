@@ -316,7 +316,7 @@
                                 <div class="col-12 col-lg-3 px-1 mb-2">
                                     <div>
                                     <button data-bs-toggle="modal" data-bs-target="#NWGroup" type="button"
-                                    class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none text-placeholder-d2 ">
+                                    class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-2 py-3 py-md-2 text-decoration-none text-placeholder-d2 ">
                                  New Group                                          
                                  <span class="icon icon-arrow-forward-black icon-smd m-0 opacity-50"></span>
                                  </button>
@@ -326,7 +326,7 @@
                                 <div class="col-12 col-lg-3 px-1 mb-2">
                                     <div>
                                         <button data-bs-toggle="modal" data-bs-target="#NWEntity" type="button"
-                                    class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none text-placeholder-d2 ">
+                                    class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-2 py-3 py-md-2 text-decoration-none text-placeholder-d2 ">
                                  New Entity Registration                                          
                                  <span class="icon icon-arrow-forward-black icon-smd m-0 opacity-50"></span>
                                  </button>
@@ -1668,11 +1668,11 @@
                                  <span class="fw-bold">ACCOUNT TYPE</span>
                                  <div class="d-flex align-items-center">
                                     <div class="form-check gap-2 me-3">
-                                       <input class="form-check-input payment-method" type="checkbox" id="addIndividual" checked>
+                                       <input class="form-check-input payment-method single-check" type="checkbox" id="addIndividual" checked>
                                        <label class="form-check-label fw-normal" for="individual">Individual</label>
                                     </div>
                                     <div class="form-check gap-2">
-                                       <input class="form-check-input payment-method" type="checkbox" id="addCompany">
+                                       <input class="form-check-input payment-method single-check" type="checkbox" id="addCompany">
                                        <label class="form-check-label fw-normal text-capitalize" for="company">Company</label>
                                     </div>
                                  </div>
@@ -1942,6 +1942,21 @@
                <!-- Modal Header Ends -->
                <!-- Modal Body Start-->
                <div class="modal-body">
+                <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                       <span class="fw-bold">FORMATION TYPE</span>
+                       <div class="d-flex align-items-center">
+                          <div class="form-check gap-2 me-3">
+                             <input class="form-check-input single-check" type="checkbox" id="asapheck" checked="">
+                             <label class="form-check-label  fw-normal" for="asap">Home</label>
+                          </div>
+                          <div class="form-check gap-2">
+                             <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
+                             <label class="form-check-label  fw-normal text-capitalize" for="future date">Foreign</label>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
                   <div class="accordion" id="accordionExample">
                      <div class="accordion-item m-0">
                         <h2 class="accordion-header" id="headingOne">
@@ -1971,7 +1986,7 @@
                                        </div>
                                     </fieldset>
                                     <fieldset>
-                                       <label for="entityType-model" class="form-label">Entity Type </label>
+                                       <label for="entityType-model" class="form-label">Entity Type <span class="mandatory">*</span></label>
                                        <div class="custom-dropdown">
                                           <select class="form-select" id="entityType-model">
                                              <option value="Account Default">Account Default</option>
@@ -1990,11 +2005,11 @@
                         <span class="fw-bold">DATE TO FILE</span>
                         <div class="d-flex align-items-center">
                            <div class="form-check gap-2 me-3">
-                              <input class="form-check-input payment-method" type="checkbox" id="asapheck" checked>
+                              <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
                               <label class="form-check-label fw-normal" for="asap">ASAP</label>
                            </div>
                            <div class="form-check gap-2">
-                              <input class="form-check-input payment-method" type="checkbox" id="FuturedateCheck">
+                              <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
                               <label class="form-check-label fw-normal text-capitalize" for="future date">Future Date</label>
                            </div>
                         </div>
@@ -2267,11 +2282,11 @@
                                     <span class="fw-bold">USE CUSTOM ARTICLES </span>
                                     <div class="d-flex align-items-center">
                                        <div class="form-check gap-2 me-3">
-                                          <input class="form-check-input payment-method" type="checkbox" id="asapheck" checked>
+                                          <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
                                           <label class="form-check-label fw-normal" for="asap">No</label>
                                        </div>
                                        <div class="form-check gap-2">
-                                          <input class="form-check-input payment-method" type="checkbox" id="FuturedateCheck">
+                                          <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
                                           <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
                                        </div>
                                     </div>
@@ -2561,10 +2576,6 @@
                                         <input type="text" class="form-control mb-4" id="" placeholder="Enter type of services">
                                      </div>
                                      <div>
-                                        <label for="" class="form-label w-100">Type of business services</label>
-                                        <input type="text" class="form-control mb-4" id="" placeholder="Enter type of services">
-                                     </div>
-                                     <div>
                                         <label for="" class="form-label w-100">Number of members of LLC</label>
                                         <input type="text" class="form-control mb-4" id="" placeholder="Number of members">
                                      </div>
@@ -2572,23 +2583,23 @@
                                         <label for="" class="form-label w-100">Members Husband or Wife</label>
                                         <input type="text" class="form-control mb-4" id="" placeholder="Multi-Member LLC">
                                      </div>
-                                     <div class="d-flex justify-content-between align-items-center mb-4">
-                                        <div class="d-flex align-items-center">
-                                        <span class="fw-bold text-uppercase">Has the applicant ever <br> applied for an EIN before</span>
-                                        <span class="icon icon-outline-info  m-0"></span>
-                                        </div>
+                                        <div class="d-flex align-items-start justify-content-between mb-4">
+                                            <div class="d-flex ">
+                                                <span class="fw-bold text-uppercase">Has the applicant ever applied<br>for an EIN before</span>
+                                                <span class="icon icon-outline-info m-0"></span>
+                                            </div>
                                         
                                         <div class="d-flex align-items-center">
                                             <div class="form-check gap-2 me-3">
-                                               <input class="form-check-input payment-method" type="checkbox" id="asapheck" checked>
+                                               <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
                                                <label class="form-check-label fw-normal" for="asap">Yes</label>
                                             </div>
                                             <div class="form-check gap-2">
-                                               <input class="form-check-input payment-method" type="checkbox" id="FuturedateCheck">
+                                               <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
                                                <label class="form-check-label fw-normal text-capitalize" for="future date">No</label>
                                             </div>
                                          </div>
-                                     </div>
+                                        </div>
                                      <div>
                                         <label for="" class="form-label w-100">Legal Name</label>
                                         <input type="text" class="form-control mb-4" id="" placeholder="Legal Name">
@@ -2820,12 +2831,12 @@
                         CANCEL
                         </button>
                         <div class="d-flex align-items-center">
-                           <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#entityDetail" data-bs-toggle="modal" data-bs-dismiss="modal">
+                           <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#entityServices" data-bs-toggle="modal" data-bs-dismiss="modal">
                            Back
                            </button>
-                           <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#entitySummery" data-bs-toggle="modal" data-bs-dismiss="modal">
-                           Next
-                           </button>
+                           <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="submitBtn" data-bs-target="#" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            Submit
+                            </button>
                         </div>
                      </div>
                   </div>
