@@ -671,22 +671,7 @@
    }
   
   .entity-regestration-card {
-	table{
-		.fixed-table-col-width-50{
-			width: 50px !important;
-		}
-		.fixed-table-col-width-100{
-			width: 100px !important;
-		}
-		.fixed-table-col-width-80{
-			width: 80px !important;
-		}
-		.fixed-table-col-width-120{
-			width: 115px !important;
-		}
 		
-
-	}
 	.entity-card-table {
 	//   overflow: unset !important;
 	}
@@ -1086,28 +1071,37 @@
       overflow-wrap: break-word;
     }
 
-	.main-dashboard-v2 .entity-regestration-card table .fixed-table-col-width-50 {
-		max-width: 20px !important;
-	  }
-	  .main-dashboard-v2 .entity-regestration-card table .fixed-table-col-width-100 {
-		max-width: 90px !important;
-	  }
-	  .main-dashboard-v2 .entity-regestration-card table .fixed-table-col-width-80 {
-		max-width: 60px !important;
-	  }
-	  .main-dashboard-v2 .entity-regestration-card table .fixed-table-col-width-120 {
-		max-width: 80px !important;
-	  }
+	.main-dashboard-v2 .entity-regestration-card table{
+        table-layout: fixed;
+      }
+    .table {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+    .main-dashboard-v2 .entity-registrations-table th,
+      .main-dashboard-v2 .entity_registrations_table td {
+        padding: 8px;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    .main-dashboard-v2 .entity-registrations-table th:nth-child(2),
+    .main-dashboard-v2 .entity-registrations-table td:nth-child(2)
+    {
+        width: 15% !important; /* 25% each for the first two columns = 50% total */
+    }
+    .main-dashboard-v2 .entity-registrations-table th:nth-child(3),
+    .main-dashboard-v2 .entity-registrations-table td:nth-child(3)
+    {
+        width: 35% !important; /* 25% each for the first two columns = 50% total */
+    }
+    .main-dashboard-v2 .entity-registrations-table th:nth-child(n+4),
+    .main-dashboard-v2 .entity-registrations-table td:nth-child(n+4)
+    {
+        width: calc(50% / 5) !important;
+    }
 
 
   }
-  .entity-table-v2 .dataTables_wrapper .dataTable thead th.sorting {
-    text-transform: capitalize !important;
-  }
 
-//  @media (min-width: 1300px){
-// 	.main-dashboard-v2 .entity-regestration-card table{
-// 		table-layout: fixed;
-// 	  }
-
-//   } 

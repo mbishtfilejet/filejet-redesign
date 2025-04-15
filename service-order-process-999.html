@@ -7,6 +7,7 @@
     <title>File Jet: Dashboard</title>
     <!-- Styles -->
     <link rel="stylesheet" href="src/scss/filejet-style.css">
+    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <!-- Scripts -->
     <script src="dist/js/jquery.min.js"></script>
@@ -242,8 +243,8 @@
                             <div class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
                                 
                                 <div class= "filter2-dropdown w-50 me-3 group-search-d2 shadow-sm rounded border border-dark">
-                                        <select class="form-select w-100 p-2 px-3 m-0 rounded custom-select" id="groupSelect" >
-                                            <option value="" hidden selected>Group</option>
+                                        <select class="form-select w-100 p-2 px-3 m-0 custom-select" id="groupSelect" >
+                                            <option class="customv2-option" value="" disabled selected>Group</option>
                                             <option value="1">All</option>
                                             <option value="2">Unassigned</option>
                                             <option value="3">Rachel Feder</option>
@@ -309,151 +310,145 @@
                 </div>
                 <div class="container-fluid container-lg">
                     <div class="main-content pt-3">
-                        <!-- Quick Action Start -->
-                        <div class="d-flex flex-column p-3 border rounded-4 flex-wrap quick-actions">
-                            <div class="m-0 text-light">Quick Actions</div>
-                            <div class="row px-2 mt-3 actions">
-                                <div class="col-12 col-lg-3 px-1 mb-2">
-                                    <div>
-                                    <button data-bs-toggle="modal" data-bs-target="#NWGroup" type="button"
-                                    class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none text-placeholder-d2 ">
+                     <!-- Quick Action Start -->
+                     <div class="d-flex flex-column p-3 border rounded-4 flex-wrap quick-actions">
+                        <div class="m-0 text-light">Quick Actions</div>
+                        <div class="row px-2 mt-3 actions">
+                           <div class="col-12 col-lg-3 px-1 mb-2">
+                              <div>
+                                 <button data-bs-toggle="modal" data-bs-target="#NWGroup" type="button"
+                                    class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none ">
                                  New Group                                          
                                  <span class="icon icon-arrow-forward-black icon-smd m-0 opacity-50"></span>
                                  </button>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-lg-3 px-1 mb-2">
-                                    <div>
-                                        <button data-bs-toggle="modal" data-bs-target="#NWEntity" type="button"
-                                    class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none text-placeholder-d2 ">
+                              </div>
+                           </div>
+                           <div class="col-12 col-lg-3 px-1 mb-2">
+                              <div>
+                                 <button data-bs-toggle="modal" data-bs-target="#NWEntity" type="button"
+                                    class="border border-1 rounded-2 w-100 m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none ">
                                  New Entity Registration                                          
                                  <span class="icon icon-arrow-forward-black icon-smd m-0 opacity-50"></span>
                                  </button>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-lg-3 px-1 mb-2">
-                                    <div>
-                                        <a href="./additional-services.html" class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-2 py-3 py-md-2 text-decoration-none ">
-                                            <span class="text-placeholder-d2">Add Existing Entity</span>
-                                            <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-lg-3 px-1 mb-2">
-                                    <div class="dropdown group-search-d2">
-                                        <button class="btn btn-custom dropdown-toggle w-100 text-placeholder-d2 border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-2 py-3 py-md-2 text-decoration-none " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Other</button>
-                                        <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                            <!-- Options -->
-                                            
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Request Certificate of Standing</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Appoint Filejet as Registered Agent</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Dissolve entity</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Add Existing DBA|FBN</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Amendments</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Restate</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Corrections</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center  justify-content-between border-bottom">
-                                                        <span class="other-placeholder">EIN</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">25102f
-                                                        </span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Merger
-                                                        </span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Document Retrievals</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                                        <span class="other-placeholder">Business license renewal</span>
-                                                        <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            
-                                        </ul>
-                                      </div>
-                                </div>
-
-                            </div>
+                              </div>
+                           </div>
+                           <div class="col-12 col-lg-3 px-1 mb-2">
+                              <div>
+                                 <a href="./additional-services.html" class="border border-1 rounded-2  m-0 white-bg d-flex align-items-center justify-content-between px-3 py-3 py-md-2 text-decoration-none ">
+                                 <span class="text-placeholder-d2">Add Existing Entity</span>
+                                 <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="col-12 col-lg-3 px-1 mb-2">
+                              <div class="group-search-d2 dropdown border border-1 rounded-2  m-0 white-bg">
+                                 <button class="btn btn-custom dropdown-toggle w-100 py-1 d-flex align-items-center justify-content-between" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Other</button>
+                                 <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                                    <!-- Options -->
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Request Certificate of Standing</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Appoint Filejet as Registered Agent</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Dissolve entity</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Add Existing DBA|FBN</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Amendments</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Restate</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Corrections</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center  justify-content-between border-bottom">
+                                          <span class="other-placeholder">EIN</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">25102f
+                                          </span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Merger
+                                          </span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Document Retrievals</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div>
+                                          <a href="" class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          <span class="other-placeholder">Business license renewal</span>
+                                          <span class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                          </a>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
                         </div>
-                        <!-- Quick Action  End -->
+                     </div>
+                     <!-- Quick Action  End -->
 
 
                        <!-- Card Start -->
@@ -469,7 +464,7 @@
                                                 <div class="card-headerd2 m-0 p-2 px-3 d-flex justify-content-between align-items-center">
                                                 <span>Open Tasks</span>
                                                 <span class="icon icon-angle-bottom  opacity-50 m-0"></span>
-                                                <span class="icon icon-angle-top-white-1  m-0"></span>
+                                                <span class="icon icon-angle-top-white  m-0"></span>
                                                 </div>
                                                 
 
@@ -520,7 +515,7 @@
                                                 <div class="card-headerd2 m-0 p-2 px-3 d-flex justify-content-between align-items-center">
                                                     <span>Entity Registrations</span>
                                                     <span class="icon icon-angle-bottom opacity-50 m-0"></span>
-                                                    <span class="icon icon-angle-top-white-1  m-0"></span>
+                                                    <span class="icon icon-angle-top-white  m-0"></span>
                                                     </div>
 
                                                 <div class="chart-container d-flex justify-content-center align-items-center w-100 mt-4">
@@ -553,9 +548,9 @@
                                                   </div>
                                                 <div class="d-flex px-3 align-items-top justify-content-between  col-12 col-sm-12 col-lg-12">
                                                     <div class="col-12 col-sm-10 col-lg-12">
-                                                        <span class=" text-capitalize text-dark">Additional Services</span>
+                                                        <span class=" text-capitalize">Additional Services</span>
                                                         <ul class="list-group list-group-flush text-capitalize d-flex flex-row justify-content-between flex-wrap " >
-                                                            <li class="additional-dot  list-group-item d-flex align-items-center px-0 py-1 border-0 bg-transparent" aria-selected="false" tabindex="-1" role="tab">
+                                                            <li class="additional-dot list-group-item d-flex align-items-center px-0 py-1 border-0 bg-transparent" aria-selected="false" tabindex="-1" role="tab">
                                                                 <!-- <span class=" meta-blue-bg rounded-circle overflow-hidden circle me-2"></span> -->
                                                                 <span>47 Business Licenses</span>
                                                                 <span class="icon icon-status icon-smd opacity-50 m-0"></span>
@@ -585,7 +580,7 @@
                                                 <div class="card-headerd2 m-0 p-2 px-3 d-flex justify-content-between align-items-center">
                                                     <span>Order Status</span>
                                                     <span class="icon icon-angle-bottom opacity-50 m-0"></span>
-                                                    <span class="icon icon-angle-top-white-1  m-0"></span>
+                                                    <span class="icon icon-angle-top-white  m-0"></span>
                                                     </div>
 
                                                 <div class="chart-container d-flex justify-content-center align-items-center w-100 mt-4">
@@ -636,7 +631,7 @@
                                         </div>
         
                                         <div class="filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2 dropdown ">
-                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg " id="jurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg " id="jurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <input type="text" class="search-input" id="jurisdictionSearch" placeholder="Jurisdictions" autocomplete="off">
                                             </div>
                                             <ul class="dropdown-menu" id="jurisdictionDropdown">
@@ -656,7 +651,7 @@
                                         </div>
                                         
                                         <div class="filter2-dropdown col-12 col-lg-3 task-table-col px-1 mb-2 dropdown">
-                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="taskContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="taskContainer" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <input type="text" class="search-input" id="taskSearch" placeholder="Tasks" autocomplete="off">
                                             </div>
                                             <ul class="dropdown-menu" id="taskDropdown">
@@ -667,7 +662,7 @@
                                         </div>
                                         
                                         <div class="filter2-dropdown col-12 col-lg-3 status-table-col px-1 mb-2 dropdown">
-                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <input type="text" class="search-input" id="statusSearch" placeholder="Status" autocomplete="off">
                                             </div>
                                             <ul class="dropdown-menu" id="statusDropdown">
@@ -687,52 +682,52 @@
                                         </div>
                                     </div>
                                     <div class="card-table-d2 mt-2 border rounded-2">
-                                        <table id="ra-detail-table" class="open-order-table table table-striped w-100 table-nowrap data-table-listing table-v2-scroll">
+                                        <table id="ra-detail-table" class="table table-striped w-100 table-nowrap data-table-listing table-v2-scroll">
                                             <thead>
                                                 <tr>
                                                     <th>Group</th>
                                                     <th>Entity Name</th>
-                                                    <th >Jurisdiction</th>
-                                                    <th >Type</th>
-                                                    <th >Registration</th>
-                                                    <th >Task</th>
-                                                    <th >Due Date</th>
-                                                    <th >Status</th>
+                                                    <th>Jurisdiction<span class="text-light">....</span></th>
+                                                    <th>Type</th>
+                                                    <th>Registration<span class="text-light">....</span></th>
+                                                    <th>Task<span class="text-light">..............</span></th>
+                                                    <th>Due Date<span class="text-light">....</span></th>
+                                                    <th>Status</th>
                                                     <th data-orderable="false">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr class="even">
-                                                    <td>CNY Accountants & Consultants</td>
-                                                    <td>KK RENEWAL HOLDINGS CORP
+                                                    <td class="fixed-max-width">CNY Accountants & Consultants</td>
+                                                    <td class="fixed-max-width">KK RENEWAL HOLDINGS CORP
                                                     </td>
-                                                    <td>DE</td>
-                                                    <td>Non Profit</td>
-                                                    <td>Domestic</td>
-                                                    <td>Annual Report</td>
-                                                    <td>10/09/2024</td>
-                                                    <td>
+                                                    <td class="fixed-max-width">DE</td>
+                                                    <td class="fixed-max-width">Non Profit Corporation</td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">Annual Report</td>
+                                                    <td class="fixed-max-width">10/09/2024</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 red-bg rounded-pill">
                                                             <span class="icon icon-circular  icon-alert-light icon-md"></span>
                                                             <span class="text-light  mb-0">Overdue</span>
                                                         </div>
                                                     </td>
-                                                    <td>    
+                                                    <td class="fixed-max-width">    
                                                         <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">Take action</a>
                                                     </td>
                                                 </tr>
                                                 <tr class="odd">
-                                                    <td >AIC CAPITAL V V MANAGER - Terminated</td>
-                                                    <td >DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION
+                                                    <td class="fixed-max-width">AIC CAPITAL V V MANAGER - Terminated</td>
+                                                    <td class="fixed-max-width">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION
                                                     </td>
-                                                    <td >CA</td>
-                                                    <td >LLC</td>
-                                                    <td >Domestic</td>
-                                                    <td >SOP</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">CA</td>
+                                                    <td class="fixed-max-width">LLC</td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">SOP</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 green-bg rounded-pill">
-                                                            <span class="icon icon-circular icon-unknowledged-1  icon-md"></span>
+                                                            <span class="icon icon-circular icon-unknowledged icon-md"></span>
                                                             <span class="text-light  mb-0">Unacknowledged</span>
                                                         </div>
                                                     </td>
@@ -741,15 +736,15 @@
                                              </td>
                                                 </tr>
                                                 <tr class="even">
-                                                    <td >Christopher Law Group, Inc.</td>
-                                                    <td>Pikewood Group, LLC
+                                                    <td class="fixed-max-width-150">Christopher Law Group, Inc.</td>
+                                                    <td class="fixed-max-width-150 sorting_1">Pikewood Group, LLC
                                                     </td>
-                                                    <td >CA</td>
-                                                    <td >Corp.</td>
-                                                    <td >Foreign</td>
-                                                    <td >Prepare and File Entity Documents</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">CA</td>
+                                                    <td class="fixed-max-width">Profit Corporation</td>
+                                                    <td class="fixed-max-width">Foreign</td>
+                                                    <td class="fixed-max-width">Prepare and File Entity Documents</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
                                                             <span class="icon icon-circular icon-status-upcoming icon-md"></span>
                                                             <span class="text-light mb-0">Upcoming</span>
@@ -760,53 +755,53 @@
                                              </td>
                                                 </tr>
                                                 <tr class="odd">
-                                                    <td >Burkhalter Kessler Clement & George LLP </td>
-                                                    <td >RASA Realty LLC
+                                                    <td class="fixed-max-width">Burkhalter Kessler Clement & George LLP </td>
+                                                    <td class="fixed-max-width">RASA Realty LLC
                                                     </td>
-                                                    <td >DE</td>
-                                                    <td >LLP</td>
-                                                    <td >Domestic</td>
-                                                    <td >Annual Report</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">DE</td>
+                                                    <td class="fixed-max-width">LLP</td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">Annual Report</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 voilet-bg rounded-pill">
-                                                            <span class="icon icon-circular icon-status-future-1  icon-md"></span>
+                                                            <span class="icon icon-circular icon-status-future icon-md"></span>
                                                             <span class="text-light  mb-0">Future</span>
                                                         </div>
                                                     </td>
-                                                    <td >    
+                                                    <td class="fixed-max-width">    
                                                         <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">Take action</a>
                                                     </td>
                                                 </tr>
                                                 <tr class="even">
-                                                    <td >Kurtz, Anderson and Associates</td>
-                                                    <td >MARKSET FUND I -01-SERIES 1 L.L.C.,
+                                                    <td class="fixed-max-width">Kurtz, Anderson and Associates</td>
+                                                    <td class="fixed-max-width">MARKSET FUND I -01-SERIES 1 L.L.C.,
                                                     </td>
-                                                    <td >DE</td>
-                                                    <td >Non Profit</td>
-                                                    <td >Domestic</td>
-                                                    <td >SOP</td>
-                                                    <td >10/09/2024</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">DE</td>
+                                                    <td class="fixed-max-width">Non Profit Corporation</td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">SOP</td>
+                                                    <td class="fixed-max-width">10/09/2024</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 green-bg rounded-pill">
                                                             <span class="icon icon-circular  icon-unknowledged  icon-md"></span>
                                                             <span class="text-light  mb-0">Unacknowledged</span>
                                                         </div>
                                                     </td>
-                                                    <td >    
+                                                    <td class="fixed-max-width">    
                                                         <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">Take action</a>
                                                     </td>
                                                 </tr>
                                                 <tr class="odd">
-                                                    <td >Natomas Labs, Inc. (Villa Homes)</td>
-                                                    <td >EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP
+                                                    <td class="fixed-max-width">Natomas Labs, Inc. (Villa Homes)</td>
+                                                    <td class="fixed-max-width">EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP
                                                     </td>
-                                                    <td >CA</td>
-                                                    <td >LLC</td>
-                                                    <td >Domestic</td>
-                                                    <td >Registered Agent</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">CA</td>
+                                                    <td class="fixed-max-width">LLC</td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">Registered Agent</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 red-bg rounded-pill">
                                                             <span class="icon icon-circular icon-alert-light icon-md"></span>
                                                             <span class="text-light  mb-0">Overdue</span>
@@ -817,17 +812,17 @@
                                              </td>
                                                 </tr>
                                                 <tr class="even">
-                                                    <td>Adept HR</td>
-                                                    <td>RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP
+                                                    <td class="fixed-max-width-150">Adept HR</td>
+                                                    <td class="fixed-max-width-150 sorting_1">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP
                                                     </td>
-                                                    <td >NV</td>
-                                                    <td >Corp.</td>
-                                                    <td >Foreign</td>
-                                                    <td >SOP</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">NV</td>
+                                                    <td class="fixed-max-width">Profit Corporation</td>
+                                                    <td class="fixed-max-width">Foreign</td>
+                                                    <td class="fixed-max-width">SOP</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 green-bg rounded-pill">
-                                                            <span class="icon icon-circular icon-unknowledged-1  icon-md"></span>
+                                                            <span class="icon icon-circular icon-unknowledged icon-md"></span>
                                                             <span class="text-light mb-0">Unacknowledged</span>
                                                         </div>
                                                     </td>
@@ -836,34 +831,34 @@
                                              </td>
                                                 </tr>
                                                 <tr class="odd">
-                                                    <td >SAN JOAQUIN ACCOUNTING</td>
-                                                    <td >SEASCAPE VILLA LLC
+                                                    <td class="fixed-max-width">SAN JOAQUIN ACCOUNTING</td>
+                                                    <td class="fixed-max-width">SEASCAPE VILLA LLC
                                                     </td>
-                                                    <td >CA</td>
-                                                    <td >Non Profit</td>
-                                                    <td >Domestic</td>
-                                                    <td >SOP</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">CA</td>
+                                                    <td class="fixed-max-width">Non Profit Corporation</td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">SOP</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 voilet-bg rounded-pill">
-                                                            <span class="icon icon-circular icon-status-future-1  icon-md"></span>
+                                                            <span class="icon icon-circular icon-status-future icon-md"></span>
                                                             <span class="text-light  mb-0">Future</span>
                                                         </div>
                                                     </td>
-                                                    <td >    
+                                                    <td class="fixed-max-width">    
                                                         <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164" role="button" href="javascript:;" data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form" data-service="business_license_renewal" data-blr-id="2" data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form" data-bs-toggle="modal" data-bs-target="#task-action-modal">Take action</a>
                                                     </td>
                                                 </tr>
                                                 <tr class="even">
-                                                    <td >Christopher Law Group, Inc.</td>
-                                                    <td>GDS DESIGNS, INC.
+                                                    <td class="fixed-max-width-150">Christopher Law Group, Inc.</td>
+                                                    <td class="fixed-max-width-150 sorting_1">GDS DESIGNS, INC.
                                                     </td>
-                                                    <td >DE</td>
-                                                    <td >LLP </td>
-                                                    <td >Domestic</td>
-                                                    <td >Business License Filing</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">DE</td>
+                                                    <td class="fixed-max-width">LLP </td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">Business License Filing</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
                                                             <span class="icon icon-circular icon-status-upcoming icon-md"></span>
                                                             <span class="text-light mb-0">Upcoming</span>
@@ -874,15 +869,15 @@
                                              </td>
                                                 </tr>
                                                 <tr class="odd">
-                                                    <td >Natomas Labs, Inc. (Villa Homes)</td>
-                                                    <td >EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP
+                                                    <td class="fixed-max-width">Natomas Labs, Inc. (Villa Homes)</td>
+                                                    <td class="fixed-max-width">EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP
                                                     </td>
-                                                    <td >CA</td>
-                                                    <td >LLC</td>
-                                                    <td >Domestic</td>
-                                                    <td >Registered Agent</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">CA</td>
+                                                    <td class="fixed-max-width">LLC</td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">Registered Agent</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 red-bg rounded-pill">
                                                             <span class="icon icon-circular icon-alert-light icon-md"></span>
                                                             <span class="text-light  mb-0">Overdue</span>
@@ -893,15 +888,15 @@
                                              </td>
                                                 </tr>
                                                 <tr class="even">
-                                                    <td>Christopher Law Group, Inc.</td>
-                                                    <td>GDS DESIGNS, INC.
+                                                    <td class="fixed-max-width-150">Christopher Law Group, Inc.</td>
+                                                    <td class="fixed-max-width-150 sorting_1">GDS DESIGNS, INC.
                                                     </td>
-                                                    <td >DE</td>
-                                                    <td >LLP </td>
-                                                    <td >Domestic</td>
-                                                    <td >Business License Filing</td>
-                                                    <td >10/09/2023</td>
-                                                    <td >
+                                                    <td class="fixed-max-width">DE</td>
+                                                    <td class="fixed-max-width">LLP </td>
+                                                    <td class="fixed-max-width">Domestic</td>
+                                                    <td class="fixed-max-width">Business License Filing</td>
+                                                    <td class="fixed-max-width">10/09/2023</td>
+                                                    <td class="fixed-max-width">
                                                         <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
                                                             <span class="icon icon-circular icon-status-upcoming icon-md"></span>
                                                             <span class="text-light mb-0">Upcoming</span>
@@ -927,7 +922,7 @@
                                         </div>
 
                                         <div class="filter2-dropdown col-12 col-lg-3 entity-Jurisdiction-table-col px-1 mb-2 dropdown ">
-                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg " id="entityJurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg " id="entityJurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <input type="text" class="search-input" id="entityJurisdictionSearch" placeholder="Jurisdictions" autocomplete="off">
                                             </div>
                                             <ul class="dropdown-menu" id="entityJurisdictionDropdown">
@@ -941,7 +936,7 @@
                                         </div>
         
                                         <div class="filter2-dropdown col-12 col-lg-3 entity-status-table-col px-1 mb-2 dropdown">
-                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="entityStatusContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="entityStatusContainer" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <input type="text" class="search-input" id="entityStatusSearch" placeholder="Entity Status" autocomplete="off">
                                             </div>
                                             <ul class="dropdown-menu" id="entityStatusDropdown">
@@ -966,12 +961,12 @@
                                                   <th></th>
                                                   <th>Group</th>
                                                   <th>Entity Name</th>
-                                                  <th class="fixed-table-col-width-50">Type</th>
-                                                  <th class="fixed-table-col-width-80">Jurisdiction</th>
-                                                  <th class="fixed-table-col-width-80">Registration</th>
-                                                  <th class="fixed-table-col-width-50">DBA</th>
-                                                  <th class="fixed-table-col-width-100">Business License</th>
-                                                  <th class="fixed-table-col-width-120" data-orderable="false">Entity Status</th>
+                                                  <th>Type</th>
+                                                  <th>Jurisdiction<span class="text-light">....</span></th>
+                                                  <th>Registration<span class="text-light">....</span></th>
+                                                  <th>DBA<span class="text-light">....</span></th>
+                                                  <th>Business License<span class="text-light">....</span></th>
+                                                  <th data-orderable="false">Entity Status</th>
                                               </tr>
                                           </thead>
                                           </table>
@@ -988,7 +983,7 @@
                                         </div>
         
                                         <div class="filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2 dropdown ">
-                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg " id="orderJurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg " id="orderJurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <input type="text" class="search-input" id="orderJurisdictionSearch" placeholder="Jurisdictions" autocomplete="off">
                                             </div>
                                             <ul class="dropdown-menu" id="orderJurisdictionDropdown">
@@ -1002,7 +997,7 @@
                                         </div>
                                         
                                         <div class="filter2-dropdown col-12 col-lg-3 task-table-col px-1 mb-2 dropdown">
-                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="orderTaskContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="orderTaskContainer" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <input type="text" class="search-input" id="orderTaskSearch" placeholder="Tasks" autocomplete="off">
                                             </div>
                                             <ul class="dropdown-menu" id="orderTaskDropdown">
@@ -1013,7 +1008,7 @@
                                         </div>
                                         
                                         <div class="filter2-dropdown col-12 col-lg-3 status-table-col px-1 mb-2 dropdown">
-                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="orderStatusContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg" id="orderStatusContainer" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <input type="text" class="search-input" id="orderStatusSearch" placeholder="Status" autocomplete="off">
                                             </div>
                                             <ul class="dropdown-menu" id="orderStatusDropdown">
@@ -1032,18 +1027,18 @@
                                     </div>
                                     </div>
                                     <div class="card-table-d2  mt-2 border rounded-2">
-                                        <table id="ra-progress-table" class=" open-order-table table table-striped w-100 table-nowrap data-table-listing table-v2-scroll">
+                                        <table id="ra-progress-table" class="table table-striped w-100 table-nowrap data-table-listing table-v2-scroll">
                                             <thead>
                                                 <tr>
                                                     <th>Group</th>
                                                     <th>Entity Name</th>
-                                                    <th>Jurisdiction</th>
-                                                    <th >Type</th>
-                                                    <th >Registration</th>
-                                                    <th >Task</th>
-                                                    <th >Date</th>
-                                                    <th >Status</th>
-                                                    <th  data-orderable="false">Action</th>
+                                                    <th>Jurisdiction<span class="text-light">....</span></th>
+                                                    <th>Type</th>
+                                                    <th>Registration<span class="text-light">....</span></th>
+                                                    <th>Task<span class="text-light">..............</span></th>
+                                                    <th>Date<span class="text-light">....</span></th>
+                                                    <th>Status</th>
+                                                    <th data-orderable="false">Action</th>
 
                                                 </tr>
                                             </thead>
@@ -1052,17 +1047,17 @@
                                                     <td>AIC CAPITAL V V MANAGER - Terminated</td>
                                                     <td>DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION</td>
                                                     <td>DE</td>
-                                                    <td>Non Profit</td>
+                                                    <td>Non Profit Corporation</td>
                                                     <td>Domestic</td>
                                                     <td>Annual Report</td>
                                                     <td>10/09/2024</td>
                                                     <td>
                                                         <div class="d-flex align-items-center p-1 voilet-bg rounded-pill">
-                                                            <span class="icon icon-in-process-white-1  icon-md"></span>
+                                                            <span class="icon icon-in-process-white icon-md"></span>
                                                             <span class="text-light mb-0">In Process</span>
                                                         </div>
                                                     </td>
-                                                    <td >
+                                                    <td class="fixed-max-width">
                                                        <!--  <div  class="d-flex align-items-center justify-content-between">
                                                         <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
                                                     </div> -->
@@ -1072,7 +1067,7 @@
                                                     <td>Christopher Law Group, Inc.</td>
                                                     <td>Pikewood Group, LLC</td>
                                                     <td>CA</td>
-                                                    <td>Corp.</td>
+                                                    <td>Profit Corporation</td>
                                                     <td>Foreign</td>
                                                     <td>Annual Report</td>
                                                     <td>10/09/2023</td>
@@ -1103,8 +1098,8 @@
                                                             <span class="text-light mb-0">Recently Completed</span>
                                                         </div>
                                                     </td>
-                                                    <td >
-                                                        <div  class="d-flex align-items-center ">
+                                                    <td class="fixed-max-width">
+                                                        <div  class="d-flex align-items-center justify-content-between">
                                                         <span class="icon icon-download-white-on-green icon-md"></span>
                                                         <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
                                                     </div>
@@ -1114,17 +1109,17 @@
                                                     <td>Rachel Feder</td>
                                                     <td>AIC Capital VV Manager, LLC</td>
                                                     <td>DE</td>
-                                                    <td>Corp.</td>
+                                                    <td>Profit Corporation</td>
                                                     <td>Foreign</td>
                                                     <td>DBA</td>
                                                     <td>10/09/2024</td>
                                                     <td>
                                                         <div class="d-flex align-items-center p-1 voilet-bg rounded-pill">
-                                                            <span class="icon icon-in-process-white-1  icon-md"></span>
+                                                            <span class="icon icon-in-process-white icon-md"></span>
                                                             <span class="text-light mb-0">In Process</span>
                                                         </div>
                                                     </td>
-                                                    <td >
+                                                    <td class="fixed-max-width">
                                                         <!-- <div  class="d-flex align-items-center justify-content-between">
                                                         <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
                                                     </div> -->
@@ -1144,7 +1139,7 @@
                                                             <span class="text-light  mb-0">Sent to State</span>
                                                         </div>
                                                     </td>
-                                                    <td >
+                                                    <td class="fixed-max-width">
                                                         <!-- <div  class="d-flex align-items-center justify-content-between">
                                                         <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
                                                     </div> -->
@@ -1165,8 +1160,8 @@
                                                             <span class="text-light mb-0">Recently Completed</span>
                                                         </div>
                                                     </td>
-                                                    <td >
-                                                        <div  class="d-flex align-items-center ">
+                                                    <td class="fixed-max-width">
+                                                        <div  class="d-flex align-items-center justify-content-between">
                                                         <span class="icon icon-download-white-on-green icon-md"></span>
                                                         <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
                                                     </div>
@@ -1188,7 +1183,6 @@
         </div>
     </div>
     </div>
-
 
       <!-- create new grpop -->
 
@@ -1482,9 +1476,9 @@
                                        </div>
                                     </div>
                                     <div class="mt-3">
-                                        <button class="d-flex align-items-center p-0 m-0 border-0 bg-white fw-normal">
-                                            <span class="icon icon-add-circle-plus"></span> Add
-                                        </button>
+                                       <button type="button" class="btn btn-link addmorebtn " id="addMoreBtn">
+                                       +Add More
+                                       </button>
                                     </div>
                                  </div>
                               </form>
@@ -1905,7 +1899,7 @@
       <!-- create new entity -->
        
       <!--New entity step-1 Modal start-->
-      <div class="entitymodal modal modal-right fade filter-slideout group-model" id="NWEntity" tabindex="-1" aria-labelledby="searchModalLabel"
+      <div class="modal modal-right fade filter-slideout group-model" id="NWEntity" tabindex="-1" aria-labelledby="searchModalLabel"
          aria-hidden="true">
          <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -2000,7 +1994,21 @@
                         </div>
                      </div>
                   </div>
-                  
+                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                     <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">USE CUSTOM ARTICLES </span>
+                        <div class="d-flex align-items-center">
+                           <div class="form-check gap-2 me-3">
+                              <input class="form-check-input payment-method" type="checkbox" id="asapheck" checked>
+                              <label class="form-check-label fw-normal" for="asap">No</label>
+                           </div>
+                           <div class="form-check gap-2">
+                              <input class="form-check-input payment-method" type="checkbox" id="FuturedateCheck">
+                              <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                   <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                      <fieldset>
                         <label for="entityType-model" class="form-label">Additional Jurisdictions </label>
@@ -2047,7 +2055,7 @@
       <!-- New entity step-1 Modal End-->
 
       <!--New entity-detail step-2 Modal start-->
-      <div class="entitymodal modal modal-right fade filter-slideout group-model" id="entityDetail" tabindex="-1" aria-labelledby="searchModalLabel"
+      <div class="modal modal-right fade filter-slideout group-model" id="entityDetail" tabindex="-1" aria-labelledby="searchModalLabel"
          aria-hidden="true">
          <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -2126,7 +2134,7 @@
                            <div class="accordion-body pt-0">
                               <form action="">
                                  <div class="stakeholdersform">
-                                    <div class="alert alert-danger flex-column text-dark fw-normal py-2 border-0" role="alert">
+                                    <div class="alert alert-danger flex-column text-dark fw-normal py-2" role="alert">
                                        <div class="d-flex align-items-center mb-2">
                                           <span class="icon icon-alert-red"></span>
                                           <small>California requires CEO, CFO and Secretary details</small>
@@ -2160,9 +2168,10 @@
                                        </div>
                                        <!-- Form inside collapse -->
                                        <div id="managerForm" class="collapse mt-2">
+                                          <fieldset>
                                           <!-- Radio buttons to select Individual or Corporate -->
                                           <div class="mb-4">
-                                             <div class="d-flex gap-3">
+                                             <div class="radio-group d-flex gap-3">
                                                 <div class="form-check">
                                                    <input class="form-check-input toggle-radio" type="radio" name="managerType" id="individual" data-target="individualForm" checked>
                                                    <label class="form-check-label" for="individual">Individual</label>
@@ -2263,19 +2272,6 @@
                         <div id="collapseTwo1" class="accordion-collapse collapse show border-0" aria-labelledby="headingTwo1">
                            <div class="accordion-body pt-0">
                               <fieldset>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2 me-3">
-                                          <input class="form-check-input payment-method" type="checkbox" id="asapheck" checked>
-                                          <label class="form-check-label fw-normal" for="asap">No</label>
-                                       </div>
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input payment-method" type="checkbox" id="FuturedateCheck">
-                                          <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                       </div>
-                                    </div>
-                                 </div>
                                  <label for="" class="form-label w-100">Principal Address <span class="mandatory">*</span>
                                  <span class="icon icon-outline-info  m-0"></span></label>
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 1">
@@ -2365,10 +2361,10 @@
             </div>
          </div>
       </div>
-      <!-- New entity-detail step-2 Modal End-->
+      <!-- New entity-services step-3 Modal End-->
 
-      <!--New entity-services step-3 Modal start-->
-      <div class=" entitymodal modal modal-right fade filter-slideout group-model" id="entityServices" tabindex="-1" aria-labelledby="searchModalLabel"
+      <!--New entity-detail step-2 Modal start-->
+      <div class="modal modal-right fade filter-slideout group-model" id="entityServices" tabindex="-1" aria-labelledby="searchModalLabel"
          aria-hidden="true">
          <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -2416,12 +2412,12 @@
                         <div id="collapseOne1" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne1">
                            <div class="accordion-body pt-0">
                               <form action="">
-                                
                                  <!-- Form inside collapse -->
                                  <div class="d-flex justify-content-between align-items-center mb-4">
                                     <span class="fw-bold">REGISTERED AGENT SERVICE <span class="icon icon-outline-info m-0"></span></span>
                                     <fieldset>
                                         <!-- Radio buttons to select Enabled or Disabled -->
+                                        <div class="">
                                             <div class="d-flex gap-3">
                                                 <div class="form-check">
                                                     <input class="form-check-input toggle-radio" type="radio" id="enabled"  name="registeredAgentStatus" value="enabled" checked>
@@ -2432,6 +2428,7 @@
                                                     <label class="form-check-label" for="disabled">Disabled</label>
                                                 </div>
                                             </div>
+                                        </div>
                                         <!-- Enabled Form -->
                                     </fieldset>
                                 </div>
@@ -2464,15 +2461,15 @@
                                  <!-- Annual Report Service -->
                                  <div class="d-flex justify-content-between align-items-center mb-4">
                                     <span class="fw-bold">ANNUAL REPORT SERVICE <span class="icon icon-outline-info  m-0"></span></span>
-                                    <div class="d-flex gap-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input toggle-radio" type="radio" id="enabled2"  name="annualReport" value="enabled" checked>
-                                            <label class="form-check-label" for="enabled">Enabled</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input toggle-radio" type="radio" id="disabled2" name="annualReport" value="disabled">
-                                            <label class="form-check-label" for="disabled">Disabled</label>
-                                        </div>
+                                    <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2 me-3">
+                                          <input class="form-check-input payment-method enable-check" type="checkbox" id="enableCheck2" checked>
+                                          <label class="form-check-label fw-normal" for="enableCheck2">Enabled</label>
+                                       </div>
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input payment-method disable-check" type="checkbox" id="disableCheck2" data-bs-toggle="collapse" data-bs-target="#form2">
+                                          <label class="form-check-label fw-normal text-capitalize" for="disableCheck2">Disabled</label>
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="collapse mt-2" id="form2">
@@ -2483,17 +2480,17 @@
                                  </div>
                                  <hr>
                                  <!-- CTA BOI Service -->
-                                 <div class="d-flex justify-content-between align-items-center">
+                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <span class="fw-bold">CTA BOI SERVICE <span class="icon icon-outline-info  m-0"></span></span>
-                                    <div class="d-flex gap-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input toggle-radio" type="radio" id="enabled3"  name="ctaBoi" value="enabled" checked>
-                                            <label class="form-check-label" for="enabled">Enabled</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input toggle-radio" type="radio" id="disabled3" name="ctaBoi" value="disabled">
-                                            <label class="form-check-label" for="disabled">Disabled</label>
-                                        </div>
+                                    <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2 me-3">
+                                          <input class="form-check-input payment-method enable-check" type="checkbox" id="enableCheck3" checked>
+                                          <label class="form-check-label fw-normal" for="enableCheck3">Enabled</label>
+                                       </div>
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input payment-method disable-check" type="checkbox" id="disableCheck3" data-bs-toggle="collapse" data-bs-target="#form3">
+                                          <label class="form-check-label fw-normal text-capitalize" for="disableCheck3">Disabled</label>
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="collapse mt-2" id="form3">
@@ -2639,7 +2636,7 @@
                                  </div>
                                  <hr>
                                  <!-- 25102(F) Section -->
-                                 <div class="d-flex justify-content-between align-items-center">
+                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <div>
                                        <input class="form-check-input me-3" type="checkbox" id="form25102Checkbox" data-bs-toggle="collapse" data-bs-target="#form25102">
                                        <span class="fw-bold">25102(F)</span>
@@ -2699,141 +2696,6 @@
          </div>
       </div>
       <!-- New entity-services step-3 Modal End-->
-
-      <!--New entity-summary step-4 Modal start-->
-       <div class=" entitymodal modal modal-right fade filter-slideout group-model" id="entitySummery" tabindex="-1" aria-labelledby="searchModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-               <div class="modal-content border-0 rounded-0 min-vh-100">
-                  <!-- Modal Header -->
-                  <div class="modal-header flex-wrap">
-                     <div class="d-flex flex-column w-100 mb-0">
-                        <div class="d-flex aligh-items-center mb-4">
-                           <span class="icon icon-entity-icon icon-md me-3"></span>
-                           <h4 class="fw-bold m-0">
-                           Form a New Entity</h3>
-                        </div>
-                        <!-- stepper start -->
-                        <div class="service-step-group">
-                           <div class="step completed ">
-                              <div class="circle completed"></div>
-                              <span class="step-text">ENTITY</span>
-                           </div>
-                           <div class="step completed">
-                              <div class="circle completed"></div>
-                              <span class="step-text">DETAILS</span>
-                           </div>
-                           <div class="step completed">
-                              <div class="circle completed"></div>
-                              <span class="step-text">SERVICES</span>
-                           </div>
-                           <div class="step">
-                              <div class="circle active"></div>
-                              <span class="step-text">SUMMARY</span>
-                           </div>
-                        </div>
-                        <!-- stepper end -->
-                     </div>
-                  </div>
-                  <!-- Modal Header Ends -->
-                  <!-- Modal Body Start-->
-                  <div class="modal-body">
-                    <div class="mb-4 p-3 bg-white rounded-2">
-                        <div>
-                            <h3 class="fw-bold">New Entity LLC </h3>
-                            <p>Delaware Limited Liability Company</p>
-                            <p>123 Main St <br>
-                            Anywhere, CA 99999</p>
-                        </div>
-                        <hr>
-                        <div>
-                            <div class="d-flex justify-content-between">
-                            <h5 class="fw-bold">Foreign Registrations</h5>
-                            <span class="icon icon-new-edit me-3 editUser"></span>
-                            </div>
-                            <p class="m-0">California</p>
-                            <p class="m-0">Pennsylvania</p>
-                            <p class="m-0">Wisconsin</p>
-                        </div>
-                        <hr>
-                    <div class="border rounded-3">
-                        <div class="fade show active rounded-3 overflow-hidden" id="all">
-                           <table id="entityTable" class="table table-striped w-100 long-data-table-listing border-1" >
-                              <thead>
-                                 <tr>
-                                    <th>Service</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                    <th>Total</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <tr class="odd">
-                                    <td>Entity Registration Subscription</td>
-                                    <td>4</td>
-                                    <td>$350 / year</td>
-                                    <td>$1400 / year</td>
-                                 </tr>
-                                 <tr class="even">
-                                    <td>DE Home Entity Registration</td>
-                                    <td>1</td>
-                                    <td>$52</td>
-                                    <td>$52</td>
-                                 </tr>
-                                 <tr class="odd">
-                                    <td>WI Foreign Entity Registration</td>
-                                    <td>1</td>
-                                    <td>$15</td>
-                                    <td>$15</td>
-                                 </tr>
-                                 <tr class="even">
-                                    <td>CA Foreign Entity Registration</td>
-                                    <td>1</td>
-                                    <td>$15</td>
-                                    <td>$15</td>
-                                 </tr>
-                                 <tr class="odd">
-                                    <td>PA Foreign Entity Registration</td>
-                                    <td>1</td>
-                                    <td>$15</td>
-                                    <td>$15</td>
-                                 </tr>
-                                 <tr class="even">
-                                    <td>EIN Request Filing</td>
-                                    <td>1</td>
-                                    <td>$15</td>
-                                    <td>$15</td>
-                                 </tr>
-                               
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
-                    </div>
-                 </div>
-
-                  <!-- Modal Body End -->
-                  <div class="modal-footer">
-                     <div class="d-flex justify-content-between align-items-center w-100 m-0">
-                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
-                           data-bs-dismiss="modal">
-                        CANCEL
-                        </button>
-                        <div class="d-flex align-items-center">
-                           <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn" data-bs-target="#entityDetail" data-bs-toggle="modal" data-bs-dismiss="modal">
-                           Back
-                           </button>
-                           <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#entitySummery" data-bs-toggle="modal" data-bs-dismiss="modal">
-                           Next
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-       </div>
-      <!-- New entity-summary step-4 Modal End-->
-
 
 
     <!-- Search Modal Starts-->
@@ -4971,7 +4833,6 @@
     <script src="dist/js/custom.min.js"></script>
     <script src="dist/js/dashboard-v2.js"></script>
     <script src="dist/js/service-order-process.js"></script>
-
     <!-- Scripts End-->
 
     <script> let dashboardType = "dashboard1"; </script>

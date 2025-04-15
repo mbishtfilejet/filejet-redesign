@@ -121,38 +121,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // manager individual and corporate function function start
-document.addEventListener("DOMContentLoaded", function () {
-    // Function to toggle the display of forms based on the selected radio button
-    function toggleForms(event) {
-      const targetFormId = event.target.getAttribute("data-target");
-      const targetForm = document.getElementById(targetFormId);
-  
-      // Hide all forms within the same radio group
-      const radioGroup = event.target.closest('.radio-group');
-      const allForms = radioGroup.nextElementSibling.querySelectorAll('.toggle-form');
-      allForms.forEach(form => {
-        form.style.display = "none";
-      });
-  
-      // Show the target form
-      if (targetForm) {
-        targetForm.style.display = "block";
-      }
-    }
-  
-    // Attach event listeners to all radio buttons with the class 'toggle-radio'
-    const radioButtons = document.querySelectorAll(".toggle-radio");
-    radioButtons.forEach(radio => {
-      radio.addEventListener("change", toggleForms);
-    });
-  
-    // Initialize the forms' display state
-    radioButtons.forEach(radio => {
-      if (radio.checked) {
-        radio.dispatchEvent(new Event('change'));
-      }
+$(document).ready(function () {
+    $('.toggle-radio').on('change', function () {
+      var target = $(this).data('target');
+      $('.toggle-form').hide(); // Hide all forms
+      $('#' + target).show(); // Show the selected form
     });
   });
+
+
+
+  document.querySelectorAll('input[name="registeredAgentStatus"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      const isEnabled = this.value === 'enabled';
+      document.getElementById('enabledForm').style.display = isEnabled ? 'block' : 'none';
+      document.getElementById('disabledForm').style.display = isEnabled ? 'none' : 'block';
+    });
+  });
+
+  // Optional: Trigger the change event on page load to initialize visibility
+  document.querySelector('input[name="registeredAgentStatus"]:checked').dispatchEvent(new Event('change'));
+
+  
+
   
 
 
