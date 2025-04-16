@@ -47,8 +47,6 @@ $(document).ready(function() {
 });
 
 
-
-
 // edit form start
 document.getElementById("addBtn").addEventListener("click", function () {
     let name = document.getElementById("groupName").value.trim();
@@ -68,7 +66,6 @@ document.getElementById("addBtn").addEventListener("click", function () {
     document.querySelector(".filledstate .groupName").textContent = name;
     document.querySelector(".filledstate .groupEmail").textContent = email;
 });
-
 // Attach event listeners for edit and delete dynamically after the DOM loads
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".editUser").addEventListener("click", function () {
@@ -91,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // alert function start
 document.addEventListener("DOMContentLoaded", function () {
     const entityInput = document.querySelector("#entityInput"); // Add an ID to your input field
@@ -107,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // manager individual and corporate function function start
 $(document).ready(function () {
     $('.toggle-radio').on('change', function () {
@@ -117,15 +112,27 @@ $(document).ready(function () {
     });
   });
 
-// toggle between entity services page start
 
-  document.querySelectorAll('input[name="registeredAgentStatus"]').forEach(function (radio) {
-    radio.addEventListener('change', function () {
-      const isEnabled = this.value === 'enabled';
-      document.getElementById('enabledForm').style.display = isEnabled ? 'block' : 'none';
-      document.getElementById('disabledForm').style.display = isEnabled ? 'none' : 'block';
+// toggle between enabled and disabled form  start
+function setupToggleForms(radioGroupNames) {
+  radioGroupNames.forEach(name => {
+    document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+      radio.addEventListener('change', function () {
+        const groupSuffix = name.replace(/^registeredAgentStatus/, ''); // e.g. '' or 'Annual'
+        const enabledFormId = `enabledForm${groupSuffix}`;
+        const disabledFormId = `disabledForm${groupSuffix}`;
+        const isEnabled = this.value === 'enabled';
+
+        document.getElementById(enabledFormId).style.display = isEnabled ? 'block' : 'none';
+        document.getElementById(disabledFormId).style.display = isEnabled ? 'none' : 'block';
+      });
     });
   });
+}
+// 👇 Call this once on page load with all your radio group names
+setupToggleForms(['registeredAgentStatus', 'registeredAgentStatusAnnual']);
+
+
 
 
 // toggle between all checkbox start
@@ -139,8 +146,9 @@ $(document).ready(function () {
     });
   });
 
-  
 
+  
+  
 
 
 

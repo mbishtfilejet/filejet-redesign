@@ -285,6 +285,8 @@ document.addEventListener("DOMContentLoaded", function () {
               return "Tasks";
             case "orderTaskContainer":
                 return "Service";
+                case "addjurisdictionContainer":
+                  return "Select States";
             case "entityStatusContainer":
                 return "Entity Status";
             default:
@@ -303,6 +305,10 @@ document.addEventListener("DOMContentLoaded", function () {
   setupMultiSelect("orderStatusContainer", "orderStatusDropdown", "orderStatusSearch", "orderStatus-checkbox", "orderStatusSelectAll");
   setupMultiSelect("taskContainer", "taskDropdown", "taskSearch", "task-checkbox", "taskSelectAll");
   setupMultiSelect("orderTaskContainer", "orderTaskDropdown", "orderTaskSearch", "orderTask-checkbox", "orderTaskSelectAll");
+
+
+  setupMultiSelect("addjurisdictionContainer", "addjurisdictionDropdown", "addjurisdictionSearch", "addjurisdiction-checkbox", "addjurisdictionSelectAll");
+
 
   // ✅ Set "Overdue" and "Upcoming" as default selected
   setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]);
