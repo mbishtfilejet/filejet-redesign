@@ -285,6 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
               return "Tasks";
             case "orderTaskContainer":
                 return "Service";
+                case "exaddjurisdictionContainer":
                 case "addjurisdictionContainer":
                   return "Select States";
             case "entityStatusContainer":
@@ -308,6 +309,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   setupMultiSelect("addjurisdictionContainer", "addjurisdictionDropdown", "addjurisdictionSearch", "addjurisdiction-checkbox", "addjurisdictionSelectAll");
+  setupMultiSelect("exaddjurisdictionContainer", "exaddjurisdictionDropdown", "exaddjurisdictionSearch", "exaddjurisdiction-checkbox", "exaddjurisdictionSelectAll");
+
 
 
   // ✅ Set "Overdue" and "Upcoming" as default selected
