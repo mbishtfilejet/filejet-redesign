@@ -23,9 +23,8 @@ google.charts.setOnLoadCallback(() => {
       ["In Good Standing", 15],
       ["Not Good Standing", 8],
       ["Inactive", 3],
-      ["Externally Managed", 1],
     ],
-    ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"],
+    ["#00BA70", "#E73B18", "#8690A0"],
     "78%",
     "78%"
   );
@@ -121,9 +120,8 @@ function redrawChart(chartId, width, height) {
       ["In Good Standing", 15],
       ["Not Good Standing", 8],
       ["Inactive", 3],
-      ["Externally Managed", 1],
     ];
-    colors = ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"];
+    colors = ["#00BA70", "#E73B18", "#8690A0"];
   } else if (chartId === "donut_chart_3") {
     chartData = [
       ["Task", "Count"],
