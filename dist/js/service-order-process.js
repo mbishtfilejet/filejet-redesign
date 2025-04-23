@@ -147,7 +147,14 @@ setupToggleForms(['registeredAgentStatus', 'registeredAgentStatusAnnual']);
   });
 
 
-  
+
+//   $('.userTable').DataTable({
+//     paging: false,
+//     info: false,
+//     scrollY: '400px',
+//     scrollCollapse: true
+// });
+
   
 
 
