@@ -1987,20 +1987,26 @@
                         </div>
                      </div>
                   </div>
-                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
-                     <div class="d-flex justify-content-between align-items-center">
-                        <span class="fw-bold">DATE TO FILE</span>
-                        <div class="d-flex align-items-center">
-                           <div class="form-check gap-2 me-3">
-                              <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                              <label class="form-check-label fw-normal" for="asap">ASAP</label>
-                           </div>
-                           <div class="form-check gap-2">
-                              <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                              <label class="form-check-label fw-normal text-capitalize" for="future date">Future Date</label>
-                           </div>
+                  <div class="mb-4 p-3 bg-white rounded-2 mt-4">
+                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                      <span class="fw-bold text-uppercase">Date to File</span>
+                      <div class="d-flex align-items-center flex-column">
+                        <div class="d-flex">
+                          <div class="form-check me-3">
+                            <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
+                            <label class="form-check-label" for="no">ASAP</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                            <label class="form-check-label" for="yes">Future Date</label>
+                          </div>
                         </div>
-                     </div>
+                      </div>
+                    </div>
+                    <!-- Upload button -->
+                    <div class="upload-btn calander-input mt-3" style="display: none;">
+                        <input type="text" class="form-select datepicker" placeholder="Date" value="" id="datepicker">
+                    </div>
                   </div>
                   
                   <div class="mb-4 p-3 bg-white rounded-2 mt-3">
@@ -2270,19 +2276,29 @@
                         <div id="collapseTwo1" class="accordion-collapse collapse  border-0" aria-labelledby="headingTwo1">
                            <div class="accordion-body pt-0">
                               <fieldset>
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2 me-3">
-                                          <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                          <label class="form-check-label fw-normal" for="asap">No</label>
-                                       </div>
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                          <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                       </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                      <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                      <div class="d-flex align-items-center flex-column">
+                                        <div class="d-flex">
+                                          <div class="form-check me-3">
+                                            <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
+                                            <label class="form-check-label" for="no">No</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                                            <label class="form-check-label" for="yes">Yes</label>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                 </div>
+                                    <!-- Upload button -->
+                                    <div class="upload-btn mt-3" style="display: none;">
+                                      <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
+                                        Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                      </button>
+                                    </div>
+                                  </div>
                                  <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
                                  <span class="icon icon-outline-info  m-0"></span></label>
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 1">
@@ -2323,19 +2339,29 @@
                         <div id="collapseThree1" class="accordion-collapse collapse  border-0" aria-labelledby="headingThree1">
                            <div class="accordion-body pt-0">
                               <fieldset>
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2 me-3">
-                                          <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                          <label class="form-check-label fw-normal" for="asap">No</label>
-                                       </div>
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                          <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                       </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                      <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                      <div class="d-flex align-items-center flex-column">
+                                        <div class="d-flex">
+                                          <div class="form-check me-3">
+                                            <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
+                                            <label class="form-check-label" for="no">No</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                                            <label class="form-check-label" for="yes">Yes</label>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                 </div>
+                                    <!-- Upload button -->
+                                    <div class="upload-btn mt-3" style="display: none;">
+                                      <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
+                                        Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                      </button>
+                                    </div>
+                                  </div>
                                  <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
                                  <span class="icon icon-outline-info  m-0"></span></label>
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 1">
@@ -2618,18 +2644,28 @@
                      <div id="collapseTwo1" class="accordion-collapse collapse  border-0" aria-labelledby="headingTwo1">
                         <div class="accordion-body pt-0">
                            <fieldset>
-                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                 <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                 <div class="d-flex align-items-center">
-                                    <div class="form-check gap-2 me-3">
-                                       <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                       <label class="form-check-label fw-normal" for="asap">No</label>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                  <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                  <div class="d-flex align-items-center flex-column">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3">
+                                        <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
+                                        <label class="form-check-label" for="no">No</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                                        <label class="form-check-label" for="yes">Yes</label>
+                                      </div>
                                     </div>
-                                    <div class="form-check gap-2">
-                                       <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                       <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                    </div>
-                                 </div>
+                                  </div>
+                                </div>
+                                <!-- Upload button -->
+                                <div class="upload-btn mt-3" style="display: none;">
+                                  <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
+                                    Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                  </button>
+                                </div>
                               </div>
                               <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
                               <span class="icon icon-outline-info  m-0"></span></label>
@@ -2671,18 +2707,28 @@
                      <div id="collapseThree1" class="accordion-collapse collapse  border-0" aria-labelledby="headingThree1">
                         <div class="accordion-body pt-0">
                            <fieldset>
-                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                 <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                 <div class="d-flex align-items-center">
-                                    <div class="form-check gap-2 me-3">
-                                       <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                       <label class="form-check-label fw-normal" for="asap">No</label>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                  <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                  <div class="d-flex align-items-center flex-column">
+                                    <div class="d-flex">
+                                      <div class="form-check me-3">
+                                        <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
+                                        <label class="form-check-label" for="no">No</label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                                        <label class="form-check-label" for="yes">Yes</label>
+                                      </div>
                                     </div>
-                                    <div class="form-check gap-2">
-                                       <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                       <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                    </div>
-                                 </div>
+                                  </div>
+                                </div>
+                                <!-- Upload button -->
+                                <div class="upload-btn mt-3" style="display: none;">
+                                  <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
+                                    Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                  </button>
+                                </div>
                               </div>
                               <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
                               <span class="icon icon-outline-info  m-0"></span></label>
@@ -3539,6 +3585,31 @@
                         </div>
                      </div>
                   </div>
+
+                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                      <span class="fw-bold text-uppercase">Upload state documents</span>
+                      <div class="d-flex align-items-center flex-column">
+                        <div class="d-flex">
+                          <div class="form-check me-3">
+                            <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
+                            <label class="form-check-label" for="no">No</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                            <label class="form-check-label" for="yes">Yes</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <!-- Upload button -->
+                    <div class="upload-btn mt-3" style="display: none;">
+                      <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
+                        Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                      </button>
+                    </div>
+                  </div>
                   <!-- State 01 Specific Information Accordion -->
                   <div class="accordion mb-4" id="accordionExample2">
                      <div class="accordion-item m-0">
@@ -3550,25 +3621,31 @@
                         </h2>
                         <div id="collapseTwo1" class="accordion-collapse collapse  border-0" aria-labelledby="headingTwo1">
                            <div class="accordion-body pt-0">
-                              <fieldset>
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2 me-3">
-                                          <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                          <label class="form-check-label fw-normal" for="asap">No</label>
-                                       </div>
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                          <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
+                            <fieldset class="mb-4">
+                                <label for="" class="form-label">State ID / File Number <span class="mandatory">*</span></label>
+                                <input type="text" class="form-control" id="" placeholder="ABCD">
+                             </fieldset>
+                             <div class="calander-input mb-4">
+                                <label for="" class="form-label w-100">Original File Date <span class="mandatory">*</span></label>
+                                <input type="text" class="form-select datepicker " placeholder="Original File date" value="" id="datepicker">
+                             </div>
+                             <div class="calander-input mb-4">
+                                <label for="" class="form-label w-100">Last Report File Date <span class="mandatory">*</span></label>
+                                <input type="text" class="form-select datepicker " placeholder="Last report file date" value="" id="datepicker">
+                             </div>
+                             <div class="mb-4">
+                                <label for="" class="form-label w-100">Home entity <small class="text-danger text-capitalize fw-normal">(This will come in case of foriegn)</small></label>
+                                <select class="form-select" id="formation-model">
+                                   <option value="Entity Type">Select Home Entity</option>
+                                   <option value="Client Subscription">Europe</option>
+                                </select>
+                             </div>
+                             <fieldset>
+                                 <label for="" class="form-label w-100">Physical Address <span class="mandatory">*</span>
                                  <span class="icon icon-outline-info  m-0"></span></label>
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 1">
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 2">
-                                 <div class="d-flex w-100 mb-3">
+                                 <div class="d-flex w-100">
                                     <input type="text" class="form-control me-3" placeholder="City">
                                     <div class="w-100 me-3">
                                        <select class="form-select">
@@ -3577,15 +3654,6 @@
                                        </select>
                                     </div>
                                     <input type="text" class="form-control" placeholder="Zipcode">
-                                 </div>
-                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold">MAILING ADDRESS</span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input payment-method" type="checkbox" id="asapCheck1" checked>
-                                          <label class="form-check-label fw-normal" for="asapCheck1">Same as Principal Address</label>
-                                       </div>
-                                    </div>
                                  </div>
                               </fieldset>
                            </div>
@@ -3602,46 +3670,43 @@
                            </button>
                         </h2>
                         <div id="collapseThree1" class="accordion-collapse collapse  border-0" aria-labelledby="headingThree1">
-                           <div class="accordion-body pt-0">
-                              <fieldset>
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2 me-3">
-                                          <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                          <label class="form-check-label fw-normal" for="asap">No</label>
-                                       </div>
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                          <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                       </div>
-                                    </div>
+                            <div class="accordion-body pt-0">
+                                <fieldset class="mb-4">
+                                    <label for="" class="form-label">State ID / File Number <span class="mandatory">*</span></label>
+                                    <input type="text" class="form-control" id="" placeholder="ABCD">
+                                 </fieldset>
+                                 <div class="calander-input mb-4">
+                                    <label for="" class="form-label w-100">Original File Date <span class="mandatory">*</span></label>
+                                    <input type="text" class="form-select datepicker " placeholder="Original File date" value="" id="datepicker">
                                  </div>
-                                 <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
-                                 <span class="icon icon-outline-info  m-0"></span></label>
-                                 <input type="text" class="form-control mb-3" placeholder="Address Line 1">
-                                 <input type="text" class="form-control mb-3" placeholder="Address Line 2">
-                                 <div class="d-flex w-100 mb-3">
-                                    <input type="text" class="form-control me-3" placeholder="City">
-                                    <div class="w-100 me-3">
-                                       <select class="form-select">
-                                          <option value="">Select State</option>
-                                          <option value="Europe">Europe</option>
-                                       </select>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Zipcode">
+                                 <div class="calander-input mb-4">
+                                    <label for="" class="form-label w-100">Last Report File Date <span class="mandatory">*</span></label>
+                                    <input type="text" class="form-select datepicker " placeholder="Last report file date" value="" id="datepicker">
                                  </div>
-                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold">MAILING ADDRESS</span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input payment-method" type="checkbox" id="asapCheck2" checked>
-                                          <label class="form-check-label fw-normal" for="asapCheck2">Same as Principal Address</label>
-                                       </div>
-                                    </div>
+                                 <div class="mb-4">
+                                    <label for="" class="form-label w-100">Home entity <small class="text-danger text-capitalize fw-normal">(This will come in case of foriegn)</small></label>
+                                    <select class="form-select" id="formation-model">
+                                       <option value="Entity Type">Select Home Entity</option>
+                                       <option value="Client Subscription">Europe</option>
+                                    </select>
                                  </div>
-                              </fieldset>
-                           </div>
+                                 <fieldset>
+                                     <label for="" class="form-label w-100">Physical Address <span class="mandatory">*</span>
+                                     <span class="icon icon-outline-info  m-0"></span></label>
+                                     <input type="text" class="form-control mb-3" placeholder="Address Line 1">
+                                     <input type="text" class="form-control mb-3" placeholder="Address Line 2">
+                                     <div class="d-flex w-100">
+                                        <input type="text" class="form-control me-3" placeholder="City">
+                                        <div class="w-100 me-3">
+                                           <select class="form-select">
+                                              <option value="">Select State</option>
+                                              <option value="Europe">Europe</option>
+                                           </select>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Zipcode">
+                                     </div>
+                                  </fieldset>
+                               </div>
                         </div>
                      </div>
                   </div>
@@ -3763,12 +3828,12 @@
                                  <div class="section mb-4 officeform1">
                                     <div class="d-flex justify-content-between align-items-center">
                                        <label class="form-label m-0">officers <span class="mandatory">*</span></label>
-                                       <a href="#" class="d-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#officerForm" aria-expanded="false">
+                                       <a href="#" class="d-flex align-items-center" data-bs-toggle="collapse" data-bs-target="#officerForm4" aria-expanded="false">
                                        <span class="icon icon-add-circle-plus"></span> Add
                                        </a>
                                     </div>
                                     <!-- Form inside collapse -->
-                                    <div id="officerForm1" class="collapse mt-2">
+                                    <div id="officerForm4" class="collapse mt-2">
                                        <input type="text" class="form-control toggle-radio" placeholder="Enter Officer Name">
                                     </div>
                                  </div>
@@ -3780,22 +3845,22 @@
                                        
                                     </div>
                                     <!-- Form inside collapse -->
-                                    <div id="managerForm" class="collapse show mt-2">
+                                    <div id="managerForm4" class="collapse show mt-2">
                                        <!-- Radio buttons to select Individual or Corporate -->
                                        <div class="mb-4">
                                           <div class="d-flex gap-3">
                                              <div class="form-check">
-                                                <input class="form-check-input toggle-radio" type="radio" name="managerType" id="individual3" data-target="individualForm3" checked>
-                                                <label class="form-check-label" for="individual3">Individual</label>
+                                                <input class="form-check-input toggle-radio" type="radio" name="managerType" id="individual4" data-target="individualForm4" checked>
+                                                <label class="form-check-label" for="individual4">Individual</label>
                                              </div>
                                              <div class="form-check">
-                                                <input class="form-check-input toggle-radio" type="radio" name="managerType" id="corporate3" data-target="corporateForm3">
-                                                <label class="form-check-label" for="corporate3">Corporate</label>
+                                                <input class="form-check-input toggle-radio" type="radio" name="managerType" id="corporate4" data-target="corporateForm4">
+                                                <label class="form-check-label" for="corporate4">Corporate</label>
                                              </div>
                                           </div>
                                        </div>
                                        <!-- Individual Form -->
-                                       <div id="individualForm3" class="toggle-form">
+                                       <div id="individualForm4" class="toggle-form">
                                         <div class="filledstate ">
                                             <div class="inputsfilled d-flex justify-content-between flex-column">
                                             <div class="d-flex justify-content-between">
@@ -3856,7 +3921,7 @@
                                          
                                        </div>                                          
                                        <!-- Corporate Form (Initially Hidden) -->
-                                       <div id="corporateForm3" class="toggle-form" style="display: none;">
+                                       <div id="corporateForm4" class="toggle-form" style="display: none;">
                                           <fieldset class="">
                                              <input type="text" class="form-control mb-3" id="" placeholder="Corporate Name">
                                              <input type="text" class="form-control mb-3" id="" placeholder="Email Address">
@@ -3887,112 +3952,134 @@
                      </div>
                   </div>
                </div>
-               <!-- State 01 Specific Information Accordion -->
-               <div class="accordion mb-4" id="accordionExample2">
-                  <div class="accordion-item m-0">
-                     <h2 class="accordion-header" id="headingTwo1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                           data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
-                        State 01 Specific Information <span class="icon icon-entity-required ms-2"></span>
-                        </button>
-                     </h2>
-                     <div id="collapseTwo1" class="accordion-collapse collapse  border-0" aria-labelledby="headingTwo1">
-                        <div class="accordion-body pt-0">
-                           <fieldset>
-                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                 <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                 <div class="d-flex align-items-center">
-                                    <div class="form-check gap-2 me-3">
-                                       <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                       <label class="form-check-label fw-normal" for="asap">No</label>
-                                    </div>
-                                    <div class="form-check gap-2">
-                                       <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                       <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                    </div>
-                                 </div>
-                              </div>
-                              <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
-                              <span class="icon icon-outline-info  m-0"></span></label>
-                              <input type="text" class="form-control mb-3" placeholder="Address Line 1">
-                              <input type="text" class="form-control mb-3" placeholder="Address Line 2">
-                              <div class="d-flex w-100 mb-3">
-                                 <input type="text" class="form-control me-3" placeholder="City">
-                                 <div class="w-100 me-3">
-                                    <select class="form-select">
-                                       <option value="">Select State</option>
-                                       <option value="Europe">Europe</option>
-                                    </select>
-                                 </div>
-                                 <input type="text" class="form-control" placeholder="Zipcode">
-                              </div>
-                              <div class="d-flex justify-content-between align-items-center">
-                                 <span class="fw-bold">MAILING ADDRESS</span>
-                                 <div class="d-flex align-items-center">
-                                    <div class="form-check gap-2">
-                                       <input class="form-check-input payment-method" type="checkbox" id="asapCheck1" checked>
-                                       <label class="form-check-label fw-normal" for="asapCheck1">Same as Principal Address</label>
-                                    </div>
-                                 </div>
-                              </div>
-                           </fieldset>
-                        </div>
-                     </div>
+
+               <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                  <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                  <div class="d-flex align-items-center flex-column">
+                    <div class="d-flex">
+                      <div class="form-check me-3">
+                        <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
+                        <label class="form-check-label" for="no">No</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                        <label class="form-check-label" for="yes">Yes</label>
+                      </div>
+                    </div>
                   </div>
-               </div>
-               <!-- State 02 Specific Information Accordion -->
-               <div class="accordion mb-4" id="accordionExample3">
-                  <div class="accordion-item m-0">
-                     <h2 class="accordion-header" id="headingThree1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                           data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
-                        State 02 Specific Information <span class="icon icon-entity-required ms-2"></span>
-                        </button>
-                     </h2>
-                     <div id="collapseThree1" class="accordion-collapse collapse  border-0" aria-labelledby="headingThree1">
-                        <div class="accordion-body pt-0">
-                           <fieldset>
-                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                 <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                 <div class="d-flex align-items-center">
-                                    <div class="form-check gap-2 me-3">
-                                       <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                       <label class="form-check-label fw-normal" for="asap">No</label>
+                </div>
+              
+                <!-- Upload button -->
+                <div class="upload-btn mt-3" style="display: none;">
+                  <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
+                    Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                  </button>
+                </div>
+              </div>
+              
+              
+              
+              <!-- State 01 Specific Information Accordion -->
+              <div class="accordion mb-4" id="accordionExample2">
+                                    <div class="accordion-item m-0">
+                                       <h2 class="accordion-header" id="headingTwo1">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                             data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                                          State 01 Specific Information <span class="icon icon-entity-required ms-2"></span>
+                                          </button>
+                                       </h2>
+                                       <div id="collapseTwo1" class="accordion-collapse collapse  border-0" aria-labelledby="headingTwo1">
+                                          <div class="accordion-body pt-0">
+                                           <fieldset class="mb-4">
+                                               <label for="" class="form-label">State ID / File Number <span class="mandatory">*</span></label>
+                                               <input type="text" class="form-control" id="" placeholder="ABCD">
+                                            </fieldset>
+                                            <div class="calander-input mb-4">
+                                               <label for="" class="form-label w-100">Original File Date <span class="mandatory">*</span></label>
+                                               <input type="text" class="form-select datepicker " placeholder="Original File date" value="" id="datepicker">
+                                            </div>
+                                            <div class="calander-input mb-4">
+                                               <label for="" class="form-label w-100">Last Report File Date <span class="mandatory">*</span></label>
+                                               <input type="text" class="form-select datepicker " placeholder="Last report file date" value="" id="datepicker">
+                                            </div>
+                                            <div class="mb-4">
+                                               <label for="" class="form-label w-100">Home entity <small class="text-danger text-capitalize fw-normal">(This will come in case of foriegn)</small></label>
+                                               <select class="form-select" id="formation-model">
+                                                  <option value="Entity Type">Select Home Entity</option>
+                                                  <option value="Client Subscription">Europe</option>
+                                               </select>
+                                            </div>
+                                            <fieldset>
+                                                <label for="" class="form-label w-100">Physical Address <span class="mandatory">*</span>
+                                                <span class="icon icon-outline-info  m-0"></span></label>
+                                                <input type="text" class="form-control mb-3" placeholder="Address Line 1">
+                                                <input type="text" class="form-control mb-3" placeholder="Address Line 2">
+                                                <div class="d-flex w-100">
+                                                   <input type="text" class="form-control me-3" placeholder="City">
+                                                   <div class="w-100 me-3">
+                                                      <select class="form-select">
+                                                         <option value="">Select State</option>
+                                                         <option value="Europe">Europe</option>
+                                                      </select>
+                                                   </div>
+                                                   <input type="text" class="form-control" placeholder="Zipcode">
+                                                </div>
+                                             </fieldset>
+                                          </div>
+                                       </div>
                                     </div>
-                                    <div class="form-check gap-2">
-                                       <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                       <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
+              </div>
+              <!-- State 02 Specific Information Accordion -->
+              <div class="accordion mb-4" id="accordionExample3">
+                                    <div class="accordion-item m-0">
+                                       <h2 class="accordion-header" id="headingThree1">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                             data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                                          State 02 Specific Information <span class="icon icon-entity-required ms-2"></span>
+                                          </button>
+                                       </h2>
+                                       <div id="collapseThree1" class="accordion-collapse collapse  border-0" aria-labelledby="headingThree1">
+                                           <div class="accordion-body pt-0">
+                                               <fieldset class="mb-4">
+                                                   <label for="" class="form-label">State ID / File Number <span class="mandatory">*</span></label>
+                                                   <input type="text" class="form-control" id="" placeholder="ABCD">
+                                                </fieldset>
+                                                <div class="calander-input mb-4">
+                                                   <label for="" class="form-label w-100">Original File Date <span class="mandatory">*</span></label>
+                                                   <input type="text" class="form-select datepicker " placeholder="Original File date" value="" id="datepicker">
+                                                </div>
+                                                <div class="calander-input mb-4">
+                                                   <label for="" class="form-label w-100">Last Report File Date <span class="mandatory">*</span></label>
+                                                   <input type="text" class="form-select datepicker " placeholder="Last report file date" value="" id="datepicker">
+                                                </div>
+                                                <div class="mb-4">
+                                                   <label for="" class="form-label w-100">Home entity <small class="text-danger text-capitalize fw-normal">(This will come in case of foriegn)</small></label>
+                                                   <select class="form-select" id="formation-model">
+                                                      <option value="Entity Type">Select Home Entity</option>
+                                                      <option value="Client Subscription">Europe</option>
+                                                   </select>
+                                                </div>
+                                                <fieldset>
+                                                    <label for="" class="form-label w-100">Physical Address <span class="mandatory">*</span>
+                                                    <span class="icon icon-outline-info  m-0"></span></label>
+                                                    <input type="text" class="form-control mb-3" placeholder="Address Line 1">
+                                                    <input type="text" class="form-control mb-3" placeholder="Address Line 2">
+                                                    <div class="d-flex w-100">
+                                                       <input type="text" class="form-control me-3" placeholder="City">
+                                                       <div class="w-100 me-3">
+                                                          <select class="form-select">
+                                                             <option value="">Select State</option>
+                                                             <option value="Europe">Europe</option>
+                                                          </select>
+                                                       </div>
+                                                       <input type="text" class="form-control" placeholder="Zipcode">
+                                                    </div>
+                                                 </fieldset>
+                                              </div>
+                                       </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
-                              <span class="icon icon-outline-info  m-0"></span></label>
-                              <input type="text" class="form-control mb-3" placeholder="Address Line 1">
-                              <input type="text" class="form-control mb-3" placeholder="Address Line 2">
-                              <div class="d-flex w-100 mb-3">
-                                 <input type="text" class="form-control me-3" placeholder="City">
-                                 <div class="w-100 me-3">
-                                    <select class="form-select">
-                                       <option value="">Select State</option>
-                                       <option value="Europe">Europe</option>
-                                    </select>
-                                 </div>
-                                 <input type="text" class="form-control" placeholder="Zipcode">
-                              </div>
-                              <div class="d-flex justify-content-between align-items-center">
-                                 <span class="fw-bold">MAILING ADDRESS</span>
-                                 <div class="d-flex align-items-center">
-                                    <div class="form-check gap-2">
-                                       <input class="form-check-input payment-method" type="checkbox" id="asapCheck2" checked>
-                                       <label class="form-check-label fw-normal" for="asapCheck2">Same as Principal Address</label>
-                                    </div>
-                                 </div>
-                              </div>
-                           </fieldset>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+              </div>
             </div>
             <!-- Modal Body End -->
             <div class="modal-footer">
@@ -4805,7 +4892,7 @@
                      </div>
                   </div>
 
-                  <div class="accordion mb-4" id="accordionExample">
+                  <div class="accordion mb-4 d-none" id="accordionExample">
                     <div class="accordion-item m-0">
                        <h2 class="accordion-header" id="headingOne">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -4831,19 +4918,29 @@
                         <div id="collapseTwo1" class="accordion-collapse collapse  border-0" aria-labelledby="headingTwo1">
                            <div class="accordion-body pt-0">
                               <fieldset>
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2 me-3">
-                                          <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                          <label class="form-check-label fw-normal" for="asap">No</label>
-                                       </div>
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                          <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                       </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                      <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                      <div class="d-flex align-items-center flex-column">
+                                        <div class="d-flex">
+                                          <div class="form-check me-3">
+                                            <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked="">
+                                            <label class="form-check-label" for="no">No</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                                            <label class="form-check-label" for="yes">Yes</label>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                 </div>
+                                    <!-- Upload button -->
+                                    <div class="upload-btn mt-3" style="display: none;">
+                                      <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
+                                        Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                      </button>
+                                    </div>
+                                  </div>
                                  <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
                                  <span class="icon icon-outline-info  m-0"></span></label>
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 1">
@@ -4884,19 +4981,29 @@
                         <div id="collapseThree1" class="accordion-collapse collapse  border-0" aria-labelledby="headingThree1">
                            <div class="accordion-body pt-0">
                               <fieldset>
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <span class="fw-bold">USE CUSTOM ARTICLES </span>
-                                    <div class="d-flex align-items-center">
-                                       <div class="form-check gap-2 me-3">
-                                          <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                          <label class="form-check-label fw-normal" for="asap">No</label>
-                                       </div>
-                                       <div class="form-check gap-2">
-                                          <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                          <label class="form-check-label fw-normal text-capitalize" for="future date"> Yes</label>
-                                       </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                      <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                      <div class="d-flex align-items-center flex-column">
+                                        <div class="d-flex">
+                                          <div class="form-check me-3">
+                                            <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked="">
+                                            <label class="form-check-label" for="no">No</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
+                                            <label class="form-check-label" for="yes">Yes</label>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                 </div>
+                                    <!-- Upload button -->
+                                    <div class="upload-btn mt-3" style="display: none;">
+                                      <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
+                                        Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                      </button>
+                                    </div>
+                                  </div>
                                  <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
                                  <span class="icon icon-outline-info  m-0"></span></label>
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 1">

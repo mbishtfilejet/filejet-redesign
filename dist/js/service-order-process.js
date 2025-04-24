@@ -147,15 +147,31 @@ setupToggleForms(['registeredAgentStatus', 'registeredAgentStatusAnnual']);
   });
 
 
+  document.querySelectorAll('.upload-group').forEach(group => {
+    const yes = group.querySelector('.yes-checkbox');
+    const no = group.querySelector('.no-checkbox');
+    const btn = group.closest('.mb-4').querySelector('.upload-btn');
 
-//   $('.userTable').DataTable({
-//     paging: false,
-//     info: false,
-//     scrollY: '400px',
-//     scrollCollapse: true
-// });
+    const toggle = () => {
+      btn.style.display = yes.checked ? 'block' : 'none';
+      if (yes.checked) no.checked = false;
+    };
+
+    yes.addEventListener('change', toggle);
+    no.addEventListener('change', () => {
+      if (no.checked) {
+        yes.checked = false;
+        btn.style.display = 'none';
+      }
+    });
+
+    toggle(); // Run on load
+  });
 
   
-
+  
+  
+  
+  
 
 
