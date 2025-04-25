@@ -255,6 +255,8 @@
       font-size: 12px !important;
       text-transform: capitalize !important;
       letter-spacing: normal;
+      color: var(--bs-nw-gray-600);
+      font-weight: normal;
   }
     .form-check-input{
       border: 1.5px solid var(--bs-nw-gray-600);
@@ -352,6 +354,9 @@
     background-image: url("../../../dist/images/icons/view-checkbox-inactive.svg") !important;
     border: none;
    }
+   .form-check{
+    gap: 0.5rem;
+   }
 
   .view-options {
     .view-label{
@@ -364,6 +369,7 @@
     text-transform: capitalize !important;
     font-weight: normal !important ;
     letter-spacing: normal;
+    
    }
 
    .non-active-check{
@@ -538,16 +544,28 @@ hr{
   width: 10px !important;
 }
 .juridction-fixed-width{
-width: 55px;
+ width: 80px !important;
 }
 .assign-user .dataTables_wrapper{
   max-height: 400px;
   overflow: hidden;
   overflow-y: scroll;
 }
-
-
-
+.dataTables_scrollHead{
+  position: sticky !important;
+  top: 0;
+  background-color: white; 
+  z-index: 1;
+}
+.dataTables_wrapper .dataTable thead th.sorting::before {
+  right: 10px;
+}
+.dataTables_wrapper .dataTable thead th.sorting::after{
+  right: 10px;
+}
+.additional-search input:focus-within{
+  color: #000000 !important ;
+}
 
 @media (min-width: 1600px){
   .juridction-fixed-width{
