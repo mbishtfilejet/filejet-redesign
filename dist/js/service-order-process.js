@@ -105,12 +105,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // manager individual and corporate function function start
 $(document).ready(function () {
-    $('.toggle-radio').on('change', function () {
-      var target = $(this).data('target');
-      $('.toggle-form').hide(); // Hide all forms
-      $('#' + target).show(); // Show the selected form
-    });
+  // Initially hide all forms
+  $('.toggle-form').css('display', 'none');
+
+  // Show the form that matches the checked radio
+  $('.toggle-radio:checked').each(function() {
+    var target = $(this).data('target');
+    $('#' + target).css('display', 'block');
   });
+
+  // On radio button change
+  $('.toggle-radio').on('change', function () {
+    var target = $(this).data('target');
+
+    // First, hide all forms related to the same group
+    var groupName = $(this).attr('name'); // Get radio group name
+    $('input[name="' + groupName + '"]').each(function () {
+      var relatedTarget = $(this).data('target');
+      $('#' + relatedTarget).css('display', 'none');
+    });
+
+    // Then show the selected form
+    $('#' + target).css('display', 'block');
+  });
+});
+
+
 
 
 // toggle between enabled and disabled form  start
@@ -146,7 +166,7 @@ setupToggleForms(['registeredAgentStatus', 'registeredAgentStatusAnnual']);
     });
   });
 
-
+// upload document start
   document.querySelectorAll('.upload-group').forEach(group => {
     const yes = group.querySelector('.yes-checkbox');
     const no = group.querySelector('.no-checkbox');
@@ -168,10 +188,65 @@ setupToggleForms(['registeredAgentStatus', 'registeredAgentStatusAnnual']);
     toggle(); // Run on load
   });
 
+
+// table pagination remove
+  $(document).ready(function() {
+    $('.usertable').each(function() {
+      if ( $.fn.DataTable.isDataTable(this) ) {
+        $(this).DataTable().destroy();
+      }
+      $(this).DataTable({
+        paging: false,           // 🚫 No pagination
+        info: false,             // 🚫 Hide "Showing 1 of 10"
+        searching: false,        // 🚫 No search box
+        scrollY: '300px',        // ✅ Body scrolls if too tall
+        scrollCollapse: true,    // ✅ Scroll only when needed
+        ordering: true,          // ✅ Enable sorting (default)
+        columnDefs: [
+          { orderable: false, targets: 0 }  // ❌ First column (checkbox) not sortable
+        ]
+      });
+    });
+  });
+
+  
+
+// add more button form
+  $(document).ready(function() {
+    // When the "Add" button is clicked
+    $('#addButton').click(function() {
+        // Toggle the visibility of the form
+        $('#formContainer').toggle(); // Show or hide the form
+    });
+});
   
   
   
-  
+$(document).ready(function () {
+  function updateAllRadioLabels() {
+    $('input[type="radio"]').each(function () {
+      var label = $('label[for="' + this.id + '"]');
+      if ($(this).is(':checked')) {
+        label.removeClass('inactive');
+      } else {
+        label.addClass('inactive');
+      }
+    });
+  }
+
+  // Call once on page load
+  updateAllRadioLabels();
+
+  // Update whenever any radio button changes
+  $('input[type="radio"]').on('change', function () {
+    updateAllRadioLabels();
+  });
+});
+
+
+
+
+
   
 
 
