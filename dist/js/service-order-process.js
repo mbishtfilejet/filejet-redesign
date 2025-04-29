@@ -138,7 +138,7 @@ function setupToggleForms(radioGroupNames) {
   radioGroupNames.forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
       radio.addEventListener('change', function () {
-        const groupSuffix = name.replace(/^registeredAgentStatus/, ''); // e.g. '' or 'Annual'
+        const groupSuffix = name === 'registeredAgentStatus' ? 'RegisteredAgent' : 'AnnualReport';
         const enabledFormId = `enabledForm${groupSuffix}`;
         const disabledFormId = `disabledForm${groupSuffix}`;
         const isEnabled = this.value === 'enabled';
@@ -149,8 +149,10 @@ function setupToggleForms(radioGroupNames) {
     });
   });
 }
-// 👇 Call this once on page load with all your radio group names
-setupToggleForms(['registeredAgentStatus', 'registeredAgentStatusAnnual']);
+
+// Initialize the toggle functionality
+setupToggleForms(['registeredAgentStatus', 'annualReport']);
+
 
 
 
@@ -165,6 +167,10 @@ setupToggleForms(['registeredAgentStatus', 'registeredAgentStatusAnnual']);
       }
     });
   });
+
+
+
+  
 
 // upload document start
   document.querySelectorAll('.upload-group').forEach(group => {
@@ -221,7 +227,7 @@ setupToggleForms(['registeredAgentStatus', 'registeredAgentStatusAnnual']);
 });
   
   
-  
+//  radio active and iactive 
 $(document).ready(function () {
   function updateAllRadioLabels() {
     $('input[type="radio"]').each(function () {
@@ -242,6 +248,7 @@ $(document).ready(function () {
     updateAllRadioLabels();
   });
 });
+
 
 
 
