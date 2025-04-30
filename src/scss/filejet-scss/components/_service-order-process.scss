@@ -263,7 +263,11 @@
       font-weight: normal;
   }
     .form-check-input{
-      border: 1.5px solid var(--bs-nw-gray-600);
+      border: 1.5px solid #adadad;
+    }
+    .form-check-input[type=checkbox]:checked{
+      background-color: #272727;
+      border: 1.5px solid #272727 !important;
     }
     .mandatory{
       color: var(--bs-red);
@@ -373,6 +377,7 @@
     text-transform: capitalize !important;
     font-weight: normal !important ;
     letter-spacing: normal;
+    color: #b2b2b2;
     
    }
 
@@ -466,6 +471,9 @@ hr{
   color: var(--bs-filejet-medium-gray-opacity-50) !important;
   font-size: 12px !important;
   font-weight: 500 !important;
+}
+.additional-search .multi-select-container{
+  border: 1px solid #D2D5DA !important;
 }
 .additional-search .multi-select-container::after {
   font-weight: normal;
@@ -570,11 +578,15 @@ hr{
 .additional-search input:focus-within{
   color: #000000 !important ;
 }
-.rights-label.inactive {
-  color: #bebebe; 
+.rights-label {
+  color: #bebebe !important; 
 }
-.form-check-label.inactive {
-  color: #aaa; /* Lighter text color for inactive state */
+
+input[type="radio"]:checked + .rights-label {
+  color: var(--bs-filejet-medium-gray) !important; 
+}
+input[type="checkbox"]:checked + .rights-label {
+  color: var(--bs-filejet-medium-gray) !important; 
 }
 
 @media (min-width: 1600px){
@@ -596,6 +608,6 @@ hr{
   .entitymodal .service-step-group .step-text {
     width: 137px !important;
   }
-  
+
 
 }

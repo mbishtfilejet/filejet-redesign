@@ -1398,6 +1398,12 @@
                                             <td>User</td>
                                             <td>abc@xyz.com</td>
                                          </tr>
+                                         <tr class="even">
+                                            <td><input class="d-flex form-check-input" type="checkbox"></td>
+                                            <td>Ingrid Wille</td>
+                                            <td>User</td>
+                                            <td>abc@xyz.com</td>
+                                         </tr>
                                           
                                        </tbody>
                                     </table>
@@ -1568,7 +1574,7 @@
                      </div>
                      <div class="mb-4 p-3 bg-white rounded-2">
                         <fieldset>
-                           <label for="pricing-model" class="form-label">Payment Method</label>
+                           <label for="pricing-model" class="form-label">Payment Method<span class="mandatory">*</span></label>
                            <div class="custom-dropdown">
                               <select class="form-select" id="pricing-method">
                                  <option value="account-default">Account Default (Visa 1111)</option>
@@ -1650,11 +1656,11 @@
                               <div class="d-flex align-items-center">
                                  <div class="form-check gap-2 me-4">
                                     <input class="form-check-input payment-method" type="checkbox" id="ach" checked>
-                                    <label class="form-check-label fw-normal" for="ach">ACH</label>
+                                    <label class="form-check-label fw-normal rights-label" for="ach">ACH</label>
                                  </div>
                                  <div class="form-check gap-2">
                                     <input class="form-check-input payment-method" type="checkbox" id="credit-card">
-                                    <label class="form-check-label fw-normal text-capitalize" for="credit-card">Credit Card</label>
+                                    <label class="form-check-label fw-normal text-capitalize rights-label" for="credit-card">Credit Card</label>
                                  </div>
                               </div>
                            </div>
@@ -1671,11 +1677,11 @@
                                  <div class="d-flex align-items-center">
                                     <div class="form-check gap-2 me-4">
                                        <input class="form-check-input payment-method single-check" type="checkbox" id="addIndividual" checked>
-                                       <label class="form-check-label fw-normal" for="individual">Individual</label>
+                                       <label class="form-check-label fw-normal rights-label" for="individual">Individual</label>
                                     </div>
                                     <div class="form-check gap-2">
-                                       <input class="form-check-input payment-method single-check" type="checkbox" id="addCompany">
-                                       <label class="form-check-label fw-normal text-capitalize" for="company">Company</label>
+                                       <input class="form-check-input payment-method single-check" type="checkbox" id="addCompany"> 
+                                       <label class="form-check-label fw-normal text-capitalize rights-label" for="company">Company</label>
                                     </div>
                                  </div>
                               </div>
@@ -2013,11 +2019,11 @@
                         <div class="d-flex">
                           <div class="form-check me-4">
                             <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
-                            <label class="form-check-label" for="no">ASAP</label>
+                            <label class="form-check-label rights-label" for="no">ASAP</label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                            <label class="form-check-label" for="yes">Future Date</label>
+                            <label class="form-check-label rights-label" for="yes">Future Date</label>
                           </div>
                         </div>
                       </div>
@@ -2216,23 +2222,31 @@
                                              <div class="d-flex gap-4">
                                                 <div class="form-check">
                                                    <input class="form-check-input toggle-radio" type="radio" name="managerType" id="individual" data-target="individualForm" checked>
-                                                   <label class="form-check-label" for="individual">Individual</label>
+                                                   <label class="form-check-label rights-label" for="individual">Individual</label>
                                                 </div>
                                                 <div class="form-check">
                                                    <input class="form-check-input toggle-radio" type="radio" name="managerType" id="corporate" data-target="corporateForm">
-                                                   <label class="form-check-label" for="corporate">Corporate</label>
+                                                   <label class="form-check-label rights-label" for="corporate">Corporate</label>
                                                 </div>
                                              </div>
                                           </div>
                                           <!-- Individual Form -->
                                           <div id="individualForm" class="toggle-form" >
                                              <fieldset class="fillingstate">
-                                                <input type="text" class="form-control mb-3" id="firstName" placeholder="First Name">
-                                                <div class="d-flex mb-3">
-                                                   <input type="text" class="form-control " id="middleName" placeholder="Middle Name">
-                                                   <input type="text" class="form-control ms-3" id="lastName" placeholder="Last Name">
+                                                <input type="text" class="form-control mb-3" id="firstName" placeholder="Name">
+                                                <div class="filter2-dropdown additional-search dropdown mb-3 ">
+                                                    <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg" id="roleContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0"><input type="button" class="search-input" id="roleSearch" value="Role" autocomplete="off"></div>
+                                                    <ul class="dropdown-menu w-100" id="roleDropdown" >
+                                                        
+                                                        <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="CA"> CEO</label>
+                                                        </li>
+                                                        <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="NV">VC</label>
+                                                        </li>
+                                                        <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="FL">TL</label>
+                                                        </li>
+                                                        
+                                                    </ul>
                                                 </div>
-                                                <input type="text" class="form-control mb-3" id="managerEmail" placeholder="Email Address">
                                                 <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
                                                 <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
                                                 <div class="d-flex w-100 mb-4">
@@ -2256,7 +2270,6 @@
                                           <div id="corporateForm" class="toggle-form" style="display: none;">
                                              <fieldset class="">
                                                 <input type="text" class="form-control mb-3" id="" placeholder="Corporate Name">
-                                                <input type="text" class="form-control mb-3" id="" placeholder="Email Address">
                                                 <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
                                                 <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
                                                 <div class="d-flex w-100 mb-4">
@@ -2303,11 +2316,11 @@
                                         <div class="d-flex">
                                           <div class="form-check me-4">
                                             <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
-                                            <label class="form-check-label" for="no">No</label>
+                                            <label class="form-check-label rights-label" for="no">No</label>
                                           </div>
                                           <div class="form-check">
                                             <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                            <label class="form-check-label" for="yes">Yes</label>
+                                            <label class="form-check-label rights-label" for="yes">Yes</label>
                                           </div>
                                         </div>
                                       </div>
@@ -2366,11 +2379,11 @@
                                         <div class="d-flex">
                                           <div class="form-check me-4">
                                             <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
-                                            <label class="form-check-label" for="no">No</label>
+                                            <label class="form-check-label rights-label" for="no">No</label>
                                           </div>
                                           <div class="form-check">
                                             <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                            <label class="form-check-label" for="yes">Yes</label>
+                                            <label class="form-check-label rights-label" for="yes">Yes</label>
                                           </div>
                                         </div>
                                       </div>
@@ -2422,7 +2435,7 @@
                         <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn"  data-bs-toggle="modal" data-bs-dismiss="modal">
                         SAVE AND EXIT
                         </button>
-                        <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#entityDetailedit" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#entityServices" data-bs-toggle="modal" data-bs-dismiss="modal">
                         Next
                         </button>
                      </div>
@@ -2435,7 +2448,7 @@
 
 
       <!--New entity-detail step-2 edit Modal start-->
-      <div class="entitymodal modal modal-right fade filter-slideout group-model" id="entityDetailedit" tabindex="-1" aria-labelledby="searchModalLabel"
+      <div class="entitymodal modal modal-right fade filter-slideout group-model d-none" id="entityDetailedit" tabindex="-1" aria-labelledby="searchModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -2561,11 +2574,11 @@
                                           <div class="d-flex gap-4">
                                              <div class="form-check">
                                                 <input class="form-check-input toggle-radio" type="radio" name="managerType" id="individual3" data-target="individualForm3" checked>
-                                                <label class="form-check-label" for="individual3">Individual</label>
+                                                <label class="form-check-label rights-label" for="individual3">Individual</label>
                                              </div>
                                              <div class="form-check">
                                                 <input class="form-check-input toggle-radio" type="radio" name="managerType" id="corporate3" data-target="corporateForm3">
-                                                <label class="form-check-label" for="corporate3">Corporate</label>
+                                                <label class="form-check-label rights-label" for="corporate3">Corporate</label>
                                              </div>
                                           </div>
                                        </div>
@@ -2634,7 +2647,6 @@
                                        <div id="corporateForm3" class="toggle-form" style="display: none;">
                                           <fieldset class="">
                                              <input type="text" class="form-control mb-3" id="" placeholder="Corporate Name">
-                                             <input type="text" class="form-control mb-3" id="" placeholder="Email Address">
                                              <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
                                              <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
                                              <div class="d-flex w-100 mb-4">
@@ -2681,11 +2693,11 @@
                                     <div class="d-flex">
                                       <div class="form-check me-4">
                                         <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
-                                        <label class="form-check-label" for="no">No</label>
+                                        <label class="form-check-label rights-label" for="no">No</label>
                                       </div>
                                       <div class="form-check">
                                         <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                        <label class="form-check-label" for="yes">Yes</label>
+                                        <label class="form-check-label rights-label" for="yes">Yes</label>
                                       </div>
                                     </div>
                                   </div>
@@ -2744,11 +2756,11 @@
                                     <div class="d-flex">
                                       <div class="form-check me-4">
                                         <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
-                                        <label class="form-check-label" for="no">No</label>
+                                        <label class="form-check-label rights-label" for="no">No</label>
                                       </div>
                                       <div class="form-check">
                                         <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                        <label class="form-check-label" for="yes">Yes</label>
+                                        <label class="form-check-label rights-label" for="yes">Yes</label>
                                       </div>
                                     </div>
                                   </div>
@@ -3019,11 +3031,11 @@
                                         <div class="d-flex align-items-center">
                                             <div class="form-check gap-2 me-4">
                                                <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
-                                               <label class="form-check-label fw-normal" for="asap">Yes</label>
+                                               <label class="form-check-label fw-normal rights-label" for="asap">Yes</label>
                                             </div>
                                             <div class="form-check gap-2">
                                                <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                               <label class="form-check-label fw-normal text-capitalize" for="future date">No</label>
+                                               <label class="form-check-label fw-normal text-capitalize rights-label" for="future date">No</label>
                                             </div>
                                          </div>
                                         </div>
@@ -3250,23 +3262,163 @@
                      </div>
                      
                     </div>
-                    <div class="mb-4 p-3 bg-white rounded-2 mt-4">
-                        <div class="d-flex justify-content-between align-items-center upload-group w-100">
-                          <span class="fw-bold text-uppercase">Payment method<span class="mandatory">*</span></span>
-                          <div class="d-flex align-items-center flex-column">
-                            <div class="d-flex">
-                              <div class="form-check me-4">
-                                <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked="">
-                                <label class="form-check-label " for="no">Pay Now</label>
+                    <form class="" action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                           <fieldset>
+                              <label for="pricing-model" class="form-label">Payment Method<span class="mandatory">*</span></label>
+                              <div class="custom-dropdown">
+                                 <select class="form-select" id="pricing-method">
+                                    <option value="account-default">Pay Later</option>
+                                    <option value="account-default">Account Default (Visa 1111)</option>
+                                    <option value="on-file">On File</option>
+                                    <option value="add-new">Add New</option>
+                                 </select>
                               </div>
-                              <div class="form-check">
-                                <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                <label class="form-check-label " for="yes">Pay Later</label>
+                           </fieldset>
+                           <!-- <div id="account-default-content" class="mt-3">
+                              <div class="card p-3">
+                                  <p>💳 <strong>Account Default:</strong> Using Visa 1111 for transactions.</p>
                               </div>
-                            </div>
-                          </div>
+                              </div> -->
+                           <div id="on-file-content" class="hidden-method mt-4" style="display: none;">
+                              <div>
+                                 <div class="payment-card d-flex odd border rounded-top">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex">
+                                          <div class="methodiv">Mastercard </div>
+                                          <div class="methodcard">Mastercard ...4444</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <!-- Payment Method 2 -->
+                                 <div class="payment-card d-flex even border border-top-0 border-bottom-0">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex ">
+                                          <div class="methodiv">ACH Payment</div>
+                                          <div class="methodcard">Stripe Test Bank ...6789</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <!-- Payment Method 3 -->
+                                 <div class="payment-card d-flex odd border rounded-bottom ">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex">
+                                          <div class="methodiv">Card 2</div>
+                                          <div class="methodcard">Mastercard ...1111</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <div class="mt-4">
+                                    <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                    SAVE AND CONTINUE
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="addnew" id="add-new-content" style="display: none;">
+                              <div class="d-flex justify-content-between mt-4">
+                                 <span class="fw-bold">SELECT METHOD</span>
+                                 <div class="d-flex align-items-center">
+                                    <div class="form-check gap-2 me-4">
+                                       <input class="form-check-input payment-method" type="checkbox" id="ach" checked="">
+                                       <label class="form-check-label fw-normal rights-label" for="ach">ACH</label>
+                                    </div>
+                                    <div class="form-check gap-2">
+                                       <input class="form-check-input payment-method" type="checkbox" id="credit-card">
+                                       <label class="form-check-label fw-normal text-capitalize rights-label" for="credit-card">Credit Card</label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- ACH Payment Section (Default) -->
+                              <div id="ach-form" style="display: none;">
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Account Holder Name</label>
+                                       <input type="text" class="form-control" id="" placeholder="Name">
+                                    </fieldset>
+                                 </div>
+                                 <div class="d-flex justify-content-between mt-4">
+                                    <span class="fw-bold">ACCOUNT TYPE</span>
+                                    <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2 me-4">
+                                          <input class="form-check-input payment-method single-check" type="checkbox" id="addIndividual" checked="">
+                                          <label class="form-check-label fw-normal rights-label" for="individual">Individual</label>
+                                       </div>
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input payment-method single-check" type="checkbox" id="addCompany"> 
+                                          <label class="form-check-label fw-normal text-capitalize rights-label" for="company">Company</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">ROUTING NUMBER</label>
+                                       <input type="text" class="form-control" id="" placeholder="Routing Number">
+                                    </fieldset>
+                                    <fieldset class="">
+                                       <label for="" class="form-label">Account Number</label>
+                                       <input type="text" class="form-control" id="" placeholder="Account Number">
+                                    </fieldset>
+                                 </div>
+                              </div>
+                              <!-- Credit Card Payment Section (Hidden by Default) -->
+                              <div id="credit-card-form" style="display: none;">
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Card Holder Name</label>
+                                       <input type="text" class="form-control" id="" placeholder="Name">
+                                    </fieldset>
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Card Details</label>
+                                       <input type="text" class="form-control" id="" placeholder="**** **** **** 1111">
+                                    </fieldset>
+                                 </div>
+                                 <div class="mt-4 d-flex justify-content-between">
+                                    <fieldset class=" w-50 me-2">
+                                       <label for="" class="form-label">EXPIRY DATE</label>
+                                       <input type="text" class="form-control" id="" placeholder="MM/YY">
+                                    </fieldset>
+                                    <fieldset class=" w-50 ms-2">
+                                       <label for="" class="form-label">CVV</label>
+                                       <input type="text" class="form-control" id="" placeholder="CVV">
+                                    </fieldset>
+                                 </div>
+                              </div>
+                              <div class="mt-4">
+                                 <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                 SAVE
+                                 </button>
+                              </div>
+                           </div>
                         </div>
-                      </div>
+                     </form>
                  </div>
 
                   <!-- Modal Body End -->
@@ -3348,11 +3500,11 @@
                                         <div class="d-flex align-items-center">
                                            <div class="form-check gap-2 me-4">
                                               <input class="form-check-input single-check" type="checkbox" id="asapheck" checked="">
-                                              <label class="form-check-label fw-normal" for="asap">Home</label>
+                                              <label class="form-check-label fw-normal rights-label" for="asap">Home</label>
                                            </div>
                                            <div class="form-check gap-2">
                                               <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                                              <label class="form-check-label fw-normal text-capitalize" for="future date">Foreign</label>
+                                              <label class="form-check-label fw-normal text-capitalize rights-label" for="future date">Foreign</label>
                                            </div>
                                         </div>
                                      </div>
@@ -3589,43 +3741,51 @@
                                            <div class="d-flex gap-4">
                                               <div class="form-check">
                                                  <input class="form-check-input toggle-radio" type="radio" name="managerType1" id="individual1" data-target="individualForm1" checked="">
-                                                 <label class="form-check-label" for="individual1">Individual</label>
+                                                 <label class="form-check-label rights-label" for="individual1">Individual</label>
                                               </div>
                                               <div class="form-check">
                                                  <input class="form-check-input toggle-radio" type="radio" name="managerType1" id="corporate1" data-target="corporateForm1">
-                                                 <label class="form-check-label" for="corporate1">Corporate</label>
+                                                 <label class="form-check-label rights-label" for="corporate1">Corporate</label>
                                               </div>
                                            </div>
                                         </div>
                                      
                                         <!-- Individual Form -->
-                                        <div id="individualForm1" class="toggle-form" style="display: block;">
-                                           <fieldset class="fillingstate">
-                                              <input type="text" class="form-control mb-3" id="firstName1" placeholder="First Name">
-                                              <div class="d-flex mb-4">
-                                                 <input type="text" class="form-control" id="middleName1" placeholder="Middle Name">
-                                                 <input type="text" class="form-control ms-3" id="lastName1" placeholder="Last Name">
-                                              </div>
-                                              <input type="text" class="form-control mb-3" id="managerEmail1" placeholder="Email Address">
-                                              <input type="text" class="form-control mb-3" id="addressOne1" placeholder="Address Line 1">
-                                              <input type="text" class="form-control mb-3" id="addressTwo1" placeholder="Address Line 2">
-                                              <div class="d-flex w-100 mb-4">
-                                                 <input type="text" class="form-control me-3" id="cityName1" placeholder="City">
-                                                 <div class="w-100 me-3">
-                                                    <select class="form-select" id="formation-model1">
-                                                       <option value="Entity Type">Select State</option>
-                                                       <option value="Client Subscription">Europe</option>
-                                                    </select>
-                                                 </div>
-                                                 <input type="text" class="form-control" id="zipCode1" placeholder="Zipcode">
-                                              </div>
-                                              <div class="mt-3">
-                                                 <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn1">
-                                                    ADD
-                                                 </button>
-                                              </div>
-                                           </fieldset>
-                                        </div>
+                                        <div id="individualForm1" class="toggle-form" >
+                                            <fieldset class="fillingstate">
+                                               <input type="text" class="form-control mb-3" id="firstName" placeholder="Name">
+                                               <div class="filter2-dropdown additional-search dropdown mb-3 ">
+                                                   <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg" id="roleContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0"><input type="button" class="search-input" id="roleSearch" value="Role" autocomplete="off"></div>
+                                                   <ul class="dropdown-menu w-100" id="roleDropdown" >
+                                                       
+                                                       <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="CA"> CEO</label>
+                                                       </li>
+                                                       <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="NV">VC</label>
+                                                       </li>
+                                                       <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="FL">TL</label>
+                                                       </li>
+                                                       
+                                                   </ul>
+                                               </div>
+                                               <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
+                                               <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
+                                               <div class="d-flex w-100 mb-4">
+                                                  <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
+                                                  <div class="w-100 me-3">
+                                                     <select class="form-select" id="formation-model">
+                                                        <option value="Entity Type">Select State</option>
+                                                        <option value="Client Subscription">Europe</option>
+                                                     </select>
+                                                  </div>
+                                                  <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
+                                               </div>
+                                               <div class="mt-3">
+                                                  <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn">
+                                                  ADD
+                                                  </button>
+                                               </div>
+                                            </fieldset>
+                                         </div>
                                      
                                         <!-- Corporate Form (Initially Hidden) -->
                                         <div id="corporateForm1" class="toggle-form" style="display: none;">
@@ -3668,11 +3828,11 @@
                         <div class="d-flex">
                           <div class="form-check me-4">
                             <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked>
-                            <label class="form-check-label" for="no">No</label>
+                            <label class="form-check-label rights-label" for="no">No</label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                            <label class="form-check-label" for="yes">Yes</label>
+                            <label class="form-check-label rights-label" for="yes">Yes</label>
                           </div>
                         </div>
                       </div>
@@ -3847,88 +4007,105 @@
                <!-- Modal Header Ends -->
                <!-- Modal Body Start-->
                <div class="modal-body">
-                  <div class="accordion mb-4" id="accordionExample1">
-                     <div class="accordion-item m-0">
-                        <h2 class="accordion-header" id="headingOne1">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                              data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                           Services
-                           </button>
-                        </h2>
-                        <div id="collapseOne1" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne1">
-                           <div class="accordion-body pt-0">
-                              <form action="">
-                                
-                                 <!-- Form inside collapse -->
-                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold">REGISTERED AGENT SERVICE <span class="icon icon-outline-info m-0"></span></span>
-                                    <fieldset>
-                                        <!-- Radio buttons to select Enabled or Disabled -->
-                                            <div class="d-flex gap-4">
-                                                <div class="form-check">
-                                                    <input class="form-check-input toggle-radio" type="radio" id="enabled"  name="registeredAgentStatus" value="enabled" checked>
-                                                    <label class="form-check-label" for="enabled">Enabled</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input toggle-radio" type="radio" id="disabled" name="registeredAgentStatus" value="disabled">
-                                                    <label class="form-check-label" for="disabled">Disabled</label>
-                                                </div>
-                                            </div>
-                                        <!-- Enabled Form -->
-                                    </fieldset>
+                <div class="accordion mb-4" id="accordionExample1">
+                    <div class="accordion-item m-0">
+                       <h2 class="accordion-header" id="headingOne1">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                          Services
+                          </button>
+                       </h2>
+                       <div id="collapseOne1" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne1">
+                          <div class="accordion-body pt-0">
+                             <form action="">
+                               
+                                <!-- Form inside collapse -->
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                   <span class="fw-bold">REGISTERED AGENT SERVICE <span class="icon icon-outline-info m-0"></span></span>
+                                   <fieldset>
+                                       <!-- Radio buttons to select Enabled or Disabled -->
+                                           <div class="d-flex gap-4">
+                                               <div class="form-check">
+                                                   <input class="form-check-input toggle-radio" type="radio" id="enabled" name="addregisteredAgentStatus" value="enabled" checked="">
+                                                   <label class="form-check-label rights-label" for="enabled">Enabled</label>
+                                               </div>
+                                               <div class="form-check">
+                                                   <input class="form-check-input toggle-radio" type="radio" id="disabled" name="addregisteredAgentStatus" value="disabled">
+                                                   <label class="form-check-label rights-label" for="disabled">Disabled</label>
+                                               </div>
+                                           </div>
+                                       <!-- Enabled Form -->
+                                   </fieldset>
+                               </div>
+                               <div id="addenabledFormRegisteredAgent" style="display: block;">
+                                   <!-- Enabled form content here -->
+                               </div>
+                               <!-- Disabled Form (Initially Hidden) -->
+                               <div id="adddisabledFormRegisteredAgent" style="display: none;">
+                                       <label for="agentName" class="form-label w-100">Name of Individual (First Last) or Corporate Registered Agent</label>
+                                       <input type="text" class="form-control mb-4" id="agentName" placeholder="Name">
+                                       <label for="agentAddress1" class="form-label w-100">Address <span class="icon icon-outline-info m-0"></span></label>
+                                       <input type="text" class="form-control mb-3" id="agentAddress1" placeholder="Address Line 1">
+                                       <input type="text" class="form-control mb-3" id="agentAddress2" placeholder="Address Line 2">
+                                       <div class="d-flex w-100 mb-3">
+                                           <input type="text" class="form-control me-3" id="agentCity" placeholder="City">
+                                           <div class="w-100 me-3">
+                                               <select class="form-select" id="agentState">
+                                                   <option value="">Select State</option>
+                                                   <option value="Europe">Europe</option>
+                                                   <!-- Add other states as options here -->
+                                               </select>
+                                           </div>
+                                           <input type="text" class="form-control" id="agentZipcode" placeholder="Zipcode">
+                                       </div>
+                                       <div class="mt-4">
+                                           <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">SAVE</button>
+                                       </div>
+                               </div>
+                                <hr>
+                                <!-- Annual Report Service -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                   <span class="fw-bold">ANNUAL REPORT SERVICE <span class="icon icon-outline-info  m-0"></span></span>
+                                   <div class="d-flex gap-4">
+                                       <div class="form-check">
+                                           <input class="form-check-input toggle-radio" type="radio" id="enabled2" name="addannualReport" value="enabled" checked="">
+                                           <label class="form-check-label rights-label" for="enabled2">Enabled</label>
+                                       </div>
+                                       <div class="form-check">
+                                           <input class="form-check-input toggle-radio" type="radio" id="disabled2" name="addannualReport" value="disabled">
+                                           <label class="form-check-label rights-label" for="disabled2">Disabled</label>
+                                       </div>
+                                   </div>
                                 </div>
-                                <div id="enabledForm">
-                                    <!-- Enabled form content here -->
-                                </div>
-                                <!-- Disabled Form (Initially Hidden) -->
-                                <div id="disabledForm" style="display: none;">
-                                        <label for="agentName" class="form-label w-100">Name of Individual (First Last) or Corporate Registered Agent</label>
-                                        <input type="text" class="form-control mb-4" id="agentName" placeholder="Name">
-                                        <label for="agentAddress1" class="form-label w-100">Address <span class="icon icon-outline-info m-0"></span></label>
-                                        <input type="text" class="form-control mb-3" id="agentAddress1" placeholder="Address Line 1">
-                                        <input type="text" class="form-control mb-3" id="agentAddress2" placeholder="Address Line 2">
-                                        <div class="d-flex w-100 mb-3">
-                                            <input type="text" class="form-control me-3" id="agentCity" placeholder="City">
-                                            <div class="w-100 me-3">
-                                                <select class="form-select" id="agentState">
-                                                    <option value="">Select State</option>
-                                                    <option value="Europe">Europe</option>
-                                                    <!-- Add other states as options here -->
-                                                </select>
-                                            </div>
-                                            <input type="text" class="form-control" id="agentZipcode" placeholder="Zipcode">
-                                        </div>
-                                        <div class="mt-4">
-                                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">SAVE</button>
-                                        </div>
-                                </div>
-                                 <hr>
-                                 <!-- Annual Report Service -->
-                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold">ANNUAL REPORT SERVICE <span class="icon icon-outline-info  m-0"></span></span>
-                                    <div class="d-flex gap-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input toggle-radio" type="radio" id="enabled2"  name="annualReport" value="enabled" checked>
-                                            <label class="form-check-label" for="enabled">Enabled</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input toggle-radio" type="radio" id="disabled2" name="annualReport" value="disabled">
-                                            <label class="form-check-label" for="disabled">Disabled</label>
-                                        </div>
+                                <div id="addenabledFormAnnualReport">
+                                   <!-- Enabled form content here -->
+                               </div>
+                               <!-- Disabled Form (Initially Hidden) -->
+                               <div id="adddisabledFormAnnualReport" style="display: none;">
+                                   <div class="d-flex align-items-start justify-content-between mt-4">
+                                       <div class="d-flex ">
+                                           <span class="fw-bold text-uppercase">Suppress Notifications and Reminders</span>
+                                           <span class="icon icon-outline-info m-0"></span>
+                                       </div>
+                                   
+                                   <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2 me-4">
+                                          <input class="form-check-input single-check" type="checkbox" id="asapheck" checked="">
+                                          <label class="form-check-label fw-normal" for="asap">Yes</label>
+                                       </div>
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
+                                          <label class="form-check-label fw-normal text-capitalize" for="future date">No</label>
+                                       </div>
                                     </div>
-                                 </div>
-                                 <div class="collapse mt-2" id="form2">
-                                    <!-- <div class="card card-body">
-                                       <label for="reason2" class="form-label">Reason for disabling:</label>
-                                       <input type="text" class="form-control" id="reason2" placeholder="Enter reason">
-                                       </div> -->
-                                 </div>
+                                   </div>
 
-                              </form>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                               </div>
+                               
+                             </form>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
 
                </div>
                <!-- Modal Body End -->
@@ -4058,23 +4235,163 @@
                         </div>
                      </div>
                     </div>
-                    <div class="mb-4 p-3 bg-white rounded-2 mt-4">
-                        <div class="d-flex justify-content-between align-items-center upload-group w-100">
-                          <span class="fw-bold text-uppercase">Payment method<span class="mandatory">*</span></span>
-                          <div class="d-flex align-items-center flex-column">
-                            <div class="d-flex">
-                              <div class="form-check me-4">
-                                <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked="">
-                                <label class="form-check-label " for="no">Pay Now</label>
+                    <form class="" action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                           <fieldset>
+                              <label for="pricing-model" class="form-label">Payment Method<span class="mandatory">*</span></label>
+                              <div class="custom-dropdown">
+                                 <select class="form-select" id="pricing-method">
+                                    <option value="account-default">Pay Later</option>
+                                    <option value="account-default">Account Default (Visa 1111)</option>
+                                    <option value="on-file">On File</option>
+                                    <option value="add-new">Add New</option>
+                                 </select>
                               </div>
-                              <div class="form-check">
-                                <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                <label class="form-check-label " for="yes">Pay Later</label>
+                           </fieldset>
+                           <!-- <div id="account-default-content" class="mt-3">
+                              <div class="card p-3">
+                                  <p>💳 <strong>Account Default:</strong> Using Visa 1111 for transactions.</p>
                               </div>
-                            </div>
-                          </div>
+                              </div> -->
+                           <div id="on-file-content" class="hidden-method mt-4" style="display: none;">
+                              <div>
+                                 <div class="payment-card d-flex odd border rounded-top">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex">
+                                          <div class="methodiv">Mastercard </div>
+                                          <div class="methodcard">Mastercard ...4444</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <!-- Payment Method 2 -->
+                                 <div class="payment-card d-flex even border border-top-0 border-bottom-0">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex ">
+                                          <div class="methodiv">ACH Payment</div>
+                                          <div class="methodcard">Stripe Test Bank ...6789</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <!-- Payment Method 3 -->
+                                 <div class="payment-card d-flex odd border rounded-bottom ">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex">
+                                          <div class="methodiv">Card 2</div>
+                                          <div class="methodcard">Mastercard ...1111</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <div class="mt-4">
+                                    <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                    SAVE AND CONTINUE
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="addnew" id="add-new-content" style="display: none;">
+                              <div class="d-flex justify-content-between mt-4">
+                                 <span class="fw-bold">SELECT METHOD</span>
+                                 <div class="d-flex align-items-center">
+                                    <div class="form-check gap-2 me-4">
+                                       <input class="form-check-input payment-method" type="checkbox" id="ach" checked="">
+                                       <label class="form-check-label fw-normal rights-label" for="ach">ACH</label>
+                                    </div>
+                                    <div class="form-check gap-2">
+                                       <input class="form-check-input payment-method" type="checkbox" id="credit-card">
+                                       <label class="form-check-label fw-normal text-capitalize rights-label" for="credit-card">Credit Card</label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- ACH Payment Section (Default) -->
+                              <div id="ach-form" style="display: none;">
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Account Holder Name</label>
+                                       <input type="text" class="form-control" id="" placeholder="Name">
+                                    </fieldset>
+                                 </div>
+                                 <div class="d-flex justify-content-between mt-4">
+                                    <span class="fw-bold">ACCOUNT TYPE</span>
+                                    <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2 me-4">
+                                          <input class="form-check-input payment-method single-check" type="checkbox" id="addIndividual" checked="">
+                                          <label class="form-check-label fw-normal rights-label" for="individual">Individual</label>
+                                       </div>
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input payment-method single-check" type="checkbox" id="addCompany"> 
+                                          <label class="form-check-label fw-normal text-capitalize rights-label" for="company">Company</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">ROUTING NUMBER</label>
+                                       <input type="text" class="form-control" id="" placeholder="Routing Number">
+                                    </fieldset>
+                                    <fieldset class="">
+                                       <label for="" class="form-label">Account Number</label>
+                                       <input type="text" class="form-control" id="" placeholder="Account Number">
+                                    </fieldset>
+                                 </div>
+                              </div>
+                              <!-- Credit Card Payment Section (Hidden by Default) -->
+                              <div id="credit-card-form" style="display: none;">
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Card Holder Name</label>
+                                       <input type="text" class="form-control" id="" placeholder="Name">
+                                    </fieldset>
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Card Details</label>
+                                       <input type="text" class="form-control" id="" placeholder="**** **** **** 1111">
+                                    </fieldset>
+                                 </div>
+                                 <div class="mt-4 d-flex justify-content-between">
+                                    <fieldset class=" w-50 me-2">
+                                       <label for="" class="form-label">EXPIRY DATE</label>
+                                       <input type="text" class="form-control" id="" placeholder="MM/YY">
+                                    </fieldset>
+                                    <fieldset class=" w-50 ms-2">
+                                       <label for="" class="form-label">CVV</label>
+                                       <input type="text" class="form-control" id="" placeholder="CVV">
+                                    </fieldset>
+                                 </div>
+                              </div>
+                              <div class="mt-4">
+                                 <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                 SAVE
+                                 </button>
+                              </div>
+                           </div>
                         </div>
-                      </div>
+                     </form>
                  </div>
 
                   <!-- Modal Body End -->
@@ -4144,7 +4461,9 @@
                <!-- Modal Header Ends -->
                <!-- Modal Body Start-->
                <div class="modal-body">
+                <h6 class="w-90 d-4">Please review the information below and confirm it is accurate and complete, or make any necessary changes to be filed with the Secretary of State.</h6>
                 <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                    
                     <fieldset class="mb-4">
                         <label for="" class="form-label">Entity Name</label>
                         <input type="text" class="form-control bg-filled" id="" placeholder="ABCD LLC">
@@ -4256,53 +4575,7 @@
                         </fieldset>
                      </div>
                   </form>
-                  <form class="mb-4" action="">
-                    <div class="p-3 bg-white rounded-2">
-                    <!-- Form inside collapse -->
-                    <div class="d-flex justify-content-between align-items-center">
-                       <span class="fw-bold">REGISTERED AGENT SERVICE <span class="icon icon-outline-info m-0"></span></span>
-                       <fieldset>
-                           <!-- Radio buttons to select Enabled or Disabled -->
-                               <div class="d-flex gap-4">
-                                   <div class="form-check">
-                                       <input class="form-check-input toggle-radio" type="radio" id="enabled" name="registeredAgentStatusAnnual" value="enabled" checked="">
-                                       <label class="form-check-label" for="enabled">Enabled</label>
-                                   </div>
-                                   <div class="form-check">
-                                       <input class="form-check-input toggle-radio" type="radio" id="disabled" name="registeredAgentStatusAnnual" value="disabled">
-                                       <label class="form-check-label" for="disabled">Disabled</label>
-                                   </div>
-                               </div>
-                           <!-- Enabled Form -->
-                       </fieldset>
-                   </div>
-                   <div id="enabledFormAnnual">
-                       <!-- Enabled form content here -->
-                   </div>
-                   <!-- Disabled Form (Initially Hidden) -->
-                   <div id="disabledFormAnnual" class="mt-4" style="display: none;">
-                           <label for="agentName" class="form-label w-100">Name of Individual (First Last) or Corporate Registered Agent</label>
-                           <input type="text" class="form-control mb-4" id="agentName" placeholder="Name">
-                           <label for="agentAddress1" class="form-label w-100">Address <span class="icon icon-outline-info m-0"></span></label>
-                           <input type="text" class="form-control mb-3" id="agentAddress1" placeholder="Address Line 1">
-                           <input type="text" class="form-control mb-3" id="agentAddress2" placeholder="Address Line 2">
-                           <div class="d-flex w-100 mb-3">
-                               <input type="text" class="form-control me-3" id="agentCity" placeholder="City">
-                               <div class="w-100 me-3">
-                                   <select class="form-select" id="agentState">
-                                       <option value="">Select State</option>
-                                       <option value="Europe">Europe</option>
-                                       <!-- Add other states as options here -->
-                                   </select>
-                               </div>
-                               <input type="text" class="form-control" id="agentZipcode" placeholder="Zipcode">
-                           </div>
-                           <div class="mt-4">
-                               <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">SAVE</button>
-                           </div>
-                   </div>
-                </div>
-                 </form>
+
                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                     <fieldset class="mb-4">
                         <label for="" class="form-label inactive">Authorized Signer Name</label>
@@ -4365,48 +4638,54 @@
                                              <div class="d-flex gap-4">
                                                 <div class="form-check">
                                                    <input class="form-check-input toggle-radio" type="radio" name="managerType" id="individual2" data-target="individualForm2" checked>
-                                                   <label class="form-check-label" for="individual2">Individual</label>
+                                                   <label class="form-check-label rights-label" for="individual2">Individual</label>
                                                 </div>
                                                 <div class="form-check">
                                                    <input class="form-check-input toggle-radio" type="radio" name="managerType" id="corporate2" data-target="corporateForm2">
-                                                   <label class="form-check-label" for="corporate2">Corporate</label>
+                                                   <label class="form-check-label rights-label" for="corporate2">Corporate</label>
                                                 </div>
                                              </div>
                                           </div>
                                           <!-- Individual Form -->
                                           <div id="individualForm2" class="toggle-form" style="display: block;">
-                                             <fieldset class="fillingstate">
-                                                <input type="text" class="form-control mb-3" id="firstName" placeholder="First Name">
-                                                <div class="d-flex mb-3">
-                                                   <input type="text" class="form-control " id="middleName" placeholder="Middle Name">
-                                                   <input type="text" class="form-control ms-3" id="lastName" placeholder="Last Name">
-                                                </div>
-                                                <input type="text" class="form-control mb-3" id="managerEmail" placeholder="Email Address">
-                                                <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
-                                                <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
-                                                <div class="d-flex w-100 mb-4">
-                                                   <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
-                                                   <div class="w-100 me-3">
-                                                      <select class="form-select" id="formation-model">
-                                                         <option value="Entity Type">Select State</option>
-                                                         <option value="Client Subscription">Europe</option>
-                                                      </select>
-                                                   </div>
-                                                   <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
-                                                </div>
-                                                <div class="mt-4">
-                                                   <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn">
-                                                   ADD
-                                                   </button>
-                                                </div>
-                                             </fieldset>
-                                            
-                                          </div>
+                                            <fieldset class="fillingstate">
+                                               <input type="text" class="form-control mb-3" id="firstName" placeholder="Name">
+                                               <div class="filter2-dropdown additional-search dropdown mb-3 ">
+                                                   <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg" id="roleContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0"><input type="button" class="search-input" id="roleSearch" value="Role" autocomplete="off"></div>
+                                                   <ul class="dropdown-menu w-100" id="roleDropdown"><input type="text" class="dropdown-search-input" placeholder="Search..." autocomplete="off">
+                                                       
+                                                       <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="CA"> CEO</label>
+                                                       </li>
+                                                       <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="NV">VC</label>
+                                                       </li>
+                                                       <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="FL">TL</label>
+                                                       </li>
+                                                       
+                                                   </ul>
+                                               </div>
+                                               <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
+                                               <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
+                                               <div class="d-flex w-100 mb-4">
+                                                  <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
+                                                  <div class="w-100 me-3">
+                                                     <select class="form-select" id="formation-model">
+                                                        <option value="Entity Type">Select State</option>
+                                                        <option value="Client Subscription">Europe</option>
+                                                     </select>
+                                                  </div>
+                                                  <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
+                                               </div>
+                                               <div class="mt-3">
+                                                  <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn">
+                                                  ADD
+                                                  </button>
+                                               </div>
+                                            </fieldset>
+                                         </div>
                                           <!-- Corporate Form (Initially Hidden) -->
                                           <div id="corporateForm2" class="toggle-form" style="display: none;">
                                              <fieldset class="">
                                                 <input type="text" class="form-control mb-3" id="" placeholder="Corporate Name">
-                                                <input type="text" class="form-control mb-3" id="" placeholder="Email Address">
                                                 <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
                                                 <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
                                                 <div class="d-flex w-100 mb-4">
@@ -4468,11 +4747,11 @@
                                         <div class="d-flex">
                                           <div class="form-check me-4">
                                             <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked="">
-                                            <label class="form-check-label" for="no">No</label>
+                                            <label class="form-check-label rights-label" for="no">No</label>
                                           </div>
                                           <div class="form-check">
                                             <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                            <label class="form-check-label" for="yes">Yes</label>
+                                            <label class="form-check-label rights-label" for="yes">Yes</label>
                                           </div>
                                         </div>
                                       </div>
@@ -4531,11 +4810,11 @@
                                         <div class="d-flex">
                                           <div class="form-check me-4">
                                             <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked="">
-                                            <label class="form-check-label" for="no">No</label>
+                                            <label class="form-check-label rights-label" for="no">No</label>
                                           </div>
                                           <div class="form-check">
                                             <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                            <label class="form-check-label" for="yes">Yes</label>
+                                            <label class="form-check-label rights-label" for="yes">Yes</label>
                                           </div>
                                         </div>
                                       </div>
@@ -4646,25 +4925,16 @@
                         <span class="w-90 fw-normal fs-11">
                             Labor Judgment No Manager or Member, as further defined by California Corporations Code section 17702.09(a)(8), has an outstanding final judgment issued by the Division of Labor Standards Enforcement or a court of law, for which no appeal is pending, for the violation of any wage order or provision of the Labor Code.</span>
                         <div class="form-check gap-2 me-4 ">
-                           <input class="form-check-input single-check" type="checkbox" id="asapheck">
-                           <label class="form-check-label fw-normal" for="asap">Yes</label>
+                           <input class="form-check-input single-check" type="checkbox" id="asapheck" checked>
+                           <label class="form-check-label fw-normal rights-label" for="asap">Yes</label>
                         </div>
                         <div class="form-check gap-2">
                            <input class="form-check-input single-check" type="checkbox" id="FuturedateCheck">
-                           <label class="form-check-label fw-normal text-capitalize" for="future date">No</label>
+                           <label class="form-check-label fw-normal text-capitalize rights-label" for="future date">No</label>
                         </div>
                      </div>
                     </div>
-                   <div class="mb-4 p-3 bg-white rounded-2 mt-3">
-                       <fieldset class="mb-4">
-                           <label for="" class="form-label">Authorized Signer Name</label>
-                           <input type="text" class="form-control bg-filled" id="" placeholder="John Smith">
-                        </fieldset>
-                        <fieldset class="">
-                           <label for="" class="form-label">title</label>
-                           <input type="text" class="form-control bg-filled" id="" placeholder="Manager">
-                        </fieldset>
-                    </div>
+
                   </div>
                   <!-- Modal Body End -->
                   <div class="modal-footer">
@@ -4752,11 +5022,11 @@
                     <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                         <fieldset class="mb-4">
                             <label for="" class="form-label">Authorized Signer Name</label>
-                            <input type="text" class="form-control bg-filled" id="" placeholder="John Smith">
+                            <input type="text" class="form-control " id="" placeholder="Signer Name">
                          </fieldset>
                          <fieldset class="">
                             <label for="" class="form-label">title</label>
-                            <input type="text" class="form-control bg-filled" id="" placeholder="Manager">
+                            <input type="text" class="form-control" id="" placeholder="Title">
                          </fieldset>
                      </div>
                    </div>
@@ -4860,23 +5130,163 @@
                         </div>
                      </div>
                     </div>
-                    <div class="mb-4 p-3 bg-white rounded-2 mt-4">
-                        <div class="d-flex justify-content-between align-items-center upload-group w-100">
-                          <span class="fw-bold text-uppercase">Payment method<span class="mandatory">*</span></span>
-                          <div class="d-flex align-items-center flex-column">
-                            <div class="d-flex">
-                              <div class="form-check me-4">
-                                <input class="form-check-input no-checkbox" type="checkbox" id="no" name="uploadChoice" checked="">
-                                <label class="form-check-label " for="no">Pay Now</label>
+                    <form class="" action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                           <fieldset>
+                              <label for="pricing-model" class="form-label">Payment Method<span class="mandatory">*</span></label>
+                              <div class="custom-dropdown">
+                                 <select class="form-select" id="pricing-method">
+                                    <option value="account-default">Pay Later</option>
+                                    <option value="account-default">Account Default (Visa 1111)</option>
+                                    <option value="on-file">On File</option>
+                                    <option value="add-new">Add New</option>
+                                 </select>
                               </div>
-                              <div class="form-check">
-                                <input class="form-check-input yes-checkbox" type="checkbox" id="yes" name="uploadChoice">
-                                <label class="form-check-label " for="yes">Pay Later</label>
+                           </fieldset>
+                           <!-- <div id="account-default-content" class="mt-3">
+                              <div class="card p-3">
+                                  <p>💳 <strong>Account Default:</strong> Using Visa 1111 for transactions.</p>
                               </div>
-                            </div>
-                          </div>
+                              </div> -->
+                           <div id="on-file-content" class="hidden-method mt-4" style="display: none;">
+                              <div>
+                                 <div class="payment-card d-flex odd border rounded-top">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex">
+                                          <div class="methodiv">Mastercard </div>
+                                          <div class="methodcard">Mastercard ...4444</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <!-- Payment Method 2 -->
+                                 <div class="payment-card d-flex even border border-top-0 border-bottom-0">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex ">
+                                          <div class="methodiv">ACH Payment</div>
+                                          <div class="methodcard">Stripe Test Bank ...6789</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <!-- Payment Method 3 -->
+                                 <div class="payment-card d-flex odd border rounded-bottom ">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex">
+                                          <div class="methodiv">Card 2</div>
+                                          <div class="methodcard">Mastercard ...1111</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-center me-2">
+                                       <input class="form-check-input" type="radio" name="default-payment">
+                                       <span class="ms-2">Set as Default</span>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                 </div>
+                                 <div class="mt-4">
+                                    <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                    SAVE AND CONTINUE
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="addnew" id="add-new-content" style="display: none;">
+                              <div class="d-flex justify-content-between mt-4">
+                                 <span class="fw-bold">SELECT METHOD</span>
+                                 <div class="d-flex align-items-center">
+                                    <div class="form-check gap-2 me-4">
+                                       <input class="form-check-input payment-method" type="checkbox" id="ach" checked="">
+                                       <label class="form-check-label fw-normal rights-label" for="ach">ACH</label>
+                                    </div>
+                                    <div class="form-check gap-2">
+                                       <input class="form-check-input payment-method" type="checkbox" id="credit-card">
+                                       <label class="form-check-label fw-normal text-capitalize rights-label" for="credit-card">Credit Card</label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- ACH Payment Section (Default) -->
+                              <div id="ach-form" style="display: none;">
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Account Holder Name</label>
+                                       <input type="text" class="form-control" id="" placeholder="Name">
+                                    </fieldset>
+                                 </div>
+                                 <div class="d-flex justify-content-between mt-4">
+                                    <span class="fw-bold">ACCOUNT TYPE</span>
+                                    <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2 me-4">
+                                          <input class="form-check-input payment-method single-check" type="checkbox" id="addIndividual" checked="">
+                                          <label class="form-check-label fw-normal rights-label" for="individual">Individual</label>
+                                       </div>
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input payment-method single-check" type="checkbox" id="addCompany"> 
+                                          <label class="form-check-label fw-normal text-capitalize rights-label" for="company">Company</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">ROUTING NUMBER</label>
+                                       <input type="text" class="form-control" id="" placeholder="Routing Number">
+                                    </fieldset>
+                                    <fieldset class="">
+                                       <label for="" class="form-label">Account Number</label>
+                                       <input type="text" class="form-control" id="" placeholder="Account Number">
+                                    </fieldset>
+                                 </div>
+                              </div>
+                              <!-- Credit Card Payment Section (Hidden by Default) -->
+                              <div id="credit-card-form" style="display: none;">
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Card Holder Name</label>
+                                       <input type="text" class="form-control" id="" placeholder="Name">
+                                    </fieldset>
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Card Details</label>
+                                       <input type="text" class="form-control" id="" placeholder="**** **** **** 1111">
+                                    </fieldset>
+                                 </div>
+                                 <div class="mt-4 d-flex justify-content-between">
+                                    <fieldset class=" w-50 me-2">
+                                       <label for="" class="form-label">EXPIRY DATE</label>
+                                       <input type="text" class="form-control" id="" placeholder="MM/YY">
+                                    </fieldset>
+                                    <fieldset class=" w-50 ms-2">
+                                       <label for="" class="form-label">CVV</label>
+                                       <input type="text" class="form-control" id="" placeholder="CVV">
+                                    </fieldset>
+                                 </div>
+                              </div>
+                              <div class="mt-4">
+                                 <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                 SAVE
+                                 </button>
+                              </div>
+                           </div>
                         </div>
-                      </div>
+                     </form>
                  </div>
 
                   <!-- Modal Body End -->

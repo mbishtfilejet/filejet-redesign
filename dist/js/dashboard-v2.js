@@ -288,6 +288,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   return "Select States";
             case "entityStatusContainer":
                 return "Entity Status";
+                case "roleContainer":
+                return "Role";
             default:
                 return "Status";
         }
@@ -308,6 +310,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setupMultiSelect("addjurisdictionContainer", "addjurisdictionDropdown", "addjurisdictionSearch", "addjurisdiction-checkbox", "addjurisdictionSelectAll");
   setupMultiSelect("exaddjurisdictionContainer", "exaddjurisdictionDropdown", "exaddjurisdictionSearch", "exaddjurisdiction-checkbox", "exaddjurisdictionSelectAll");
+  setupMultiSelect("roleContainer", "roleDropdown", "roleSearch", "role-checkbox", "roleSelectAll");
+
 
 
 

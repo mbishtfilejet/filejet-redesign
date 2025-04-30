@@ -133,14 +133,21 @@ $(document).ready(function () {
 
 
 
-// toggle between enabled and disabled form  start
 function setupToggleForms(radioGroupNames) {
   radioGroupNames.forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
       radio.addEventListener('change', function () {
-        const groupSuffix = name === 'registeredAgentStatus' ? 'RegisteredAgent' : 'AnnualReport';
-        const enabledFormId = `enabledForm${groupSuffix}`;
-        const disabledFormId = `disabledForm${groupSuffix}`;
+        let groupSuffix = '';
+
+        // Match the appropriate group suffix based on radio group name
+        if (name.includes('registeredAgentStatus')) {
+          groupSuffix = 'RegisteredAgent';
+        } else if (name.includes('annualReport')) {
+          groupSuffix = 'AnnualReport';
+        }
+
+        const enabledFormId = name.startsWith('add') ? `addenabledForm${groupSuffix}` : `enabledForm${groupSuffix}`;
+        const disabledFormId = name.startsWith('add') ? `adddisabledForm${groupSuffix}` : `disabledForm${groupSuffix}`;
         const isEnabled = this.value === 'enabled';
 
         document.getElementById(enabledFormId).style.display = isEnabled ? 'block' : 'none';
@@ -150,8 +157,9 @@ function setupToggleForms(radioGroupNames) {
   });
 }
 
-// Initialize the toggle functionality
-setupToggleForms(['registeredAgentStatus', 'annualReport']);
+// Initialize the toggle functionality for all groups
+setupToggleForms(['registeredAgentStatus', 'annualReport', 'addregisteredAgentStatus', 'addannualReport']);
+
 
 
 
@@ -196,24 +204,26 @@ setupToggleForms(['registeredAgentStatus', 'annualReport']);
 
 
 // table pagination remove
-  $(document).ready(function() {
-    $('.usertable').each(function() {
-      if ( $.fn.DataTable.isDataTable(this) ) {
-        $(this).DataTable().destroy();
-      }
-      $(this).DataTable({
-        paging: false,           // 🚫 No pagination
-        info: false,             // 🚫 Hide "Showing 1 of 10"
-        searching: false,        // 🚫 No search box
-        scrollY: '300px',        // ✅ Body scrolls if too tall
-        scrollCollapse: true,    // ✅ Scroll only when needed
-        ordering: true,          // ✅ Enable sorting (default)
+$(document).ready(function () {
+  $('.usertable').each(function () {
+    const $table = $(this);
+
+    // Avoid reinitializing
+    if (!$.fn.DataTable.isDataTable(this)) {
+      $table.DataTable({
+        paging: false,           // ✅ No pagination
+        info: false,             // ✅ Hide info text
+        searching: false,        // ✅ No search box
+        ordering: true,          // ✅ Sorting enabled
         columnDefs: [
-          { orderable: false, targets: 0 }  // ❌ First column (checkbox) not sortable
+          { orderable: false, targets: 0 }  // ❌ First column not sortable
         ]
       });
-    });
+    }
   });
+});
+
+
 
   
 
