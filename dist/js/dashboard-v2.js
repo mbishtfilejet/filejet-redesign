@@ -23,8 +23,9 @@ google.charts.setOnLoadCallback(() => {
       ["In Good Standing", 15],
       ["Not Good Standing", 8],
       ["Inactive", 3],
+      ["Unknown", 5],
     ],
-    ["#00BA70", "#E73B18", "#8690A0"],
+    ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"],
     "78%",
     "78%"
   );
@@ -120,8 +121,9 @@ function redrawChart(chartId, width, height) {
       ["In Good Standing", 15],
       ["Not Good Standing", 8],
       ["Inactive", 3],
+      ["Unknown", 5],
     ];
-    colors = ["#00BA70", "#E73B18", "#8690A0"];
+    colors = ["#00BA70", "#E73B18", "#8690A0", "#1a4d9e"];
   } else if (chartId === "donut_chart_3") {
     chartData = [
       ["Task", "Count"],
@@ -386,6 +388,8 @@ function renderDotsTable1(data) {
           <div class="status-dot status-good" data-bs-toggle="tooltip" title="In Good Standing">1</div>
           <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not Good Standing">1</div>
           <div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">1</div>
+          <div class="status-dot status-unknown" data-bs-toggle="tooltip" title="Unknown">1</div>
+
       </div>
   `;
 }
