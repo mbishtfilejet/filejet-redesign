@@ -260,7 +260,13 @@ $(document).ready(function () {
 });
 
 
-
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.datepicker').forEach(function (input) {
+    input.addEventListener('click', function () {
+      this.showPicker?.(); // Safely call if supported
+    });
+  });
+});
 
 
 
