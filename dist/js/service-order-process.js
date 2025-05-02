@@ -259,14 +259,29 @@ $(document).ready(function () {
   });
 });
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.datepicker').forEach(function (input) {
-    input.addEventListener('click', function () {
-      this.showPicker?.(); // Safely call if supported
-    });
+// datepicker start
+function initializeDatePicker(selector) {
+  $(selector).daterangepicker({
+    singleDatePicker: true,
+    autoUpdateInput: false,
+    autoApply: true,
+    parentEl: $('.calender-input'),
+    applyButtonClasses: 'btn-info',
+    drops: 'auto',
+    minYear: 1901,
+    maxYear: parseInt(moment().format('YYYY'), 10)
   });
+
+  $(selector).on('apply.daterangepicker', function (ev, picker) {
+    $(this).val(picker.startDate.format('MM/DD/YYYY'));
+  });
+}
+
+$(function () {
+  initializeDatePicker('.modaldatepicker');
 });
+
+
 
 
 
