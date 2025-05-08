@@ -1567,140 +1567,173 @@
                <!-- Modal Header Ends -->
                <!-- Modal Body Start-->
                <div class="modal-body">
-                <form class="payment-section">
-                    <div class="mb-4 p-3 bg-white rounded-2">
-                      <fieldset>
-                        <label class="form-label">Payment Method<span class="mandatory">*</span></label>
-                        <div class="custom-dropdown">
-                          <select class="form-select pricing-method">
-                            <option value="account-default">Account Default (Visa 1111)</option>
-                            <option value="on-file">On File</option>
-                            <option value="add-new">Add New</option>
-                          </select>
+                  <form class="" action="">
+                     <div class="mb-4 p-3 bg-white rounded-2 d-none">
+                        <fieldset>
+                           <label for="pricing-model" class="form-label">Pricing Model </label>
+                           <div class="custom-dropdown">
+                              <select class="form-select" id="pricing-model">
+                                 <option value="Account Default">Account Default</option>
+                                 <option value="Client Subscription">Client Subscription</option>
+                              </select>
+                           </div>
+                        </fieldset>
+                     </div>
+                     <div class="mb-4 p-3 bg-white rounded-2">
+                        <fieldset>
+                           <label for="pricing-model" class="form-label">Payment Method<span class="mandatory">*</span></label>
+                           <div class="custom-dropdown">
+                              <select class="form-select" id="pricing-method">
+                                 <option value="account-default">Account Default (Visa 1111)</option>
+                                 <option value="on-file">On File</option>
+                                 <option value="add-new">Add New</option>
+                              </select>
+                           </div>
+                        </fieldset>
+                        <!-- <div id="account-default-content" class="mt-3">
+                           <div class="card p-3">
+                               <p>💳 <strong>Account Default:</strong> Using Visa 1111 for transactions.</p>
+                           </div>
+                           </div> -->
+                        <div id="on-file-content" class="hidden-method mt-4">
+                           <div>
+                              <div class="payment-card d-flex odd border rounded-top">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox">
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv">Mastercard </div>
+                                       <div class="methodcard">Mastercard ...4444</div>
+                                    </div>
+                                 </div>
+                                 <div class="d-flex align-items-center me-2">
+                                    <input class="form-check-input" type="radio" name="default-payment">
+                                    <span class="ms-2">Set as Default</span>
+                                 </div>
+                                 <div>
+                                    <span class="icon icon-new-edit me-2"></span>
+                                    <span class="icon icon-new-delete m-0"></span>
+                                 </div>
+                              </div>
+                              <!-- Payment Method 2 -->
+                              <div class="payment-card d-flex even border border-top-0 border-bottom-0">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox">
+                                    <div class="ms-2 d-flex ">
+                                       <div class="methodiv">ACH Payment</div>
+                                       <div class="methodcard">Stripe Test Bank ...6789</div>
+                                    </div>
+                                 </div>
+                                 <div class="d-flex align-items-center me-2">
+                                    <input class="form-check-input" type="radio" name="default-payment">
+                                    <span class="ms-2">Set as Default</span>
+                                 </div>
+                                 <div>
+                                    <span class="icon icon-new-edit me-2"></span>
+                                    <span class="icon icon-new-delete m-0"></span>
+                                 </div>
+                              </div>
+                              <!-- Payment Method 3 -->
+                              <div class="payment-card d-flex odd border rounded-bottom ">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox">
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv">Card 2</div>
+                                       <div class="methodcard">Mastercard ...1111</div>
+                                    </div>
+                                 </div>
+                                 <div class="d-flex align-items-center me-2">
+                                    <input class="form-check-input" type="radio" name="default-payment">
+                                    <span class="ms-2">Set as Default</span>
+                                 </div>
+                                 <div>
+                                    <span class="icon icon-new-edit me-2"></span>
+                                    <span class="icon icon-new-delete m-0"></span>
+                                 </div>
+                              </div>
+                              <div class="mt-4">
+                                 <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                 SAVE AND CONTINUE
+                                 </button>
+                              </div>
+                           </div>
                         </div>
-                      </fieldset>
-                       <!-- <div id="account-default-content" class="mt-3">
-                          <div class="card p-3">
-                              <p>💳 <strong>Account Default:</strong> Using Visa 1111 for transactions.</p>
-                          </div>
-                          </div> -->
-                          <div class="on-file-content mt-4" style="display: none;">
-                          <div>
-                             <div class="payment-card d-flex odd border rounded-top">
-                                <div class="d-flex align-items-center">
-                                   <input class="form-check-input" type="checkbox">
-                                   <div class="ms-2 d-flex">
-                                      <div class="methodiv">Mastercard </div>
-                                      <div class="methodcard">Mastercard ...4444</div>
-                                   </div>
-                                </div>
-                                <div class="d-flex align-items-center me-2">
-                                   <input class="form-check-input" type="radio" name="default-payment">
-                                   <span class="ms-2">Set as Default</span>
-                                </div>
-                                <div>
-                                   <span class="icon icon-new-edit me-2"></span>
-                                   <span class="icon icon-new-delete m-0"></span>
-                                </div>
-                             </div>
-                             <!-- Payment Method 2 -->
-                             <div class="payment-card d-flex even border border-top-0 border-bottom-0">
-                                <div class="d-flex align-items-center">
-                                   <input class="form-check-input" type="checkbox">
-                                   <div class="ms-2 d-flex ">
-                                      <div class="methodiv">ACH Payment</div>
-                                      <div class="methodcard">Stripe Test Bank ...6789</div>
-                                   </div>
-                                </div>
-                                <div class="d-flex align-items-center me-2">
-                                   <input class="form-check-input" type="radio" name="default-payment">
-                                   <span class="ms-2">Set as Default</span>
-                                </div>
-                                <div>
-                                   <span class="icon icon-new-edit me-2"></span>
-                                   <span class="icon icon-new-delete m-0"></span>
-                                </div>
-                             </div>
-                             <!-- Payment Method 3 -->
-                             <div class="payment-card d-flex odd border rounded-bottom ">
-                                <div class="d-flex align-items-center">
-                                   <input class="form-check-input" type="checkbox">
-                                   <div class="ms-2 d-flex">
-                                      <div class="methodiv">Card 2</div>
-                                      <div class="methodcard">Mastercard ...1111</div>
-                                   </div>
-                                </div>
-                                <div class="d-flex align-items-center me-2">
-                                   <input class="form-check-input" type="radio" name="default-payment">
-                                   <span class="ms-2">Set as Default</span>
-                                </div>
-                                <div>
-                                   <span class="icon icon-new-edit me-2"></span>
-                                   <span class="icon icon-new-delete m-0"></span>
-                                </div>
-                             </div>
-                             <div class="mt-4">
-                                <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                SAVE AND CONTINUE
-                                </button>
-                             </div>
-                          </div>
-                       </div>
-                       <div class="add-new-content mt-4" style="display: none;">
-                        <div class="d-flex justify-content-between">
-                          <span class="fw-bold">SELECT METHOD</span>
-                          <div class="d-flex align-items-center">
-                            <div class="form-check me-4">
-                              <input class="form-check-input ach-option" id="achCheck" type="checkbox" checked>
-                              <label class="form-check-label" for="achCheck">ACH</label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input credit-option" id="creditCheck" type="checkbox">
-                              <label class="form-check-label" for="creditCheck">Credit Card</label>
-                            </div>
-                          </div>
+                        <div class="addnew" id="add-new-content" class="hidden-method mt-3">
+                           <div class="d-flex justify-content-between mt-4">
+                              <span class="fw-bold">SELECT METHOD</span>
+                              <div class="d-flex align-items-center">
+                                 <div class="form-check gap-2 me-4">
+                                    <input class="form-check-input payment-method" type="checkbox" id="ach" checked>
+                                    <label class="form-check-label fw-normal rights-label" for="ach">ACH</label>
+                                 </div>
+                                 <div class="form-check gap-2">
+                                    <input class="form-check-input payment-method" type="checkbox" id="credit-card">
+                                    <label class="form-check-label fw-normal text-capitalize rights-label" for="credit-card">Credit Card</label>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- ACH Payment Section (Default) -->
+                           <div id="ach-form">
+                              <div class="mt-4">
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">Account Holder Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Name">
+                                 </fieldset>
+                              </div>
+                              <div class="d-flex justify-content-between mt-4">
+                                 <span class="fw-bold">ACCOUNT TYPE</span>
+                                 <div class="d-flex align-items-center">
+                                    <div class="form-check gap-2 me-4">
+                                       <input class="form-check-input payment-method single-check" type="checkbox" id="addIndividual" checked>
+                                       <label class="form-check-label fw-normal rights-label" for="individual">Individual</label>
+                                    </div>
+                                    <div class="form-check gap-2">
+                                       <input class="form-check-input payment-method single-check" type="checkbox" id="addCompany"> 
+                                       <label class="form-check-label fw-normal text-capitalize rights-label" for="company">Company</label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="mt-4">
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">ROUTING NUMBER</label>
+                                    <input type="text" class="form-control" id="" placeholder="Routing Number">
+                                 </fieldset>
+                                 <fieldset class="">
+                                    <label for="" class="form-label">Account Number</label>
+                                    <input type="text" class="form-control" id="" placeholder="Account Number">
+                                 </fieldset>
+                              </div>
+                           </div>
+                           <!-- Credit Card Payment Section (Hidden by Default) -->
+                           <div id="credit-card-form" style="display: none;">
+                              <div class="mt-4">
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">Card Holder Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Name">
+                                 </fieldset>
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">Card Details</label>
+                                    <input type="text" class="form-control" id="" placeholder="**** **** **** 1111">
+                                 </fieldset>
+                              </div>
+                              <div class="mt-4 d-flex justify-content-between">
+                                 <fieldset class=" w-50 me-2">
+                                    <label for="" class="form-label">EXPIRY DATE</label>
+                                    <input type="text" class="form-control" id="" placeholder="MM/YY">
+                                 </fieldset>
+                                 <fieldset class=" w-50 ms-2">
+                                    <label for="" class="form-label">CVV</label>
+                                    <input type="text" class="form-control" id="" placeholder="CVV">
+                                 </fieldset>
+                              </div>
+                           </div>
+                           <div class="mt-4">
+                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                              SAVE
+                              </button>
+                           </div>
                         </div>
-                  
-                        <!-- ACH Form -->
-                        <div class="ach-form mt-4" style="display: none;">
-                          <fieldset class="mb-4">
-                            <label class="form-label">Account Holder Name</label>
-                            <input type="text" class="form-control" placeholder="Name">
-                          </fieldset>
-                          <fieldset class="mb-4">
-                            <label class="form-label">Routing Number</label>
-                            <input type="text" class="form-control" placeholder="Routing Number">
-                          </fieldset>
-                          <fieldset>
-                            <label class="form-label">Account Number</label>
-                            <input type="text" class="form-control" placeholder="Account Number">
-                          </fieldset>
-                        </div>
-                  
-                        <!-- Credit Card Form -->
-                        <div class="credit-card-form mt-4" style="display: none;">
-                          <fieldset class="mb-4">
-                            <label class="form-label">Card Holder Name</label>
-                            <input type="text" class="form-control" placeholder="Name">
-                          </fieldset>
-                          <fieldset class="mb-4">
-                            <label class="form-label">Card Details</label>
-                            <input type="text" class="form-control" placeholder="**** **** **** 1111">
-                          </fieldset>
-                          <div class="d-flex justify-content-between">
-                            <fieldset class="w-50 me-2">
-                              <label class="form-label">Expiry Date</label>
-                              <input type="text" class="form-control" placeholder="MM/YY">
-                            </fieldset>
-                            <fieldset class="w-50 ms-2">
-                              <label class="form-label">CVV</label>
-                              <input type="text" class="form-control" placeholder="CVV">
-                            </fieldset>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                 </form>
+                     </div>
+                  </form>
                </div>
                <!-- Modal Body End -->
                <div class="modal-footer">
@@ -4161,25 +4194,25 @@
                         </div>
                      </div>
                     </div>
-                    <form class="payment-section">
+                    <form class="" action="">
                         <div class="mb-4 p-3 bg-white rounded-2">
-                          <fieldset>
-                            <label class="form-label">Payment Method<span class="mandatory">*</span></label>
-                            <div class="custom-dropdown">
-                              <select class="form-select pricing-method">
-                                <option value="account-default">Pay Later</option>
-                                <option value="account-default">Account Default (Visa 1111)</option>
-                                <option value="on-file">On File</option>
-                                <option value="add-new">Add New</option>
-                              </select>
-                            </div>
-                          </fieldset>
+                           <fieldset>
+                              <label for="pricing-model" class="form-label">Payment Method<span class="mandatory">*</span></label>
+                              <div class="custom-dropdown">
+                                 <select class="form-select" id="pricing-method">
+                                    <option value="account-default">Pay Later</option>
+                                    <option value="account-default">Account Default (Visa 1111)</option>
+                                    <option value="on-file">On File</option>
+                                    <option value="add-new">Add New</option>
+                                 </select>
+                              </div>
+                           </fieldset>
                            <!-- <div id="account-default-content" class="mt-3">
                               <div class="card p-3">
                                   <p>💳 <strong>Account Default:</strong> Using Visa 1111 for transactions.</p>
                               </div>
                               </div> -->
-                              <div class="on-file-content mt-4" style="display: none;">
+                           <div id="on-file-content" class="hidden-method mt-4" style="display: none;">
                               <div>
                                  <div class="payment-card d-flex odd border rounded-top">
                                     <div class="d-flex align-items-center">
@@ -4241,59 +4274,81 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="add-new-content mt-4" style="display: none;">
-                            <div class="d-flex justify-content-between">
-                              <span class="fw-bold">SELECT METHOD</span>
-                              <div class="d-flex align-items-center">
-                                <div class="form-check me-4">
-                                  <input class="form-check-input ach-option" id="achCheck" type="checkbox" checked>
-                                  <label class="form-check-label" for="achCheck">ACH</label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input credit-option" id="creditCheck" type="checkbox">
-                                  <label class="form-check-label" for="creditCheck">Credit Card</label>
-                                </div>
+                           <div class="addnew" id="add-new-content" style="display: none;">
+                              <div class="d-flex justify-content-between mt-4">
+                                 <span class="fw-bold">SELECT METHOD</span>
+                                 <div class="d-flex align-items-center">
+                                    <div class="form-check gap-2 me-4">
+                                       <input class="form-check-input payment-method" type="checkbox" id="ach" checked="">
+                                       <label class="form-check-label fw-normal rights-label" for="ach">ACH</label>
+                                    </div>
+                                    <div class="form-check gap-2">
+                                       <input class="form-check-input payment-method" type="checkbox" id="credit-card">
+                                       <label class="form-check-label fw-normal text-capitalize rights-label" for="credit-card">Credit Card</label>
+                                    </div>
+                                 </div>
                               </div>
-                            </div>
-                      
-                            <!-- ACH Form -->
-                            <div class="ach-form mt-4" style="display: none;">
-                              <fieldset class="mb-4">
-                                <label class="form-label">Account Holder Name</label>
-                                <input type="text" class="form-control" placeholder="Name">
-                              </fieldset>
-                              <fieldset class="mb-4">
-                                <label class="form-label">Routing Number</label>
-                                <input type="text" class="form-control" placeholder="Routing Number">
-                              </fieldset>
-                              <fieldset>
-                                <label class="form-label">Account Number</label>
-                                <input type="text" class="form-control" placeholder="Account Number">
-                              </fieldset>
-                            </div>
-                      
-                            <!-- Credit Card Form -->
-                            <div class="credit-card-form mt-4" style="display: none;">
-                              <fieldset class="mb-4">
-                                <label class="form-label">Card Holder Name</label>
-                                <input type="text" class="form-control" placeholder="Name">
-                              </fieldset>
-                              <fieldset class="mb-4">
-                                <label class="form-label">Card Details</label>
-                                <input type="text" class="form-control" placeholder="**** **** **** 1111">
-                              </fieldset>
-                              <div class="d-flex justify-content-between">
-                                <fieldset class="w-50 me-2">
-                                  <label class="form-label">Expiry Date</label>
-                                  <input type="text" class="form-control" placeholder="MM/YY">
-                                </fieldset>
-                                <fieldset class="w-50 ms-2">
-                                  <label class="form-label">CVV</label>
-                                  <input type="text" class="form-control" placeholder="CVV">
-                                </fieldset>
+                              <!-- ACH Payment Section (Default) -->
+                              <div id="ach-form" style="display: none;">
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Account Holder Name</label>
+                                       <input type="text" class="form-control" id="" placeholder="Name">
+                                    </fieldset>
+                                 </div>
+                                 <div class="d-flex justify-content-between mt-4">
+                                    <span class="fw-bold">ACCOUNT TYPE</span>
+                                    <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2 me-4">
+                                          <input class="form-check-input payment-method single-check" type="checkbox" id="addIndividual" checked="">
+                                          <label class="form-check-label fw-normal rights-label" for="individual">Individual</label>
+                                       </div>
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input payment-method single-check" type="checkbox" id="addCompany"> 
+                                          <label class="form-check-label fw-normal text-capitalize rights-label" for="company">Company</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">ROUTING NUMBER</label>
+                                       <input type="text" class="form-control" id="" placeholder="Routing Number">
+                                    </fieldset>
+                                    <fieldset class="">
+                                       <label for="" class="form-label">Account Number</label>
+                                       <input type="text" class="form-control" id="" placeholder="Account Number">
+                                    </fieldset>
+                                 </div>
                               </div>
-                            </div>
-                          </div>
+                              <!-- Credit Card Payment Section (Hidden by Default) -->
+                              <div id="credit-card-form" style="display: none;">
+                                 <div class="mt-4">
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Card Holder Name</label>
+                                       <input type="text" class="form-control" id="" placeholder="Name">
+                                    </fieldset>
+                                    <fieldset class="mb-4">
+                                       <label for="" class="form-label">Card Details</label>
+                                       <input type="text" class="form-control" id="" placeholder="**** **** **** 1111">
+                                    </fieldset>
+                                 </div>
+                                 <div class="mt-4 d-flex justify-content-between">
+                                    <fieldset class=" w-50 me-2">
+                                       <label for="" class="form-label">EXPIRY DATE</label>
+                                       <input type="text" class="form-control" id="" placeholder="MM/YY">
+                                    </fieldset>
+                                    <fieldset class=" w-50 ms-2">
+                                       <label for="" class="form-label">CVV</label>
+                                       <input type="text" class="form-control" id="" placeholder="CVV">
+                                    </fieldset>
+                                 </div>
+                              </div>
+                              <div class="mt-4">
+                                 <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                 SAVE
+                                 </button>
+                              </div>
+                           </div>
                         </div>
                      </form>
                  </div>
