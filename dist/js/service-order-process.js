@@ -295,27 +295,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Entity type professional corporatio
 document.addEventListener('DOMContentLoaded', function () {
-  // Select all elements with the class 'entityType-model'
-  const entityTypeSelects = document.querySelectorAll('.entityType-model');
+  const containers = document.querySelectorAll('.entity-container');
 
-  entityTypeSelects.forEach(function (selectElement) {
-    selectElement.addEventListener('change', function () {
-      const selectedOptionText = selectElement.options[selectElement.selectedIndex].text;
+  containers.forEach(function (container) {
+    const entityTypeSelect = container.querySelector('.entityType-model');
+    const specialtyFieldset = container.querySelector('.professional-specialty');
 
-      // Find the closest parent container (e.g., a form or fieldset)
-      const parentContainer = selectElement.closest('.form-group') || document;
-
-      // Select all elements with the class 'professional-specialty' within the parent container
-      const specialtyFieldsets = parentContainer.querySelectorAll('.professional-specialty');
-
-      specialtyFieldsets.forEach(function (fieldset) {
-        if (selectedOptionText === 'Professional Corporation') {
-          fieldset.style.display = 'block';
-        } else {
-          fieldset.style.display = 'none';
-        }
-      });
+    entityTypeSelect.addEventListener('change', function () {
+      const selectedOptionText = entityTypeSelect.options[entityTypeSelect.selectedIndex].text;
+      if (selectedOptionText === 'Professional Corporation') {
+        specialtyFieldset.style.display = 'block';
+      } else {
+        specialtyFieldset.style.display = 'none';
+      }
     });
   });
 });
+
 
