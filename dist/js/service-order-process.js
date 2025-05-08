@@ -1,50 +1,45 @@
 // Select payment method start
-$(document).ready(function() {
-  // Hide all sections except "Account Default" on page load
-  $('#account-default-content').show();
-  $('#on-file-content, #add-new-content').hide();
-  $('#ach-form, #credit-card-form').hide(); // Hide ACH & Credit Card forms initially
+$(document).ready(function () {
+  $('.payment-section').each(function () {
+    const section = $(this);
 
-  $('#pricing-method').change(function() {
-      var selectedValue = $(this).val();
+    // Initial setup
+    section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form').hide();
 
-      // Hide all content sections
-      $('#account-default-content, #on-file-content, #add-new-content').hide();
-      $('#ach-form, #credit-card-form').hide(); // Ensure ACH & Credit Card sections are also hidden
+    section.find('.pricing-method').on('change', function () {
+      const selected = $(this).val();
+      section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form').hide();
 
-      // Show the selected section
-      if (selectedValue === "account-default") {
-          $('#account-default-content').show();
-      } else if (selectedValue === "on-file") {
-          $('#on-file-content').show();
-      } else if (selectedValue === "add-new") {
-          $('#add-new-content').show();
-
-          // Reset checkboxes and show ACH form by default
-          $('#ach').prop("checked", true);
-          $('#credit-card').prop("checked", false);
-          $('#ach-form').show();
-          $('#credit-card-form').hide(); // Ensure Credit Card form is hidden by default
+      if (selected === 'account-default') {
+        // No additional section shown
+      } else if (selected === 'on-file') {
+        section.find('.on-file-content').show();
+      } else if (selected === 'add-new') {
+        section.find('.add-new-content').show();
+        section.find('.ach-option').prop('checked', true);
+        section.find('.credit-option').prop('checked', false);
+        section.find('.ach-form').show();
       }
-  });
+    });
 
-  // Toggle between ACH & Credit Card forms when "Add New" is selected
-  $('#ach').on("change", function() {
-      if (this.checked) {
-          $('#credit-card').prop("checked", false); // Uncheck the other checkbox
-          $('#ach-form').show();
-          $('#credit-card-form').hide();
+    section.find('.ach-option').on('change', function () {
+      if ($(this).is(':checked')) {
+        section.find('.credit-option').prop('checked', false);
+        section.find('.ach-form').show();
+        section.find('.credit-card-form').hide();
       }
-  });
+    });
 
-  $('#credit-card').on("change", function() {
-      if (this.checked) {
-          $('#ach').prop("checked", false); // Uncheck the other checkbox
-          $('#ach-form').hide();
-          $('#credit-card-form').show();
+    section.find('.credit-option').on('change', function () {
+      if ($(this).is(':checked')) {
+        section.find('.ach-option').prop('checked', false);
+        section.find('.credit-card-form').show();
+        section.find('.ach-form').hide();
       }
+    });
   });
 });
+
 
 
 // edit form start
