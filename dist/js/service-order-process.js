@@ -127,7 +127,7 @@ $(document).ready(function () {
 
 
 
-
+// enable disable form
 function setupToggleForms(radioGroupNames) {
   radioGroupNames.forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
@@ -277,7 +277,7 @@ $(function () {
 });
 
 
-
+// manager form individual 
 document.addEventListener("DOMContentLoaded", function () {
   const addButton = document.getElementById("individualaddBtn");
   const individualForm = document.getElementById("individualForm");
@@ -293,6 +293,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// Entity type professional corporatio
+document.addEventListener('DOMContentLoaded', function () {
+  // Select all elements with the class 'entityType-model'
+  const entityTypeSelects = document.querySelectorAll('.entityType-model');
 
+  entityTypeSelects.forEach(function (selectElement) {
+    selectElement.addEventListener('change', function () {
+      const selectedOptionText = selectElement.options[selectElement.selectedIndex].text;
 
+      // Find the closest parent container (e.g., a form or fieldset)
+      const parentContainer = selectElement.closest('.form-group') || document;
+
+      // Select all elements with the class 'professional-specialty' within the parent container
+      const specialtyFieldsets = parentContainer.querySelectorAll('.professional-specialty');
+
+      specialtyFieldsets.forEach(function (fieldset) {
+        if (selectedOptionText === 'Professional Corporation') {
+          fieldset.style.display = 'block';
+        } else {
+          fieldset.style.display = 'none';
+        }
+      });
+    });
+  });
+});
 
