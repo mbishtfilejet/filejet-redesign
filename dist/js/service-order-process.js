@@ -283,8 +283,21 @@ $(function () {
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const addButton = document.getElementById("individualaddBtn");
+  const individualForm = document.getElementById("individualForm");
+  const individualForm3 = document.getElementById("individualForm3");
+
+  addButton.addEventListener("click", function () {
+    // Hide individualForm
+    individualForm.style.display = "none";
+
+    // Show individualForm3
+    individualForm3.style.display = "block";
+  });
+});
 
 
-  
+
 
 

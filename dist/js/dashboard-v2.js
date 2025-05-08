@@ -164,8 +164,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const checkboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
 
       function getMaxSelection() {
-          return window.innerWidth < 1300 ? 1 : maxSelection;
-      }
+        if (window.innerWidth < 1300) {
+            if (["addjurisdictionContainer", "roleContainer"].includes(containerId)) {
+                return 5;
+            }
+            return 1;
+        }
+        return maxSelection;
+    }
 
       
 
