@@ -321,3 +321,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const select = document.getElementById("mySelect");
+
+    function updateSelectColor() {
+      if (select.value === "") {
+        select.style.color = "#aaa"; // Light grey for placeholder
+      } else {
+        select.style.color = "#000"; // Black for selected options
+      }
+    }
+
+    // Run once on load and every time value changes
+    updateSelectColor();
+    select.addEventListener("change", updateSelectColor);
+  });
