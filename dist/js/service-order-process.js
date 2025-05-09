@@ -279,18 +279,26 @@ $(function () {
 
 // manager form individual 
 document.addEventListener("DOMContentLoaded", function () {
-  const addButton = document.getElementById("individualaddBtn");
-  const individualForm = document.getElementById("individualForm");
-  const individualForm3 = document.getElementById("individualForm3");
+  function setupAddButton(buttonId, formToHideId, formToShowId, divToHideClass) {
+    const button = document.getElementById(buttonId);
+    const formToHide = document.getElementById(formToHideId);
+    const formToShow = document.getElementById(formToShowId);
+    const divToHide = document.querySelector(`.${divToHideClass}`);
 
-  addButton.addEventListener("click", function () {
-    // Hide individualForm
-    individualForm.style.display = "none";
+    if (button) {
+      button.addEventListener("click", function () {
+        if (formToHide) formToHide.style.display = "none";
+        if (formToShow) formToShow.style.display = "block";
+        if (divToHide) divToHide.classList.add("d-none");
+      });
+    }
+  }
 
-    // Show individualForm3
-    individualForm3.style.display = "block";
-  });
+  // Set up both buttons
+  setupAddButton("individualaddBtn", "individualForm", "individualForm3", "addmoreManager");
+  setupAddButton("officeraddBtn", "innerofficerForm", "officerForm3", "addmoreOfficer");
 });
+
 
 
 // Entity type professional corporatio
