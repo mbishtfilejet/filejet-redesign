@@ -481,6 +481,35 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// on file payment methos edit and delete
+document.addEventListener("DOMContentLoaded", function () {
+  // Handle Edit Click
+  document.querySelectorAll(".icon-new-edit").forEach(function (editIcon) {
+    editIcon.addEventListener("click", function () {
+      const methodDiv = editIcon.closest(".payment-card").querySelector(".methodiv");
+      if (methodDiv) {
+        methodDiv.setAttribute("contenteditable", "true");
+        methodDiv.focus();
+
+        // Optional: Add a class to show it's being edited
+        methodDiv.classList.add("editable");
+      }
+    });
+  });
+
+  // Handle Delete Click
+  document.querySelectorAll(".icon-new-delete").forEach(function (deleteIcon) {
+    deleteIcon.addEventListener("click", function () {
+      const card = deleteIcon.closest(".payment-card");
+      if (card && confirm("Are you sure you want to delete this payment method?")) {
+        card.remove();
+      }
+    });
+  });
+});
+
+
+
   document.addEventListener("DOMContentLoaded", function () {
     const select = document.getElementById("mySelect");
 

@@ -3943,7 +3943,7 @@
                                        </div>
                                     </div>
                                     <div class="d-flex align-items-start defaultdiv me-2">
-                                       <a class="btn btn-outline-primary btn-sm">Verify Account</a>
+                                       <a class="btn btn-outline-primary btn-sm"data-bs-toggle="modal" data-bs-target="#verfiyAccountpayment">Verify Account</a>
                                     </div>
                                     <div>
                                        <span class="icon icon-new-edit me-2"></span>
@@ -4058,6 +4058,56 @@
             </div>
        </div>
       <!-- New entity-summary step-4 Modal End-->
+
+            <!--verify accountModal start-->
+            <div class="modal modal-right fade filter-slideout group-model" id="verfiyAccountpayment" tabindex="-1" aria-labelledby="searchModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+               <div class="modal-content border-0 rounded-0 min-vh-100">
+                  <!-- Modal Header -->
+                  <div class="modal-header flex-wrap">
+                     <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center">
+                            <span class="bg-dark p-2 rounded-2 me-3 d-inline-block">
+                                <span class="icon icon-payment-white icon-md m-0"></span> </span>
+                           <h4 class="fw-bold m-0">
+                            Verify Bank Account</h3>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Modal Header Ends -->
+                  <!-- Modal Body Start-->
+                  <div class="modal-body">
+                    <h6 class="mb-4 d-4">Stripe sent two small deposits to this bank account. To verify this account, please confirm the amounts of the deposits. You have only 3 attempts to verify your account After 3 failed attempts you will not be able to verify your bank account.</h6>
+                     <form class="" action="">
+                        <div class=" p-3 bg-white rounded-2">
+                           <fieldset class="mb-4">
+                              <label for="" class="form-label">First deposit </label>
+                              <input type="text" class="form-control" id="" placeholder="$.00">
+                           </fieldset>
+                           <fieldset class="">
+                              <label for="" class="form-label">Second deposit </label>
+                              <input type="text" class="form-control" id="" placeholder="$.00">
+                           </fieldset>
+                        </div>
+                     </form>
+                  </div>
+                  <!-- Modal Body End -->
+                  <div class="modal-footer">
+                     <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                           data-bs-dismiss="modal">
+                        CANCEL
+                        </button>
+                        <button type="submit" class="btn btn-info py-0 px-5 rounded-3 ms-3 verify-ach-btn" data-ajax-url="/payment/method/verify?id=238">
+                            Verify
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!--verify account Modal End-->
 
 
       <!-- Add existing entity -->
