@@ -1949,8 +1949,8 @@
                                     <fieldset class="mb-4">
                                        <label for="formation-model" class="form-label">formation state<span class="mandatory">*</span> </label>
                                        <div class="custom-dropdown">
-                                          <select class="form-select" id="formation-model">
-                                            <option value="" selected disabled hidden>Select State</option>
+                                          <select class="form-select " id="formation-model" required>
+                                            <option value="" disabled selected hidden>Select State</option>
                                             <option value="1">Alabama</option>
                                             <option value="2">Alaska</option>
                                             <option value="3">Arizona</option>
@@ -2009,8 +2009,8 @@
                                     <fieldset>
                                        <label for="entityType1" class="form-label">Entity Type <span class="mandatory">*</span></label>
                                        <div class="custom-dropdown">
-                                        <select class="form-select entityType-model" id="entityType1">
-                                          <option value="" selected hidden>Select Entity Type</option>
+                                        <select class="form-select entityType-model" id="entityType1" required>
+                                          <option value="" disabled selected hidden>Select Entity Type</option>
                                           <option value="1">LLC</option>
                                           <option value="2">Profit Corporation - General </option>
                                           <option value="3">Profit Corporation - Professional </option>
@@ -2028,8 +2028,8 @@
                                      </div>
                                     </fieldset>
                                     <fieldset class="form-group custom-dropdown mt-4 professional-specialty"style="display:none;">
-                                        <select class="form-select">
-                                          <option value="">Select Specialty</option>
+                                        <select class="form-select" required>
+                                          <option value="" disabled selected hidden>Select Specialty</option>
                                           <option value="medicine">Medicine</option>
                                           <option value="dentistry">Dentistry</option>
                                           <option value="accountancy">Accountancy</option>
@@ -2224,8 +2224,8 @@
                            <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
                            <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
                            <div class="custom-dropdown-state w-100 mb-3">
-                            <select class="form-select" id="formation-model">
-                               <option value="">Select State</option>
+                            <select class="form-select" id="formation-model" required>
+                               <option value="" disabled selected hidden>State</option>
                    <option value="1">Alabama</option>
                    <option value="2">Alaska</option>
                    <option value="3">Arizona</option>
@@ -2299,11 +2299,11 @@
                   <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                     <fieldset class="mb-4">
                         <label for="" class="form-label inactive">Authorized Signer Name</label>
-                        <input type="text" class="form-control bg-filled" id="" placeholder="John Smith">
+                        <input type="text" class="form-control" id="" placeholder="John Smith">
                      </fieldset>
                      <fieldset class="">
                         <label for="" class="form-label inactive">title</label>
-                        <input type="text" class="form-control bg-filled" id="" placeholder="Manager">
+                        <input type="text" class="form-control" id="" placeholder="Manager">
                      </fieldset>
                  </div>
                   <!-- Stakeholders Accordion -->
@@ -2340,45 +2340,20 @@
                                        <!-- Form inside collapse -->
                                        <div id="officerForm" class="collapse mt-3">
                                            <fieldset id="innerofficerForm" class="fillingstate">
-                                            <div id="userSearchForm" class="user-search-bar  col-sm-12 search-field w-100 mb-3">
-                                                <div class="bg-white rounded-2  position-relative">
-                                                   <span class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
-                                                   <input type="text" class="search-bg reset-field form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 " name="term" data-redirect="<?php echo \Cake\Routing\Router::url(['_name' => 'getstarted.setup.entity']) ?>" data-src="<?php echo \Cake\Routing\Router::url(['_name'=> 'cta.user.search']) ?>" placeholder="Search">
-                                                </div>
-                                                <input type="hidden" name="euid" value="" class="reset-field" autocomplete="off">
-                                                <div class="search-autocomplete-result"></div>
-                                                <div class="no-search-result"></div>
-                                                <a href="javascript:;" class="reset-search pull-right d-none">Reset Search</a>
-                                             </div>
+                                            <input type="text" class="form-control mb-3" id="firstName" placeholder="Name">
                                                 <div class="custom-dropdown mb-3">
-                                                   <select class="form-select" id="entityType-model">
-                                                      <option value="1">Officer Type</option>
+                                                   <select class="form-select" id="entityType-model" required>
+                                                      <option value="" disabled selected hidden>Officer Type</option>
                                                       <option value="2">President/CEO</option>
                                                    </select>
                                                 </div>
-                                              <input type="text" class="form-control mb-3" id="firstName" placeholder="Name">
-                                              <div class="filter2-dropdown additional-search dropdown mb-3 ">
-                                                  <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg" id="roleContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0"><input type="button" class="search-input" id="roleSearch" value="Role" autocomplete="off"></div>
-                                                  <ul class="dropdown-menu w-100" id="roleDropdown" >
-                                                      
-                                                      <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="CA"> CEO</label>
-                                                      </li>
-                                                      <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="NV">VC</label>
-                                                      </li>
-                                                      <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="FL">TL</label>
-                                                      </li>
-                                                      <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="FL">Other</label>
-                                                      </li>
-                                                      
-                                                  </ul>
-                                              </div>
                                               <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
                                               <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
                                               <div class="d-flex w-100 mb-4">
                                                  <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
                                                  <div class="custom-dropdown-state w-100 me-3">
-                                                  <select class="form-select" id="formation-model">
-                                                     <option value="">Select State</option>
+                                                  <select class="form-select" id="formation-model" required>
+                                                     <option value="" disabled selected hidden>State</option>
                                          <option value="1">Alabama</option>
                                          <option value="2">Alaska</option>
                                          <option value="3">Arizona</option>
@@ -2481,46 +2456,21 @@
                                               </div>
                                            </div>
                                            <fieldset  class="newfillingstate mt-4" style="display: none;">
-                                            <div id="userSearchForm" class="user-search-bar  col-sm-12 search-field w-100 mb-3">
-                                                <div class="bg-white rounded-2  position-relative">
-                                                   <span class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
-                                                   <input type="text" class="search-bg reset-field form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 " name="term" data-redirect="<?php echo \Cake\Routing\Router::url(['_name' => 'getstarted.setup.entity']) ?>" data-src="<?php echo \Cake\Routing\Router::url(['_name'=> 'cta.user.search']) ?>" placeholder="Search">
-                                                </div>
-                                                <input type="hidden" name="euid" value="" class="reset-field" autocomplete="off">
-                                                <div class="search-autocomplete-result"></div>
-                                                <div class="no-search-result"></div>
-                                                <a href="javascript:;" class="reset-search pull-right d-none">Reset Search</a>
-                                             </div>
+                                            <input type="text" class="form-control mb-3" id="firstName" placeholder="Name">
                                             <div class="custom-dropdown mb-3">
-                                                <select class="form-select" id="entityType-model">
-                                                   <option value="1">Officer Type</option>
+                                                <select class="form-select" id="entityType-model" required>
+                                                   <option value="" disabled selected hidden>Officer Type</option>
                                                    <option value="2">President/CEO</option>
                                                 </select>
                                              </div>
-                                            <input type="text" class="form-control mb-3" id="firstName" placeholder="Name">
-                                            <div class="filter2-dropdown additional-search dropdown mb-3 ">
-                                                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg" id="roleContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0"><input type="button" class="search-input" id="roleSearch" value="Role" autocomplete="off"></div>
-                                                <ul class="dropdown-menu w-100" id="roleDropdown" >
-                                                    
-                                                    <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="CA"> CEO</label>
-                                                    </li>
-                                                    <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="NV">VC</label>
-                                                    </li>
-                                                    <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="FL">TL</label>
-                                                    </li>
-                                                    <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox me-2" data-value="FL">Other</label>
-                                                    </li>
-                                                    
-                                                </ul>
-                                            </div>
                                             <input type="text" class="form-control mb-3" id="addressOne" placeholder="Email Address">
                                             <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
                                             <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
                                             <div class="d-flex w-100 ">
                                                <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
                                                <div class="custom-dropdown-state w-100 me-3">
-                                                <select class="form-select" id="formation-model">
-                                                   <option value="">Select State</option>
+                                                <select class="form-select" id="formation-model" required>
+                                                   <option value="" disabled selected hidden>Select State</option>
                                        <option value="1">Alabama</option>
                                        <option value="2">Alaska</option>
                                        <option value="3">Arizona</option>
@@ -2634,8 +2584,8 @@
                                                 <div class="d-flex w-100 mb-4">
                                                    <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
                                                    <div class="custom-dropdown-state w-100 me-3">
-                                                    <select class="form-select" id="formation-model">
-                                                       <option value="">Select State</option>
+                                                    <select class="form-select" id="formation-model" required>
+                                                       <option value="" disabled selected hidden>State</option>
                                            <option value="1">Alabama</option>
                                            <option value="2">Alaska</option>
                                            <option value="3">Arizona</option>
@@ -2761,8 +2711,8 @@
                                                 <div class="d-flex w-100 mb-4">
                                                    <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
                                                    <div class="custom-dropdown-state w-100 me-3">
-                                                    <select class="form-select" id="formation-model">
-                                                       <option value="">Select State</option>
+                                                    <select class="form-select" id="formation-model" required>
+                                                       <option value="" disabled selected hidden>State</option>
                                            <option value="1">Alabama</option>
                                            <option value="2">Alaska</option>
                                            <option value="3">Arizona</option>
@@ -2836,8 +2786,8 @@
                                                <div class="d-flex w-100 mb-4">
                                                   <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
                                                   <div class="custom-dropdown-state w-100 me-3">
-                                                   <select class="form-select" id="formation-model">
-                                                      <option value="">Select State</option>
+                                                   <select class="form-select" id="formation-model" required>
+                                                      <option value="" disabled selected hidden>State</option>
                                           <option value="1">Alabama</option>
                                           <option value="2">Alaska</option>
                                           <option value="3">Arizona</option>
@@ -2948,8 +2898,8 @@
                                                <div class="d-flex w-100 mb-4">
                                                   <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
                                                   <div class="custom-dropdown-state w-100 me-3">
-                                                   <select class="form-select" id="formation-model">
-                                                      <option value="">Select State</option>
+                                                   <select class="form-select" id="formation-model" required>
+                                                      <option value="" disabled selected hidden>State</option>
                                           <option value="1">Alabama</option>
                                           <option value="2">Alaska</option>
                                           <option value="3">Arizona</option>
@@ -3061,8 +3011,8 @@
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 1">
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 2">
                                  <div class="custom-dropdown-state w-100 mb-3">
-                                    <select class="form-select" id="formation-model">
-                                       <option value="">Select State</option>
+                                    <select class="form-select" id="formation-model" required>
+                                       <option value="" disabled selected hidden>State</option>
                            <option value="1">Alabama</option>
                            <option value="2">Alaska</option>
                            <option value="3">Arizona</option>
@@ -3200,60 +3150,60 @@
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 1">
                                  <input type="text" class="form-control mb-3" placeholder="Address Line 2">
                                  <div class="custom-dropdown-state w-100 mb-3">
-                                    <select class="form-select" id="formation-model">
-                                       <option value="">Select State</option>
-                           <option value="1">Alabama</option>
-                           <option value="2">Alaska</option>
-                           <option value="3">Arizona</option>
-                           <option value="4">Arkansas</option>
-                           <option value="5">California</option>
-                           <option value="6">Colorado</option>
-                           <option value="7">Connecticut</option>
-                           <option value="8">Delaware</option>
-                           <option value="9">District of Columbia</option>
-                           <option value="10">Florida</option>
-                           <option value="11">Georgia</option>
-                           <option value="12">Hawaii</option>
-                           <option value="13">Idaho</option>
-                           <option value="14">Illinois</option>
-                           <option value="15">Indiana</option>
-                           <option value="16">Iowa</option>
-                           <option value="17">Kansas</option>
-                           <option value="18">Kentucky</option>
-                           <option value="19">Louisiana</option>
-                           <option value="20">Maine</option>
-                           <option value="21">Maryland</option>
-                           <option value="22">Massachusetts</option>
-                           <option value="23">Michigan</option>
-                           <option value="24">Minnesota</option>
-                           <option value="25">Mississippi</option>
-                           <option value="26">Missouri</option>
-                           <option value="27">Montana</option>
-                           <option value="28">Nebraska</option>
-                           <option value="29">Nevada</option>
-                           <option value="30">New Hampshire</option>
-                           <option value="31">New Jersey</option>
-                           <option value="32">New Mexico</option>
-                           <option value="33">New York</option>
-                           <option value="34">North Carolina</option>
-                           <option value="35">North Dakota</option>
-                           <option value="36">Ohio</option>
-                           <option value="37">Oklahoma</option>
-                           <option value="38">Oregon</option>
-                           <option value="39">Pennsylvania</option>
-                           <option value="40">Rhode Island</option>
-                           <option value="41">South Carolina</option>
-                           <option value="42">South Dakota</option>
-                           <option value="43">Tennessee</option>
-                           <option value="44">Texas</option>
-                           <option value="45">Utah</option>
-                           <option value="46">Vermont</option>
-                           <option value="47">Virginia</option>
-                           <option value="48">Washington</option>
-                           <option value="49">West Virginia</option>
-                           <option value="50">Wisconsin</option>
-                           <option value="51">Wyoming</option>
-                                    </select>
+                                    <select class="form-select" id="formation-model" required>
+                                        <option value="" disabled selected hidden>State</option>
+                            <option value="1">Alabama</option>
+                            <option value="2">Alaska</option>
+                            <option value="3">Arizona</option>
+                            <option value="4">Arkansas</option>
+                            <option value="5">California</option>
+                            <option value="6">Colorado</option>
+                            <option value="7">Connecticut</option>
+                            <option value="8">Delaware</option>
+                            <option value="9">District of Columbia</option>
+                            <option value="10">Florida</option>
+                            <option value="11">Georgia</option>
+                            <option value="12">Hawaii</option>
+                            <option value="13">Idaho</option>
+                            <option value="14">Illinois</option>
+                            <option value="15">Indiana</option>
+                            <option value="16">Iowa</option>
+                            <option value="17">Kansas</option>
+                            <option value="18">Kentucky</option>
+                            <option value="19">Louisiana</option>
+                            <option value="20">Maine</option>
+                            <option value="21">Maryland</option>
+                            <option value="22">Massachusetts</option>
+                            <option value="23">Michigan</option>
+                            <option value="24">Minnesota</option>
+                            <option value="25">Mississippi</option>
+                            <option value="26">Missouri</option>
+                            <option value="27">Montana</option>
+                            <option value="28">Nebraska</option>
+                            <option value="29">Nevada</option>
+                            <option value="30">New Hampshire</option>
+                            <option value="31">New Jersey</option>
+                            <option value="32">New Mexico</option>
+                            <option value="33">New York</option>
+                            <option value="34">North Carolina</option>
+                            <option value="35">North Dakota</option>
+                            <option value="36">Ohio</option>
+                            <option value="37">Oklahoma</option>
+                            <option value="38">Oregon</option>
+                            <option value="39">Pennsylvania</option>
+                            <option value="40">Rhode Island</option>
+                            <option value="41">South Carolina</option>
+                            <option value="42">South Dakota</option>
+                            <option value="43">Tennessee</option>
+                            <option value="44">Texas</option>
+                            <option value="45">Utah</option>
+                            <option value="46">Vermont</option>
+                            <option value="47">Virginia</option>
+                            <option value="48">Washington</option>
+                            <option value="49">West Virginia</option>
+                            <option value="50">Wisconsin</option>
+                            <option value="51">Wyoming</option>
+                                     </select>
                                  </div>
                                  <div class="d-flex w-100 mb-4">
                                     <input type="text" class="form-control me-3 " id="" placeholder="City">
@@ -3379,60 +3329,60 @@
                                         <div class="d-flex w-100 mb-3">
                                             <input type="text" class="form-control me-3" id="agentCity" placeholder="City">
                                             <div class="custom-dropdown-state w-100 me-3">
-                                                <select class="form-select" id="agentState">
-                                                        <option value="">Select State</option>
-                                      <option value="1">Alabama</option>
-                                      <option value="2">Alaska</option>
-                                      <option value="3">Arizona</option>
-                                      <option value="4">Arkansas</option>
-                                      <option value="5">California</option>
-                                      <option value="6">Colorado</option>
-                                      <option value="7">Connecticut</option>
-                                      <option value="8">Delaware</option>
-                                      <option value="9">District of Columbia</option>
-                                      <option value="10">Florida</option>
-                                      <option value="11">Georgia</option>
-                                      <option value="12">Hawaii</option>
-                                      <option value="13">Idaho</option>
-                                      <option value="14">Illinois</option>
-                                      <option value="15">Indiana</option>
-                                      <option value="16">Iowa</option>
-                                      <option value="17">Kansas</option>
-                                      <option value="18">Kentucky</option>
-                                      <option value="19">Louisiana</option>
-                                      <option value="20">Maine</option>
-                                      <option value="21">Maryland</option>
-                                      <option value="22">Massachusetts</option>
-                                      <option value="23">Michigan</option>
-                                      <option value="24">Minnesota</option>
-                                      <option value="25">Mississippi</option>
-                                      <option value="26">Missouri</option>
-                                      <option value="27">Montana</option>
-                                      <option value="28">Nebraska</option>
-                                      <option value="29">Nevada</option>
-                                      <option value="30">New Hampshire</option>
-                                      <option value="31">New Jersey</option>
-                                      <option value="32">New Mexico</option>
-                                      <option value="33">New York</option>
-                                      <option value="34">North Carolina</option>
-                                      <option value="35">North Dakota</option>
-                                      <option value="36">Ohio</option>
-                                      <option value="37">Oklahoma</option>
-                                      <option value="38">Oregon</option>
-                                      <option value="39">Pennsylvania</option>
-                                      <option value="40">Rhode Island</option>
-                                      <option value="41">South Carolina</option>
-                                      <option value="42">South Dakota</option>
-                                      <option value="43">Tennessee</option>
-                                      <option value="44">Texas</option>
-                                      <option value="45">Utah</option>
-                                      <option value="46">Vermont</option>
-                                      <option value="47">Virginia</option>
-                                      <option value="48">Washington</option>
-                                      <option value="49">West Virginia</option>
-                                      <option value="50">Wisconsin</option>
-                                      <option value="51">Wyoming</option>
-                                                </select>
+                                                <select class="form-select" id="formation-model" required>
+                                                    <option value="" disabled selected hidden>State</option>
+                                        <option value="1">Alabama</option>
+                                        <option value="2">Alaska</option>
+                                        <option value="3">Arizona</option>
+                                        <option value="4">Arkansas</option>
+                                        <option value="5">California</option>
+                                        <option value="6">Colorado</option>
+                                        <option value="7">Connecticut</option>
+                                        <option value="8">Delaware</option>
+                                        <option value="9">District of Columbia</option>
+                                        <option value="10">Florida</option>
+                                        <option value="11">Georgia</option>
+                                        <option value="12">Hawaii</option>
+                                        <option value="13">Idaho</option>
+                                        <option value="14">Illinois</option>
+                                        <option value="15">Indiana</option>
+                                        <option value="16">Iowa</option>
+                                        <option value="17">Kansas</option>
+                                        <option value="18">Kentucky</option>
+                                        <option value="19">Louisiana</option>
+                                        <option value="20">Maine</option>
+                                        <option value="21">Maryland</option>
+                                        <option value="22">Massachusetts</option>
+                                        <option value="23">Michigan</option>
+                                        <option value="24">Minnesota</option>
+                                        <option value="25">Mississippi</option>
+                                        <option value="26">Missouri</option>
+                                        <option value="27">Montana</option>
+                                        <option value="28">Nebraska</option>
+                                        <option value="29">Nevada</option>
+                                        <option value="30">New Hampshire</option>
+                                        <option value="31">New Jersey</option>
+                                        <option value="32">New Mexico</option>
+                                        <option value="33">New York</option>
+                                        <option value="34">North Carolina</option>
+                                        <option value="35">North Dakota</option>
+                                        <option value="36">Ohio</option>
+                                        <option value="37">Oklahoma</option>
+                                        <option value="38">Oregon</option>
+                                        <option value="39">Pennsylvania</option>
+                                        <option value="40">Rhode Island</option>
+                                        <option value="41">South Carolina</option>
+                                        <option value="42">South Dakota</option>
+                                        <option value="43">Tennessee</option>
+                                        <option value="44">Texas</option>
+                                        <option value="45">Utah</option>
+                                        <option value="46">Vermont</option>
+                                        <option value="47">Virginia</option>
+                                        <option value="48">Washington</option>
+                                        <option value="49">West Virginia</option>
+                                        <option value="50">Wisconsin</option>
+                                        <option value="51">Wyoming</option>
+                                                 </select>
                                             </div>
                                             <input type="text" class="form-control" id="agentZipcode" placeholder="Zipcode">
                                         </div>
@@ -3667,60 +3617,60 @@
                                         <div class="d-flex w-100 mb-3">
                                             <input type="text" class="form-control me-3" id="agentCity" placeholder="City">
                                             <div class="custom-dropdown-state w-100 me-3">
-                                                <select class="form-select" id="agentState">
-                                                        <option value="">Select State</option>
-                                      <option value="1">Alabama</option>
-                                      <option value="2">Alaska</option>
-                                      <option value="3">Arizona</option>
-                                      <option value="4">Arkansas</option>
-                                      <option value="5">California</option>
-                                      <option value="6">Colorado</option>
-                                      <option value="7">Connecticut</option>
-                                      <option value="8">Delaware</option>
-                                      <option value="9">District of Columbia</option>
-                                      <option value="10">Florida</option>
-                                      <option value="11">Georgia</option>
-                                      <option value="12">Hawaii</option>
-                                      <option value="13">Idaho</option>
-                                      <option value="14">Illinois</option>
-                                      <option value="15">Indiana</option>
-                                      <option value="16">Iowa</option>
-                                      <option value="17">Kansas</option>
-                                      <option value="18">Kentucky</option>
-                                      <option value="19">Louisiana</option>
-                                      <option value="20">Maine</option>
-                                      <option value="21">Maryland</option>
-                                      <option value="22">Massachusetts</option>
-                                      <option value="23">Michigan</option>
-                                      <option value="24">Minnesota</option>
-                                      <option value="25">Mississippi</option>
-                                      <option value="26">Missouri</option>
-                                      <option value="27">Montana</option>
-                                      <option value="28">Nebraska</option>
-                                      <option value="29">Nevada</option>
-                                      <option value="30">New Hampshire</option>
-                                      <option value="31">New Jersey</option>
-                                      <option value="32">New Mexico</option>
-                                      <option value="33">New York</option>
-                                      <option value="34">North Carolina</option>
-                                      <option value="35">North Dakota</option>
-                                      <option value="36">Ohio</option>
-                                      <option value="37">Oklahoma</option>
-                                      <option value="38">Oregon</option>
-                                      <option value="39">Pennsylvania</option>
-                                      <option value="40">Rhode Island</option>
-                                      <option value="41">South Carolina</option>
-                                      <option value="42">South Dakota</option>
-                                      <option value="43">Tennessee</option>
-                                      <option value="44">Texas</option>
-                                      <option value="45">Utah</option>
-                                      <option value="46">Vermont</option>
-                                      <option value="47">Virginia</option>
-                                      <option value="48">Washington</option>
-                                      <option value="49">West Virginia</option>
-                                      <option value="50">Wisconsin</option>
-                                      <option value="51">Wyoming</option>
-                                                </select>
+                                                <select class="form-select" id="formation-model" required>
+                                                    <option value="" disabled selected hidden>State</option>
+                                        <option value="1">Alabama</option>
+                                        <option value="2">Alaska</option>
+                                        <option value="3">Arizona</option>
+                                        <option value="4">Arkansas</option>
+                                        <option value="5">California</option>
+                                        <option value="6">Colorado</option>
+                                        <option value="7">Connecticut</option>
+                                        <option value="8">Delaware</option>
+                                        <option value="9">District of Columbia</option>
+                                        <option value="10">Florida</option>
+                                        <option value="11">Georgia</option>
+                                        <option value="12">Hawaii</option>
+                                        <option value="13">Idaho</option>
+                                        <option value="14">Illinois</option>
+                                        <option value="15">Indiana</option>
+                                        <option value="16">Iowa</option>
+                                        <option value="17">Kansas</option>
+                                        <option value="18">Kentucky</option>
+                                        <option value="19">Louisiana</option>
+                                        <option value="20">Maine</option>
+                                        <option value="21">Maryland</option>
+                                        <option value="22">Massachusetts</option>
+                                        <option value="23">Michigan</option>
+                                        <option value="24">Minnesota</option>
+                                        <option value="25">Mississippi</option>
+                                        <option value="26">Missouri</option>
+                                        <option value="27">Montana</option>
+                                        <option value="28">Nebraska</option>
+                                        <option value="29">Nevada</option>
+                                        <option value="30">New Hampshire</option>
+                                        <option value="31">New Jersey</option>
+                                        <option value="32">New Mexico</option>
+                                        <option value="33">New York</option>
+                                        <option value="34">North Carolina</option>
+                                        <option value="35">North Dakota</option>
+                                        <option value="36">Ohio</option>
+                                        <option value="37">Oklahoma</option>
+                                        <option value="38">Oregon</option>
+                                        <option value="39">Pennsylvania</option>
+                                        <option value="40">Rhode Island</option>
+                                        <option value="41">South Carolina</option>
+                                        <option value="42">South Dakota</option>
+                                        <option value="43">Tennessee</option>
+                                        <option value="44">Texas</option>
+                                        <option value="45">Utah</option>
+                                        <option value="46">Vermont</option>
+                                        <option value="47">Virginia</option>
+                                        <option value="48">Washington</option>
+                                        <option value="49">West Virginia</option>
+                                        <option value="50">Wisconsin</option>
+                                        <option value="51">Wyoming</option>
+                                                 </select>
                                             </div>
                                             <input type="text" class="form-control" id="agentZipcode" placeholder="Zipcode">
                                         </div>
@@ -3847,7 +3797,7 @@
                               <thead>
                                  <tr>
                                     <th data-orderable="false">Service</th>
-                                    <th data-orderable="false" class="fixed-width-soi-table-50">Quantity</th>
+                                    <th data-orderable="false" class="fixed-width-soi-table-50">QTY</th>
                                     <th data-orderable="false" class="fixed-width-soi-table-80">Price</th>
                                     <th data-orderable="false" class="fixed-width-soi-table-80">Total</th>
                                  </tr>
@@ -3883,7 +3833,7 @@
                                     <td>$15</td>
                                     <td>$15</td>
                                  </tr>
-                                 <tr class="even">
+                                 <tr class="odd">
                                     <td>EIN Request Filing</td>
                                     <td>1</td>
                                     <td>$15</td>
@@ -3895,6 +3845,7 @@
                                     <td>$15</td>
                                     <td>$15</td>
                                  </tr>
+
                                  <tfoot>
                                     <tr class="even">
                                         <td class="fw-bold">Total</td>
@@ -3982,7 +3933,7 @@
                                               <input type="text" class="form-control" id="" placeholder="$.00">
                                            </fieldset>
                                         </div>
-                                        <div class="mt-4">
+                                        <div class="mt-4 mb-2">
                                             <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="verifypaymentBtn">
                                             VERIFY
                                             </button>

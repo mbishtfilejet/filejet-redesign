@@ -232,7 +232,7 @@
     border-radius: 4.5px;
     margin-bottom: 0px;
     box-shadow: none !important;
-    color: var(--bs-filejet-medium-gray) !important; 
+    color: var(--bs-filejet-medium-gray); 
     background-image: url("../../../dist/images/icons/input-edit.svg");
     background-repeat: no-repeat;
     background-position: right;
@@ -243,7 +243,7 @@
     width: 100%;
     }
     .form-control::placeholder {
-      color: var(--bs-filejet-medium-gray) !important; 
+      color: var(--bs-filejet-medium-gray-opacity-50); 
       opacity: 100% !important;
 
     }
@@ -266,6 +266,10 @@
       overflow: hidden;
       white-space: nowrap;
       width: 100%;
+    }
+
+    select.form-select:invalid {
+      color: var(--bs-filejet-medium-gray-opacity-50);
     }
 
     .calander-input .form-select{
@@ -385,6 +389,11 @@
       border: none;
     }
     .table tbody td{
+      font-size: 0.8rem !important;
+      border-top-width: 1px;
+      border-bottom: 0px;
+    }
+    .dataTables_wrapper tfoot tr td{
       font-size: 0.8rem !important;
       border-top-width: 1px;
       border-bottom: 0px;
@@ -539,7 +548,7 @@ hr{
 }
 .additional-search .multi-select-container{
   border: 1px solid #D2D5DA !important;
-  color: var(--bs-filejet-medium-gray) !important; 
+  color: var(--bs-filejet-medium-gray-opacity-50) !important; 
   font-weight: 500 !important;
 
 
@@ -657,7 +666,7 @@ hr{
   color: #000000 !important ;
 }
 .rights-label {
-  color: #858585  !important; 
+  color: var(--bs-filejet-medium-gray) !important;
 }
 
 input[type="radio"]:checked + .rights-label {
