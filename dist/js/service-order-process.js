@@ -525,3 +525,14 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSelectColor();
     select.addEventListener("change", updateSelectColor);
   });
+
+
+// verfify account div
+  document.addEventListener('DOMContentLoaded', function () {
+    const verifyBtn = document.querySelector('.verifybtn');
+    const verifyDiv = document.getElementById('verifyaccountDiv');
+
+    verifyBtn.addEventListener('click', function () {
+      verifyDiv.style.display = 'block'; // Or toggle if needed
+    });
+  });

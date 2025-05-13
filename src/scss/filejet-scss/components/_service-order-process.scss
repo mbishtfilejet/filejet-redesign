@@ -225,7 +225,7 @@
     border-radius: 4.5px;
     margin-bottom: 0px;
     box-shadow: none !important;
-    color: var(--bs-filejet-medium-gray); 
+    color: var(--bs-filejet-medium-gray) !important; 
     background-image: url("../../../dist/images/icons/input-edit.svg");
     background-repeat: no-repeat;
     background-position: right;
@@ -236,9 +236,11 @@
     width: 100%;
     }
     .form-control::placeholder {
-      color: var(--bs-filejet-medium-gray-opacity-50) !important; 
-      opacity: 100%;
+      color: var(--bs-filejet-medium-gray) !important; 
+      opacity: 100% !important;
+
     }
+
     .form-select{
       min-height: 38px;
       padding: 0px 10px;
@@ -257,9 +259,6 @@
       overflow: hidden;
       white-space: nowrap;
       width: 100%;
-    }
-    select:invalid {
-      color: #aaa;
     }
 
     .calander-input .form-select{
@@ -359,6 +358,7 @@
       font-size: 0.8rem !important;
       padding: 0.9rem 0.9rem !important;
       text-transform: capitalize !important;
+      border: none;
     }
     .dataTables_wrapper thead th:first-child::after {
       display: none !important;
@@ -369,6 +369,18 @@
     .dataTables_wrapper tbody td{
       font-size: 0.8rem !important;
       padding: 0.9rem 0.9rem !important;
+      border-top-width: 1px;
+      border-bottom: 0px;
+    }
+    .table thead th {
+      font-size: 0.8rem !important;
+      text-transform: capitalize !important;
+      border: none;
+    }
+    .table tbody td{
+      font-size: 0.8rem !important;
+      border-top-width: 1px;
+      border-bottom: 0px;
     }
 
     .dataTables_wrapper.no-footer .dataTables_scrollBody{
@@ -505,12 +517,16 @@ hr{
 }
 .additional-search input{
   padding: 0px ;
-  color: var(--bs-filejet-medium-gray-opacity-50) !important;
+  color: var(--bs-filejet-medium-gray-opacity) !important;
   font-size: 12px !important;
   font-weight: 500 !important;
 }
 .additional-search .multi-select-container{
   border: 1px solid #D2D5DA !important;
+  color: var(--bs-filejet-medium-gray) !important; 
+  font-weight: 500 !important;
+
+
 }
 .additional-search .dropdown-search-input {
   width: 100%;
@@ -629,10 +645,13 @@ hr{
 }
 
 input[type="radio"]:checked + .rights-label {
-  color: var(--bs-filejet-medium-gray) !important; 
+  color: var(--bs-filejet-medium-gray) !important;
+  font-weight: 600 !important; 
 }
 input[type="checkbox"]:checked + .rights-label {
   color: var(--bs-filejet-medium-gray) !important; 
+  font-weight: 600 !important; 
+
 }
 #individualForm3 {
   display: none;
@@ -649,6 +668,9 @@ input[type="checkbox"]:checked + .rights-label {
   .btn-outline-primary:hover{
     background-color: var(--bs-filejet-purple-indigo);
     color: white;
+  }
+  .pricetable .dataTables_scroll .dataTables_scrollBody:has(.long-data-table-listing){
+    height: fit-content !important;
   }
 
 }
