@@ -546,10 +546,5 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.my-tooltip').forEach(function (el) {
-      new bootstrap.Tooltip(el, {
-        customClass: 'my-custom-tooltip'
-      });
-    });
-  });
+
+  
