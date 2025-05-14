@@ -43,44 +43,88 @@ $(document).ready(function () {
 
 
 // edit form start
-document.getElementById("addBtn").addEventListener("click", function () {
-    let name = document.getElementById("groupName").value.trim();
-    let email = document.getElementById("groupEmail").value.trim();
+document.addEventListener("DOMContentLoaded", () => {
+  const fillingState = document.querySelector(".fillingstate");
+  const filledState = document.querySelector(".filledstate");
+  const newInviteFillingState = document.querySelector(".newinvitefillingstate");
+  const addBtn = document.getElementById("inviteaddBtn");
+  const updateBtn = document.getElementById("invitaeupdateBtn");
+  const newInviteAddBtn = document.getElementById("newinviteaddBtn");
+
+  // Helper function to create filled entry
+  const createFilledEntry = (name, email) => {
+    const container = document.createElement("div");
+    container.className = "filled-user-entry";
+    container.innerHTML = `
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <p class="groupName m-0">${name}</p>
+          <p class="groupEmail m-0 mb-1 fw-normal">${email}</p>
+          <p class="groupEmail m-0 fw-normal">Auto-added Address</p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="icon icon-new-edit me-3 editUser" style="cursor:pointer;"></span>
+          <span class="icon icon-new-delete m-0 deleteUser" style="cursor:pointer;"></span>
+        </div>
+      </div>
+      <hr class="entry-divider">
+    `;
+    return container;
+  };
+
+  // Update dividers after adding/removing entries
+  const updateDividers = () => {
+    const dividers = filledState.querySelectorAll(".entry-divider");
+    dividers.forEach((hr, i) => hr.style.display = i === dividers.length - 1 ? "none" : "block");
+  };
+
+  // Add new entry (from filling state)
+  const addEntry = (nameInput, emailInput, stateContainer) => {
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    if (!name || !email) return alert("Please fill in both fields.");
     
+    filledState.querySelector(".inputsfilled").appendChild(createFilledEntry(name, email));
+    nameInput.value = emailInput.value = "";
+    stateContainer.style.display = "none";
+    filledState.style.display = "flex";
+    updateDividers();
+  };
 
-    if (name === "" || email === "") {
-        alert("Please fill in both fields.");
-        return;
+  addBtn.addEventListener("click", () => addEntry(document.getElementById("groupName"), document.getElementById("groupEmail"), fillingState));
+  newInviteAddBtn.addEventListener("click", () => addEntry(document.getElementById("groupName2"), document.getElementById("groupEmail2"), newInviteFillingState));
+
+  // Edit and delete users
+  filledState.addEventListener("click", (e) => {
+    const entry = e.target.closest(".filled-user-entry");
+    if (e.target.classList.contains("editUser")) {
+      document.getElementById("groupName").value = entry.querySelector(".groupName").textContent;
+      document.getElementById("groupEmail").value = entry.querySelector(".groupEmail").textContent;
+      fillingState.style.display = "block";
+      filledState.style.display = "none";
+      addBtn.classList.add("d-none");
+      updateBtn.classList.remove("d-none");
+      updateBtn.onclick = () => {
+        entry.querySelector(".groupName").textContent = document.getElementById("groupName").value;
+        entry.querySelector(".groupEmail").textContent = document.getElementById("groupEmail").value;
+        fillingState.style.display = "none";
+        filledState.style.display = "flex";
+        addBtn.classList.remove("d-none");
+        updateBtn.classList.add("d-none");
+        document.getElementById("groupName").value = document.getElementById("groupEmail").value = "";
+      };
+    } else if (e.target.classList.contains("deleteUser")) {
+      entry.remove();
+      updateDividers();
     }
+  });
 
-    // Hide the input form and show the filled state
-    document.querySelector(".fillingstate").style.display = "none";
-    document.querySelector(".filledstate").style.display = "flex";
-
-    // Fill in the user details
-    document.querySelector(".filledstate .groupName").textContent = name;
-    document.querySelector(".filledstate .groupEmail").textContent = email;
+  document.querySelector(".moreaddinvite").addEventListener("click", () => newInviteFillingState.style.display = "block");
 });
-// Attach event listeners for edit and delete dynamically after the DOM loads
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".editUser").addEventListener("click", function () {
-        // Show input fields again and hide filled state
-        document.querySelector(".fillingstate").style.display = "block";
-        document.querySelector(".filledstate").style.display = "none";
 
-        // Populate input fields with existing values for editing
-        document.getElementById("groupName").value = document.querySelector(".filledstate .groupName").textContent;
-        document.getElementById("groupEmail").value = document.querySelector(".filledstate .groupEmail").textContent;
-    });
 
-    document.querySelector(".deleteUser").addEventListener("click", function () {
-        // Show input fields and clear them
-        document.querySelector(".fillingstate").style.display = "block";
-        document.querySelector(".filledstate").style.display = "none";
-        document.getElementById("groupName").value = "";
-        document.getElementById("groupEmail").value = "";
-    });
-});
+
+
 
 
 // alert function start
@@ -157,9 +201,6 @@ setupToggleForms(['registeredAgentStatus', 'annualReport', 'addregisteredAgentSt
 
 
 
-
-
-
 // toggle between all checkbox start
  document.querySelectorAll('.single-check').forEach(checkbox => {
     checkbox.addEventListener('change', function () {
@@ -171,9 +212,7 @@ setupToggleForms(['registeredAgentStatus', 'annualReport', 'addregisteredAgentSt
     });
   });
 
-
-
-  
+ 
 
 // upload document start
   document.querySelectorAll('.upload-group').forEach(group => {
@@ -218,18 +257,6 @@ $(document).ready(function () {
   });
 });
 
-
-
-  
-
-// add more button form
-  $(document).ready(function() {
-    // When the "Add" button is clicked
-    $('#addButton').click(function() {
-        // Toggle the visibility of the form
-        $('#formContainer').toggle(); // Show or hide the form
-    });
-});
   
   
 //  radio active and iactive 
@@ -458,9 +485,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
 // Entity type professional corporatio
 document.addEventListener('DOMContentLoaded', function () {
   const containers = document.querySelectorAll('.entity-container');
@@ -510,22 +534,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const select = document.getElementById("mySelect");
-
-    function updateSelectColor() {
-      if (select.value === "") {
-        select.style.color = "#aaa"; // Light grey for placeholder
-      } else {
-        select.style.color = "#000"; // Black for selected options
-      }
-    }
-
-    // Run once on load and every time value changes
-    updateSelectColor();
-    select.addEventListener("change", updateSelectColor);
-  });
-
 
 // verfify account div
   document.addEventListener('DOMContentLoaded', function () {
@@ -534,5 +542,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     verifyBtn.addEventListener('click', function () {
       verifyDiv.style.display = 'block'; // Or toggle if needed
+    });
+  });
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.my-tooltip').forEach(function (el) {
+      new bootstrap.Tooltip(el, {
+        customClass: 'my-custom-tooltip'
+      });
     });
   });

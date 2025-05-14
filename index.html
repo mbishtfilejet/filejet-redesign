@@ -1476,29 +1476,87 @@
                                           </div>
                                        </div>
                                        <div class="mt-4">
-                                          <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn">
+                                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="inviteaddBtn">
                                           ADD
-                                          </button>
-                                       </div>
+                                        </button>
+                                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3 d-none" id="invitaeupdateBtn">
+                                          UPDATE
+                                        </button>
+                                      </div>
                                     </div>
                                  </div>
                                  <div class="filledstate "style="display: none;">
-                                    <div class="inputsfilled d-flex justify-content-between">
-                                       <div>
-                                          <p class="groupName m-0 mb-1 ">Adam Smith</p>
-                                          <p class="groupEmail m-0 fw-normal ">adamsmith@xyz.com</p>
-                                       </div>
-                                       <div class="d-flex align-items-center">
-                                          <span class="icon icon-new-edit me-3 editUser"></span>
-                                          <span class="icon icon-new-delete m-0 deleteUser"></span>
-                                       </div>
+                                    <div class="inputsfilled d-flex justify-content-between flex-column">
+                                        <!-- <div class="d-flex justify-content-between">
+                                            <div>
+                                               <p class="groupName m-0 ">Adam Smith</p>
+                                               <p class="groupEmail m-0 mb-1 fw-normal ">CFO</p>
+                                               <p class="groupEmail m-0 fw-normal ">1234 Maple StreetSpringfield, IL 62704</p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                               <span class="icon icon-new-edit me-3 editUser"></span>
+                                               <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                            </div>
+                                         </div> -->
                                     </div>
-                                    <div class="mt-3">
-                                        <button class="d-flex align-items-center p-0 m-0 border-0 bg-white fw-normal">
+                                    <div class="mt-4">
+                                        <button type="button" class=" moreaddinvite d-flex align-items-center p-0 m-0 border-0 bg-white fw-normal">
                                             <span class="icon icon-add-circle-plus"></span> Add
                                         </button>
                                     </div>
                                     
+                                 </div>
+                                 <div class="newinvitefillingstate mt-4" style="display: none;">
+                                    <fieldset class="mb-4" id="inviteUser">
+                                       <input type="text" class="form-control mb-3" id="groupName2" placeholder="Name">
+                                       <input type="text" class="form-control" id="groupEmail2" placeholder="Email Address">
+                                    </fieldset>
+                                    <div class="view-options mt-3">
+                                       <div class="d-flex justify-content-between mb-4">
+                                          <span class="view-label">RIGHTS</span>
+                                          <div class="d-flex">
+                                             <div class="form-check me-4">
+                                                <input class="form-check-input" type="radio"  id="flexRadioDefault13" checked>
+                                                <label class="form-check-label rights-label" for="flexRadioDefault13"> View </label>
+                                             </div>
+                                             <div class="form-check">
+                                                <input class="form-check-input" type="radio"  id="flexRadioDefault12">
+                                                <label class="form-check-label rights-label" for="flexRadioDefault12"> Edit </label>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="d-flex justify-content-between mb-4">
+                                          <span class="view-label">Notifications</span>
+                                          <div class="d-flex">
+                                             <div class="form-check me-4">
+                                                <input class="form-check-input" type="radio"  id="flexRadioDefault7" checked>
+                                                <label class="form-check-label rights-label" for="flexRadioDefault7"> Yes </label>
+                                             </div>
+                                             <div class="form-check">
+                                                <input class="form-check-input" type="radio"  id="flexRadioDefault8">
+                                                <label class="form-check-label  rights-label" for="flexRadioDefault8"> No </label>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="d-flex justify-content-between">
+                                          <span class="view-label">Invoices</span>
+                                          <div class="d-flex">
+                                             <div class="form-check me-4">
+                                                <input class="form-check-input" type="radio"  id="flexRadioDefault9" checked>
+                                                <label class="form-check-label rights-label" for="flexRadioDefault9"> Yes </label>
+                                             </div>
+                                             <div class="form-check">
+                                                <input class="form-check-input" type="radio"  id="flexRadioDefault11">
+                                                <label class="form-check-label rights-label" for="flexRadioDefault11"> No </label>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="mt-4">
+                                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="newinviteaddBtn">
+                                          ADD
+                                        </button>
+                                      </div>
+                                    </div>
                                  </div>
                               </form>
                            </div>
@@ -1594,9 +1652,9 @@
                                       <div class="methodcard">Mastercard ...4444</div>
                                    </div>
                                 </div>
-                                <div class="d-flex align-items-center me-2">
-                                   <input class="form-check-input" type="radio" name="default-payment">
-                                   <span class="ms-2">Set as Default</span>
+                                <div class="d-flex align-items-center me-2 defaultdiv">
+                                   <input class="form-check-input" type="radio" name="default-payment" checked>
+                                   <span class="ms-2">Default</span>
                                 </div>
                                 <div>
                                    <span class="icon icon-new-edit me-2"></span>
@@ -1604,21 +1662,44 @@
                                 </div>
                              </div>
                              <!-- Payment Method 2 -->
-                             <div class="payment-card d-flex even border border-top-0 border-bottom-0">
-                                <div class="d-flex align-items-center">
-                                   <input class="form-check-input" type="checkbox">
-                                   <div class="ms-2 d-flex ">
-                                      <div class="methodiv">ACH Payment</div>
-                                      <div class="methodcard">Stripe Test Bank ...6789</div>
-                                   </div>
-                                </div>
-                                <div class="d-flex align-items-center me-2">
-                                   <input class="form-check-input" type="radio" name="default-payment">
-                                   <span class="ms-2">Set as Default</span>
-                                </div>
-                                <div>
-                                   <span class="icon icon-new-edit me-2"></span>
-                                   <span class="icon icon-new-delete m-0"></span>
+                             <div class="  d-flex flex-column even border border-top-0 border-bottom-0">
+                                <div class="payment-card">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex ">
+                                          <div class="methodiv">ACH Payment</div>
+                                          <div class="methodcard">Stripe Test Bank ...6789</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-start defaultdiv me-2">
+                                       <!-- <a class="btn btn-outline-primary btn-sm"data-bs-toggle="modal" data-bs-target="#verfiyAccountpayment">Verify Account</a> -->
+                                       <a class="btn btn-outline-primary btn-sm verifybtn">Verify Account</a>
+                                    </div>
+                                    <div>
+                                       <span class="icon icon-new-edit me-2"></span>
+                                       <span class="icon icon-new-delete m-0"></span>
+                                    </div>
+                                    </div>
+                                <div class="payment-card " id="verifyaccountDiv" action="" style="display: none;">
+                                    <div>
+                                        <label for="" class="form-label inactive">Verify bank Account </label>
+                                    </div>
+                                    <small>Stripe sent two small deposits to this bank account. To verify this account, please confirm the amounts of the deposits. You have only 3 attempts to verify your account After 3 failed attempts you will not be able to verify your bank account.</small>
+                                    <div class="mt-4 ">
+                                       <fieldset class="mb-4">
+                                          <label for="" class="form-label inactive">First deposit </label>
+                                          <input type="text" class="form-control" id="" placeholder="$.00">
+                                       </fieldset>
+                                       <fieldset class="">
+                                          <label for="" class="form-label inactive">Second deposit </label>
+                                          <input type="text" class="form-control" id="" placeholder="$.00">
+                                       </fieldset>
+                                    </div>
+                                    <div class="mt-4 mb-2">
+                                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="verifypaymentBtn">
+                                        VERIFY
+                                        </button>
+                                     </div>
                                 </div>
                              </div>
                              <!-- Payment Method 3 -->
@@ -1630,7 +1711,7 @@
                                       <div class="methodcard">Mastercard ...1111</div>
                                    </div>
                                 </div>
-                                <div class="d-flex align-items-center me-2">
+                                <div class="d-flex align-items-center me-2 defaultdiv">
                                    <input class="form-check-input" type="radio" name="default-payment">
                                    <span class="ms-2">Set as Default</span>
                                 </div>
@@ -1639,11 +1720,7 @@
                                    <span class="icon icon-new-delete m-0"></span>
                                 </div>
                              </div>
-                             <div class="mt-4">
-                                <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="addBtn" data-bs-target="#NWPayment" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                SAVE AND CONTINUE
-                                </button>
-                             </div>
+                            
                           </div>
                        </div>
                        <div class="add-new-content mt-4" style="display: none;">
@@ -1675,6 +1752,11 @@
                             <label class="form-label">Account Number</label>
                             <input type="text" class="form-control" placeholder="Account Number">
                           </fieldset>
+                          <div class="mt-4">
+                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="achaddBtn">
+                            SAVE
+                            </button>
+                         </div>
                         </div>
                   
                         <!-- Credit Card Form -->
@@ -1696,7 +1778,13 @@
                               <label class="form-label">CVV</label>
                               <input type="text" class="form-control" placeholder="CVV">
                             </fieldset>
+                            
                           </div>
+                          <div class="mt-4">
+                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="creditaddBtn">
+                            SAVE
+                            </button>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -2081,7 +2169,7 @@
                      <fieldset>
                         <label for="entityType-model" class="form-label">Additional Jurisdictions </label>
                         <p class="fw-normal small" >A foreign entity registration is required when a business formed in one state plans to conduct business in another state, meaning it needs to register as a "foreign entity" in the state where it intends to operate, typically when it has a physical presence, employees, or is actively soliciting business within that state's borders. 
-                        See <a class="link-primary " href="">State Specific Requirements</a> 
+                        See <a class="link-primary " href="" data-bs-toggle="modal" data-bs-target="#stateinfopdf">State Specific Requirements</a> 
                         </p>
                         <div class="filter2-dropdown additional-search dropdown ">
                             <div class="multi-select-container d-flex align-items-center border border-1 rounded-2  m-0 white-bg " id="addjurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"  tabindex="0">
@@ -2177,6 +2265,47 @@
          </div>
       </div>
       <!-- New entity step-1 Modal End-->
+
+     <!-- state specific Modal Starts -->
+      <div class="modal modal-right fade filter-slideout group-model" id="stateinfopdf" tabindex="-1" aria-labelledby="stateinfopdfLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100 modal-lg">
+        <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+                <div class="d-flex align-items-center w-100 pb-2">
+                    <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                        <span class="icon icon-md icon-settings m-0"></span>
+                    </span>
+                    <div>
+                        <h3 class="fs-3 m-0 mt-2">State Specific Requirements</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Header Ends -->
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="">
+                    <iframe src="dist/images/State specific Corporate ending requirements..pdf" class="w-100 min-vh-100 border-0"></iframe>
+                </div>
+            </div>
+
+            <!-- Modal Body Ends-->
+
+            <div class="modal-footer mt-3 pb-0">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0 ms-3" data-bs-toggle="modal" data-bs-target="#NWEntity" data-bs-dismiss="modal">
+                        CLOSE
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+      </div>
+     <!-- state specific modal Ends -->
 
       <!--New entity-detail step-2 Modal start-->
       <div class="entitymodal modal modal-right fade filter-slideout group-model" id="entityDetail" tabindex="-1" aria-labelledby="searchModalLabel"
@@ -2527,7 +2656,7 @@
                                                <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
                                             </div>
                                             <div class=" mt-4">
-                                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
+                                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="newofficeraddBtn">
                                               ADD
                                               </button>
                                            </div>
@@ -3452,7 +3581,7 @@
                                        <input class="form-check-input me-3" type="checkbox" id="additionalService1" data-bs-toggle="collapse" data-bs-target="#einForm">
                                        <label class="fw-bold fs-12 text-uppercase" for="additionalService1">OBTAIN FEDERAL TAX ID (EIN)</label>
                                     </div>
-                                    <span class="icon icon-outline-info m-0"></span>
+                                    <span class="icon icon-outline-info m-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Every organization must have an Employer Identification Number (EIN), even if it will not have employees. The EIN is a unique number that identifies the organization to the Internal Revenue Service"> </span>
                                  </div>
                                  <div class="collapse mb-4" id="einForm">
                                     <div>
@@ -3541,7 +3670,19 @@
                                        <input class="form-check-input me-3" type="checkbox" id="subSCheckbox" data-bs-toggle="collapse" data-bs-target="#subSForm">
                                        <label class="fw-bold fs-12 text-uppercase" for="subSCheckbox">SUB S ELECTION (filed after incorporated)</label>
                                     </div>
-                                    <span class="icon icon-outline-info m-0"></span>
+                                    <span 
+                                    class="icon icon-outline-info m-0 my-tooltip"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom"
+                                    data-bs-html="true"
+                                    data-bs-title="An S corp election is a tax designation filed with the IRS, you can choose for your corporation or LLC.<br><br>
+                                    Must meet the following requirements:<ol style='margin-left: 16px; padding-left: 0; text-align: left;'>
+                                      <li>Be a domestic corporation</li>
+                                      <li>Have only allowable shareholders</li>
+                                      <li>No more than 100 shareholders</li>
+                                      <li>One class of stock</li>
+                                    </ol>">
+                                  </span>
                                  </div>
                                  <div class="collapse" id="subSForm">
                                     <div class="calander-input mt-4">
@@ -3568,7 +3709,7 @@
                                        <input class="form-check-input me-3" type="checkbox" id="form25102Checkbox" data-bs-toggle="collapse" data-bs-target="#form25102">
                                        <label class="fw-bold fs-12 text-uppercase" for="form25102Checkbox">25102(F)</label>
                                     </div>
-                                    <span class="icon icon-outline-info m-0"></span>
+                                    <span class="icon icon-outline-info m-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="California state filing that startups typically rely on when selling shares to founders based in California. Section 25102(f) of the California Corporations Code is a California state exemption from the requirement to register a securities offering."> </span>
                                  </div>
                                  <div class="collapse" id="form25102">
                                     <div class="calander-input mt-4">
@@ -3611,7 +3752,7 @@
                                         <label for="" class="form-label w-100"> State, Foreign Country or Place of Organization</label>
                                         <input type="text" class="form-control " placeholder="State, Foreign Country or Place of Organization" >
                                      </div>
-                                     <label for="agentAddress1" class="form-label w-100 mt-4">Address <span class="icon icon-outline-info m-0"></span></label>
+                                     <label for="agentAddress1" class="form-label w-100 mt-4">Principal Address <span class="icon icon-outline-info m-0"></span></label>
                                         <input type="text" class="form-control mb-3" id="agentAddress1" placeholder="Address Line 1">
                                         <input type="text" class="form-control mb-3" id="agentAddress2" placeholder="Address Line 2">
                                         <div class="d-flex w-100 mb-3">
@@ -8473,6 +8614,11 @@
     <!-- Scripts End-->
 
     <script> let dashboardType = "dashboard1"; </script>
+    <script>
+        // Initialize all tooltips on the page
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+    </script>
 
 
 
