@@ -536,14 +536,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // verfify account div
-  document.addEventListener('DOMContentLoaded', function () {
-    const verifyBtn = document.querySelector('.verifybtn');
-    const verifyDiv = document.getElementById('verifyaccountDiv');
+document.addEventListener('DOMContentLoaded', function () {
+  const verifyButtons = document.querySelectorAll('.verifybtn');
 
-    verifyBtn.addEventListener('click', function () {
-      verifyDiv.style.display = 'block'; // Or toggle if needed
+  verifyButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const container = btn.closest('.container');
+      const verifyDiv = container.querySelector('.verifyaccountDiv');
+      if (verifyDiv) {
+        verifyDiv.style.display = verifyDiv.style.display === 'none' ? 'block' : 'none'; // toggle
+      }
     });
   });
+});
+
+
 
 
 
