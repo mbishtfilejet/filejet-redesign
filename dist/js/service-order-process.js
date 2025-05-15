@@ -305,182 +305,182 @@ $(function () {
 
 
 // manager form individual 
-document.addEventListener("DOMContentLoaded", function () {
-  // Reusable function to set up Add buttons
-  function setupAddButton(buttonId, formToHideId, formToShowId, divToHideClass) {
-    const button = document.getElementById(buttonId);
-    const formToHide = document.getElementById(formToHideId);
-    const formToShow = document.getElementById(formToShowId);
-    const divToHide = document.querySelector(`.${divToHideClass}`);
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Reusable function to set up Add buttons
+//   function setupAddButton(buttonId, formToHideId, formToShowId, divToHideClass) {
+//     const button = document.getElementById(buttonId);
+//     const formToHide = document.getElementById(formToHideId);
+//     const formToShow = document.getElementById(formToShowId);
+//     const divToHide = document.querySelector(`.${divToHideClass}`);
 
-    if (button) {
-      button.addEventListener("click", function () {
-        if (formToHide) formToHide.style.display = "none";
-        if (formToShow) formToShow.style.display = "block";
-        if (divToHide) divToHide.classList.add("d-none");
+//     if (button) {
+//       button.addEventListener("click", function () {
+//         if (formToHide) formToHide.style.display = "none";
+//         if (formToShow) formToShow.style.display = "block";
+//         if (divToHide) divToHide.classList.add("d-none");
 
-        // Hide Add, show Update only for Officer section
-        const officerAddBtn = document.getElementById("officeraddBtn");
-        const officerUpdateBtn = document.getElementById("officerupdateBtn");
-        if (officerAddBtn && officerUpdateBtn) {
-          officerAddBtn.classList.remove("d-none");
-          officerUpdateBtn.classList.add("d-none");
-        }
+//         // Hide Add, show Update only for Officer section
+//         const officerAddBtn = document.getElementById("officeraddBtn");
+//         const officerUpdateBtn = document.getElementById("officerupdateBtn");
+//         if (officerAddBtn && officerUpdateBtn) {
+//           officerAddBtn.classList.remove("d-none");
+//           officerUpdateBtn.classList.add("d-none");
+//         }
 
-        // Same for Corporate
-        const corporateAddBtn = document.getElementById("corporateaddBtn");
-        const corporateUpdateBtn = document.getElementById("corporateupdateBtn");
-        if (corporateAddBtn && corporateUpdateBtn) {
-          corporateAddBtn.classList.remove("d-none");
-          corporateUpdateBtn.classList.add("d-none");
-        }
-      });
-    }
-  }
+//         // Same for Corporate
+//         const corporateAddBtn = document.getElementById("corporateaddBtn");
+//         const corporateUpdateBtn = document.getElementById("corporateupdateBtn");
+//         if (corporateAddBtn && corporateUpdateBtn) {
+//           corporateAddBtn.classList.remove("d-none");
+//           corporateUpdateBtn.classList.add("d-none");
+//         }
+//       });
+//     }
+//   }
 
-  // Setup Add buttons
-  setupAddButton("individualaddBtn", "individualForm", "individualForm3", "addmoreManager");
-  setupAddButton("officeraddBtn", "innerofficerForm", "officerForm3", "addmoreOfficer");
-  setupAddButton("corporateaddBtn", "corporateForm", "corporateForm3", "addmoreManager");
+//   // Setup Add buttons
+//   setupAddButton("individualaddBtn", "individualForm", "individualForm3", "addmoreManager");
+//   setupAddButton("officeraddBtn", "innerofficerForm", "officerForm3", "addmoreOfficer");
+//   setupAddButton("corporateaddBtn", "corporateForm", "corporateForm3", "addmoreManager");
 
-  // More Add Officer
-  const moreAddOfficerBtn = document.querySelector(".moreadd");
-  const newOfficerFillingState = document.querySelector(".newfillingstate");
-  if (moreAddOfficerBtn && newOfficerFillingState) {
-    moreAddOfficerBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      newOfficerFillingState.style.display = "block";
-      newOfficerFillingState.scrollIntoView({ behavior: "smooth" });
-    });
-  }
+//   // More Add Officer
+//   const moreAddOfficerBtn = document.querySelector(".moreadd");
+//   const newOfficerFillingState = document.querySelector(".newfillingstate");
+//   if (moreAddOfficerBtn && newOfficerFillingState) {
+//     moreAddOfficerBtn.addEventListener("click", function (e) {
+//       e.preventDefault();
+//       newOfficerFillingState.style.display = "block";
+//       newOfficerFillingState.scrollIntoView({ behavior: "smooth" });
+//     });
+//   }
 
-  // More Add Individual
-  const moreAddIndividualBtn = document.querySelector(".moreaddindividual");
-  const newIndividualFillingState = document.querySelector(".newindividualfillingstate");
-  if (moreAddIndividualBtn && newIndividualFillingState) {
-    moreAddIndividualBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      newIndividualFillingState.style.display = "block";
-      newIndividualFillingState.scrollIntoView({ behavior: "smooth" });
-    });
-  }
+//   // More Add Individual
+//   const moreAddIndividualBtn = document.querySelector(".moreaddindividual");
+//   const newIndividualFillingState = document.querySelector(".newindividualfillingstate");
+//   if (moreAddIndividualBtn && newIndividualFillingState) {
+//     moreAddIndividualBtn.addEventListener("click", function (e) {
+//       e.preventDefault();
+//       newIndividualFillingState.style.display = "block";
+//       newIndividualFillingState.scrollIntoView({ behavior: "smooth" });
+//     });
+//   }
 
-  // More Add Corporate
-  const moreAddCorporateBtn = document.querySelector(".moreaddcorporate");
-  const newCorporateFillingState = document.querySelector(".newcorporatefillingstate");
-  if (moreAddCorporateBtn && newCorporateFillingState) {
-    moreAddCorporateBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      newCorporateFillingState.style.display = "block";
-      newCorporateFillingState.scrollIntoView({ behavior: "smooth" });
-    });
-  }
+//   // More Add Corporate
+//   const moreAddCorporateBtn = document.querySelector(".moreaddcorporate");
+//   const newCorporateFillingState = document.querySelector(".newcorporatefillingstate");
+//   if (moreAddCorporateBtn && newCorporateFillingState) {
+//     moreAddCorporateBtn.addEventListener("click", function (e) {
+//       e.preventDefault();
+//       newCorporateFillingState.style.display = "block";
+//       newCorporateFillingState.scrollIntoView({ behavior: "smooth" });
+//     });
+//   }
 
-  // Corporate Add Button: show filled view after adding
-  const corporateAddBtn = document.getElementById("corporateaddBtn");
-  const corporateFillingForm = document.getElementById("corporateForm");
-  const corporateFilledForm = document.getElementById("corporateForm3");
-  if (corporateAddBtn && corporateFillingForm && corporateFilledForm) {
-    corporateAddBtn.addEventListener("click", function () {
-      corporateFillingForm.style.display = "none";
-      corporateFilledForm.style.display = "block";
-    });
-  }
+//   // Corporate Add Button: show filled view after adding
+//   const corporateAddBtn = document.getElementById("corporateaddBtn");
+//   const corporateFillingForm = document.getElementById("corporateForm");
+//   const corporateFilledForm = document.getElementById("corporateForm3");
+//   if (corporateAddBtn && corporateFillingForm && corporateFilledForm) {
+//     corporateAddBtn.addEventListener("click", function () {
+//       corporateFillingForm.style.display = "none";
+//       corporateFilledForm.style.display = "block";
+//     });
+//   }
 
-  // Edit buttons
-  document.querySelectorAll(".editUser").forEach(function (editBtn) {
-    editBtn.addEventListener("click", function () {
-      // Officer Edit
-      if (editBtn.closest("#officerForm3")) {
-        const fillingForm = document.getElementById("innerofficerForm");
-        const filledForm = document.getElementById("officerForm3");
-        const addBtn = document.getElementById("officeraddBtn");
-        const updateBtn = document.getElementById("officerupdateBtn");
+//   // Edit buttons
+//   document.querySelectorAll(".editUser").forEach(function (editBtn) {
+//     editBtn.addEventListener("click", function () {
+//       // Officer Edit
+//       if (editBtn.closest("#officerForm3")) {
+//         const fillingForm = document.getElementById("innerofficerForm");
+//         const filledForm = document.getElementById("officerForm3");
+//         const addBtn = document.getElementById("officeraddBtn");
+//         const updateBtn = document.getElementById("officerupdateBtn");
 
-        if (fillingForm && filledForm) {
-          fillingForm.style.display = "block";
-          filledForm.style.display = "none";
-        }
+//         if (fillingForm && filledForm) {
+//           fillingForm.style.display = "block";
+//           filledForm.style.display = "none";
+//         }
 
-        if (addBtn && updateBtn) {
-          addBtn.classList.add("d-none");
-          updateBtn.classList.remove("d-none");
-        }
+//         if (addBtn && updateBtn) {
+//           addBtn.classList.add("d-none");
+//           updateBtn.classList.remove("d-none");
+//         }
 
-        fillingForm.scrollIntoView({ behavior: "smooth" });
-      }
+//         fillingForm.scrollIntoView({ behavior: "smooth" });
+//       }
 
-      // Individual Edit
-      else if (editBtn.closest("#individualForm3")) {
-        const fillingForm = document.getElementById("individualForm");
-        const filledForm = document.getElementById("individualForm3");
-        const addBtn = document.getElementById("individualaddBtn");
-        const updateBtn = document.getElementById("individualupdateBtn");
+//       // Individual Edit
+//       else if (editBtn.closest("#individualForm3")) {
+//         const fillingForm = document.getElementById("individualForm");
+//         const filledForm = document.getElementById("individualForm3");
+//         const addBtn = document.getElementById("individualaddBtn");
+//         const updateBtn = document.getElementById("individualupdateBtn");
 
-        if (fillingForm && filledForm) {
-          fillingForm.style.display = "block";
-          filledForm.style.display = "none";
-        }
+//         if (fillingForm && filledForm) {
+//           fillingForm.style.display = "block";
+//           filledForm.style.display = "none";
+//         }
 
-        if (addBtn && updateBtn) {
-          addBtn.classList.add("d-none");
-          updateBtn.classList.remove("d-none");
-        }
+//         if (addBtn && updateBtn) {
+//           addBtn.classList.add("d-none");
+//           updateBtn.classList.remove("d-none");
+//         }
 
-        fillingForm.scrollIntoView({ behavior: "smooth" });
-      }
+//         fillingForm.scrollIntoView({ behavior: "smooth" });
+//       }
 
-      // Corporate Edit
-      else if (editBtn.closest("#corporateForm3")) {
-        const fillingForm = document.getElementById("corporateForm");
-        const filledForm = document.getElementById("corporateForm3");
-        const addBtn = document.getElementById("corporateaddBtn");
-        const updateBtn = document.getElementById("corporateupdateBtn");
+//       // Corporate Edit
+//       else if (editBtn.closest("#corporateForm3")) {
+//         const fillingForm = document.getElementById("corporateForm");
+//         const filledForm = document.getElementById("corporateForm3");
+//         const addBtn = document.getElementById("corporateaddBtn");
+//         const updateBtn = document.getElementById("corporateupdateBtn");
 
-        if (fillingForm && filledForm) {
-          fillingForm.style.display = "block";
-          filledForm.style.display = "none";
-        }
+//         if (fillingForm && filledForm) {
+//           fillingForm.style.display = "block";
+//           filledForm.style.display = "none";
+//         }
 
-        if (addBtn && updateBtn) {
-          addBtn.classList.add("d-none");
-          updateBtn.classList.remove("d-none");
-        }
+//         if (addBtn && updateBtn) {
+//           addBtn.classList.add("d-none");
+//           updateBtn.classList.remove("d-none");
+//         }
 
-        fillingForm.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
+//         fillingForm.scrollIntoView({ behavior: "smooth" });
+//       }
+//     });
+//   });
 
-  // Delete button functionality
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("deleteUser")) {
-      // Officer Delete
-      if (e.target.closest("#officerForm3")) {
-        const officerRow = e.target.closest("#officerForm3 .d-flex.justify-content-between");
-        if (officerRow && confirm("Are you sure you want to delete this officer?")) {
-          officerRow.remove();
-        }
-      }
+//   // Delete button functionality
+//   document.addEventListener("click", function (e) {
+//     if (e.target.classList.contains("deleteUser")) {
+//       // Officer Delete
+//       if (e.target.closest("#officerForm3")) {
+//         const officerRow = e.target.closest("#officerForm3 .d-flex.justify-content-between");
+//         if (officerRow && confirm("Are you sure you want to delete this officer?")) {
+//           officerRow.remove();
+//         }
+//       }
 
-      // Individual Delete
-      else if (e.target.closest("#individualForm3")) {
-        const individualRow = e.target.closest("#individualForm3 .d-flex.justify-content-between");
-        if (individualRow && confirm("Are you sure you want to delete this individual?")) {
-          individualRow.remove();
-        }
-      }
+//       // Individual Delete
+//       else if (e.target.closest("#individualForm3")) {
+//         const individualRow = e.target.closest("#individualForm3 .d-flex.justify-content-between");
+//         if (individualRow && confirm("Are you sure you want to delete this individual?")) {
+//           individualRow.remove();
+//         }
+//       }
 
-      // Corporate Delete
-      else if (e.target.closest("#corporateForm3")) {
-        const corporateRow = e.target.closest("#corporateForm3 .d-flex.justify-content-between");
-        if (corporateRow && confirm("Are you sure you want to delete this corporate entry?")) {
-          corporateRow.remove();
-        }
-      }
-    }
-  });
-});
+//       // Corporate Delete
+//       else if (e.target.closest("#corporateForm3")) {
+//         const corporateRow = e.target.closest("#corporateForm3 .d-flex.justify-content-between");
+//         if (corporateRow && confirm("Are you sure you want to delete this corporate entry?")) {
+//           corporateRow.remove();
+//         }
+//       }
+//     }
+//   });
+// });
 
 
 
@@ -551,7 +551,76 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// officer form start
+document.addEventListener("DOMContentLoaded", function () {
+  // Handle add officer button
+  document.querySelectorAll(".officeraddBtn").forEach(button => {
+    button.addEventListener("click", function () {
+      const container = button.closest(".officeform");
+      const fillingForm = container.querySelector(".innerofficerForm");
+      const filledForm = container.querySelector(".officerForm3");
+
+      if (fillingForm && filledForm) {
+        fillingForm.style.display = "none";
+        filledForm.style.display = "block";
+      }
+
+      const addBtn = container.querySelector(".officeraddBtn");
+      const updateBtn = container.querySelector(".officerupdateBtn");
+      if (addBtn && updateBtn) {
+        addBtn.classList.remove("d-none");
+        updateBtn.classList.add("d-none");
+      }
+    });
+  });
+
+  // Handle edit officer button
+  document.querySelectorAll(".editUser").forEach(editBtn => {
+    editBtn.addEventListener("click", function () {
+      const container = editBtn.closest(".officeform");
+      const fillingForm = container.querySelector(".innerofficerForm");
+      const filledForm = container.querySelector(".officerForm3");
+
+      if (fillingForm && filledForm) {
+        fillingForm.style.display = "block";
+        filledForm.style.display = "none";
+      }
+
+      const addBtn = container.querySelector(".officeraddBtn");
+      const updateBtn = container.querySelector(".officerupdateBtn");
+      if (addBtn && updateBtn) {
+        addBtn.classList.add("d-none");
+        updateBtn.classList.remove("d-none");
+      }
+
+      fillingForm.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // Handle delete officer button
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("deleteUser")) {
+      const officerRow = e.target.closest(".d-flex.justify-content-between");
+      if (officerRow && confirm("Are you sure you want to delete this officer?")) {
+        officerRow.remove();
+      }
+    }
+  });
+
+  // Handle "More Add" officer button
+  document.querySelectorAll(".moreadd").forEach(button => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+      const container = button.closest(".officeform");
+      const newForm = container.querySelector(".newfillingstate");
+
+      if (newForm) {
+        newForm.classList.remove("d-none");
+        newForm.style.display = "block";
+        newForm.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+});
 
 
-
-  
