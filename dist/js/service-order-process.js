@@ -550,3 +550,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  const foreignCheck = document.getElementById('foreignCheck');
+  const additionalEntity = document.querySelector('.additionalentity');
+  const foreignHomeEntity = document.querySelector('.foreignhomeEntity');
+
+  function toggleEntities() {
+    if (foreignCheck.checked) {
+      additionalEntity.style.display = 'none';
+      foreignHomeEntity.style.display = 'block';
+    } else {
+      additionalEntity.style.display = 'block';
+      foreignHomeEntity.style.display = 'none';
+    }
+  }
+
+  foreignCheck.addEventListener('change', toggleEntities);
+
+  // Initialize visibility on load
+  toggleEntities();
+});
