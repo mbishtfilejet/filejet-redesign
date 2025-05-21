@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="d-flex align-items-center">
           <span class="icon icon-new-edit me-3 editUser" style="cursor:pointer;"></span>
-          <span class="icon icon-new-delete m-0 deleteUser" style="cursor:pointer;"></span>
+          <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"  style="cursor:pointer;"></span>
         </div>
       </div>
       <hr class="entry-divider">
@@ -534,7 +534,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+// foreign and home check
 document.addEventListener('DOMContentLoaded', function () {
   const foreignCheck = document.getElementById('foreignCheck');
   const additionalEntity = document.querySelector('.additionalentity');

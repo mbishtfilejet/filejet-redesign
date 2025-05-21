@@ -18986,11 +18986,46 @@ body .caledar-event-upcoming {
 }
 
 :root {
-  --bs-nw-gray-600: #565D67;
-  --bs-nw-gray-400: #9EA6B3;
-  --bs-filejet-medium-gray-opacity-50:rgba(62, 72, 74, 0.50);
-  --bs-filejet-medium-gray: #3E484A;
-  --bs-filejet-purple-indigo: #4744D1;
+  --bs-nw-gray-600: #565d67;
+  --bs-nw-gray-400: #9ea6b3;
+  --bs-filejet-medium-gray-opacity-50: rgba(62, 72, 74, 0.5);
+  --bs-filejet-medium-gray: #3e484a;
+  --bs-filejet-purple-indigo: #4744d1;
+}
+
+.sidebar .menu-link .nav-link.active a::before {
+  content: "";
+  position: absolute;
+  background-image: url("../../../dist/images/icons/side-before.svg") !important;
+  transform: rotate(270deg) !important;
+  top: 50px !important;
+  background-color: #ffffff !important;
+}
+
+.sidebar .menu-link .nav-link.active a::after {
+  content: "";
+  position: absolute;
+  background-image: url("../../../dist/images/icons/side-before.svg") !important;
+  transform: rotate(362deg) !important;
+  top: -23px !important;
+  right: -1px !important;
+  background-color: #ffffff !important;
+}
+
+.sidebar {
+  box-shadow: none !important;
+  border-right: 1.2px solid #bebebe !important;
+}
+
+.sidebar .menu-link .nav-link.active a {
+  background: var(--bs-purple-filejet) !important;
+  box-shadow: none !important;
+  border: 1.2px solid #bebebe !important;
+  border-right: 0px !important;
+}
+
+.sidebar .menu-link .nav-link {
+  width: 248px !important;
 }
 
 .main-dashboard-v2 .icon-side-before {
@@ -19085,7 +19120,7 @@ body .caledar-event-upcoming {
   color: var(--bs-filejet-purple-indigo);
 }
 .main-dashboard-v2 .modal-backdrop {
-  background: #565D67;
+  background: #565d67;
   mix-blend-mode: multiply;
   --bs-backdrop-opacity: 100%;
 }
@@ -19128,7 +19163,7 @@ body .caledar-event-upcoming {
 .main-dashboard-v2 .SOP-model .service-step-group .step:last-child::after {
   display: none;
 }
-.main-dashboard-v2 .SOP-model .service-step-group .circle {
+.main-dashboard-v2 .SOP-model .service-step-group .step .circle {
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -19137,30 +19172,29 @@ body .caledar-event-upcoming {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   flex-shrink: 0;
   position: relative;
   left: -2%;
 }
-.main-dashboard-v2 .SOP-model .service-step-group .circle.completed {
+.main-dashboard-v2 .SOP-model .service-step-group .step .circle.completed {
   background-color: var(--bs-green);
   border-color: var(--bs-green);
   background-image: url("../../../dist/images/icons/light-white-check.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
-.main-dashboard-v2 .SOP-model .service-step-group .circle.active {
+.main-dashboard-v2 .SOP-model .service-step-group .step .circle.active {
   border-color: var(--bs-filejet-purple-indigo);
 }
-.main-dashboard-v2 .SOP-model .service-step-group .circle.active::before {
+.main-dashboard-v2 .SOP-model .service-step-group .step .circle.active::before {
   content: "";
   position: absolute;
   width: 18px;
   height: 18px;
-  background-color: #A8B1FF;
+  background-color: #a8b1ff;
   border-radius: 50%;
 }
-.main-dashboard-v2 .SOP-model .service-step-group .circle.active::after {
+.main-dashboard-v2 .SOP-model .service-step-group .step .circle.active::after {
   content: "";
   position: absolute;
   width: 7px;
@@ -19168,7 +19202,7 @@ body .caledar-event-upcoming {
   background-color: var(--bs-filejet-purple-indigo);
   border-radius: 50%;
 }
-.main-dashboard-v2 .SOP-model .service-step-group .step-text {
+.main-dashboard-v2 .SOP-model .service-step-group .step .step-text {
   margin-top: 8px;
   font-size: 12px;
   font-weight: normal;
@@ -19180,7 +19214,7 @@ body .caledar-event-upcoming {
   justify-content: center;
   letter-spacing: -0.04px;
 }
-.main-dashboard-v2 .SOP-model .service-step-group .circle.active + .step-text {
+.circle.active + .main-dashboard-v2 .SOP-model .service-step-group .step .step-text {
   color: var(--bs-filejet-purple-indigo);
   font-weight: bold;
 }
@@ -19199,7 +19233,7 @@ body .caledar-event-upcoming {
   padding-right: 15px;
   font-size: 12px;
   background-color: transparent;
-  border: 1px solid #D2D5DA;
+  border: 1px solid #d2d5da;
   border-radius: 4.5px;
   margin-bottom: 0px;
   box-shadow: none !important;
@@ -19227,7 +19261,7 @@ body .caledar-event-upcoming {
   padding-right: 15px;
   font-size: 12px;
   background-color: transparent;
-  border: 1px solid #D2D5DA;
+  border: 1px solid #d2d5da;
   border-radius: 4.5px;
   margin-bottom: 0px;
   box-shadow: none !important;
@@ -19242,7 +19276,7 @@ body .caledar-event-upcoming {
 }
 .main-dashboard-v2 .SOP-model .form-select:focus-within, .main-dashboard-v2 .SOP-model .boc-light #boc-ppdf-btns #boc-ppdf-size:focus-within, .boc-light #boc-ppdf-btns .main-dashboard-v2 .SOP-model #boc-ppdf-size:focus-within, .main-dashboard-v2 .SOP-model .boc-light #boc-ppdf-btns #boc-ppdf-layout:focus-within, .boc-light #boc-ppdf-btns .main-dashboard-v2 .SOP-model #boc-ppdf-layout:focus-within, .main-dashboard-v2 .SOP-model .boc-light #boc-ppdf-btns #boc-ppdf-scale:focus-within, .boc-light #boc-ppdf-btns .main-dashboard-v2 .SOP-model #boc-ppdf-scale:focus-within {
   border: 2px solid var(--bs-filejet-purple-indigo) !important;
-  background-color: #F2F2FF;
+  background-color: #f2f2ff;
 }
 .main-dashboard-v2 .SOP-model select.form-select:invalid, .main-dashboard-v2 .SOP-model .boc-light #boc-ppdf-btns select#boc-ppdf-size:invalid, .boc-light #boc-ppdf-btns .main-dashboard-v2 .SOP-model select#boc-ppdf-size:invalid, .main-dashboard-v2 .SOP-model .boc-light #boc-ppdf-btns select#boc-ppdf-layout:invalid, .boc-light #boc-ppdf-btns .main-dashboard-v2 .SOP-model select#boc-ppdf-layout:invalid, .main-dashboard-v2 .SOP-model .boc-light #boc-ppdf-btns select#boc-ppdf-scale:invalid, .boc-light #boc-ppdf-btns .main-dashboard-v2 .SOP-model select#boc-ppdf-scale:invalid {
   color: var(--bs-filejet-medium-gray-opacity-50);
@@ -19255,7 +19289,7 @@ body .caledar-event-upcoming {
   background-position-y: center;
 }
 .main-dashboard-v2 .SOP-model input[type=text]:focus-visible {
-  border: 1px solid #D2D5DA !important;
+  border: 1px solid #d2d5da !important;
 }
 .main-dashboard-v2 .SOP-model .form-label {
   margin-bottom: 1rem;
@@ -19352,7 +19386,17 @@ body .caledar-event-upcoming {
   font-size: 0.8rem !important;
   padding: 0.9rem 0.9rem !important;
   border-top-width: 1px;
-  border-bottom: 0px;
+  border-bottom-width: 0;
+}
+.main-dashboard-v2 .SOP-model .dataTables_wrapper tfoot tr td {
+  font-size: 0.8rem !important;
+  border-top-width: 1px;
+  border-bottom-width: 0;
+}
+.main-dashboard-v2 .SOP-model .dataTables_wrapper.no-footer .dataTables_scrollBody {
+  overflow: unset !important;
+  height: 100% !important;
+  max-height: 100% !important;
 }
 .main-dashboard-v2 .SOP-model .table thead th {
   font-size: 0.8rem !important;
@@ -19362,39 +19406,27 @@ body .caledar-event-upcoming {
 .main-dashboard-v2 .SOP-model .table tbody td {
   font-size: 0.8rem !important;
   border-top-width: 1px;
-  border-bottom: 0px;
-}
-.main-dashboard-v2 .SOP-model .dataTables_wrapper tfoot tr td {
-  font-size: 0.8rem !important;
-  border-top-width: 1px;
-  border-bottom: 0px;
-}
-.main-dashboard-v2 .SOP-model .dataTables_wrapper.no-footer .dataTables_scrollBody {
-  overflow: unset !important;
-  height: 100% !important;
-  max-height: 100% !important;
+  border-bottom-width: 0;
 }
 .main-dashboard-v2 .SOP-model .odd {
-  background-color: #F3F5F8 !important;
+  background-color: #f3f5f8 !important;
 }
 .main-dashboard-v2 .SOP-model .accordion-button:not(.collapsed)::after {
   background-image: url("../../../dist/images/icons/icon-angle-top.svg");
-}
-.main-dashboard-v2 .SOP-model .form-check-input:checked[type=radio], .main-dashboard-v2 .SOP-model .boc-light .boc-filter .boc-filter-menu fieldset div input:checked[type=radio], .boc-light .boc-filter .boc-filter-menu fieldset div .main-dashboard-v2 .SOP-model input:checked[type=radio] {
-  background-image: url("../../../dist/images/icons/view-checkbox-active.svg") !important;
-  border: none !important;
 }
 .main-dashboard-v2 .SOP-model .form-check-input[type=radio], .main-dashboard-v2 .SOP-model .boc-light .boc-filter .boc-filter-menu fieldset div input[type=radio], .boc-light .boc-filter .boc-filter-menu fieldset div .main-dashboard-v2 .SOP-model input[type=radio] {
   background-image: url("../../../dist/images/icons/view-checkbox-inactive.svg") !important;
   border: none !important;
 }
-.main-dashboard-v2 .SOP-model .typecheckradio .form-check-input:checked[type=radio], .main-dashboard-v2 .SOP-model .typecheckradio .boc-light .boc-filter .boc-filter-menu fieldset div input:checked[type=radio], .boc-light .boc-filter .boc-filter-menu fieldset div .main-dashboard-v2 .SOP-model .typecheckradio input:checked[type=radio] {
-  background-image: url("../../../dist/images/icons/radio-check.svg") !important;
-  border-radius: 2px;
+.main-dashboard-v2 .SOP-model .form-check-input[type=radio]:checked, .main-dashboard-v2 .SOP-model .boc-light .boc-filter .boc-filter-menu fieldset div input[type=radio]:checked, .boc-light .boc-filter .boc-filter-menu fieldset div .main-dashboard-v2 .SOP-model input[type=radio]:checked {
+  background-image: url("../../../dist/images/icons/view-checkbox-active.svg") !important;
 }
 .main-dashboard-v2 .SOP-model .typecheckradio .form-check-input[type=radio], .main-dashboard-v2 .SOP-model .typecheckradio .boc-light .boc-filter .boc-filter-menu fieldset div input[type=radio], .boc-light .boc-filter .boc-filter-menu fieldset div .main-dashboard-v2 .SOP-model .typecheckradio input[type=radio] {
   background-image: url("../../../dist/images/icons/radio-check-default.svg") !important;
   border-radius: 2px;
+}
+.main-dashboard-v2 .SOP-model .typecheckradio .form-check-input[type=radio]:checked, .main-dashboard-v2 .SOP-model .typecheckradio .boc-light .boc-filter .boc-filter-menu fieldset div input[type=radio]:checked, .boc-light .boc-filter .boc-filter-menu fieldset div .main-dashboard-v2 .SOP-model .typecheckradio input[type=radio]:checked {
+  background-image: url("../../../dist/images/icons/radio-check.svg") !important;
 }
 .main-dashboard-v2 .SOP-model .form-check {
   gap: 0.5rem;
@@ -19420,7 +19452,7 @@ body .caledar-event-upcoming {
   text-align: center;
   font-size: 12px !important;
   font-weight: bold !important;
-  background-color: #A8B1FF;
+  background-color: #a8b1ff;
   border: 0px;
   color: var(--bs-dark) !important;
   line-height: 20px;
@@ -19429,7 +19461,7 @@ body .caledar-event-upcoming {
 .main-dashboard-v2 .SOP-model .custom-dropdown select:focus {
   box-shadow: none;
   border: 2px solid var(--bs-filejet-purple-indigo);
-  background-color: #F2F2FF;
+  background-color: #f2f2ff;
   color: var(--bs-filejet-medium-gray);
   font-weight: bold;
 }
@@ -19475,7 +19507,7 @@ body .caledar-event-upcoming {
   flex-direction: column;
 }
 .main-dashboard-v2 .SOP-model .filledstate .inputsfilled {
-  background-color: #F3F5F8;
+  background-color: #f3f5f8;
   padding: 15px;
 }
 .main-dashboard-v2 .SOP-model .filledstate button {
@@ -19499,23 +19531,19 @@ body .caledar-event-upcoming {
   opacity: 0.4;
 }
 .main-dashboard-v2 .SOP-model .additional-search input {
-  padding: 0px;
+  padding: 0;
   color: var(--bs-filejet-medium-gray-opacity) !important;
   font-size: 12px !important;
   font-weight: 500 !important;
 }
 .main-dashboard-v2 .SOP-model .additional-search .multi-select-container {
-  border: 1px solid #D2D5DA !important;
+  border: 1px solid #d2d5da !important;
   color: var(--bs-filejet-medium-gray-opacity-50) !important;
   font-weight: 500 !important;
 }
-.main-dashboard-v2 .SOP-model .additional-search .dropdown-search-input {
-  width: 100%;
-  padding: 10px 15px;
-}
 .main-dashboard-v2 .SOP-model .additional-search .multi-select-container:focus-within {
   border: 2px solid var(--bs-filejet-purple-indigo) !important;
-  background-color: #F2F2FF;
+  background-color: #f2f2ff;
   color: var(--bs-filejet-medium-gray);
   font-weight: bold;
 }
@@ -19524,7 +19552,7 @@ body .caledar-event-upcoming {
   display: inline-block;
   width: 10px;
   height: 10px;
-  background-image: url(../../../dist/images/icons/icon-angle-bottom.svg) !important;
+  background-image: url("../../../dist/images/icons/icon-angle-bottom.svg") !important;
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
@@ -19532,21 +19560,16 @@ body .caledar-event-upcoming {
   min-width: 10px;
 }
 .main-dashboard-v2 .SOP-model .additional-search .multi-select-container.show::after {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background-image: url(../../../dist/images/icons/icon-angle-top.svg) !important;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  min-width: 10px;
+  background-image: url("../../../dist/images/icons/icon-angle-top.svg") !important;
+}
+.main-dashboard-v2 .SOP-model .additional-search .dropdown-search-input {
+  width: 100%;
+  padding: 10px 15px;
 }
 .main-dashboard-v2 .SOP-model .bg-filled {
-  background-color: #F3F5F8;
+  background-color: #f3f5f8;
   background-image: none;
-  border: 1.5px solid #D2D5DA;
+  border: 1.5px solid #d2d5da;
   pointer-events: none;
 }
 .main-dashboard-v2 .SOP-model .fs-11 {
@@ -19572,11 +19595,11 @@ body .caledar-event-upcoming {
 }
 .main-dashboard-v2 .SOP-model .alert-danger {
   color: #000000;
-  background-color: #FDEBEA;
+  background-color: #fdebea;
 }
 .main-dashboard-v2 .SOP-model .alert-success {
-  --bs-alert-color: #0D2C36;
-  --bs-alert-bg: #D0F4DC;
+  --bs-alert-color: #0d2c36;
+  --bs-alert-bg: #d0f4dc;
 }
 .main-dashboard-v2 .SOP-model .summarystroke {
   width: 109.5%;
