@@ -2163,7 +2163,7 @@
                     <!-- Upload button -->
 
                     <div class="upload-btn calander-input mt-3" style="display: none;">
-                        <input type="text" class="form-select modaldatepicker"  placeholder="Date" value="">
+                        <input type="text" class="form-control modaldatepicker"  placeholder="Date" value="">
                         </span>
                     </div>
                     
@@ -2433,11 +2433,11 @@
                   </form>
                   <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                     <fieldset class="mb-4">
-                        <label for="" class="form-label inactive">Authorized Signer Name</label>
+                        <label for="" class="form-label inactive">Authorized Signer Name <span class="mandatory">*</span></label>
                         <input type="text" class="form-control" id="" placeholder="Signer Name">
                      </fieldset>
                      <fieldset class="">
-                        <label for="" class="form-label inactive">title</label>
+                        <label for="" class="form-label inactive">title <span class="mandatory">*</span></label>
                         <input type="text" class="form-control" id="" placeholder="Title">
                      </fieldset>
                  </div>
@@ -2566,7 +2566,7 @@
                                                   </div>
                                                   <div class="d-flex align-items-center">
                                                      <span class="icon icon-new-edit me-3 editUser"></span>
-                                                     <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                     <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                   </div>
                                                </div>
                                                <div class="d-flex flex-column justify-content-between">
@@ -2579,7 +2579,7 @@
                                                    </div>
                                                    <div class="d-flex align-items-center">
                                                       <span class="icon icon-new-edit me-3 editUser"></span>
-                                                      <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                      <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                    </div>
                                                  </div>
                                                 </div>
@@ -2799,7 +2799,7 @@
                                                   </div>
                                                   <div class="d-flex align-items-center">
                                                      <span class="icon icon-new-edit me-3 editUser"></span>
-                                                     <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                     <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                   </div>
                                                </div>
                                                   <div class="d-flex flex-column justify-content-between">
@@ -2812,7 +2812,7 @@
                                                      </div>
                                                      <div class="d-flex align-items-center">
                                                         <span class="icon icon-new-edit me-3 editUser"></span>
-                                                        <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                        <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                      </div>
                                                    </div>
                                                   </div>
@@ -3001,7 +3001,7 @@
                                                  </div>
                                                  <div class="d-flex align-items-center">
                                                     <span class="icon icon-new-edit me-3 editUser"></span>
-                                                    <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                    <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                  </div>
                                               </div>
                                                  <hr>
@@ -3014,7 +3014,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center">
                                                        <span class="icon icon-new-edit me-3 editUser"></span>
-                                                       <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                       <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                     </div>
                                                   </div>
                                                  </div>
@@ -3106,15 +3106,15 @@
                      </div>
                   </div>
                   <!-- State 01 Specific Information Accordion -->
-                  <div class="accordion mb-4" id="accordionExample2">
+                  <div class="accordion mb-4" id="accordionExample4">
                     <div class="accordion-item m-0">
-                       <h2 class="accordion-header" id="headingTwo1">
+                       <h2 class="accordion-header" id="headingFour1">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                             data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                             data-bs-target="#collapseFour1" aria-expanded="false" aria-controls="collapseFour1">
                              Home State Specific Information <span class="icon icon-entity-required ms-2"></span>
                           </button>
                        </h2>
-                       <div id="collapseTwo1" class="accordion-collapse collapse  border-0" aria-labelledby="headingTwo1">
+                       <div id="collapseFour1" class="accordion-collapse collapse  border-0" aria-labelledby="headingFour1">
                           <div class="accordion-body pt-0">
                              <fieldset>
                                <div class="mb-4">
@@ -3141,83 +3141,19 @@
                                    </div>
                                    
                                  </div>
-                                <label for="" class="form-label w-100 mt-3">Principal Address <span class="mandatory">*</span>
-                                <span class="icon icon-outline-info  m-0"></span></label>
-                                <input type="text" class="form-control mb-3" placeholder="Address Line 1">
-                                <input type="text" class="form-control mb-3" placeholder="Address Line 2">
-                                <input type="text" class="form-control mb-3 " id="" placeholder="City">
-                          
-                          <div class="d-flex w-100 mb-4">
-                           <div class="w-100 me-3 custom-dropdown">
-                             <select class="form-select" id="formation-model" required>
-                               <option value="" disabled selected hidden>State</option>
-                     <option value="1">Alabama</option>
-                     <option value="2">Alaska</option>
-                     <option value="3">Arizona</option>
-                     <option value="4">Arkansas</option>
-                     <option value="5">California</option>
-                     <option value="6">Colorado</option>
-                     <option value="7">Connecticut</option>
-                     <option value="8">Delaware</option>
-                     <option value="9">District of Columbia</option>
-                     <option value="10">Florida</option>
-                     <option value="11">Georgia</option>
-                     <option value="12">Hawaii</option>
-                     <option value="13">Idaho</option>
-                     <option value="14">Illinois</option>
-                     <option value="15">Indiana</option>
-                     <option value="16">Iowa</option>
-                     <option value="17">Kansas</option>
-                     <option value="18">Kentucky</option>
-                     <option value="19">Louisiana</option>
-                     <option value="20">Maine</option>
-                     <option value="21">Maryland</option>
-                     <option value="22">Massachusetts</option>
-                     <option value="23">Michigan</option>
-                     <option value="24">Minnesota</option>
-                     <option value="25">Mississippi</option>
-                     <option value="26">Missouri</option>
-                     <option value="27">Montana</option>
-                     <option value="28">Nebraska</option>
-                     <option value="29">Nevada</option>
-                     <option value="30">New Hampshire</option>
-                     <option value="31">New Jersey</option>
-                     <option value="32">New Mexico</option>
-                     <option value="33">New York</option>
-                     <option value="34">North Carolina</option>
-                     <option value="35">North Dakota</option>
-                     <option value="36">Ohio</option>
-                     <option value="37">Oklahoma</option>
-                     <option value="38">Oregon</option>
-                     <option value="39">Pennsylvania</option>
-                     <option value="40">Rhode Island</option>
-                     <option value="41">South Carolina</option>
-                     <option value="42">South Dakota</option>
-                     <option value="43">Tennessee</option>
-                     <option value="44">Texas</option>
-                     <option value="45">Utah</option>
-                     <option value="46">Vermont</option>
-                     <option value="47">Virginia</option>
-                     <option value="48">Washington</option>
-                     <option value="49">West Virginia</option>
-                     <option value="50">Wisconsin</option>
-                     <option value="51">Wyoming</option>
-                              </select>
-                           </div>
-                           <input type="text" class="form-control" id="" placeholder="Zipcode">
-                           <input type="text" class="form-control ms-3 " id="" placeholder="County">
-
-                        </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                   <span class="fw-bold">MAILING ADDRESS</span>
-                                   <div class="d-flex align-items-center">
-                                      <div class="form-check gap-2">
-                                         <input class="form-check-input payment-method" type="checkbox" id="mailAddress2" checked>
-                                         <label class="form-check-label fw-normal rights-label" for="mailAddress2">Same as Principal Address</label>
-                                      </div>
-                                   </div>
-                                </div>
                              </fieldset>
+                             <fieldset class="mb-4">
+                                    <label for="" class="form-label inactive mt-3">NUMBER OF SHARES Authorized TO ISSUE</label>
+                                    <input type="text" class="form-control" id="" placeholder="Number of shares Authorized to issue">
+                                 </fieldset>
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label inactive">NUMBER OF SHARES holders</label>
+                                    <input type="text" class="form-control" id="" placeholder="Number of shares holders">
+                                 </fieldset>
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label inactive">PAR VALUE</label>
+                                    <input type="text" class="form-control" id="" placeholder="$ Par value holders">
+                                 </fieldset>
                           </div>
                        </div>
                     </div>
@@ -3730,11 +3666,11 @@
                                     </div>
                                     <div class="calander-input mt-4">
                                         <label for="" class="form-label w-100">Date business started</label>
-                                        <input  class="form-select w-100 modaldatepicker " placeholder="Date" value="" >
+                                        <input  class="form-control w-100 modaldatepicker " placeholder="Date" value="" >
                                      </div>
                                      <div class="calander-input mt-4 mb-4">
                                         <label for="" class="form-label w-100">First date wages were paid or will be paid</label>
-                                        <input type="text" class="form-select modaldatepicker" placeholder="Date" value="" id="modaldatepicker">
+                                        <input type="text" class="form-control modaldatepicker" placeholder="Date" value="" id="modaldatepicker">
                                      </div>
                                      <div>
                                         <label for="" class="form-label w-100">Highest number of employees within the next 12 months</label>
@@ -3814,7 +3750,7 @@
                                  <div class="collapse" id="subSForm">
                                     <div class="calander-input mt-4">
                                         <label for="" class="form-label w-100">Date business started</label>
-                                        <input type="text" class="form-select modaldatepicker " placeholder="Date" >
+                                        <input type="text" class="form-control modaldatepicker " placeholder="Date" >
                                      </div>
                                      <fieldset class="mt-4">
                                         <label for="" class="form-label w-100 d-flex justify-content-between">Name of Officer or Legal Representative <br> who the IRS may contact 
@@ -3841,7 +3777,7 @@
                                  <div class="collapse" id="form25102">
                                     <div class="calander-input mt-4">
                                         <label for="" class="form-label w-100">Date business started</label>
-                                        <input type="text" class="form-select modaldatepicker " placeholder="Date" >
+                                        <input type="text" class="form-control modaldatepicker " placeholder="Date" >
                                      </div>
                                      <fieldset class="mt-4">
                                         <label for="" class="form-label w-100 d-flex justify-content-between">Issuer Details
@@ -3952,7 +3888,7 @@
                                          </div>
                                          <div class="calander-input mt-4">
                                             <label for="" class="form-label w-100">Date</label>
-                                            <input type="text" class="form-select modaldatepicker " placeholder="Date" >
+                                            <input type="text" class="form-control modaldatepicker " placeholder="Date" >
                                          </div>
                                          <div class="d-flex align-items-start justify-content-between mt-4">
                                             <div class="d-flex ">
@@ -4767,11 +4703,11 @@
                   </form>
                   <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                     <fieldset class="mb-4">
-                        <label for="" class="form-label inactive">Authorized Signer Name</label>
+                        <label for="" class="form-label inactive">Authorized Signer Name <span class="mandatory">*</span></label>
                         <input type="text" class="form-control bg-filled" id="" placeholder="John Smith">
                      </fieldset>
                      <fieldset class="">
-                        <label for="" class="form-label inactive">title</label>
+                        <label for="" class="form-label inactive">title <span class="mandatory">*</span></label>
                         <input type="text" class="form-control bg-filled" id="" placeholder="Manager">
                      </fieldset>
                  </div>
@@ -4900,7 +4836,7 @@
                                                   </div>
                                                   <div class="d-flex align-items-center">
                                                      <span class="icon icon-new-edit me-3 editUser"></span>
-                                                     <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                     <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                   </div>
                                                </div>
                                                <div class="d-flex flex-column justify-content-between">
@@ -4913,7 +4849,7 @@
                                                    </div>
                                                    <div class="d-flex align-items-center">
                                                       <span class="icon icon-new-edit me-3 editUser"></span>
-                                                      <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                      <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                    </div>
                                                  </div>
                                                 </div>
@@ -5134,7 +5070,7 @@
                                                   </div>
                                                   <div class="d-flex align-items-center">
                                                      <span class="icon icon-new-edit me-3 editUser"></span>
-                                                     <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                     <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                   </div>
                                                </div>
                                                   <div class="d-flex flex-column justify-content-between">
@@ -5147,7 +5083,7 @@
                                                      </div>
                                                      <div class="d-flex align-items-center">
                                                         <span class="icon icon-new-edit me-3 editUser"></span>
-                                                        <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                        <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                      </div>
                                                    </div>
                                                   </div>
@@ -5336,7 +5272,7 @@
                                                  </div>
                                                  <div class="d-flex align-items-center">
                                                     <span class="icon icon-new-edit me-3 editUser"></span>
-                                                    <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                    <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                  </div>
                                               </div>
                                                  <hr>
@@ -5349,7 +5285,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center">
                                                        <span class="icon icon-new-edit me-3 editUser"></span>
-                                                       <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                       <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                     </div>
                                                   </div>
                                                  </div>
@@ -5507,11 +5443,11 @@
                              </fieldset>
                              <div class="calander-input mb-4">
                                 <label for="" class="form-label w-100">Original File Date <span class="mandatory">*</span></label>
-                                <input type="text" class="form-select modaldatepicker " placeholder="Original File date" >
+                                <input type="text" class="form-control modaldatepicker " placeholder="Original File date" >
                              </div>
                              <div class="calander-input mb-4">
                                 <label for="" class="form-label w-100">Last Report File Date <span class="mandatory">*</span></label>
-                                <input type="text" class="form-select modaldatepicker " placeholder="Last report file date" >
+                                <input type="text" class="form-control modaldatepicker " placeholder="Last report file date" >
                              </div>
                                 <fieldset class="">
                                    <label for="" class="form-label w-100">Physical Address <span class="mandatory">*</span>
@@ -5615,7 +5551,7 @@
                                  </div>
                                  <div class="calander-input mb-4">
                                     <label for="" class="form-label w-100">Last Report File Date <span class="mandatory">*</span></label>
-                                    <input type="text" class="form-select modaldatepicker " placeholder="Last report file date" >
+                                    <input type="text" class="form-control modaldatepicker " placeholder="Last report file date" >
                                  </div>
 
                                     <fieldset class="">
@@ -6576,11 +6512,11 @@
 
                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                     <fieldset class="mb-4">
-                        <label for="" class="form-label inactive">Authorized Signer Name</label>
+                        <label for="" class="form-label inactive">Authorized Signer Name <span class="mandatory">*</span></label>
                         <input type="text" class="form-control " id="" placeholder="John Smith">
                      </fieldset>
                      <fieldset class="">
-                        <label for="" class="form-label inactive">title</label>
+                        <label for="" class="form-label inactive">title <span class="mandatory">*</span></label>
                         <input type="text" class="form-control " id="" placeholder="Manager">
                      </fieldset>
                  </div>
@@ -6709,7 +6645,7 @@
                                                  </div>
                                                  <div class="d-flex align-items-center">
                                                     <span class="icon icon-new-edit me-3 editUser"></span>
-                                                    <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                    <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                  </div>
                                               </div>
                                               <div class="d-flex flex-column justify-content-between">
@@ -6722,7 +6658,7 @@
                                                   </div>
                                                   <div class="d-flex align-items-center">
                                                      <span class="icon icon-new-edit me-3 editUser"></span>
-                                                     <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                     <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                   </div>
                                                 </div>
                                                </div>
@@ -6942,7 +6878,7 @@
                                                    </div>
                                                    <div class="d-flex align-items-center">
                                                       <span class="icon icon-new-edit me-3 editUser"></span>
-                                                      <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                      <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                    </div>
                                                 </div>
                                                    <div class="d-flex flex-column justify-content-between">
@@ -6955,7 +6891,7 @@
                                                       </div>
                                                       <div class="d-flex align-items-center">
                                                          <span class="icon icon-new-edit me-3 editUser"></span>
-                                                         <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                         <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                       </div>
                                                     </div>
                                                    </div>
@@ -7144,7 +7080,7 @@
                                                   </div>
                                                   <div class="d-flex align-items-center">
                                                      <span class="icon icon-new-edit me-3 editUser"></span>
-                                                     <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                     <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                   </div>
                                                </div>
                                                   <hr>
@@ -7157,7 +7093,7 @@
                                                      </div>
                                                      <div class="d-flex align-items-center">
                                                         <span class="icon icon-new-edit me-3 editUser"></span>
-                                                        <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                        <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                      </div>
                                                    </div>
                                                   </div>
@@ -8008,11 +7944,11 @@
    
                     <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                        <fieldset class="mb-4">
-                           <label for="" class="form-label inactive">Authorized Signer Name</label>
+                           <label for="" class="form-label inactive">Authorized Signer Name <span class="mandatory">*</span></label>
                            <input type="text" class="form-control " id="" placeholder="John Smith">
                         </fieldset>
                         <fieldset class="">
-                           <label for="" class="form-label inactive">title</label>
+                           <label for="" class="form-label inactive">title <span class="mandatory">*</span></label>
                            <input type="text" class="form-control " id="" placeholder="Manager">
                         </fieldset>
                     </div>
@@ -8141,7 +8077,7 @@
                                                     </div>
                                                     <div class="d-flex align-items-center">
                                                        <span class="icon icon-new-edit me-3 editUser"></span>
-                                                       <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                       <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                     </div>
                                                  </div>
                                                  <div class="d-flex flex-column justify-content-between">
@@ -8154,7 +8090,7 @@
                                                      </div>
                                                      <div class="d-flex align-items-center">
                                                         <span class="icon icon-new-edit me-3 editUser"></span>
-                                                        <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                        <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                      </div>
                                                    </div>
                                                   </div>
@@ -8374,7 +8310,7 @@
                                                       </div>
                                                       <div class="d-flex align-items-center">
                                                          <span class="icon icon-new-edit me-3 editUser"></span>
-                                                         <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                         <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                       </div>
                                                    </div>
                                                       <div class="d-flex flex-column justify-content-between">
@@ -8387,7 +8323,7 @@
                                                          </div>
                                                          <div class="d-flex align-items-center">
                                                             <span class="icon icon-new-edit me-3 editUser"></span>
-                                                            <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                            <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                          </div>
                                                        </div>
                                                       </div>
@@ -8576,7 +8512,7 @@
                                                      </div>
                                                      <div class="d-flex align-items-center">
                                                         <span class="icon icon-new-edit me-3 editUser"></span>
-                                                        <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                        <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                      </div>
                                                   </div>
                                                      <hr>
@@ -8589,7 +8525,7 @@
                                                         </div>
                                                         <div class="d-flex align-items-center">
                                                            <span class="icon icon-new-edit me-3 editUser"></span>
-                                                           <span class="icon icon-new-delete m-0 deleteUser"></span>
+                                                           <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"></span>
                                                         </div>
                                                       </div>
                                                      </div>
@@ -8892,8 +8828,8 @@
                            <div class="calander-input mt-4">
                                <label for="" class="form-label w-100">Date(s) of Inactivity<span class="mandatory">*</span></label>
                                <div class="d-flex">
-                                   <input type="text" class="form-select modaldatepicker me-3" placeholder="From" >
-                                   <input type="text" class="form-select modaldatepicker" placeholder="To" >
+                                   <input type="text" class="form-control modaldatepicker me-3" placeholder="From" >
+                                   <input type="text" class="form-control modaldatepicker" placeholder="To" >
                             </div>
                             </div>
                             <div class="mt-4">
@@ -8902,17 +8838,17 @@
                             </div>
                             <div class="calander-input mt-4">
                                <label for="" class="form-label w-100">ASSET DATE<span class="mandatory">*</span></label>
-                                   <input type="text" class="form-select modaldatepicker" placeholder="Asset date" >
+                                   <input type="text" class="form-control modaldatepicker" placeholder="Asset date" >
                             </div>
                         </div>
    
                        <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                            <fieldset class="mb-4">
-                               <label for="" class="form-label">Authorized Signer Name</label>
+                               <label for="" class="form-label">Authorized Signer Name <span class="mandatory">*</span></label>
                                <input type="text" class="form-control " id="" placeholder="Signer Name">
                             </fieldset>
                             <fieldset class="">
-                               <label for="" class="form-label">title</label>
+                               <label for="" class="form-label">title <span class="mandatory">*</span></label>
                                <input type="text" class="form-control" id="" placeholder="Title">
                             </fieldset>
                         </div>
@@ -9220,9 +9156,135 @@
           </div>
          <!-- Submit annual report step-4 Modal End-->
    
+    <!-- Group Delete Starts -->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="userDelete" tabindex="-1" aria-labelledby="groupDeleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="red-bg p-2 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-delete-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Delete User</span>
+                            <h3 class="fs-3 m-0 mt-2">Delete This User?</h3>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Modal Header Ends -->
 
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="">
+                        <p>This will permanently remove this User.</p>
+                    </div>
+                </div>
 
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-link px-5 py-3" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger px-5 py-3" data-bs-target="#userDeleteConfirmModal"
+                            data-bs-toggle="modal" data-bs-dismiss="modal">CONFIRM</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Group Delete Ends -->
+
+    <!-- Group Delete Confirm Starts -->
+    <div class="modal modal-right fade" id="userDeleteConfirmModal" tabindex="-1"
+        aria-labelledby="groupDeleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="green-bg p-2 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-white-tick m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">SUCCESS</span>
+                            <h3 class="fs-3 m-0 mt-2">User Deleted!</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="">
+                        <p>The User has been successfully deleted</p>
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-info px-5 py-3 rounded-3 ms-3" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Group Delete Confirm Ends -->
+
+    <!-- Close Confirm Starts -->
+    <div class="modal modal-right fade" id="closeConfirmModal" tabindex="-1" aria-labelledby="closeConfirmModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 pb-2">
+                        <span class="red-bg p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-exclamation-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">warning</span>
+                            <h3 class="fs-3 m-0 mt-2">Close Without Saving?</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Header Ends -->
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="">
+                        <p>The changes to the Partner Users of this Group will be lost. Or click Save Changes below.</p>
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+
+                <div class="modal-footer mt-3 pb-0">
+                    <div class="d-flex justify-content-end w-100">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 text-red"
+                            data-bs-toggle="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-info py-3 px-3 rounded-3 ms-3" data-bs-dismiss="modal">
+                            SAVE CHANGES
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Close Confirm Ends -->
 
     <!-- Search Modal Starts-->
     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">

@@ -417,15 +417,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Handle delete officer button
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("deleteUser")) {
-      const officerRow = e.target.closest(".d-flex.justify-content-between");
-      if (officerRow && confirm("Are you sure you want to delete this officer?")) {
-        officerRow.remove();
-      }
-    }
-  });
+
+
 
   // Handle "More Add" officer button
   document.querySelectorAll(".moreadd").forEach(button => {
@@ -536,15 +529,7 @@ document.addEventListener("DOMContentLoaded", function () {
     moreAddBtnClass: "moreaddcorporate"
   });
 
-  // Shared delete handler
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("deleteUser")) {
-      const row = e.target.closest(".d-flex.justify-content-between");
-      if (row && confirm("Are you sure you want to delete this entry?")) {
-        row.remove();
-      }
-    }
-  });
+
 });
 
 
