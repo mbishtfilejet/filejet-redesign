@@ -124,9 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
 // alert function start
 document.addEventListener("DOMContentLoaded", function () {
     const entityInput = document.querySelector("#entityInput"); // Add an ID to your input field
