@@ -556,3 +556,45 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize visibility on load
   toggleEntities();
 });
+
+
+
+ const fullNames = [
+    "James Smith", "Mary Johnson", "John Williams", "Patricia Brown", "Robert Jones",
+    "Jennifer Garcia", "Michael Miller", "Linda Davis", "William Rodriguez", "Elizabeth Martinez",
+    "David Hernandez", "Barbara Lopez", "Richard Gonzalez", "Susan Wilson", "Joseph Anderson",
+    "Jessica Thomas", "Thomas Taylor", "Sarah Moore", "Charles Jackson", "Karen Martin"
+  ];
+
+  document.querySelectorAll('.autocomplete-input').forEach(input => {
+    const suggestions = input.nextElementSibling;
+
+    input.addEventListener('input', () => {
+      const val = input.value.toLowerCase().trim();
+      if (!val) {
+        suggestions.style.display = 'none';
+        suggestions.innerHTML = '';
+        return;
+      }
+      const filtered = fullNames.filter(name => name.toLowerCase().startsWith(val));
+      if (filtered.length === 0) {
+        suggestions.innerHTML = '<div class="no-result">No results found</div>';
+      } else {
+        suggestions.innerHTML = filtered.map(name => `<div class="item">${name}</div>`).join('');
+      }
+      suggestions.style.display = 'block';
+    });
+
+    suggestions.addEventListener('click', e => {
+      if (e.target.classList.contains('item')) {
+        input.value = e.target.textContent;
+        suggestions.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.autocomplete-wrapper')) {
+        suggestions.style.display = 'none';
+      }
+    });
+  });

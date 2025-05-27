@@ -108,7 +108,7 @@
     background-image: url("../../../dist/images/icons/entity-required.svg");
     width: 14px;
   }
-  .icon-form-complete{
+  .icon-form-complete {
     background-image: url("../../../dist/images/icons/form-complete.svg");
     width: 14px;
   }
@@ -624,7 +624,6 @@
         padding: 0;
         color: var(--bs-filejet-medium-gray-opacity) !important;
         font-size: 12px !important;
-        font-weight: 500 !important;
       }
 
       .multi-select-container {
@@ -669,7 +668,7 @@
       border: 1.5px solid #d2d5da;
       // pointer-events: none;
     }
-    .filled-placeholder::placeholder{
+    .filled-placeholder::placeholder {
       color: var(--bs-filejet-medium-gray) !important;
     }
     .fs-11 {
@@ -786,13 +785,47 @@
         opacity: 0.25 !important;
       }
     }
-    .errorinput{
-      border-color: #F03E2F;
-      background-color: #FDEBEA;
+    .errorinput {
+      border-color: #f03e2f;
+      background-color: #fdebea;
     }
-    .errorinput::placeholder{
-      color:var(--bs-filejet-medium-gray) ;
+    .errorinput::placeholder {
+      color: var(--bs-filejet-medium-gray);
     }
+
+    .autocomplete-wrapper {
+      position: relative;
+      width: 300px;
+    }
+
+    .suggestions {
+      position: absolute;
+      background: white;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-height: 180px;
+      overflow-y: auto;
+      z-index: 999;
+      top: 42px;
+      border-radius: 4px;
+      display: none;
+
+      .item {
+      padding: 8px;
+      cursor: pointer;
+      font-size: 11px;
+      line-height: normal;
+    }
+    .item:hover {
+      background-color: #eee;
+    }
+    }
+    .no-result {
+    padding: 8px;
+    color: #888;
+  }
+   
+
     @media screen and (max-width: 3000px) {
       .dataTables_scroll .dataTables_scrollBody:has(.long-data-table-listing) {
         max-height: 100% !important;
