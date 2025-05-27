@@ -464,6 +464,11 @@ document.addEventListener("DOMContentLoaded", function () {
           button.classList.remove("d-none");
           updateBtn.classList.add("d-none");
         }
+
+        // ✅ Hide managercheckbox-div
+        document.querySelectorAll(".managercheckbox-div").forEach(div => {
+      div.style.display = "none";
+       });
       });
     });
 
@@ -525,9 +530,8 @@ document.addEventListener("DOMContentLoaded", function () {
     newFillingStateClass: "newcorporatefillingstate",
     moreAddBtnClass: "moreaddcorporate"
   });
-
-
 });
+
 
 
 
