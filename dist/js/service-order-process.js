@@ -170,31 +170,55 @@ $(document).ready(function () {
 
 // enable disable form
 function setupToggleForms(radioGroupNames) {
-  radioGroupNames.forEach(name => {
-    document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+  radioGroupNames.forEach(baseName => {
+    // Select all radio buttons starting with the given base name
+    document.querySelectorAll(`input[name^="${baseName}"]`).forEach(radio => {
       radio.addEventListener('change', function () {
-        let groupSuffix = '';
+        // Match the name and optional numeric suffix (e.g., "registeredAgentStatus2")
+        const groupMatch = this.name.match(/^([a-zA-Z]+)(\d*)$/);
+        const namePart = groupMatch[1]; // e.g., "registeredAgentStatus"
+        const suffix = groupMatch[2] || ''; // e.g., "2"
 
-        // Match the appropriate group suffix based on radio group name
-        if (name.includes('registeredAgentStatus')) {
-          groupSuffix = 'RegisteredAgent';
-        } else if (name.includes('annualReport')) {
-          groupSuffix = 'AnnualReport';
-        }
+        // Determine form group type
+        if (namePart.includes('registeredAgentStatus')) {
+         groupSuffix = 'RegisteredAgent';
+       } else if (namePart.includes('annualReport')) {
+         groupSuffix = 'AnnualReport';
+       } else if (namePart.includes('preparationOfFiling')) {
+         groupSuffix = 'PreparationOfFiling';
+       }
 
-        const enabledFormId = name.startsWith('add') ? `addenabledForm${groupSuffix}` : `enabledForm${groupSuffix}`;
-        const disabledFormId = name.startsWith('add') ? `adddisabledForm${groupSuffix}` : `disabledForm${groupSuffix}`;
+
+        // Construct form section IDs with suffix
+        const enabledFormId = `enabledForm${groupSuffix}${suffix}`;
+        const disabledFormId = `disabledForm${groupSuffix}${suffix}`;
         const isEnabled = this.value === 'enabled';
 
-        document.getElementById(enabledFormId).style.display = isEnabled ? 'block' : 'none';
-        document.getElementById(disabledFormId).style.display = isEnabled ? 'none' : 'block';
+        // Show/hide appropriate form sections
+        const enabledEl = document.getElementById(enabledFormId);
+        const disabledEl = document.getElementById(disabledFormId);
+
+        if (enabledEl && disabledEl) {
+          enabledEl.style.display = isEnabled ? 'block' : 'none';
+          disabledEl.style.display = isEnabled ? 'none' : 'block';
+        }
       });
     });
   });
 }
 
-// Initialize the toggle functionality for all groups
-setupToggleForms(['registeredAgentStatus', 'annualReport', 'addregisteredAgentStatus', 'addannualReport']);
+// Call the function with all expected radio group base names
+setupToggleForms([
+  'registeredAgentStatus',
+  'annualReport',
+  'addregisteredAgentStatus',
+  'addannualReport',
+  'registeredAgentStatus2',
+  'annualReport2',
+  'preparationOfFiling',
+  'preparationOfFiling2'
+]);
+
 
 
 
@@ -413,9 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fillingForm.scrollIntoView({ behavior: "smooth" });
     });
   });
-
-
-
+  
 
   // Handle "More Add" officer button
   document.querySelectorAll(".moreadd").forEach(button => {
@@ -558,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+// officer manager autosearch
  const fullNames = [
     "James Smith", "Mary Johnson", "John Williams", "Patricia Brown", "Robert Jones",
     "Jennifer Garcia", "Michael Miller", "Linda Davis", "William Rodriguez", "Elizabeth Martinez",
@@ -596,5 +618,26 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!e.target.closest('.autocomplete-wrapper')) {
         suggestions.style.display = 'none';
       }
+    });
+  });
+
+
+
+  // mailind Address
+  document.addEventListener('DOMContentLoaded', function () {
+    const addressSections = document.querySelectorAll('.same-address-checkbox');
+
+    addressSections.forEach(function (checkbox) {
+      checkbox.addEventListener('change', function () {
+        // Find the closest parent fieldset or container
+        const container = checkbox.closest('fieldset');
+
+        // Within that container, find the corresponding mailing address fields
+        const mailingFields = container.querySelector('.mailing-address-fields');
+
+        if (mailingFields) {
+          mailingFields.style.display = checkbox.checked ? 'none' : 'block';
+        }
+      });
     });
   });
