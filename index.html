@@ -4701,15 +4701,15 @@
         <!-- Modal Header Ends -->
         <!-- Modal Body Start-->
         <div class="modal-body">
-          <div class="accordion mb-4" id="accordionExample1">
+          <div class="accordion mb-4" id="accordionExample4">
             <div class="accordion-item m-0">
-              <h2 class="accordion-header" id="headingOne1">
+              <h2 class="accordion-header" id="headingOne4">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                  data-bs-target="#collapseOne4" aria-expanded="false" aria-controls="collapseOne4">
                   California Services
                 </button>
               </h2>
-              <div id="collapseOne1" class="accordion-collapse collapse border-0" aria-labelledby="headingOne1">
+              <div id="collapseOne4" class="accordion-collapse collapse border-0" aria-labelledby="headingOne4" data-bs-parent="#accordionExample4">
                 <div class="accordion-body pt-0">
                   <form action="">
                     <!-- Form inside collapse -->
@@ -5027,15 +5027,15 @@
           </div>
 
 
-          <div class="accordion mb-4" id="accordionExample3">
+          <div class="accordion mb-4" id="accordionExample2">
             <div class="accordion-item m-0">
-              <h2 class="accordion-header" id="headingOne3">
+              <h2 class="accordion-header" id="headingOne2">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
+                  data-bs-target="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
                   Delaware Services
                 </button>
               </h2>
-              <div id="collapseOne3" class="accordion-collapse collapse border-0" aria-labelledby="headingOne3">
+              <div id="collapseOne2" class="accordion-collapse collapse border-0" aria-labelledby="headingOne2" data-bs-parent="#accordionExample2">
                 <div class="accordion-body pt-0">
                   <form action="">
                     <!-- REGISTERED AGENT SERVICE -->
@@ -5294,15 +5294,15 @@
           </div>
 
 
-          <div class="accordion mb-4" id="accordionExample2">
+          <div class="accordion mb-4" id="accordionExample3">
             <div class="accordion-item m-0">
-              <h2 class="accordion-header" id="headingTwo">
+              <h2 class="accordion-header" id="headingOne3">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  data-bs-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
                   Additional Filings
                 </button>
               </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse show border-0" aria-labelledby="headingTwo">
+              <div id="collapseOne3" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne3" data-bs-parent="#accordionExample3">
                 <div class="accordion-body pt-0">
                   <form action="">
                     <!-- EIN Section -->
@@ -8567,19 +8567,20 @@
                            <div class="container p-0 d-flex flex-column even border-bottom">
                               <div class="payment-card">
                                  <div class="d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox">
+                                    <input class="form-check-input" type="checkbox" disabled>
                                     <div class="ms-2 d-flex">
-                                       <div class="methodiv">ACH Payment</div>
-                                       <div class="methodcard">Stripe Test Bank ...6789</div>
+                                       <div class="methodiv text-disabled">ACH Payment</div>
+                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
                                     </div>
                                  </div>
 
-                                 <div class="d-flex align-items-start defaultdiv me-2">
+                                 <div class="d-flex align-items-start defaultdiv me-2" data-toggle="tooltip"
+                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
                                     <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
                                  </div>
 
                                  <div>
-                                    <span class="icon icon-new-edit me-2" data-toggle="tooltip" aria-label="EDIT"
+                                    <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
                                        data-bs-original-title="EDIT"></span>
                                     <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
                                        aria-label="DELETE" title="DELETE"></span>
@@ -8587,28 +8588,54 @@
                               </div>
 
                               <!-- <div class="verifyaccountDiv payment-card" style="display: none;">
-                                      <div>
-                                        <label class="form-label inactive">Verify bank account</label>
-                                      </div>
-                                      <small>
-                                        Stripe sent two small deposits to this bank account. To verify this account, please confirm the amounts of the deposits. You have only 3 attempts to verify your account. After 3 failed attempts you will not be able to verify your bank account.
-                                      </small>
-                                  
-                                      <div class="mt-4">
-                                        <fieldset class="mb-4">
-                                          <label class="form-label inactive">First deposit</label>
-                                          <input type="text" class="form-control" placeholder="$.00">
-                                        </fieldset>
-                                        <fieldset>
-                                          <label class="form-label inactive">Second deposit</label>
-                                          <input type="text" class="form-control" placeholder="$.00">
-                                        </fieldset>
-                                      </div>
-                                  
-                                      <div class="mt-4 mb-2">
-                                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3">VERIFY</button>
-                                      </div>
-                                    </div> -->
+                                        <div>
+                                          <label class="form-label inactive">Verify bank account</label>
+                                        </div>
+                                        <small>
+                                          Stripe sent two small deposits to this bank account. To verify this account, please confirm the amounts of the deposits. You have only 3 attempts to verify your account. After 3 failed attempts you will not be able to verify your bank account.
+                                        </small>
+                                    
+                                        <div class="mt-4">
+                                          <fieldset class="mb-4">
+                                            <label class="form-label inactive">First deposit</label>
+                                            <input type="text" class="form-control" placeholder="$.00">
+                                          </fieldset>
+                                          <fieldset>
+                                            <label class="form-label inactive">Second deposit</label>
+                                            <input type="text" class="form-control" placeholder="$.00">
+                                          </fieldset>
+                                        </div>
+                                    
+                                        <div class="mt-4 mb-2">
+                                          <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3">VERIFY</button>
+                                        </div>
+                                      </div> -->
+                           </div>
+
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column odd border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox">
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv">ACH Payment</div>
+                                       <div class="methodcard">Stripe Test Bank ...4786</div>
+                                    </div>
+                                 </div>
+
+                                 <div class="d-flex align-items-start defaultdiv me-2">
+                                    <input class="form-check-input" type="radio" name="default-payment">
+                                    <span class="ms-2">Set as Default</span>
+                                 </div>
+
+                                 <div>
+                                    <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                       data-bs-original-title="EDIT"></span>
+                                    <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                       aria-label="DELETE" title="DELETE"></span>
+                                 </div>
+                              </div>
+
                            </div>
 
                            <!-- Payment Method 3 -->
@@ -10336,53 +10363,80 @@
                       title="DELETE"></span>
                   </div>
                 </div>
-                <!-- Payment Method 2 -->
-                <div class="container p-0 d-flex flex-column even border-bottom">
-                  <div class="payment-card">
-                    <div class="d-flex align-items-center">
-                      <input class="form-check-input" type="checkbox">
-                      <div class="ms-2 d-flex">
-                        <div class="methodiv">ACH Payment</div>
-                        <div class="methodcard">Stripe Test Bank ...6789</div>
-                      </div>
-                    </div>
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column even border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox" disabled>
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv text-disabled">ACH Payment</div>
+                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
+                                    </div>
+                                 </div>
 
-                    <div class="d-flex align-items-start defaultdiv me-2">
-                      <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
-                    </div>
+                                 <div class="d-flex align-items-start defaultdiv me-2" data-toggle="tooltip"
+                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
+                                    <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
+                                 </div>
 
-                    <div>
-                      <span class="icon icon-new-edit me-2" data-toggle="tooltip" aria-label="EDIT"
-                        data-bs-original-title="EDIT"></span>
-                      <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip" aria-label="DELETE"
-                        title="DELETE"></span>
-                    </div>
-                  </div>
+                                 <div>
+                                    <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                       data-bs-original-title="EDIT"></span>
+                                    <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                       aria-label="DELETE" title="DELETE"></span>
+                                 </div>
+                              </div>
 
-                  <!-- <div class="verifyaccountDiv payment-card" style="display: none;">
-                                      <div>
-                                        <label class="form-label inactive">Verify bank account</label>
-                                      </div>
-                                      <small>
-                                        Stripe sent two small deposits to this bank account. To verify this account, please confirm the amounts of the deposits. You have only 3 attempts to verify your account. After 3 failed attempts you will not be able to verify your bank account.
-                                      </small>
-                                  
-                                      <div class="mt-4">
-                                        <fieldset class="mb-4">
-                                          <label class="form-label inactive">First deposit</label>
-                                          <input type="text" class="form-control" placeholder="$.00">
-                                        </fieldset>
-                                        <fieldset>
-                                          <label class="form-label inactive">Second deposit</label>
-                                          <input type="text" class="form-control" placeholder="$.00">
-                                        </fieldset>
-                                      </div>
-                                  
-                                      <div class="mt-4 mb-2">
-                                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3">VERIFY</button>
-                                      </div>
-                                    </div> -->
-                </div>
+                              <!-- <div class="verifyaccountDiv payment-card" style="display: none;">
+                                        <div>
+                                          <label class="form-label inactive">Verify bank account</label>
+                                        </div>
+                                        <small>
+                                          Stripe sent two small deposits to this bank account. To verify this account, please confirm the amounts of the deposits. You have only 3 attempts to verify your account. After 3 failed attempts you will not be able to verify your bank account.
+                                        </small>
+                                    
+                                        <div class="mt-4">
+                                          <fieldset class="mb-4">
+                                            <label class="form-label inactive">First deposit</label>
+                                            <input type="text" class="form-control" placeholder="$.00">
+                                          </fieldset>
+                                          <fieldset>
+                                            <label class="form-label inactive">Second deposit</label>
+                                            <input type="text" class="form-control" placeholder="$.00">
+                                          </fieldset>
+                                        </div>
+                                    
+                                        <div class="mt-4 mb-2">
+                                          <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3">VERIFY</button>
+                                        </div>
+                                      </div> -->
+                           </div>
+
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column odd border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox">
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv">ACH Payment</div>
+                                       <div class="methodcard">Stripe Test Bank ...4786</div>
+                                    </div>
+                                 </div>
+
+                                 <div class="d-flex align-items-start defaultdiv me-2">
+                                    <input class="form-check-input" type="radio" name="default-payment">
+                                    <span class="ms-2">Set as Default</span>
+                                 </div>
+
+                                 <div>
+                                    <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                       data-bs-original-title="EDIT"></span>
+                                    <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                       aria-label="DELETE" title="DELETE"></span>
+                                 </div>
+                              </div>
+
+                           </div>
 
                 <!-- Payment Method 3 -->
                 <div class="payment-card d-flex odd ">
@@ -11996,53 +12050,80 @@
                       title="DELETE"></span>
                   </div>
                 </div>
-                <!-- Payment Method 2 -->
-                <div class="container p-0 d-flex flex-column even border-bottom">
-                  <div class="payment-card">
-                    <div class="d-flex align-items-center">
-                      <input class="form-check-input" type="checkbox">
-                      <div class="ms-2 d-flex">
-                        <div class="methodiv">ACH Payment</div>
-                        <div class="methodcard">Stripe Test Bank ...6789</div>
-                      </div>
-                    </div>
+                                          <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column even border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox" disabled>
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv text-disabled">ACH Payment</div>
+                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
+                                    </div>
+                                 </div>
 
-                    <div class="d-flex align-items-start defaultdiv me-2">
-                      <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
-                    </div>
+                                 <div class="d-flex align-items-start defaultdiv me-2" data-toggle="tooltip"
+                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
+                                    <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
+                                 </div>
 
-                    <div>
-                      <span class="icon icon-new-edit me-2" data-toggle="tooltip" aria-label="EDIT"
-                        data-bs-original-title="EDIT"></span>
-                      <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip" aria-label="DELETE"
-                        title="DELETE"></span>
-                    </div>
-                  </div>
+                                 <div>
+                                    <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                       data-bs-original-title="EDIT"></span>
+                                    <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                       aria-label="DELETE" title="DELETE"></span>
+                                 </div>
+                              </div>
 
-                  <!-- <div class="verifyaccountDiv payment-card" style="display: none;">
-                                         <div>
-                                           <label class="form-label inactive">Verify bank account</label>
-                                         </div>
-                                         <small>
-                                           Stripe sent two small deposits to this bank account. To verify this account, please confirm the amounts of the deposits. You have only 3 attempts to verify your account. After 3 failed attempts you will not be able to verify your bank account.
-                                         </small>
-                                     
-                                         <div class="mt-4">
-                                           <fieldset class="mb-4">
-                                             <label class="form-label inactive">First deposit</label>
-                                             <input type="text" class="form-control" placeholder="$.00">
-                                           </fieldset>
-                                           <fieldset>
-                                             <label class="form-label inactive">Second deposit</label>
-                                             <input type="text" class="form-control" placeholder="$.00">
-                                           </fieldset>
-                                         </div>
-                                     
-                                         <div class="mt-4 mb-2">
-                                           <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3">VERIFY</button>
-                                         </div>
-                                       </div> -->
-                </div>
+                              <!-- <div class="verifyaccountDiv payment-card" style="display: none;">
+                                        <div>
+                                          <label class="form-label inactive">Verify bank account</label>
+                                        </div>
+                                        <small>
+                                          Stripe sent two small deposits to this bank account. To verify this account, please confirm the amounts of the deposits. You have only 3 attempts to verify your account. After 3 failed attempts you will not be able to verify your bank account.
+                                        </small>
+                                    
+                                        <div class="mt-4">
+                                          <fieldset class="mb-4">
+                                            <label class="form-label inactive">First deposit</label>
+                                            <input type="text" class="form-control" placeholder="$.00">
+                                          </fieldset>
+                                          <fieldset>
+                                            <label class="form-label inactive">Second deposit</label>
+                                            <input type="text" class="form-control" placeholder="$.00">
+                                          </fieldset>
+                                        </div>
+                                    
+                                        <div class="mt-4 mb-2">
+                                          <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3">VERIFY</button>
+                                        </div>
+                                      </div> -->
+                           </div>
+
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column odd border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox">
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv">ACH Payment</div>
+                                       <div class="methodcard">Stripe Test Bank ...4786</div>
+                                    </div>
+                                 </div>
+
+                                 <div class="d-flex align-items-start defaultdiv me-2">
+                                    <input class="form-check-input" type="radio" name="default-payment">
+                                    <span class="ms-2">Set as Default</span>
+                                 </div>
+
+                                 <div>
+                                    <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                       data-bs-original-title="EDIT"></span>
+                                    <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                       aria-label="DELETE" title="DELETE"></span>
+                                 </div>
+                              </div>
+
+                           </div>
 
                 <!-- Payment Method 3 -->
                 <div class="payment-card d-flex odd ">
