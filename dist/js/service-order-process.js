@@ -211,15 +211,19 @@ function setupToggleForms(radioGroupNames) {
 setupToggleForms([
   'registeredAgentStatus',
   'annualReport',
-  'addregisteredAgentStatus',
-  'addannualReport',
   'registeredAgentStatus2',
   'annualReport2',
   'preparationOfFiling',
   'preparationOfFiling2',
   'registeredAgentStatus3',
+  'registeredAgentStatus4',
   'annualReport3',
-  'preparationOfFiling3'
+  'annualReport4',
+  'preparationOfFiling3',
+  'registeredAgentStatus5',
+  'annualReport5',
+  'preparationOfFiling4',
+  'preparationOfFiling5'
 ]);
 
 
@@ -643,4 +647,41 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     });
+  });
+
+  
+
+
+    // Attach upload toggle and quantity control to a component block
+ function setupQtyComponent(block) {
+    const yesCheckbox = block.querySelector('.yes-checkbox');
+    const qtyBtn = block.querySelector('.qty-btn');
+    const numberInput = block.querySelector('input[type="text"]');
+    const btnIncrease = block.querySelector('.numInce');
+    const btnDecrease = block.querySelector('.numDec');
+
+    if (!yesCheckbox || !qtyBtn || !numberInput) return;
+
+    // Show or hide the qty-btn based on checkbox state
+    const toggleQty = () => {
+      qtyBtn.style.display = yesCheckbox.checked ? 'block' : 'none';
+    };
+
+    yesCheckbox.addEventListener('change', toggleQty);
+    toggleQty(); // initialize on load
+
+    // Quantity change
+    const changeValue = (delta) => {
+      const current = parseInt(numberInput.value) || 0;
+      const next = Math.max(0, current + delta);
+      numberInput.value = next;
+    };
+
+    btnIncrease?.addEventListener('click', () => changeValue(+1));
+    btnDecrease?.addEventListener('click', () => changeValue(-1));
+  }
+
+  // Initialize all components on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.component-block').forEach(setupQtyComponent);
   });
