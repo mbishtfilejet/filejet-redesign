@@ -216,7 +216,10 @@ setupToggleForms([
   'registeredAgentStatus2',
   'annualReport2',
   'preparationOfFiling',
-  'preparationOfFiling2'
+  'preparationOfFiling2',
+  'registeredAgentStatus3',
+  'annualReport3',
+  'preparationOfFiling3'
 ]);
 
 
