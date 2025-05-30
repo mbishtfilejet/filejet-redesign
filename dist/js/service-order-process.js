@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateBtn.classList.add("d-none");
         document.getElementById("groupName").value = document.getElementById("groupEmail").value = "";
       };
-    } else if (e.target.classList.contains("deleteUser")) {
+    } else if (e.target.classList.contains("")) {
       entry.remove();
       updateDividers();
     }
