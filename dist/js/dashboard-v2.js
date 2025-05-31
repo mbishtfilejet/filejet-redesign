@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       function getMaxSelection() {
         if (window.innerWidth < 1300) {
-            if (["addjurisdictionContainer", "roleContainer" , "exaddjurisdictionContainer"].includes(containerId)) {
+            if (["addjurisdictionContainer", "roleContainer1" , "roleContainer2" , "memberroleContainer" , "annualroleContainer" , "exaddjurisdictionContainer"].includes(containerId)) {
                 return 6;
             }
             return 1;
@@ -296,7 +296,13 @@ document.addEventListener("DOMContentLoaded", function () {
                   return "Select States";
             case "entityStatusContainer":
                 return "Entity Status";
-                case "roleContainer":
+                case "roleContainer1":
+                return "Role";
+                case "roleContainer2":
+                return "Role";
+                case "memberroleContainer":
+                return "Role";
+                case "annualroleContainer":
                 return "Role";
             default:
                 return "Status";
@@ -318,7 +324,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setupMultiSelect("addjurisdictionContainer", "addjurisdictionDropdown", "addjurisdictionSearch", "addjurisdiction-checkbox", "addjurisdictionSelectAll");
   setupMultiSelect("exaddjurisdictionContainer", "exaddjurisdictionDropdown", "exaddjurisdictionSearch", "exaddjurisdiction-checkbox", "exaddjurisdictionSelectAll");
-  setupMultiSelect("roleContainer", "roleDropdown", "roleSearch", "role-checkbox", "roleSelectAll");
+  setupMultiSelect("roleContainer1", "roleDropdown1", "roleSearch1", "role-checkbox1", "roleSelectAll1");
+   setupMultiSelect("roleContainer2", "roleDropdown2", "roleSearch2", "role-checkbox2", "roleSelectAll2");
+  setupMultiSelect("memberroleContainer", "memberroleDropdown", "memberroleSearch", "memberrole-checkbox", "memberroleSelectAll");
+    setupMultiSelect("annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll");
 
 
 
