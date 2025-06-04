@@ -244,12 +244,10 @@ document.addEventListener("DOMContentLoaded", function () {
               `;
 
               // ❌ Remove item with confirmation alert
-              span.querySelector(".remove-option").addEventListener("click", function () {
-                  if (confirm(`Are you sure you want to remove "${value}"?`)) {
-                      const checkbox = [...dropdown.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
-                      if (checkbox) checkbox.checked = false;
-                      updateSelectedOptions(true);
-                  }
+             span.querySelector(".remove-option").addEventListener("click", function () {
+    const checkbox = [...dropdown.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
+    if (checkbox) checkbox.checked = false;
+    updateSelectedOptions(true);
               });
 
               selectedOptionsContainer.appendChild(span);
