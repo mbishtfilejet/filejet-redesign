@@ -521,6 +521,17 @@
                                        </a>
                                     </div>
                                  </li>
+                                 <li>
+                                    <div>
+                                       <a href=""
+                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
+                                          data-bs-toggle="modal" data-bs-target="#appointRA" data-bs-dismiss="modal">
+                                          <span class="other-placeholder">Appoint Filejet as Registered Agent</span>
+                                          <span
+                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                       </a>
+                                    </div>
+                                 </li>
 
                               </ul>
                            </div>
@@ -3280,40 +3291,33 @@
                       </div>
                     </div>
                     <div id="enabledFormPreparationOfFiling3 ">
-                      <div class="mt-4">
-                        <div class="d-flex justify-content-between align-items-center upload-group w-100">
-                          <span class="fw-bold text-uppercase">Prepare Filing</span>
-                          <div class="d-flex align-items-center flex-column">
-                            <div class="d-flex">
-                              <div class="form-check me-4 typecheckradio">
-                                <input class="form-check-input no-checkbox" type="radio" id="no1" checked="" />
-                                <label class="form-check-label rights-label" for="no1">Rush Filing</label>
-                              </div>
-                              <div class="form-check typecheckradio">
-                                <input class="form-check-input yes-checkbox" type="radio" id="yes2" />
-                                <label class="form-check-label rights-label" for="yes2">Certified copy</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- Upload button -->
-                        <div class="upload-btn mt-3" style="display: none">
+                     <div class="mt-4 component-block">
+  <div class="d-flex flex-column">
+    <div class="d-flex justify-content-between typecheckradio">
+      <label class="form-check-label rights-label" for="rushFiling1">Rush Filing</label>
+      <input class="form-check-input" id="rushFiling1" name="filingOption1" type="checkbox">
+    </div>
+    <div class="d-flex justify-content-between mt-3 typecheckradio certifiedCheck">
+      <label class="form-check-label rights-label" for="certifiedCopy1">Certified copy</label>
+      <input class="form-check-input yes-checkbox" id="certifiedCopy1" name="filingOption1" type="checkbox">
+    </div>
+  </div>
+  <!-- Upload button -->
+  <div class="qty-btn mt-3" style="display: none">
                           <div class="d-flex ms-auto align-items-center justify-content-between">
                             <div class="fs-6 fw-normal me-3">Quantity</div>
-                            <div class="border rounded-2 p-2 d-flex align-items-center w-50">
+                            <div class="border rounded-2 p-2 d-flex align-items-center w-16">
                               <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
-                                <input class="ps-1 border-0" type="text" id="numberInput" value="0"
-                                  style="max-width: 30px" />
+                                <input class="ps-1 border-0" type="text" id="numberInput2" value="0" style="max-width: 30px">
                                 <div class="d-flex">
                                   <button type="button" class="numDec border-0" onclick="changeValue(-1)"></button>
-                                  <button type="button" class="numInce border-0 ms-2"
-                                    onclick="changeValue(+1)"></button><button></button>
+                                  <button type="button" class="numInce border-0 ms-2" onclick="changeValue(+1)"></button><button></button>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
+  </div>
+</div>
                     </div>
                     <!-- Disabled Form (Initially Hidden) -->
                     <div id="disabledFormPreparationOfFiling3" style="display: none"></div>
@@ -3760,8 +3764,8 @@
                                     <fieldset class="mb-4">
                                     <label for="entityType-model" class="form-label">group </label>
                                     <div class="custom-dropdown">
-                                       <select class="form-select" id="entityType-model">
-                                          <option value="1">All</option>
+                                       <select class="form-select" id="entityType-model" required>
+                                          <option  value="" disabled selected hidden>All</option>
                                           <option value="2">Adept HR</option>
                                           <option value="3">AIC CAPITAL V V MANAGER - Terminated</option>
                                        </select>
@@ -3840,7 +3844,7 @@
                         Add Existing Fictitious Name</h3>
                   </div>
                   <!-- stepper start -->
-                  <div class="service-step-group">
+                  <div class="service-step-group service-step3">
                      <div class="step completed " data-bs-toggle="modal" data-bs-target="#NWexistingForeign"
                         data-bs-dismiss="modal">
                         <div class="circle completed"></div>
@@ -4908,7 +4912,7 @@
                        Add Existing Fictitious Name</h3>
                   </div>
                   <!-- stepper start -->
-                  <div class="service-step-group">
+                  <div class="service-step-group service-step3">
                      <div class="step completed " data-bs-toggle="modal" data-bs-target="#NWexistingForeign"
                         data-bs-dismiss="modal">
                         <div class="circle completed"></div>
@@ -5184,6 +5188,912 @@
       </div>
    </div>
   <!-- Fictitious Name summary step-3 Modal End-->
+
+     <!--Appoint Filejet as Registered Agent step-1 Modal start-->
+   <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="appointRA" tabindex="-1"
+      aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex flex-column w-100 mb-0">
+                  <div class="d-flex align-items-center mb-4">
+                     <span class="icon icon-existing-entity-icon icon-md me-3"></span>
+                     <h4 class="fw-bold m-0">
+                        Appoint Filejet as Registered Agent</h3>
+                  </div>
+                  <!-- stepper start -->
+                  <div class="service-step-group ">
+                     <div class="step " data-bs-toggle="modal" data-bs-target="#appointRA" data-bs-dismiss="modal">
+                        <div class="circle active"></div>
+                        <span class="step-text">ENTITY</span>
+                     </div>
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRADetail" data-bs-dismiss="modal">
+                        <div class="circle "></div>
+                        <span class="step-text">DETAILS</span>
+                     </div>
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRAServices" data-bs-dismiss="modal">
+                <div class="circle"></div>
+                <span class="step-text">SERVICES</span>
+              </div>
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRASummery" data-bs-dismiss="modal">
+                        <div class="circle"></div>
+                        <span class="step-text">SUMMARY</span>
+                     </div>
+                  </div>
+                  <!-- stepper end -->
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+
+               <div class="accordion" id="accordionExample">
+                  <div class="accordion-item m-0">
+                     <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                           data-bs-target="#collapseOne" aria-expanded="true"
+                           aria-controls="panelsStayOpen-collapseOne">
+                           Entity <span class="icon icon-entity-required ms-2"></span>
+                        </button>
+                     </h2>
+                     <div id="collapseOne" class="accordion-collapse collapse show border-0"
+                        aria-labelledby="headingOne">
+                        <div class="accordion-body pt-0">
+                           <form class="" action="">
+                              <div>
+                                    <fieldset class="mb-4">
+                                    <label for="entityType-model" class="form-label">group </label>
+                                    <div class="custom-dropdown">
+                                       <select class="form-select" id="entityType-model" required>
+                                          <option  value="" disabled selected hidden>All</option>
+                                          <option value="2">Adept HR</option>
+                                          <option value="3">AIC CAPITAL V V MANAGER - Terminated</option>
+                                       </select>
+                                    </div>
+                                 </fieldset>
+
+                  <fieldset>
+                    <label for="entityType-model" class="form-label">Select Entity <span class="mandatory">*</span></label>
+                    <div class="custom-dropdown">
+                      <select class="form-select" id="entityType-model">
+                        <option value="1">John’s Pizza - CA</option>
+                        <option value="2">RASA Realty LLC
+                        </option>
+                        <option value="3">Pikewood Group, LLC
+                        </option>
+                        <option value="4">GDS DESIGNS, INC.
+                        </option>
+                        <option value="5">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP
+                        </option>
+                        <option value="6">KK RENEWAL HOLDINGS CORP
+                        </option>
+                        <option value="7">MARKSET FUND I -01-SERIES 1 L.L.C.,
+                        </option>
+                        <option value="8">EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP
+                        </option>
+                        <option value="9">SEASCAPE VILLA LLC
+                        </option>
+
+                      </select>
+                    </div>
+                  </fieldset>
+
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+
+
+
+
+            </div>
+            <!-- Modal Body End -->
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
+                        data-bs-target="#entityRADetail" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Next
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Appoint Filejet as Registered Agent step-1 Modal End-->
+
+
+   <!-- Appoint Filejet as Registered Agent step-2 Modal start-->
+   <div class=" modal modal-right fade filter-slideout SOP-model" id="entityRADetail" tabindex="-1"
+      aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex flex-column w-100 mb-0">
+                  <div class="d-flex align-items-center mb-4">
+                     <span class="icon icon-existing-entity-icon icon-md me-3"></span>
+                     <h4 class="fw-bold m-0">
+                        Appoint Filejet as Registered Agent</h3>
+                  </div>
+                  <!-- stepper start -->
+                  <div class="service-step-group ">
+                     <div class="step completed " data-bs-toggle="modal" data-bs-target="#appointRA"
+                        data-bs-dismiss="modal">
+                        <div class="circle completed"></div>
+                        <span class="step-text">ENTITY</span>
+                     </div>
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRADetail" data-bs-dismiss="modal">
+                        <div class="circle active"></div>
+                        <span class="step-text">DETAILS</span>
+                     </div>
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRAServices" data-bs-dismiss="modal">
+                <div class="circle"></div>
+                <span class="step-text">SERVICES</span>
+              </div>
+
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRASummery" data-bs-dismiss="modal">
+                        <div class="circle"></div>
+                        <span class="step-text">SUMMARY</span>
+                     </div>
+                  </div>
+                  <!-- stepper end -->
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+
+                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                  <div class="d-flex justify-content-between align-items-center w-100">
+                     <span class="fw-bold text-uppercase">current agent details <span class="mandatory">*</span></span>
+                     <div class="d-flex align-items-center flex-column upload-group">
+                        <div class="d-flex">
+                           <div class="form-check me-4">
+                              <input class="form-check-input no-checkbox" type="checkbox" id="no41" name="uploadChoice" >
+                              <label class="form-check-label rights-label" for="no41">An Individual</label>
+                           </div>
+                           <div class="form-check">
+                              <input class="form-check-input yes-checkbox" type="checkbox" id="yes41" name="uploadChoice">
+                              <label class="form-check-label rights-label" for="yes41">Corporate Agent</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- Upload button -->
+                  <div class="upload-btn mt-3" style="display: none;">
+                     <fieldset class="">
+                     <label for="" class="form-label inactive">Name </label>
+                     <input type="text" class="form-control" id="" placeholder="ame">
+                  </fieldset>
+                  </div>
+               </div>
+
+
+               <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                  <fieldset class="mb-4">
+                     <label for="" class="form-label inactive">Authorized Signer Name <span class="mandatory">*</span></label>
+                     <input type="text" class="form-control" id="" placeholder="Signer Name">
+                  </fieldset>
+                  <fieldset class="">
+                     <label for="" class="form-label inactive">title <span class="mandatory">*</span></label>
+                     <input type="text" class="form-control" id="" placeholder="Title">
+                  </fieldset>
+               </div>
+
+
+            </div>
+            <!-- Modal Body End -->
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        SAVE AND EXIT
+                     </button>
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
+                        data-bs-target="#entityRAServices" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Next
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Appoint Filejet as Registered Agent step-2 Modal End-->
+
+   <!--Appoint Filejet as Registered Agent step-3 Modal start-->
+  <div class=" modalsteper modal modal-right fade filter-slideout SOP-model" id="entityRAServices" tabindex="-1"
+    aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+      <div class="modal-content border-0 rounded-0 min-vh-100">
+        <!-- Modal Header -->
+        <div class="modal-header flex-wrap">
+          <div class="d-flex flex-column w-100 mb-0">
+            <div class="d-flex align-items-center mb-4">
+              <span class="icon icon-existing-entity-icon icon-md me-3"></span>
+              <h4 class="fw-bold m-0">
+                Appoint Filejet as Registered Agent</h3>
+            </div>
+            <!-- stepper start -->
+            <div class="service-step-group">
+              <div class="step completed " data-bs-toggle="modal" data-bs-target="#appointRA" data-bs-dismiss="modal">
+                <div class="circle completed"></div>
+                <span class="step-text">ENTITY</span>
+              </div>
+              <div class="step completed" data-bs-toggle="modal" data-bs-target="#entityRADetail" data-bs-dismiss="modal">
+                <div class="circle completed "></div>
+                <span class="step-text">DETAILS</span>
+              </div>
+              <div class="step" data-bs-toggle="modal" data-bs-target="#entityRAServices" data-bs-dismiss="modal">
+                <div class="circle active"></div>
+                <span class="step-text">SERVICES</span>
+              </div>
+              <div class="step" data-bs-toggle="modal" data-bs-target="#entityRASummery" data-bs-dismiss="modal">
+                <div class="circle "></div>
+                <span class="step-text">SUMMARY</span>
+              </div>
+            </div>
+            <!-- stepper end -->
+          </div>
+        </div>
+        <!-- Modal Header Ends -->
+        <!-- Modal Body Start-->
+        <div class="modal-body">
+          <div class="accordion mb-4" id="accordionExample4">
+            <div class="accordion-item m-0">
+              <h2 class="accordion-header" id="headingOne4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne4" aria-expanded="false" aria-controls="collapseOne4">
+                  California Services
+                </button>
+              </h2>
+              <div id="collapseOne4" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne4" data-bs-parent="#accordionExample4">
+                <div class="accordion-body pt-0">
+                  <form action="">
+                    <!-- Form inside collapse -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                      <span class="fw-bold">REGISTERED AGENT SERVICE
+                        <span class="icon icon-outline-info m-0"></span></span>
+                      <fieldset>
+                        <!-- Radio buttons to select Enabled or Disabled -->
+                        <div class="d-flex gap-4">
+                          <div class="form-check">
+                            <input class="form-check-input toggle-radio" type="radio" id="enabledFRRA"
+                              name="registeredAgentStatus5" value="enabled" checked />
+                            <label class="form-check-label rights-label" for="enabledFRRA">Enabled</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input toggle-radio" type="radio" id="disabledFRRA"
+                              name="registeredAgentStatus5" value="disabled" />
+                            <label class="form-check-label rights-label" for="disabledFRRA">Disabled</label>
+                          </div>
+                        </div>
+                        <!-- Enabled Form -->
+                      </fieldset>
+                    </div>
+                    <div id="enabledFormRegisteredAgent5">
+                      <!-- Enabled form content here -->
+                      <div class="mb-4">
+                        <div class="d-flex gap-4">
+                          <div class="form-check">
+                            <input class="form-check-input toggle-radio" type="radio" name="managerTypeRA"
+                              id="individualFRRA" data-target="individualRAForm" checked />
+                            <label class="form-check-label rights-label" for="individualFRRA">Individual</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input toggle-radio" type="radio" name="managerTypeRA"
+                              id="corporateFRRA" data-target="corporateRAForm" />
+                            <label class="form-check-label rights-label" for="corporateFRRA">Corporate</label>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Individual Form -->
+                      <div id="individualRAForm" class="individualForm toggle-form">
+                        <fieldset class="individualfillingstate">
+                          <input type="text" class="form-control mb-3" id="firstName" placeholder="Agent's Suffix" />
+                          <input type="text" class="form-control mb-3" id="addressOne"
+                            placeholder="Agent's First name" />
+                          <div class="d-flex mb-3">
+                            <input type="text" class="form-control me-3" id="addressOne"
+                              placeholder="Agent's Middle name" />
+                            <input type="text" class="form-control" id="addressOne" placeholder="Agent's last name" />
+                          </div>
+                          <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1" />
+                          <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2" />
+                          <div class="d-flex w-100 mb-4">
+                            <input type="text" class="form-control me-3" id="cityName" placeholder="City" />
+                            <div class="custom-dropdown-state w-100 me-3">
+                              <select class="form-select" id="formation-model" required>
+                                <option value="" disabled selected hidden>
+                                  State
+                                </option>
+                                <option value="1">Alabama</option>
+                                <option value="2">Alaska</option>
+                                <option value="3">Arizona</option>
+                                <option value="4">Arkansas</option>
+                                <option value="5">California</option>
+                                <option value="6">Colorado</option>
+                                <option value="7">Connecticut</option>
+                                <option value="8">Delaware</option>
+                                <option value="9">District of Columbia</option>
+                                <option value="10">Florida</option>
+                                <option value="11">Georgia</option>
+                                <option value="12">Hawaii</option>
+                                <option value="13">Idaho</option>
+                                <option value="14">Illinois</option>
+                                <option value="15">Indiana</option>
+                                <option value="16">Iowa</option>
+                                <option value="17">Kansas</option>
+                                <option value="18">Kentucky</option>
+                                <option value="19">Louisiana</option>
+                                <option value="20">Maine</option>
+                                <option value="21">Maryland</option>
+                                <option value="22">Massachusetts</option>
+                                <option value="23">Michigan</option>
+                                <option value="24">Minnesota</option>
+                                <option value="25">Mississippi</option>
+                                <option value="26">Missouri</option>
+                                <option value="27">Montana</option>
+                                <option value="28">Nebraska</option>
+                                <option value="29">Nevada</option>
+                                <option value="30">New Hampshire</option>
+                                <option value="31">New Jersey</option>
+                                <option value="32">New Mexico</option>
+                                <option value="33">New York</option>
+                                <option value="34">North Carolina</option>
+                                <option value="35">North Dakota</option>
+                                <option value="36">Ohio</option>
+                                <option value="37">Oklahoma</option>
+                                <option value="38">Oregon</option>
+                                <option value="39">Pennsylvania</option>
+                                <option value="40">Rhode Island</option>
+                                <option value="41">South Carolina</option>
+                                <option value="42">South Dakota</option>
+                                <option value="43">Tennessee</option>
+                                <option value="44">Texas</option>
+                                <option value="45">Utah</option>
+                                <option value="46">Vermont</option>
+                                <option value="47">Virginia</option>
+                                <option value="48">Washington</option>
+                                <option value="49">West Virginia</option>
+                                <option value="50">Wisconsin</option>
+                                <option value="51">Wyoming</option>
+                              </select>
+                            </div>
+                            <input type="text" class="form-control" id="zipCode" placeholder="Zipcode" />
+                          </div>
+                          <div class="">
+                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">
+                              SAVE
+                            </button>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div id="corporateRAForm" class="corporateForm toggle-form">
+                        <fieldset class="corporatefillingstate">
+                          <input type="text" class="form-control mb-4" id="firstName"
+                            placeholder="corporate agent's Name" />
+                          <div class="">
+                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">
+                              SAVE
+                            </button>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+                    <!-- Disabled Form (Initially Hidden) -->
+                    <div id="disabledFormRegisteredAgent5" style="display: none">
+                      <label for="agentName" class="form-label w-100">Registered Agent Name</label>
+                      <input type="text" class="form-control mb-4" id="agentName"
+                        placeholder="Name of Individual (First Last) or Corporate Registered Agent" />
+                      <label for="agentAddress1" class="form-label w-100">Registered Agent Address
+                        <span class="icon icon-outline-info m-0"></span></label>
+                      <input type="text" class="form-control mb-3" id="agentAddress1" placeholder="Address Line 1" />
+                      <input type="text" class="form-control mb-3" id="agentAddress2" placeholder="Address Line 2" />
+                      <div class="d-flex w-100 mb-3">
+                        <input type="text" class="form-control me-3" id="agentCity" placeholder="City" />
+                        <div class="custom-dropdown-state w-100 me-3">
+                          <select class="form-select" id="formation-model" required>
+                            <option value="" disabled selected hidden>State</option>
+                            <option value="1">Alabama</option>
+                            <option value="2">Alaska</option>
+                            <option value="3">Arizona</option>
+                            <option value="4">Arkansas</option>
+                            <option value="5">California</option>
+                            <option value="6">Colorado</option>
+                            <option value="7">Connecticut</option>
+                            <option value="8">Delaware</option>
+                            <option value="9">District of Columbia</option>
+                            <option value="10">Florida</option>
+                            <option value="11">Georgia</option>
+                            <option value="12">Hawaii</option>
+                            <option value="13">Idaho</option>
+                            <option value="14">Illinois</option>
+                            <option value="15">Indiana</option>
+                            <option value="16">Iowa</option>
+                            <option value="17">Kansas</option>
+                            <option value="18">Kentucky</option>
+                            <option value="19">Louisiana</option>
+                            <option value="20">Maine</option>
+                            <option value="21">Maryland</option>
+                            <option value="22">Massachusetts</option>
+                            <option value="23">Michigan</option>
+                            <option value="24">Minnesota</option>
+                            <option value="25">Mississippi</option>
+                            <option value="26">Missouri</option>
+                            <option value="27">Montana</option>
+                            <option value="28">Nebraska</option>
+                            <option value="29">Nevada</option>
+                            <option value="30">New Hampshire</option>
+                            <option value="31">New Jersey</option>
+                            <option value="32">New Mexico</option>
+                            <option value="33">New York</option>
+                            <option value="34">North Carolina</option>
+                            <option value="35">North Dakota</option>
+                            <option value="36">Ohio</option>
+                            <option value="37">Oklahoma</option>
+                            <option value="38">Oregon</option>
+                            <option value="39">Pennsylvania</option>
+                            <option value="40">Rhode Island</option>
+                            <option value="41">South Carolina</option>
+                            <option value="42">South Dakota</option>
+                            <option value="43">Tennessee</option>
+                            <option value="44">Texas</option>
+                            <option value="45">Utah</option>
+                            <option value="46">Vermont</option>
+                            <option value="47">Virginia</option>
+                            <option value="48">Washington</option>
+                            <option value="49">West Virginia</option>
+                            <option value="50">Wisconsin</option>
+                            <option value="51">Wyoming</option>
+                          </select>
+                        </div>
+                        <input type="text" class="form-control" id="agentZipcode" placeholder="Zipcode" />
+                      </div>
+                      <div class="mt-4">
+                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">
+                          SAVE
+                        </button>
+                      </div>
+                    </div>
+                    <hr />
+                    <!-- Annual Report Service -->
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">ANNUAL REPORT SERVICE
+                        <span class="icon icon-outline-info m-0"></span></span>
+                      <div class="d-flex gap-4">
+                        <div class="form-check">
+                          <input class="form-check-input toggle-radio" type="radio" id="enabled2FRRA" name="annualReport6"
+                            value="enabled" checked />
+                          <label class="form-check-label rights-label" for="enabled2FRRA">Enabled</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input toggle-radio" type="radio" id="disabled2FRRA" name="annualReport6"
+                            value="disabled" />
+                          <label class="form-check-label rights-label" for="disabled2FRRA">Disabled</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="enabledFormAnnualReport6">
+                      <!-- Enabled form content here -->
+                    </div>
+                    <!-- Disabled Form (Initially Hidden) -->
+                    <div id="disabledFormAnnualReport6" style="display: none">
+                      <div class="d-flex align-items-start justify-content-between mt-4">
+                        <div class="d-flex">
+                          <span class="fw-bold text-uppercase">Suppress Notifications and<br />
+                            Reminders</span>
+                          <!-- <span class="icon icon-outline-info m-0"></span> -->
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                          <div class="form-check gap-2 me-4">
+                            <input class="form-check-input single-check" type="checkbox" id="Yes3" checked="" />
+                            <label class="form-check-label fw-normal rights-label" for="Yes3">Yes</label>
+                          </div>
+                          <div class="form-check gap-2">
+                            <input class="form-check-input single-check" type="checkbox" id="No3" />
+                            <label class="form-check-label fw-normal text-capitalize rights-label" for="No3">No</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr />
+                    <!-- Preparation of Filing Service -->
+                    <div class="d-flex justify-content-between align-items-start">
+                      <span class="d-flex align-items-start fw-bold text-uppercase">Preparation and Filing
+                        of<br />entity
+                        documents
+                        <span class="icon icon-outline-info m-0"></span></span>
+                      <div class="d-flex gap-4">
+                        <div class="form-check">
+                          <input class="form-check-input toggle-radio" type="radio" id="enabledcaFRRA"
+                            name="preparationOfFiling6" value="enabled" checked />
+                          <label class="form-check-label rights-label" for="enabledcaFRRA">Enabled</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input toggle-radio" type="radio" id="disabledcaFRRA"
+                            name="preparationOfFiling6" value="disabled" disabled />
+                          <label class="form-check-label rights-label" for="disabledcaFRRA" disabled>Disabled</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="enabledFormPreparationOfFiling6 ">
+                      <div class="mt-4 component-block">
+  <div class="d-flex flex-column">
+    <div class="d-flex justify-content-between typecheckradio">
+      <label class="form-check-label rights-label" for="rushFilingRA">Rush Filing</label>
+      <input class="form-check-input" id="rushFilingRA" name="filingOption3" type="checkbox">
+    </div>
+    <div class="d-flex justify-content-between mt-3 typecheckradio certifiedCheck">
+      <label class="form-check-label rights-label" for="certifiedCopyRA">Certified copy</label>
+      <input class="form-check-input yes-checkbox" id="certifiedCopyRA" name="filingOption3" type="checkbox">
+    </div>
+  </div>
+  <!-- Upload button -->
+  <div class="qty-btn mt-3" style="display: none">
+                          <div class="d-flex ms-auto align-items-center justify-content-between">
+                            <div class="fs-6 fw-normal me-3">Quantity</div>
+                            <div class="border rounded-2 p-2 d-flex align-items-center w-16">
+                              <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
+                                <input class="ps-1 border-0" type="text" id="numberInput2" value="0" style="max-width: 30px">
+                                <div class="d-flex">
+                                  <button type="button" class="numDec border-0" onclick="changeValue(-1)"></button>
+                                  <button type="button" class="numInce border-0 ms-2" onclick="changeValue(+1)"></button><button></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+  </div>
+</div>
+                    </div>
+                    <!-- Disabled Form (Initially Hidden) -->
+                    <div id="disabledFormPreparationOfFiling6" style="display: none"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <!-- Modal Body End -->
+         <div class="modal-footer">
+          <div class="d-flex justify-content-between align-items-center w-100 m-0">
+            <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0" data-bs-dismiss="modal">
+              CANCEL
+            </button>
+            <div class="d-flex align-items-center">
+              <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn"
+                data-bs-toggle="modal" data-bs-dismiss="modal">
+                SAVE AND EXIT
+              </button>
+              <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
+                data-bs-target="#entityRASummery" data-bs-toggle="modal" data-bs-dismiss="modal">
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Appoint Filejet as Registered Agent step-3 Modal End-->
+
+  <!--Appoint Filejet as Registered Agent step-4 Modal start-->
+   <div class=" modalsteper modal modal-right fade filter-slideout SOP-model" id="entityRASummery" tabindex="-1"
+      aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex flex-column w-100 mb-0">
+                  <div class="d-flex align-items-center mb-4">
+                     <span class="icon icon-existing-entity-icon icon-md me-3"></span>
+                     <h4 class="fw-bold m-0">
+                       New Foreign Registration</h3>
+                  </div>
+                  <!-- stepper start -->
+                  <div class="service-step-group">
+                     <div class="step completed " data-bs-toggle="modal" data-bs-target="#appointRA"
+                        data-bs-dismiss="modal">
+                        <div class="circle completed"></div>
+                        <span class="step-text">ENTITY</span>
+                     </div>
+                     <div class="step completed" data-bs-toggle="modal" data-bs-target="#entityRADetail"
+                        data-bs-dismiss="modal">
+                        <div class="circle completed "></div>
+                        <span class="step-text">DETAILS</span>
+                     </div>
+                     <div class="step completed" data-bs-toggle="modal" data-bs-target="#entityRAServices"
+                        data-bs-dismiss="modal">
+                        <div class="circle completed"></div>
+                        <span class="step-text">SERVICES</span>
+                     </div>
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRASummery" data-bs-dismiss="modal">
+                        <div class="circle active"></div>
+                        <span class="step-text">SUMMARY</span>
+                     </div>
+                  </div>
+                  <!-- stepper end -->
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+               <div class="mb-4 p-3 bg-white rounded-2">
+                  <div>
+                     <div class="d-flex justify-content-between">
+                        <h3 class="fw-bold mb-2">New Entity LLC </h3>
+                        <div class="icon icon-new-edit editUser" data-bs-toggle="modal" data-toggle="tooltip"
+                           aria-label="EDIT" data-bs-original-title="EDIT" data-bs-target="#appointRA"></div>
+                     </div>
+                     <p class="mb-0 text-secondary">Delaware Limited Liability Company</p>
+                     <p class="mb-0 text-secondary">123 Main St
+                        Anywhere, CA 99999</p>
+                  </div>
+                  <!-- <div>
+                     <div class="d-flex justify-content-between mt-4">
+                        <h5 class="fw-bold mb-2">New Foreign Registrations</h5>
+                     </div>
+                     <p class="m-0 text-secondary">Delaware</p>
+                  </div> -->
+                  <hr class="summarystroke">
+                  <div class="entitytable pricetable border rounded-3 mt-4 h-auto">
+                     <div class="fade show active rounded-3 overflow-hidden" id="all">
+                        <table class="table table-striped w-100 long-data-table-listing border-1">
+                           <thead>
+                              <tr>
+                                 <th data-orderable="false">Service</th>
+                                 <th data-orderable="false" class="fixed-width-soi-table-50">Qty.</th>
+                                 <th data-orderable="false" class="fixed-width-soi-table-80">Price</th>
+                                 <th data-orderable="false" class="fixed-width-soi-table-80">Total</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="odd">
+                                 <td>Registered Agent Service</td>
+                                 <td>1</td>
+                                 <td>$15</td>
+                                 <td>$15</td>
+                              </tr>
+                              
+                           <tfoot>
+                              <tr class="even">
+                                 <td class="fw-bold">Total</td>
+                                 <td class="fw-bold">1</td>
+                                 <td class="fw-bold">$15</td>
+                                 <td class="fw-bold">$15</td>
+                              </tr>
+                           </tfoot>
+
+
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+
+               </div>
+               <form class="payment-section">
+                  <div class="mb-4 p-3 bg-white rounded-2">
+                     <fieldset>
+                        <label class="form-label">Payment Method<span class="mandatory">*</span></label>
+                        <div class="custom-dropdown">
+                           <select class="form-select pricing-method">
+                              <option value="account-default">Pay Later</option>
+                              <option value="account-default">Account Default (Visa 1111)</option>
+                              <option value="on-file">On File</option>
+                              <option value="add-new">Add New</option>
+                           </select>
+                        </div>
+                     </fieldset>
+
+                     <div class="on-file-content mt-4 border rounded-2" style="display: none;">
+                        <div>
+                           <div class="payment-card d-flex odd border-bottom">
+                              <div class="d-flex align-items-center">
+                                 <input class="form-check-input" type="checkbox">
+                                 <div class="ms-2 d-flex">
+                                    <div class="methodiv">Mastercard </div>
+                                    <div class="methodcard">Mastercard ...4444</div>
+                                 </div>
+                              </div>
+                              <div class="d-flex align-items-start me-2 defaultdiv">
+                                 <input class="form-check-input" type="radio" name="default-payment" checked="">
+                                 <span class="ms-2">Default</span>
+                              </div>
+                              <div>
+                                 <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                    data-bs-original-title="EDIT"></span>
+                                 <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                    aria-label="DELETE" title="DELETE"></span>
+                              </div>
+                           </div>
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column even border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox" disabled>
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv text-disabled">ACH Payment</div>
+                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
+                                    </div>
+                                 </div>
+
+                                 <div class="d-flex align-items-start defaultdiv me-2" data-toggle="tooltip"
+                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
+                                    <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
+                                 </div>
+
+                                 <div>
+                                    <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                       data-bs-original-title="EDIT"></span>
+                                    <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                       aria-label="DELETE" title="DELETE"></span>
+                                 </div>
+                              </div>
+
+                           </div>
+
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column odd border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox">
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv">ACH Payment</div>
+                                       <div class="methodcard">Stripe Test Bank ...4786</div>
+                                    </div>
+                                 </div>
+
+                                 <div class="d-flex align-items-start defaultdiv me-2">
+                                    <input class="form-check-input" type="radio" name="default-payment">
+                                    <span class="ms-2">Set as Default</span>
+                                 </div>
+
+                                 <div>
+                                    <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                       data-bs-original-title="EDIT"></span>
+                                    <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                       aria-label="DELETE" title="DELETE"></span>
+                                 </div>
+                              </div>
+
+                           </div>
+
+                           <!-- Payment Method 3 -->
+                           <div class="payment-card d-flex even ">
+                              <div class="d-flex align-items-center">
+                                 <input class="form-check-input" type="checkbox">
+                                 <div class="ms-2 d-flex">
+                                    <div class="methodiv">Card 2</div>
+                                    <div class="methodcard">Mastercard ...1111</div>
+                                 </div>
+                              </div>
+                              <div class="d-flex align-items-start defaultdiv me-2">
+                                 <input class="form-check-input" type="radio" name="default-payment">
+                                 <span class="ms-2">Set as Default</span>
+                              </div>
+                              <div>
+                                 <span class="icon icon-new-edit me-3" data-toggle="tooltip" aria-label="EDIT"
+                                    data-bs-original-title="EDIT"></span>
+                                 <span class="icon icon-new-delete m-0 deleteUser" data-toggle="tooltip"
+                                    aria-label="DELETE" title="DELETE"></span>
+                              </div>
+                           </div>
+
+
+
+                        </div>
+                     </div>
+                     <div class="add-new-content mt-4" style="display: none;">
+                        <div class="d-flex justify-content-between">
+                           <span class="fw-bold">SELECT METHOD</span>
+                           <div class="d-flex align-items-center">
+                              <div class="form-check me-4">
+                                 <input class="form-check-input ach-option" id="achCheck" type="checkbox" checked>
+                                 <label class="form-check-label rights-label" for="achCheck">ACH</label>
+                              </div>
+                              <div class="form-check">
+                                 <input class="form-check-input credit-option" id="creditCheck" type="checkbox">
+                                 <label class="form-check-label rights-label" for="creditCheck">Credit Card</label>
+                              </div>
+                           </div>
+
+                        </div>
+
+                        <!-- ACH Form -->
+                        <div class="ach-form mt-4" style="display: none;">
+                           <fieldset class="mb-4">
+                              <label class="form-label">Account Holder Name</label>
+                              <input type="text" class="form-control" placeholder="Name">
+                           </fieldset>
+                           <fieldset class="mb-4">
+                              <label class="form-label">Routing Number</label>
+                              <input type="text" class="form-control" placeholder="Routing Number">
+                           </fieldset>
+                           <fieldset>
+                              <label class="form-label">Account Number</label>
+                              <input type="text" class="form-control" placeholder="Account Number">
+                           </fieldset>
+                           <div class="mt-4">
+                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
+                                 SAVE
+                              </button>
+                           </div>
+                        </div>
+
+                        <!-- Credit Card Form -->
+                        <div class="credit-card-form mt-4" style="display: none;">
+                           <fieldset class="mb-4">
+                              <label class="form-label">Card Holder Name</label>
+                              <input type="text" class="form-control" placeholder="Name">
+                           </fieldset>
+                           <fieldset class="mb-4">
+                              <label class="form-label">Card Details</label>
+                              <input type="text" class="form-control" placeholder="**** **** **** 1111">
+                           </fieldset>
+                           <div class="d-flex justify-content-between">
+                              <fieldset class="w-50 me-2">
+                                 <label class="form-label">Expiry Date</label>
+                                 <input type="text" class="form-control" placeholder="MM/YY">
+                              </fieldset>
+                              <fieldset class="w-50 ms-2">
+                                 <label class="form-label">CVV</label>
+                                 <input type="text" class="form-control" placeholder="CVV">
+                              </fieldset>
+                           </div>
+                           <div class="mt-4">
+                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
+                                 SAVE
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+
+            <!-- Modal Body End -->
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-link text-decoration-none font-weight-600"
+                        data-bs-target="#previewModal" data-bs-toggle="modal" data-bs-dismiss="modal"> PREVIEW </button>
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="submitBtn"
+                        data-bs-target="#" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Submit
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+  <!--Appoint Filejet as Registered Agent step-4 Modal End-->
+
 
 
 
