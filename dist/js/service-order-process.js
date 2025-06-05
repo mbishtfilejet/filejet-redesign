@@ -685,3 +685,22 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.component-block').forEach(setupQtyComponent);
   });
+
+
+
+  // selet2 
+  $('#NWForeign').on('show.bs.modal', function (e) {
+        $('.home-entity-field').select2(
+            {
+                dropdownParent: $('#NWForeign'),
+            }
+        );
+    });
+
+      $('#addEXEntity').on('show.bs.modal', function (e) {
+        $('.home-entity-field').select2(
+            {
+                dropdownParent: $('#addEXEntity'),
+            }
+        );
+    });
