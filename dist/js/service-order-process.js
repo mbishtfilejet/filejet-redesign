@@ -186,6 +186,8 @@ function setupToggleForms(radioGroupNames) {
          groupSuffix = 'AnnualReport';
        } else if (namePart.includes('preparationOfFiling')) {
          groupSuffix = 'PreparationOfFiling';
+       } else if (namePart.includes('statementFile')) {
+         groupSuffix = 'StatementFile';
        }
 
 
@@ -223,7 +225,7 @@ setupToggleForms([
   'annualReport3',
   'annualReport4',
   'preparationOfFiling3',
-  'registeredAgentStatus5',
+  'registeredAgentStatus6',
   'annualReport5',
   'annualReport6',
   'preparationOfFiling4',
@@ -709,3 +711,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         );
     });
+
+
+
+
+    
