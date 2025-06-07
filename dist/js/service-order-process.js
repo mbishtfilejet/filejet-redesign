@@ -713,6 +713,48 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+// annual report filing 
+  document.addEventListener("DOMContentLoaded", function () {
+    const nextBtn = document.getElementById("nextBtnan");
+    const yesRadio = document.getElementById("yes2an");
+    const noRadio = document.getElementById("no1an");
+
+    function updateNextBtnTarget() {
+      if (yesRadio.checked) {
+        nextBtn.setAttribute("data-bs-target", "#annualSummary");
+      } else {
+        nextBtn.setAttribute("data-bs-target", "#annualreportDetail");
+      }
+    }
+
+    // Attach change event listeners
+    yesRadio.addEventListener("change", updateNextBtnTarget);
+    noRadio.addEventListener("change", updateNextBtnTarget);
+
+    // Set initial target on load
+    updateNextBtnTarget();
+  });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const nextBtn = document.getElementById("nextBtnan2");
+    const yesRadio = document.getElementById("yes2an2");
+    const noRadio = document.getElementById("no1an2");
+
+    function updateNextBtnTarget() {
+      if (yesRadio.checked) {
+        nextBtn.setAttribute("data-bs-target", "#annualSummary");
+      } else {
+        nextBtn.setAttribute("data-bs-target", "#annualreportDetail2");
+      }
+    }
+
+    // Attach change event listeners
+    yesRadio.addEventListener("change", updateNextBtnTarget);
+    noRadio.addEventListener("change", updateNextBtnTarget);
+
+    // Set initial target on load
+    updateNextBtnTarget();
+  });
 
 
     
