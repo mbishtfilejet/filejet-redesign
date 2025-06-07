@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Manager Clone Example</title>
+<style>
+  .toggle-form { display: none; }
+</style>
+</head>
+<body>
+
+<div id="managersContainer">
+  <div class="section">
+    <div class="d-flex">
+      <div class="gap-4 managercheckbox-div">
+        <div class="form-check">
+          <input
+            class="form-check-input toggle-radio"
+            type="radio"
+            name="managerType1"
+            id="individualAn1"
+            data-target="individualFormAn1"
+            checked
+          />
+          <label class="form-check-label rights-label" for="individualAn1">Individual</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input toggle-radio"
+            type="radio"
+            name="managerType1"
+            id="corporateAn1"
+            data-target="corporateFormAn1"
+          />
+          <label class="form-check-label rights-label" for="corporateAn1">Corporate</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="managerForm mt-3">
+      <div id="individualFormAn1" class="individualForm toggle-form" style="display: block;">
+        <input type="text" placeholder="Individual Name" />
+      </div>
+      <div id="corporateFormAn1" class="corporateForm toggle-form">
+        <input type="text" placeholder="Corporate Name" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="addmoreManager text-indigo d-flex justify-content-end w-100"
+  id="addManagerBtn"
+  role="button"
+  style="margin-top: 20px; cursor: pointer; color: blue;"
+>
+  <span class="icon icon-add-circle-plus"></span> Add Manager
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('managersContainer');
+    const addBtn = document.getElementById('addManagerBtn');
+    let managerCount = 1;
+
+    // Setup toggle for radios inside a section
+    function setupToggleRadios(section, count) {
+      const radios = section.querySelectorAll(`input[name="managerType${count}"]`);
+      radios.forEach(radio => {
+        radio.addEventListener('change', e => {
+          const targetId = e.target.dataset.target;
+          // Hide all toggle-forms inside this section
+          section.querySelectorAll('.toggle-form').forEach(form => (form.style.display = 'none'));
+          // Show target form
+          const targetForm = section.querySelector(`#${targetId}`);
+          if (targetForm) targetForm.style.display = 'block';
+        });
+      });
+    }
+
+    addBtn.addEventListener('click', () => {
+      managerCount++;
+
+      // Clone first section
+      const template = container.querySelector('.section');
+      const clone = template.cloneNode(true);
+
+      // Update ids and names to unique ones by appending managerCount
+      clone.querySelectorAll('[id]').forEach(el => {
+        const oldId = el.id;
+        // Replace trailing number with new managerCount or append if none
+        const newId = oldId.replace(/\d+$/, '') + managerCount;
+        el.id = newId;
+      });
+
+      clone.querySelectorAll('label[for]').forEach(label => {
+        const oldFor = label.getAttribute('for');
+        if (oldFor) {
+          const newFor = oldFor.replace(/\d+$/, '') + managerCount;
+          label.setAttribute('for', newFor);
+        }
+      });
+
+      // Update radio names
+      clone.querySelectorAll('input[type=radio]').forEach(radio => {
+        radio.name = 'managerType' + managerCount;
+      });
+
+      // Reset radios (select individual)
+      const individualRadio = clone.querySelector(`#individualAn${managerCount}`);
+      const corporateRadio = clone.querySelector(`#corporateAn${managerCount}`);
+      if (individualRadio) individualRadio.checked = true;
+      if (corporateRadio) corporateRadio.checked = false;
+
+      // Show individual form, hide corporate form
+      clone.querySelectorAll('.toggle-form').forEach(form => (form.style.display = 'none'));
+      const individualForm = clone.querySelector(`#individualFormAn${managerCount}`);
+      if (individualForm) individualForm.style.display = 'block';
+
+      // Clear inputs
+      clone.querySelectorAll('input[type="text"]').forEach(input => (input.value = ''));
+
+      container.appendChild(clone);
+
+      // Setup toggle inside cloned section
+      setupToggleRadios(clone, managerCount);
+    });
+
+    // Initialize toggle for the first block
+    setupToggleRadios(container.querySelector('.section'), 1);
+  });
+</script>
+
+</body>
+</html>

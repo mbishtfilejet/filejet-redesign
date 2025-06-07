@@ -566,8 +566,9 @@ document.addEventListener("DOMContentLoaded", function () {
     newFillingStateClass: "newcorporatefillingstate",
     moreAddBtnClass: "moreaddcorporate"
   });
-});
 
+  
+});
 
 
 
@@ -734,6 +735,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Set initial target on load
     updateNextBtnTarget();
   });
+
 
     document.addEventListener("DOMContentLoaded", function () {
     const nextBtn = document.getElementById("nextBtnan2");

@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupMultiSelect("roleContainer1", "roleDropdown1", "roleSearch1", "role-checkbox1", "roleSelectAll1");
    setupMultiSelect("roleContainer2", "roleDropdown2", "roleSearch2", "role-checkbox2", "roleSelectAll2");
   setupMultiSelect("memberroleContainer", "memberroleDropdown", "memberroleSearch", "memberrole-checkbox", "memberroleSelectAll");
-    setupMultiSelect("annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll");
+    setupMultiSelect("annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll", ["CEO"]);
 
 
 
