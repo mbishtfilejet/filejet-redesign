@@ -1553,7 +1553,8 @@
                                     <label for="entityType-model" class="form-label">Select Existing Entity <span
                                           class="mandatory">*</span></label>
                                     <div class="custom-dropdown">
-                                       <select class="form-select" id="entityType-model">
+                                       <select class="form-select select2 home-entity-field" id="entityType-model">
+                                           <option selected disabled>Select an option</option>
                                           <option value="1">John’s Pizza - CA</option>
                                           <option value="2">RASA Realty LLC
                                           </option>
@@ -1986,253 +1987,13 @@
                                        <small>Texas requires XYZ</small>
                                     </div>
                                  </div>
-                                 <!-- OFFICERS SECTION -->
-                                 <div class="section mb-4 officeform">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                       <label class="form-label m-0">officers <span class="mandatory">*</span></label>
-                                       <div class="addmoreOfficer text-indigo d-flex align-items-center"
-                                          data-bs-toggle="collapse" data-bs-target="#officerForm" aria-expanded="false">
-                                          <span class="icon icon-add-circle-plus"></span> Add
-                                       </div>
-                                    </div>
-                                    <!-- Form inside collapse -->
-                                    <div id="officerForm" class="officerForm collapse mt-3">
-                                       <fieldset class="innerofficerForm fillingstate">
-                                          <div class="autocomplete-wrapper w-100" >
-                                             <input type="text" class="form-control mb-3 autocomplete-input" placeholder="Name" autocomplete="off" />
-                                             <div class="suggestions"></div>
-                                          </div>
-                                          <div class="custom-dropdown mb-3">
-                                             <select class="form-select" id="entityType-model" required>
-                                                <option value="" disabled selected hidden>Officer Type</option>
-                                                <option value="2">President/CEO</option>
-                                             </select>
-                                          </div>
-                                          <input type="text" class="form-control mb-3" id="addressOne"
-                                             placeholder="Address Line 1">
-                                          <input type="text" class="form-control mb-3" id="addressTwo"
-                                             placeholder="Address Line 2">
-                                          <div class="d-flex w-100 mb-4">
-                                             <input type="text" class="form-control me-3 " id="cityName"
-                                                placeholder="City">
-                                             <div class="custom-dropdown-state w-100 me-3">
-                                                <select class="form-select" id="formation-model" required>
-                                                   <option value="" disabled selected hidden>State</option>
-                                                   <option value="1">Alabama</option>
-                                                   <option value="2">Alaska</option>
-                                                   <option value="3">Arizona</option>
-                                                   <option value="4">Arkansas</option>
-                                                   <option value="5">California</option>
-                                                   <option value="6">Colorado</option>
-                                                   <option value="7">Connecticut</option>
-                                                   <option value="8">Delaware</option>
-                                                   <option value="9">District of Columbia</option>
-                                                   <option value="10">Florida</option>
-                                                   <option value="11">Georgia</option>
-                                                   <option value="12">Hawaii</option>
-                                                   <option value="13">Idaho</option>
-                                                   <option value="14">Illinois</option>
-                                                   <option value="15">Indiana</option>
-                                                   <option value="16">Iowa</option>
-                                                   <option value="17">Kansas</option>
-                                                   <option value="18">Kentucky</option>
-                                                   <option value="19">Louisiana</option>
-                                                   <option value="20">Maine</option>
-                                                   <option value="21">Maryland</option>
-                                                   <option value="22">Massachusetts</option>
-                                                   <option value="23">Michigan</option>
-                                                   <option value="24">Minnesota</option>
-                                                   <option value="25">Mississippi</option>
-                                                   <option value="26">Missouri</option>
-                                                   <option value="27">Montana</option>
-                                                   <option value="28">Nebraska</option>
-                                                   <option value="29">Nevada</option>
-                                                   <option value="30">New Hampshire</option>
-                                                   <option value="31">New Jersey</option>
-                                                   <option value="32">New Mexico</option>
-                                                   <option value="33">New York</option>
-                                                   <option value="34">North Carolina</option>
-                                                   <option value="35">North Dakota</option>
-                                                   <option value="36">Ohio</option>
-                                                   <option value="37">Oklahoma</option>
-                                                   <option value="38">Oregon</option>
-                                                   <option value="39">Pennsylvania</option>
-                                                   <option value="40">Rhode Island</option>
-                                                   <option value="41">South Carolina</option>
-                                                   <option value="42">South Dakota</option>
-                                                   <option value="43">Tennessee</option>
-                                                   <option value="44">Texas</option>
-                                                   <option value="45">Utah</option>
-                                                   <option value="46">Vermont</option>
-                                                   <option value="47">Virginia</option>
-                                                   <option value="48">Washington</option>
-                                                   <option value="49">West Virginia</option>
-                                                   <option value="50">Wisconsin</option>
-                                                   <option value="51">Wyoming</option>
-                                                </select>
-                                             </div>
-                                             <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
-                                          </div>
-                                          <div class="">
-                                             <button type="button"
-                                                class="officeraddBtn btn btn-small py-0 px-5 rounded-3 ms-3" id="">
-                                                ADD
-                                             </button>
-                                             <button type="button"
-                                                class="officerupdateBtn btn btn-small py-0 px-5 rounded-3 ms-3 d-none"
-                                                id="">
-                                                UPDATE
-                                             </button>
-                                          </div>
-                                       </fieldset>
-
-                                       <!-- Officer Filled Form -->
-                                       <div id="officerForm3" class="officerForm3 toggle-form" style="display: none;">
-                                          <div class="filledstate ">
-                                             <div class="inputsfilled d-flex justify-content-between flex-column">
-                                                <div class="d-flex justify-content-between">
-                                                   <div>
-                                                      <p class="groupName m-0 ">Adam Smith</p>
-                                                      <p class="groupEmail m-0 mb-1 fw-normal text-disabled ">CFO</p>
-                                                      <p class="groupEmail m-0 fw-normal text-disabled ">1234 Maple
-                                                         Street Springfield, IL 62704</p>
-                                                   </div>
-                                                   <div class="d-flex align-items-center">
-                                                      <span class="icon icon-new-edit me-3" data-toggle="tooltip"
-                                                         aria-label="EDIT" data-bs-original-title="EDIT"></span>
-                                                      <span class="icon icon-new-delete m-0 deleteUser"
-                                                         data-bs-toggle="modal" data-bs-target="#userDelete"
-                                                         data-toggle="tooltip" aria-label="DELETE"
-                                                         title="DELETE"></span>
-                                                   </div>
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-between">
-                                                   <hr>
-                                                   <div class="d-flex justify-content-between">
-                                                      <div>
-                                                         <p class="groupName m-0 ">James Thornton</p>
-                                                         <p class="groupEmail m-0 mb-1 fw-normal text-disabled ">CFO</p>
-                                                         <p class="groupEmail m-0 fw-normal text-disabled ">5678 Oak
-                                                            AvenueRivertown, CA 90210</p>
-                                                      </div>
-                                                      <div class="d-flex align-items-center">
-                                                         <span class="icon icon-new-edit me-3" data-toggle="tooltip"
-                                                            aria-label="EDIT" data-bs-original-title="EDIT"></span>
-                                                         <span class="icon icon-new-delete m-0 deleteUser"
-                                                            data-bs-toggle="modal" data-bs-target="#userDelete"
-                                                            data-toggle="tooltip" aria-label="DELETE"
-                                                            title="DELETE"></span>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <!-- <div class="mt-3">
-                                                   <button type="button" class="moreadd d-flex align-items-center p-0 m-0 border-0 bg-white fw-normal">
-                                                       <span class="icon icon-add-circle-plus"></span> Add
-                                                   </button>
-                                               </div> -->
-                                          </div>
-                                          <fieldset class="newfillingstate mt-4 d-none">
-                                             <input type="text" class="form-control mb-3" id="firstName"
-                                                placeholder="Name">
-                                             <div class="custom-dropdown mb-3">
-                                                <select class="form-select" id="entityType-model" required>
-                                                   <option value="" disabled selected hidden>Officer Type</option>
-                                                   <option value="2">President/CEO</option>
-                                                </select>
-                                             </div>
-
-                                             <input type="text" class="form-control mb-3" id="addressOne"
-                                                placeholder="Address Line 1">
-                                             <input type="text" class="form-control mb-3" id="addressTwo"
-                                                placeholder="Address Line 2">
-                                             <div class="d-flex w-100 ">
-                                                <input type="text" class="form-control me-3 " id="cityName"
-                                                   placeholder="City">
-                                                <div class="custom-dropdown-state w-100 me-3">
-                                                   <select class="form-select" id="formation-model" required>
-                                                      <option value="" disabled selected hidden>State</option>
-                                                      <option value="1">Alabama</option>
-                                                      <option value="2">Alaska</option>
-                                                      <option value="3">Arizona</option>
-                                                      <option value="4">Arkansas</option>
-                                                      <option value="5">California</option>
-                                                      <option value="6">Colorado</option>
-                                                      <option value="7">Connecticut</option>
-                                                      <option value="8">Delaware</option>
-                                                      <option value="9">District of Columbia</option>
-                                                      <option value="10">Florida</option>
-                                                      <option value="11">Georgia</option>
-                                                      <option value="12">Hawaii</option>
-                                                      <option value="13">Idaho</option>
-                                                      <option value="14">Illinois</option>
-                                                      <option value="15">Indiana</option>
-                                                      <option value="16">Iowa</option>
-                                                      <option value="17">Kansas</option>
-                                                      <option value="18">Kentucky</option>
-                                                      <option value="19">Louisiana</option>
-                                                      <option value="20">Maine</option>
-                                                      <option value="21">Maryland</option>
-                                                      <option value="22">Massachusetts</option>
-                                                      <option value="23">Michigan</option>
-                                                      <option value="24">Minnesota</option>
-                                                      <option value="25">Mississippi</option>
-                                                      <option value="26">Missouri</option>
-                                                      <option value="27">Montana</option>
-                                                      <option value="28">Nebraska</option>
-                                                      <option value="29">Nevada</option>
-                                                      <option value="30">New Hampshire</option>
-                                                      <option value="31">New Jersey</option>
-                                                      <option value="32">New Mexico</option>
-                                                      <option value="33">New York</option>
-                                                      <option value="34">North Carolina</option>
-                                                      <option value="35">North Dakota</option>
-                                                      <option value="36">Ohio</option>
-                                                      <option value="37">Oklahoma</option>
-                                                      <option value="38">Oregon</option>
-                                                      <option value="39">Pennsylvania</option>
-                                                      <option value="40">Rhode Island</option>
-                                                      <option value="41">South Carolina</option>
-                                                      <option value="42">South Dakota</option>
-                                                      <option value="43">Tennessee</option>
-                                                      <option value="44">Texas</option>
-                                                      <option value="45">Utah</option>
-                                                      <option value="46">Vermont</option>
-                                                      <option value="47">Virginia</option>
-                                                      <option value="48">Washington</option>
-                                                      <option value="49">West Virginia</option>
-                                                      <option value="50">Wisconsin</option>
-                                                      <option value="51">Wyoming</option>
-                                                   </select>
-                                                </div>
-                                                <input type="text" class="form-control" id="zipCode"
-                                                   placeholder="Zipcode">
-                                             </div>
-                                             <div class=" mt-4">
-                                                <button type="button"
-                                                   class="newofficeraddBtn btn btn-small py-0 px-5 rounded-3 ms-3"
-                                                   id="">
-                                                   ADD
-                                                </button>
-                                             </div>
-                                          </fieldset>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <hr>
                                  <!-- MANAGERS SECTION -->
                                  <div class="section">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                       <label class="form-label m-0">MANAGERS <span class="mandatory">*</span></label>
-                                       <div class="addmoreManager text-indigo d-flex align-items-center"
-                                          data-bs-toggle="collapse" data-bs-target="#managerForm" aria-expanded="false">
-                                          <span class="icon icon-add-circle-plus"></span> Add
-                                       </div>
-                                    </div>
+
                                     <!-- Form inside collapse -->
-                                    <div id="managerForm" class="collapse mt-3">
+                                    <div id="managerForm" class=" mt-3">
                                        <!-- Radio buttons to select Individual or Corporate -->
-                                       <div class="mb-4 managercheckbox-div">
+                                       <div class=" d-flex mb-4 ">
                                           <div class="d-flex gap-4">
                                              <div class="form-check">
                                                 <input class="form-check-input toggle-radio" type="radio"
@@ -2248,6 +2009,10 @@
                                                    for="corporateFR">Corporate</label>
                                              </div>
                                           </div>
+                                          <div class="addmoreManager text-indigo d-flex align-items-center justify-content-end w-100"
+                                          data-bs-toggle="" data-bs-target="#managerForm" aria-expanded="false">
+                                          <span class="icon icon-add-circle-plus"></span> Add
+                                       </div>
                                        </div>
                                        <!-- Individual Form -->
                                        <div id="individualFormFR" class="individualForm toggle-form">
@@ -3023,12 +2788,12 @@
           <div class="accordion mb-4" id="accordionExample4">
             <div class="accordion-item m-0">
               <h2 class="accordion-header" id="headingOne4">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button collapsed m-0" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseOne4" aria-expanded="false" aria-controls="collapseOne4">
                   California Services
                 </button>
               </h2>
-              <div id="collapseOne4" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne4" data-bs-parent="#accordionExample4">
+              <div id="collapseOne4" class="accordion-collapse collapse  border-0" aria-labelledby="headingOne4" data-bs-parent="#accordionExample4">
                 <div class="accordion-body pt-0">
                   <form action="">
                     <!-- Form inside collapse -->
@@ -3143,11 +2908,7 @@
                             </div>
                             <input type="text" class="form-control" id="zipCode" placeholder="Zipcode" />
                           </div>
-                          <div class="">
-                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">
-                              SAVE
-                            </button>
-                          </div>
+                          
                         </fieldset>
                       </div>
 
@@ -3155,11 +2916,7 @@
                         <fieldset class="corporatefillingstate">
                           <input type="text" class="form-control mb-4" id="firstName"
                             placeholder="corporate agent's Name" />
-                          <div class="">
-                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">
-                              SAVE
-                            </button>
-                          </div>
+                         
                         </fieldset>
                       </div>
                     </div>
@@ -3263,8 +3020,7 @@
                     <div id="disabledFormAnnualReport3" style="display: none">
                       <div class="d-flex align-items-start justify-content-between mt-4">
                         <div class="d-flex">
-                          <span class="fw-bold text-uppercase">Suppress Notifications and<br />
-                            Reminders</span>
+                          <span class="fw-bold text-uppercase fs-12">Suppress Notifications and Reminders</span>
                           <!-- <span class="icon icon-outline-info m-0"></span> -->
                         </div>
 
@@ -3283,58 +3039,77 @@
 
                     <hr />
                     <!-- Preparation of Filing Service -->
-                    <div class="d-flex justify-content-between align-items-start">
-                      <span class="d-flex align-items-start fw-bold text-uppercase">Preparation and Filing
-                        of<br />entity
-                        documents
-                        <span class="icon icon-outline-info m-0"></span></span>
-                      <div class="d-flex gap-4">
-                        <div class="form-check">
-                          <input class="form-check-input toggle-radio" type="radio" id="enabledcaFR"
-                            name="preparationOfFiling3" value="enabled" checked />
-                          <label class="form-check-label rights-label" for="enabledcaFR">Enabled</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input toggle-radio" type="radio" id="disabledcaFR"
-                            name="preparationOfFiling3" value="disabled" disabled />
-                          <label class="form-check-label rights-label" for="disabledcaFR" disabled>Disabled</label>
-                        </div>
-                      </div>
+                     <div class="d-flex  align-items-start">
+                     <input class="form-check-input me-3 collapsed" type="checkbox" id="form25102abCheckbox" data-bs-toggle="collapse" data-bs-target="#form25102ab" aria-expanded="true" >
+                     <label class="fw-bold fs-12 text-uppercase" for="form25102abCheckbox">Initial filing options</label>
                     </div>
-                    <div id="enabledFormPreparationOfFiling3 ">
-                     <div class="mt-4 component-block">
-  <div class="d-flex flex-column">
-    <div class="d-flex justify-content-between typecheckradio">
-      <label class="form-check-label rights-label" for="rushFiling1">Rush Filing</label>
-      <input class="form-check-input" id="rushFiling1" name="filingOption1" type="checkbox">
-    </div>
-    <div class="d-flex justify-content-between mt-3 typecheckradio certifiedCheck">
-      <label class="form-check-label rights-label" for="certifiedCopy1">Certified copy</label>
-      <input class="form-check-input yes-checkbox" id="certifiedCopy1" name="filingOption1" type="checkbox">
-    </div>
-  </div>
-  <!-- Upload button -->
-  <div class="qty-btn mt-3" style="display: none">
-                          <div class="d-flex ms-auto align-items-center justify-content-between">
-                            <div class="fs-6 fw-normal me-3">Quantity</div>
-                            <div class="border rounded-2 p-2 d-flex align-items-center w-16">
-                              <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
-                                <input class="ps-1 border-0" type="text" id="numberInput2" value="0" style="max-width: 30px">
-                                <div class="d-flex">
-                                  <button type="button" class="numDec border-0" onclick="changeValue(-1)"></button>
-                                  <button type="button" class="numInce border-0 ms-2" onclick="changeValue(+1)"></button><button></button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-  </div>
-</div>
-                    </div>
-                    <!-- Disabled Form (Initially Hidden) -->
-                    <div id="disabledFormPreparationOfFiling3" style="display: none"></div>
+   <div class="collapse show" id="form25102ab">
+         <div class="mt-4 component-block">
+            <div class="d-flex flex-column">
+               <div class="d-flex justify-content-between typecheckradio">
+                  <label class="form-check-label rights-label" for="rushFiling1">Rush Filing</label>
+                  <input class="form-check-input" id="rushFiling1" name="filingOption1" type="checkbox" />
+               </div>
+               <div class="d-flex justify-content-between align-items-center mt-3 typecheckradio certifiedCheck">
+                  <label class="form-check-label rights-label" for="certifiedCopy1">Certified copy</label>
+                                    <div class="border rounded-2 p-2 d-flex align-items-center w-16">
+                     <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
+                        <input class="ps-1 border-0" type="text" id="numberInput2" value="0" style="max-width: 30px">
+                        <div class="d-flex">
+                           <button type="button" class="numDec border-0" onclick="changeValue(-1)"></button>
+                           <button type="button" class="numInce border-0 ms-2"
+                              onclick="changeValue(+1)"></button><button></button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+   </div>
+
                   </form>
                 </div>
               </div>
+
+               <form class="p-3 service-titles px-4 py-3 border-start border-end border-bottom">
+         <div class="d-flex justify-content-between align-items-center mb-4">
+            <label class="fw-bold fs-12 text-uppercase " for="">REGISTERED AGENT SERVICE</label>
+            <fieldset>
+              <div class="d-flex gap-4">
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="" name="" value="enabled" checked />
+                  <label class="form-check-label rights-label" for="">Enabled</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="" name="" value="disabled" />
+                  <label class="form-check-label rights-label" for="">Disabled</label>
+                </div>
+              </div>
+                        <!-- Enabled Form -->
+                      </fieldset>
+                    </div>
+
+                    <hr />
+                    <!-- Annual Report Service -->
+                    <div class="d-flex justify-content-between align-items-center">
+                      <label class="fw-bold fs-12 text-uppercase" for=""> ANNUAL REPORT SERVICE
+                      </label>
+                      <div class="d-flex gap-4">
+                        <div class="form-check">
+                          <input class="form-check-input toggle-radio" type="radio" id="" name=""
+                            value="enabled" checked />
+                          <label class="form-check-label rights-label" for="">Enabled</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input toggle-radio" type="radio" id="" name=""
+                            value="disabled" />
+                          <label class="form-check-label rights-label" for="">Disabled</label>
+                        </div>
+                      </div>
+                    </div>
+
+      </form>
             </div>
           </div>
 
@@ -3775,7 +3550,7 @@
                                     <fieldset class="mb-4">
                                     <label for="entityType-model" class="form-label">group </label>
                                     <div class="custom-dropdown">
-                                       <select class="form-select" id="entityType-model" required>
+                                       <select class="form-select " id="entityType-model" required>
                                           <option  value="" disabled selected hidden>All</option>
                                           <option value="2">Adept HR</option>
                                           <option value="3">AIC CAPITAL V V MANAGER - Terminated</option>
@@ -3786,7 +3561,7 @@
                   <fieldset>
                     <label for="entityType-model" class="form-label">Select associated Entity <span class="mandatory">*</span></label>
                     <div class="custom-dropdown">
-                      <select class="form-select" id="entityType-model">
+                      <select class="form-select select2 home-entity-field" id="entityType-model">
                         <option value="1">John’s Pizza - CA</option>
                         <option value="2">RASA Realty LLC
                         </option>
@@ -4042,243 +3817,51 @@
                   </div>
 
                   <div class="mb-4 p-3 bg-white rounded-2 mt-3">
-                  <div class="d-flex justify-content-between align-items-center w-100">
-                     <span class="fw-bold text-uppercase">Agent for Service<br>of Process</span>
-                     <div class="d-flex align-items-center flex-column">
-                        <div class="d-flex">
-                           <div class="form-check me-4">
-                              <input class="form-check-input no-checkbox" type="checkbox" id="no41" name="uploadChoice" >
-                              <label class="form-check-label rights-label" for="no41">An Individual</label>
-                           </div>
-                           <div class="form-check">
-                              <input class="form-check-input yes-checkbox" type="checkbox" id="yes41" name="uploadChoice">
-                              <label class="form-check-label rights-label" for="yes41">Corporate Agent</label>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  <form action="">
+                 <div class="d-flex justify-content-between align-items-start mb-4">
+            <label class="fw-bold fs-12 text-uppercase inactive" for="">Agent for Service<br>of Process</label>
+            <fieldset>
+              <div class="d-flex gap-4">
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="enabledasp" name="registeredAgentStatus7" value="enabled" checked="">
+                  <label class="form-check-label rights-label" for="enabledasp">An Individual</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="disabledasp" name="registeredAgentStatus7" value="disabled">
+                  <label class="form-check-label rights-label inactive" for="disabledasp">Corporate Agent</label>
+                </div>
+              </div>
+                        <!-- Enabled Form -->
+                      </fieldset>
+                    </div>
+                    <div id="enabledFormRegisteredAgent7" >
+                     <div class="autocomplete-wrapper w-100">
+                                             <input type="text" class="form-control mb-3 autocomplete-input" placeholder="Name" autocomplete="off">
+                                             <div class="suggestions" style="display: none;"></div>
+                                          </div>
+                                             <!-- <div class="filter2-dropdown additional-search dropdown mb-3 ">
+                                                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg" id="roleContainer1" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0"><input type="button" class="search-input" id="roleSearch1" value="Role" autocomplete="off"></div>
+                                                <ul class="dropdown-menu w-100" id="roleDropdown1"><input type="text" class="dropdown-search-input" placeholder="Search..." autocomplete="off">
 
-                  <!-- Upload button -->
-                  <div class="upload-btn mt-3" style="display: none;">
-                     <div>
-                        <button type="button" class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center" id="uploadBtn">
-                           Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
-                        </button>
-                     </div>
-                     <div class="uploadtable border rounded-3 mt-4">
-                        <div class="fade show active rounded-3 overflow-hidden" id="all3">
-                           <table class=" table table-striped w-100 m-0 border-1">
-                              <thead>
-                                 <tr>
-                                    <th>Date</th>
-                                    <th>Document Name</th>
-                                    <th class="juridction-fixed-width" data-orderable="false">Download</th>
-                                    <th class="fixed-width-soi-table-70" data-orderable="false">Delete</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <tr class="odd">
-                                    <td>May 02 2025</td>
-                                    <td>2025 COA</td>
-                                    <td><span class="icon icon-download-purple m-0"></span></td>
-                                    <td><span class="icon icon-new-delete m-0 deleteUser"></span></td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- Stakeholders Accordion -->
-               <div class="accordion mb-4" id="accordionExample1">
-                  <div class="accordion-item m-0">
-                     <h2 class="accordion-header" id="headingOne1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                           data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                           Stakeholders <span class="icon icon-entity-required ms-2"></span>
-                        </button>
-                     </h2>
-                     <div id="collapseOne1" class="accordion-collapse collapse show border-0"
-                        aria-labelledby="headingOne1">
-                        <div class="accordion-body pt-0">
-                           <form action="">
-                              <div class="stakeholdersform">
-                                 <div class="alert alert-danger flex-column fw-normal py-3 mb-5 border-0" role="alert">
-                                    <div class="d-flex align-items-center mb-2">
-                                       <span class="icon icon-alert-red"></span>
-                                       <small>California requires CEO, CFO and Secretary details</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                       <span class="icon icon-alert-red"></span>
-                                       <small>Texas requires XYZ</small>
-                                    </div>
-                                 </div>
-                                 <!-- OFFICERS SECTION -->
-                                 <div class="section mb-4 officeform">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                       <label class="form-label m-0">officers <span class="mandatory">*</span></label>
-                                       <div class="addmoreOfficer text-indigo d-flex align-items-center"
-                                          data-bs-toggle="collapse" data-bs-target="#officerForm" aria-expanded="false">
-                                          <span class="icon icon-add-circle-plus"></span> Add
-                                       </div>
-                                    </div>
-                                    <!-- Form inside collapse -->
-                                    <div id="officerForm" class="officerForm collapse mt-3">
-                                       <fieldset class="innerofficerForm fillingstate">
-                                          <div class="autocomplete-wrapper w-100" >
-                                             <input type="text" class="form-control mb-3 autocomplete-input" placeholder="Name" autocomplete="off" />
-                                             <div class="suggestions"></div>
-                                          </div>
-                                          <div class="custom-dropdown mb-3">
-                                             <select class="form-select" id="entityType-model" required>
-                                                <option value="" disabled selected hidden>Officer Type</option>
-                                                <option value="2">President/CEO</option>
-                                             </select>
-                                          </div>
-                                          <input type="text" class="form-control mb-3" id="addressOne"
-                                             placeholder="Address Line 1">
-                                          <input type="text" class="form-control mb-3" id="addressTwo"
-                                             placeholder="Address Line 2">
-                                          <div class="d-flex w-100 mb-4">
-                                             <input type="text" class="form-control me-3 " id="cityName"
-                                                placeholder="City">
-                                             <div class="custom-dropdown-state w-100 me-3">
-                                                <select class="form-select" id="formation-model" required>
-                                                   <option value="" disabled selected hidden>State</option>
-                                                   <option value="1">Alabama</option>
-                                                   <option value="2">Alaska</option>
-                                                   <option value="3">Arizona</option>
-                                                   <option value="4">Arkansas</option>
-                                                   <option value="5">California</option>
-                                                   <option value="6">Colorado</option>
-                                                   <option value="7">Connecticut</option>
-                                                   <option value="8">Delaware</option>
-                                                   <option value="9">District of Columbia</option>
-                                                   <option value="10">Florida</option>
-                                                   <option value="11">Georgia</option>
-                                                   <option value="12">Hawaii</option>
-                                                   <option value="13">Idaho</option>
-                                                   <option value="14">Illinois</option>
-                                                   <option value="15">Indiana</option>
-                                                   <option value="16">Iowa</option>
-                                                   <option value="17">Kansas</option>
-                                                   <option value="18">Kentucky</option>
-                                                   <option value="19">Louisiana</option>
-                                                   <option value="20">Maine</option>
-                                                   <option value="21">Maryland</option>
-                                                   <option value="22">Massachusetts</option>
-                                                   <option value="23">Michigan</option>
-                                                   <option value="24">Minnesota</option>
-                                                   <option value="25">Mississippi</option>
-                                                   <option value="26">Missouri</option>
-                                                   <option value="27">Montana</option>
-                                                   <option value="28">Nebraska</option>
-                                                   <option value="29">Nevada</option>
-                                                   <option value="30">New Hampshire</option>
-                                                   <option value="31">New Jersey</option>
-                                                   <option value="32">New Mexico</option>
-                                                   <option value="33">New York</option>
-                                                   <option value="34">North Carolina</option>
-                                                   <option value="35">North Dakota</option>
-                                                   <option value="36">Ohio</option>
-                                                   <option value="37">Oklahoma</option>
-                                                   <option value="38">Oregon</option>
-                                                   <option value="39">Pennsylvania</option>
-                                                   <option value="40">Rhode Island</option>
-                                                   <option value="41">South Carolina</option>
-                                                   <option value="42">South Dakota</option>
-                                                   <option value="43">Tennessee</option>
-                                                   <option value="44">Texas</option>
-                                                   <option value="45">Utah</option>
-                                                   <option value="46">Vermont</option>
-                                                   <option value="47">Virginia</option>
-                                                   <option value="48">Washington</option>
-                                                   <option value="49">West Virginia</option>
-                                                   <option value="50">Wisconsin</option>
-                                                   <option value="51">Wyoming</option>
-                                                </select>
-                                             </div>
-                                             <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
-                                          </div>
-                                          <div class="">
-                                             <button type="button"
-                                                class="officeraddBtn btn btn-small py-0 px-5 rounded-3 ms-3" id="">
-                                                ADD
-                                             </button>
-                                             <button type="button"
-                                                class="officerupdateBtn btn btn-small py-0 px-5 rounded-3 ms-3 d-none"
-                                                id="">
-                                                UPDATE
-                                             </button>
-                                          </div>
-                                       </fieldset>
+                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="CEO"> CEO</label>
+                                                   </li>
+                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="VC">VC</label>
+                                                   </li>
+                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="TL">TL</label>
+                                                   </li>
+                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="Other">Other</label>
+                                                   </li>
 
-                                       <!-- Officer Filled Form -->
-                                       <div id="officerForm3" class="officerForm3 toggle-form" style="display: none;">
-                                          <div class="filledstate ">
-                                             <div class="inputsfilled d-flex justify-content-between flex-column">
-                                                <div class="d-flex justify-content-between">
-                                                   <div>
-                                                      <p class="groupName m-0 ">Adam Smith</p>
-                                                      <p class="groupEmail m-0 mb-1 fw-normal text-disabled ">CFO</p>
-                                                      <p class="groupEmail m-0 fw-normal text-disabled ">1234 Maple
-                                                         Street Springfield, IL 62704</p>
-                                                   </div>
-                                                   <div class="d-flex align-items-center">
-                                                      <span class="icon icon-new-edit me-3" data-toggle="tooltip"
-                                                         aria-label="EDIT" data-bs-original-title="EDIT"></span>
-                                                      <span class="icon icon-new-delete m-0 deleteUser"
-                                                         data-bs-toggle="modal" data-bs-target="#userDelete"
-                                                         data-toggle="tooltip" aria-label="DELETE"
-                                                         title="DELETE"></span>
-                                                   </div>
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-between">
-                                                   <hr>
-                                                   <div class="d-flex justify-content-between">
-                                                      <div>
-                                                         <p class="groupName m-0 ">James Thornton</p>
-                                                         <p class="groupEmail m-0 mb-1 fw-normal text-disabled ">CFO</p>
-                                                         <p class="groupEmail m-0 fw-normal text-disabled ">5678 Oak
-                                                            AvenueRivertown, CA 90210</p>
-                                                      </div>
-                                                      <div class="d-flex align-items-center">
-                                                         <span class="icon icon-new-edit me-3" data-toggle="tooltip"
-                                                            aria-label="EDIT" data-bs-original-title="EDIT"></span>
-                                                         <span class="icon icon-new-delete m-0 deleteUser"
-                                                            data-bs-toggle="modal" data-bs-target="#userDelete"
-                                                            data-toggle="tooltip" aria-label="DELETE"
-                                                            title="DELETE"></span>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <!-- <div class="mt-3">
-                                                   <button type="button" class="moreadd d-flex align-items-center p-0 m-0 border-0 bg-white fw-normal">
-                                                       <span class="icon icon-add-circle-plus"></span> Add
-                                                   </button>
-                                               </div> -->
-                                          </div>
-                                          <fieldset class="newfillingstate mt-4 d-none">
-                                             <input type="text" class="form-control mb-3" id="firstName"
-                                                placeholder="Name">
-                                             <div class="custom-dropdown mb-3">
-                                                <select class="form-select" id="entityType-model" required>
-                                                   <option value="" disabled selected hidden>Officer Type</option>
-                                                   <option value="2">President/CEO</option>
-                                                </select>
-                                             </div>
-
-                                             <input type="text" class="form-control mb-3" id="addressOne"
-                                                placeholder="Address Line 1">
-                                             <input type="text" class="form-control mb-3" id="addressTwo"
-                                                placeholder="Address Line 2">
+                                                </ul>
+                                             </div> -->
+                                             <!-- <input type="text" class="form-control mb-3" id="addressOne" placeholder="Email Address"> -->
+                                             <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
+                                             <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
                                              <div class="d-flex w-100 ">
-                                                <input type="text" class="form-control me-3 " id="cityName"
-                                                   placeholder="City">
+                                                <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
                                                 <div class="custom-dropdown-state w-100 me-3">
-                                                   <select class="form-select" id="formation-model" required>
-                                                      <option value="" disabled selected hidden>State</option>
+                                                   <select class="form-select" id="formation-model" required="">
+                                                      <option value="" disabled="" selected="" hidden="">State</option>
                                                       <option value="1">Alabama</option>
                                                       <option value="2">Alaska</option>
                                                       <option value="3">Arizona</option>
@@ -4332,34 +3915,130 @@
                                                       <option value="51">Wyoming</option>
                                                    </select>
                                                 </div>
-                                                <input type="text" class="form-control" id="zipCode"
-                                                   placeholder="Zipcode">
+                                                <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
                                              </div>
-                                             <div class=" mt-4">
-                                                <button type="button"
-                                                   class="newofficeraddBtn btn btn-small py-0 px-5 rounded-3 ms-3"
-                                                   id="">
+                                             <!-- <div class="">
+                                                <button type="button" class="individualaddBtn btn btn-small py-0 px-5 rounded-3 ms-3" id="">
                                                    ADD
                                                 </button>
-                                             </div>
-                                          </fieldset>
-                                       </div>
+                                                <button type="button" class="individualupdateBtn btn btn-small py-0 px-5 rounded-3 ms-3 d-none" id="">
+                                                   UPDATE
+                                                </button>
+                                             </div> -->
+
+                    </div>
+                    <!-- Disabled Form (Initially Hidden) -->
+                    <div id="disabledFormRegisteredAgent7" style="display: none;">
+                                             <input type="text" class="form-control" id="firstName" placeholder="corporate Name">
+                                             <!-- <input type="text" class="form-control mb-3" id="addressOne" placeholder="Email Address">
+                                             <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
+                                             <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2"> -->
+                                             <!-- <div class="d-flex w-100 mb-4">
+                                                <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
+                                                <div class="custom-dropdown-state w-100 me-3">
+                                                   <select class="form-select" id="formation-model" required="">
+                                                      <option value="" disabled="" selected="" hidden="">State</option>
+                                                      <option value="1">Alabama</option>
+                                                      <option value="2">Alaska</option>
+                                                      <option value="3">Arizona</option>
+                                                      <option value="4">Arkansas</option>
+                                                      <option value="5">California</option>
+                                                      <option value="6">Colorado</option>
+                                                      <option value="7">Connecticut</option>
+                                                      <option value="8">Delaware</option>
+                                                      <option value="9">District of Columbia</option>
+                                                      <option value="10">Florida</option>
+                                                      <option value="11">Georgia</option>
+                                                      <option value="12">Hawaii</option>
+                                                      <option value="13">Idaho</option>
+                                                      <option value="14">Illinois</option>
+                                                      <option value="15">Indiana</option>
+                                                      <option value="16">Iowa</option>
+                                                      <option value="17">Kansas</option>
+                                                      <option value="18">Kentucky</option>
+                                                      <option value="19">Louisiana</option>
+                                                      <option value="20">Maine</option>
+                                                      <option value="21">Maryland</option>
+                                                      <option value="22">Massachusetts</option>
+                                                      <option value="23">Michigan</option>
+                                                      <option value="24">Minnesota</option>
+                                                      <option value="25">Mississippi</option>
+                                                      <option value="26">Missouri</option>
+                                                      <option value="27">Montana</option>
+                                                      <option value="28">Nebraska</option>
+                                                      <option value="29">Nevada</option>
+                                                      <option value="30">New Hampshire</option>
+                                                      <option value="31">New Jersey</option>
+                                                      <option value="32">New Mexico</option>
+                                                      <option value="33">New York</option>
+                                                      <option value="34">North Carolina</option>
+                                                      <option value="35">North Dakota</option>
+                                                      <option value="36">Ohio</option>
+                                                      <option value="37">Oklahoma</option>
+                                                      <option value="38">Oregon</option>
+                                                      <option value="39">Pennsylvania</option>
+                                                      <option value="40">Rhode Island</option>
+                                                      <option value="41">South Carolina</option>
+                                                      <option value="42">South Dakota</option>
+                                                      <option value="43">Tennessee</option>
+                                                      <option value="44">Texas</option>
+                                                      <option value="45">Utah</option>
+                                                      <option value="46">Vermont</option>
+                                                      <option value="47">Virginia</option>
+                                                      <option value="48">Washington</option>
+                                                      <option value="49">West Virginia</option>
+                                                      <option value="50">Wisconsin</option>
+                                                      <option value="51">Wyoming</option>
+                                                   </select>
+                                                </div>
+                                                <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
+                                             </div> -->
+                                             <!-- <div class="">
+                                                <button type="button" class="corporateaddBtn btn btn-small py-0 px-5 rounded-3 ms-3" id="">
+                                                   ADD
+                                                </button>
+                                                <button type="button" class="corporateupdateBtn btn btn-small py-0 px-5 rounded-3 ms-3 d-none" id="">
+                                                   UPDATE
+                                                </button>
+                                             </div> -->
+
+                    </div>
+
+
+                  </form>
+                 
+               </div>
+               <!-- Stakeholders Accordion -->
+               <div class="accordion mb-4" id="accordionExample1">
+                  <div class="accordion-item m-0">
+                     <h2 class="accordion-header" id="headingOne1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                           data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                           Stakeholders <span class="icon icon-entity-required ms-2"></span>
+                        </button>
+                     </h2>
+                     <div id="collapseOne1" class="accordion-collapse collapse show border-0"
+                        aria-labelledby="headingOne1">
+                        <div class="accordion-body pt-0">
+                           <form action="">
+                              <div class="stakeholdersform">
+                                 <div class="alert alert-danger flex-column fw-normal py-3 mb-5 border-0" role="alert">
+                                    <div class="d-flex align-items-center mb-2">
+                                       <span class="icon icon-alert-red"></span>
+                                       <small>California requires CEO, CFO and Secretary details</small>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                       <span class="icon icon-alert-red"></span>
+                                       <small>Texas requires XYZ</small>
                                     </div>
                                  </div>
-                                 <hr>
+
                                  <!-- MANAGERS SECTION -->
                                  <div class="section">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                       <label class="form-label m-0">MANAGERS <span class="mandatory">*</span></label>
-                                       <div class="addmoreManager text-indigo d-flex align-items-center"
-                                          data-bs-toggle="collapse" data-bs-target="#managerForm" aria-expanded="false">
-                                          <span class="icon icon-add-circle-plus"></span> Add
-                                       </div>
-                                    </div>
                                     <!-- Form inside collapse -->
-                                    <div id="managerForm" class="collapse mt-3">
+                                    <div id="managerForm" class=" mt-3">
                                        <!-- Radio buttons to select Individual or Corporate -->
-                                       <div class="mb-4 managercheckbox-div">
+                                       <div class="mb-4 d-flex">
                                           <div class="d-flex gap-4">
                                              <div class="form-check">
                                                 <input class="form-check-input toggle-radio" type="radio"
@@ -4375,6 +4054,10 @@
                                                    for="corporateFREX">Corporate</label>
                                              </div>
                                           </div>
+                                            <div class="addmoreManager text-indigo d-flex align-items-center justify-content-end w-100"
+                                          data-bs-toggle="" data-bs-target="#managerForm" aria-expanded="false">
+                                          <span class="icon icon-add-circle-plus"></span> Add
+                                       </div>
                                        </div>
                                        <!-- Individual Form -->
                                        <div id="individualFormFREX" class="individualForm toggle-form">
@@ -5267,7 +4950,7 @@
                   <fieldset>
                     <label for="entityType-model" class="form-label">Select Entity <span class="mandatory">*</span></label>
                     <div class="custom-dropdown">
-                      <select class="form-select" id="entityType-model">
+                      <select class="form-select select2 home-entity-field" id="entityType-model">
                         <option value="1">John’s Pizza - CA</option>
                         <option value="2">RASA Realty LLC
                         </option>
@@ -5364,30 +5047,197 @@
             <!-- Modal Body Start-->
             <div class="modal-body">
 
-                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
-                  <div class="d-flex justify-content-between align-items-center w-100">
-                     <span class="fw-bold text-uppercase">current agent details <span class="mandatory">*</span></span>
-                     <div class="d-flex align-items-center flex-column upload-group">
-                        <div class="d-flex">
-                           <div class="form-check me-4">
-                              <input class="form-check-input no-checkbox" type="checkbox" id="no41" name="uploadChoice" >
-                              <label class="form-check-label rights-label" for="no41">An Individual</label>
-                           </div>
-                           <div class="form-check">
-                              <input class="form-check-input yes-checkbox" type="checkbox" id="yes41" name="uploadChoice">
-                              <label class="form-check-label rights-label" for="yes41">Corporate Agent</label>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+<div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                  <form action="">
+                 <div class="d-flex justify-content-between align-items-start mb-4">
+            <label class="fw-bold fs-12 text-uppercase inactive" for="">current agent<br>details <span class="mandatory">*</span></label>
+            <fieldset>
+              <div class="d-flex gap-4">
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="enabledasp" name="registeredAgentStatus8" value="enabled" checked="">
+                  <label class="form-check-label rights-label" for="enabledasp">An Individual</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="disabledasp" name="registeredAgentStatus8" value="disabled">
+                  <label class="form-check-label rights-label inactive" for="disabledasp">Corporate Agent</label>
+                </div>
+              </div>
+                        <!-- Enabled Form -->
+                      </fieldset>
+                    </div>
+                    <div id="enabledFormRegisteredAgent8">
+                     <div class="autocomplete-wrapper w-100">
+                                             <input type="text" class="form-control mb-3 autocomplete-input" placeholder="Name" autocomplete="off">
+                                             <div class="suggestions" style="display: none;"></div>
+                                          </div>
+                                             <!-- <div class="filter2-dropdown additional-search dropdown mb-3 ">
+                                                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg" id="roleContainer1" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0"><input type="button" class="search-input" id="roleSearch1" value="Role" autocomplete="off"></div>
+                                                <ul class="dropdown-menu w-100" id="roleDropdown1"><input type="text" class="dropdown-search-input" placeholder="Search..." autocomplete="off">
 
-                  <!-- Upload button -->
-                  <div class="upload-btn mt-3" style="display: none;">
-                     <fieldset class="">
-                     <label for="" class="form-label inactive">Name </label>
-                     <input type="text" class="form-control" id="" placeholder="ame">
-                  </fieldset>
-                  </div>
+                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="CEO"> CEO</label>
+                                                   </li>
+                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="VC">VC</label>
+                                                   </li>
+                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="TL">TL</label>
+                                                   </li>
+                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="Other">Other</label>
+                                                   </li>
+
+                                                </ul>
+                                             </div> -->
+                                             <!-- <input type="text" class="form-control mb-3" id="addressOne" placeholder="Email Address"> -->
+                                             <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
+                                             <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
+                                             <div class="d-flex w-100 ">
+                                                <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
+                                                <div class="custom-dropdown-state w-100 me-3">
+                                                   <select class="form-select" id="formation-model" required="">
+                                                      <option value="" disabled="" selected="" hidden="">State</option>
+                                                      <option value="1">Alabama</option>
+                                                      <option value="2">Alaska</option>
+                                                      <option value="3">Arizona</option>
+                                                      <option value="4">Arkansas</option>
+                                                      <option value="5">California</option>
+                                                      <option value="6">Colorado</option>
+                                                      <option value="7">Connecticut</option>
+                                                      <option value="8">Delaware</option>
+                                                      <option value="9">District of Columbia</option>
+                                                      <option value="10">Florida</option>
+                                                      <option value="11">Georgia</option>
+                                                      <option value="12">Hawaii</option>
+                                                      <option value="13">Idaho</option>
+                                                      <option value="14">Illinois</option>
+                                                      <option value="15">Indiana</option>
+                                                      <option value="16">Iowa</option>
+                                                      <option value="17">Kansas</option>
+                                                      <option value="18">Kentucky</option>
+                                                      <option value="19">Louisiana</option>
+                                                      <option value="20">Maine</option>
+                                                      <option value="21">Maryland</option>
+                                                      <option value="22">Massachusetts</option>
+                                                      <option value="23">Michigan</option>
+                                                      <option value="24">Minnesota</option>
+                                                      <option value="25">Mississippi</option>
+                                                      <option value="26">Missouri</option>
+                                                      <option value="27">Montana</option>
+                                                      <option value="28">Nebraska</option>
+                                                      <option value="29">Nevada</option>
+                                                      <option value="30">New Hampshire</option>
+                                                      <option value="31">New Jersey</option>
+                                                      <option value="32">New Mexico</option>
+                                                      <option value="33">New York</option>
+                                                      <option value="34">North Carolina</option>
+                                                      <option value="35">North Dakota</option>
+                                                      <option value="36">Ohio</option>
+                                                      <option value="37">Oklahoma</option>
+                                                      <option value="38">Oregon</option>
+                                                      <option value="39">Pennsylvania</option>
+                                                      <option value="40">Rhode Island</option>
+                                                      <option value="41">South Carolina</option>
+                                                      <option value="42">South Dakota</option>
+                                                      <option value="43">Tennessee</option>
+                                                      <option value="44">Texas</option>
+                                                      <option value="45">Utah</option>
+                                                      <option value="46">Vermont</option>
+                                                      <option value="47">Virginia</option>
+                                                      <option value="48">Washington</option>
+                                                      <option value="49">West Virginia</option>
+                                                      <option value="50">Wisconsin</option>
+                                                      <option value="51">Wyoming</option>
+                                                   </select>
+                                                </div>
+                                                <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
+                                             </div>
+                                             <!-- <div class="">
+                                                <button type="button" class="individualaddBtn btn btn-small py-0 px-5 rounded-3 ms-3" id="">
+                                                   ADD
+                                                </button>
+                                                <button type="button" class="individualupdateBtn btn btn-small py-0 px-5 rounded-3 ms-3 d-none" id="">
+                                                   UPDATE
+                                                </button>
+                                             </div> -->
+
+                    </div>
+                    <!-- Disabled Form (Initially Hidden) -->
+                    <div id="disabledFormRegisteredAgent8" style="display: none;">
+                                             <input type="text" class="form-control" id="firstName" placeholder="corporate Name">
+                                             <!-- <input type="text" class="form-control mb-3" id="addressOne" placeholder="Email Address">
+                                             <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
+                                             <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2"> -->
+                                             <!-- <div class="d-flex w-100 mb-4">
+                                                <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
+                                                <div class="custom-dropdown-state w-100 me-3">
+                                                   <select class="form-select" id="formation-model" required="">
+                                                      <option value="" disabled="" selected="" hidden="">State</option>
+                                                      <option value="1">Alabama</option>
+                                                      <option value="2">Alaska</option>
+                                                      <option value="3">Arizona</option>
+                                                      <option value="4">Arkansas</option>
+                                                      <option value="5">California</option>
+                                                      <option value="6">Colorado</option>
+                                                      <option value="7">Connecticut</option>
+                                                      <option value="8">Delaware</option>
+                                                      <option value="9">District of Columbia</option>
+                                                      <option value="10">Florida</option>
+                                                      <option value="11">Georgia</option>
+                                                      <option value="12">Hawaii</option>
+                                                      <option value="13">Idaho</option>
+                                                      <option value="14">Illinois</option>
+                                                      <option value="15">Indiana</option>
+                                                      <option value="16">Iowa</option>
+                                                      <option value="17">Kansas</option>
+                                                      <option value="18">Kentucky</option>
+                                                      <option value="19">Louisiana</option>
+                                                      <option value="20">Maine</option>
+                                                      <option value="21">Maryland</option>
+                                                      <option value="22">Massachusetts</option>
+                                                      <option value="23">Michigan</option>
+                                                      <option value="24">Minnesota</option>
+                                                      <option value="25">Mississippi</option>
+                                                      <option value="26">Missouri</option>
+                                                      <option value="27">Montana</option>
+                                                      <option value="28">Nebraska</option>
+                                                      <option value="29">Nevada</option>
+                                                      <option value="30">New Hampshire</option>
+                                                      <option value="31">New Jersey</option>
+                                                      <option value="32">New Mexico</option>
+                                                      <option value="33">New York</option>
+                                                      <option value="34">North Carolina</option>
+                                                      <option value="35">North Dakota</option>
+                                                      <option value="36">Ohio</option>
+                                                      <option value="37">Oklahoma</option>
+                                                      <option value="38">Oregon</option>
+                                                      <option value="39">Pennsylvania</option>
+                                                      <option value="40">Rhode Island</option>
+                                                      <option value="41">South Carolina</option>
+                                                      <option value="42">South Dakota</option>
+                                                      <option value="43">Tennessee</option>
+                                                      <option value="44">Texas</option>
+                                                      <option value="45">Utah</option>
+                                                      <option value="46">Vermont</option>
+                                                      <option value="47">Virginia</option>
+                                                      <option value="48">Washington</option>
+                                                      <option value="49">West Virginia</option>
+                                                      <option value="50">Wisconsin</option>
+                                                      <option value="51">Wyoming</option>
+                                                   </select>
+                                                </div>
+                                                <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
+                                             </div> -->
+                                             <!-- <div class="">
+                                                <button type="button" class="corporateaddBtn btn btn-small py-0 px-5 rounded-3 ms-3" id="">
+                                                   ADD
+                                                </button>
+                                                <button type="button" class="corporateupdateBtn btn btn-small py-0 px-5 rounded-3 ms-3 d-none" id="">
+                                                   UPDATE
+                                                </button>
+                                             </div> -->
+
+                    </div>
+
+
+                  </form>
+                 
                </div>
 
 
@@ -5474,7 +5324,7 @@
                   California Services
                 </button>
               </h2>
-              <div id="collapseOne4" class="accordion-collapse collapse show border-0" aria-labelledby="headingOne4" data-bs-parent="#accordionExample4">
+              <div id="collapseOne4" class="accordion-collapse collapse  border-0" aria-labelledby="headingOne4" data-bs-parent="#accordionExample4">
                 <div class="accordion-body pt-0">
                   <form action="">
                     <!-- Form inside collapse -->
@@ -5589,11 +5439,7 @@
                             </div>
                             <input type="text" class="form-control" id="zipCode" placeholder="Zipcode" />
                           </div>
-                          <div class="">
-                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">
-                              SAVE
-                            </button>
-                          </div>
+                         
                         </fieldset>
                       </div>
 
@@ -5601,11 +5447,7 @@
                         <fieldset class="corporatefillingstate">
                           <input type="text" class="form-control mb-4" id="firstName"
                             placeholder="corporate agent's Name" />
-                          <div class="">
-                            <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="saveBtn">
-                              SAVE
-                            </button>
-                          </div>
+                          
                         </fieldset>
                       </div>
                     </div>
@@ -5709,8 +5551,8 @@
                     <div id="disabledFormAnnualReport6" style="display: none">
                       <div class="d-flex align-items-start justify-content-between mt-4">
                         <div class="d-flex">
-                          <span class="fw-bold text-uppercase">Suppress Notifications and<br />
-                            Reminders</span>
+                          <span class="fw-bold text-uppercase fs-12">Suppress Notifications and Reminders
+                            </span>
                           <!-- <span class="icon icon-outline-info m-0"></span> -->
                         </div>
 
@@ -5729,41 +5571,21 @@
 
                     <hr />
                     <!-- Preparation of Filing Service -->
-                    <div class="d-flex justify-content-between align-items-start">
-                      <span class="d-flex align-items-start fw-bold text-uppercase">Preparation and Filing
-                        of<br />entity
-                        documents
-                        <span class="icon icon-outline-info m-0"></span></span>
-                      <div class="d-flex gap-4">
-                        <div class="form-check">
-                          <input class="form-check-input toggle-radio" type="radio" id="enabledcaFRRA"
-                            name="preparationOfFiling6" value="enabled" checked />
-                          <label class="form-check-label rights-label" for="enabledcaFRRA">Enabled</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input toggle-radio" type="radio" id="disabledcaFRRA"
-                            name="preparationOfFiling6" value="disabled" disabled />
-                          <label class="form-check-label rights-label" for="disabledcaFRRA" disabled>Disabled</label>
-                        </div>
-                      </div>
+                    <div class="d-flex  align-items-start">
+                     <input class="form-check-input me-3" type="checkbox" id="form25102dCheckbox1" data-bs-toggle="collapse" data-bs-target="#form25102d1" aria-expanded="true" checked="">
+                      <label class="fw-bold fs-12 text-uppercase" for="form25102dCheckbox1">Initial filing options</label>
                     </div>
-                    <div id="enabledFormPreparationOfFiling6 ">
-                      <div class="mt-4 component-block">
+                    <div class="collapse show" id="form25102d1">
+                     <div id="enabledFormPreparationOfFiling4 ">
+<div class="mt-4 component-block">
   <div class="d-flex flex-column">
     <div class="d-flex justify-content-between typecheckradio">
-      <label class="form-check-label rights-label" for="rushFilingRA">Rush Filing</label>
-      <input class="form-check-input" id="rushFilingRA" name="filingOption3" type="checkbox">
+      <label class="form-check-label rights-label" for="rushFiling1">Rush Filing</label>
+      <input class="form-check-input" id="rushFiling1" name="filingOption1" type="checkbox">
     </div>
-    <div class="d-flex justify-content-between mt-3 typecheckradio certifiedCheck">
-      <label class="form-check-label rights-label" for="certifiedCopyRA">Certified copy</label>
-      <input class="form-check-input yes-checkbox" id="certifiedCopyRA" name="filingOption3" type="checkbox">
-    </div>
-  </div>
-  <!-- Upload button -->
-  <div class="qty-btn mt-3" style="display: none">
-                          <div class="d-flex ms-auto align-items-center justify-content-between">
-                            <div class="fs-6 fw-normal me-3">Quantity</div>
-                            <div class="border rounded-2 p-2 d-flex align-items-center w-16">
+    <div class="d-flex justify-content-between align-items-center mt-3 typecheckradio certifiedCheck">
+      <label class="form-check-label rights-label m-0" for="certifiedCopy1">Certified copy</label>
+                                  <div class="border rounded-2 p-2 d-flex align-items-center w-16">
                               <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
                                 <input class="ps-1 border-0" type="text" id="numberInput2" value="0" style="max-width: 30px">
                                 <div class="d-flex">
@@ -5772,15 +5594,52 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
+    </div>
   </div>
+
 </div>
                     </div>
-                    <!-- Disabled Form (Initially Hidden) -->
-                    <div id="disabledFormPreparationOfFiling6" style="display: none"></div>
+                    </div>
                   </form>
                 </div>
               </div>
+
+              <form class="p-3 service-titles px-4 py-3 border-start border-end border-bottom">
+         <div class="d-flex justify-content-between align-items-center mb-4">
+            <label class="fw-bold fs-12 text-uppercase inactive" for="">REGISTERED AGENT SERVICE</label>
+            <fieldset>
+              <div class="d-flex gap-4">
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="" name="" value="enabled" checked="">
+                  <label class="form-check-label rights-label " for="">Enabled</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="" name="" value="disabled">
+                  <label class="form-check-label rights-label " for="">Disabled</label>
+                </div>
+              </div>
+                        <!-- Enabled Form -->
+                      </fieldset>
+                    </div>
+
+                    <hr>
+                    <!-- Annual Report Service -->
+                    <div class="d-flex justify-content-between align-items-center">
+                      <label class="fw-bold fs-12 text-uppercase inactive" for=""> ANNUAL REPORT SERVICE
+                      </label>
+                      <div class="d-flex gap-4">
+                        <div class="form-check">
+                          <input class="form-check-input toggle-radio" type="radio" id="" name="" value="enabled" checked="">
+                          <label class="form-check-label rights-label " for="">Enabled</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input toggle-radio" type="radio" id="" name="" value="disabled">
+                          <label class="form-check-label rights-label " for="">Disabled</label>
+                        </div>
+                      </div>
+                    </div>
+
+      </form>
             </div>
           </div>
 
@@ -6165,8 +6024,8 @@
                   <fieldset>
                     <label for="entityType-model" class="form-label">Select Entity <span class="mandatory">*</span></label>
                     <div class="custom-dropdown">
-                      <select class="form-select" id="entityType-model">
-                        <option value="1">John’s Pizza - CA</option>
+                      <select class="form-select select2 home-entity-field" id="entityType-model">
+                        <option value="1">Select</option>
                         <option value="2">RASA Realty LLC
                         </option>
                         <option value="3">Pikewood Group, LLC

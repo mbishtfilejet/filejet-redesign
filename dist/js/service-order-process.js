@@ -226,6 +226,8 @@ setupToggleForms([
   'annualReport4',
   'preparationOfFiling3',
   'registeredAgentStatus6',
+  'registeredAgentStatus7',
+  'registeredAgentStatus8',
   'annualReport5',
   'annualReport6',
   'preparationOfFiling4',
@@ -704,6 +706,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         );
     });
+      $('#NWexistingForeign').on('show.bs.modal', function (e) {
+        $('.home-entity-field').select2(
+            {
+                dropdownParent: $('#NWexistingForeign'),
+            }
+        );
+    });
+          $('#appointRA').on('show.bs.modal', function (e) {
+        $('.home-entity-field').select2(
+            {
+                dropdownParent: $('#appointRA'),
+            }
+        );
+    });
+              $('#requestCS').on('show.bs.modal', function (e) {
+        $('.home-entity-field').select2(
+            {
+                dropdownParent: $('#requestCS'),
+            }
+        );
+    });
 
       $('#addEXEntity').on('show.bs.modal', function (e) {
         $('.home-entity-field').select2(
@@ -759,4 +782,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-    
+      $(document).ready(function() {
+    $('.search-select').select2({
+      placeholder: "Select an option",
+      allowClear: true
+    });
+  });
