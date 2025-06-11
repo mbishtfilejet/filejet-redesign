@@ -735,10 +735,12 @@ $(document).ready(function () {
         $(modalId).on('show.bs.modal', function (e) {
             $('.home-entity-field').select2({
                 dropdownParent: $(modalId),
+                placeholder: "Select Entity",  // Add placeholder here
             });
         });
     });
 });
+
 
 
 
@@ -787,9 +789,6 @@ $(document).ready(function () {
   });
 
 
-      $(document).ready(function() {
-    $('.search-select').select2({
-      placeholder: "Select an option",
-      allowClear: true
+ $(document).ready(function() {
+        $("#formValidation").validationEngine();
     });
-  });
