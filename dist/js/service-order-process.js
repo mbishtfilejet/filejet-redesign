@@ -726,42 +726,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // selet2 
-  $('#NWForeign').on('show.bs.modal', function (e) {
-        $('.home-entity-field').select2(
-            {
-                dropdownParent: $('#NWForeign'),
-            }
-        );
-    });
-      $('#NWexistingForeign').on('show.bs.modal', function (e) {
-        $('.home-entity-field').select2(
-            {
-                dropdownParent: $('#NWexistingForeign'),
-            }
-        );
-    });
-          $('#appointRA').on('show.bs.modal', function (e) {
-        $('.home-entity-field').select2(
-            {
-                dropdownParent: $('#appointRA'),
-            }
-        );
-    });
-              $('#requestCS').on('show.bs.modal', function (e) {
-        $('.home-entity-field').select2(
-            {
-                dropdownParent: $('#appointRA'),
-            }
-        );
-    });
+$(document).ready(function () {
+    // List of modal IDs
+    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#addEXEntity'];
 
-      $('#addEXEntity').on('show.bs.modal', function (e) {
-        $('.home-entity-field').select2(
-            {
-                dropdownParent: $('#addEXEntity'),
-            }
-        );
+    // Attach the same event handler to all modals
+    modals.forEach(modalId => {
+        $(modalId).on('show.bs.modal', function (e) {
+            $('.home-entity-field').select2({
+                dropdownParent: $(modalId),
+            });
+        });
     });
+});
+
 
 
 // annual report filing 
