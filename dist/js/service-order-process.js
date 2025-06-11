@@ -408,169 +408,196 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// officer form start
-document.addEventListener("DOMContentLoaded", function () {
-  // Handle add officer button
-  document.querySelectorAll(".officeraddBtn").forEach(button => {
-    button.addEventListener("click", function () {
-      const container = button.closest(".officeform");
-      const fillingForm = container.querySelector(".innerofficerForm");
-      const filledForm = container.querySelector(".officerForm3");
 
-      if (fillingForm && filledForm) {
-        fillingForm.style.display = "none";
-        filledForm.style.display = "block";
-      }
-
-      const addBtn = container.querySelector(".officeraddBtn");
-      const updateBtn = container.querySelector(".officerupdateBtn");
-      if (addBtn && updateBtn) {
-        addBtn.classList.remove("d-none");
-        updateBtn.classList.add("d-none");
-      }
-    });
-  });
-
-  // Handle edit officer button
-  document.querySelectorAll(".editUser").forEach(editBtn => {
-    editBtn.addEventListener("click", function () {
-      const container = editBtn.closest(".officeform");
-      const fillingForm = container.querySelector(".innerofficerForm");
-      const filledForm = container.querySelector(".officerForm3");
-
-      if (fillingForm && filledForm) {
-        fillingForm.style.display = "block";
-        filledForm.style.display = "none";
-      }
-
-      const addBtn = container.querySelector(".officeraddBtn");
-      const updateBtn = container.querySelector(".officerupdateBtn");
-      if (addBtn && updateBtn) {
-        addBtn.classList.add("d-none");
-        updateBtn.classList.remove("d-none");
-      }
-
-      fillingForm.scrollIntoView({ behavior: "smooth" });
-    });
-  });
-  
-
-  // Handle "More Add" officer button
-  document.querySelectorAll(".moreadd").forEach(button => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-      const container = button.closest(".officeform");
-      const newForm = container.querySelector(".newfillingstate");
-
-      if (newForm) {
-        newForm.classList.remove("d-none");
-        newForm.style.display = "block";
-        newForm.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
-});
 
 
 
 // manager form start
 document.addEventListener("DOMContentLoaded", function () {
-  // Generic handler setup
-  function setupFormHandlers({
-    addBtnClass,
-    updateBtnClass,
-    formClass,
-    filledFormClass,
-    fillingStateClass,
-    newFillingStateClass,
-    moreAddBtnClass
-  }) {
-    // Handle Add Button
-    document.querySelectorAll(`.${addBtnClass}`).forEach(button => {
-      button.addEventListener("click", function () {
-        const form = button.closest(`.${formClass}`);
-        const fillingForm = form.querySelector(`.${fillingStateClass}`);
-        const filledForm = form.nextElementSibling;
+    let sectionCounter = 1;
 
-        if (fillingForm && filledForm && filledForm.classList.contains(filledFormClass)) {
-          fillingForm.style.display = "none";
-          filledForm.style.display = "block";
+    function setupDynamicFormSection({
+        sectionSelector,
+        radioSelector,
+        individualFormSelector,
+        corporateFormSelector,
+        individualFilledSelector,
+        corporateFilledSelector,
+        individualAddBtnSelector,
+        corporateAddBtnSelector,
+        individualUpdateBtnSelector,
+        corporateUpdateBtnSelector,
+        addMoreBtnSelector,
+        radioContainerSelector
+    }) {
+        document.querySelectorAll(sectionSelector).forEach(section => {
+            assignUniqueIDs(section, {
+                radioSelector,
+                individualFormSelector,
+                corporateFormSelector
+            });
+            setupSection(section);
+        });
+
+        function setupSection(section) {
+            const individualForm = section.querySelector(individualFormSelector);
+            const corporateForm = section.querySelector(corporateFormSelector);
+            const individualFilledForm = section.querySelector(individualFilledSelector);
+            const corporateFilledForm = section.querySelector(corporateFilledSelector);
+            const individualAddBtn = section.querySelector(individualAddBtnSelector);
+            const corporateAddBtn = section.querySelector(corporateAddBtnSelector);
+            const individualUpdateBtn = section.querySelector(individualUpdateBtnSelector);
+            const corporateUpdateBtn = section.querySelector(corporateUpdateBtnSelector);
+            const addMoreManagerBtn = section.querySelector(addMoreBtnSelector);
+            const radioContainer = section.querySelector(radioContainerSelector);
+            const toggleRadios = section.querySelectorAll(radioSelector);
+
+            toggleRadios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (this.dataset.target === individualForm.id) {
+                        individualForm.style.display = 'block';
+                        corporateForm.style.display = 'none';
+                    } else if (this.dataset.target === corporateForm.id) {
+                        corporateForm.style.display = 'block';
+                        individualForm.style.display = 'none';
+                    }
+                });
+            });
+
+            individualAddBtn.addEventListener('click', function () {
+                individualForm.style.display = 'none';
+                corporateForm.style.display = 'none';
+                addMoreManagerBtn.style.display = 'flex';
+                individualFilledForm.style.display = 'block';
+                individualAddBtn.style.display = 'none';
+                individualUpdateBtn.classList.remove('d-none');
+                radioContainer.style.display = 'none';
+            });
+
+            corporateAddBtn.addEventListener('click', function () {
+                individualForm.style.display = 'none';
+                corporateForm.style.display = 'none';
+                addMoreManagerBtn.style.display = 'flex';
+                corporateFilledForm.style.display = 'block';
+                corporateAddBtn.style.display = 'none';
+                corporateUpdateBtn.classList.remove('d-none');
+                radioContainer.style.display = 'none';
+            });
+
+            individualFilledForm.querySelectorAll('.icon-new-edit').forEach(editIcon => {
+                editIcon.addEventListener('click', function () {
+                    individualForm.style.display = 'block';
+                    addMoreManagerBtn.style.display = 'none';
+                    individualFilledForm.style.display = 'none';
+                    individualAddBtn.style.display = 'none';
+                    individualUpdateBtn.classList.remove('d-none');
+                    radioContainer.style.display = 'flex';
+                });
+            });
+
+            corporateFilledForm.querySelectorAll('.icon-new-edit').forEach(editIcon => {
+                editIcon.addEventListener('click', function () {
+                    corporateForm.style.display = 'block';
+                    addMoreManagerBtn.style.display = 'none';
+                    corporateFilledForm.style.display = 'none';
+                    corporateAddBtn.style.display = 'none';
+                    corporateUpdateBtn.classList.remove('d-none');
+                    radioContainer.style.display = 'flex';
+                });
+            });
+
+            addMoreManagerBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                addMoreManagerBtn.style.display = 'none';
+
+                const newSection = section.cloneNode(true);
+                resetSection(newSection);
+
+                if (individualFilledForm.style.display === 'block') {
+                    individualFilledForm.parentNode.insertBefore(newSection, individualFilledForm);
+                } else if (corporateFilledForm.style.display === 'block') {
+                    corporateFilledForm.parentNode.insertBefore(newSection, corporateFilledForm);
+                } else {
+                    section.parentNode.insertBefore(newSection, section);
+                }
+
+                assignUniqueIDs(newSection, {
+                    radioSelector,
+                    individualFormSelector,
+                    corporateFormSelector
+                });
+                setupSection(newSection);
+            });
         }
 
-        const updateBtn = form.querySelector(`.${updateBtnClass}`);
-        if (button && updateBtn) {
-          button.classList.remove("d-none");
-          updateBtn.classList.add("d-none");
+        function resetSection(section) {
+            section.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
+            section.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+            section.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+            section.querySelectorAll('.search-input').forEach(input => input.value = 'Role');
+
+            section.querySelector(individualFormSelector).style.display = 'block';
+            section.querySelector(corporateFormSelector).style.display = 'none';
+            section.querySelector(individualFilledSelector).style.display = 'none';
+            section.querySelector(corporateFilledSelector).style.display = 'none';
+
+            section.querySelector(individualAddBtnSelector).style.display = '';
+            section.querySelector(corporateAddBtnSelector).style.display = '';
+            section.querySelector(individualUpdateBtnSelector).classList.add('d-none');
+            section.querySelector(corporateUpdateBtnSelector).classList.add('d-none');
+
+            section.querySelector(radioContainerSelector).style.display = 'flex';
+            section.querySelector(addMoreBtnSelector).style.display = 'flex';
         }
 
-        // ✅ Hide managercheckbox-div
-        document.querySelectorAll(".managercheckbox-div").forEach(div => {
-      div.style.display = "none";
-       });
-      });
+        function assignUniqueIDs(section, { radioSelector, individualFormSelector, corporateFormSelector }) {
+            const individualForm = section.querySelector(individualFormSelector);
+            const corporateForm = section.querySelector(corporateFormSelector);
+            const radios = section.querySelectorAll(radioSelector);
+
+            const uniqueSuffix = sectionCounter++;
+
+            individualForm.id = 'individualForm_' + uniqueSuffix;
+            corporateForm.id = 'corporateForm_' + uniqueSuffix;
+
+            const individualRadio = radios[0];
+            const corporateRadio = radios[1];
+
+            individualRadio.dataset.target = individualForm.id;
+            corporateRadio.dataset.target = corporateForm.id;
+
+            individualRadio.name = 'managerType_' + uniqueSuffix;
+            corporateRadio.name = 'managerType_' + uniqueSuffix;
+
+            individualRadio.id = 'individual_' + uniqueSuffix;
+            corporateRadio.id = 'corporate_' + uniqueSuffix;
+
+            const individualLabel = section.querySelector(`label[for^="individual"]`);
+            const corporateLabel = section.querySelector(`label[for^="corporate"]`);
+
+            if (individualLabel) individualLabel.setAttribute('for', individualRadio.id);
+            if (corporateLabel) corporateLabel.setAttribute('for', corporateRadio.id);
+        }
+    }
+
+    // Call this function like this:
+    setupDynamicFormSection({
+        sectionSelector: '.section',
+        radioSelector: '.toggle-radio',
+        individualFormSelector: '.individualForm',
+        corporateFormSelector: '.corporateForm',
+        individualFilledSelector: '.individualForm3',
+        corporateFilledSelector: '.corporateForm3',
+        individualAddBtnSelector: '.individualaddBtn',
+        corporateAddBtnSelector: '.corporateaddBtn',
+        individualUpdateBtnSelector: '.individualupdateBtn',
+        corporateUpdateBtnSelector: '.corporateupdateBtn',
+        addMoreBtnSelector: '.addmoreManager',
+        radioContainerSelector: '.radioDiv'
     });
-
-    // Handle Edit Button
-    document.querySelectorAll(".editUser").forEach(editBtn => {
-      editBtn.addEventListener("click", function () {
-        const filledForm = editBtn.closest(`.${filledFormClass}`);
-        const fillingForm = filledForm?.previousElementSibling;
-
-        if (fillingForm && fillingForm.classList.contains(formClass)) {
-          const fillingState = fillingForm.querySelector(`.${fillingStateClass}`);
-          if (fillingState) fillingState.style.display = "block";
-          filledForm.style.display = "none";
-
-          const addBtn = fillingForm.querySelector(`.${addBtnClass}`);
-          const updateBtn = fillingForm.querySelector(`.${updateBtnClass}`);
-          if (addBtn && updateBtn) {
-            addBtn.classList.add("d-none");
-            updateBtn.classList.remove("d-none");
-          }
-
-          fillingForm.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    });
-
-    // Handle "More Add" Button
-    document.querySelectorAll(`.${moreAddBtnClass}`).forEach(button => {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        const filledForm = button.closest(`.${filledFormClass}`);
-        const newForm = filledForm.querySelector(`.${newFillingStateClass}`);
-        if (newForm) {
-          newForm.classList.remove("d-none");
-          newForm.style.display = "block";
-          newForm.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    });
-  }
-
-  // Set up individual and corporate forms
-  setupFormHandlers({
-    addBtnClass: "individualaddBtn",
-    updateBtnClass: "individualupdateBtn",
-    formClass: "individualForm",
-    filledFormClass: "individualForm3",
-    fillingStateClass: "individualfillingstate",
-    newFillingStateClass: "newindividualfillingstate",
-    moreAddBtnClass: "moreaddindividual"
-  });
-
-  setupFormHandlers({
-    addBtnClass: "corporateaddBtn",
-    updateBtnClass: "corporateupdateBtn",
-    formClass: "corporateForm",
-    filledFormClass: "corporateForm3",
-    fillingStateClass: "corporatefillingstate",
-    newFillingStateClass: "newcorporatefillingstate",
-    moreAddBtnClass: "moreaddcorporate"
-  });
-
-  
 });
+
+
 
 
 
@@ -723,7 +750,7 @@ document.addEventListener('DOMContentLoaded', function () {
               $('#requestCS').on('show.bs.modal', function (e) {
         $('.home-entity-field').select2(
             {
-                dropdownParent: $('#requestCS'),
+                dropdownParent: $('#appointRA'),
             }
         );
     });
