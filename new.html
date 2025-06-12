@@ -2,41 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Validation Engine - Select Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Validation</title>
 
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Validation Engine CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/jquery-validation-engine@2.6.4/css/validationEngine.jquery.css" rel="stylesheet"/>
-
-    <!-- Validation Engine JS -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-engine@2.6.4/js/jquery.validationEngine.js"></script>
-
-    <!-- Validation Engine Language -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-engine@2.6.4/js/languages/jquery.validationEngine-en.js"></script>
+    <!-- jQuery Validation Engine CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.validationengine/2.6.4/validationEngine.jquery.css" rel="stylesheet">
 </head>
 <body>
 
-<form id="myForm">
-    <label for="formation-model">Select State:</label>
-    <select class="validate[required]" id="formation-model" name="formation-model">
-        <option value="" disabled selected hidden>Select State</option>
-        <option value="1">Alabama</option>
-        <option value="2">Alaska</option>
-        <option value="3">Arizona</option>
-        <option value="4">Arkansas</option>
-    </select>
+    <!-- Trigger Button -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formValidation">
+        Open Form Modal
+    </button>
 
-    <br><br>
-    <button type="submit">Submit</button>
-</form>
+    <!-- Modal Start -->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="formValidation" tabindex="-1"
+         aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
 
-<script>
-    $(document).ready(function () {
-        $("#myForm").validationEngine();
-    });
-</script>
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <h4 class="fw-bold m-0">Form a New Entity</h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form id="modalForm">
+                        <fieldset class="mb-4">
+                            <label for="entityInput" class="form-label">Entity Name <span class="mandatory">*</span></label>
+                            <input type="text" class="form-control validate[required]" id="entityInput" placeholder="Name of Entity" name="entity-name">
+                        </fieldset>
+
+                        <fieldset class="mb-4">
+                            <label for="formation-model123" class="form-label">Formation State <span class="mandatory">*</span></label>
+                            <div class="custom-dropdown">
+                                <select class="form-select validate[required]" id="formation-model123" name="formation-model">
+                                    <option value="" disabled selected hidden>State</option>
+                                    <option value="1">Alabama</option>
+                                    <option value="2">Alaska</option>
+                                    <option value="3">Arizona</option>
+                                    <option value="4">Arkansas</option>
+                                    <option value="5">California</option>
+                                    <option value="6">Colorado</option>
+                                    <option value="7">Connecticut</option>
+                                    <option value="8">Delaware</option>
+                                </select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="mb-4">
+                            <label for="entityType1" class="form-label">Entity Type <span class="mandatory">*</span></label>
+                            <div class="custom-dropdown">
+                                <select class="form-select validate[required]" id="entityType1" name="entity-type">
+                                    <option value="" disabled selected hidden>Select Entity Type</option>
+                                    <option value="1">LLC</option>
+                                    <option value="2">Profit Corporation - General</option>
+                                    <option value="3">Profit Corporation - Professional</option>
+                                    <option value="4">Profit Corporation - Close</option>
+                                    <option value="5">Non-Profit - Religious</option>
+                                    <option value="6">Non-Profit - Mutual Benefit</option>
+                                    <option value="7">Non-Profit - Public Benefit</option>
+                                    <option value="8">Non-Profit - Common Interest Development</option>
+                                    <option value="9">Non-Profit - Exempt</option>
+                                    <option value="10">LLP</option>
+                                    <option value="11">LP</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-info" id="submitButton">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+    <!-- Required JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.validationengine/2.6.4/jquery.validationEngine.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.validationengine/2.6.4/languages/jquery.validationEngine-en.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize validation engine
+            $("#modalForm").validationEngine();
+
+            // Static validation when modal opens
+            $('#formValidation').on('shown.bs.modal', function () {
+                $("#modalForm").validationEngine('validate');
+            });
+
+            // Live validation on field change
+            $('#formation-model123, #entityInput, #entityType1').on('change input', function () {
+                $("#modalForm").validationEngine('validateField', '#' + $(this).attr('id'));
+            });
+
+            // Optional: Submit button handler
+            $('#submitButton').click(function () {
+                if ($("#modalForm").validationEngine('validate')) {
+                    alert('Form is valid and submitted!');
+                    $('#formValidation').modal('hide');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

@@ -789,6 +789,18 @@ $(document).ready(function () {
   });
 
 
- $(document).ready(function() {
-        $("#formValidation").validationEngine();
-    });
+  $(document).ready(function () {
+      // Initialize validation on the form inside the modal
+      $("#myForm2").validationEngine();
+
+      // Show validation errors immediately when modal opens
+      $('#formValidation').on('shown.bs.modal', function () {
+         // Validate specific select field on modal open
+         $("#myForm2").validationEngine('validateField', '#formation-model123');
+      });
+
+      // Live validation on change event of select
+      $('#formation-model123').on('change', function () {
+         $("#myForm2").validationEngine('validateField', '#formation-model123');
+      });
+   });
