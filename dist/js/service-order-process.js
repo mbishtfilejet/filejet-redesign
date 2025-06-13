@@ -228,8 +228,10 @@ setupToggleForms([
   'registeredAgentStatus6',
   'registeredAgentStatus7',
   'registeredAgentStatus8',
+  'registeredAgentStatus9',
   'annualReport5',
   'annualReport6',
+  'annualReport8',
   'preparationOfFiling4',
   'preparationOfFiling5',
   'preparationOfFiling6'
@@ -752,7 +754,7 @@ $(document).ready(function () {
 
     function updateNextBtnTarget() {
       if (yesRadio.checked) {
-        nextBtn.setAttribute("data-bs-target", "#annualSummary");
+        nextBtn.setAttribute("data-bs-target", "#");
       } else {
         nextBtn.setAttribute("data-bs-target", "#annualreportDetail");
       }
@@ -774,7 +776,7 @@ $(document).ready(function () {
 
     function updateNextBtnTarget() {
       if (yesRadio.checked) {
-        nextBtn.setAttribute("data-bs-target", "#annualSummary");
+        nextBtn.setAttribute("data-bs-target", "#");
       } else {
         nextBtn.setAttribute("data-bs-target", "#annualreportDetail2");
       }
@@ -788,19 +790,3 @@ $(document).ready(function () {
     updateNextBtnTarget();
   });
 
-
-  $(document).ready(function () {
-      // Initialize validation on the form inside the modal
-      $("#myForm2").validationEngine();
-
-      // Show validation errors immediately when modal opens
-      $('#formValidation').on('shown.bs.modal', function () {
-         // Validate specific select field on modal open
-         $("#myForm2").validationEngine('validateField', '#formation-model123');
-      });
-
-      // Live validation on change event of select
-      $('#formation-model123').on('change', function () {
-         $("#myForm2").validationEngine('validateField', '#formation-model123');
-      });
-   });

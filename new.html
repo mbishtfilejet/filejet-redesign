@@ -2,121 +2,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modal Validation</title>
+    <title>Entity Selection</title>
+   <link rel="stylesheet" href="src/scss/filejet-style.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+   
+   <!-- Scripts -->
+   <script src="dist/js/jquery.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    <style>
+        .assign-user {
+            display: none; /* Table hidden by default */
+        }
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+        .custom-dropdown input {
+            width: 100%;
+            padding: 8px;
+        }
 
-    <!-- jQuery Validation Engine CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.validationengine/2.6.4/validationEngine.jquery.css" rel="stylesheet">
+        .select-box {
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 8px;
+            cursor: pointer;
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Trigger Button -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formValidation">
-        Open Form Modal
-    </button>
+<fieldset>
+    <label for="entityType-model" class="form-label">Select Entity <span class="mandatory">*</span></label>
+    <div class="custom-dropdown">
+        <div class="select-box" id="selectBox">Select entity</div>
+        <input type="text" id="entitySearch" placeholder="Search entity..." style="display:none; margin-top:5px;">
+    </div>
 
-    <!-- Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model" id="formValidation" tabindex="-1"
-         aria-labelledby="searchModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-            <div class="modal-content border-0 rounded-0 min-vh-100">
-
-                <!-- Modal Header -->
-                <div class="modal-header flex-wrap">
-                    <h4 class="fw-bold m-0">Form a New Entity</h4>
-                </div>
-
-                <!-- Modal Body -->
-                <div class="modal-body">
-                    <form id="modalForm">
-                        <fieldset class="mb-4">
-                            <label for="entityInput" class="form-label">Entity Name <span class="mandatory">*</span></label>
-                            <input type="text" class="form-control validate[required]" id="entityInput" placeholder="Name of Entity" name="entity-name">
-                        </fieldset>
-
-                        <fieldset class="mb-4">
-                            <label for="formation-model123" class="form-label">Formation State <span class="mandatory">*</span></label>
-                            <div class="custom-dropdown">
-                                <select class="form-select validate[required]" id="formation-model123" name="formation-model">
-                                    <option value="" disabled selected hidden>State</option>
-                                    <option value="1">Alabama</option>
-                                    <option value="2">Alaska</option>
-                                    <option value="3">Arizona</option>
-                                    <option value="4">Arkansas</option>
-                                    <option value="5">California</option>
-                                    <option value="6">Colorado</option>
-                                    <option value="7">Connecticut</option>
-                                    <option value="8">Delaware</option>
-                                </select>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="mb-4">
-                            <label for="entityType1" class="form-label">Entity Type <span class="mandatory">*</span></label>
-                            <div class="custom-dropdown">
-                                <select class="form-select validate[required]" id="entityType1" name="entity-type">
-                                    <option value="" disabled selected hidden>Select Entity Type</option>
-                                    <option value="1">LLC</option>
-                                    <option value="2">Profit Corporation - General</option>
-                                    <option value="3">Profit Corporation - Professional</option>
-                                    <option value="4">Profit Corporation - Close</option>
-                                    <option value="5">Non-Profit - Religious</option>
-                                    <option value="6">Non-Profit - Mutual Benefit</option>
-                                    <option value="7">Non-Profit - Public Benefit</option>
-                                    <option value="8">Non-Profit - Common Interest Development</option>
-                                    <option value="9">Non-Profit - Exempt</option>
-                                    <option value="10">LLP</option>
-                                    <option value="11">LP</option>
-                                </select>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-
-                <!-- Modal Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-info" id="submitButton">Submit</button>
-                </div>
-
+    <div class="assign-user unassign-entites accordion-body p-0 mt-4" id="entityTableContainer">
+        <div class="border rounded-3">
+            <div class="fade show active rounded-3 overflow-hidden" id="all">
+                <table id="assignTable2" class="table table-striped w-100 long-data-table-listing border-1">
+                    <thead>
+                    <tr>
+                        <th data-orderable="false"><input class="d-flex form-check-input" type="checkbox"></th>
+                        <th>Entity Name</th>
+                        <th class="juridction-fixed-width">Registered Agent Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Your table rows here -->
+                    <tr>
+                        <td><input class="d-flex form-check-input entity-checkbox" type="checkbox"></td>
+                        <td>RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP</td>
+                        <td>CA</td>
+                    </tr>
+                    <tr>
+                        <td><input class="d-flex form-check-input entity-checkbox" type="checkbox"></td>
+                        <td>DEJONG'S QUANTUM TAX STRATEGIES</td>
+                        <td>WY</td>
+                    </tr>
+                    <tr>
+                        <td><input class="d-flex form-check-input entity-checkbox" type="checkbox"></td>
+                        <td>C EXTERNAL BODY MOVERS LLC</td>
+                        <td>AL</td>
+                    </tr>
+                    <!-- Add other rows as required -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <!-- Modal End -->
+</fieldset>
 
-    <!-- Required JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.validationengine/2.6.4/jquery.validationEngine.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.validationengine/2.6.4/languages/jquery.validationEngine-en.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Show table and search box when select box is clicked
+        $('#selectBox').on('click', function () {
+            $('#entityTableContainer').show();
+            $('#entitySearch').show();
+        });
 
-    <script>
-        $(document).ready(function () {
-            // Initialize validation engine
-            $("#modalForm").validationEngine();
-
-            // Static validation when modal opens
-            $('#formValidation').on('shown.bs.modal', function () {
-                $("#modalForm").validationEngine('validate');
-            });
-
-            // Live validation on field change
-            $('#formation-model123, #entityInput, #entityType1').on('change input', function () {
-                $("#modalForm").validationEngine('validateField', '#' + $(this).attr('id'));
-            });
-
-            // Optional: Submit button handler
-            $('#submitButton').click(function () {
-                if ($("#modalForm").validationEngine('validate')) {
-                    alert('Form is valid and submitted!');
-                    $('#formValidation').modal('hide');
-                }
+        // Filter table based on search input
+        $('#entitySearch').on('keyup', function () {
+            var value = $(this).val().toLowerCase();
+            $("#assignTable2 tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-    </script>
+
+        // Handle checkbox selection
+        $(document).on('change', '.entity-checkbox', function () {
+            $('.entity-checkbox').not(this).prop('checked', false); // Single selection
+
+            if ($(this).is(':checked')) {
+                var entityName = $(this).closest('tr').find('td:eq(1)').text();
+                $('#selectBox').text(entityName);
+                $('#entityTableContainer').hide();
+                $('#entitySearch').hide();
+            } else {
+                $('#selectBox').text('Select entity');
+            }
+        });
+    });
+</script>
+   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+   <!-- Scripts start-->
+   <script src="dist/js/plugins.min.js"></script>
+   <script src="dist/js/custom.min.js"></script>
+   <script src="dist/js/dashboard-v2.js"></script>
+   <script src="dist/js/service-order-process.js"></script>
 
 </body>
 </html>
