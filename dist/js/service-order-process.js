@@ -790,3 +790,58 @@ $(document).ready(function () {
     updateNextBtnTarget();
   });
 
+
+
+
+  // certifiled number
+function changeValue(element, step) {
+  // Find the closest parent container
+  const container = element.closest('.incDecNum');
+  
+  // Find the input inside this container
+  const input = container.querySelector('.numberInput');
+
+  // Get current value and safely convert to number
+  let currentValue = parseInt(input.value) || 0;
+
+  // Change value
+  currentValue += step;
+
+  // Optional: Prevent negative values
+  if (currentValue < 0) {
+    currentValue = 0;
+  }
+
+  // Set new value
+  input.value = currentValue;
+}
+
+
+
+
+  $(document).on('change', 'input[type="checkbox"], input[type="radio"]', function () {
+    const label = $('label[for="' + this.id + '"]');
+    if ($(this).is(':checked')) {
+        label.addClass('checked-rights-label');
+    } else {
+        label.removeClass('checked-rights-label');
+    }
+});
+
+
+$(document).ready(function () {
+    // Hide the table when the modal opens
+    $('#appointRA').on('shown.bs.modal', function () {
+        $('.entityDiv').hide();
+    });
+
+    // Show the table when the select input is clicked or focused
+    $('#appointRA').on('focus click', '#entityType-modeltable', function () {
+        $('.entityDiv').show();
+    });
+});
+
+
+
+
+

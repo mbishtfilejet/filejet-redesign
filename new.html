@@ -1,121 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Entity Selection</title>
-   <link rel="stylesheet" href="src/scss/filejet-style.css">
-   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-   
-   <!-- Scripts -->
-   <script src="dist/js/jquery.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    <style>
-        .assign-user {
-            display: none; /* Table hidden by default */
-        }
-
-        .custom-dropdown input {
-            width: 100%;
-            padding: 8px;
-        }
-
-        .select-box {
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            padding: 8px;
-            cursor: pointer;
-            min-height: 38px;
-            display: flex;
-            align-items: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Modal Select Show Table Example</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<fieldset>
-    <label for="entityType-model" class="form-label">Select Entity <span class="mandatory">*</span></label>
-    <div class="custom-dropdown">
-        <div class="select-box" id="selectBox">Select entity</div>
-        <input type="text" id="entitySearch" placeholder="Search entity..." style="display:none; margin-top:5px;">
-    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <div class="assign-user unassign-entites accordion-body p-0 mt-4" id="entityTableContainer">
-        <div class="border rounded-3">
-            <div class="fade show active rounded-3 overflow-hidden" id="all">
-                <table id="assignTable2" class="table table-striped w-100 long-data-table-listing border-1">
-                    <thead>
-                    <tr>
-                        <th data-orderable="false"><input class="d-flex form-check-input" type="checkbox"></th>
-                        <th>Entity Name</th>
-                        <th class="juridction-fixed-width">Registered Agent Name</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Your table rows here -->
-                    <tr>
-                        <td><input class="d-flex form-check-input entity-checkbox" type="checkbox"></td>
-                        <td>RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP</td>
-                        <td>CA</td>
-                    </tr>
-                    <tr>
-                        <td><input class="d-flex form-check-input entity-checkbox" type="checkbox"></td>
-                        <td>DEJONG'S QUANTUM TAX STRATEGIES</td>
-                        <td>WY</td>
-                    </tr>
-                    <tr>
-                        <td><input class="d-flex form-check-input entity-checkbox" type="checkbox"></td>
-                        <td>C EXTERNAL BODY MOVERS LLC</td>
-                        <td>AL</td>
-                    </tr>
-                    <!-- Add other rows as required -->
-                    </tbody>
-                </table>
-            </div>
+
+<!-- Button to launch modal -->
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#appointRA">
+  Open Modal
+</button>
+
+<!-- Modal markup -->
+<div class="modal fade" id="appointRA" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Appoint RA</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Select -->
+        <div class="mb-3">
+          <label for="entityType-modeltable" class="form-label">Select Entity</label>
+          <select class="form-select" id="entityType-modeltable">
+            <option value="" disabled selected hidden>Select entity</option>
+            <option value="1">Entity 1</option>
+            <option value="2">Entity 2</option>
+          </select>
         </div>
+
+        <!-- Hidden table -->
+        <div class="entityDiv" style="display: none;">
+          <p><strong>Your entity details table:</strong></p>
+          <table class="table table-bordered">
+            <thead><tr><th>Name</th><th>State</th></tr></thead>
+            <tbody>
+              <tr><td>Entity 1</td><td>CA</td></tr>
+              <tr><td>Entity 2</td><td>NY</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
-</fieldset>
+  </div>
+</div>
 
 <script>
-    $(document).ready(function () {
-        // Show table and search box when select box is clicked
-        $('#selectBox').on('click', function () {
-            $('#entityTableContainer').show();
-            $('#entitySearch').show();
-        });
+$(function() {
+  // Hide table when modal finishes showing
+  $('#appointRA').on('shown.bs.modal', function () {
+    console.log('Modal shown'); // <- Check this prints
+    $('.entityDiv').hide();
+  });
 
-        // Filter table based on search input
-        $('#entitySearch').on('keyup', function () {
-            var value = $(this).val().toLowerCase();
-            $("#assignTable2 tbody tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-
-        // Handle checkbox selection
-        $(document).on('change', '.entity-checkbox', function () {
-            $('.entity-checkbox').not(this).prop('checked', false); // Single selection
-
-            if ($(this).is(':checked')) {
-                var entityName = $(this).closest('tr').find('td:eq(1)').text();
-                $('#selectBox').text(entityName);
-                $('#entityTableContainer').hide();
-                $('#entitySearch').hide();
-            } else {
-                $('#selectBox').text('Select entity');
-            }
-        });
-    });
+  // Show table when a valid selection is made
+  $('#appointRA').on('change', '#entityType-modeltable', function () {
+    console.log('Select changed: ' + $(this).val()); // <- Check this prints
+    if ($(this).val()) {
+      $('.entityDiv').show();
+    }
+  });
+});
 </script>
-   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-
-   <!-- Scripts start-->
-   <script src="dist/js/plugins.min.js"></script>
-   <script src="dist/js/custom.min.js"></script>
-   <script src="dist/js/dashboard-v2.js"></script>
-   <script src="dist/js/service-order-process.js"></script>
 
 </body>
 </html>
