@@ -819,14 +819,6 @@ function changeValue(element, step) {
 
 
 
-  $(document).on('change', 'input[type="checkbox"], input[type="radio"]', function () {
-    const label = $('label[for="' + this.id + '"]');
-    if ($(this).is(':checked')) {
-        label.addClass('checked-rights-label');
-    } else {
-        label.removeClass('checked-rights-label');
-    }
-});
 
 
 $(document).ready(function () {
