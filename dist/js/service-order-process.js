@@ -818,9 +818,6 @@ function changeValue(element, step) {
 
 
 
-
-
-
 $(document).ready(function () {
     // Hide the table when the modal opens
     $('#appointRA').on('shown.bs.modal', function () {
