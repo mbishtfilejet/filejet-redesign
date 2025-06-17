@@ -818,6 +818,53 @@ function changeValue(element, step) {
 
 
 
+// new entity sub service
+$('#entitySummery').on('shown.bs.modal', function () {
+    console.log('Modal opened');
+
+    if ($.fn.DataTable.isDataTable('#subTableservice')) {
+        console.log('Destroying existing DataTable');
+        $('#subTableservice').DataTable().destroy(); // ✅ Don't use .clear()
+    }
+
+    console.log('Reinitializing DataTable');
+    $('#subTableservice').DataTable({
+        ordering: false,
+        order: [],
+        paging: false,
+        info: false,
+        searching: false,
+        columnDefs: [
+            { orderable: false, targets: '_all' }
+        ]
+    });
+});
+
+
+// new entity sub service
+$('#addentitySummery').on('shown.bs.modal', function () {
+    console.log('Modal opened');
+
+    if ($.fn.DataTable.isDataTable('#existingSubservice')) {
+        console.log('Destroying existing DataTable');
+        $('#existingSubservice').DataTable().destroy(); // ✅ Don't use .clear()
+    }
+
+    console.log('Reinitializing DataTable');
+    $('#existingSubservice').DataTable({
+        ordering: false,
+        order: [],
+        paging: false,
+        info: false,
+        searching: false,
+        columnDefs: [
+            { orderable: false, targets: '_all' }
+        ]
+    });
+});
+
+
+
 $(document).ready(function () {
     // Hide the table when the modal opens
     $('#appointRA').on('shown.bs.modal', function () {
