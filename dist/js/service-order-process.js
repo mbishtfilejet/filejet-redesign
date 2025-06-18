@@ -841,7 +841,7 @@ $('#entitySummery').on('shown.bs.modal', function () {
 });
 
 
-// new entity sub service
+// existing entity sub service
 $('#addentitySummery').on('shown.bs.modal', function () {
     console.log('Modal opened');
 
