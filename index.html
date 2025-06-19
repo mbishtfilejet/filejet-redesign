@@ -356,16 +356,7 @@
                               <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
                                  <!-- Options -->
 
-                                 <li>
-                                    <div>
-                                       <a href=""
-                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
-                                          <span class="other-placeholder">Request Certificate of Standing</span>
-                                          <span
-                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                       </a>
-                                    </div>
-                                 </li>
+                                 
                                  <li>
                                     <div>
                                        <a href=""
@@ -393,8 +384,42 @@
                                  <li>
                                     <div>
                                        <a href=""
-                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom">
+                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
+                                          data-bs-toggle="modal" data-bs-target="#NWForeign" data-bs-dismiss="modal">
+                                          <span class="other-placeholder">New Foreign Registration</span>
+                                          <span
+                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                       </a>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div>
+                                       <a href=""
+                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
+                                          data-bs-toggle="modal" data-bs-target="#NWexistingForeign" data-bs-dismiss="modal">
+                                          <span class="other-placeholder">Add Existing Fictitious Name</span>
+                                          <span
+                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                       </a>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <div>
+                                       <a href=""
+                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
+                                          data-bs-toggle="modal" data-bs-target="#appointRA" data-bs-dismiss="modal">
                                           <span class="other-placeholder">Appoint Filejet as Registered Agent</span>
+                                          <span
+                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
+                                       </a>
+                                    </div>
+                                 </li>
+                                  <li>
+                                    <div>
+                                       <a href=""
+                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
+                                          data-bs-toggle="modal" data-bs-target="#requestCS" data-bs-dismiss="modal">
+                                          <span class="other-placeholder">Request Certificate of Status</span>
                                           <span
                                              class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
                                        </a>
@@ -502,50 +527,7 @@
                                        </a>
                                     </div>
                                  </li>
-                                 <li>
-                                    <div>
-                                       <a href=""
-                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
-                                          data-bs-toggle="modal" data-bs-target="#NWForeign" data-bs-dismiss="modal">
-                                          <span class="other-placeholder">New Foreign Registration</span>
-                                          <span
-                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                       </a>
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <a href=""
-                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
-                                          data-bs-toggle="modal" data-bs-target="#NWexistingForeign" data-bs-dismiss="modal">
-                                          <span class="other-placeholder">Add Existing Fictitious Name</span>
-                                          <span
-                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                       </a>
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div>
-                                       <a href=""
-                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
-                                          data-bs-toggle="modal" data-bs-target="#appointRA" data-bs-dismiss="modal">
-                                          <span class="other-placeholder">Appoint Filejet as Registered Agent</span>
-                                          <span
-                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                       </a>
-                                    </div>
-                                 </li>
-                                  <li>
-                                    <div>
-                                       <a href=""
-                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
-                                          data-bs-toggle="modal" data-bs-target="#requestCS" data-bs-dismiss="modal">
-                                          <span class="other-placeholder">Request Certificate of Status</span>
-                                          <span
-                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                       </a>
-                                    </div>
-                                 </li>
+
 
                               </ul>
                            </div>
@@ -1542,40 +1524,67 @@
                            <form class="" action="">
                               <div>
                                  <fieldset class="mb-4">
-                                    <label for="entityType-model" class="form-label">group </label>
-                                    <div class="custom-dropdown">
-                                       <select class="form-select" id="entityType-model">
-                                          <option value="1">All</option>
-                                          <option value="2">Adept HR</option>
-                                          <option value="3">AIC CAPITAL V V MANAGER - Terminated</option>
-                                       </select>
-                                    </div>
+                                    <label for="entityType-model" class="form-label">Entity name <span class="mandatory">*</span> </label>
+                                    <input type="text" class="form-control" id="" placeholder="Name of Entity">
                                  </fieldset>
 
                                  <fieldset class="mb-4">
-                                    <label for="entityType-model" class="form-label">Select Existing Entity <span
-                                          class="mandatory">*</span></label>
+                                    <label for="formation-model" class="form-label">formation state <span class="mandatory">*</span>
+                                    </label>
                                     <div class="custom-dropdown">
-                                       <select class="form-select select2 home-entity-field" id="entityType-model8">
-                                           <option value disabled selected hidden>Select entity</option>
-                                          <option value="1">John’s Pizza - CA</option>
-                                          <option value="2">RASA Realty LLC
-                                          </option>
-                                          <option value="3">Pikewood Group, LLC
-                                          </option>
-                                          <option value="4">GDS DESIGNS, INC.
-                                          </option>
-                                          <option value="5">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP
-                                          </option>
-                                          <option value="6">KK RENEWAL HOLDINGS CORP
-                                          </option>
-                                          <option value="7">MARKSET FUND I -01-SERIES 1 L.L.C.,
-                                          </option>
-                                          <option value="8">EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP
-                                          </option>
-                                          <option value="9">SEASCAPE VILLA LLC
-                                          </option>
-
+                                       <select class="form-select " id="formation-model" required="">
+                                          <option value="" disabled="" selected="" hidden="">State</option>
+                                          <option value="1">Alabama</option>
+                                          <option value="2">Alaska</option>
+                                          <option value="3">Arizona</option>
+                                          <option value="4">Arkansas</option>
+                                          <option value="5">California</option>
+                                          <option value="6">Colorado</option>
+                                          <option value="7">Connecticut</option>
+                                          <option value="8">Delaware</option>
+                                          <option value="9">District of Columbia</option>
+                                          <option value="10">Florida</option>
+                                          <option value="11">Georgia</option>
+                                          <option value="12">Hawaii</option>
+                                          <option value="13">Idaho</option>
+                                          <option value="14">Illinois</option>
+                                          <option value="15">Indiana</option>
+                                          <option value="16">Iowa</option>
+                                          <option value="17">Kansas</option>
+                                          <option value="18">Kentucky</option>
+                                          <option value="19">Louisiana</option>
+                                          <option value="20">Maine</option>
+                                          <option value="21">Maryland</option>
+                                          <option value="22">Massachusetts</option>
+                                          <option value="23">Michigan</option>
+                                          <option value="24">Minnesota</option>
+                                          <option value="25">Mississippi</option>
+                                          <option value="26">Missouri</option>
+                                          <option value="27">Montana</option>
+                                          <option value="28">Nebraska</option>
+                                          <option value="29">Nevada</option>
+                                          <option value="30">New Hampshire</option>
+                                          <option value="31">New Jersey</option>
+                                          <option value="32">New Mexico</option>
+                                          <option value="33">New York</option>
+                                          <option value="34">North Carolina</option>
+                                          <option value="35">North Dakota</option>
+                                          <option value="36">Ohio</option>
+                                          <option value="37">Oklahoma</option>
+                                          <option value="38">Oregon</option>
+                                          <option value="39">Pennsylvania</option>
+                                          <option value="40">Rhode Island</option>
+                                          <option value="41">South Carolina</option>
+                                          <option value="42">South Dakota</option>
+                                          <option value="43">Tennessee</option>
+                                          <option value="44">Texas</option>
+                                          <option value="45">Utah</option>
+                                          <option value="46">Vermont</option>
+                                          <option value="47">Virginia</option>
+                                          <option value="48">Washington</option>
+                                          <option value="49">West Virginia</option>
+                                          <option value="50">Wisconsin</option>
+                                          <option value="51">Wyoming</option>
                                        </select>
                                     </div>
                                  </fieldset>
@@ -1658,18 +1667,31 @@
                   </div>
                </div>
 
-               <div class=" mb-4 p-3 bg-white rounded-2 mt-3" style="display: block;">
+               <div class=" mb-4 p-3 bg-white rounded-2 mt-4" style="display: block;">
                   <fieldset>
                      <label for="entityType-model2" class="form-label">Home entity </label>
                      <div class="custom-dropdown">
-                        <select class="form-select select2 home-entity-field" id="entityType-model2" required>
-                           <option value="" disabled selected hidden>Select Home entity</option>
+                        <select class="form-select select2 home-entity-field select2-hidden-accessible" id="entityType-model2" required="" data-select2-id="select2-data-entityType-model2" tabindex="-1" aria-hidden="true">
+                           <option value="" disabled="" selected="" hidden="" data-select2-id="select2-data-4-s27p">Select Home entity</option>
                            <option value="2">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP</option>
                            <option value="4">RASA Realty LLC</option>
                            <option value="5">Pikewood Group, LLC</option>
                            <option value="6">GDS DESIGNS, INC.</option>
                            <option value="7">KK RENEWAL HOLDINGS CORP</option>
                            <option value="8">MARKSET FUND I -01-SERIES 1 L.L.C.</option>
+                        </select>
+                     </div>
+                  </fieldset>
+               </div>
+
+              <div class=" p-3 bg-white rounded-2 ">
+                  <fieldset>
+                     <label for="entityType-model" class="form-label">group assignment </label>
+                     <div class="custom-dropdown">
+                        <select class="form-select" id="entityType-model" required>
+                           <option value disabled selected hidden>Name of Group</option>
+                           <option value="2">Adept HR</option>
+                           <option value="3">AIC CAPITAL V V MANAGER - Terminated</option>
                         </select>
                      </div>
                   </fieldset>
@@ -1896,8 +1918,7 @@
                         <input class="form-control w-100 modaldatepicker " placeholder="Date" value="">
                       </div>
                   <fieldset class="">
-                        <label for="formation-model" class="form-label">formation state of home jurisdiction <span class="mandatory">*</span>
-                           </label>
+                        <label for="formation-model" class="form-label">formation state of home jurisdiction</label>
                            <div class="custom-dropdown">
                                        <select class="form-select " id="formation-model" required="">
                                           <option value="" disabled="" selected="" hidden="">State</option>
@@ -2803,10 +2824,10 @@
                   <label class="form-check-label rights-label" for="certifiedCopy1">Certified copy</label>
                      <div class="border rounded-2 p-2 d-flex align-items-center w-16">
                      <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
-                        <input class="ps-1 border-0 numberInput" type="text" id="" value="0" style="max-width: 30px">
+                        <input class="ps-1 border-0 numberInput fs-12" type="text" id="" value="0">
                         <div class="d-flex">
-                           <button type="button" class="numDec border-0" onclick="changeValue(this, -1)">-</button>
-                           <button type="button" class="numInce border-0 ms-2" onclick="changeValue(this, 1)">+</button><button></button>
+                           <button type="button" class="numDec border-0" onclick="changeValue(this, -1)"></button>
+                           <button type="button" class="numInce border-0 ms-2" onclick="changeValue(this, 1)"></button><button></button>
                         </div>
                      </div>
                   </div>
