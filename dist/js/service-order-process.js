@@ -368,18 +368,52 @@ document.addEventListener("DOMContentLoaded", function () {
   // Handle Edit Click
   document.querySelectorAll(".icon-new-edit").forEach(function (editIcon) {
     editIcon.addEventListener("click", function () {
-      const methodDiv = editIcon.closest(".payment-card").querySelector(".methodiv");
-      if (methodDiv) {
-        methodDiv.setAttribute("contenteditable", "true");
-        methodDiv.focus();
+      const paymentCard = editIcon.closest(".payment-card");
+      const methodDiv = paymentCard.querySelector(".methodiv");
 
-        // Optional: Add a class to show it's being edited
-        methodDiv.classList.add("editable");
+      if (methodDiv) {
+        const isEditing = methodDiv.getAttribute("contenteditable") === "true";
+
+        if (isEditing) {
+          // Save Mode: Turn off editing
+          methodDiv.setAttribute("contenteditable", "false");
+          methodDiv.classList.remove("editable");
+
+          // Change icon back to edit
+          editIcon.classList.remove("icon-save-purple");
+          editIcon.classList.add("icon-new-edit");
+
+          // Update tooltip text
+          editIcon.setAttribute("data-bs-original-title", "Edit");
+
+          // Optionally, trigger save action
+          console.log("Saved content:", methodDiv.innerText);
+        } else {
+          // Edit Mode: Enable editing
+          methodDiv.setAttribute("contenteditable", "true");
+          methodDiv.focus();
+          methodDiv.classList.add("editable");
+
+          // Change icon to save
+          editIcon.classList.remove("icon-new-edit");
+          editIcon.classList.add("icon-save-purple");
+
+          // Update tooltip text
+          editIcon.setAttribute("data-bs-original-title", "Save");
+        }
+
+        // Force Bootstrap tooltip refresh
+        const tooltipInstance = bootstrap.Tooltip.getInstance(editIcon);
+        if (tooltipInstance) {
+          tooltipInstance.update(); // Refresh the tooltip
+        }
       }
     });
   });
-
 });
+
+
+
 
 
 
