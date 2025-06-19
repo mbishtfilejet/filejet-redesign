@@ -379,15 +379,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Handle Delete Click
-  document.querySelectorAll(".icon-new-delete").forEach(function (deleteIcon) {
-    deleteIcon.addEventListener("click", function () {
-      const card = deleteIcon.closest(".payment-card");
-      if (card && confirm("Are you sure you want to delete this payment method?")) {
-        card.remove();
-      }
-    });
-  });
 });
 
 
