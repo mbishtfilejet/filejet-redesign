@@ -229,6 +229,7 @@ setupToggleForms([
   'registeredAgentStatus7',
   'registeredAgentStatus8',
   'registeredAgentStatus9',
+  'registeredAgentStatus10',
   'annualReport5',
   'annualReport6',
   'annualReport8',
@@ -755,7 +756,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // selet2 
 $(document).ready(function () {
     // List of modal IDs
-    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#addEXEntity'];
+    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#addEXEntity'];
 
     // Attach the same event handler to all modals
     modals.forEach(modalId => {
