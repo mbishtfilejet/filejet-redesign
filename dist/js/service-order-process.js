@@ -946,4 +946,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// date to file checkbox
+ document.addEventListener('DOMContentLoaded', function () {
+    const radioButton = document.querySelector('.yes-checkboxdate');
+    const dateInputContainer = document.querySelector('.upload-btndate');
 
+    // Show input by default since radio is pre-selected
+    if (radioButton.checked) {
+        dateInputContainer.style.display = 'block';
+    }
+
+    radioButton.addEventListener('change', function () {
+        if (this.checked) {
+            dateInputContainer.style.display = 'block';
+        } else {
+            dateInputContainer.style.display = 'none';
+        }
+    });
+});
