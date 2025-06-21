@@ -255,26 +255,28 @@ setupToggleForms([
  
 
 // upload document start
+document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.upload-group').forEach(group => {
-    const yes = group.querySelector('.yes-checkbox');
-    const no = group.querySelector('.no-checkbox');
-    const btn = group.closest('.mb-4').querySelector('.upload-btn');
+    const yesRadio = group.querySelector('.yes-checkbox');
+    const noRadio = group.querySelector('.no-checkbox');
+    const uploadBtn = group.parentElement.querySelector('.upload-btn');
 
-    const toggle = () => {
-      btn.style.display = yes.checked ? 'block' : 'none';
-      if (yes.checked) no.checked = false;
+    if (!yesRadio || !noRadio || !uploadBtn) return; // Safety check
+
+    const toggleButton = () => {
+      uploadBtn.style.display = yesRadio.checked ? 'block' : 'none';
     };
 
-    yes.addEventListener('change', toggle);
-    no.addEventListener('change', () => {
-      if (no.checked) {
-        yes.checked = false;
-        btn.style.display = 'none';
-      }
-    });
+    // Attach event listeners
+    yesRadio.addEventListener('change', toggleButton);
+    noRadio.addEventListener('change', toggleButton);
 
-    toggle(); // Run on load
+    // Run on page load
+    toggleButton();
   });
+});
+
+
 
 
 // table pagination remove
@@ -770,51 +772,72 @@ $(document).ready(function () {
 });
 
 
+$(document).ready(function () {
+    // List of modal IDs
+    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#addEXEntity'];
+
+    // Attach the same event handler to all modals
+    modals.forEach(modalId => {
+        $(modalId).on('show.bs.modal', function (e) {
+            $('.home-entity-field').select2({
+                dropdownParent: $(modalId),
+                placeholder: "Select Entity",  // Add placeholder here
+            });
+        });
+    });
+});
+
 
 
 // annual report filing 
   document.addEventListener("DOMContentLoaded", function () {
-    const nextBtn = document.getElementById("nextBtnan");
-    const yesRadio = document.getElementById("yes2an");
-    const noRadio = document.getElementById("no1an");
-
-    function updateNextBtnTarget() {
-      if (yesRadio.checked) {
-        nextBtn.setAttribute("data-bs-target", "#");
-      } else {
-        nextBtn.setAttribute("data-bs-target", "#annualreportDetail");
-      }
-    }
-
-    // Attach change event listeners
-    yesRadio.addEventListener("change", updateNextBtnTarget);
-    noRadio.addEventListener("change", updateNextBtnTarget);
-
-    // Set initial target on load
-    updateNextBtnTarget();
-  });
-
-
-    document.addEventListener("DOMContentLoaded", function () {
-    const nextBtn = document.getElementById("nextBtnan2");
     const yesRadio = document.getElementById("yes2an2");
     const noRadio = document.getElementById("no1an2");
+    const nextBtn = document.getElementById("nextBtnan2");
 
-    function updateNextBtnTarget() {
+    function updateButton() {
       if (yesRadio.checked) {
-        nextBtn.setAttribute("data-bs-target", "#");
+        nextBtn.textContent = "Complete";
+        nextBtn.removeAttribute("data-bs-target");
+        nextBtn.removeAttribute("data-bs-toggle");
+        nextBtn.setAttribute("data-bs-dismiss", "modal"); // Close modal
       } else {
+        nextBtn.textContent = "Next";
         nextBtn.setAttribute("data-bs-target", "#annualreportDetail2");
+        nextBtn.setAttribute("data-bs-toggle", "modal");
+        nextBtn.removeAttribute("data-bs-dismiss"); // Do not close modal
       }
     }
 
-    // Attach change event listeners
-    yesRadio.addEventListener("change", updateNextBtnTarget);
-    noRadio.addEventListener("change", updateNextBtnTarget);
-
-    // Set initial target on load
-    updateNextBtnTarget();
+    yesRadio.addEventListener("change", updateButton);
+    noRadio.addEventListener("change", updateButton);
   });
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const yesRadio2 = document.getElementById("yes2an");
+    const noRadio2 = document.getElementById("no1an");
+    const nextBtn2 = document.getElementById("nextBtnan");
+
+    function updateButton2() {
+      if (yesRadio2.checked) {
+        nextBtn2.textContent = "Complete";
+        nextBtn2.removeAttribute("data-bs-target");
+        nextBtn2.removeAttribute("data-bs-toggle");
+        nextBtn2.setAttribute("data-bs-dismiss", "modal"); // Close modal when clicking Complete
+      } else {
+        nextBtn2.textContent = "Next";
+        nextBtn2.setAttribute("data-bs-target", "#annualreportDetail");
+        nextBtn2.setAttribute("data-bs-toggle", "modal");
+        nextBtn2.removeAttribute("data-bs-dismiss"); // Continue to next modal
+      }
+    }
+
+    yesRadio2.addEventListener("change", updateButton2);
+    noRadio2.addEventListener("change", updateButton2);
+  });
+
 
 
 
@@ -904,6 +927,23 @@ $(document).ready(function () {
 });
 
 
+// payment method one checkbox at a time
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all checkboxes inside payment-card
+    let checkboxes = document.querySelectorAll('.payment-card .form-check-input[type="checkbox"]');
 
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                // Uncheck all other checkboxes
+                checkboxes.forEach(function (cb) {
+                    if (cb !== checkbox) {
+                        cb.checked = false;
+                    }
+                });
+            }
+        });
+    });
+});
 
 
