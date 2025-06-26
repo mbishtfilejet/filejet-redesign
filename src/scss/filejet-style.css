@@ -45,7 +45,6 @@
   --bs-primary: #0d6efd;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
-  --bs-purple-filejet: #FAFAFA;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
@@ -13966,7 +13965,7 @@ label {
 }
 
 .card.entity-card {
-  border: 0.4rem solid var(--bs-white);
+  border: 0.4rem solid var(--bs-purple-filejet);
 }
 .card.active {
   transition: all 0.7s ease-in;
@@ -14201,18 +14200,21 @@ blockquote .author-company {
 .dataTables_wrapper .dataTable thead th.sorting {
   position: relative;
 }
+.dataTables_wrapper .dataTable thead th.sorting::before {
+    right: 0px;
+}
+
 .dataTables_wrapper .dataTable thead th.sorting::after {
-  content: "";
-  background-image: url("../../../dist/images/icons/down-filter-arrow.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  position: absolute;
-  width: 0.625rem;
-  height: 100%;
-  right: auto;
-  top: 0;
-  transition: all 0.3s ease-in;
-  margin-left: 0.625rem;
+    height: auto !important;
+    right: 0px;
+    top: 45%;
+    margin-left: 0rem !important;
+    content: "▼" !important;
+    transform: none !important;
+    background-image: none !important;
+    line-height: normal !important;
+    width: auto !important;
+    margin-top: 4px
 }
 .dataTables_wrapper .dataTable thead th.sorting.sorting_asc::after {
   transform: rotate(180deg);
@@ -19708,7 +19710,7 @@ body .caledar-event-upcoming {
 .main-dashboard-v2 .SOP-model .assign-user .dataTables_wrapper {
   max-height: 400px;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .main-dashboard-v2 .SOP-model .unassign-entites .dataTables_wrapper {
   max-height: 100% !important;
@@ -21106,9 +21108,4 @@ body *::-webkit-scrollbar-thumb {
   background-color: #a5a4a4 !important;
   outline: 1px solid var(--bs-tranparent);
   border-radius: 0.5rem;
-}
-
-.filejet-bg {
-    background-color: var(--bs-purple-filejet);
-}
-/*# sourceMappingURL=filejet-style.css.map */
+}/*# sourceMappingURL=filejet-style.css.map */

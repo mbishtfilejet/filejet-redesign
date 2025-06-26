@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       function getMaxSelection() {
         if (window.innerWidth < 1300) {
-            if (["addjurisdictionContainer", "roleContainer1" , "roleContainer2" , "memberroleContainer" , "annualroleContainer" , "exaddjurisdictionContainer"].includes(containerId)) {
+            if (["addjurisdictionContainer", "roleContainer1" , "roleContainer2" , "memberroleContainer" , "annualroleContainer" , "reqselectEntityContainer2" , "selectEntityContainer", "reqselectEntityContainer2" , "exaddjurisdictionContainer"].includes(containerId)) {
                 return 6;
             }
             return 1;
@@ -306,6 +306,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return "Select Entity";
                 case "reqselectEntityContainer":
                 return "Select Entity";
+                case "reqselectEntityContainer2":
+                return "Select Entity";
             default:
                 return "Status";
         }
@@ -331,7 +333,9 @@ document.addEventListener("DOMContentLoaded", function () {
   setupMultiSelect("memberroleContainer", "memberroleDropdown", "memberroleSearch", "memberrole-checkbox", "memberroleSelectAll");
   setupMultiSelect("annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll", ["CEO"]);
   setupMultiSelect("selectEntityContainer", "selectEntityDropdown", "selectEntitySearch", "selectEntity-checkbox");
-    setupMultiSelect("reqselectEntityContainer", "reqselectEntityDropdown", "reqselectEntitySearch", "reqselectEntity-checkbox");
+  setupMultiSelect("reqselectEntityContainer", "reqselectEntityDropdown", "reqselectEntitySearch", "reqselectEntity-checkbox");
+    setupMultiSelect("reqselectEntityContainer2", "reqselectEntityDropdown2", "reqselectEntitySearch2", "reqselectEntity-checkbox2");
+
 
 
 
