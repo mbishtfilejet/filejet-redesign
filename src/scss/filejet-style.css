@@ -13965,7 +13965,7 @@ label {
 }
 
 .card.entity-card {
-  border: 0.4rem solid var(--bs-purple-filejet);
+  border: 0.4rem solid var(--bs-white);
 }
 .card.active {
   transition: all 0.7s ease-in;
@@ -14200,21 +14200,18 @@ blockquote .author-company {
 .dataTables_wrapper .dataTable thead th.sorting {
   position: relative;
 }
-.dataTables_wrapper .dataTable thead th.sorting::before {
-    right: 0px;
-}
-
 .dataTables_wrapper .dataTable thead th.sorting::after {
-    height: auto !important;
-    right: 0px;
-    top: 45%;
-    margin-left: 0rem !important;
-    content: "▼" !important;
-    transform: none !important;
-    background-image: none !important;
-    line-height: normal !important;
-    width: auto !important;
-    margin-top: 4px
+  content: "";
+  background-image: url("../../../dist/images/icons/down-filter-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  width: 0.625rem;
+  height: 100%;
+  right: auto;
+  top: 0;
+  transition: all 0.3s ease-in;
+  margin-left: 0.625rem;
 }
 .dataTables_wrapper .dataTable thead th.sorting.sorting_asc::after {
   transform: rotate(180deg);
@@ -19723,10 +19720,10 @@ body .caledar-event-upcoming {
   z-index: 1;
 }
 .main-dashboard-v2 .SOP-model .dataTables_wrapper .dataTable thead th.sorting::before {
-  right: 10px;
+  right: 5px;
 }
 .main-dashboard-v2 .SOP-model .dataTables_wrapper .dataTable thead th.sorting::after {
-  right: 10px;
+  right: 5px;
 }
 .main-dashboard-v2 .SOP-model .additional-search input:focus-within {
   color: #000000 !important;
