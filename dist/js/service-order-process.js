@@ -964,3 +964,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkbox = document.getElementById("statusCheckbox");
+    const uploadSection = document.getElementById("uploadSection");
+
+    function toggleUpload() {
+      uploadSection.style.display = checkbox.checked ? "none" : "block";
+    }
+
+    // Initialize visibility on page load
+    toggleUpload();
+
+    // Add event listener
+    checkbox.addEventListener("change", toggleUpload);
+  });
