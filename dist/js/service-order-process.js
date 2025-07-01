@@ -480,6 +480,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const corporateUpdateBtn = section.querySelector(corporateUpdateBtnSelector);
             const addMoreManagerBtn = section.querySelector(addMoreBtnSelector);
             const radioContainer = section.querySelector(radioContainerSelector);
+
+            // NEW: Cancel buttons
+            const individualCancelBtn = section.querySelector('.individualcancelBtn');
+            const corporateCancelBtn = section.querySelector('.corporatecancelBtn');
+
             const toggleRadios = section.querySelectorAll(radioSelector);
 
             toggleRadios.forEach(radio => {
@@ -501,6 +506,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 individualFilledForm.style.display = 'block';
                 individualAddBtn.style.display = 'none';
                 individualUpdateBtn.classList.remove('d-none');
+                individualCancelBtn?.classList.add('d-none');
                 radioContainer.style.display = 'none';
             });
 
@@ -511,6 +517,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 corporateFilledForm.style.display = 'block';
                 corporateAddBtn.style.display = 'none';
                 corporateUpdateBtn.classList.remove('d-none');
+                corporateCancelBtn?.classList.add('d-none');
                 radioContainer.style.display = 'none';
             });
 
@@ -521,6 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     individualFilledForm.style.display = 'none';
                     individualAddBtn.style.display = 'none';
                     individualUpdateBtn.classList.remove('d-none');
+                    individualCancelBtn?.classList.remove('d-none'); // Show cancel
                     radioContainer.style.display = 'flex';
                 });
             });
@@ -532,8 +540,30 @@ document.addEventListener("DOMContentLoaded", function () {
                     corporateFilledForm.style.display = 'none';
                     corporateAddBtn.style.display = 'none';
                     corporateUpdateBtn.classList.remove('d-none');
+                    corporateCancelBtn?.classList.remove('d-none'); // Show cancel
                     radioContainer.style.display = 'flex';
                 });
+            });
+
+            // NEW: Cancel handlers
+            individualCancelBtn?.addEventListener('click', function () {
+                individualForm.style.display = 'none';
+                addMoreManagerBtn.style.display = 'flex';
+                individualFilledForm.style.display = 'block';
+                individualAddBtn.style.display = 'none';
+                individualUpdateBtn.classList.add('d-none');
+                individualCancelBtn.classList.add('d-none');
+                radioContainer.style.display = 'none';
+            });
+
+            corporateCancelBtn?.addEventListener('click', function () {
+                corporateForm.style.display = 'none';
+                addMoreManagerBtn.style.display = 'flex';
+                corporateFilledForm.style.display = 'block';
+                corporateAddBtn.style.display = 'none';
+                corporateUpdateBtn.classList.add('d-none');
+                corporateCancelBtn.classList.add('d-none');
+                radioContainer.style.display = 'none';
             });
 
             addMoreManagerBtn.addEventListener('click', function (e) {
@@ -576,6 +606,9 @@ document.addEventListener("DOMContentLoaded", function () {
             section.querySelector(individualUpdateBtnSelector).classList.add('d-none');
             section.querySelector(corporateUpdateBtnSelector).classList.add('d-none');
 
+            section.querySelector('.individualcancelBtn')?.classList.add('d-none');
+            section.querySelector('.corporatecancelBtn')?.classList.add('d-none');
+
             section.querySelector(radioContainerSelector).style.display = 'flex';
             section.querySelector(addMoreBtnSelector).style.display = 'flex';
         }
@@ -610,7 +643,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Call this function like this:
+    // Init call
     setupDynamicFormSection({
         sectionSelector: '.section',
         radioSelector: '.toggle-radio',
@@ -626,6 +659,7 @@ document.addEventListener("DOMContentLoaded", function () {
         radioContainerSelector: '.radioDiv'
     });
 });
+
 
 
 
