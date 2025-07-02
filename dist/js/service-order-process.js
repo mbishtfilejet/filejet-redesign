@@ -567,27 +567,44 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             addMoreManagerBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                addMoreManagerBtn.style.display = 'none';
+    e.preventDefault();
+    addMoreManagerBtn.style.display = 'none';
 
-                const newSection = section.cloneNode(true);
-                resetSection(newSection);
+    const newSection = section.cloneNode(true);
+    resetSection(newSection);
 
-                if (individualFilledForm.style.display === 'block') {
-                    individualFilledForm.parentNode.insertBefore(newSection, individualFilledForm);
-                } else if (corporateFilledForm.style.display === 'block') {
-                    corporateFilledForm.parentNode.insertBefore(newSection, corporateFilledForm);
-                } else {
-                    section.parentNode.insertBefore(newSection, section);
-                }
+    if (individualFilledForm.style.display === 'block') {
+        individualFilledForm.parentNode.insertBefore(newSection, individualFilledForm);
+    } else if (corporateFilledForm.style.display === 'block') {
+        corporateFilledForm.parentNode.insertBefore(newSection, corporateFilledForm);
+    } else {
+        section.parentNode.insertBefore(newSection, section);
+    }
 
-                assignUniqueIDs(newSection, {
-                    radioSelector,
-                    individualFormSelector,
-                    corporateFormSelector
-                });
-                setupSection(newSection);
-            });
+    assignUniqueIDs(newSection, {
+        radioSelector,
+        individualFormSelector,
+        corporateFormSelector
+    });
+
+    setupSection(newSection);
+
+    // Add inline cancel button before "Add"
+    const individualAddBtn = newSection.querySelector(individualAddBtnSelector);
+    if (individualAddBtn) {
+        const cancelNewBtn = document.createElement('button');
+        cancelNewBtn.type = 'button';
+        cancelNewBtn.className = 'btn btn-small py-0 px-4 me-2';
+        cancelNewBtn.textContent = 'CANCEL';
+
+        individualAddBtn.parentNode.insertBefore(cancelNewBtn, individualAddBtn);
+
+        cancelNewBtn.addEventListener('click', function () {
+            newSection.remove();
+        });
+    }
+});
+
         }
 
         function resetSection(section) {
