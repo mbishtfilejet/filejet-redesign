@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       function getMaxSelection() {
         if (window.innerWidth < 1300) {
-            if (["addjurisdictionContainer", "roleContainer1" ,  "roleContainer3" , "memberroleContainer" , "annualroleContainer" , "reqselectEntityContainer2" , "reqselectEntityContainer3" , "selectEntityContainer", "reqselectEntityContainer2" , "exaddjurisdictionContainer"].includes(containerId)) {
+            if (["addjurisdictionContainer", "roleContainer1" ,  "roleContainer2" ,  "roleContainer4" , "memberroleContainer" , "annualroleContainer" , "reqselectEntityContainer2" , "reqselectEntityContainer3" , "selectEntityContainer", "reqselectEntityContainer2" , "exaddjurisdictionContainer"].includes(containerId)) {
                 return 6;
             }
             return 1;
@@ -298,11 +298,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 return "Role";
                 case "roleContainer2":
                 return "Role";
+                case "roleContainer4":
+                return "Role";
                 case "memberroleContainer":
                 return "Role";
                 case "annualroleContainer":
                 return "Role";
                 case "selectEntityContainer":
+                return "Select Entity";
+                case "selectEntityContainer2":
                 return "Select Entity";
                 case "reqselectEntityContainer":
                 return "Select Entity";
@@ -332,10 +336,14 @@ document.addEventListener("DOMContentLoaded", function () {
   setupMultiSelect("addjurisdictionContainer", "addjurisdictionDropdown", "addjurisdictionSearch", "addjurisdiction-checkbox", "addjurisdictionSelectAll");
   setupMultiSelect("exaddjurisdictionContainer", "exaddjurisdictionDropdown", "exaddjurisdictionSearch", "exaddjurisdiction-checkbox", "exaddjurisdictionSelectAll");
   setupMultiSelect("roleContainer1", "roleDropdown1", "roleSearch1", "role-checkbox1", "roleSelectAll1");
-   setupMultiSelect("roleContainer2", "roleDropdown2", "roleSearch2", "role-checkbox2", "roleSelectAll2");
+  setupMultiSelect("roleContainer2", "roleDropdown2", "roleSearch2", "role-checkbox2", "roleSelectAll2");
+  setupMultiSelect("roleContainer4", "roleDropdown4", "roleSearch4", "role-checkbox4", "roleSelectAll4");
+
   setupMultiSelect("memberroleContainer", "memberroleDropdown", "memberroleSearch", "memberrole-checkbox", "memberroleSelectAll");
   setupMultiSelect("annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll", ["CEO"]);
   setupMultiSelect("selectEntityContainer", "selectEntityDropdown", "selectEntitySearch", "selectEntity-checkbox");
+    setupMultiSelect("selectEntityContainer2", "selectEntityDropdown2", "selectEntitySearch2", "selectEntity-checkbox2");
+
   setupMultiSelect("reqselectEntityContainer", "reqselectEntityDropdown", "reqselectEntitySearch", "reqselectEntity-checkbox");
   setupMultiSelect("reqselectEntityContainer2", "reqselectEntityDropdown2", "reqselectEntitySearch2", "reqselectEntity-checkbox2");
   setupMultiSelect("reqselectEntityContainer3", "reqselectEntityDropdown3", "reqselectEntitySearch3", "reqselectEntity-checkbox3");

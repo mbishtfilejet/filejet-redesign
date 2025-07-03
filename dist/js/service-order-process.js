@@ -481,7 +481,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const addMoreManagerBtn = section.querySelector(addMoreBtnSelector);
             const radioContainer = section.querySelector(radioContainerSelector);
 
-            // NEW: Cancel buttons
             const individualCancelBtn = section.querySelector('.individualcancelBtn');
             const corporateCancelBtn = section.querySelector('.corporatecancelBtn');
 
@@ -502,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
             individualAddBtn.addEventListener('click', function () {
                 individualForm.style.display = 'none';
                 corporateForm.style.display = 'none';
-                addMoreManagerBtn.style.display = 'flex';
+                section.classList.add('show-addmore');
                 individualFilledForm.style.display = 'block';
                 individualAddBtn.style.display = 'none';
                 individualUpdateBtn.classList.remove('d-none');
@@ -513,7 +512,7 @@ document.addEventListener("DOMContentLoaded", function () {
             corporateAddBtn.addEventListener('click', function () {
                 individualForm.style.display = 'none';
                 corporateForm.style.display = 'none';
-                addMoreManagerBtn.style.display = 'flex';
+                section.classList.add('show-addmore');
                 corporateFilledForm.style.display = 'block';
                 corporateAddBtn.style.display = 'none';
                 corporateUpdateBtn.classList.remove('d-none');
@@ -524,11 +523,11 @@ document.addEventListener("DOMContentLoaded", function () {
             individualFilledForm.querySelectorAll('.icon-new-edit').forEach(editIcon => {
                 editIcon.addEventListener('click', function () {
                     individualForm.style.display = 'block';
-                    addMoreManagerBtn.style.display = 'none';
+                    section.classList.remove('show-addmore');
                     individualFilledForm.style.display = 'none';
                     individualAddBtn.style.display = 'none';
                     individualUpdateBtn.classList.remove('d-none');
-                    individualCancelBtn?.classList.remove('d-none'); // Show cancel
+                    individualCancelBtn?.classList.remove('d-none');
                     radioContainer.style.display = 'flex';
                 });
             });
@@ -536,19 +535,18 @@ document.addEventListener("DOMContentLoaded", function () {
             corporateFilledForm.querySelectorAll('.icon-new-edit').forEach(editIcon => {
                 editIcon.addEventListener('click', function () {
                     corporateForm.style.display = 'block';
-                    addMoreManagerBtn.style.display = 'none';
+                    section.classList.remove('show-addmore');
                     corporateFilledForm.style.display = 'none';
                     corporateAddBtn.style.display = 'none';
                     corporateUpdateBtn.classList.remove('d-none');
-                    corporateCancelBtn?.classList.remove('d-none'); // Show cancel
+                    corporateCancelBtn?.classList.remove('d-none');
                     radioContainer.style.display = 'flex';
                 });
             });
 
-            // NEW: Cancel handlers
             individualCancelBtn?.addEventListener('click', function () {
                 individualForm.style.display = 'none';
-                addMoreManagerBtn.style.display = 'flex';
+                section.classList.add('show-addmore');
                 individualFilledForm.style.display = 'block';
                 individualAddBtn.style.display = 'none';
                 individualUpdateBtn.classList.add('d-none');
@@ -558,7 +556,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             corporateCancelBtn?.addEventListener('click', function () {
                 corporateForm.style.display = 'none';
-                addMoreManagerBtn.style.display = 'flex';
+                section.classList.add('show-addmore');
                 corporateFilledForm.style.display = 'block';
                 corporateAddBtn.style.display = 'none';
                 corporateUpdateBtn.classList.add('d-none');
@@ -567,44 +565,42 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             addMoreManagerBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    addMoreManagerBtn.style.display = 'none';
+                e.preventDefault();
+                section.classList.remove('show-addmore');
 
-    const newSection = section.cloneNode(true);
-    resetSection(newSection);
+                const newSection = section.cloneNode(true);
+                resetSection(newSection);
 
-    if (individualFilledForm.style.display === 'block') {
-        individualFilledForm.parentNode.insertBefore(newSection, individualFilledForm);
-    } else if (corporateFilledForm.style.display === 'block') {
-        corporateFilledForm.parentNode.insertBefore(newSection, corporateFilledForm);
-    } else {
-        section.parentNode.insertBefore(newSection, section);
-    }
+                if (individualFilledForm.style.display === 'block') {
+                    individualFilledForm.parentNode.insertBefore(newSection, individualFilledForm);
+                } else if (corporateFilledForm.style.display === 'block') {
+                    corporateFilledForm.parentNode.insertBefore(newSection, corporateFilledForm);
+                } else {
+                    section.parentNode.insertBefore(newSection, section);
+                }
 
-    assignUniqueIDs(newSection, {
-        radioSelector,
-        individualFormSelector,
-        corporateFormSelector
-    });
+                assignUniqueIDs(newSection, {
+                    radioSelector,
+                    individualFormSelector,
+                    corporateFormSelector
+                });
 
-    setupSection(newSection);
+                setupSection(newSection);
 
-    // Add inline cancel button before "Add"
-    const individualAddBtn = newSection.querySelector(individualAddBtnSelector);
-    if (individualAddBtn) {
-        const cancelNewBtn = document.createElement('button');
-        cancelNewBtn.type = 'button';
-        cancelNewBtn.className = 'btn btn-small py-0 px-4 me-2';
-        cancelNewBtn.textContent = 'CANCEL';
+                const individualAddBtn = newSection.querySelector(individualAddBtnSelector);
+                if (individualAddBtn) {
+                    const cancelNewBtn = document.createElement('button');
+                    cancelNewBtn.type = 'button';
+                    cancelNewBtn.className = 'btn btn-small py-0 px-4 me-2';
+                    cancelNewBtn.textContent = 'CANCEL';
 
-        individualAddBtn.parentNode.insertBefore(cancelNewBtn, individualAddBtn);
+                    individualAddBtn.parentNode.insertBefore(cancelNewBtn, individualAddBtn);
 
-        cancelNewBtn.addEventListener('click', function () {
-            newSection.remove();
-        });
-    }
-});
-
+                    cancelNewBtn.addEventListener('click', function () {
+                        newSection.remove();
+                    });
+                }
+            });
         }
 
         function resetSection(section) {
@@ -627,7 +623,7 @@ document.addEventListener("DOMContentLoaded", function () {
             section.querySelector('.corporatecancelBtn')?.classList.add('d-none');
 
             section.querySelector(radioContainerSelector).style.display = 'flex';
-            section.querySelector(addMoreBtnSelector).style.display = 'flex';
+            section.classList.add('show-addmore');
         }
 
         function assignUniqueIDs(section, { radioSelector, individualFormSelector, corporateFormSelector }) {
@@ -660,7 +656,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Init call
     setupDynamicFormSection({
         sectionSelector: '.section',
         radioSelector: '.toggle-radio',
@@ -676,6 +671,7 @@ document.addEventListener("DOMContentLoaded", function () {
         radioContainerSelector: '.radioDiv'
     });
 });
+
 
 
 
@@ -809,7 +805,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // selet2 
 $(document).ready(function () {
     // List of modal IDs
-    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#addEXEntity'];
+    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#INTentity' , '#addEXEntity'];
 
     // Attach the same event handler to all modals
     modals.forEach(modalId => {
@@ -823,20 +819,7 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function () {
-    // List of modal IDs
-    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#addEXEntity'];
 
-    // Attach the same event handler to all modals
-    modals.forEach(modalId => {
-        $(modalId).on('show.bs.modal', function (e) {
-            $('.home-entity-field').select2({
-                dropdownParent: $(modalId),
-                placeholder: "Select Entity",  // Add placeholder here
-            });
-        });
-    });
-});
 
 
 
