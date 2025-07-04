@@ -673,8 +673,55 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// submit annuall report stakeholder
+document.addEventListener('DOMContentLoaded', function () {
+  const modalIds = ['annualreportDetail', 'annualreportDetail2'];
 
+  modalIds.forEach(id => {
+    const modal = document.getElementById(id);
+    if (!modal) return;
 
+    modal.addEventListener('shown.bs.modal', function () {
+      const section = modal.querySelector('.section');
+      if (!section) return;
+
+      const individualForm = section.querySelector('.individualForm');
+      const corporateForm = section.querySelector('.corporateForm');
+      const individualFilled = section.querySelector('.individualForm3');
+      const corporateFilled = section.querySelector('.corporateForm3');
+      const radioDiv = section.querySelector('.radioDiv');
+      const addBtn = section.querySelector('.individualaddBtn');
+      const updateBtn = section.querySelector('.individualupdateBtn');
+      const cancelBtn = section.querySelector('.individualcancelBtn');
+
+      // Hide all form inputs
+      if (individualForm) individualForm.style.display = 'none';
+      if (corporateForm) corporateForm.style.display = 'none';
+
+      // Hide corporate filled view just in case
+      if (corporateFilled) corporateFilled.style.display = 'none';
+
+      // Show only individual filled state
+      if (individualFilled) individualFilled.style.display = 'block';
+
+      // Hide ADD button
+      if (addBtn) addBtn.style.display = 'none';
+
+      // Show UPDATE button
+      if (updateBtn) updateBtn.classList.remove('d-none');
+
+      // Hide cancel button
+      if (cancelBtn) cancelBtn.classList.add('d-none');
+
+      // Hide radio buttons
+      if (radioDiv) radioDiv.style.display = 'none';
+
+      // Mark section as filled
+      section.classList.add('show-addmore');
+      section.classList.add('mt-4');
+    });
+  });
+});
 
 
 
