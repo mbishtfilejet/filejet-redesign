@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
       function getMaxSelection() {
         if (window.innerWidth < 1300) {
             if (["addjurisdictionContainer", "roleContainer1" ,  "roleContainer2" ,  "roleContainer4" , "memberroleContainer" , "annualroleContainer" , "reqselectEntityContainer2" , "reqselectEntityContainer3" , "selectEntityContainer", "reqselectEntityContainer2" , "exaddjurisdictionContainer"].includes(containerId)) {
-                return 6;
+                return 3;
             }
             return 1;
         }
