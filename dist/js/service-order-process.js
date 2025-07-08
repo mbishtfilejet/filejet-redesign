@@ -47,11 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const fillingState = document.querySelector(".fillingstate");
   const filledState = document.querySelector(".filledstate");
   const newInviteFillingState = document.querySelector(".newinvitefillingstate");
-  const addBtn = document.getElementById("inviteaddBtn");
-  const updateBtn = document.getElementById("invitaeupdateBtn");
-  const newInviteAddBtn = document.getElementById("newinviteaddBtn");
 
-  // Helper function to create filled entry
+  const addBtn = document.getElementById("inviteaddBtn");
+  const updateBtn = document.getElementById("inviteupdateBtn"); // ✅ Fixed ID
+  const newInviteAddBtn = document.getElementById("newinviteaddBtn");
+  const inputsFilledContainer = filledState.querySelector(".inputsfilled");
+
+  // Add Entry to DOM
   const createFilledEntry = (name, email) => {
     const container = document.createElement("div");
     container.className = "filled-user-entry";
@@ -64,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="d-flex align-items-center">
           <span class="icon icon-new-edit me-3 editUser" style="cursor:pointer;"></span>
-          <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal" data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE" title="DELETE"  style="cursor:pointer;"></span>
+          <span class="icon icon-new-delete m-0 deleteUser" style="cursor:pointer;"></span>
         </div>
       </div>
       <hr class="entry-divider">
@@ -72,55 +74,94 @@ document.addEventListener("DOMContentLoaded", () => {
     return container;
   };
 
-  // Update dividers after adding/removing entries
+  // Divider Cleanup
   const updateDividers = () => {
     const dividers = filledState.querySelectorAll(".entry-divider");
-    dividers.forEach((hr, i) => hr.style.display = i === dividers.length - 1 ? "none" : "block");
+    dividers.forEach((hr, i) => {
+      hr.style.display = (i === dividers.length - 1) ? "none" : "block";
+    });
   };
 
-  // Add new entry (from filling state)
-  const addEntry = (nameInput, emailInput, stateContainer) => {
+  // Generic Add Entry Logic
+  const addEntry = (nameInput, emailInput, sourceContainer) => {
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     if (!name || !email) return alert("Please fill in both fields.");
-    
-    filledState.querySelector(".inputsfilled").appendChild(createFilledEntry(name, email));
-    nameInput.value = emailInput.value = "";
-    stateContainer.style.display = "none";
+
+    inputsFilledContainer.appendChild(createFilledEntry(name, email));
+    nameInput.value = "";
+    emailInput.value = "";
+    sourceContainer.style.display = "none";
     filledState.style.display = "flex";
     updateDividers();
   };
 
-  addBtn.addEventListener("click", () => addEntry(document.getElementById("groupName"), document.getElementById("groupEmail"), fillingState));
-  newInviteAddBtn.addEventListener("click", () => addEntry(document.getElementById("groupName2"), document.getElementById("groupEmail2"), newInviteFillingState));
+  // ADD Button (main)
+  addBtn.addEventListener("click", () => {
+    const nameInput = document.getElementById("groupName");
+    const emailInput = document.getElementById("groupEmail");
+    addEntry(nameInput, emailInput, fillingState);
+  });
 
-  // Edit and delete users
+  // ADD Button (New Invite)
+  newInviteAddBtn.addEventListener("click", () => {
+    const nameInput = document.getElementById("groupName2");
+    const emailInput = document.getElementById("groupEmail2");
+    addEntry(nameInput, emailInput, newInviteFillingState);
+  });
+
+  // Edit + Delete Handlers
   filledState.addEventListener("click", (e) => {
     const entry = e.target.closest(".filled-user-entry");
+    if (!entry) return;
+
+    // Edit
     if (e.target.classList.contains("editUser")) {
-      document.getElementById("groupName").value = entry.querySelector(".groupName").textContent;
-      document.getElementById("groupEmail").value = entry.querySelector(".groupEmail").textContent;
+      const name = entry.querySelector(".groupName").textContent;
+      const email = entry.querySelector(".groupEmail").textContent;
+
+      document.getElementById("groupName").value = name;
+      document.getElementById("groupEmail").value = email;
+
       fillingState.style.display = "block";
       filledState.style.display = "none";
       addBtn.classList.add("d-none");
       updateBtn.classList.remove("d-none");
+
       updateBtn.onclick = () => {
-        entry.querySelector(".groupName").textContent = document.getElementById("groupName").value;
-        entry.querySelector(".groupEmail").textContent = document.getElementById("groupEmail").value;
+        const updatedName = document.getElementById("groupName").value.trim();
+        const updatedEmail = document.getElementById("groupEmail").value.trim();
+        if (!updatedName || !updatedEmail) {
+          alert("Please fill in both fields.");
+          return;
+        }
+
+        entry.querySelector(".groupName").textContent = updatedName;
+        entry.querySelector(".groupEmail").textContent = updatedEmail;
+
         fillingState.style.display = "none";
         filledState.style.display = "flex";
         addBtn.classList.remove("d-none");
         updateBtn.classList.add("d-none");
-        document.getElementById("groupName").value = document.getElementById("groupEmail").value = "";
+        document.getElementById("groupName").value = "";
+        document.getElementById("groupEmail").value = "";
       };
-    } else if (e.target.classList.contains("")) {
+    }
+
+    // Delete
+    if (e.target.classList.contains("deleteUser")) {
       entry.remove();
       updateDividers();
     }
   });
 
-  document.querySelector(".moreaddinvite").addEventListener("click", () => newInviteFillingState.style.display = "block");
+  // Show New Invite Block
+  document.querySelector(".moreaddinvite").addEventListener("click", () => {
+    newInviteFillingState.style.display = "block";
+  });
 });
+
+
 
 
 
