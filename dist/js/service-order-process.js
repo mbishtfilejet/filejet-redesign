@@ -42,125 +42,78 @@ $(document).ready(function () {
 
 
 
-// edit form start
-document.addEventListener("DOMContentLoaded", () => {
-  const fillingState = document.querySelector(".fillingstate");
-  const filledState = document.querySelector(".filledstate");
-  const newInviteFillingState = document.querySelector(".newinvitefillingstate");
 
-  const addBtn = document.getElementById("inviteaddBtn");
-  const updateBtn = document.getElementById("inviteupdateBtn"); // ✅ Fixed ID
-  const newInviteAddBtn = document.getElementById("newinviteaddBtn");
-  const inputsFilledContainer = filledState.querySelector(".inputsfilled");
+// inviteuser form
+document.addEventListener("DOMContentLoaded", function () {
+   const originalForm = document.querySelector(".invitefillingstate");
+   const filledState = document.querySelector(".invitefilledstate");
+   const inviteContainer = document.getElementById("inviteContainer");
 
-  // Add Entry to DOM
-  const createFilledEntry = (name, email) => {
-    const container = document.createElement("div");
-    container.className = "filled-user-entry";
-    container.innerHTML = `
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <p class="groupName m-0">${name}</p>
-          <p class="groupEmail m-0 mb-1 fw-normal">${email}</p>
-          <p class="groupEmail m-0 fw-normal">Auto-added Address</p>
-        </div>
-        <div class="d-flex align-items-center">
-          <span class="icon icon-new-edit me-3 editUser" style="cursor:pointer;"></span>
-          <span class="icon icon-new-delete m-0 deleteUser" style="cursor:pointer;"></span>
-        </div>
-      </div>
-      <hr class="entry-divider">
-    `;
-    return container;
-  };
+   // ADD button (initial)
+   document.getElementById("inviteaddBtn").addEventListener("click", function () {
+      originalForm.style.display = "none";
+      filledState.style.display = "block";
+   });
 
-  // Divider Cleanup
-  const updateDividers = () => {
-    const dividers = filledState.querySelectorAll(".entry-divider");
-    dividers.forEach((hr, i) => {
-      hr.style.display = (i === dividers.length - 1) ? "none" : "block";
-    });
-  };
+   // MORE ADD button
+   document.querySelector(".moreaddinvite").addEventListener("click", function () {
+      const newForm = originalForm.cloneNode(true);
+      const addBtn = newForm.querySelector("#inviteaddBtn");
+      const updateBtn = newForm.querySelector("#inviteupdateBtn");
+      const cancelBtn = newForm.querySelector("#inviteCancelBtn");
 
-  // Generic Add Entry Logic
-  const addEntry = (nameInput, emailInput, sourceContainer) => {
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    if (!name || !email) return alert("Please fill in both fields.");
+      // Reset form values
+      newForm.querySelector("#groupName").value = "";
+      newForm.querySelector("#groupEmail").value = "";
 
-    inputsFilledContainer.appendChild(createFilledEntry(name, email));
-    nameInput.value = "";
-    emailInput.value = "";
-    sourceContainer.style.display = "none";
-    filledState.style.display = "flex";
-    updateDividers();
-  };
+      // Set correct visibility
+      addBtn.classList.remove("d-none");
+      updateBtn.classList.add("d-none");
+      cancelBtn.classList.remove("d-none");
 
-  // ADD Button (main)
-  addBtn.addEventListener("click", () => {
-    const nameInput = document.getElementById("groupName");
-    const emailInput = document.getElementById("groupEmail");
-    addEntry(nameInput, emailInput, fillingState);
-  });
+      newForm.style.display = "block";
 
-  // ADD Button (New Invite)
-  newInviteAddBtn.addEventListener("click", () => {
-    const nameInput = document.getElementById("groupName2");
-    const emailInput = document.getElementById("groupEmail2");
-    addEntry(nameInput, emailInput, newInviteFillingState);
-  });
+      // Ensure unique ID per instance (if needed)
+      newForm.classList.add("dynamicInvite");
 
-  // Edit + Delete Handlers
-  filledState.addEventListener("click", (e) => {
-    const entry = e.target.closest(".filled-user-entry");
-    if (!entry) return;
+      // Event: Add (from dynamic form)
+      addBtn.addEventListener("click", function () {
+         newForm.remove();
+         filledState.style.display = "block";
+      });
 
-    // Edit
-    if (e.target.classList.contains("editUser")) {
-      const name = entry.querySelector(".groupName").textContent;
-      const email = entry.querySelector(".groupEmail").textContent;
+      // Event: Cancel
+      cancelBtn.addEventListener("click", function () {
+         newForm.remove();
+      });
 
-      document.getElementById("groupName").value = name;
-      document.getElementById("groupEmail").value = email;
+      inviteContainer.insertBefore(newForm, inviteContainer.firstChild);
+   });
 
-      fillingState.style.display = "block";
+   // EDIT button inside filled state
+   filledState.addEventListener("click", function (e) {
+   if (e.target.classList.contains("icon-new-edit")) {
+      // Show original form in edit mode
+      originalForm.style.display = "block";
       filledState.style.display = "none";
-      addBtn.classList.add("d-none");
-      updateBtn.classList.remove("d-none");
 
-      updateBtn.onclick = () => {
-        const updatedName = document.getElementById("groupName").value.trim();
-        const updatedEmail = document.getElementById("groupEmail").value.trim();
-        if (!updatedName || !updatedEmail) {
-          alert("Please fill in both fields.");
-          return;
-        }
-
-        entry.querySelector(".groupName").textContent = updatedName;
-        entry.querySelector(".groupEmail").textContent = updatedEmail;
-
-        fillingState.style.display = "none";
-        filledState.style.display = "flex";
-        addBtn.classList.remove("d-none");
-        updateBtn.classList.add("d-none");
-        document.getElementById("groupName").value = "";
-        document.getElementById("groupEmail").value = "";
-      };
-    }
-
-    // Delete
-    if (e.target.classList.contains("deleteUser")) {
-      entry.remove();
-      updateDividers();
-    }
-  });
-
-  // Show New Invite Block
-  document.querySelector(".moreaddinvite").addEventListener("click", () => {
-    newInviteFillingState.style.display = "block";
-  });
+      // Switch buttons
+      document.getElementById("inviteaddBtn").classList.add("d-none");
+      document.getElementById("inviteupdateBtn").classList.remove("d-none");
+      document.getElementById("inviteCancelBtn").classList.remove("d-none");
+   }
 });
 
+   // CANCEL from original form (edit mode)
+   document.getElementById("inviteCancelBtn").addEventListener("click", function () {
+      originalForm.style.display = "none";
+      filledState.style.display = "block";
+
+      document.getElementById("inviteaddBtn").classList.remove("d-none");
+      document.getElementById("inviteupdateBtn").classList.add("d-none");
+      document.getElementById("inviteCancelBtn").classList.add("d-none");
+   });
+});
 
 
 
