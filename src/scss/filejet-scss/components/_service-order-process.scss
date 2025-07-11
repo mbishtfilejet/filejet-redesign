@@ -331,7 +331,6 @@
       overflow: hidden;
       white-space: nowrap;
       width: 100%;
-      margin-top: 0.5rem;
 
       &::placeholder {
         color: var(--bs-filejet-medium-gray-opacity-50);
@@ -358,7 +357,6 @@
       white-space: nowrap !important;
       width: 100%;
       cursor: pointer !important;
-      margin-top: 0.5rem;
 
       &:focus-within {
         border: 2px solid var(--bs-filejet-purple-indigo) !important;
@@ -382,7 +380,7 @@
     }
 
     .form-label {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem !important;
       font-size: 12px !important;
       font-weight: bold;
       color: var(--bs-gray-dark);
@@ -604,9 +602,7 @@
       border-radius: 5px !important;
       margin-right: 10px !important;
     }
-    .custom-dropdown{
-      margin-top: 0.5rem;
-    }
+
     .custom-dropdown select:focus {
       box-shadow: none;
       border: 2px solid var(--bs-filejet-purple-indigo);
@@ -720,6 +716,122 @@
       color: #272727;
       opacity: 0.4;
     }
+  .filter2-dropdown {
+	.multi-select-container {
+	  gap: 5px;
+	  padding: 5px 10px;
+	  min-height: 38px;
+	  align-items: center;
+  }
+  .multi-select-container::after {
+	content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url(../../../dist/images/icons/icon-angle-bottom.svg) !important;
+    background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	min-width: 11px;
+  }
+  .multi-select-container.show::after {
+	content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url(../../../dist/images/icons/icon-angle-top.svg) !important;
+    background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	min-width: 11px;
+
+  }
+
+  .multi-select-container .search-input:focus-within{
+	color: #000;
+  }
+  .multi-select-container:focus-within .search-input::placeholder {
+	color: #000;
+	opacity: 1; 
+  }
+  .selected-option {
+	background-color: #2E2E36;
+	padding: 3px 5px;
+	border-radius: 2px;
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 11px;
+	font-weight: 600;
+	color: #ffffff;
+	white-space: nowrap;
+	line-height: normal;
+  }
+  .selected-option-text {
+	max-width: 70px; 
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+  }
+  .dropdown-search-input {
+	width: 100%;
+	padding: 10px 15px;
+	border: none;
+	border-bottom: 1px solid var(--bs-border-color);
+  }
+  .dropdown-search-input:focus-visible {
+	border: 1px transparent !important;
+	border-bottom: 1px solid var(--bs-border-color) !important;
+	background-color: #f3f5f8  ;
+  }
+  
+  .selected-option .remove-option {
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	width: 12px;
+  }
+  .search-input {
+	border: none;
+	outline: none;
+	background: transparent;
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+  }
+  .dropdown-menu {
+	width: 98%;
+	max-height: 250px;
+	overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  ul li label {
+	margin: 0px;
+	border-bottom: 1px solid var(--bs-border-color);
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-transform: capitalize !important;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	white-space: normal;
+	overflow-wrap: break-word;
+  }
+  .dropdown-item.active, .dropdown-item:active {
+	color: var(--bs-dropdown-link-active-color);
+	text-decoration: none;
+	background-color: #a5a4a4;
+  }
+  
+  }
+  .additional-search .multi-select-container.multi-select-container:focus-within {
+  border: 2px solid var(--bs-filejet-purple-indigo) !important;
+}
     .additional-search {
       input {
         padding: 0;
@@ -735,8 +847,8 @@
 
         &:focus-within {
           border: 2px solid var(--bs-filejet-purple-indigo) !important;
-          background-color: #f2f2ff;
-          color: var(--bs-filejet-medium-gray);
+          background-color: #f2f2ff !important;
+          color: var(--bs-filejet-medium-gray) !important;
           font-weight: bold;
         }
 
@@ -1136,6 +1248,7 @@
       right: 135%; // distance from the parent
       transform: translateY(-53%);
       overflow-wrap: break-word;
+      text-transform: capitalize !important;
 
       &::after {
         content: "";
@@ -1174,9 +1287,7 @@
 .checkdisabled{
   pointer-events: none;
 }
-  label {
-      margin-bottom: 0px !important;
-    }
+
 
     @media screen and (max-width: 3000px) {
       .dataTables_scroll .dataTables_scrollBody:has(.long-data-table-listing) {
