@@ -158,205 +158,170 @@ function highlightStatus(status) {
 
 document.addEventListener("DOMContentLoaded", function () {
   function setupMultiSelect(containerId, dropdownId, searchInputId, checkboxClass, selectAllId, defaultSelected = [], maxSelection = 2) {
-      const dropdown = document.getElementById(dropdownId);
-      const multiSelectContainer = document.getElementById(containerId);
-      const selectAllCheckbox = document.getElementById(selectAllId);
-      const checkboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
+    const dropdown = document.getElementById(dropdownId);
+    const multiSelectContainer = document.getElementById(containerId);
+    const selectAllCheckbox = document.getElementById(selectAllId);
 
-      function getMaxSelection() {
-        if (window.innerWidth < 1300) {
-            if (["addjurisdictionContainer", "roleContainer1" ,  "roleContainer2" ,  "roleContainer4" , "memberroleContainer" , "annualroleContainer" , "reqselectEntityContainer2" , "reqselectEntityContainer3" , "selectEntityContainer", "reqselectEntityContainer2" , "exaddjurisdictionContainer"].includes(containerId)) {
-                return 3;
-            }
-            return 1;
+    // ✅ Skip setup if container or dropdown not present
+    if (!dropdown || !multiSelectContainer) return;
+
+    const checkboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
+
+    function getMaxSelection() {
+      if (window.innerWidth < 1300) {
+        if ([
+          "addjurisdictionContainer", "roleContainer1", "roleContainer2", "roleContainer4",
+          "memberroleContainer", "annualroleContainer", "reqselectEntityContainer2",
+          "reqselectEntityContainer3", "selectEntityContainer", "exaddjurisdictionContainer"
+        ].includes(containerId)) {
+          return 3;
         }
-        return maxSelection;
+        return 1;
+      }
+      return maxSelection;
     }
 
+    // Insert search box
+    const searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.classList.add("dropdown-search-input");
+    searchInput.placeholder = "Search...";
+    searchInput.autocomplete = "off";
+    dropdown.prepend(searchInput);
+
+    // Set default checkboxes
+    checkboxes.forEach(cb => {
+      if (defaultSelected.includes(cb.getAttribute("data-value"))) {
+        cb.checked = true;
+      }
+    });
+
+    updateSelectedOptions(false);
+
+    // Search filter
+    searchInput.addEventListener("input", function () {
+      const filter = searchInput.value.toLowerCase();
+      const items = dropdown.querySelectorAll(".dropdown-item");
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(filter) ? "" : "none";
+      });
+    });
+
+    dropdown.addEventListener("change", function (event) {
+      if (event.target.classList.contains(checkboxClass)) {
+        updateSelectedOptions(true);
+      }
+    });
+
+    if (selectAllCheckbox) {
+      selectAllCheckbox.addEventListener("change", function () {
+        checkboxes.forEach(cb => {
+          cb.checked = selectAllCheckbox.checked;
+        });
+        updateSelectedOptions(true);
+      });
+    }
+
+    function updateSelectedOptions(shouldFocus = true) {
+      const selectedCheckboxes = dropdown.querySelectorAll(`.${checkboxClass}:checked`);
+      const selectedValues = Array.from(selectedCheckboxes).map(cb => cb.getAttribute("data-value"));
       
+      // Clear container
+      multiSelectContainer.innerHTML = "";
 
-      
-
-      // Insert the search box at the top of the dropdown
-      const searchInput = document.createElement("input");
-      searchInput.type = "text";
-      searchInput.classList.add("dropdown-search-input");
-      searchInput.placeholder = "Search...";
-      searchInput.autocomplete = "off";
-      dropdown.prepend(searchInput); // Adds it at the top of the dropdown
-
-      // Set default selected checkboxes
-      checkboxes.forEach(cb => {
-          if (defaultSelected.includes(cb.getAttribute("data-value"))) {
-              cb.checked = true;
-          }
+      // Add selected options
+      selectedValues.slice(0, getMaxSelection()).forEach(value => {
+        const span = document.createElement("span");
+        span.classList.add("selected-option");
+        span.innerHTML = `
+          <span class="selected-option-text">${value}</span>
+          <span class="remove-option">
+            <img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img">
+          </span>
+        `;
+        span.querySelector(".remove-option").addEventListener("click", function () {
+          const checkbox = [...dropdown.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
+          if (checkbox) checkbox.checked = false;
+          updateSelectedOptions(true);
+        });
+        multiSelectContainer.appendChild(span);
       });
 
-      updateSelectedOptions(false);
-
-      // 🔍 Search functionality inside dropdown
-      searchInput.addEventListener("input", function () {
-          const filter = searchInput.value.toLowerCase();
-          const items = dropdown.querySelectorAll(".dropdown-item");
-
-          items.forEach(item => {
-              const text = item.innerText.toLowerCase();
-              item.style.display = text.includes(filter) ? "" : "none";
-          });
-      });
-
-      // 🎯 Listen for checkbox changes
-      dropdown.addEventListener("change", function (event) {
-          if (event.target.classList.contains(checkboxClass)) {
-              updateSelectedOptions(true);
-          }
-      });
-
-      // ✅ Handle "Select All"
-      if (selectAllCheckbox) {
-          selectAllCheckbox.addEventListener("change", function () {
-              checkboxes.forEach(cb => {
-                  cb.checked = selectAllCheckbox.checked;
-              });
-              updateSelectedOptions(true);
-          });
+      if (selectedValues.length > getMaxSelection()) {
+        const summarySpan = document.createElement("span");
+        summarySpan.classList.add("selected-option");
+        summarySpan.innerHTML = `+${selectedValues.length - getMaxSelection()}`;
+        multiSelectContainer.appendChild(summarySpan);
       }
 
-      function updateSelectedOptions(shouldFocus = true) {
-          const selectedOptionsContainer = multiSelectContainer;
-          const selectedCheckboxes = dropdown.querySelectorAll(`.${checkboxClass}:checked`);
-          const selectedValues = Array.from(selectedCheckboxes).map(cb => cb.getAttribute("data-value"));
+      const input = document.createElement("input");
+      input.type = "button";
+      input.classList.add("search-input");
+      input.id = searchInputId;
+      input.value = selectedValues.length === 0 ? getPlaceholder(containerId) : "";
+      input.autocomplete = "off";
+      multiSelectContainer.appendChild(input);
 
-          // Clear previous selections
-          selectedOptionsContainer.innerHTML = "";
-
-          // Add selected options
-          selectedValues.slice(0, getMaxSelection()).forEach(value => {
-              const span = document.createElement("span");
-              span.classList.add("selected-option");
-
-              // ✅ Add a separate class for the text
-              span.innerHTML = `
-                  <span class="selected-option-text">${value}</span> 
-                  <span class="remove-option">
-                      <img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img">
-                  </span>
-              `;
-
-              // ❌ Remove item with confirmation alert
-             span.querySelector(".remove-option").addEventListener("click", function () {
-    const checkbox = [...dropdown.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
-    if (checkbox) checkbox.checked = false;
-    updateSelectedOptions(true);
-              });
-
-              selectedOptionsContainer.appendChild(span);
-          });
-
-          // Show "+x" when max selection exceeded
-          if (selectedValues.length > getMaxSelection()) {
-              const extraCount = selectedValues.length - getMaxSelection();
-              const summarySpan = document.createElement("span");
-              summarySpan.classList.add("selected-option");
-              summarySpan.innerHTML = `+${extraCount}`;
-              selectedOptionsContainer.appendChild(summarySpan);
-          }
-       // 🔄 Preserve Placeholder in Search Input
-    const input = document.createElement("input");
-    input.type = "button";
-    input.classList.add("search-input");
-    input.id = searchInputId;
-
-    // ✅ Show placeholder ONLY when no filters are selected
-    input.value = selectedValues.length === 0 ? getPlaceholder(containerId) : "";  
-    input.autocomplete = "off";
-
-    selectedOptionsContainer.appendChild(input);
-
-    if (shouldFocus) {
-        input.focus();
-    }
+      if (shouldFocus) input.focus();
     }
 
-    // Function to return placeholder based on container
     function getPlaceholder(containerId) {
-        switch (containerId) {
-            case "jurisdictionContainer":
-            case "entityJurisdictionContainer":
-            case "orderJurisdictionContainer":
-                return "Jurisdictions";
-            case "taskContainer":
-              return "Tasks";
-            case "orderTaskContainer":
-                return "Service";
-                case "exaddjurisdictionContainer":
-                case "addjurisdictionContainer":
-                  return "Select States";
-            case "entityStatusContainer":
-                return "Entity Status";
-                case "roleContainer1":
-                return "Role";
-                case "roleContainer2":
-                return "Role";
-                case "roleContainer4":
-                return "Role";
-                case "memberroleContainer":
-                return "Role";
-                case "annualroleContainer":
-                return "Role";
-                case "selectEntityContainer":
-                return "Select Entity";
-                case "selectEntityContainer2":
-                return "Select Entity";
-                case "reqselectEntityContainer":
-                return "Select Entity";
-                case "reqselectEntityContainer2":
-                return "Select Entity";
-                case "reqselectEntityContainer3":
-                return "Select Entity";
-
-            default:
-                return "Status";
-        }
+      switch (containerId) {
+        case "jurisdictionContainer":
+        case "entityJurisdictionContainer":
+        case "orderJurisdictionContainer":
+          return "Jurisdictions";
+        case "taskContainer": return "Tasks";
+        case "orderTaskContainer": return "Service";
+        case "addjurisdictionContainer":
+        case "exaddjurisdictionContainer": return "Select States";
+        case "entityStatusContainer": return "Entity Status";
+        case "roleContainer1":
+        case "roleContainer2":
+        case "roleContainer4":
+        case "memberroleContainer":
+        case "annualroleContainer": return "Role";
+        case "selectEntityContainer":
+        case "selectEntityContainer2":
+        case "reqselectEntityContainer":
+        case "reqselectEntityContainer2":
+        case "reqselectEntityContainer3": return "Select Entity";
+        default: return "Status";
+      }
     }
 
- // 📏 Recalculate max selection on window resize
- window.addEventListener("resize", updateSelectedOptions);
-}
-  // 🏷️ Initialize dropdowns
-  setupMultiSelect("jurisdictionContainer", "jurisdictionDropdown", "jurisdictionSearch", "jurisdiction-checkbox", "jurisdictionSelectAll");
-  setupMultiSelect("entityJurisdictionContainer", "entityJurisdictionDropdown", "entityJurisdictionSearch", "entityJurisdiction-checkbox", "entityJurisdictionSelectAll");
-  setupMultiSelect("orderJurisdictionContainer", "orderJurisdictionDropdown", "orderJurisdictionSearch", "orderJurisdiction-checkbox", "orderJurisdictionSelectAll");
-  setupMultiSelect("entityStatusContainer", "entityStatusDropdown", "entityStatusSearch", "entityStatus-checkbox", "entityStatusSelectAll");
-  setupMultiSelect("orderStatusContainer", "orderStatusDropdown", "orderStatusSearch", "orderStatus-checkbox", "orderStatusSelectAll");
-  setupMultiSelect("taskContainer", "taskDropdown", "taskSearch", "task-checkbox", "taskSelectAll");
-  setupMultiSelect("orderTaskContainer", "orderTaskDropdown", "orderTaskSearch", "orderTask-checkbox", "orderTaskSelectAll");
+    // Recalculate on resize
+    window.addEventListener("resize", updateSelectedOptions);
+  }
 
+  // 🔁 Register all multi-select dropdowns (safe with check)
+  const dropdownConfigs = [
+    ["jurisdictionContainer", "jurisdictionDropdown", "jurisdictionSearch", "jurisdiction-checkbox", "jurisdictionSelectAll"],
+    ["entityJurisdictionContainer", "entityJurisdictionDropdown", "entityJurisdictionSearch", "entityJurisdiction-checkbox", "entityJurisdictionSelectAll"],
+    ["orderJurisdictionContainer", "orderJurisdictionDropdown", "orderJurisdictionSearch", "orderJurisdiction-checkbox", "orderJurisdictionSelectAll"],
+    ["entityStatusContainer", "entityStatusDropdown", "entityStatusSearch", "entityStatus-checkbox", "entityStatusSelectAll"],
+    ["orderStatusContainer", "orderStatusDropdown", "orderStatusSearch", "orderStatus-checkbox", "orderStatusSelectAll"],
+    ["taskContainer", "taskDropdown", "taskSearch", "task-checkbox", "taskSelectAll"],
+    ["orderTaskContainer", "orderTaskDropdown", "orderTaskSearch", "orderTask-checkbox", "orderTaskSelectAll"],
+    ["addjurisdictionContainer", "addjurisdictionDropdown", "addjurisdictionSearch", "addjurisdiction-checkbox", "addjurisdictionSelectAll"],
+    ["exaddjurisdictionContainer", "exaddjurisdictionDropdown", "exaddjurisdictionSearch", "exaddjurisdiction-checkbox", "exaddjurisdictionSelectAll"],
+    ["roleContainer1", "roleDropdown1", "roleSearch1", "role-checkbox1", "roleSelectAll1"],
+    ["roleContainer2", "roleDropdown2", "roleSearch2", "role-checkbox2", "roleSelectAll2"],
+    ["roleContainer4", "roleDropdown4", "roleSearch4", "role-checkbox4", "roleSelectAll4"],
+    ["memberroleContainer", "memberroleDropdown", "memberroleSearch", "memberrole-checkbox", "memberroleSelectAll"],
+    ["annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll", ["CEO"]],
+    ["selectEntityContainer", "selectEntityDropdown", "selectEntitySearch", "selectEntity-checkbox"],
+    ["selectEntityContainer2", "selectEntityDropdown2", "selectEntitySearch2", "selectEntity-checkbox2"],
+    ["reqselectEntityContainer", "reqselectEntityDropdown", "reqselectEntitySearch", "reqselectEntity-checkbox"],
+    ["reqselectEntityContainer2", "reqselectEntityDropdown2", "reqselectEntitySearch2", "reqselectEntity-checkbox2"],
+    ["reqselectEntityContainer3", "reqselectEntityDropdown3", "reqselectEntitySearch3", "reqselectEntity-checkbox3"],
+    ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]]
+  ];
 
-  setupMultiSelect("addjurisdictionContainer", "addjurisdictionDropdown", "addjurisdictionSearch", "addjurisdiction-checkbox", "addjurisdictionSelectAll");
-  setupMultiSelect("exaddjurisdictionContainer", "exaddjurisdictionDropdown", "exaddjurisdictionSearch", "exaddjurisdiction-checkbox", "exaddjurisdictionSelectAll");
-  setupMultiSelect("roleContainer1", "roleDropdown1", "roleSearch1", "role-checkbox1", "roleSelectAll1");
-  setupMultiSelect("roleContainer2", "roleDropdown2", "roleSearch2", "role-checkbox2", "roleSelectAll2");
-  setupMultiSelect("roleContainer4", "roleDropdown4", "roleSearch4", "role-checkbox4", "roleSelectAll4");
-
-  setupMultiSelect("memberroleContainer", "memberroleDropdown", "memberroleSearch", "memberrole-checkbox", "memberroleSelectAll");
-  setupMultiSelect("annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll", ["CEO"]);
-  setupMultiSelect("selectEntityContainer", "selectEntityDropdown", "selectEntitySearch", "selectEntity-checkbox");
-    setupMultiSelect("selectEntityContainer2", "selectEntityDropdown2", "selectEntitySearch2", "selectEntity-checkbox2");
-
-  setupMultiSelect("reqselectEntityContainer", "reqselectEntityDropdown", "reqselectEntitySearch", "reqselectEntity-checkbox");
-  setupMultiSelect("reqselectEntityContainer2", "reqselectEntityDropdown2", "reqselectEntitySearch2", "reqselectEntity-checkbox2");
-  setupMultiSelect("reqselectEntityContainer3", "reqselectEntityDropdown3", "reqselectEntitySearch3", "reqselectEntity-checkbox3");
-
-
-
-
-
-
-
-  // ✅ Set "Overdue" and "Upcoming" as default selected
-  setupMultiSelect("statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]);
+  dropdownConfigs.forEach(args => setupMultiSelect(...args));
 });
+
 
 // filter end
 
