@@ -849,7 +849,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // selet2 
 $(document).ready(function () {
     // List of modal IDs
-    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#INTentity' , '#addEXEntity'];
+    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#INTentity' , '#BLentity' , '#addEXEntity'];
 
     // Attach the same event handler to all modals
     modals.forEach(modalId => {
