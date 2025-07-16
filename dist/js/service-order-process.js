@@ -1062,4 +1062,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+  document.addEventListener("DOMContentLoaded", function () {
+  const selects = document.querySelectorAll(".custom-dropdown");
+  const maxChars = 40; // Customize this number to your select width
+
+  selects.forEach(select => {
+    select.querySelectorAll("option").forEach(option => {
+      const fullText = option.text.trim();
+      option.dataset.fullText = fullText;
+      option.title = fullText;
+      if (fullText.length > maxChars) {
+        option.textContent = fullText.slice(0, maxChars) + "...";
+      }
+    });
+  });
+});
+
+
+
+
 

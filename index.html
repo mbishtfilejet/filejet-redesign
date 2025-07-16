@@ -247,7 +247,7 @@
                         class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end">
 
                         <div class="filter2-dropdown w-50 me-3 group-search-d2 shadow-sm rounded border">
-                           <select class="form-select w-100 p-2 px-3 m-0 rounded custom-select" id="groupSelect">
+                           <select class="form-select w-100 p-2 px-3 m-0 rounded custom-select groupSelect" id="">
                               <option value="" hidden selected>Group</option>
                               <option value="1">All</option>
                               <option value="2">Unassigned</option>
@@ -406,19 +406,8 @@
                                     <div>
                                        <a href=""
                                           class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
-                                          data-bs-toggle="modal" data-bs-target="#requestCS" data-bs-dismiss="modal">
-                                          <span class="other-placeholder">Request Certificate of Status</span>
-                                          <span
-                                             class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
-                                       </a>
-                                    </div>
-                                 </li>
-                                  <li>
-                                    <div>
-                                       <a href=""
-                                          class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
                                           data-bs-toggle="modal" data-bs-target="#requestCSGood" data-bs-dismiss="modal">
-                                          <span class="other-placeholder">Request Certificate of Good Standing</span>
+                                          <span class="other-placeholder">Request Certificate of Status</span>
                                           <span
                                              class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
                                        </a>
@@ -5718,412 +5707,6 @@
 
 
 
-   <!--Request Certificate of Status step-1 Modal start-->
-   <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="requestCS" tabindex="-1"
-      aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-         <div class="modal-content border-0 rounded-0 min-vh-100">
-            <!-- Modal Header -->
-            <div class="modal-header flex-wrap">
-               <div class="d-flex flex-column w-100 mb-0">
-                  <div class="d-flex align-items-center mb-4">
-                     <span class="icon icon-existing-entity-icon icon-md me-3"></span>
-                     <h4 class="fw-bold m-0">
-                        Request Certificate of Status</h4>
-                  </div>
-                  <!-- stepper start -->
-                  <div class="service-step-group service-step-group2 ">
-                     <div class="step " data-bs-toggle="modal" data-bs-target="#requestCS" data-bs-dismiss="modal">
-                        <div class="circle active"></div>
-                        <span class="step-text">ENTITY</span>
-                     </div>
-
-                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityCSSummery" data-bs-dismiss="modal">
-                        <div class="circle"></div>
-                        <span class="step-text">SUMMARY</span>
-                     </div>
-                  </div>
-                  <!-- stepper end -->
-               </div>
-            </div>
-            <!-- Modal Header Ends -->
-            <!-- Modal Body Start-->
-            <div class="modal-body">
-
-               <div class="accordion" id="accordionExample">
-                  <div class="accordion-item m-0">
-                     <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                           data-bs-target="#collapseOne" aria-expanded="true"
-                           aria-controls="panelsStayOpen-collapseOne">
-                           Entity <span class="icon icon-entity-required ms-2"></span>
-                        </button>
-                     </h2>
-                     <div id="collapseOne" class="accordion-collapse collapse show border-0"
-                        aria-labelledby="headingOne">
-                        <div class="accordion-body pt-0">
-                           <form class="" action="">
-                              <div>
-                                    <fieldset class="mb-4">
-                                    <label for="entityType-model" class="form-label">group </label>
-                                    <div class="custom-dropdown">
-                                       <select class="form-select" id="entityType-model" required>
-                                          <option  value disabled selected hidden>All</option>
-                                          <option value="2">Adept HR</option>
-                                          <option value="3">AIC CAPITAL V V MANAGER - Terminated</option>
-                                       </select>
-                                    </div>
-                                 </fieldset>
-
-                  <fieldset>
-                    <label for="entityType-model" class="form-label">Select Entity <span class="mandatory">*</span></label>
-                    <div class="filter2-dropdown additional-search dropdown tablefilter">
-                        <div
-                           class="multi-select-container d-flex align-items-center border border-1 rounded-2  m-0 white-bg "
-                           id="reqselectEntityContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                           <input type="text" class="search-input  p-0" id="reqselectEntitySearch"
-                              placeholder="reqselectEntity" autocomplete="off">
-                        </div>
-                        <ul class="dropdown-menu w-100" id="reqselectEntityDropdown">
-                           <li><label class="dropdown-item"><input type="checkbox" id=""
-                                    class="form-check-input me-2"> <span class=" entityheading fw-bold">Entity Name</span> </label>  
-                           </li>
-                           <li><label class="dropdown-item odd"><input type="checkbox"
-                                    class="form-check-input reqselectEntity-checkbox me-2" data-value="RASA Realty LLC"><span class=" entityheading">RASA Realty LLC</span></label>
-                           </li>
-                           <li><label class="dropdown-item even text-muted"><input type="checkbox"
-                                    class="form-check-input reqselectEntity-checkbox me-2" data-value="KK RENEWAL HOLDINGS CORP"  disabled> <span class=" entityheading">KK RENEWAL HOLDINGS CORP</span> </label>
-                           </li>
-                           <li><label class="dropdown-item odd text-muted"><input type="checkbox"
-                                    class="form-check-input reqselectEntity-checkbox me-2" data-value="RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP" disabled> <span class=" entityheading">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP</span></label>
-                           </li>
-                           <li><label class="dropdown-item even"><input type="checkbox"
-                                    class="form-check-input reqselectEntity-checkbox me-2" data-value="Pikewood Group, LLC"><span class=" entityheading">Pikewood Group, LLC</span> </label>
-                           </li>
-                           <li><label class="dropdown-item odd"><input type="checkbox"
-                                    class="form-check-input reqselectEntity-checkbox me-2" data-value="MARKSET FUND I -01-SERIES 1 L.L.C.,"><span class=" entityheading">MARKSET FUND I -01-SERIES 1 L.L.C.,</span> </label>
-                           </li>
-                           <li><label class="dropdown-item even"><input type="checkbox"
-                                    class="form-check-input reqselectEntity-checkbox me-2" data-value="DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION"><span class=" entityheading">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION</span> </label>
-                           </li>
-                           
-                        </ul>
-                     </div>
-                  </fieldset>
-
-                              </div>
-                           </form>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
-            </div>
-            <!-- Modal Body End -->
-            <div class="modal-footer">
-               <div class="d-flex justify-content-between align-items-center w-100 m-0">
-                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
-                     data-bs-dismiss="modal">
-                     CANCEL
-                  </button>
-                  <div class="d-flex align-items-center">
-                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
-                        data-bs-target="#entityCSSummery" data-bs-toggle="modal" data-bs-dismiss="modal">
-                        Next
-                     </button>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- Request Certificate of Status step-1 Modal End-->
-
-   <!--Request Certificate of Status step-2 Modal start-->
-   <div class=" modalsteper modal modal-right fade filter-slideout SOP-model" id="entityCSSummery" tabindex="-1"
-      aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-         <div class="modal-content border-0 rounded-0 min-vh-100">
-            <!-- Modal Header -->
-            <div class="modal-header flex-wrap">
-               <div class="d-flex flex-column w-100 mb-0">
-                  <div class="d-flex align-items-center mb-4">
-                     <span class="icon icon-existing-entity-icon icon-md me-3"></span>
-                     <h4 class="fw-bold m-0">
-                        Request Certificate of Status</h4>
-                  </div>
-                  <!-- stepper start -->
-                  <div class="service-step-group service-step-group2">
-                     <div class="step completed " data-bs-toggle="modal" data-bs-target="#requestCS"
-                        data-bs-dismiss="modal">
-                        <div class="circle completed"></div>
-                        <span class="step-text">ENTITY</span>
-                     </div>
-                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityCSSummery" data-bs-dismiss="modal">
-                        <div class="circle active"></div>
-                        <span class="step-text">SUMMARY</span>
-                     </div>
-                  </div>
-                  <!-- stepper end -->
-               </div>
-            </div>
-            <!-- Modal Header Ends -->
-            <!-- Modal Body Start-->
-            <div class="modal-body">
-               <div class="mb-4 p-3 bg-white rounded-2">
-                  <div>
-                     <div class="d-flex justify-content-between">
-                        <h3 class="fw-bold mb-2">New Entity</h3>
-                        <div class="icon icon-new-edit editUser" data-bs-toggle="modal" data-toggle="tooltip"
-                           aria-label="EDIT" data-bs-original-title="EDIT" data-bs-target="#requestCS"></div>
-                     </div>
-                     <p class="mb-0 text-secondary">Delaware Limited Liability Company</p>
-                     <p class="mb-0 text-secondary">123 Main St
-                        Anywhere, CA 99999</p>
-                  </div>
-                  <hr class="summarystroke">
-                  <div class="entitytable pricetable border rounded-3 mt-4 h-auto">
-                     <div class="fade show active rounded-3 overflow-hidden" id="all">
-                        <table class="table table-striped w-100 long-data-table-listing border-1">
-                           <thead>
-                              <tr>
-                                 <th data-orderable="false">Service</th>
-                                 <th data-orderable="false" class="fixed-width-soi-table-50">Qty.</th>
-                                 <th data-orderable="false" class="fixed-width-soi-table-80">Price</th>
-                                 <th data-orderable="false" class="fixed-width-soi-table-80">Total</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr class="odd">
-                                 <td>CA Request Certificate of Status</td>
-                                 <td>1</td>
-                                 <td>$99</td>
-                                 <td>$15</td>
-                              </tr>
-                               <tr class="even">
-                                 <td>DE Request Certificate of Status</td>
-                                 <td>1</td>
-                                 <td>$99</td>
-                                 <td>$15</td>
-                              </tr>
-
-                              <tr class="odd">
-                                 <td>FL Request Certificate of Status</td>
-                                 <td>1</td>
-                                 <td>$52</td>
-                                 <td>$15</td>
-                              </tr>
-                              <tr class="even">
-                                 <td>WI Request Certificate of Status</td>
-                                 <td>1</td>
-                                 <td>$15</td>
-                                 <td>$15</td>
-                              </tr>
-                           <tfoot>
-                              <tr class="even">
-                                 <td class="fw-bold">Total</td>
-                                 <td class="fw-bold">4</td>
-                                 <td class="fw-bold"></td>
-                                 <td class="fw-bold">$60</td>
-                              </tr>
-                           </tfoot>
-
-
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-
-               </div>
-               <form class="payment-section">
-                  <div class="mb-4 p-3 bg-white rounded-2">
-                     <fieldset>
-                        <label class="form-label">Payment Method<span class="mandatory">*</span></label>
-                        <div class="custom-dropdown">
-                           <select class="form-select pricing-method">
-                              <option value="account-default">Pay Later</option>
-                              <option value="account-default">Account Default (Visa 1111)</option>
-                              <option value="on-file">On File</option>
-                              <option value="add-new">Add New</option>
-                           </select>
-                        </div>
-                     </fieldset>
-
-                        <div class="on-file-content mt-4 border rounded-2" style="display: none;">
-                        <div>
-                           <div class="payment-card d-flex odd border-bottom">
-                              <div class="d-flex align-items-center">
-                                 <input class="form-check-input" type="checkbox">
-                                 <div class="ms-2 d-flex">
-                                    <div class="methodiv">Mastercard </div>
-                                    <div class="methodcard">Mastercard ...4444</div>
-                                 </div>
-                              </div class="d-flex align-items-center">
-                              <div class="d-flex align-items-start  defaultdiv">
-                                 <span class="btn btn-outline-success btn-sm">Default</span>
-                              </div>
-                           </div>
-                           <!-- Payment Method 2 -->
-                           <div class="container p-0 d-flex flex-column even border-bottom">
-                              <div class="payment-card">
-                                 <div class="d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox" disabled>
-                                    <div class="ms-2 d-flex">
-                                       <div class="methodiv text-disabled">ACH Payment</div>
-                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
-                                    </div>
-                                 </div>
-
-                                 <div class="d-flex align-items-start defaultdiv" data-toggle="tooltip"
-                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
-                                    <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
-                                 </div>
-                              </div>
-                           </div>
-
-                           <!-- Payment Method 2 -->
-                           <div class="container p-0 d-flex flex-column odd border-bottom">
-                              <div class="payment-card">
-                                 <div class="d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox" >
-                                    <div class="ms-2 d-flex">
-                                       <div class="methodiv">ACH Payment</div>
-                                       <div class="methodcard">Stripe Test Bank ...4786</div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-
-                           <!-- Payment Method 3 -->
-                           <div class="payment-card d-flex even ">
-                              <div class="d-flex align-items-center">
-                                 <input class="form-check-input" type="checkbox">
-                                 <div class="ms-2 d-flex">
-                                    <div class="methodiv">Card 2</div>
-                                    <div class="methodcard">Mastercard ...1111</div>
-                                 </div>
-                              </div>
-                           </div>
-
-
-
-                        </div>
-                     </div>
-                     <div class="add-new-content mt-4" style="display: none;">
-                        <div class="d-flex justify-content-between">
-                           <span class="fw-bold">SELECT METHOD</span>
-                           <div class="d-flex align-items-center">
-                              <div class="form-check me-4">
-                                 <input class="form-check-input ach-option" id="achCheck" type="checkbox" checked>
-                                 <label class="form-check-label rights-label" for="achCheck">ACH</label>
-                              </div>
-                              <div class="form-check">
-                                 <input class="form-check-input credit-option" id="creditCheck" type="checkbox">
-                                 <label class="form-check-label rights-label" for="creditCheck">Credit Card</label>
-                              </div>
-                           </div>
-
-                        </div>
-
-                        <!-- ACH Form -->
-                        <div class="ach-form mt-4" style="display: none;">
-                           <fieldset class="mb-4">
-                              <label class="form-label">Account Holder Name</label>
-                              <input type="text" class="form-control" placeholder="Name">
-                           </fieldset>
-                           <div class="d-flex justify-content-between align-items-center upload-group w-100 mb-4">
-                     <span class="fw-bold text-uppercase">ACCOUNT TYPE</span>
-                     <div class="d-flex align-items-center flex-column">
-                        <div class="d-flex">
-                           <div class="form-check me-4 typecheckradio">
-                              <input class="form-check-input no-checkbox" type="radio" id="ACtype6" name="customArticles-27" checked>
-                              <label class="form-check-label rights-label " for="ACtype6">Individual</label>
-                           </div>
-                           <div class="form-check typecheckradio">
-                              <input class="form-check-input yes-checkbox" type="radio" id="ACompany6" name="customArticles-27">
-                              <label class="form-check-label rights-label " for="ACompany6"> Company</label>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                           <fieldset class="mb-4">
-                              <div class="d-flex justify-content-between">
-                              <label class="form-label">Routing Number</label> 
-                              <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative"> 
-         <div class="text-start tooltipText tooltipRight"> Please note that the Routing/Account numbers must have a minimum of 12 digits when adding. Your Routing/Account number is less than 12 digits, you may add zeros at the beginning of the Routing/Account number. (see example)</div>
-   </div>
-   </div>
-                              <span>Also known as ABA Number</span>
-                              <input type="text" class="form-control" placeholder="EX. 11000000">
-                           </fieldset>
-                           <fieldset>
-                              <label class="form-label">Account Number</label>
-                              <input type="text" class="form-control" placeholder="EX. 000123455678">
-                           </fieldset>
-                           <div class="mt-4">
-                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
-                                 SAVE
-                              </button>
-                           </div>
-                        </div>
-
-                        <!-- Credit Card Form -->
-                        <div class="credit-card-form mt-4" style="display: none;">
-                           <fieldset class="mb-4">
-                              <label class="form-label">Card Holder Name</label>
-                              <input type="text" class="form-control" placeholder="Name">
-                           </fieldset>
-                           <fieldset class="mb-4">
-                              <label class="form-label">Card Details</label>
-                              <input type="text" class="form-control" placeholder="**** **** **** 1111">
-                           </fieldset>
-                           <div class="d-flex justify-content-between">
-                              <fieldset class="w-50 me-2">
-                                 <label class="form-label">Expiry Date</label>
-                                 <input type="text" class="form-control" placeholder="MM/YY">
-                              </fieldset>
-                              <fieldset class="w-50 ms-2">
-                                 <label class="form-label">CVV</label>
-                                 <input type="text" class="form-control" placeholder="CVV">
-                              </fieldset>
-                           </div>
-                           <div class="mt-4">
-                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
-                                 SAVE
-                              </button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  </div>
-               </form>
-            </div>
-
-            <!-- Modal Body End -->
-            <div class="modal-footer">
-               <div class="d-flex justify-content-between align-items-center w-100 m-0">
-                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
-                     data-bs-dismiss="modal">
-                     CANCEL
-                  </button>
-                  <div class="d-flex align-items-center">
-                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="submitBtn"
-                        data-bs-target="#" data-bs-toggle="modal" data-bs-dismiss="modal">
-                        Submit
-                     </button>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- Request Certificate of Status step-2 Modal End-->
-
-
-
-
-
 
    <!--Request Certificate of Good Standing step-1 Modal start-->
    <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="requestCSGood" tabindex="-1"
@@ -6136,7 +5719,7 @@
                   <div class="d-flex align-items-center mb-4">
                      <span class="icon icon-existing-entity-icon icon-md me-3"></span>
                      <h4 class="fw-bold m-0">
-                        Request Certificate of Good Standing</h4>
+                        Request Certificate of Status</h4>
                   </div>
                   <!-- stepper start -->
                   <div class="service-step-group service-step3">
@@ -6163,7 +5746,7 @@
                   <div class="accordion" id="accordionExample91">
                   <div class="accordion-item m-0">
                      <h2 class="accordion-header" id="headingOne91">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        <button class="accordion-button m-0" type="button" data-bs-toggle="collapse"
                            data-bs-target="#collapseOne91" aria-expanded="true"
                            aria-controls="panelsStayOpen-collapseOne91">
                            Entity <span class="icon icon-entity-required ms-2"></span>
@@ -6173,7 +5756,7 @@
                         aria-labelledby="headingOne91">
                         <div class="accordion-body pt-0">
                            <form class="" action="">
-                  <fieldset>
+<!--                   <fieldset>
                     <label for="entityType-model" class="form-label">Select Entity <span class="mandatory">*</span></label>
                     <div class="filter2-dropdown additional-search dropdown tablefilter">
                         <div
@@ -6207,6 +5790,20 @@
                            
                         </ul>
                      </div>
+                  </fieldset> -->
+                     <fieldset>
+                     <label for="entityType-model" class="form-label">Select entity </label>
+                     <div class="custom-dropdown">
+                        <select class="form-select " id="entityType-model" required="" >
+                           <option value="" disabled="" selected="" hidden="">Select Entity</option>
+                           <option value="2">RASA Realty LLC</option>
+                           <option value="3">KK RENEWAL HOLDINGS CORP</option>
+                           <option value="4">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP</option>
+                           <option value="5">Pikewood Group, LLC</option>
+                           <option value="6">MARKSET FUND I -01-SERIES 1 L.L.C.,</option>
+                           <option value="7">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION</option>
+                        </select>
+                     </div>
                   </fieldset>
                            </form>
                         </div>
@@ -6216,7 +5813,7 @@
 
                <div class=" p-3 bg-white rounded-2 mt-4">
                   <fieldset>
-                     <label for="entityType-model" class="form-label">group assignment </label>
+                     <label for="entityType-model" class="form-label">Add to group </label>
                      <div class="custom-dropdown">
                         <select class="form-select" id="entityType-model" required="">
                            <option value="" disabled="" selected="" hidden="">Name of Group</option>
@@ -6258,7 +5855,7 @@
                   <div class="d-flex align-items-center mb-4">
                      <span class="icon icon-existing-entity-icon icon-md me-3"></span>
                      <h4 class="fw-bold m-0">
-                        Request Certificate of Good Standing</h4>
+                        Request Certificate of Status</h4>
                   </div>
                   <!-- stepper start -->
                    <div class="service-step-group service-step3">
@@ -6315,7 +5912,7 @@
                                     </thead>
                                     <tbody>
                                        <tr class="odd">
-                                          <td><input class="d-flex form-check-input" type="checkbox"></td>
+                                          <td><input class="d-flex form-check-input" type="checkbox" checked disabled></td>
                                           <td>RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP</td>
                                           <td>Domestic</td>
                                           <td>CA</td>
@@ -6323,38 +5920,38 @@
                                        <tr class="even">
                                           <td><input class="d-flex form-check-input" type="checkbox"></td>
                                           <td>RASA Realty LLC</td>
-                                          <td>Domestic</td>
+                                          <td>Foreign</td>
                                           <td>DE</td>                                       
                                        </tr>
                                        <tr class="odd">
                                           <td><input class="d-flex form-check-input" type="checkbox"></td>
                                           <td>Pikewood Group, LLC</td>
                                           <td>Foreign</td>
-                                          <td>CA</td>
+                                          <td>FL</td>
                                        </tr>
                                        <tr class="even">
                                           <td><input class="d-flex form-check-input" type="checkbox"></td>
                                           <td>EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP</td>
-                                          <td>Domestic</td>
+                                          <td>Foreign</td>
                                           <td>LA</td>
                                        </tr>
                                        <tr class="odd">
                                           <td><input class="d-flex form-check-input" type="checkbox"></td>
                                           <td>GDS DESIGNS, INC.</td>
-                                          <td>Domestic</td>
-                                          <td>DE</td>
+                                          <td>Foreign</td>
+                                          <td>TR</td>
                                        </tr>
                                        <tr class="even">
                                           <td><input class="d-flex form-check-input" type="checkbox"></td>
                                           <td>KK RENEWAL HOLDINGS CORP</td>
-                                          <td>Domestic</td>
-                                          <td>DE</td>
+                                          <td>Foreign</td>
+                                          <td>KS</td>
                                        </tr>
                                        <tr class="odd">
                                           <td><input class="d-flex form-check-input" type="checkbox"></td>
                                           <td>MARKSET FUND I -01-SERIES 1 L.L.C.,</td>
-                                          <td>Domestic</td>
-                                          <td>DE</td>
+                                          <td>Foreign</td>
+                                          <td>SK</td>
                                        </tr>
                                         </tbody>
                                  </table>
@@ -6400,7 +5997,7 @@
                   <div class="d-flex align-items-center mb-4">
                      <span class="icon icon-existing-entity-icon icon-md me-3"></span>
                      <h4 class="fw-bold m-0">
-                        Request Certificate of Good Standing</h4>
+                        Request Certificate of Status</h4>
                   </div>
                   <!-- stepper start -->
                    <div class="service-step-group service-step3">
@@ -6428,8 +6025,7 @@
                   <div>
                      <div class="d-flex justify-content-between">
                         <h3 class="fw-bold mb-2">New Entity</h3>
-                        <div class="icon icon-new-edit editUser" data-bs-toggle="modal" data-toggle="tooltip"
-                           aria-label="EDIT" data-bs-original-title="EDIT" data-bs-target="#requestCSGood"></div>
+                        
                      </div>
                      <p class="mb-0 text-secondary">Delaware Limited Liability Company</p>
                      <p class="mb-0 text-secondary">123 Main St
@@ -6662,8 +6258,6 @@
                      CANCEL
                   </button>
                   <div class="d-flex align-items-center">
-                     <button type="button" class="btn btn-link text-decoration-none font-weight-600"
-                        data-bs-target="#previewModal" data-bs-toggle="modal" > PREVIEW </button>
                      <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="submitBtn"
                         data-bs-target="#" data-bs-toggle="modal" >
                         Submit
