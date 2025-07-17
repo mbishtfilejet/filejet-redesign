@@ -230,6 +230,7 @@ setupToggleForms([
   'annualReport6',
   'annualReport8',
   'annualReport11',
+  'annualReport12',
   'preparationOfFiling4',
   'preparationOfFiling5',
   'preparationOfFiling6'
