@@ -1062,7 +1062,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-
+// select word limit
   document.addEventListener("DOMContentLoaded", function () {
   const selects = document.querySelectorAll(".custom-dropdown");
   const maxChars = 40; // Customize this number to your select width
@@ -1078,6 +1078,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
+
+// selct tittle remove
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('select').forEach(select => {
+    select.removeAttribute('title'); // remove from <select> itself
+    select.querySelectorAll('option').forEach(option => {
+      option.removeAttribute('title'); // remove from each option
+    });
+  });
+});
+
+
+// select2 tittle removal
+$(document).ready(function () {
+  $('.select2').select2();
+
+  // Remove title from rendered selection box and options
+  $('.select2').on('select2:open select2:select', function () {
+    setTimeout(function () {
+      $('.select2-selection').removeAttr('title');
+      $('.select2-results__option').removeAttr('title');
+    }, 0);
+  });
+
+  // Also remove title from initial selection box
+  $('.select2-selection').removeAttr('title');
+});
+
+
+
 
 
 

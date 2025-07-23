@@ -33,7 +33,7 @@
                <div>
                   <ul class="menu-link p-0 m-0">
                      <!-- Dashboard -->
-                     <li class="nav-link active">
+                     <li class="nav-link ">
                         <a href="./index.html" class="text-decoration-none ps-3 py-3 d-block">
                            <span>
                               <span class="icon icon-dashboard normal-icon"></span>
@@ -44,8 +44,8 @@
                         </a>
                      </li>
                      <!-- Entities -->
-                     <li class="nav-link">
-                        <a href="./entities.html" class="text-decoration-none ps-3 py-3 d-block">
+                     <li class="nav-link active">
+                        <a href="./Entity-v2-flow.html" class="text-decoration-none ps-3 py-3 d-block">
                            <span>
                               <span class="icon icon-entities normal-icon"></span>
                               <span class="icon icon-entities-purple active-icon"></span>
@@ -239,7 +239,7 @@
                      <div class="col-3 col-xl-3 col-lg-3">
                         <h2 class="m-0">
                            <strong>
-                              Dashboard
+                             Entities
                            </strong>
                         </h2>
                      </div>
@@ -563,64 +563,9 @@
                      <div class="col-12 d-flex justify-content-between align-items-center">
                         <ul id="myList" class="nav nav-tabs w-100 cardcontainer-d2 justify-content-between"
                            role="tablist">
+
                            <li class="nav-item position-relative">
-                              <a href="javascript:void(0)" id="ra-detail-tab" class="nav-link p-0 active"
-                                 data-bs-toggle="tab" data-bs-target="#ra-detail" role="tab" aria-controls="ra-detail"
-                                 aria-selected="true">
-                                 <div class="card card-d2 border-0 bg-transparent">
-                                    <div class="card-body p-0 d-flex flex-column justify-content-start">
-                                       <div
-                                          class="card-headerd2 m-0 p-2 px-3 d-flex justify-content-between align-items-center">
-                                          <span>Open Tasks</span>
-                                          <span class="icon icon-angle-bottom  opacity-50 m-0"></span>
-                                          <span class="icon icon-angle-top-white-1  m-0"></span>
-                                       </div>
-
-
-                                       <div
-                                          class="chart-container d-flex justify-content-center align-items-center w-100 mt-4">
-                                          <!-- Legend -->
-                                          <div class="chart-legend w-75 ms-3">
-                                             <ul class="list-group list-group-flush text-capitalize ">
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                   <span
-                                                      class="red-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                   <span>50 Overdue</span>
-                                                   <span class="icon icon-status icon-smd opacity-50 m-0"></span>
-                                                </li>
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                   <span
-                                                      class="light-blue-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                   <span>30 Upcoming</span>
-                                                   <span class="icon icon-status icon-smd opacity-50 m-0"></span>
-                                                </li>
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                   <span
-                                                      class="green-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                   <span>10 Unacknowledged</span>
-                                                   <span class="icon icon-status icon-smd opacity-50 m-0"></span>
-                                                </li>
-                                                <!-- <li class="list-group-item px-0 py-2 bg-transparent">
-                                                                <span class="green-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                                <span>25 Future</span>
-                                                                <span class="icon icon-status icon-smd opacity-50 m-0"></span>
-                                                            </li> -->
-                                             </ul>
-                                          </div>
-                                          <!-- Donut Chart -->
-                                          <div class="chartdiv  mx-2">
-                                             <div id="donut_chart" class="piechart"></div>
-                                             <div class="chart-center-text">90</div>
-                                          </div>
-                                       </div>
-
-                                    </div>
-                                 </div>
-                              </a>
-
-                           </li>
-                           <li class="nav-item position-relative">
-                              <a href="javascript:void(0)" id="ra-other-tab" class="nav-link  p-0" data-bs-toggle="tab"
+                              <a href="javascript:void(0)" id="ra-other-tab" class="nav-link active p-0" data-bs-toggle="tab"
                                  data-bs-target="#ra-other" role="tab" aria-controls="ra-other" aria-selected="true">
                                  <div class="card card-d2 border-0 bg-transparent">
                                     <div class="card-body p-0 d-flex flex-column justify-content-start">
@@ -694,450 +639,12 @@
                               </a>
 
                            </li>
-                           <li class="nav-item position-relative">
-                              <a href="javascript:void(0)" id="ra-progress-tab" class="nav-link p-0"
-                                 data-bs-toggle="tab" data-bs-target="#ra-progress" role="tab"
-                                 aria-controls="ra-progress" aria-selected="true">
-                                 <div class="card card-d2 border-0 bg-transparent">
-                                    <div class="card-body p-0 d-flex flex-column justify-content-start">
-                                       <div
-                                          class="card-headerd2 m-0 p-2 px-3 d-flex justify-content-between align-items-center">
-                                          <span>Order Status</span>
-                                          <span class="icon icon-angle-bottom opacity-50 m-0"></span>
-                                          <span class="icon icon-angle-top-white-1  m-0"></span>
-                                       </div>
 
-                                       <div
-                                          class="chart-container d-flex justify-content-center align-items-center w-100 mt-4">
-                                          <!-- Legend -->
-                                          <div class="chart-legend w-75 ms-3">
-                                             <ul class="list-group list-group-flush text-capitalize ">
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                   <span
-                                                      class="voilet-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                   <span>5 In Process</span>
-                                                   <span class="icon icon-status icon-smd opacity-50 m-0"></span>
-                                                </li>
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                   <span
-                                                      class="light-blue-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                   <span>5 Sent to State</span>
-                                                   <span class="icon icon-status icon-smd opacity-50 m-0"></span>
-                                                </li>
-                                                <li class="list-group-item px-0 py-2 bg-transparent">
-                                                   <span
-                                                      class="green-bg rounded-circle overflow-hidden circle me-2"></span>
-                                                   <span>5 Recently Completed</span>
-                                                   <span class="icon icon-status icon-smd opacity-50 m-0"></span>
-                                                </li>
-                                             </ul>
-                                          </div>
-                                          <!-- Donut Chart -->
-                                          <div class="chartdiv mx-2">
-                                             <div id="donut_chart_3" class="piechart"></div>
-                                             <div class="chart-center-text">15</div>
-                                          </div>
-                                       </div>
-
-                                    </div>
-                                 </div>
-                              </a>
-                           </li>
                         </ul>
                      </div>
                      <div class="col-12 d-flex justify-content-between align-items-center tab-content">
                         <div class="tab-content tab-content-v2 bg-white p-3 pt-0 shadow w-100">
-
-                           <div class="tab-pane  mt-2 fade show active" id="ra-detail" role="tabpanel"
-                              aria-labelledby="ra-detail-tab">
-                              <div class="row pt-3 px-2 bg-white ">
-                                 <div class="col-12 col-lg-4 px-1 mb-2 search-table-col">
-                                    <div
-                                       class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2">
-                                       <span class="icon icon-search-grey icon-sm opacity-25"></span>
-                                       <input type="text" class="custom-search-input border-0 p-0 w-100"
-                                          placeholder="Entity Search">
-                                    </div>
-                                 </div>
-
-                                 <div
-                                    class="filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2 dropdown ">
-                                    <div
-                                       class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
-                                       id="jurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                       tabindex="0">
-                                       <input type="text" class="search-input" id="jurisdictionSearch"
-                                          placeholder="Jurisdictions" autocomplete="off">
-                                    </div>
-                                    <ul class="dropdown-menu" id="jurisdictionDropdown">
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                id="jurisdictionSelectAll" class="form-check-input me-2">All</label>
-                                       </li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input jurisdiction-checkbox me-2" data-value="CA">
-                                             CA</label>
-                                       </li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input jurisdiction-checkbox me-2" data-value="NV">
-                                             NV</label>
-                                       </li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input jurisdiction-checkbox me-2" data-value="FL">
-                                             FL</label>
-                                       </li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input jurisdiction-checkbox me-2" data-value="MN">
-                                             MN</label>
-                                       </li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input jurisdiction-checkbox me-2" data-value="OR">
-                                             OR</label>
-                                       </li>
-                                    </ul>
-                                 </div>
-
-                                 <div class="filter2-dropdown col-12 col-lg-3 task-table-col px-1 mb-2 dropdown">
-                                    <div
-                                       class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
-                                       id="taskContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                       <input type="text" class="search-input" id="taskSearch" placeholder="Tasks"
-                                          autocomplete="off">
-                                    </div>
-                                    <ul class="dropdown-menu" id="taskDropdown">
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input task-checkbox me-2" data-value="Annual Report">
-                                             Annual Report</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input task-checkbox me-2" data-value="SOP">
-                                             SOP</label></li>
-                                    </ul>
-                                 </div>
-
-                                 <div class="filter2-dropdown col-12 col-lg-3 status-table-col px-1 mb-2 dropdown">
-                                    <div
-                                       class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
-                                       id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                       tabindex="0">
-                                       <input type="text" class="search-input" id="statusSearch" placeholder="Status"
-                                          autocomplete="off">
-                                    </div>
-                                    <ul class="dropdown-menu" id="statusDropdown">
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input status-checkbox me-2" data-value="Overdue">
-                                             Overdue</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input status-checkbox me-2" data-value="Upcoming">
-                                             Upcoming</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input status-checkbox me-2"
-                                                data-value="Unacknowledged"> Unacknowledged</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input status-checkbox me-2" data-value="Future">
-                                             Future</label></li>
-                                    </ul>
-                                 </div>
-
-                                 <div class="col-12 col-lg-1 export-table-col px-1 mb-2 ">
-                                    <div class=" dropdown border border-1 rounded-2 shadow-sm export-csv-col">
-                                       <a href="#"
-                                          class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
-                                          <span class="icon m-0 icon-export-csv icon-lg"></span>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="card-table-d2 mt-2 border rounded-2">
-                                 <table id="ra-detail-table"
-                                    class="open-order-table table table-striped w-100 table-nowrap data-table-listing table-v2-scroll">
-                                    <thead>
-                                       <tr>
-                                          <th>Group</th>
-                                          <th>Entity Name</th>
-                                          <th>Jurisdiction</th>
-                                          <th>Type </th>
-                                          <th>Registration</th>
-                                          <th>Task</th>
-                                          <th>Due Date</th>
-                                          <th>Status</th>
-                                          <th data-orderable="false">Action</th>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr class="even">
-                                          <td>CNY Accountants & Consultants</td>
-                                          <td>KK RENEWAL HOLDINGS CORP
-                                          </td>
-                                          <td>DE</td>
-                                          <td>Non Profit</td>
-                                          <td>Domestic</td>
-                                          <td>Annual Report</td>
-                                          <td>10/09/2024</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 red-bg rounded-pill">
-                                                <span class="icon icon-circular  icon-alert-light icon-md"></span>
-                                                <span class="text-light  mb-0">Overdue</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-                                       <tr class="odd">
-                                          <td>AIC CAPITAL V V MANAGER - Terminated</td>
-                                          <td>DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION
-                                          </td>
-                                          <td>CA</td>
-                                          <td>Non Profit</td>
-                                          <td>Domestic</td>
-                                          <td>Annual Report</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 red-bg rounded-pill">
-                                                <span class="icon icon-circular icon-alert-light icon-md"></span>
-                                                <span class="text-light  mb-0">Overdue</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <button data-bs-toggle="modal" data-bs-target="#annualReportsb2"
-                                                type="button"
-                                                class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164 ">Take
-                                                action</button>
-                                          </td>
-                                       </tr>
-                                       <tr class="even">
-                                          <td>Christopher Law Group, Inc.</td>
-                                          <td>Pikewood Group, LLC
-                                          </td>
-                                          <td>CA</td>
-                                          <td>Corp.</td>
-                                          <td>Foreign</td>
-                                          <td>Prepare and File Entity Documents</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
-                                                <span class="icon icon-circular icon-status-upcoming icon-md"></span>
-                                                <span class="text-light mb-0">Upcoming</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-                                       <tr class="odd">
-                                          <td>Burkhalter Kessler Clement & George LLP </td>
-                                          <td>RASA Realty LLC
-                                          </td>
-                                          <td>DE</td>
-                                          <td>LLP</td>
-                                          <td>Domestic</td>
-                                          <td>Annual Report</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 voilet-bg rounded-pill">
-                                                <span class="icon icon-circular icon-status-future-1  icon-md"></span>
-                                                <span class="text-light  mb-0">Future</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-                                       <tr class="even">
-                                          <td>Kurtz, Anderson and Associates</td>
-                                          <td>MARKSET FUND I -01-SERIES 1 L.L.C.,
-                                          </td>
-                                          <td>DE</td>
-                                          <td>Non Profit</td>
-                                          <td>Domestic</td>
-                                          <td>SOP</td>
-                                          <td>10/09/2024</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 green-bg rounded-pill">
-                                                <span class="icon icon-circular  icon-unknowledged-1  icon-md"></span>
-                                                <span class="text-light  mb-0">Unacknowledged</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-                                       <tr class="odd">
-                                          <td>Natomas Labs, Inc. (Villa Homes)</td>
-                                          <td>EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP
-                                          </td>
-                                          <td>CA</td>
-                                          <td>LLC</td>
-                                          <td>Domestic</td>
-                                          <td>Registered Agent</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 red-bg rounded-pill">
-                                                <span class="icon icon-circular icon-alert-light icon-md"></span>
-                                                <span class="text-light  mb-0">Overdue</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-                                       <tr class="even">
-                                          <td>Adept HR</td>
-                                          <td>RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP
-                                          </td>
-                                          <td>CA</td>
-                                          <td>Corp.</td>
-                                          <td>Foreign</td>
-                                          <td>Annual Report</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 red-bg rounded-pill">
-                                                <span class="icon icon-circular icon-alert-light icon-md"></span>
-                                                <span class="text-light  mb-0">Overdue</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <button data-bs-toggle="modal" data-bs-target="#annualReportsb"
-                                                type="button"
-                                                class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164 ">Take
-                                                action</button>
-                                          </td>
-                                       </tr>
-                                       <tr class="odd">
-                                          <td>SAN JOAQUIN ACCOUNTING</td>
-                                          <td>SEASCAPE VILLA LLC
-                                          </td>
-                                          <td>CA</td>
-                                          <td>Non Profit</td>
-                                          <td>Domestic</td>
-                                          <td>SOP</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 voilet-bg rounded-pill">
-                                                <span class="icon icon-circular icon-status-future-1  icon-md"></span>
-                                                <span class="text-light  mb-0">Future</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-                                       <tr class="even">
-                                          <td>Christopher Law Group, Inc.</td>
-                                          <td>GDS DESIGNS, INC.
-                                          </td>
-                                          <td>DE</td>
-                                          <td>LLP </td>
-                                          <td>Domestic</td>
-                                          <td>Business License Filing</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
-                                                <span class="icon icon-circular icon-status-upcoming icon-md"></span>
-                                                <span class="text-light mb-0">Upcoming</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-                                       <tr class="odd">
-                                          <td>Natomas Labs, Inc. (Villa Homes)</td>
-                                          <td>EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP
-                                          </td>
-                                          <td>CA</td>
-                                          <td>LLC</td>
-                                          <td>Domestic</td>
-                                          <td>Registered Agent</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 red-bg rounded-pill">
-                                                <span class="icon icon-circular icon-alert-light icon-md"></span>
-                                                <span class="text-light  mb-0">Overdue</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-                                       <tr class="even">
-                                          <td>Christopher Law Group, Inc.</td>
-                                          <td>GDS DESIGNS, INC.
-                                          </td>
-                                          <td>DE</td>
-                                          <td>LLP </td>
-                                          <td>Domestic</td>
-                                          <td>Business License Filing</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
-                                                <span class="icon icon-circular icon-status-upcoming icon-md"></span>
-                                                <span class="text-light mb-0">Upcoming</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <a class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164"
-                                                role="button" href="javascript:;"
-                                                data-ajax-url="https://portal-qa.filejet-test.com/entity-profile/19/form"
-                                                data-service="business_license_renewal" data-blr-id="2"
-                                                data-service-url="https://portal-qa.filejet-test.com/entity-compliance-task/19/143/form"
-                                                data-bs-toggle="modal" data-bs-target="#task-action-modal">Take
-                                                action</a>
-                                          </td>
-                                       </tr>
-
-                                    </tbody>
-                                 </table>
-                              </div>
-                           </div>
-                           <div class="tab-pane entity-regestration-card mt-2 fade " id="ra-other" role="tabpanel"
+                           <div class="tab-pane entity-regestration-card mt-2 fade show active " id="ra-other" role="tabpanel"
                               aria-labelledby="ra-other-tab">
                               <div class="row pt-3 px-2 bg-white ">
                                  <div class="col-12 col-lg-4 px-1 mb-2 entity-search-table-col">
@@ -1231,253 +738,6 @@
                                     </thead>
                                  </table>
                               </div>
-                           </div>
-                           <div class="tab-pane  mt-2 fade " id="ra-progress" role="tabpanel"
-                              aria-labelledby="ra-progress-tab">
-                              <div class="row pt-3 px-2 bg-white ">
-                                 <div class="col-12 col-lg-4 px-1 mb-2 search-table-col">
-                                    <div
-                                       class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2">
-                                       <span class="icon icon-search-grey icon-sm opacity-25"></span>
-                                       <input type="text" class="custom-search-input border-0 p-0 w-100"
-                                          placeholder="Entity Search">
-                                    </div>
-                                 </div>
-
-                                 <div
-                                    class="filter2-dropdown col-12 col-lg-3 Jurisdiction-table-col px-1 mb-2 dropdown ">
-                                    <div
-                                       class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
-                                       id="orderJurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                       tabindex="0">
-                                       <input type="text" class="search-input" id="orderJurisdictionSearch"
-                                          placeholder="Jurisdictions" autocomplete="off">
-                                    </div>
-                                    <ul class="dropdown-menu" id="orderJurisdictionDropdown">
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                id="orderJurisdictionSelectAll"
-                                                class="form-check-input me-2">All</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderJurisdiction-checkbox me-2"
-                                                data-value="CA"> CA</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderJurisdiction-checkbox me-2"
-                                                data-value="NV"> NV</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderJurisdiction-checkbox me-2"
-                                                data-value="FL"> FL</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderJurisdiction-checkbox me-2"
-                                                data-value="MN"> MN</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderJurisdiction-checkbox me-2"
-                                                data-value="OR"> OR</label></li>
-                                    </ul>
-                                 </div>
-
-                                 <div class="filter2-dropdown col-12 col-lg-3 task-table-col px-1 mb-2 dropdown">
-                                    <div
-                                       class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
-                                       id="orderTaskContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                       tabindex="0">
-                                       <input type="text" class="search-input" id="orderTaskSearch" placeholder="Tasks"
-                                          autocomplete="off">
-                                    </div>
-                                    <ul class="dropdown-menu" id="orderTaskDropdown">
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderTask-checkbox me-2"
-                                                data-value="Annual Report"> Annual Report</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderTask-checkbox me-2" data-value="CTA BOI">
-                                             CTA BOI</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderTask-checkbox me-2" data-value="SOP">
-                                             SOP</label></li>
-                                    </ul>
-                                 </div>
-
-                                 <div class="filter2-dropdown col-12 col-lg-3 status-table-col px-1 mb-2 dropdown">
-                                    <div
-                                       class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
-                                       id="orderStatusContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                       tabindex="0">
-                                       <input type="text" class="search-input" id="orderStatusSearch"
-                                          placeholder="Status" autocomplete="off">
-                                    </div>
-                                    <ul class="dropdown-menu" id="orderStatusDropdown">
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderStatus-checkbox me-2"
-                                                data-value="In Process"> In Process</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderStatus-checkbox me-2"
-                                                data-value="Sent To State"> Sent To State</label></li>
-                                       <li><label class="dropdown-item"><input type="checkbox"
-                                                class="form-check-input orderStatus-checkbox me-2"
-                                                data-value="Recentaly Completed"> Recentaly Completed</label></li>
-                                    </ul>
-                                 </div>
-
-                                 <div class="col-12 col-lg-1 export-table-col px-1 mb-2 ">
-                                    <div class=" dropdown border border-1 rounded-2 shadow-sm export-csv-col">
-                                       <a href="#"
-                                          class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
-                                          <span class="icon m-0 icon-export-csv icon-lg"></span>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="card-table-d2  mt-2 border rounded-2">
-                                 <table id="ra-progress-table"
-                                    class=" open-order-table table table-striped w-100 table-nowrap data-table-listing table-v2-scroll">
-                                    <thead>
-                                       <tr>
-                                          <th>Group</th>
-                                          <th>Entity Name</th>
-                                          <th>Jurisdiction</th>
-                                          <th>Type</th>
-                                          <th>Registration</th>
-                                          <th>Services</th>
-                                          <th>Date</th>
-                                          <th>Status</th>
-                                          <th data-orderable="false">Action</th>
-
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr class="even">
-                                          <td>AIC CAPITAL V V MANAGER - Terminated</td>
-                                          <td>DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION
-                                          </td>
-                                          <td>DE</td>
-                                          <td>Non Profit</td>
-                                          <td>Domestic</td>
-                                          <td>Annual Report</td>
-                                          <td>10/09/2024</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 voilet-bg rounded-pill">
-                                                <span class="icon icon-in-process-white-1  icon-md"></span>
-                                                <span class="text-light mb-0">In Process</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <!--  <div  class="d-flex align-items-center justify-content-between">
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
-                                                    </div> -->
-                                          </td>
-                                       </tr>
-                                       <tr class="odd">
-                                          <td>Christopher Law Group, Inc.</td>
-                                          <td>Pikewood Group, LLC</td>
-                                          <td>CA</td>
-                                          <td>Corp.</td>
-                                          <td>Foreign</td>
-                                          <td>Annual Report</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
-                                                <span class="icon icon-circle-check-white icon-md"></span>
-                                                <span class="text-light  mb-0">Sent to State</span>
-                                             </div>
-                                          </td>
-                                          <td class="fixed-max-width">
-                                             <!-- <div  class="d-flex align-items-center justify-content-between">
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
-                                                    </div> -->
-                                          </td>
-                                       </tr>
-                                       <tr class="even">
-                                          <td>Natomas Labs, Inc. (Villa Homes) </td>
-                                          <td>TEN ELEVEN BEANS LLC
-                                          </td>
-                                          <td>WY</td>
-                                          <td>LLC</td>
-                                          <td>Domestic</td>
-                                          <td>Registered Agent</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 green-bg rounded-pill">
-                                                <span class="icon icon-circle-check-white icon-md"></span>
-                                                <span class="text-light mb-0">Recently Completed</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <div class="d-flex align-items-center ">
-                                                <span class="icon icon-download-white-on-green icon-md"></span>
-                                                <span class="icon icon-file-dark m-0" data-bs-toggle="modal"
-                                                   data-bs-target="#previewModal" data-toggle="tooltip"
-                                                   aria-label="Preview" data-bs-original-title="Preview"></span>
-                                             </div>
-                                          </td>
-                                       </tr>
-                                       <tr class="odd">
-                                          <td>Rachel Feder</td>
-                                          <td>AIC Capital VV Manager, LLC</td>
-                                          <td>DE</td>
-                                          <td>Corp.</td>
-                                          <td>Foreign</td>
-                                          <td>DBA</td>
-                                          <td>10/09/2024</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 voilet-bg rounded-pill">
-                                                <span class="icon icon-in-process-white-1  icon-md"></span>
-                                                <span class="text-light mb-0">In Process</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <!-- <div  class="d-flex align-items-center justify-content-between">
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
-                                                    </div> -->
-                                          </td>
-                                       </tr>
-                                       <tr class="even">
-                                          <td>CNY Accountants & Consultants</td>
-                                          <td>KK RENEWAL HOLDINGS CORP</td>
-                                          <td>DE</td>
-                                          <td>LLP</td>
-                                          <td>Foreign</td>
-                                          <td>Statement of Information Filing</td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 light-blue-bg rounded-pill">
-                                                <span class="icon icon-circle-check-white icon-md"></span>
-                                                <span class="text-light  mb-0">Sent to State</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <!-- <div  class="d-flex align-items-center justify-content-between">
-                                                        <span class="icon icon-file-dark m-0" data-bs-toggle="modal" data-bs-target="#previewModal" data-toggle="tooltip" aria-label="Preview" data-bs-original-title="Preview"></span>
-                                                    </div> -->
-                                          </td>
-                                       </tr>
-                                       <tr class="odd">
-                                          <td>Adept HR</td>
-                                          <td>Burkhalter Kessler Clement & George LLP
-                                          </td>
-                                          <td>MI</td>
-                                          <td>LLP</td>
-                                          <td>Domestic</td>
-                                          <td>Statement of Information Filing </td>
-                                          <td>10/09/2023</td>
-                                          <td>
-                                             <div class="d-flex align-items-center p-1 green-bg rounded-pill">
-                                                <span class="icon icon-circle-check-white icon-md"></span>
-                                                <span class="text-light mb-0">Recently Completed</span>
-                                             </div>
-                                          </td>
-                                          <td>
-                                             <div class="d-flex align-items-center ">
-                                                <span class="icon icon-download-white-on-green icon-md"></span>
-                                                <span class="icon icon-file-dark m-0" data-bs-toggle="modal"
-                                                   data-bs-target="#previewModal" data-toggle="tooltip"
-                                                   aria-label="Preview" data-bs-original-title="Preview"></span>
-                                             </div>
-                                          </td>
-                                       </tr>
-
-                                    </tbody>
-                                 </table>
-                              </div>
-
                            </div>
                         </div>
                      </div>
@@ -1997,7 +1257,7 @@
                   <div class="mb-3 p-3 bg-white rounded-2">
                      <fieldset class="">
                         <label for="" class="form-label w-100">Principal Address <span class="mandatory">*</span>
-                           </label>
+                           <span class="icon icon-outline-info  m-0"></span></label>
                         <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
                         <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
                         <input type="text" class="form-control mb-3 " id="" placeholder="City">
@@ -2653,7 +1913,7 @@
                            <fieldset>
                               <label for="" class="form-label w-100">Principal Address <span
                                     class="mandatory">*</span>
-                                 </label>
+                                 <span class="icon icon-outline-info  m-0"></span></label>
                               <input type="text" class="form-control mb-3" placeholder="Address Line 1">
                               <input type="text" class="form-control mb-3" placeholder="Address Line 2">
                               <input type="text" class="form-control mb-3 " id="" placeholder="City">
@@ -15836,12 +15096,13 @@
                                     </div>
                                  </fieldset>
                                  <div class="entity-container">
-                                          <fieldset>
+                                    <fieldset>
                                        <label for="entityType1" class="form-label">Entity Type <span
                                              class="mandatory">*</span></label>
                                        <div class="custom-dropdown">
-                                          <select class="form-select entityType-model" id="entityType1" required>
-                                             <option value="" disabled selected hidden>Select Entity Type</option>
+                                          <select class="form-select entityType-model" id="entityType1" required="">
+                                             <option value="" disabled="" selected="" hidden="">Select Entity Type
+                                             </option>
                                              <option value="1">LLC</option>
                                              <option value="2">Profit Corporation - General </option>
                                              <option value="3">Profit Corporation - Professional </option>
@@ -19557,7 +18818,7 @@
           <div class="mb-3 p-3 bg-white rounded-2">
             <fieldset class="">
               <label for="" class="form-label w-100 ">Principal Address <span class="mandatory">*</span>
-                </label>
+                <span class="icon icon-outline-info  m-0"></span></label>
               <input type="text" class="form-control mb-3 filled-placeholder" id="" placeholder="822 E. 20th Street">
               <input type="text" class="form-control mb-3 " id="" placeholder="Address Line 2">
               <input type="text" class="form-control mb-3 filled-placeholder" id="" placeholder="Los Angeles">
@@ -20846,7 +20107,7 @@
           <div class="mb-3 p-3 bg-white rounded-2">
             <fieldset class="">
               <label for="" class="form-label w-100 ">Principal Address <span class="mandatory">*</span>
-                </label>
+                <span class="icon icon-outline-info  m-0"></span></label>
               <input type="text" class="form-control mb-3 filled-placeholder" id="" placeholder="822 E. 20th Street">
               <input type="text" class="form-control mb-3 " id="" placeholder="Address Line 2">
               <input type="text" class="form-control mb-3 filled-placeholder" id="" placeholder="Los Angeles">
