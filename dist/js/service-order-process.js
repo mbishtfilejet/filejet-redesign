@@ -1065,7 +1065,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // select word limit
   document.addEventListener("DOMContentLoaded", function () {
   const selects = document.querySelectorAll(".custom-dropdown");
-  const maxChars = 40; // Customize this number to your select width
+  const maxChars = 52; // Customize this number to your select width
 
   selects.forEach(select => {
     select.querySelectorAll("option").forEach(option => {
@@ -1111,7 +1111,51 @@ $(document).ready(function () {
 
 
 
+// request search filter
+const autoSuggestions = [
+  // Entity Names
+  "RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP",
+  "RASA Realty LLC",
+  "Pikewood Group, LLC",
+  "EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP",
+  "GDS DESIGNS, INC.",
+  "KK RENEWAL HOLDINGS CORP",
+  "MARKSET FUND I -01-SERIES 1 L.L.C.",
+  // Jurisdictions
+  "CA", "DE", "FL", "LA", "TR", "KS", "SK"
+];
 
+document.querySelectorAll('.autocomplete-input2').forEach(input => {
+  const suggestions = input.nextElementSibling;
 
+  input.addEventListener('input', () => {
+    const val = input.value.toLowerCase().trim();
+    if (!val) {
+      suggestions.style.display = 'none';
+      suggestions.innerHTML = '';
+      return;
+    }
 
+    const filtered = autoSuggestions.filter(item => item.toLowerCase().startsWith(val));
+    if (filtered.length === 0) {
+      suggestions.innerHTML = '<div class="no-result">No results found</div>';
+    } else {
+      suggestions.innerHTML = filtered.map(item => `<div class="item">${item}</div>`).join('');
+    }
+    suggestions.style.display = 'block';
+  });
+
+  suggestions.addEventListener('click', e => {
+    if (e.target.classList.contains('item')) {
+      input.value = e.target.textContent;
+      suggestions.style.display = 'none';
+    }
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.autocomplete-wrapper2')) {
+      suggestions.style.display = 'none';
+    }
+  });
+});
 

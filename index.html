@@ -9,6 +9,11 @@
    <link rel="stylesheet" href="src/scss/filejet-style.css">
    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+   <!-- date picker -->
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+  <!-- end date -->
    
    <!-- Scripts -->
    <script src="dist/js/jquery.min.js"></script>
@@ -5721,7 +5726,7 @@
 
 
 
-   <!--Request Certificate of Good Standing step-1 Modal start-->
+   <!--Request Certificate of status step-1 Modal start-->
    <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="requestCSGood" tabindex="-1"
       aria-labelledby="searchModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
@@ -5822,12 +5827,12 @@
                      <div class="custom-dropdown">
                         <select class="form-select " id="entityType-model" required="" >
                            <option value="" disabled="" selected="" hidden="">Select Entity</option>
-                           <option value="2">RASA Realty LLC</option>
-                           <option value="3">KK RENEWAL HOLDINGS CORP</option>
-                           <option value="4">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP</option>
-                           <option value="5">Pikewood Group, LLC</option>
-                           <option value="6">MARKSET FUND I -01-SERIES 1 L.L.C.,</option>
-                           <option value="7">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION</option>
+                           <option value="2">RASA Realty LLC (DE) - Domestic</option>
+                           <option value="3">KK RENEWAL HOLDINGS CORP (CA) - Domestic</option>
+                           <option value="4">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP (FL) - Foreign</option>
+                           <option value="5">Pikewood Group, LLC (AI) - Foreign</option>
+                           <option value="6">MARKSET FUND I -01-SERIES 1 L.L.C., (WY) - Domestic</option>
+                           <option value="7">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION (CA) - Domestic</option>
                         </select>
                      </div>
                   </fieldset>
@@ -5856,9 +5861,9 @@
          </div>
       </div>
    </div>
-   <!--Request Certificate of Good Standing step-1 Modal End-->
+   <!--Request Certificate of status step-1 Modal End-->
 
-   <!--Request Certificate of Good Standing step-2 Modal start-->
+   <!--Request Certificate of status step-2 Modal start-->
    <div class="modal modal-right fade filter-slideout SOP-model" id="selectJUD" tabindex="-1"
       aria-labelledby="searchModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
@@ -5893,7 +5898,7 @@
             <!-- Modal Header Ends -->
             <!-- Modal Body Start-->
             <div class="modal-body">
-               <div id="userSearchForm" class="user-search-bar  col-sm-12 search-field w-100 mb-4">
+               <div id="userSearchForm" class="user-search-bar autocomplete-wrapper  col-sm-12 search-field w-100 mb-4 d-none">
                   <div class="bg-white rounded-2 shadow position-relative">
                      <span
                         class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
@@ -5904,11 +5909,17 @@
                         data-src="<?php echo \Cake\Routing\Router::url(['_name'=> 'cta.user.search']) ?>"
                         placeholder="Search">
                   </div>
-                  <input type="hidden" name="euid" value="" class="reset-field" autocomplete="off">
+                  <input type="hidden" name="euid" value="" class="reset-field " autocomplete="off">
                   <div class="search-autocomplete-result"></div>
                   <div class="no-search-result"></div>
                   <a href="javascript:;" class="reset-search pull-right d-none">Reset Search</a>
                </div>
+                                             <div class=" bg-white rounded-2 shadow position-relative autocomplete-wrapper2 w-100">
+                                              <span
+                        class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                                             <input type="text" class=" search-bg reset-field form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border-0  mb-3 autocomplete-input2" placeholder="Search" autocomplete="off">
+                                             <div class="suggestions" style="display: none;"></div>
+                                          </div>
 
                 <div class="mb-4 p-3 bg-white rounded-2">
                 <div class="assign-user  pt-0 ">
@@ -6007,9 +6018,9 @@
          </div>
       </div>
    </div>
-   <!--Request Certificate of Good Standing step-2 Modal End-->
+   <!--Request Certificate of status step-2 Modal End-->
 
-   <!--Request Certificate of Good Standing step-3 Modal start-->
+   <!--Request Certificate of status step-3 Modal start-->
    <div class=" modalsteper modal modal-right fade filter-slideout SOP-model" id="selectJUDSummery" tabindex="-1"
       aria-labelledby="searchModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
@@ -6068,26 +6079,26 @@
                            </thead>
                            <tbody>
                               <tr class="odd">
-                                 <td>CA Request Certificate of  Good standing</td>
+                                 <td> Request Certificate of Status CA</td>
                                  <td>1</td>
                                  <td>$99</td>
                                  <td>$15</td>
                               </tr>
                                <tr class="even">
-                                 <td>DE Request Certificate of  Good standing</td>
+                                 <td> Request Certificate of Status DE</td>
                                  <td>1</td>
                                  <td>$99</td>
                                  <td>$15</td>
                               </tr>
 
                               <tr class="odd">
-                                 <td>FL Request Certificate of  Good standing</td>
+                                 <td> Request Certificate of Status FL</td>
                                  <td>1</td>
                                  <td>$52</td>
                                  <td>$15</td>
                               </tr>
                               <tr class="even">
-                                 <td>WI Request Certificate of  Good standing</td>
+                                 <td> Request Certificate of Status WI</td>
                                  <td>1</td>
                                  <td>$15</td>
                                  <td>$15</td>
@@ -6291,7 +6302,7 @@
          </div>
       </div>
    </div>
-   <!--Request Certificate of Good Standing step-3 Modal End-->
+   <!--Request Certificate of status step-3 Modal End-->
 
 
 
@@ -11198,11 +11209,7 @@
                   <div class="mb-4 p-3 bg-white rounded-2">
                      <fieldset class="">
                         <label for="" class="form-label">Group Name <span class="mandatory">*</span></label>
-                        <input type="text" class="form-control" id="" placeholder="Group Name">
-                     </fieldset>
-                     <fieldset class="d-none">
-                        <label for="" class="form-label">Notification Email <span class="mandatory">*</span></label>
-                        <input type="text" class="form-control" id="" placeholder="Email Address">
+                        <input type="text" class="form-control " id="" placeholder="Group Name">
                      </fieldset>
                   </div>
                </form>
@@ -24229,6 +24236,8 @@
    <script src="dist/js/custom.min.js"></script>
    <script src="dist/js/dashboard-v2.js"></script>
    <script src="dist/js/service-order-process.js"></script>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
    <!-- Scripts End-->
    <script> let dashboardType = "dashboard1"; </script>
    <script>
@@ -24237,6 +24246,22 @@
       tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
    </script>
 
+
+  <script>
+    if (/Mobi/.test(navigator.userAgent)) {
+      // if mobile device, use native pickers
+      $(".time input").attr("type", "time");
+    } else {
+      // if desktop device, use DateTimePicker
+      $("#setuptimepicker").datetimepicker({
+        format: "LT",
+        icons: {
+          up: "fa fa-chevron-up",
+          down: "fa fa-chevron-down"
+        }
+      });
+    }
+  </script>
 
 
 
