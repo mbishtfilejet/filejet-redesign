@@ -4878,7 +4878,7 @@
                                     </div>
                                  </fieldset>
 
-                  <fieldset>
+                  <!-- <fieldset>
                      <label for="entityType-model" class="form-label">Select Entity <span class="mandatory">*</span> </label>
                      <div class="filter2-dropdown additional-search dropdown tablefilter">
                         <div
@@ -4907,7 +4907,23 @@
                            
                         </ul>
                      </div>
+                  </fieldset> -->
+
+                     <fieldset>
+                     <label for="entityType-model" class="form-label">Select entity </label>
+                     <div class="custom-dropdown">
+                        <select class="form-select " id="entityType-model" required="" >
+                           <option value="" disabled="" selected="" hidden="">Select Entity</option>
+                           <option value="2">RASA Realty LLC (DE) - Domestic</option>
+                           <option value="3">KK RENEWAL HOLDINGS CORP (CA) - Domestic</option>
+                           <option value="4">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP (FL) - Foreign</option>
+                           <option value="5">Pikewood Group, LLC (AI) - Foreign</option>
+                           <option value="6">MARKSET FUND I -01-SERIES 1 L.L.C., (WY) - Domestic</option>
+                           <option value="7">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION (CA) - Domestic</option>
+                        </select>
+                     </div>
                   </fieldset>
+
 
                               </div>
                            </form>
@@ -4980,8 +4996,34 @@
             <!-- Modal Body Start-->
             <div class="modal-body">
 
-<div class="mb-4 p-3 bg-white rounded-2 mt-3">
-                  <form action="">
+               <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                  <fieldset class="mb-4">
+                     <label for="" class="form-label inactive w-100">Authorized Signer Name <span class="mandatory">*</span>
+                        <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative">
+         <div class="text-start tooltipText tooltipRight"> <strong>Filejet® will sign on your behalf </strong> <br>
+*By clicking the Submit below and agreeing to Terms of Service, you authorize Filejet to sign on your behalf, you agree to the following:<br>
+As an authorized signer of the Articles of Incorporation/Organization and/or filing(s) selected, I hereby give permission to any agent of Filejet to affix my name on said document. Any powers conferred or conveyed hereby are valid only for use with said Articles of Incorporation/Organization and/or filing(s) purchased in this transaction
+         </div>
+   </div>
+                     </label>
+                     <input type="text" class="form-control" id="" placeholder="Signer Name">
+                  </fieldset>
+                  <fieldset class="">
+                     <label for="" class="form-label inactive">title <span class="mandatory">*</span></label>
+                     <input type="text" class="form-control" id="" placeholder="Title">
+                  </fieldset>
+               </div>
+
+               <div class="accordion mb-4" id="accordionExample3">
+                  <div class="accordion-item m-0">
+                     <h2 class="accordion-header" id="headingThree1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                           RASA Realty LLC (CA) <span class="icon icon-entity-required ms-2"></span>
+                        </button>
+                     </h2>
+                     <div id="collapseThree1" class="accordion-collapse collapse  border-0" aria-labelledby="headingThree1">
+                        <div class="accordion-body pt-0">
+                        <form class="mb-4">
                  <div class="d-flex justify-content-between align-items-start mb-4">
             <span class="fw-bold fs-12 text-uppercase inactive" for="">current agent<br>details <span class="mandatory">*</span></span>
             <fieldset>
@@ -5003,21 +5045,7 @@
                                              <input type="text" class="form-control mb-3 autocomplete-input" placeholder="Name" autocomplete="off">
                                              <div class="suggestions" style="display: none;"></div>
                                           </div>
-                                             <!-- <div class="filter2-dropdown additional-search dropdown mb-3 ">
-                                                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg" id="roleContainer1" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0"><input type="button" class="search-input" id="roleSearch1" value="Role" autocomplete="off"></div>
-                                                <ul class="dropdown-menu w-100" id="roleDropdown1"><input type="text" class="dropdown-search-input" placeholder="Search..." autocomplete="off">
 
-                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="CEO"> CEO</label>
-                                                   </li>
-                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="VC">VC</label>
-                                                   </li>
-                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="TL">TL</label>
-                                                   </li>
-                                                   <li><label class="dropdown-item"><input type="checkbox" class="form-check-input role-checkbox1 me-2" data-value="Other">Other</label>
-                                                   </li>
-
-                                                </ul>
-                                             </div> -->
                                              <!-- <input type="text" class="form-control mb-3" id="addressOne" placeholder="Email Address"> -->
                                              <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
                                              <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
@@ -5081,126 +5109,16 @@
                                                 </div>
                                                 <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
                                              </div>
-                                             <!-- <div class="">
-                                                <button type="button" class="individualaddBtn btn btn-small py-0 px-5 rounded-3 ms-3" id="">
-                                                   ADD
-                                                </button>
-                                                <button type="button" class="individualupdateBtn btn btn-small py-0 px-5 rounded-3 ms-3 d-none" id="">
-                                                   UPDATE
-                                                </button>
-                                             </div> -->
+
 
                     </div>
                     <!-- Disabled Form (Initially Hidden) -->
                     <div id="disabledFormRegisteredAgent8" style="display: none;">
                                              <input type="text" class="form-control" id="firstName" placeholder="corporate Name">
-                                             <!-- <input type="text" class="form-control mb-3" id="addressOne" placeholder="Email Address">
-                                             <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
-                                             <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2"> -->
-                                             <!-- <div class="d-flex w-100 mb-4">
-                                                <input type="text" class="form-control me-3 " id="cityName" placeholder="City">
-                                                <div class="custom-dropdown-state w-100 me-3">
-                                                   <select class="form-select" id="formation-model" required="">
-                                                      <option value="" disabled="" selected="" hidden="">State</option>
-                                                      <option value="1">Alabama</option>
-                                                      <option value="2">Alaska</option>
-                                                      <option value="3">Arizona</option>
-                                                      <option value="4">Arkansas</option>
-                                                      <option value="5">California</option>
-                                                      <option value="6">Colorado</option>
-                                                      <option value="7">Connecticut</option>
-                                                      <option value="8">Delaware</option>
-                                                      <option value="9">District of Columbia</option>
-                                                      <option value="10">Florida</option>
-                                                      <option value="11">Georgia</option>
-                                                      <option value="12">Hawaii</option>
-                                                      <option value="13">Idaho</option>
-                                                      <option value="14">Illinois</option>
-                                                      <option value="15">Indiana</option>
-                                                      <option value="16">Iowa</option>
-                                                      <option value="17">Kansas</option>
-                                                      <option value="18">Kentucky</option>
-                                                      <option value="19">Louisiana</option>
-                                                      <option value="20">Maine</option>
-                                                      <option value="21">Maryland</option>
-                                                      <option value="22">Massachusetts</option>
-                                                      <option value="23">Michigan</option>
-                                                      <option value="24">Minnesota</option>
-                                                      <option value="25">Mississippi</option>
-                                                      <option value="26">Missouri</option>
-                                                      <option value="27">Montana</option>
-                                                      <option value="28">Nebraska</option>
-                                                      <option value="29">Nevada</option>
-                                                      <option value="30">New Hampshire</option>
-                                                      <option value="31">New Jersey</option>
-                                                      <option value="32">New Mexico</option>
-                                                      <option value="33">New York</option>
-                                                      <option value="34">North Carolina</option>
-                                                      <option value="35">North Dakota</option>
-                                                      <option value="36">Ohio</option>
-                                                      <option value="37">Oklahoma</option>
-                                                      <option value="38">Oregon</option>
-                                                      <option value="39">Pennsylvania</option>
-                                                      <option value="40">Rhode Island</option>
-                                                      <option value="41">South Carolina</option>
-                                                      <option value="42">South Dakota</option>
-                                                      <option value="43">Tennessee</option>
-                                                      <option value="44">Texas</option>
-                                                      <option value="45">Utah</option>
-                                                      <option value="46">Vermont</option>
-                                                      <option value="47">Virginia</option>
-                                                      <option value="48">Washington</option>
-                                                      <option value="49">West Virginia</option>
-                                                      <option value="50">Wisconsin</option>
-                                                      <option value="51">Wyoming</option>
-                                                   </select>
-                                                </div>
-                                                <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
-                                             </div> -->
-                                             <!-- <div class="">
-                                                <button type="button" class="corporateaddBtn btn btn-small py-0 px-5 rounded-3 ms-3" id="">
-                                                   ADD
-                                                </button>
-                                                <button type="button" class="corporateupdateBtn btn btn-small py-0 px-5 rounded-3 ms-3 d-none" id="">
-                                                   UPDATE
-                                                </button>
-                                             </div> -->
-
                     </div>
 
 
                   </form>
-                 
-               </div>
-
-
-               <div class="mb-4 p-3 bg-white rounded-2 mt-3">
-                  <fieldset class="mb-4">
-                     <label for="" class="form-label inactive w-100">Authorized Signer Name <span class="mandatory">*</span>
-                        <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative">
-         <div class="text-start tooltipText tooltipRight"> <strong>Filejet® will sign on your behalf </strong> <br>
-*By clicking the Submit below and agreeing to Terms of Service, you authorize Filejet to sign on your behalf, you agree to the following:<br>
-As an authorized signer of the Articles of Incorporation/Organization and/or filing(s) selected, I hereby give permission to any agent of Filejet to affix my name on said document. Any powers conferred or conveyed hereby are valid only for use with said Articles of Incorporation/Organization and/or filing(s) purchased in this transaction
-         </div>
-   </div>
-                     </label>
-                     <input type="text" class="form-control" id="" placeholder="Signer Name">
-                  </fieldset>
-                  <fieldset class="">
-                     <label for="" class="form-label inactive">title <span class="mandatory">*</span></label>
-                     <input type="text" class="form-control" id="" placeholder="Title">
-                  </fieldset>
-               </div>
-
-               <div class="accordion mb-4" id="accordionExample3">
-                  <div class="accordion-item m-0">
-                     <h2 class="accordion-header" id="headingThree1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
-                           California Specific Information <span class="icon icon-entity-required ms-2"></span>
-                        </button>
-                     </h2>
-                     <div id="collapseThree1" class="accordion-collapse collapse  border-0" aria-labelledby="headingThree1">
-                        <div class="accordion-body pt-0">
 
                            <fieldset class="">
                               <label for="" class="form-label w-100">Authorized Signer <span class="mandatory">*</span>
@@ -5278,26 +5196,6 @@ As an authorized signer of the Articles of Incorporation/Organization and/or fil
                   </div>
                </div>
 
-                  <div class="accordion mb-4" id="accordionExample4">
-                  <div class="accordion-item m-0">
-                     <h2 class="accordion-header" id="headingFour1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour1" aria-expanded="false" aria-controls="collapseFour1">
-                          Delaware State Specific Information <span class="icon icon-entity-required ms-2"></span>
-                        </button>
-                     </h2>
-                     <div id="collapseFour1" class="accordion-collapse border-0 collapse" aria-labelledby="headingFour1">
-                        <div class="accordion-body pt-0">
-                        <fieldset>
-                     <label for="" class="form-label inactive">Authorized Person Name</label>
-                     <input type="text" class="form-control" id="" placeholder="Name">
-                  </fieldset>
-
-                     </div>
-                     </div>
-                  </div>
-               </div>
-
-
             </div>
             <!-- Modal Body End -->
             <div class="modal-footer">
@@ -5363,6 +5261,16 @@ As an authorized signer of the Articles of Incorporation/Organization and/or fil
             <!-- Modal Body Start-->
             <div class="modal-body">
                <div class="mb-4 p-3 bg-white rounded-2">
+                  <div>
+                     <div class="d-flex justify-content-between">
+                        <h3 class="fw-bold mb-2">New Entity </h3>
+                        <div class="icon icon-new-edit editUser" data-bs-toggle="modal" data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-target="#NWForeign"></div>
+                     </div>
+                     <p class="mb-0 text-secondary">California Limited Liability Company</p>
+                     <p class="mb-0 text-secondary">123 Main St
+                        Anywhere, CA 99999</p>
+                  </div>
+                  <hr class="summarystroke">
                   <div class="entitytable pricetable border rounded-3 mt-4 h-auto">
                      <div class="fade show active rounded-3 overflow-hidden" id="all">
                         <table class="table table-striped w-100 long-data-table-listing border-1">
@@ -5381,37 +5289,12 @@ As an authorized signer of the Articles of Incorporation/Organization and/or fil
                                  <td>$15</td>
                                  <td>$15</td>
                               </tr>
-                              <tr class="even">
-                                 <td>Registered Agent Service (DE)</td>
-                                 <td>1</td>
-                                 <td>$15</td>
-                                 <td>$15</td>
-                              </tr>
-                              <tr class="odd">
-                                 <td>Registered Agent Service (LA)</td>
-                                 <td>1</td>
-                                 <td>$15</td>
-                                 <td>$15</td>
-                              </tr>
-                              <tr class="even">
-                                 <td>Registered Agent Service (FL)</td>
-                                 <td>1</td>
-                                 <td>$15</td>
-                                 <td>$15</td>
-                              </tr>
-                              <tr class="odd">
-                                 <td>Registered Agent Service (WE)</td>
-                                 <td>1</td>
-                                 <td>$15</td>
-                                 <td>$15</td>
-                              </tr>
-                              
                            <tfoot>
                               <tr class="even">
                                  <td class="fw-bold">Total</td>
+                                 <td class="fw-bold">1</td>
                                  <td class="fw-bold"></td>
-                                 <td class="fw-bold"></td>
-                                 <td class="fw-bold">$65</td>
+                                 <td class="fw-bold">$15</td>
                               </tr>
                            </tfoot>
 
