@@ -5,10 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File Jet: Registered Agent</title>
-    <!-- Styles -->
-    <link rel="stylesheet" href="dist/css/filejet-style.css" />
-    <script src="dist/js/jquery.min.js"></script>
-    <!-- Scripts -->
+   <link rel="stylesheet" href="src/scss/filejet-style.css">
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+   <!-- date picker -->
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+  <!-- end date -->
+   
+   <!-- Scripts -->
+   <script src="dist/js/jquery.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -491,7 +499,7 @@
                                                         <td>5901 center dr, , los angles, CA 90045</td>
                                                         <td width="200">
                                                             <div class="d-flex justify-content-end pe-4">
-                                                                <button class="btn btn-info text-purple bg-light">Use
+                                                                <button class="btn btn-info text-purple bg-light" data-bs-toggle="modal" data-bs-target="#appointRA" type="button">Use
                                                                     Filejet</button>
                                                             </div>
                                                         </td>
@@ -614,6 +622,614 @@
             </div>
         </div>
     </div>
+
+
+       <!--Appoint Filejet as Registered Agent step-1 Modal start-->
+   <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="appointRA" tabindex="-1"
+      aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex flex-column w-100 mb-0">
+                  <div class="d-flex align-items-center mb-4">
+                     <span class="icon icon-existing-entity-icon icon-md me-3"></span>
+                     <h4 class="fw-bold m-0">
+                        Appoint Filejet as Registered Agent</h4>
+                  </div>
+                  <!-- stepper start -->
+                  <div class="service-step-group service-step3">
+                     <div class="step " data-bs-toggle="modal" data-bs-target="#appointRA" data-bs-dismiss="modal">
+                        <div class="circle active"></div>
+                        <span class="step3-text">ENTITY</span>
+                     </div>
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRADetail" data-bs-dismiss="modal">
+                        <div class="circle "></div>
+                        <span class="step3-text">DETAILS</span>
+                     </div>
+
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRASummery" data-bs-dismiss="modal">
+                        <div class="circle"></div>
+                        <span class="step3-text">SUMMARY</span>
+                     </div>
+                  </div>
+                  <!-- stepper end -->
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+
+               <div class="accordion" id="accordionExample">
+                  <div class="accordion-item m-0">
+                     <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                           data-bs-target="#collapseOne" aria-expanded="true"
+                           aria-controls="panelsStayOpen-collapseOne">
+                           Entity <span class="icon icon-entity-required ms-2"></span>
+                        </button>
+                     </h2>
+                     <div id="collapseOne" class="accordion-collapse collapse show border-0"
+                        aria-labelledby="headingOne">
+                        <div class="accordion-body pt-0">
+                           <form class="" action="">
+                 <fieldset>
+                     <label for="entityType-model" class="form-label">Select entity <span class="mandatory">*</span></label>
+                     <div class="custom-dropdown">
+                        <select class="form-select " id="entityType-model" disabled>
+                           <option value="">Select Entity</option>
+                           <option value="2" selected="">RASA Realty LLC (DE) - Domestic</option>
+                           <option value="3">KK RENEWAL HOLDINGS CORP (CA) - Domestic</option>
+                           <option value="4">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP (FL) - Foreign</option>
+                           <option value="5">Pikewood Group, LLC (AI) - Foreign</option>
+                           <option value="6">MARKSET FUND I -01-SERIES 1 L.L.C., (WY) - Domestic</option>
+                           <option value="7">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION (CA) - Domestic</option>
+                        </select>
+                     </div>
+                  </fieldset>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+            <!-- Modal Body End -->
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
+                        data-bs-target="#entityRADetail" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Next
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Appoint Filejet as Registered Agent step-1 Modal End-->
+
+
+   <!-- Appoint Filejet as Registered Agent step-2 Modal start-->
+   <div class=" modal modal-right fade filter-slideout SOP-model" id="entityRADetail" tabindex="-1"
+      aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex flex-column w-100 mb-0">
+                  <div class="d-flex align-items-center mb-4">
+                     <span class="icon icon-existing-entity-icon icon-md me-3"></span>
+                     <h4 class="fw-bold m-0">
+                        Appoint Filejet as Registered Agent</h4>
+                  </div>
+                  <!-- stepper start -->
+                  <div class="service-step-group service-step3">
+                     <div class="step completed " data-bs-toggle="modal" data-bs-target="#appointRA"
+                        data-bs-dismiss="modal">
+                        <div class="circle completed"></div>
+                        <span class="step3-text">ENTITY</span>
+                     </div>
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRADetail" data-bs-dismiss="modal">
+                        <div class="circle active"></div>
+                        <span class="step3-text">DETAILS</span>
+                     </div>
+
+
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRASummery" data-bs-dismiss="modal">
+                        <div class="circle"></div>
+                        <span class="step3-text">SUMMARY</span>
+                     </div>
+                  </div>
+                  <!-- stepper end -->
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+
+               <div class="accordion mb-4" id="accordionExample3">
+                  <div class="accordion-item m-0">
+                     <h2 class="accordion-header" id="headingThree1">
+                        <button class="accordion-button collapsed show " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                           RASA Realty LLC (CA) <span class="icon icon-entity-required ms-2"></span>
+                        </button>
+                     </h2>
+                     <div id="collapseThree1" class="accordion-collapse collapse show border-0" aria-labelledby="headingThree1">
+                        <div class="accordion-body pt-0">
+                        <form class="mb-4">
+                 <div class="d-flex justify-content-between align-items-start mb-4">
+            <span class="fw-bold fs-12 text-uppercase inactive" for="">current agent<br>details <span class="mandatory">*</span></span>
+            <fieldset>
+              <div class="d-flex gap-4">
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="enabledasp" name="registeredAgentStatus8" value="enabled" checked="">
+                  <label class="form-check-label rights-label" for="enabledasp">An Individual</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input toggle-radio" type="radio" id="disabledasp" name="registeredAgentStatus8" value="disabled">
+                  <label class="form-check-label rights-label inactive" for="disabledasp">Corporate Agent</label>
+                </div>
+              </div>
+                        <!-- Enabled Form -->
+                      </fieldset>
+                    </div>
+                    <div id="enabledFormRegisteredAgent8">
+                     <div class="autocomplete-wrapper w-100">
+                                             <input type="text" class="form-control mb-3 autocomplete-input" placeholder="Name" autocomplete="off">
+                                             <div class="suggestions" style="display: none;"></div>
+                                          </div>
+
+                                             <!-- <input type="text" class="form-control mb-3" id="addressOne" placeholder="Email Address"> -->
+                                             <input type="text" class="form-control mb-3" id="addressOne" placeholder="Address Line 1">
+                                             <input type="text" class="form-control mb-3" id="addressTwo" placeholder="Address Line 2">
+                                             <input type="text" class="form-control mb-3 " id="cityName" placeholder="City">
+                                             <div class="d-flex w-100 ">
+                                                <div class="custom-dropdown-state w-100 me-3">
+                                                   <select class="form-select" id="formation-model" required="">
+                                                      <option value="" disabled="" selected="" hidden="">State</option>
+                                                      <option value="1">Alabama</option>
+                                                      <option value="2">Alaska</option>
+                                                      <option value="3">Arizona</option>
+                                                      <option value="4">Arkansas</option>
+                                                      <option value="5">California</option>
+                                                      <option value="6">Colorado</option>
+                                                      <option value="7">Connecticut</option>
+                                                      <option value="8">Delaware</option>
+                                                      <option value="9">District of Columbia</option>
+                                                      <option value="10">Florida</option>
+                                                      <option value="11">Georgia</option>
+                                                      <option value="12">Hawaii</option>
+                                                      <option value="13">Idaho</option>
+                                                      <option value="14">Illinois</option>
+                                                      <option value="15">Indiana</option>
+                                                      <option value="16">Iowa</option>
+                                                      <option value="17">Kansas</option>
+                                                      <option value="18">Kentucky</option>
+                                                      <option value="19">Louisiana</option>
+                                                      <option value="20">Maine</option>
+                                                      <option value="21">Maryland</option>
+                                                      <option value="22">Massachusetts</option>
+                                                      <option value="23">Michigan</option>
+                                                      <option value="24">Minnesota</option>
+                                                      <option value="25">Mississippi</option>
+                                                      <option value="26">Missouri</option>
+                                                      <option value="27">Montana</option>
+                                                      <option value="28">Nebraska</option>
+                                                      <option value="29">Nevada</option>
+                                                      <option value="30">New Hampshire</option>
+                                                      <option value="31">New Jersey</option>
+                                                      <option value="32">New Mexico</option>
+                                                      <option value="33">New York</option>
+                                                      <option value="34">North Carolina</option>
+                                                      <option value="35">North Dakota</option>
+                                                      <option value="36">Ohio</option>
+                                                      <option value="37">Oklahoma</option>
+                                                      <option value="38">Oregon</option>
+                                                      <option value="39">Pennsylvania</option>
+                                                      <option value="40">Rhode Island</option>
+                                                      <option value="41">South Carolina</option>
+                                                      <option value="42">South Dakota</option>
+                                                      <option value="43">Tennessee</option>
+                                                      <option value="44">Texas</option>
+                                                      <option value="45">Utah</option>
+                                                      <option value="46">Vermont</option>
+                                                      <option value="47">Virginia</option>
+                                                      <option value="48">Washington</option>
+                                                      <option value="49">West Virginia</option>
+                                                      <option value="50">Wisconsin</option>
+                                                      <option value="51">Wyoming</option>
+                                                   </select>
+                                                </div>
+                                                <input type="text" class="form-control" id="zipCode" placeholder="Zipcode">
+                                             </div>
+
+
+                    </div>
+                    <!-- Disabled Form (Initially Hidden) -->
+                    <div id="disabledFormRegisteredAgent8" style="display: none;">
+                                             <input type="text" class="form-control" id="firstName" placeholder="corporate Name">
+                    </div>
+
+
+                  </form>
+
+                           <fieldset class="">
+                              <label for="" class="form-label w-100">Authorized Signer <span class="mandatory">*</span>
+                                 <!-- <span class="icon icon-outline-info  m-0"></span> -->
+                              </label>
+                              <input type="text" class="form-control mb-3" id="" placeholder="Name">
+                              <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
+                              <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
+                              <input type="text" class="form-control mb-3 " id="" placeholder="City">
+                              <div class="d-flex w-100 mb-3">
+                                 <div class="w-100 me-3 custom-dropdown">
+                                    <select class="form-select" id="formation-model" required="">
+                                       <option value="" disabled="" selected="" hidden="" data-full-text="State">State</option>
+                                       <option value="1" data-full-text="Alabama">Alabama</option>
+                                       <option value="2" data-full-text="Alaska">Alaska</option>
+                                       <option value="3" data-full-text="Arizona">Arizona</option>
+                                       <option value="4" data-full-text="Arkansas">Arkansas</option>
+                                       <option value="5" data-full-text="California">California</option>
+                                       <option value="6" data-full-text="Colorado">Colorado</option>
+                                       <option value="7" data-full-text="Connecticut">Connecticut</option>
+                                       <option value="8" data-full-text="Delaware">Delaware</option>
+                                       <option value="9" data-full-text="District of Columbia">District of Columbia</option>
+                                       <option value="10" data-full-text="Florida">Florida</option>
+                                       <option value="11" data-full-text="Georgia">Georgia</option>
+                                       <option value="12" data-full-text="Hawaii">Hawaii</option>
+                                       <option value="13" data-full-text="Idaho">Idaho</option>
+                                       <option value="14" data-full-text="Illinois">Illinois</option>
+                                       <option value="15" data-full-text="Indiana">Indiana</option>
+                                       <option value="16" data-full-text="Iowa">Iowa</option>
+                                       <option value="17" data-full-text="Kansas">Kansas</option>
+                                       <option value="18" data-full-text="Kentucky">Kentucky</option>
+                                       <option value="19" data-full-text="Louisiana">Louisiana</option>
+                                       <option value="20" data-full-text="Maine">Maine</option>
+                                       <option value="21" data-full-text="Maryland">Maryland</option>
+                                       <option value="22" data-full-text="Massachusetts">Massachusetts</option>
+                                       <option value="23" data-full-text="Michigan">Michigan</option>
+                                       <option value="24" data-full-text="Minnesota">Minnesota</option>
+                                       <option value="25" data-full-text="Mississippi">Mississippi</option>
+                                       <option value="26" data-full-text="Missouri">Missouri</option>
+                                       <option value="27" data-full-text="Montana">Montana</option>
+                                       <option value="28" data-full-text="Nebraska">Nebraska</option>
+                                       <option value="29" data-full-text="Nevada">Nevada</option>
+                                       <option value="30" data-full-text="New Hampshire">New Hampshire</option>
+                                       <option value="31" data-full-text="New Jersey">New Jersey</option>
+                                       <option value="32" data-full-text="New Mexico">New Mexico</option>
+                                       <option value="33" data-full-text="New York">New York</option>
+                                       <option value="34" data-full-text="North Carolina">North Carolina</option>
+                                       <option value="35" data-full-text="North Dakota">North Dakota</option>
+                                       <option value="36" data-full-text="Ohio">Ohio</option>
+                                       <option value="37" data-full-text="Oklahoma">Oklahoma</option>
+                                       <option value="38" data-full-text="Oregon">Oregon</option>
+                                       <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
+                                       <option value="40" data-full-text="Rhode Island">Rhode Island</option>
+                                       <option value="41" data-full-text="South Carolina">South Carolina</option>
+                                       <option value="42" data-full-text="South Dakota">South Dakota</option>
+                                       <option value="43" data-full-text="Tennessee">Tennessee</option>
+                                       <option value="44" data-full-text="Texas">Texas</option>
+                                       <option value="45" data-full-text="Utah">Utah</option>
+                                       <option value="46" data-full-text="Vermont">Vermont</option>
+                                       <option value="47" data-full-text="Virginia">Virginia</option>
+                                       <option value="48" data-full-text="Washington">Washington</option>
+                                       <option value="49" data-full-text="West Virginia">West Virginia</option>
+                                       <option value="50" data-full-text="Wisconsin">Wisconsin</option>
+                                       <option value="51" data-full-text="Wyoming">Wyoming</option>
+                                    </select>
+                                 </div>
+                                 <input type="text" class="form-control" id="" placeholder="Zipcode">
+                              </div>
+                              <input type="text" class="form-control" id="" placeholder="Title">
+                           </fieldset>
+
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+            <!-- Modal Body End -->
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        SAVE AND EXIT
+                     </button>
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
+                        data-bs-target="#entityRASummery" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Next
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Appoint Filejet as Registered Agent step-2 Modal End-->
+
+
+
+  <!--Appoint Filejet as Registered Agent step-4 Modal start-->
+   <div class=" modalsteper modal modal-right fade filter-slideout SOP-model" id="entityRASummery" tabindex="-1"
+      aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex flex-column w-100 mb-0">
+                  <div class="d-flex align-items-center mb-4">
+                     <span class="icon icon-existing-entity-icon icon-md me-3"></span>
+                     <h4 class="fw-bold m-0">
+                       Appoint Filejet as Registered Agent</h4>
+                  </div>
+                  <!-- stepper start -->
+                  <div class="service-step-group service-step3">
+                     <div class="step completed " data-bs-toggle="modal" data-bs-target="#appointRA"
+                        data-bs-dismiss="modal">
+                        <div class="circle completed"></div>
+                        <span class="step3-text">ENTITY</span>
+                     </div>
+                     <div class="step completed" data-bs-toggle="modal" data-bs-target="#entityRADetail"
+                        data-bs-dismiss="modal">
+                        <div class="circle completed "></div>
+                        <span class="step3-text">DETAILS</span>
+                     </div>
+
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#entityRASummery" data-bs-dismiss="modal">
+                        <div class="circle active"></div>
+                        <span class="step3-text">SUMMARY</span>
+                     </div>
+                  </div>
+                  <!-- stepper end -->
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+               <div class="mb-4 p-3 bg-white rounded-2">
+                  <div>
+                     <div class="d-flex justify-content-between">
+                        <h3 class="fw-bold mb-2">New Entity </h3>
+                     </div>
+                     <p class="mb-0 text-secondary">California Limited Liability Company</p>
+                     <p class="mb-0 text-secondary">123 Main St
+                        Anywhere, CA 99999</p>
+                  </div>
+                  <hr class="summarystroke">
+                  <div class="entitytable pricetable border rounded-3 mt-4 h-auto">
+                     <div class="fade show active rounded-3 overflow-hidden" id="all">
+                        <table class="table table-striped w-100 long-data-table-listing border-1">
+                           <thead>
+                              <tr>
+                                 <th data-orderable="false">Service</th>
+                                 <th data-orderable="false" class="fixed-width-soi-table-50">Qty.</th>
+                                 <th data-orderable="false" class="fixed-width-soi-table-80">Price</th>
+                                 <th data-orderable="false" class="fixed-width-soi-table-80">Total</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="odd">
+                                 <td>Registered Agent Service (CA)</td>
+                                 <td>1</td>
+                                 <td>$15</td>
+                                 <td>$15</td>
+                              </tr>
+                           <tfoot>
+                              <tr class="even">
+                                 <td class="fw-bold">Total</td>
+                                 <td class="fw-bold">1</td>
+                                 <td class="fw-bold"></td>
+                                 <td class="fw-bold">$15</td>
+                              </tr>
+                           </tfoot>
+
+
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+
+               </div>
+               <form class="payment-section">
+                  <div class="mb-4 p-3 bg-white rounded-2">
+                     <fieldset>
+                        <label class="form-label">Payment Method<span class="mandatory">*</span></label>
+                        <div class="custom-dropdown">
+                           <select class="form-select pricing-method">
+                              <option value="account-default">Pay Later</option>
+                              <option value="account-default">Account Default (Visa 1111)</option>
+                              <option value="on-file">On File</option>
+                              <option value="add-new">Add New</option>
+                           </select>
+                        </div>
+                     </fieldset>
+
+                        <div class="on-file-content mt-4 border rounded-2" style="display: none;">
+                        <div>
+                           <div class="payment-card d-flex odd border-bottom">
+                              <div class="d-flex align-items-center">
+                                 <input class="form-check-input" type="checkbox">
+                                 <div class="ms-2 d-flex">
+                                    <div class="methodiv">Mastercard </div>
+                                    <div class="methodcard">Mastercard ...4444</div>
+                                 </div>
+                              </div class="d-flex align-items-center">
+                              <div class="d-flex align-items-start  defaultdiv">
+                                 <span class="btn btn-outline-success btn-sm">Default</span>
+                              </div>
+                           </div>
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column even border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox" disabled>
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv text-disabled">ACH Payment</div>
+                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
+                                    </div>
+                                 </div>
+
+                                 <div class="d-flex align-items-start defaultdiv" data-toggle="tooltip"
+                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
+                                    <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column odd border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <input class="form-check-input" type="checkbox" >
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv">ACH Payment</div>
+                                       <div class="methodcard">Stripe Test Bank ...4786</div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <!-- Payment Method 3 -->
+                           <div class="payment-card d-flex even ">
+                              <div class="d-flex align-items-center">
+                                 <input class="form-check-input" type="checkbox">
+                                 <div class="ms-2 d-flex">
+                                    <div class="methodiv">Card 2</div>
+                                    <div class="methodcard">Mastercard ...1111</div>
+                                 </div>
+                              </div>
+                           </div>
+
+
+
+                        </div>
+                     </div>
+                     <div class="add-new-content mt-4" style="display: none;">
+                        <div class="d-flex justify-content-between">
+                           <span class="fw-bold">SELECT METHOD</span>
+                           <div class="d-flex align-items-center">
+                              <div class="form-check me-4">
+                                 <input class="form-check-input ach-option" id="achCheck" type="checkbox" checked>
+                                 <label class="form-check-label rights-label" for="achCheck">ACH</label>
+                              </div>
+                              <div class="form-check">
+                                 <input class="form-check-input credit-option" id="creditCheck" type="checkbox">
+                                 <label class="form-check-label rights-label" for="creditCheck">Credit Card</label>
+                              </div>
+                           </div>
+
+                        </div>
+
+                        <!-- ACH Form -->
+                        <div class="ach-form mt-4" style="display: none;">
+                           <fieldset class="mb-4">
+                              <label class="form-label">Account Holder Name</label>
+                              <input type="text" class="form-control" placeholder="Name">
+                           </fieldset>
+                           <div class="d-flex justify-content-between align-items-center upload-group w-100 mb-4">
+                     <span class="fw-bold text-uppercase">ACCOUNT TYPE</span>
+                     <div class="d-flex align-items-center flex-column">
+                        <div class="d-flex">
+                           <div class="form-check me-4 typecheckradio">
+                              <input class="form-check-input no-checkbox" type="radio" id="ACtype6" name="customArticles-27" checked>
+                              <label class="form-check-label rights-label " for="ACtype6">Individual</label>
+                           </div>
+                           <div class="form-check typecheckradio">
+                              <input class="form-check-input yes-checkbox" type="radio" id="ACompany6" name="customArticles-27">
+                              <label class="form-check-label rights-label " for="ACompany6"> Company</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                           <fieldset class="mb-4">
+                              <div class="d-flex justify-content-between">
+                              <label class="form-label">Routing Number</label> 
+                              <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative"> 
+         <div class="text-start tooltipText tooltipRight"> Please note that the Routing/Account numbers must have a minimum of 12 digits when adding. Your Routing/Account number is less than 12 digits, you may add zeros at the beginning of the Routing/Account number. (see example)</div>
+   </div>
+   </div>
+                              <span>Also known as ABA Number</span>
+                              <input type="text" class="form-control" placeholder="EX. 11000000">
+                           </fieldset>
+                           <fieldset>
+                              <label class="form-label">Account Number</label>
+                              <input type="text" class="form-control" placeholder="EX. 000123455678">
+                           </fieldset>
+                           <div class="mt-4">
+                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
+                                 SAVE
+                              </button>
+                           </div>
+                        </div>
+
+                        <!-- Credit Card Form -->
+                        <div class="credit-card-form mt-4" style="display: none;">
+                           <fieldset class="mb-4">
+                              <label class="form-label">Card Holder Name</label>
+                              <input type="text" class="form-control" placeholder="Name">
+                           </fieldset>
+                           <fieldset class="mb-4">
+                              <label class="form-label">Card Details</label>
+                              <input type="text" class="form-control" placeholder="**** **** **** 1111">
+                           </fieldset>
+                           <div class="d-flex justify-content-between">
+                              <fieldset class="w-50 me-2">
+                                 <label class="form-label">Expiry Date</label>
+                                 <input type="text" class="form-control" placeholder="MM/YY">
+                              </fieldset>
+                              <fieldset class="w-50 ms-2">
+                                 <label class="form-label">CVV</label>
+                                 <input type="text" class="form-control" placeholder="CVV">
+                              </fieldset>
+                           </div>
+                           <div class="mt-4">
+                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
+                                 SAVE
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  </div>
+               </form>
+            </div>
+
+            <!-- Modal Body End -->
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-link text-decoration-none font-weight-600"
+                        data-bs-target="#previewModal" data-bs-toggle="modal" data-bs-dismiss="modal"> PREVIEW </button>
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="submitBtn"
+                        data-bs-target="#" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Submit
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+  <!--Appoint Filejet as Registered Agent step-4 Modal End-->
+
 
     <!-- Organization Chart Starts -->
     <div class="modal fade" id="organizationChartModal" tabindex="-1" aria-labelledby="organizationChartModalLabel"
@@ -2800,10 +3416,19 @@
           });
         });
     </script>
-    <!-- end -->
-    <script src="dist/js/plugins.min.js"></script>
-    <script src="dist/js/custom.min.js"></script>
-    <!-- Scripts End-->
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+   <!-- Scripts start-->
+   <script src="dist/js/plugins.min.js"></script>
+   <script src="dist/js/custom.min.js"></script>
+   <script src="dist/js/service-order-process.js"></script>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
+   <!-- Scripts End-->
+     
+
+
 </body>
 
 </html>
