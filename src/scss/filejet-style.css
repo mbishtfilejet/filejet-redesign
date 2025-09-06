@@ -14187,14 +14187,6 @@ blockquote .author-company {
   padding: 1.5rem 1.2rem !important;
   background-color: var(--bs-purple);
 }
-.dataTables_wrapper tbody td {
-  font-weight: 500;
-  line-height: 1.25rem;
-  font-size: 1rem;
-}
-.dataTables_wrapper tbody td a {
-  font-weight: 600;
-}
 .dataTables_wrapper tbody td a:hover {
   color: var(--bs-purple);
 }
@@ -14202,27 +14194,11 @@ blockquote .author-company {
   font-weight: 700;
   line-height: 1.1875rem;
 }
-.dataTables_wrapper .dataTable thead th.sorting {
-  position: relative;
-}
-.dataTables_wrapper .dataTable thead th.sorting::after {
-  content: "";
-  background-image: url("../../../dist/images/icons/down-filter-arrow.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  position: absolute;
-  width: 0.625rem;
-  height: 100%;
-  right: auto;
-  top: 0;
-  transition: all 0.3s ease-in;
-  margin-left: 0.625rem;
-}
-.dataTables_wrapper .dataTable thead th.sorting.sorting_asc::after {
-  transform: rotate(180deg);
+.dataTables_wrapper .dataTable thead th.sorting.sorting_asc::before {
+  opacity: .6;
 }
 .dataTables_wrapper .dataTable thead th.sorting.sorting_desc::after {
-  transform: rotate(0deg);
+  opacity: .6;
 }
 .dataTables_wrapper .dataTable thead th.sorting.sorting-none:after {
   content: none;
@@ -18996,6 +18972,76 @@ body .caledar-event-upcoming {
   --bs-filejet-medium-gray-opacity-50: rgba(62, 72, 74, 0.5);
   --bs-filejet-medium-gray: #3e484a;
   --bs-filejet-purple-indigo: #4744d1;
+}
+
+thead, tbody, tfoot, tr {
+  border: 0px solid #d9d9d9 !important;
+}
+
+.dataTables_wrapper .odd {
+  background-color: #FAFAFA !important;
+}
+
+.boc-light #boc-ppdf-btns #boc-prev-save,
+.nav-tabs .nav-link,
+.tooltip {
+  text-transform: uppercase !important;
+}
+
+.dataTables_wrapper tbody td {
+  font-weight: 400;
+  line-height: 1.25rem;
+  font-size: 1rem;
+}
+
+.dataTables_wrapper tbody td a {
+  font-weight: 400;
+}
+
+.dataTables_wrapper .dataTable thead th.sorting {
+  position: relative;
+  text-transform: capitalize !important;
+  padding: 0.9rem !important;
+}
+
+.rounded-5 {
+  border-radius: var(--bs-border-radius) !important;
+}
+
+.search-bar .text-placeholder {
+  color: var(--bs-dark);
+  font-size: 1rem;
+  line-height: 1;
+  min-width: 300px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.red-bg,
+table tr[text-color=red] td .btn,
+table tr[text-color=red] td .boc-light #boc-ppdf-btns #boc-prev-cancel,
+.boc-light #boc-ppdf-btns table tr[text-color=red] td #boc-prev-cancel,
+table tr[text-color=red] td .boc-light #boc-ppdf-btns #boc-prev-save,
+.boc-light #boc-ppdf-btns table tr[text-color=red] td #boc-prev-save {
+  background-color: none !important;
+}
+
+table tr[text-color=red] td .btn,
+table tr[text-color=red] td .boc-light #boc-ppdf-btns #boc-prev-cancel,
+.boc-light #boc-ppdf-btns table tr[text-color=red] td #boc-prev-cancel,
+table tr[text-color=red] td .boc-light #boc-ppdf-btns #boc-prev-save,
+.boc-light #boc-ppdf-btns table tr[text-color=red] td #boc-prev-save {
+  border-color: none !important;
+}
+
+.dataTables_wrapper .btn-secondary {
+  font-size: 10px;
+  border-radius: var(--bs-border-radius-sm) !important;
+}
+
+.dataTables_wrapper .btn-dark {
+  font-size: 10px;
+  border-radius: var(--bs-border-radius-sm) !important;
 }
 
 .sidebar {
