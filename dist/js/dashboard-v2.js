@@ -8,10 +8,11 @@ google.charts.setOnLoadCallback(() => {
     [
       ["Task", "Count"],
       ["Overdue", 50],
+      ["Urgent", 10],
       ["Upcoming", 30],
       ["Unacknowledged", 10],
     ],
-    ["#E73B18", "#00B2EB", "#00BA70"],
+    ["#E73B18", "#FFB60C" , "#00B2EB", "#00BA70"],
     "78%",
     "78%"
   );
@@ -111,10 +112,11 @@ function redrawChart(chartId, width, height) {
     chartData = [
       ["Task", "Count"],
       ["Overdue", 50],
+      ["Urgent", 10],
       ["Upcoming", 30],
       ["Unacknowledged", 10],
     ];
-    colors = ["#E73B18", "#00B2EB", "#00BA70"];
+    colors = ["#E73B18", "#FFB60C" , "#00B2EB", "#00BA70"];
   } else if (chartId === "donut_chart_2") {
     chartData = [
       ["Task", "Count"],

@@ -7,11 +7,12 @@ google.charts.setOnLoadCallback(() => {
     "donut_chart",
     [
       ["Task", "Count"],
-      ["Overdue", 50],
+      ["Overdue", 15],
+      ["Urgent", 20],           // ✅ Added Urgent
       ["Upcoming", 30],
       ["Unacknowledged", 10],
     ],
-    ["#E73B18", "#3498db", "#62539F"],
+    ["#E73B18", "#FFB60C", "#3498db", "#62539F"], // ✅ Added Urgent color
     "78%",
     "78%"
   );
@@ -21,7 +22,7 @@ google.charts.setOnLoadCallback(() => {
     [
       ["Task", "Count"],
       ["In Good Standing", 15],
-      ["Not Good Standing", 8],
+      ["Not Good Standing", 20],
       ["Inactive", 3],
       ["Externally Managed", 1],
     ],
@@ -64,6 +65,7 @@ function drawDonutChart(containerId, chartData, colors, width, height) {
     chartArea: chartAreaSize,
     pieSliceBorderColor: "transparent",
     tooltip: { trigger: "none" }, // Disable tooltip
+    sliceVisibilityThreshold: 0,  // ✅ Ensures small slices are visible
   };
 
   var chart = new google.visualization.PieChart(document.getElementById(containerId));
@@ -102,16 +104,17 @@ function redrawChart(chartId, width, height) {
   if (chartId === "donut_chart") {
     chartData = [
       ["Task", "Count"],
-      ["Overdue", 50],
+      ["Overdue", 15],
+      ["Urgent", 20],           // ✅ Added here too
       ["Upcoming", 30],
       ["Unacknowledged", 10],
     ];
-    colors = ["#E73B18", "#3498db", "#62539F"];
+    colors = ["#E73B18", "#FFB60C", "#3498db", "#62539F"]; // ✅ Added color
   } else if (chartId === "donut_chart_2") {
     chartData = [
       ["Task", "Count"],
       ["In Good Standing", 15],
-      ["Not Good Standing", 8],
+      ["Not Good Standing", 20],
       ["Inactive", 3],
       ["Externally Managed", 1],
     ];
@@ -144,7 +147,7 @@ function highlightStatus(status) {
   });
 }
 
-// Google Chart Script End 
+// Google Chart Script End
 
 
 
