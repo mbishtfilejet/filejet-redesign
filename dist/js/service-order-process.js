@@ -1162,24 +1162,4 @@ document.querySelectorAll('.autocomplete-input2').forEach(input => {
 
 
 
-// Apply Select2 on any modal when it becomes visible
-$(document).on('shown.bs.modal', '.modal', function () {
-  let $modal = $(this);
-
-  // Find all select2s inside the opened modal
-  $modal.find('select.select2').each(function () {
-    let $select = $(this);
-
-    // If already initialized, destroy to prevent duplicate bindings
-    if ($select.hasClass("select2-hidden-accessible")) {
-      $select.select2('destroy');
-    }
-
-    // Reinitialize with dropdown inside this modal
-    $select.select2({
-      dropdownParent: $modal.find('.modal-content'),
-      width: '100%'
-    });
-  });
-});
 
