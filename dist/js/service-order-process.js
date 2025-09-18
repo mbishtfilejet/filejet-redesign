@@ -850,14 +850,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // selet2 
 $(document).ready(function () {
     // List of modal IDs
-    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#INTentity' , '#BLentity' , '#requestCSGood' , '#addEXEntity'];
+    const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices' , '#INTentity' , '#BLentity' , '#requestCSGood' , '#disEntity' , '#addEXEntity'];
 
     // Attach the same event handler to all modals
     modals.forEach(modalId => {
         $(modalId).on('show.bs.modal', function (e) {
             $('.home-entity-field').select2({
                 dropdownParent: $(modalId),
-                placeholder: "Select Entity",  // Add placeholder here
+                placeholder: "Entity",  // Add placeholder here
             });
         });
     });
