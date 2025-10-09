@@ -10,46 +10,18 @@
     background-color:#FAFAFA;
   }
 
-    @media only screen and (max-width: 600px) {
-    .container { width: 100% !important; }
-    .inner-padding { padding: 10px !important; }
-    .banner { font-size: 16px !important; height: auto !important; padding: 20px !important; }
-    .footer-text { font-size: 11px !important; line-height: 16px !important; }
-    td, th { font-size: 13px !important; }
+@media screen and (max-width:480px) {
+    .two-col {
+      display: block !important;
+      width: 100% !important;       /* full width on mobile */
+      min-height: 130px !important;  /* equal height for all boxes */
+      box-sizing: border-box;        /* include padding & border in width */
+      margin-bottom: 10px;           /* spacing between stacked boxes */
+    }
+    .spacer {
+      display: none !important;      /* remove horizontal spacing on stacked layout */
+    }
   }
-
-@media only screen and (max-width: 600px) {
-  .stack-column {
-    display: inline-block !important;
-    width: 48% !important;
-    max-width: 150px !important;
-    vertical-align: top;
-    margin-bottom: 15px;
-  }
-  .stack-column table {
-    width: 100% !important;
-    height: auto !important;
-  }
-  .spacer {
-    display: inline-block !important;
-    width: 4% !important;
-    height: auto !important;
-  }
-
-  /* Take Action Buttons */
-  .take-action-btn a {
-    display: block !important;
-    width: 100% !important;
-    line-height: 36px !important;
-    text-align: center;
-    box-sizing: border-box;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .stack-column { width: 100% !important; max-width: 100% !important; }
-  .spacer { display: block !important; width: 100% !important; height: 15px !important; }
-}
 
   
 </style>
@@ -89,60 +61,40 @@
         <p style="margin-bottom:32px;">You have Open Compliance Tasks <br>Please log in to your Filejet account take action - it will only take a few minutes.</p>
         </div>
 
-<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="margin-bottom:30px;">
+<!-- Top 4 Boxes -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="margin-bottom:30px; max-width:700px;">
   <tr>
     <!-- Box 1 -->
-    <td class="stack-column" align="center" valign="top" style="width:150px; min-width:150px;">
-      <table width="100%" style="border:2px solid #FF551A; border-radius:8px; min-height:100px;" cellpadding="0" cellspacing="0">
-        <tr>
-          <td style="padding:15px 10px 5px 10px;">
-            <span style="font-size:11px; font-weight:600; color:#6E7683; display:block; height:35px;">OVERDUE TASKS</span>
-            <span style="font-size:40px; font-weight:700; color:#262626;">3</span>
-          </td>
-        </tr>
-      </table>
+    <td class="two-col" style="border:2px solid #FF551A; border-radius:8px; min-width:120px; width:120px; height:100px; text-align:left; vertical-align:top; padding:10px;">
+      <span style="font-size:11px; font-weight:600; color:#6E7683; display:block; height: 50px;">OVERDUE TASKS</span>
+      <span style="font-size:40px; font-weight:700; color:#262626;">3</span>
     </td>
 
+    <!-- Spacer -->
     <td class="spacer" width="15" style="width:15px;">&nbsp;</td>
 
     <!-- Box 2 -->
-    <td class="stack-column" align="center" valign="top" style="width:150px; min-width:150px;">
-      <table width="100%" style="border:2px solid #FFC21A; border-radius:8px; min-height:100px;" cellpadding="0" cellspacing="0">
-        <tr>
-          <td style="padding:15px 10px 5px 10px;">
-            <span style="font-size:11px; font-weight:600; color:#6E7683; display:block; height:35px;">URGENT TASKS</span>
-            <span style="font-size:40px; font-weight:700; color:#262626;">3</span>
-          </td>
-        </tr>
-      </table>
+    <td class="two-col" style="border:2px solid #FFC21A; border-radius:8px; min-width:120px; width:120px; height:100px; text-align:left; vertical-align:top; padding:10px;">
+      <span style="font-size:11px; font-weight:600; color:#6E7683; display:block; height: 50px;">URGENT TASKS</span>
+      <span style="font-size:40px; font-weight:700; color:#262626;">5</span>
     </td>
 
+    <!-- Spacer -->
     <td class="spacer" width="15" style="width:15px;">&nbsp;</td>
 
     <!-- Box 3 -->
-    <td class="stack-column" align="center" valign="top" style="width:150px; min-width:150px;">
-      <table width="100%" style="border:2px solid #00B2EB; border-radius:8px; min-height:100px;" cellpadding="0" cellspacing="0">
-        <tr>
-          <td style="padding:15px 10px 5px 10px;">
-            <span style="font-size:11px; font-weight:600; color:#6E7683; display:block; height:35px;">UPCOMING TASKS</span>
-            <span style="font-size:40px; font-weight:700; color:#262626;">3</span>
-          </td>
-        </tr>
-      </table>
+    <td class="two-col" style="border:2px solid #00B2EB; border-radius:8px; min-width:120px; width:120px; height:100px; text-align:left; vertical-align:top; padding:10px;">
+      <span style="font-size:11px; font-weight:600; color:#6E7683; display:block;height: 50px;">UPCOMING TASKS</span>
+      <span style="font-size:40px; font-weight:700; color:#262626;">8</span>
     </td>
 
+    <!-- Spacer -->
     <td class="spacer" width="15" style="width:15px;">&nbsp;</td>
 
     <!-- Box 4 -->
-    <td class="stack-column" align="center" valign="top" style="width:150px; min-width:150px;">
-      <table width="100%" style="border:2px solid #262626; border-radius:8px; min-height:100px;" cellpadding="0" cellspacing="0">
-        <tr>
-          <td style="padding:15px 10px 5px 10px;">
-            <span style="font-size:11px; font-weight:600; color:#6E7683; display:block; height:35px;">UNACKNOWLEDGED SERVICE OF PROCESS</span>
-            <span style="font-size:40px; font-weight:700; color:#262626;">3</span>
-          </td>
-        </tr>
-      </table>
+    <td class="two-col" style="border:2px solid #262626; border-radius:8px; min-width:120px; width:120px; height:100px; text-align:left; vertical-align:top; padding:10px;">
+      <span style="font-size:11px; font-weight:600; color:#6E7683; display:block; height: 50px;">UNACKNOWLEDGED SERVICE OF PROCESS</span>
+      <span style="font-size:40px; font-weight:700; color:#262626;">3</span>
     </td>
   </tr>
 </table>
@@ -156,39 +108,37 @@
 
         <!-- overdue -->
 
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" style="margin: 30px 0px;">
-            <tr>
-              <td style="vertical-align: middle; padding-right: 10px;">
-                <img src="../Email-template/HTML-EMAIL-WEEKLY_SUMMARY/Overdue-icon.png" alt="Overdue Logo" style="height:37px; display:block;">
-              </td>
-              <td style="vertical-align: middle;">
-                <h3 style="font-size:14px; font-weight:700; margin:0; color: #3E484A; letter-spacing:1px; line-height: 20px;">OVERDUE TASKS
-                </h3>
-                <p style="margin: 0px; font-size: 12px; line-height: 20px; letter-spacing: -0.25px; color: #3E484A;">The following tasks are overdue - please take action immediately to restore compliance</p>
-              </td>
-              <td align="center" valign="middle">
-  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-    <tr>
-      <td align="center" valign="middle" class="take-action-btn">
-  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-    <tr>
-      <td align="center" bgcolor="#000" style="border-radius:2px;">
-        <a href="#" 
-           target="_blank"
-           style="display:inline-block; font-size:10px; font-weight:bold; color:#fff; text-decoration:none; width:90px; height:36px; line-height:36px; text-align:center; mso-line-height-rule:exactly;">
-          TAKE ACTION
-        </a>
-      </td>
-    </tr>
-  </table>
-</td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" style="margin:30px 0;">
+  <tr>
+    <!-- Icon -->
+    <td width="40" valign="middle" style="padding-right:10px;">
+      <img src="../Email-template/HTML-EMAIL-WEEKLY_SUMMARY/Overdue-icon.png" alt="Overdue Logo" style="height:37px; display:block;">
+    </td>
 
-    </tr>
-  </table>
-</td>
+    <!-- Text -->
+    <td valign="middle" style="padding-right:10px; font-size:12px; line-height:16px; color:#3E484A; word-break:break-word;">
+      <strong style="font-size:14px;">OVERDUE TASKS</strong><br>
+      The following tasks are overdue - please take action immediately to restore compliance
+    </td>
 
-            </tr>
-          </table>
+    <!-- Button -->
+    <td width="100" valign="middle" align="right" style="white-space:nowrap;">
+      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; width:90px;">
+        <tr>
+          <td align="center" bgcolor="#000" height="36" style="border-radius:2px;">
+            <a href="#"
+               target="_blank"
+               style="display:inline-block; font-size:10px; font-weight:bold; color:#fff; text-decoration:none;  height:36px; line-height:36px; text-align:center; white-space:nowrap; padding: 0px 10px;">
+              TAKE ACTION
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
 
         <table width="100%"  cellspacing="0" cellpadding="15" style="border:1px solid #D8DDDF; border-radius: 10px; overflow: hidden; font-size:12px;margin-bottom: 30px;">
           <tr style="font-weight:bold; line-height: 20px;">
@@ -230,39 +180,35 @@
 
         <!-- Urgent task -->
 
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" style="margin: 30px 0px;">
-            <tr>
-              <td style="vertical-align: top; padding-right: 10px;">
-                <img src="../Email-template/HTML-EMAIL-WEEKLY_SUMMARY/Urgent-task-icon.png" alt="Urgent Logo" style="height:37px; display:block;">
-              </td>
-              <td style="vertical-align: middle;">
-                <h3 style="font-size:14px; font-weight:700; margin:0; color: #3E484A; letter-spacing:1px; line-height: 20px;">URGENT TASKS
-                </h3>
-                <p style="margin: 0px; font-size: 12px; line-height: 20px; color: #3E484A; letter-spacing: -0.25px;">The following tasks need urgent attention or they may become overdue - please take action immediately to ensure compliance</p>
-              </td>
-              <td align="center" valign="middle">
-  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-    <tr>
-<td align="center" valign="middle" class="take-action-btn">
-  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-    <tr>
-      <td align="center" bgcolor="#000" style="border-radius:2px;">
-        <a href="#" 
-           target="_blank"
-           style="display:inline-block; font-size:10px; font-weight:bold; color:#fff; text-decoration:none; width:90px; height:36px; line-height:36px; text-align:center; mso-line-height-rule:exactly;">
-          TAKE ACTION
-        </a>
-      </td>
-    </tr>
-  </table>
-</td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" style="margin:30px 0;">
+  <tr>
+    <!-- Icon -->
+    <td width="40" valign="middle" style="padding-right:10px;">
+      <img src="../Email-template/HTML-EMAIL-WEEKLY_SUMMARY/Urgent-task-icon.png" alt="urgent Logo" style="height:37px; display:block;">
+    </td>
 
-    </tr>
-  </table>
-</td>
+    <!-- Text -->
+    <td valign="middle" style="padding-right:10px; font-size:12px; line-height:16px; color:#3E484A; word-break:break-word;">
+      <strong style="font-size:14px;">URGENT TASKS</strong><br>
+      The following tasks need urgent attention or they may become overdue - please take action immediately to ensure compliance
+    </td>
 
-            </tr>
-          </table>
+    <!-- Button -->
+    <td width="100" valign="middle" align="right" style="white-space:nowrap;">
+      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; width:90px;">
+        <tr>
+          <td align="center" bgcolor="#000" height="36" style="border-radius:2px;">
+            <a href="#"
+               target="_blank"
+               style="display:inline-block; font-size:10px; font-weight:bold; color:#fff; text-decoration:none;  height:36px; line-height:36px; text-align:center; white-space:nowrap; padding: 0px 10px;">
+              TAKE ACTION
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
         <table width="100%"  cellspacing="0" cellpadding="15" style="border:1px solid #D8DDDF; border-radius: 10px; overflow: hidden; font-size:12px;margin-bottom: 30px;">
           <tr style="font-weight:bold; line-height: 20px;">
@@ -305,39 +251,35 @@
 
         <!-- upcoming Tasks  -->
 
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" style="margin: 30px 0px;">
-            <tr>
-              <td style="vertical-align: top; padding-right: 10px;">
-                <img src="../Email-template/HTML-EMAIL-WEEKLY_SUMMARY/Upcoming-icon.png" alt="Urgent Logo" style="height:37px; display:block;">
-              </td>
-              <td style="vertical-align: middle;">
-                <h3 style="font-size:14px; font-weight:700; margin:0; color: #3E484A; letter-spacing:1px; line-height: 20px;">UPCOMING TASKS
-                </h3>
-                <p style="margin: 0px; font-size: 12px; line-height: 20px; letter-spacing: -0.25px; color: #3E484A;">The following tasks are due in the next 60 days - please take action</p>
-              </td>
-             <td align="center" valign="middle">
-  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-    <tr>
-<td align="center" valign="middle" class="take-action-btn">
-  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-    <tr>
-      <td align="center" bgcolor="#000" style="border-radius:2px;">
-        <a href="#" 
-           target="_blank"
-           style="display:inline-block; font-size:10px; font-weight:bold; color:#fff; text-decoration:none; width:90px; height:36px; line-height:36px; text-align:center; mso-line-height-rule:exactly;">
-          TAKE ACTION
-        </a>
-      </td>
-    </tr>
-  </table>
-</td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" style="margin:30px 0;">
+  <tr>
+    <!-- Icon -->
+    <td width="40" valign="middle" style="padding-right:10px;">
+      <img src="../Email-template/HTML-EMAIL-WEEKLY_SUMMARY/Upcoming-icon.png" alt="upcoming Logo" style="height:37px; display:block;">
+    </td>
 
-    </tr>
-  </table>
-</td>
+    <!-- Text -->
+    <td valign="middle" style="padding-right:10px; font-size:12px; line-height:16px; color:#3E484A; word-break:break-word;">
+      <strong style="font-size:14px;">UPCOMING TASKS</strong><br>
+      The following tasks are due in the next 60 days - please take action
+    </td>
 
-            </tr>
-          </table>
+    <!-- Button -->
+    <td width="100" valign="middle" align="right" style="white-space:nowrap;">
+      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; width:90px;">
+        <tr>
+          <td align="center" bgcolor="#000" height="36" style="border-radius:2px;">
+            <a href="#"
+               target="_blank"
+               style="display:inline-block; font-size:10px; font-weight:bold; color:#fff; text-decoration:none;  height:36px; line-height:36px; text-align:center; white-space:nowrap; padding: 0px 10px;">
+              TAKE ACTION
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
         <table width="100%"  cellspacing="0" cellpadding="15" style="border:1px solid #D8DDDF; border-radius: 10px; overflow: hidden; font-size:12px;margin-bottom: 30px;">
           <tr style="font-weight:bold; line-height: 20px;">
@@ -380,39 +322,35 @@
 
         <!-- Unacknowledged Service of Process -->
 
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" style="margin: 30px 0px;">
-            <tr>
-              <td style="vertical-align: top; padding-right: 10px;">
-                <img src="../Email-template/HTML-EMAIL-WEEKLY_SUMMARY/unacknowledged-icon.png" alt="Urgent Logo" style="height:37px; display:block;">
-              </td>
-              <td style="vertical-align: middle;">
-                <h3 style="font-size:14px; font-weight:700; margin:0; color: #3E484A; letter-spacing:1px; line-height: 20px;">UNACKNOWLEDGED SERVICES OF PROCESS
-                </h3>
-                <p style="margin: 0px; font-size: 12px; line-height: 20px; letter-spacing: -0.25px; color: #3E484A;">The following Service of Process notifications were received and are not yet acknowledged - please acknowledge immediately to ensure prompt attention.</p>
-              </td>
-              <td align="center" valign="middle">
-  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-    <tr>
-<td align="center" valign="middle" class="take-action-btn">
-  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-    <tr>
-      <td align="center" bgcolor="#000" style="border-radius:2px;">
-        <a href="#" 
-           target="_blank"
-           style="display:inline-block; font-size:10px; font-weight:bold; color:#fff; text-decoration:none; width:90px; height:36px; line-height:36px; text-align:center; mso-line-height-rule:exactly;">
-          TAKE ACTION
-        </a>
-      </td>
-    </tr>
-  </table>
-</td>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="left" style="margin:30px 0;">
+  <tr>
+    <!-- Icon -->
+    <td width="40" valign="middle" style="padding-right:10px;">
+      <img src="../Email-template/HTML-EMAIL-WEEKLY_SUMMARY/unacknowledged-icon.png" alt="unacknowledged Logo" style="height:37px; display:block;">
+    </td>
 
-    </tr>
-  </table>
-</td>
+    <!-- Text -->
+    <td valign="middle" style="padding-right:10px; font-size:12px; line-height:16px; color:#3E484A; word-break:break-word;">
+      <strong style="font-size:14px; line-height: 20px;">UNACKNOWLEDGED SERVICES OF PROCESS</strong><br>
+      The following Service of Process notifications were received and are not yet acknowledged - please acknowledge immediately to ensure prompt attention.
+    </td>
 
-            </tr>
-          </table>
+    <!-- Button -->
+    <td width="100" valign="middle" align="right" style="white-space:nowrap;">
+      <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; width:90px;">
+        <tr>
+          <td align="center" bgcolor="#000" height="36" style="border-radius:2px;">
+            <a href="#"
+               target="_blank"
+               style="display:inline-block; font-size:10px; font-weight:bold; color:#fff; text-decoration:none;  height:36px; line-height:36px; text-align:center; white-space:nowrap; padding: 0px 10px;">
+              TAKE ACTION
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
         <table width="100%"  cellspacing="0" cellpadding="15" style="border:1px solid #D8DDDF; border-radius: 10px; overflow: hidden; font-size:12px;margin-bottom: 30px;">
           <tr style="font-weight:bold; line-height: 20px;">
