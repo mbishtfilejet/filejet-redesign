@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monday Compliance Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<style>
+    body.body-bg {
+  margin: 0;
+  padding: 0;
+  font-family: 'Sora', Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
+  background: #ffffff;
+  border-collapse: collapse;
+}
+
+.container-inner {
+  padding: 20px;
+}
+
+.header {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.logo {
+  height: 50px;
+}
+
+.prepared-for {
+  font-size: 12px;
+  line-height: 26px;
+}
+
+.prepared-label {
+  font-weight: 700;
+  color: #6C6C6C;
+}
+
+.prepared-name {
+  font-weight: 700;
+  color: #3E484A;
+  font-size: 16px;
+}
+
+.prepared-date {
+  font-weight: 700;
+  color: #6C6C6C;
+}
+
+.banner {
+  width: 100%;
+  margin: 20px 0 32px;
+  background: linear-gradient(90deg, #4744D1, #FF551A);
+  border-radius: 6px;
+  height: 100px;
+}
+
+.banner-text {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: bold;
+  text-align: center;
+  height: 100px;
+  border-radius: 6px;
+  vertical-align: middle;
+}
+
+.greeting {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  color: #262626;
+  margin-bottom: 32px;
+}
+
+.summary-boxes {
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 30px;
+  border-collapse: collapse;
+}
+
+.two-col {
+  padding: 0; /* Remove td padding, handled in inner div */
+  vertical-align: top;
+}
+
+.box {
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 130px;
+  width: 130px;
+  height: 100px;
+  text-align: left;
+  overflow: hidden; /* ensures rounded corners clip content */
+}
+
+.border-orange { border-color: #FF551A; }
+.border-yellow { border-color: #FFC21A; }
+.border-blue   { border-color: #00B2EB; }
+.border-dark   { border-color: #262626; }
+
+.box-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6E7683;
+  height: 50px;
+}
+
+.box-number {
+  display: block;
+  font-size: 40px;
+  font-weight: 700;
+  color: #262626;
+}
+
+/* Spacer for mobile */
+.spacer {
+  width: 15px;
+}
+
+
+
+.divider td {
+  border-top: 1px solid #D8DDDF;
+  line-height: 1px;
+  font-size: 0;
+}
+
+.section-header {
+  width: 100%;
+  margin: 30px 0;
+}
+
+.icon-cell {
+  width: 40px;
+  padding-right: 10px;
+}
+
+.section-icon {
+  height: 37px;
+  display: block;
+}
+
+.section-text {
+  font-size: 12px;
+  line-height: 16px;
+  color: #3E484A;
+  padding-right: 10px;
+}
+
+.button-cell {
+  width: 100px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.btn-table {
+  border-collapse: collapse;
+  width: 90px;
+}
+
+.btn {
+  background: #000;
+  border-radius: 2px;
+  height: 36px;
+  text-align: center;
+}
+
+.btn-link {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+}
+
+.task-table {
+  width: 100%;
+  border: 1px solid #D8DDDF;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-bottom: 30px;
+  border-collapse: collapse;
+}
+
+.task-table td {
+  padding: 10px;
+  border-bottom: 1px solid #CED2D9;
+}
+
+.task-table .table-head td {
+  font-weight: bold;
+  border-bottom: 2px solid #CED2D9;
+}
+
+.odd { background-color: #FAFAFA; }
+
+.footer {
+  width: 100%;
+  background-color: #F2F2F7;
+  border-collapse: collapse;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.footer-inner {
+  padding: 40px 15px 20px;
+}
+
+.footer-icon {
+  width: 15px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.footer-help {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  font-size: 11px;
+  color: #262626;
+  line-height: 17px;
+}
+
+.footer-link {
+  color: #262626;
+  text-decoration: none;
+}
+
+.footer-note {
+  text-align: center;
+  font-size: 13px;
+  color: #262626;
+  line-height: 17px;
+  padding: 10px 35px 20px;
+}
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin-bottom: 10px;
+}
+
+.portal-link {
+  color: #1155CC;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+/* Mobile responsive */
+@media screen and (max-width:480px) {
+  .two-col, .box {
+    display: block !important;
+    width: 100% !important;
+    min-height: 130px !important;
+    margin-bottom: 10px;
+  }
+  .spacer {
+    display: none !important;
+  }
+}
+
+</style>
+
+<body class="body-bg">
+
+  <!-- Container -->
+  <table class="container">
+    <tr>
+      <td class="container-inner">
+        
+        <!-- Header -->
+        <table class="header">
+          <tr>
+            <td><img src="../dist/images/email-images/Logo-email.png" alt="Filejet Logo" class="logo"></td>
+            <td class="prepared-for" align="right">
+              <div class="prepared-label">PREPARED FOR</div>
+              <div class="prepared-name">John Smith</div>
+              <div class="prepared-date">ON AUGUST 30, 2025</div>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Banner -->
+        <table role="presentation" class="banner">
+          <tr>
+            <td class="banner-text">Filejet Weekly Compliance Summary</td>
+          </tr>
+        </table>
+
+        <!-- Greeting -->
+        <div class="greeting">
+          <p>You have Open Compliance Tasks <br>Please log in to your Filejet account take action - it will only take a few minutes.</p>
+        </div>
+
+        <!-- Top 4 Boxes -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="margin-bottom:30px; max-width:700px;">
+  <tr>
+    <!-- Box 1 -->
+    <td class="two-col">
+      <div class="box border-orange">
+        <span class="box-title">OVERDUE TASKS</span>
+        <span class="box-number">3</span>
+      </div>
+    </td>
+
+    <!-- Spacer -->
+    <td class="spacer" width="15">&nbsp;</td>
+
+    <!-- Box 2 -->
+    <td class="two-col">
+      <div class="box border-yellow">
+        <span class="box-title">URGENT TASKS</span>
+        <span class="box-number">5</span>
+      </div>
+    </td>
+
+    <!-- Spacer -->
+    <td class="spacer" width="15">&nbsp;</td>
+
+    <!-- Box 3 -->
+    <td class="two-col">
+      <div class="box border-blue">
+        <span class="box-title">UPCOMING TASKS</span>
+        <span class="box-number">8</span>
+      </div>
+    </td>
+
+    <!-- Spacer -->
+    <td class="spacer" width="15">&nbsp;</td>
+
+    <!-- Box 4 -->
+    <td class="two-col">
+      <div class="box border-dark">
+        <span class="box-title">UNACKNOWLEDGED SERVICE OF PROCESS</span>
+        <span class="box-number">3</span>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+        <table role="presentation" class="divider"><tr><td>&nbsp;</td></tr></table>
+
+        <!-- Overdue Section -->
+        <table class="section-header" align="left">
+          <tr>
+            <td class="icon-cell"><img src="../dist/images/email-images/Overdue-icon.png" alt="Overdue" class="section-icon"></td>
+            <td class="section-text">
+              <strong>OVERDUE TASKS</strong><br>The following tasks are overdue - please take action immediately to restore compliance
+            </td>
+            <td class="button-cell">
+              <table class="btn-table"><tr><td class="btn"><a href="#" class="btn-link">TAKE ACTION</a></td></tr></table>
+            </td>
+          </tr>
+        </table>
+
+        <table class="task-table">
+          <tr class="table-head">
+            <td>Group</td><td>Entity Name</td><td>Jurisdiction</td><td>Task</td><td align="right">Due Date</td>
+          </tr>
+          <tr class="odd"><td>Adept HR</td><td>RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP</td><td>CA</td><td>Annual Report</td><td align="right">10/31/2025</td></tr>
+          <tr class="even"><td>Burkhalter Kessler Clement & George LL</td><td>RASA Realty LLC</td><td>DE</td><td>Prepare and File Entity Documents</td><td align="right">10/05/2025</td></tr>
+          <tr class="odd"><td>Christopher Law Group, Inc.</td><td>GDS DESIGNS, INC.</td><td>DE</td><td>SOP</td><td align="right">12/18/2025</td></tr>
+        </table>
+
+        <table role="presentation" class="divider"><tr><td>&nbsp;</td></tr></table>
+
+        <!-- Repeat other task sections (Urgent, Upcoming, Unacknowledged) same structure as above -->
+        <!-- Keep same class patterns for consistency -->
+
+      </td>
+    </tr>
+  </table>
+
+  <!-- Footer -->
+  <table class="footer">
+    <tr>
+      <td class="footer-inner">
+        <table class="footer-contact">
+          <tr>
+            <td>
+              <img src="https://fiyqfpo.stripocdn.email/content/guids/CABINET_31c77880ee7ed9d23f5734faa7852ceda43e81da105a390f87163cb27d34ac15/images/filejetsymbol.png" alt="Filejet Symbol" class="footer-icon">
+              <span class="footer-help">
+                <strong>Need Help?</strong><br>
+                <a href="mailto:hello@filejet.com?subject=Compliance Action Items Support" class="footer-link">support@filejet.com</a> | 
+                <a href="tel:+19494386751" class="footer-link">(949) 259-5955</a>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="footer-note">
+        <hr class="footer-divider">
+        <p><i>This email is automatically generated by the Filejet platform. To update email preferences please update your profile in the <a href="https://filejet.com/" target="_blank" class="portal-link">Filejet Portal</a> or contact us.</i></p>
+        <p>Filejet Inc., 10440 Pioneer Blvd Suite 8, Santa Fe Springs, CA 90670</p>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
