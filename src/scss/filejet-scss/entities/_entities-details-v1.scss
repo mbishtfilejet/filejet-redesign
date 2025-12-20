@@ -1,14 +1,232 @@
-.entitydetailsinfo{
-    .accordion-button{
-        text-transform: uppercase !important;
-        color: var(--bs-dark) !important;
+// variables
+
+$color-gray-900: #272A2E;
+$color-gray-opacity: #DFDFDF99;
+$color-dark-gray: #262626;
+$color-medium-gray: #3E484A;
+$color-crimson-red: #E73B18;
+
+.entityDetails-page {
+  & * {
+    font-family: "Sora", sans-serif !important;
+  }
+
+  max-width: 100% !important;
+
+  .notification {
+    border: 2px solid #D8DDDF;
+    border-radius: 100% !important;
+    height: 100%;
+
+    a {
+      width: 32px !important;
+      height: 32px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-        .card-label-text{
-            color: #6C6C6C !important;
-            font-weight: 700;
-        }
-        .value-text{
-            font-size: 14px;
-            line-height: 28px;
-        }
+
+    .notification-dot-v2 {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background-color: $color-crimson-red;
+      top: 7px;
+      right: 8px;
+    }
+  }
+
+  .profile-nav-v2 {
+    .dropdown {
+      border-radius: 100% !important;
+    }
+  }
+
+  .entityDetailsEditBtn {
+    display: flex;
+    gap: 4px;
+    font-weight: 400;
+    line-height: 16px;
+    padding: 5px 6px;
+    border-radius: 8px;
+    text-transform: capitalize !important;
+    color: $color-medium-gray;
+    border-color: $color-medium-gray;
+
+    &:hover {
+      background-color: transparent;
+      color: $color-medium-gray;
+      ;
+    }
+
+    .icon-edit {
+      background-image: url("../../../../dist/images/icons/input-edit.svg");
+      transform: translateX(20%);
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
+.entityDetails-page,
+.entityTabsContent {
+  padding-inline: calc(0.5rem + 4px) !important;
+}
+
+.entitydetailsinfo {
+  .accordion-button {
+    text-transform: uppercase !important;
+    color: var(--bs-dark) !important;
+  }
+
+  .card-label-text {
+    color: #6C6C6C !important;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .value-text {
+    font-size: 16px;
+    line-height: 26px;
+    color: $color-dark-gray !important;
+    font-weight: 600;
+    letter-spacing: -0.32px;
+  }
+}
+
+
+.entitydetailstabs {
+  position: relative;
+  gap: rem(20);
+  overflow: hidden;
+  z-index: 100;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: anchor(91%);
+    left: anchor(0%);
+    background-color: $color-gray-900;
+    width: anchor-size(--tab-anchor inline);
+    height: 3px;
+    transition: all 0.5s ease-in-out;
+    position-anchor: --tab-anchor;
+    z-index: 50;
+  }
+
+  .nav-link {
+    padding-bottom: 12px !important;
+    color: var(--bs-nw-gray-600);
+
+    &[aria-selected="true"] {
+      anchor-name: --tab-anchor;
+      color: $color-gray-900;
+      font-weight: 700;
+    }
+  }
+}
+
+.entityTabsContent {
+  background-color: $color-gray-opacity;
+  border-top: 1px solid #D8DDDF;
+
+  table,
+  .dataTable {
+    thead {
+      & th:first-child {
+        border-top-left-radius: 5px;
+      }
+
+      & th:last-child {
+        border-top-right-radius: 5px;
+      }
+    }
+
+    tbody tr:last-child {
+      & td:first-child {
+        border-bottom-left-radius: 5px;
+      }
+
+      & td:last-child {
+        border-bottom-right-radius: 5px;
+      }
+    }
+
+    .badge {
+      padding: 8px 10px;
+      border-radius: 30px;
+      font-size: 10px;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .badge-good {
+      background-color: #3AB564;
+    }
+
+    .badge-not-good {
+      background-color: #BB0F23;
+    }
+
+    .badge-inactive {
+      background-color: #8690A0;
+    }
+
+    .badge-unknown {
+      background-color: #1a4d9e;
+    }
+  }
+}
+
+.entityDetailTableCard {
+  background-color: white;
+}
+
+.entityDetails-registration-card {
+  .row>div {
+    display: flex;
+    flex-direction: column;
+
+    & .value-text {
+      margin-top: auto !important;
+    }
+  }
+}
+
+.entityDetails-description-card p {
+  color: $color-medium-gray;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+}
+
+.entityDetails-orders-card,
+.entityDetails-opentask-card {
+  .list-group-flush>.list-group-item {
+    border: 0px;
+    display: flex;
+    align-items: center;
+    padding: 6px 0 !important;
+  }
+
+  .circle {
+    flex-shrink: 0;
+  }
+
+  .value-text {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+
+  .icon-diagonal-right {
+    background-image: url("../../../../dist/images/icons/arrow-digonal-right.svg");
+    align-content: end;
+    flex-shrink: 0;
+    margin: 0;
+    margin-left: auto !important;
+    color: #3E484A;
+  }
 }

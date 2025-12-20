@@ -446,6 +446,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// entity details table start
+$(document).ready(function (){
+  let table = $("#entitydetails-registration-table").DataTable({
+    ajax: "data5.json",
+    columnDefs: [{ width: 100, targets: [2,3,4]},{width: 200, targets: 0}],
+    
+    columns: [
+        { data: "entity_name"},
+        { data: "type" },
+        { data: "jurisdiction" },
+        { data: "registrations" },
+        { data: "entity_file" },
+        { data: "status", render: function(data, type, row){
+          return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
+        } }
+    ],
+    order: [[0, "asc"]],
+    lengthChange: false,  // Removed pagination
+    paging: false,  // Disable pagination
+    info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+  });
+})
+
 
 
 
