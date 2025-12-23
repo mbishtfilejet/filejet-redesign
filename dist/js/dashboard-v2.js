@@ -341,7 +341,7 @@ $(document).ready(function () {
           { data: "group" },
           { data: "entity_name",
             render: function(data, type, row) {
-                return `<a href="/entities/${row.entity_id}">${data}</a>`;
+                return `<a href="./entities-details-v1.html">${data}</a>`;
             }},
           { data: "type" },
           { data: "jurisdiction" },
@@ -451,13 +451,15 @@ $(document).ready(function (){
   let table = $("#entitydetails-registration-table").DataTable({
     ajax: "data5.json",
     columnDefs: [{ width: 100, targets: [2,3,4]},{width: 200, targets: 0}],
-    
+    scrollX: true,
     columns: [
         { data: "entity_name"},
         { data: "type" },
         { data: "jurisdiction" },
         { data: "registrations" },
-        { data: "entity_file" },
+        { data: "entity_file", render: function(data,type, row){
+          return `<td>#${row.entity_file}</td>`
+        } },
         { data: "status", render: function(data, type, row){
           return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
         } }
