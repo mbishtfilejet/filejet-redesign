@@ -449,8 +449,10 @@ document.addEventListener("DOMContentLoaded", function () {
 // entity details table start
 $(document).ready(function (){
   let table = $("#entitydetails-registration-table").DataTable({
-    ajax: "data5.json",
-    columnDefs: [{ width: 100, targets: [2,3,4]},{width: 200, targets: 0}],
+    ajax: {
+      url:"data5.json",
+      dataSrc: 'registration_data'
+    },
     scrollX: true,
     columns: [
         { data: "entity_name"},
@@ -469,6 +471,38 @@ $(document).ready(function (){
     paging: false,  // Disable pagination
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   });
+
+ let table2 =  $("#entitydetails-business-table").DataTable({
+    ajax: {
+      url:"data5.json",
+      dataSrc: 'business_license_data'
+    },
+    scrollX: true,
+    columns: [
+        { data: "license_Name"},
+        { data: "city_county" },
+        { data: "registration_date" },
+        { data: "license" },
+        { data: "entity_name" },
+        { data: "state" },
+        { data: "renewal_date"},
+        { data: "status", render: function(data, type, row){
+          return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
+        }}
+    ],
+    order: [[0, "asc"]],
+    lengthChange: false,  // Removed pagination
+    paging: false,  // Disable pagination
+    info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+  })
+
+
+  
+});
+
+$(document).on('shown.bs.tab shown.bs.modal', function(){
+   $('#entitydetails-registration-table').DataTable().columns.adjust();
+  $('#entitydetails-business-table').DataTable().columns.adjust();
 })
 
 
