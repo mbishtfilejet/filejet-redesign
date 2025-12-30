@@ -21761,11 +21761,52 @@ body *::-webkit-scrollbar-thumb {
   background-color: var(--bs-yellow-bg);
 }
 
+.icon-entity-edit {
+  background-image: url("../../../../dist/images/icons/new-edit-dark.svg");
+}
+
+.icon-entity-delete {
+  background-image: url("../../../../dist/images/icons/new-delete-dark.svg");
+}
+
+.form-disabled {
+  background-image: none !important;
+  background-color: #3E484A !important;
+  color: #6E7683 !important;
+}
+
+.entityDetails-dashboard input[disabled] {
+  background-image: none !important;
+  background-color: #F3F5F8 !important;
+  color: #6E7683 !important;
+  cursor: not-allowed;
+}
+.entityDetails-dashboard .modal-bottom-right.fade {
+  opacity: 1;
+  transform: translateY(120%);
+  transition: transform ease 0.3s;
+}
+.entityDetails-dashboard .modal-bottom-right.show {
+  transform: translateY(0);
+}
+.entityDetails-dashboard .modal-bottom-right .modal-dialog {
+  bottom: 0 !important;
+}
+.entityDetails-dashboard .modal-bottom-right .modal-dialog-end {
+  align-items: end;
+}
+
 .entityDetails-page {
   max-width: 100% !important;
 }
 .entityDetails-page * {
   font-family: "Sora", sans-serif !important;
+}
+.entityDetails-page .icon-entity-edit {
+  background-image: url("../../../../dist/images/icons/new-edit-dark.svg");
+}
+.entityDetails-page .icon-entity-delete {
+  background-image: url("../../../../dist/images/icons/new-delete-dark.svg");
 }
 .entityDetails-page .notification {
   border: 2px solid #D8DDDF;
@@ -21806,13 +21847,17 @@ body *::-webkit-scrollbar-thumb {
   background-color: transparent;
   color: #3E484A;
 }
-.entityDetails-page .entityDetailsEditBtn .icon-edit {
-  background-image: url("../../../../dist/images/icons/input-edit.svg");
-  transform: translateX(20%);
-  width: 15px;
-  height: 15px;
-  color: #3E484A;
-  stroke: #3E484A;
+.entityDetails-page .entityDetailsEditBtn .icon-entity-edit {
+  width: 12px;
+  height: 12px;
+}
+
+.entitydetails-info-modal .entity-info-container {
+  display: flex;
+  gap: 10px;
+}
+.entitydetails-info-modal .entity-info-container fieldset {
+  flex-grow: 1;
 }
 
 .entityDetails-page,
@@ -21885,6 +21930,9 @@ body *::-webkit-scrollbar-thumb {
   background-color: rgba(223, 223, 223, 0.6);
   border-top: 1px solid #D8DDDF;
 }
+.entityTabsContent * {
+  font-family: "Sora", sans-serif !important;
+}
 .entityTabsContent table thead th:first-child,
 .entityTabsContent .dataTable thead th:first-child {
   border-top-left-radius: 5px;
@@ -21940,12 +21988,21 @@ body *::-webkit-scrollbar-thumb {
 .entityTabsContent .export-table-col {
   width: 4.5%;
 }
+.entityTabsContent .btn-add-owner {
+  font-size: 12px;
+  line-height: 14px;
+  padding: 3px 4px;
+}
 
 .entityDetailTableCard {
   background-color: white;
 }
-.entityDetailTableCard * {
-  font-family: "Sora", sans-serif !important;
+.entityDetailTableCard .dataTables_wrapper tbody td {
+  font-weight: 400;
+  color: var(--bs-black-primary);
+  font-size: 12px !important;
+  padding: 0.5rem 0.9rem !important;
+  line-height: 1.25rem !important;
 }
 .entityDetailTableCard .entityDetailRegistrationTable .dataTables_wrapper .dataTable thead th:first-child {
   width: 200px;
@@ -21977,8 +22034,20 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .entityDetailBusinessTable .dataTables_wrapper .dataTable thead th:first-child {
   width: 200px;
 }
-.entityDetailTableCard .entityDetailBusinessTable .dataTables_wrapper .dataTable thead th:nth-child(4), .entityDetailTableCard .entityDetailBusinessTable .dataTables_wrapper .dataTable thead th:nth-child(5) {
+.entityDetailTableCard .entityDetailBusinessTable .dataTables_wrapper .dataTable thead th:nth-child(4) {
   width: 100px;
+}
+.entityDetailTableCard .entityDetailBusinessTable .dataTables_wrapper .dataTable thead th:nth-child(5) {
+  width: 200px;
+}
+.entityDetailTableCard .entityDetailDBAsTable .badge {
+  color: black;
+}
+.entityDetailTableCard .entityDetailOwnershipTable .icon-entity-edit:hover {
+  background-image: url("../../../../dist/images/icons/edit-dark.svg");
+}
+.entityDetailTableCard .entityDetailOwnershipTable .icon-entity-delete:hover {
+  background-image: url("../../../../dist/images/icons/delete-red.svg");
 }
 .entityDetailTableCard .dataTables_wrapper .row:last-child:has(.dataTables_info), .entityDetailTableCard .dataTables_wrapper .boc-light .boc-filter > div:last-child:has(.dataTables_info), .boc-light .entityDetailTableCard .dataTables_wrapper .boc-filter > div:last-child:has(.dataTables_info) {
   display: none !important;
@@ -21996,7 +22065,7 @@ body *::-webkit-scrollbar-thumb {
   margin-top: auto !important;
 }
 
-@media (min-width: 1199.98px) {
+@media (min-width: 1399.98px) {
   .entityDetailTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
     overflow-x: hidden !important;
   }
@@ -22007,19 +22076,25 @@ body *::-webkit-scrollbar-thumb {
   font-weight: 400;
   letter-spacing: -0.3px;
 }
-.entityDetails-description-card .icon-description-edit {
-  background-image: url("../../../../dist/images/icons/input-edit.svg");
-  transform: translateX(80%);
-  width: 18px;
-  height: 18px;
+.entityDetails-description-card .icon-entity-edit {
+  width: 13px;
+  height: 13px;
 }
 
+.entityDetails-orders-card.tab-trigger,
+.entityDetails-opentask-card.tab-trigger {
+  cursor: pointer;
+}
 .entityDetails-orders-card .list-group-flush > .list-group-item,
 .entityDetails-opentask-card .list-group-flush > .list-group-item {
   border: 0px;
   display: flex;
   align-items: center;
   padding: 5px !important;
+}
+.entityDetails-orders-card .list-group-flush > .list-group-item a.value-text:hover,
+.entityDetails-opentask-card .list-group-flush > .list-group-item a.value-text:hover {
+  color: var(--bs-gray-600) !important;
 }
 .entityDetails-orders-card .circle,
 .entityDetails-opentask-card .circle {
@@ -22034,6 +22109,7 @@ body *::-webkit-scrollbar-thumb {
   font-weight: normal;
   font-size: 0.9rem;
   line-height: 18px;
+  text-decoration: none;
 }
 .entityDetails-orders-card .icon-diagonal-right,
 .entityDetails-opentask-card .icon-diagonal-right {
@@ -22045,6 +22121,11 @@ body *::-webkit-scrollbar-thumb {
   margin: 0;
   margin-left: auto !important;
   color: #3E484A;
+}
+
+.SOP-model .form-control-search {
+  background-image: url("../../../../dist/images/icons/search-light.svg") !important;
+  background-position: right 5px center !important;
 }
 
 /*# sourceMappingURL=filejet-style.css.map */

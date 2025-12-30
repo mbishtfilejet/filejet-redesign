@@ -8,12 +8,65 @@ $color-medium-gray: #3E484A;
 $color-crimson-red: #E73B18;
 $font-sora: "Sora", sans-serif;
 
+.icon-entity-edit {
+  background-image: url("../../../../dist/images/icons/new-edit-dark.svg");
+}
+
+.icon-entity-delete {
+  background-image: url("../../../../dist/images/icons/new-delete-dark.svg");
+}
+
+.form-disabled {
+  background-image: none !important;
+  background-color: $color-medium-gray !important;
+  color: #6E7683 !important;
+}
+
+.entityDetails-dashboard {
+
+  input[disabled] {
+    background-image: none !important;
+    background-color: #F3F5F8 !important;
+    color: #6E7683 !important;
+    cursor: not-allowed;
+  }
+
+  .modal-bottom-right.fade {
+    opacity: 1;
+    transform: translateY(120%);
+    transition: transform ease 0.3s;
+  }
+
+  .modal-bottom-right.show {
+    transform: translateY(0);
+  }
+
+  .modal-bottom-right {
+    .modal-dialog {
+      bottom: 0 !important;
+    }
+
+    .modal-dialog-end {
+      align-items: end;
+    }
+  }
+}
+
+
 .entityDetails-page {
   & * {
     font-family: $font-sora !important;
   }
 
   max-width: 100% !important;
+
+  .icon-entity-edit {
+    background-image: url("../../../../dist/images/icons/new-edit-dark.svg");
+  }
+
+  .icon-entity-delete {
+    background-image: url("../../../../dist/images/icons/new-delete-dark.svg");
+  }
 
   .notification {
     border: 2px solid #D8DDDF;
@@ -61,13 +114,20 @@ $font-sora: "Sora", sans-serif;
       color: $color-medium-gray;
     }
 
-    .icon-edit {
-      background-image: url("../../../../dist/images/icons/input-edit.svg");
-      transform: translateX(20%);
-      width: 15px;
-      height: 15px;
-      color: $color-medium-gray;
-      stroke: $color-medium-gray;
+    .icon-entity-edit {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.entitydetails-info-modal {
+  .entity-info-container {
+    display: flex;
+    gap: 10px;
+
+    fieldset {
+      flex-grow: 1;
     }
   }
 }
@@ -154,6 +214,10 @@ $font-sora: "Sora", sans-serif;
   background-color: $color-gray-opacity;
   border-top: 1px solid #D8DDDF;
 
+  & * {
+    font-family: $font-sora !important;
+  }
+
   table,
   .dataTable {
     thead {
@@ -204,7 +268,7 @@ $font-sora: "Sora", sans-serif;
       background-color: #79F4C3;
     }
 
-    .badge-Inactive{
+    .badge-Inactive {
       background-color: #A8B1FF;
     }
 
@@ -216,13 +280,24 @@ $font-sora: "Sora", sans-serif;
   .export-table-col {
     width: 4.5%;
   }
+
+
+  .btn-add-owner {
+    font-size: 12px;
+    line-height: 14px;
+    padding: 3px 4px;
+  }
 }
 
 .entityDetailTableCard {
   background-color: white;
 
-  & * {
-    font-family: $font-sora !important;
+  .dataTables_wrapper tbody td {
+    font-weight: 400;
+    color: var(--bs-black-primary);
+    font-size: 12px !important;
+    padding: 0.5rem 0.9rem !important;
+    line-height: 1.25rem !important;
   }
 
   .entityDetailRegistrationTable {
@@ -285,26 +360,47 @@ $font-sora: "Sora", sans-serif;
     }
   }
 
-  .entityDetailBusinessTable{
-    .badge{
+  .entityDetailBusinessTable {
+    .badge {
       color: black;
     }
 
     .dataTables_wrapper .dataTable {
       thead {
         th {
-
           &:first-child {
             width: 200px;
           }
 
-          &:nth-child(4), 
-          &:nth-child(5) {
+          &:nth-child(4) {
             width: 100px;
+          }
+
+          &:nth-child(5) {
+            width: 200px;
           }
         }
       }
     }
+  }
+
+  .entityDetailDBAsTable {
+    .badge {
+      color: black;
+    }
+  }
+
+  .entityDetailOwnershipTable {
+
+    .icon-entity-edit:hover {
+      background-image: url("../../../../dist/images/icons/edit-dark.svg");
+    }
+
+    .icon-entity-delete:hover {
+      background-image: url("../../../../dist/images/icons/delete-red.svg");
+    }
+
+
   }
 
   .dataTables_wrapper .row:last-child:has(.dataTables_info) {
@@ -318,8 +414,6 @@ $font-sora: "Sora", sans-serif;
       right: 7px !important;
     }
   }
-
-
 }
 
 .entityDetails-registration-card {
@@ -334,7 +428,7 @@ $font-sora: "Sora", sans-serif;
   }
 }
 
-@media (min-width:1199.98px) {
+@media (min-width:1399.98px) {
   .entityDetailTableCard {
     .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
       overflow-x: hidden !important;
@@ -350,23 +444,31 @@ $font-sora: "Sora", sans-serif;
     letter-spacing: -0.3px;
   }
 
-  .icon-description-edit {
-    background-image: url("../../../../dist/images/icons/input-edit.svg");
-    transform: translateX(80%);
-    width: 18px;
-    height: 18px;
+  .icon-entity-edit {
+    width: 13px;
+    height: 13px;
   }
 
 }
 
 .entityDetails-orders-card,
 .entityDetails-opentask-card {
+
+  &.tab-trigger {
+    cursor: pointer;
+  }
+
   .list-group-flush>.list-group-item {
     border: 0px;
     display: flex;
     align-items: center;
     padding: 5px !important;
+
+    a.value-text:hover {
+      color: var(--bs-gray-600) !important;
+    }
   }
+
 
   .circle {
     width: 1rem;
@@ -380,6 +482,7 @@ $font-sora: "Sora", sans-serif;
     font-weight: normal;
     font-size: 0.9rem;
     line-height: 18px;
+    text-decoration: none;
   }
 
 
@@ -392,5 +495,12 @@ $font-sora: "Sora", sans-serif;
     margin: 0;
     margin-left: auto !important;
     color: #3E484A;
+  }
+}
+
+.SOP-model {
+  .form-control-search {
+    background-image: url("../../../../dist/images/icons/search-light.svg") !important;
+    background-position: right 5px center !important;
   }
 }
