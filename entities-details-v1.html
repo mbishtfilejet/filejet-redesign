@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="main-dashboard-v2">
+<body class="main-dashboard-v2 entityDetails-dashboard">
 
    <div class="filejet-bg dashboard-page min-vh-100">
       <div class="container-fluid p-0 d-flex h-auto">
@@ -483,10 +483,10 @@
                         </div>
 
                         <button type="button" class="btn btn-outline-secondary entityDetailsEditBtn"
-                           data-bs-toggle="modal" data-bs-target="#custom-modal">
+                           data-bs-toggle="modal" data-bs-target="#edit-info-modal">
                            <span>Edit</span>
                            <span class="d-flex justify-content-center align-items-center">
-                              <i class="icon m-0 icon-edit"></i>
+                              <span class="icon m-0 icon-entity-edit"></span>
                            </span>
                         </button>
                      </div>
@@ -520,7 +520,8 @@
                                                 <div class="value-text">California</div>
                                              </div>
                                              <div class="col-md-4 col-lg-3">
-                                                <div class="card-label-text text-uppercase text-break">Registration date
+                                                <div class="card-label-text text-uppercase text-break">Registration
+                                                   date
                                                 </div>
                                                 <div class="value-text">25/12/2025</div>
                                              </div>
@@ -552,7 +553,8 @@
                                                 <div class="value-text text-break">Zenith Dynamics Group</div>
                                              </div>
                                              <div class="col-md-2 col-lg-3">
-                                                <div class="card-label-text text-uppercase text-break">Business License
+                                                <div class="card-label-text text-uppercase text-break">Business
+                                                   License
                                                 </div>
                                                 <div class="value-text">4</div>
                                              </div>
@@ -565,11 +567,12 @@
 
                                        </div>
                                     </div>
+
                                     <div class="entityDetails-description-card col-12 col-md-2">
                                        <div class="border rounded p-3 h-100 d-flex flex-column justify-content-between">
                                           <div class="d-flex justify-content-between align-items-center">
                                              <h3 class="card-label-text text-uppercase m-0">Description</h3>
-                                             <span class="icon icon-description-edit"></span>
+                                             <span class="icon m-0 icon-entity-edit"></span>
                                           </div>
                                           <p class="m-0 mt-2 text-wrap">Lorem ipsum dolor sit amet consectetur
                                              adipisicing
@@ -578,63 +581,66 @@
                                        </div>
                                     </div>
 
-                                    <div class="entityDetails-opentask-card col-12 col-md-2">
+                                    <div class="entityDetails-opentask-card col-12 col-md-2 tab-trigger"
+                                       data-bs-target="#en-open_task-tab-pane">
                                        <div class="border rounded p-3 h-100 d-flex flex-column justify-content-between">
                                           <h3 class="card-label-text text-uppercase">Open Tasks</h3>
                                           <ul class="list-group list-group-flush text-capitalize m-0 p-0">
                                              <li class="list-group-item px-0 py-1 border-0 bg-transparent">
                                                 <span class="red-bg rounded-circle overflow-hidden circle me-1"></span>
-                                                <span class="value-text">5 Overdue</span>
+                                                <a class="value-text">5 Overdue</a>
                                                 <span class="icon icon-diagonal-right m-0"></span>
                                              </li>
                                              <li class="list-group-item px-0 py-1 border-0 bg-transparent">
                                                 <span
                                                    class="yellow-bg rounded-circle overflow-hidden circle me-1"></span>
-                                                <span class="value-text">5 Urgent</span>
+                                                <a class="value-text">5 Urgent</a>
                                                 <span class="icon icon-diagonal-right m-0"></span>
 
                                              </li>
                                              <li class="list-group-item px-0 py-1 border-0 bg-transparent">
                                                 <span
                                                    class="light-blue-bg rounded-circle overflow-hidden circle me-1"></span>
-                                                <span class="value-text">5 Upcoming</span>
+                                                <a class="value-text">5 Upcoming</a>
                                                 <span class="icon icon-diagonal-right m-0"></span>
                                              </li>
                                              <li class="list-group-item px-0 py-1 border-0 bg-transparent">
                                                 <span
                                                    class="green-bg rounded-circle overflow-hidden circle me-1"></span>
-                                                <span class="value-text">5 Future Tasks</span>
+                                                <a class="value-text">5 Future Tasks</a>
                                                 <span class="icon icon-diagonal-right m-0"></span>
                                              </li>
                                           </ul>
                                        </div>
                                     </div>
 
-                                    <div class="entityDetails-orders-card col-12 col-md-2 ">
+                                    <div class="entityDetails-orders-card col-12 col-md-2 tab-trigger"
+                                       data-bs-target="#en-recent_orders-tab-pane">
                                        <div class="border rounded p-3 h-100 d-flex flex-column justify-content-between">
                                           <h3 class="card-label-text text-uppercase">Orders</h3>
                                           <ul class="list-group list-group-flush text-capitalize m-0 p-0">
                                              <li class="list-group-item px-0 py-1 border-0 bg-transparent">
                                                 <span
                                                    class="voilet-bg rounded-circle overflow-hidden circle me-1"></span>
-                                                <span class="value-text">1 In Progress</span>
+                                                <a class="value-text">1 In Progress</a>
                                                 <span class="icon icon-diagonal-right m-0"></span>
                                              </li>
                                              <li class="list-group-item px-0 py-1 border-0 bg-transparent">
                                                 <span
                                                    class="light-blue-bg rounded-circle overflow-hidden circle me-1"></span>
-                                                <span class="value-text">2 Sent to State</span>
+                                                <a class="value-text">2 Sent to State</a>
                                                 <span class="icon icon-diagonal-right m-0"></span>
                                              </li>
                                              <li class="list-group-item px-0 py-1 border-0 bg-transparent">
                                                 <span
                                                    class="green-bg rounded-circle overflow-hidden circle me-1"></span>
-                                                <span class="value-text">3 Recently completed</span>
+                                                <a class="value-text">3 Recently completed</a>
                                                 <span class="icon icon-diagonal-right m-0"></span>
                                              </li>
                                           </ul>
                                        </div>
                                     </div>
+
                                  </div>
                               </div>
                            </div>
@@ -757,13 +763,14 @@
                         </div>
                      </div>
                      <div class="tab-pane fade" id="en-services-tab-pane" role="tabpanel"
-                        aria-labelledby="en-services-tab" tabindex="0">Filejet Serivces</div>
+                        aria-labelledby="en-services-tab" tabindex="0">
+                        Services
+                     </div>
                      <div class="tab-pane fade" id="en-bus_licenses-tab-pane" role="tabpanel"
                         aria-labelledby="en-bus_licenses-tab" tabindex="0">
                         <div class="entityDetailTableCard border rounded-2">
-                           <div class="card-table-d2 entityDetailBusinessTable">
-                              <table id="entitydetails-business-table"
-                                 class="table table-striped w-100 table-nowrap">
+                           <div class="entityDetailBusinessTable">
+                              <table id="entitydetails-business-table" class="table table-striped w-100 table-nowrap">
                                  <thead>
                                     <tr>
                                        <th>License Name</th>
@@ -783,17 +790,16 @@
                      <div class="tab-pane fade" id="en-dbas-tab-pane" role="tabpanel" aria-labelledby="en-dbas-tab"
                         tabindex="0">
                         <div class="entityDetailTableCard border rounded-2">
-                           <div class="card-table-d2">
-                              <table id="" class="table table-striped w-100 table-nowrap">
+                           <div class="entityDetailDBAsTable">
+                              <table id="entitydetails-dbas-table" class="table table-striped w-100 table-nowrap">
                                  <thead>
                                     <tr>
-                                       <th>License Name</th>
-                                       <th>City/County</th>
+                                       <th>Fictitious/Trade Name</th>
                                        <th>Registration Date</th>
-                                       <th>License</th>
+                                       <th>Registration Number</th>
                                        <th>Entity Name</th>
+                                       <th>County</th>
                                        <th>State</th>
-                                       <th>License</th>
                                        <th>Renewal Date</th>
                                        <th>Status</th>
                                     </tr>
@@ -810,8 +816,7 @@
                               <div
                                  class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
                                  <span class="icon icon-search-grey icon-sm opacity-25"></span>
-                                 <input type="text" class="custom-search-input border-0 p-0 w-100"
-                                    placeholder="Entity Search">
+                                 <input type="text" class="custom-search-input border-0 p-0 w-100" placeholder="Search">
                               </div>
                            </div>
 
@@ -888,7 +893,7 @@
                                           class="form-check-input status-checkbox me-2" data-value="Unacknowledged">
                                        Unacknowledged</label></li>
                                  <li><label class="dropdown-item"><input type="checkbox"
-                                          class="form-check-input status-checkbox me-2" data-value="Unacknowledged">
+                                          class="form-check-input status-checkbox me-2" data-value="Future">
                                        Future</label></li>
 
                               </ul>
@@ -1023,10 +1028,9 @@
                         <div class="row g-3">
                            <div class="col-12 col-md-4 mb-2 search-table-col">
                               <div
-                                 class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2">
+                                 class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
                                  <span class="icon icon-search-grey icon-sm opacity-25"></span>
-                                 <input type="text" class="custom-search-input border-0 p-0 w-100"
-                                    placeholder="Entity Search">
+                                 <input type="text" class="custom-search-input border-0 p-0 w-100" placeholder="Search">
                               </div>
                            </div>
 
@@ -1216,7 +1220,63 @@
                      <div class="tab-pane fade" id="en-dir_ofce-tab-pane" role="tabpanel"
                         aria-labelledby="en-dir_ofce-tab" tabindex="0">Directors & Officers</div>
                      <div class="tab-pane fade" id="en-ownership-tab-pane" role="tabpanel"
-                        aria-labelledby="en-ownership-tab" tabindex="0">Ownership</div>
+                        aria-labelledby="en-ownership-tab" tabindex="0">
+                        <div class="row g-3">
+                           <div class="col-12 col-md-10 mb-2 search-table-col">
+                              <div
+                                 class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                 <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                 <input type="text" class="custom-search-input border-0 p-0 w-100" placeholder="Search">
+                              </div>
+                           </div>
+                           <div class="filter2-dropdown col-12 col-md-2 Jurisdiction-table-col mb-2 dropdown">
+                              <div
+                                 class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                 id="entityDetailOwnershipContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                 tabindex="0">
+                                 <input type="text" class="search-input" id="entityDetailOwnershipSearch"
+                                    placeholder="As of Today" autocomplete="off">
+                              </div>
+                              <ul class="dropdown-menu" id="entityDetailOwnershipDropdown">
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input entityDetailOwnership-checkbox me-2" data-value="CA">
+                                       CA</label></li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input entityDetailOwnership-checkbox me-2" data-value="NV">
+                                       NV</label></li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input entityDetailOwnership-checkbox me-2" data-value="FL">
+                                       FL</label></li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input entityDetailOwnership-checkbox me-2" data-value="MN">
+                                       MN</label></li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input entityDetailOwnership-checkbox me-2" data-value="OR">
+                                       OR</label></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="entityDetailTableCard mt-2 border rounded-2">
+                           <div class="entityDetailOwnershipTable">
+                              <table id="entitydetails-ownership-table" class="table table-striped w-100 table-nowrap">
+                                 <thead>
+                                    <tr>
+                                       <th>Owner Name</th>
+                                       <th>Primary Owner</th>
+                                       <th>Ownership Percentage</th>
+                                       <th>Start Date</th>
+                                       <th>End Date</th>
+                                       <th data-orderable="false">Action</th>
+                                    </tr>
+                                 </thead>
+                              </table>
+                           </div>
+                        </div>
+                        <button data-bs-toggle="modal" data-bs-target="#addOwnerModal" aria-label="Add Owner"
+                           type="button"
+                           class="btn btn-secondary btn-add-owner rounded-3 my-3 text-white text-capitalize">Add
+                           Owner</button>
+                     </div>
                      <div class="tab-pane fade" id="en-activity-tab-pane" role="tabpanel"
                         aria-labelledby="en-activity-tab" tabindex="0">Activity</div>
                   </div>
@@ -1224,171 +1284,259 @@
                </div>
             </div>
          </div>
-
-
-
-
       </div>
+   </div>
 
+
+   <!-- Add Owner Modal Start -->
+
+   <div class="modal modal-bottom-right fade filter-slideout SOP-model" id="addOwnerModal" tabindex="-1"
+      aria-labelledby="addOwnerLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 h-60 shadow-lg">
+            <div class="modal-header">
+               <h4 class="fw-bold m-0">Add Owner</h4>
+            </div>
+            <div class="modal-body">
+               <div class="" id="entityModalAddOwner">
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <div class="gap-4 radioDiv">
+                        <div class="form-check">
+                           <input class="form-check-input toggle-radio" type="radio" name="ownerType_8"
+                              id="individual_6" data-target="individualForm_8">
+                           <label class="form-check-label rights-label inactive" for="individual_6">Individual</label>
+                        </div>
+                        <div class="form-check">
+                           <input class="form-check-input toggle-radio" type="radio" name="ownerType_8" id="filejet_8"
+                              data-target="filejetForm_8">
+                           <label class="form-check-label rights-label inactive" for="filejet_8">Filejet Entity</label>
+                        </div>
+                        <div class="form-check">
+                           <input class="form-check-input toggle-radio" type="radio" name="ownerType_8" id="external_8"
+                              data-target="externalForm_8">
+                           <label class="form-check-label rights-label inactive" for="external_8">External
+                              Entity</label>
+                        </div>
+                     </div>
+                     <form class="" action="">
+                        <div>
+                           <fieldset class="mt-3">
+                              <label for="entityType-model" class="form-label">Search</label>
+                              <input type="text" class="form-control form-control-search" id="" placeholder="Search">
+                           </fieldset>
+                        </div>
+                     </form>
+                  </div>
+
+                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label ">First Name</label>
+                        <input type="text" class="form-control" id="" placeholder="First Name">
+                     </fieldset>
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label ">Last Name</label>
+                        <input type="text" class="form-control" id="" placeholder="Last Name">
+                     </fieldset>
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label ">Ownership Percentage</label>
+                        <input type="text" class="form-control" id="" placeholder="Ownership Percentage">
+                     </fieldset>
+                     <fieldset class="calander-input mb-4">
+                        <label for="" class="form-label">Start Date</label>
+                        <input type="text" class="form-control modaldatepicker " placeholder="start date">
+                     </fieldset>
+                     <fieldset class="calander-input">
+                        <label for="" class="form-label">End Date</label>
+                        <input type="text" class="form-control modaldatepicker " placeholder="End date">
+                     </fieldset>
+                  </div>
+
+                  <div class="mb-4 p-3 bg-white rounded-2 mt-4">
+                     <div class="form-check typecheckradio">
+                        <input class="form-check-input" type="checkbox" id="yes" name="primaryowner-8">
+                        <label class="form-check-label rights-label fw-bold text-uppercase inactive" for="yes">Set as
+                           Primary
+                           Owner</label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Add Owner
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
+   <!-- Add Owner Modal End -->
+
+   <!-- Edit Owner Modal Start -->
+
+   <div class="modal modal-bottom-right fade filter-slideout SOP-model" id="editOwnerModal" tabindex="-1"
+      aria-labelledby="editOwnerLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <div class="modal-header">
+               <h4 class="fw-bold m-0">Edit Owner</h4>
+            </div>
+            <div class="modal-body">
+               <div class="" id="entityModalAddOwner">
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <div class="gap-4 radioDiv">
+                        <div class="form-check">
+                           <input class="form-check-input toggle-radio" type="radio" name="editownerType_8" checked
+                              id="edit_ndividual_8" data-target="individualForm_8">
+                           <label class="form-check-label rights-label inactive"
+                              for="edit_ndividual_8">Individual</label>
+                        </div>
+                        <div class="form-check">
+                           <input class="form-check-input toggle-radio" type="radio" name="editownerType_8"
+                              id="edit_filejet_8" data-target="filejetForm_8">
+                           <label class="form-check-label rights-label inactive" for="edit_filejet_8">Filejet
+                              Entity</label>
+                        </div>
+                        <div class="form-check">
+                           <input class="form-check-input toggle-radio" type="radio" name="editownerType_8"
+                              id="edit_external_8" data-target="externalForm_8">
+                           <label class="form-check-label rights-label inactive" for="edit_external_8">External
+                              Entity</label>
+                        </div>
+                     </div>
+                     <form class="" action="">
+                        <div>
+                           <fieldset class="mt-3">
+                              <label for="entityType-model" class="form-label">Search</label>
+                              <input type="text" class="form-control form-control-search" id="" placeholder="Search">
+                           </fieldset>
+                        </div>
+                     </form>
+                  </div>
+
+                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label ">First Name</label>
+                        <input type="text" class="form-control" id="" placeholder="First Name">
+                     </fieldset>
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label ">Last Name</label>
+                        <input type="text" class="form-control" id="" placeholder="Last Name">
+                     </fieldset>
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label ">Ownership Percentage</label>
+                        <input type="text" class="form-control" id="" placeholder="Ownership Percentage">
+                     </fieldset>
+                     <fieldset class="calander-input mb-4">
+                        <label for="" class="form-label">Start Date</label>
+                        <input type="text" class="form-control modaldatepicker " placeholder="start date">
+                     </fieldset>
+                     <fieldset class="calander-input">
+                        <label for="" class="form-label">End Date</label>
+                        <input type="text" class="form-control modaldatepicker " placeholder="End date">
+                     </fieldset>
+                  </div>
+
+                  <div class="mb-4 p-3 bg-white rounded-2 mt-4">
+                     <div class="form-check typecheckradio">
+                        <input class="form-check-input" type="checkbox" id="yes" name="primaryowner-8">
+                        <label class="form-check-label rights-label fw-bold text-uppercase inactive" for="yes">Set as
+                           Primary
+                           Owner</label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Add Owner
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
+   <!-- Edit Owner Modal End -->
 
    <!-- Modal custom -->
 
-
    <!-- Modal -->
-   <div class="modal  modal-right fade filter-slideout SOP-model" id="custom-modal" tabindex="-1"
-      aria-labelledby="custom-modalLabel" aria-hidden="true">
+   <div class="modal modal-right fade filter-slideout SOP-model" id="edit-info-modal" tabindex="-1"
+      aria-labelledby="edit-infoLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <div class="modal-header">
                <h4 class="fw-bold m-0">Information</h4>
             </div>
             <div class="modal-body">
-               <div class="" id="entityModalDetails">
+               <div class="entitydetails-info-modal" id="entityModalDetails">
                   <div class="m-0 mb-4 p-3 bg-white rounded-2">
-
                      <form class="" action="">
                         <div>
                            <fieldset class="mb-4">
-                              <label for="entityType-model" class="form-label">Entity name <span
-                                    class="mandatory">*</span> </label>
-                              <input type="text" class="form-control" id="" placeholder="Name of Entity">
+                              <label for="entityType-model" class="form-label">Entity name</label>
+                              <input type="text" class="form-control" id="" value="John Doe"
+                                 placeholder="Name of Entity">
+                           </fieldset>
+
+                           <div class="entity-info-container mb-4">
+                              <fieldset>
+                                 <label for="entityType-model" class="form-label">Home State</label>
+                                 <input type="text" class="form-control" id="" value="California"
+                                    placeholder="Home State" disabled>
+                              </fieldset>
+                              <fieldset>
+                                 <label for="entityType-model" class="form-label">Entity Type</label>
+                                 <input type="text" class="form-control" id="" value="LLC" placeholder="Entity Type"
+                                    disabled>
+                              </fieldset>
+                           </div>
+
+                           <fieldset class="mb-4">
+                              <label for="entityType-model" class="form-label">Entity File #</label>
+                              <input type="text" class="form-control" id="" value="#4526281992"
+                                 placeholder="Entity file number">
+                           </fieldset>
+                           <fieldset class="mb-4">
+                              <label for="entityType-model" class="form-label">EIN #</label>
+                              <input type="text" class="form-control" id="" value="58561285652"
+                                 placeholder="EIN number">
+                           </fieldset>
+
+                           <fieldset class="calander-input mb-4">
+                              <label for="entityType-model" class="form-label">Formation Date</label>
+                              <input type="text" class="form-control modaldatepicker" value="10/25/24"
+                                 placeholder="Formation Date">
                            </fieldset>
 
                            <fieldset class="mb-4">
-                              <label for="formation-model" class="form-label">formation state <span
-                                    class="mandatory">*</span>
-                              </label>
-                              <div class="custom-dropdown">
-                                 <select class="form-select " id="formation-model" required="">
-                                    <option value="" disabled="" selected="" hidden="" data-full-text="State">State
-                                    </option>
-                                    <option value="1" data-full-text="Alabama">Alabama</option>
-                                    <option value="2" data-full-text="Alaska">Alaska</option>
-                                    <option value="3" data-full-text="Arizona">Arizona</option>
-                                    <option value="4" data-full-text="Arkansas">Arkansas</option>
-                                    <option value="5" data-full-text="California">California</option>
-                                    <option value="6" data-full-text="Colorado">Colorado</option>
-                                    <option value="7" data-full-text="Connecticut">Connecticut</option>
-                                    <option value="8" data-full-text="Delaware">Delaware</option>
-                                    <option value="9" data-full-text="District of Columbia">District of Columbia
-                                    </option>
-                                    <option value="10" data-full-text="Florida">Florida</option>
-                                    <option value="11" data-full-text="Georgia">Georgia</option>
-                                    <option value="12" data-full-text="Hawaii">Hawaii</option>
-                                    <option value="13" data-full-text="Idaho">Idaho</option>
-                                    <option value="14" data-full-text="Illinois">Illinois</option>
-                                    <option value="15" data-full-text="Indiana">Indiana</option>
-                                    <option value="16" data-full-text="Iowa">Iowa</option>
-                                    <option value="17" data-full-text="Kansas">Kansas</option>
-                                    <option value="18" data-full-text="Kentucky">Kentucky</option>
-                                    <option value="19" data-full-text="Louisiana">Louisiana</option>
-                                    <option value="20" data-full-text="Maine">Maine</option>
-                                    <option value="21" data-full-text="Maryland">Maryland</option>
-                                    <option value="22" data-full-text="Massachusetts">Massachusetts</option>
-                                    <option value="23" data-full-text="Michigan">Michigan</option>
-                                    <option value="24" data-full-text="Minnesota">Minnesota</option>
-                                    <option value="25" data-full-text="Mississippi">Mississippi</option>
-                                    <option value="26" data-full-text="Missouri">Missouri</option>
-                                    <option value="27" data-full-text="Montana">Montana</option>
-                                    <option value="28" data-full-text="Nebraska">Nebraska</option>
-                                    <option value="29" data-full-text="Nevada">Nevada</option>
-                                    <option value="30" data-full-text="New Hampshire">New Hampshire</option>
-                                    <option value="31" data-full-text="New Jersey">New Jersey</option>
-                                    <option value="32" data-full-text="New Mexico">New Mexico</option>
-                                    <option value="33" data-full-text="New York">New York</option>
-                                    <option value="34" data-full-text="North Carolina">North Carolina</option>
-                                    <option value="35" data-full-text="North Dakota">North Dakota</option>
-                                    <option value="36" data-full-text="Ohio">Ohio</option>
-                                    <option value="37" data-full-text="Oklahoma">Oklahoma</option>
-                                    <option value="38" data-full-text="Oregon">Oregon</option>
-                                    <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
-                                    <option value="40" data-full-text="Rhode Island">Rhode Island</option>
-                                    <option value="41" data-full-text="South Carolina">South Carolina</option>
-                                    <option value="42" data-full-text="South Dakota">South Dakota</option>
-                                    <option value="43" data-full-text="Tennessee">Tennessee</option>
-                                    <option value="44" data-full-text="Texas">Texas</option>
-                                    <option value="45" data-full-text="Utah">Utah</option>
-                                    <option value="46" data-full-text="Vermont">Vermont</option>
-                                    <option value="47" data-full-text="Virginia">Virginia</option>
-                                    <option value="48" data-full-text="Washington">Washington</option>
-                                    <option value="49" data-full-text="West Virginia">West Virginia</option>
-                                    <option value="50" data-full-text="Wisconsin">Wisconsin</option>
-                                    <option value="51" data-full-text="Wyoming">Wyoming</option>
-                                 </select>
-                              </div>
+                              <label for="entityType-model" class="form-label">Naic Code</label>
+                              <input type="text" class="form-control" id="" value="541199 -  All Other Legal Services"
+                                 placeholder="Naic code">
                            </fieldset>
-                           <div class="entity-container">
-                              <fieldset>
-                                 <label for="entityType1" class="form-label">Entity Type <span
-                                       class="mandatory">*</span></label>
-                                 <div class="custom-dropdown">
-                                    <select class="form-select entityType-model" id="entityType1" required="">
-                                       <option value="" disabled="" selected="" hidden=""
-                                          data-full-text="Select Entity Type">Select Entity Type</option>
-                                       <option value="1" data-full-text="LLC">LLC</option>
-                                       <option value="2" data-full-text="Profit Corporation - General">Profit
-                                          Corporation - General </option>
-                                       <option value="3" data-full-text="Profit Corporation - Professional">Profit
-                                          Corporation - Professional </option>
-                                       <option value="4" data-full-text="Profit Corporation - Close">Profit Corporation
-                                          - Close </option>
-                                       <option value="5" data-full-text="Non-Profit - Religious">Non-Profit - Religious
-                                       </option>
-                                       <option value="6" data-full-text="Non-Profit - Mutual Benefit">Non-Profit -
-                                          Mutual Benefit</option>
-                                       <option value="7" data-full-text="Non-Profit - Public Benefit">Non-Profit -
-                                          Public Benefit</option>
-                                       <option value="8" data-full-text="Non-Profit - Common Interest Development">
-                                          Non-Profit - Common Interest Development</option>
-                                       <option value="9" data-full-text="Non-Profit - Exempt">Non-Profit - Exempt
-                                       </option>
-                                       <option value="10" data-full-text="LLP">LLP</option>
-                                       <option value="11" data-full-text="LP">LP</option>
-                                       <option value="12" data-full-text="GP">GP</option>
-                                       <option value="13" data-full-text="Professional Limited Liability Company">
-                                          Professional Limited Liability Company</option>
-                                       <option value="14" data-full-text="Trust">Trust</option>
-                                    </select>
-                                 </div>
-                              </fieldset>
-                              <fieldset class="form-group custom-dropdown mt-4 professional-specialty"
-                                 style="display:none;">
-                                 <select class="form-select" required="">
-                                    <option value="" disabled="" selected="" hidden=""
-                                       data-full-text="Select Specialty">Select Specialty</option>
-                                    <option value="medicine" data-full-text="Medicine">Medicine</option>
-                                    <option value="dentistry" data-full-text="Dentistry">Dentistry</option>
-                                    <option value="accountancy" data-full-text="Accountancy">Accountancy</option>
-                                    <option value="law" data-full-text="Law">Law</option>
-                                    <option value="chiropractic" data-full-text="Chiropractic">Chiropractic</option>
-                                    <option value="architecture" data-full-text="Architecture">Architecture</option>
-                                    <option value="marriage_family_therapy"
-                                       data-full-text="Marriage &amp; Family Therapy">Marriage &amp; Family Therapy
-                                    </option>
-                                    <option value="physical_therapy" data-full-text="Physical Therapy">Physical Therapy
-                                    </option>
-                                    <option value="nurse_practitioner" data-full-text="Nurse Practitioner">Nurse
-                                       Practitioner</option>
-                                    <option value="physician_assistant" data-full-text="Physician Assistant">Physician
-                                       Assistant</option>
-                                    <option value="shorthand_reporting" data-full-text="Shorthand Reporting">Shorthand
-                                       Reporting</option>
-                                    <option value="veterinary_medicine" data-full-text="Veterinary Medicine">Veterinary
-                                       Medicine</option>
-                                    <option value="psychology" data-full-text="Psychology">Psychology</option>
-                                 </select>
-                              </fieldset>
-                           </div>
                         </div>
                      </form>
                   </div>
                   <form class="mb-4" action="">
                      <div class="mb-3 p-3 bg-white rounded-2">
                         <fieldset class="">
-                           <label for="" class="form-label w-100">Principal Address <span class="mandatory">*</span>
-                              <!-- <span class="icon icon-outline-info  m-0"></span>--></label>
+                           <label for="" class="form-label w-100">Principal Address</label>
                            <input type="text" class="form-control mb-3" id="" placeholder="Address Line 1">
                            <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
                            <input type="text" class="form-control mb-3 " id="" placeholder="City">
@@ -1461,8 +1609,9 @@
                               <div class="d-flex align-items-center ">
                                  <div class="form-check gap-2">
                                     <input class="form-check-input  same-address-checkbox" type="checkbox"
-                                       id="mailAddress" checked="">
-                                    <label class="form-check-label fw-normal rights-label" for="mailAddress">Same as
+                                       id="entityDetail-mailAddress" checked="">
+                                    <label class="form-check-label fw-normal rights-label"
+                                       for="entityDetail-mailAddress">Same as
                                        Principal Address</label>
                                  </div>
                               </div>
@@ -1542,250 +1691,222 @@
                   </form>
                   <div class="mb-4 p-3 bg-white rounded-2 mt-3">
                      <fieldset class="mb-4">
-                        <label for="" class="form-label ">Authorized Signer Name <span
-                              class="mandatory">*</span></label>
-                        <input type="text" class="form-control" id="" placeholder="Signer Name">
+                        <label for="" class="form-label ">Authorized Signer Name</label>
+                        <input type="text" class="form-control" id="" value="John Doe" placeholder="Signer Name"
+                           disabled>
                      </fieldset>
                      <fieldset class="mb-4">
-                        <label for="" class="form-label ">title <span class="mandatory">*</span></label>
-                        <input type="text" class="form-control" id="" placeholder="Title">
+                        <label for="" class="form-label ">title</label>
+                        <input type="text" class="form-control" id="" value="Manager" placeholder="Title" disabled>
                      </fieldset>
                   </div>
-                  <div class="accordion" id="accordionExample">
+                  <!-- State 01 Specific Information Accordion -->
+                  <div class="accordion mb-4" id="accordionExample4">
                      <div class="accordion-item m-0">
-                        <h2 class="accordion-header" id="headingOne">
-                           <button class="accordion-button collapsed mb-4" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapseStateTwo" aria-expanded="false"
-                              aria-controls="panelsStayOpen-collapseStateTwo">
-                              State 02 Specific Information
+                        <h2 class="accordion-header" id="headingFour1">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapseFour1" aria-expanded="false" aria-controls="collapseFour1">
+                              Nevada State Specific Information
                            </button>
                         </h2>
-                        <div id="collapseStateTwo" class="accordion-collapse border-0 collapse"
-                           aria-labelledby="headingOne" style="">
-                           <div class="accordion-body pt-0 mb-4">
-                              <form class="" action="">
-                                 <div>
-                                    <fieldset class="mb-4">
-                                       <label for="formation-model" class="form-label">registration state<span
-                                             class="mandatory">*</span>
-                                       </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="formation-model" required="">
-                                             <option value="" disabled="" selected="" hidden="" data-full-text="State">
-                                                State</option>
-                                             <option value="1" data-full-text="Alabama">Alabama</option>
-                                             <option value="2" data-full-text="Alaska">Alaska</option>
-                                             <option value="3" data-full-text="Arizona">Arizona</option>
-                                             <option value="4" data-full-text="Arkansas">Arkansas</option>
-                                             <option value="5" data-full-text="California">California</option>
-                                             <option value="6" data-full-text="Colorado">Colorado</option>
-                                             <option value="7" data-full-text="Connecticut">Connecticut</option>
-                                             <option value="8" data-full-text="Delaware">Delaware</option>
-                                             <option value="9" data-full-text="District of Columbia">District of
-                                                Columbia</option>
-                                             <option value="10" data-full-text="Florida">Florida</option>
-                                             <option value="11" data-full-text="Georgia">Georgia</option>
-                                             <option value="12" data-full-text="Hawaii">Hawaii</option>
-                                             <option value="13" data-full-text="Idaho">Idaho</option>
-                                             <option value="14" data-full-text="Illinois">Illinois</option>
-                                             <option value="15" data-full-text="Indiana">Indiana</option>
-                                             <option value="16" data-full-text="Iowa">Iowa</option>
-                                             <option value="17" data-full-text="Kansas">Kansas</option>
-                                             <option value="18" data-full-text="Kentucky">Kentucky</option>
-                                             <option value="19" data-full-text="Louisiana">Louisiana</option>
-                                             <option value="20" data-full-text="Maine">Maine</option>
-                                             <option value="21" data-full-text="Maryland">Maryland</option>
-                                             <option value="22" data-full-text="Massachusetts">Massachusetts</option>
-                                             <option value="23" data-full-text="Michigan">Michigan</option>
-                                             <option value="24" data-full-text="Minnesota">Minnesota</option>
-                                             <option value="25" data-full-text="Mississippi">Mississippi</option>
-                                             <option value="26" data-full-text="Missouri">Missouri</option>
-                                             <option value="27" data-full-text="Montana">Montana</option>
-                                             <option value="28" data-full-text="Nebraska">Nebraska</option>
-                                             <option value="29" data-full-text="Nevada">Nevada</option>
-                                             <option value="30" data-full-text="New Hampshire">New Hampshire</option>
-                                             <option value="31" data-full-text="New Jersey">New Jersey</option>
-                                             <option value="32" data-full-text="New Mexico">New Mexico</option>
-                                             <option value="33" data-full-text="New York">New York</option>
-                                             <option value="34" data-full-text="North Carolina">North Carolina</option>
-                                             <option value="35" data-full-text="North Dakota">North Dakota</option>
-                                             <option value="36" data-full-text="Ohio">Ohio</option>
-                                             <option value="37" data-full-text="Oklahoma">Oklahoma</option>
-                                             <option value="38" data-full-text="Oregon">Oregon</option>
-                                             <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
-                                             <option value="40" data-full-text="Rhode Island">Rhode Island</option>
-                                             <option value="41" data-full-text="South Carolina">South Carolina</option>
-                                             <option value="42" data-full-text="South Dakota">South Dakota</option>
-                                             <option value="43" data-full-text="Tennessee">Tennessee</option>
-                                             <option value="44" data-full-text="Texas">Texas</option>
-                                             <option value="45" data-full-text="Utah">Utah</option>
-                                             <option value="46" data-full-text="Vermont">Vermont</option>
-                                             <option value="47" data-full-text="Virginia">Virginia</option>
-                                             <option value="48" data-full-text="Washington">Washington</option>
-                                             <option value="49" data-full-text="West Virginia">West Virginia</option>
-                                             <option value="50" data-full-text="Wisconsin">Wisconsin</option>
-                                             <option value="51" data-full-text="Wyoming">Wyoming</option>
-                                          </select>
+                        <div id="collapseFour1" class="accordion-collapse border-0 collapse"
+                           aria-labelledby="headingFour1" style="">
+                           <div class="accordion-body pt-0">
+                              <fieldset>
+                                 <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                       <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                       <div class="d-flex align-items-center flex-column">
+                                          <div class="d-flex ">
+                                             <div class="form-check me-4 typecheckradio">
+                                                <input class="form-check-input no-checkbox" type="radio" id="no1en"
+                                                   name="entitydetails-customArticles-1" checked>
+                                                <label class="form-check-label rights-label" for="no1en">No</label>
+                                             </div>
+                                             <div class="form-check typecheckradio">
+                                                <input class="form-check-input yes-checkbox" type="radio" id="yes2en"
+                                                   name="entitydetails-customArticles-1">
+                                                <label class="form-check-label rights-label inactive"
+                                                   for="yes2en">Yes</label>
+                                             </div>
+                                          </div>
                                        </div>
-                                    </fieldset>
-                                    <fieldset class="mb-4">
-                                       <label for="formation-model" class="form-label">registration County<span
-                                             class="mandatory">*</span>
-                                       </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="formation-model" required="">
-                                             <option value="" disabled="" selected="" hidden=""
-                                                data-full-text="Select County">Select County</option>
-                                             <option value="1" data-full-text="Alabama">Alabama</option>
-                                             <option value="2" data-full-text="Alaska">Alaska</option>
-                                             <option value="3" data-full-text="Arizona">Arizona</option>
-                                             <option value="4" data-full-text="Arkansas">Arkansas</option>
-                                             <option value="5" data-full-text="California">California</option>
-                                             <option value="6" data-full-text="Colorado">Colorado</option>
-                                             <option value="7" data-full-text="Connecticut">Connecticut</option>
-                                             <option value="8" data-full-text="Delaware">Delaware</option>
-                                             <option value="9" data-full-text="District of Columbia">District of
-                                                Columbia</option>
-                                             <option value="10" data-full-text="Florida">Florida</option>
-                                             <option value="11" data-full-text="Georgia">Georgia</option>
-                                             <option value="12" data-full-text="Hawaii">Hawaii</option>
-                                             <option value="13" data-full-text="Idaho">Idaho</option>
-                                             <option value="14" data-full-text="Illinois">Illinois</option>
-                                             <option value="15" data-full-text="Indiana">Indiana</option>
-                                             <option value="16" data-full-text="Iowa">Iowa</option>
-                                             <option value="17" data-full-text="Kansas">Kansas</option>
-                                             <option value="18" data-full-text="Kentucky">Kentucky</option>
-                                             <option value="19" data-full-text="Louisiana">Louisiana</option>
-                                             <option value="20" data-full-text="Maine">Maine</option>
-                                             <option value="21" data-full-text="Maryland">Maryland</option>
-                                             <option value="22" data-full-text="Massachusetts">Massachusetts</option>
-                                             <option value="23" data-full-text="Michigan">Michigan</option>
-                                             <option value="24" data-full-text="Minnesota">Minnesota</option>
-                                             <option value="25" data-full-text="Mississippi">Mississippi</option>
-                                             <option value="26" data-full-text="Missouri">Missouri</option>
-                                             <option value="27" data-full-text="Montana">Montana</option>
-                                             <option value="28" data-full-text="Nebraska">Nebraska</option>
-                                             <option value="29" data-full-text="Nevada">Nevada</option>
-                                             <option value="30" data-full-text="New Hampshire">New Hampshire</option>
-                                             <option value="31" data-full-text="New Jersey">New Jersey</option>
-                                             <option value="32" data-full-text="New Mexico">New Mexico</option>
-                                             <option value="33" data-full-text="New York">New York</option>
-                                             <option value="34" data-full-text="North Carolina">North Carolina</option>
-                                             <option value="35" data-full-text="North Dakota">North Dakota</option>
-                                             <option value="36" data-full-text="Ohio">Ohio</option>
-                                             <option value="37" data-full-text="Oklahoma">Oklahoma</option>
-                                             <option value="38" data-full-text="Oregon">Oregon</option>
-                                             <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
-                                             <option value="40" data-full-text="Rhode Island">Rhode Island</option>
-                                             <option value="41" data-full-text="South Carolina">South Carolina</option>
-                                             <option value="42" data-full-text="South Dakota">South Dakota</option>
-                                             <option value="43" data-full-text="Tennessee">Tennessee</option>
-                                             <option value="44" data-full-text="Texas">Texas</option>
-                                             <option value="45" data-full-text="Utah">Utah</option>
-                                             <option value="46" data-full-text="Vermont">Vermont</option>
-                                             <option value="47" data-full-text="Virginia">Virginia</option>
-                                             <option value="48" data-full-text="Washington">Washington</option>
-                                             <option value="49" data-full-text="West Virginia">West Virginia</option>
-                                             <option value="50" data-full-text="Wisconsin">Wisconsin</option>
-                                             <option value="51" data-full-text="Wyoming">Wyoming</option>
-                                          </select>
-                                       </div>
-                                    </fieldset>
-
-                                    <fieldset class="mb-4">
-                                       <label for="entityType-model" class="form-label">Select associated Entity <span
-                                             class="mandatory">*</span></label>
-                                       <div class="custom-dropdown">
-                                          <select
-                                             class="form-select select2 home-entity-field select2-hidden-accessible"
-                                             id="entityType-model4" tabindex="-1" aria-hidden="true"
-                                             data-select2-id="select2-data-entityType-model4">
-                                             <option value="" disabled="" selected="" hidden=""
-                                                data-full-text="Select entity" data-select2-id="select2-data-101-rhz8">
-                                                Select entity</option>
-                                             <option value="1" data-full-text="John’s Pizza - CA">John’s Pizza - CA
-                                             </option>
-                                             <option value="2" data-full-text="RASA Realty LLC">RASA Realty LLC
-                                             </option>
-                                             <option value="3" data-full-text="Pikewood Group, LLC">Pikewood Group, LLC
-                                             </option>
-                                             <option value="4" data-full-text="GDS DESIGNS, INC.">GDS DESIGNS, INC.
-                                             </option>
-                                             <option value="5"
-                                                data-full-text="RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP">RESOURCE
-                                                INCOME PARTNERS LIMITED PARTNERSHIP
-                                             </option>
-                                             <option value="6" data-full-text="KK RENEWAL HOLDINGS CORP">KK RENEWAL
-                                                HOLDINGS CORP
-                                             </option>
-                                             <option value="7" data-full-text="MARKSET FUND I -01-SERIES 1 L.L.C.,">
-                                                MARKSET FUND I -01-SERIES 1 L.L.C.,
-                                             </option>
-                                             <option value="8"
-                                                data-full-text="EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP">
-                                                EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHI...</option>
-                                             <option value="9" data-full-text="SEASCAPE VILLA LLC">SEASCAPE VILLA LLC
-                                             </option>
-
-                                          </select><span class="select2 select2-container select2-container--default"
-                                             dir="ltr" data-select2-id="select2-data-100-wx4n"
-                                             style="width: auto;"><span class="selection"><span
-                                                   class="select2-selection select2-selection--single" role="combobox"
-                                                   aria-haspopup="true" aria-expanded="false" tabindex="0"
-                                                   aria-disabled="false"
-                                                   aria-labelledby="select2-entityType-model4-container"
-                                                   aria-controls="select2-entityType-model4-container"><span
-                                                      class="select2-selection__rendered"
-                                                      id="select2-entityType-model4-container" role="textbox"
-                                                      aria-readonly="true" title="Entity"><span
-                                                         class="select2-selection__placeholder">Entity</span></span><span
-                                                      class="select2-selection__arrow" role="presentation"><b
-                                                         role="presentation"></b></span></span></span><span
-                                                class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                       </div>
-                                    </fieldset>
-
-                                    <fieldset>
-                                       <label for="entityType-model" class="form-label">Add to Group </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="entityType-model" required="">
-                                             <option value="" disabled="" selected="" hidden="" data-full-text="All">All
-                                             </option>
-                                             <option value="2" data-full-text="Adept HR">Adept HR</option>
-                                             <option value="3" data-full-text="AIC CAPITAL V V MANAGER - Terminated">AIC
-                                                CAPITAL V V MANAGER - Terminated</option>
-                                          </select>
-                                       </div>
-                                    </fieldset>
-
-
+                                    </div>
+                                    <!-- Upload button -->
+                                    <div class="upload-btn mt-3" style="display: none;">
+                                       <button type="button"
+                                          class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center"
+                                          id="uploadBtn">
+                                          Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                       </button>
+                                    </div>
 
                                  </div>
-                              </form>
+                              </fieldset>
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label  mt-3">NUMBER OF SHARES Authorized TO ISSUE</label>
+                                 <input type="text" class="form-control" id=""
+                                    placeholder="Number of shares Authorized to issue">
+                              </fieldset>
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label ">NUMBER OF SHARES holders</label>
+                                 <input type="text" class="form-control" id="" placeholder="Number of shares holders">
+                              </fieldset>
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label ">PAR VALUE</label>
+                                 <div class="priceInput">
+                                    <input type="text" class="form-control " id="" placeholder="Par value holders">
+                                 </div>
+                              </fieldset>
+
+                              <fieldset>
+                                 <label for="" class="form-label mb-2">Special Instructions</label> <br>
+                                 <div class="input textarea">
+                                    <textarea name="special_instructions_for_our_team" class="form-control h-25"
+                                       placeholder="Special Instructions" cols="4"
+                                       id="special-instructions-for-our-team" rows="5"></textarea>
+                                 </div>
+
+
+                              </fieldset>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div class="accordion" id="accordionExample">
+                  <!-- State 02 Specific Information Accordion -->
+                  <div class="accordion mb-4" id="accordionExample2">
                      <div class="accordion-item m-0">
-                        <h2 class="accordion-header" id="headingOne">
-                           <button class="accordion-button collapsed mb-4" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapseStateThree" aria-expanded="false"
-                              aria-controls="panelsStayOpen-collapseStateThree">
-                              State 03 Specific Information
+                        <h2 class="accordion-header" id="headingTwo1">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                              Delaware Specific Information
                            </button>
                         </h2>
-                        <div id="collapseStateThree" class="accordion-collapse border-0 collapse"
-                           aria-labelledby="headingOne" style="">
-                           <div class="accordion-body pt-0 mb-4">
-                              <form class="" action="">
-                                 <div>
-                                    <fieldset class="mb-4">
-                                       <label for="formation-model" class="form-label">registration state<span
-                                             class="mandatory">*</span>
-                                       </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="formation-model" required="">
+                        <div id="collapseTwo1" class="accordion-collapse collapse border-0"
+                           aria-labelledby="headingTwo1">
+                           <div class="accordion-body pt-0">
+                              <fieldset>
+                                 <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                       <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                       <div class="d-flex align-items-center flex-column">
+                                          <div class="d-flex ">
+                                             <div class="form-check me-4 typecheckradio">
+                                                <input class="form-check-input no-checkbox" type="radio" id="no1"
+                                                   name="entitydetails-customArticles-2" checked>
+                                                <label class="form-check-label rights-label inactive"
+                                                   for="no1">No</label>
+                                             </div>
+                                             <div class="form-check typecheckradio">
+                                                <input class="form-check-input yes-checkbox" type="radio" id="yes2"
+                                                   name="entitydetails-customArticles-2">
+                                                <label class="form-check-label rights-label inactive"
+                                                   for="yes2">Yes</label>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!-- Upload button -->
+                                    <div class="upload-btn mt-3" style="display: none;">
+                                       <button type="button"
+                                          class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center"
+                                          id="uploadBtn">
+                                          Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                       </button>
+                                    </div>
+
+                                 </div>
+                                 <label for="" class="form-label w-100 mt-3">Principal Address</label>
+                                 <input type="text" class="form-control mb-3" placeholder="Address Line 1">
+                                 <input type="text" class="form-control mb-3" placeholder="Address Line 2">
+                                 <input type="text" class="form-control mb-3 " id="" placeholder="City">
+
+                                 <div class="d-flex w-100 mb-4">
+                                    <div class="w-100 me-3 custom-dropdown">
+                                       <select class="form-select" id="formation-model" required="">
+                                          <option value="" disabled="" selected="" hidden="" data-full-text="State">
+                                             State</option>
+                                          <option value="1" data-full-text="Alabama">Alabama</option>
+                                          <option value="2" data-full-text="Alaska">Alaska</option>
+                                          <option value="3" data-full-text="Arizona">Arizona</option>
+                                          <option value="4" data-full-text="Arkansas">Arkansas</option>
+                                          <option value="5" data-full-text="California">California</option>
+                                          <option value="6" data-full-text="Colorado">Colorado</option>
+                                          <option value="7" data-full-text="Connecticut">Connecticut</option>
+                                          <option value="8" data-full-text="Delaware">Delaware</option>
+                                          <option value="9" data-full-text="District of Columbia">District of Columbia
+                                          </option>
+                                          <option value="10" data-full-text="Florida">Florida</option>
+                                          <option value="11" data-full-text="Georgia">Georgia</option>
+                                          <option value="12" data-full-text="Hawaii">Hawaii</option>
+                                          <option value="13" data-full-text="Idaho">Idaho</option>
+                                          <option value="14" data-full-text="Illinois">Illinois</option>
+                                          <option value="15" data-full-text="Indiana">Indiana</option>
+                                          <option value="16" data-full-text="Iowa">Iowa</option>
+                                          <option value="17" data-full-text="Kansas">Kansas</option>
+                                          <option value="18" data-full-text="Kentucky">Kentucky</option>
+                                          <option value="19" data-full-text="Louisiana">Louisiana</option>
+                                          <option value="20" data-full-text="Maine">Maine</option>
+                                          <option value="21" data-full-text="Maryland">Maryland</option>
+                                          <option value="22" data-full-text="Massachusetts">Massachusetts</option>
+                                          <option value="23" data-full-text="Michigan">Michigan</option>
+                                          <option value="24" data-full-text="Minnesota">Minnesota</option>
+                                          <option value="25" data-full-text="Mississippi">Mississippi</option>
+                                          <option value="26" data-full-text="Missouri">Missouri</option>
+                                          <option value="27" data-full-text="Montana">Montana</option>
+                                          <option value="28" data-full-text="Nebraska">Nebraska</option>
+                                          <option value="29" data-full-text="Nevada">Nevada</option>
+                                          <option value="30" data-full-text="New Hampshire">New Hampshire</option>
+                                          <option value="31" data-full-text="New Jersey">New Jersey</option>
+                                          <option value="32" data-full-text="New Mexico">New Mexico</option>
+                                          <option value="33" data-full-text="New York">New York</option>
+                                          <option value="34" data-full-text="North Carolina">North Carolina</option>
+                                          <option value="35" data-full-text="North Dakota">North Dakota</option>
+                                          <option value="36" data-full-text="Ohio">Ohio</option>
+                                          <option value="37" data-full-text="Oklahoma">Oklahoma</option>
+                                          <option value="38" data-full-text="Oregon">Oregon</option>
+                                          <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
+                                          <option value="40" data-full-text="Rhode Island">Rhode Island</option>
+                                          <option value="41" data-full-text="South Carolina">South Carolina</option>
+                                          <option value="42" data-full-text="South Dakota">South Dakota</option>
+                                          <option value="43" data-full-text="Tennessee">Tennessee</option>
+                                          <option value="44" data-full-text="Texas">Texas</option>
+                                          <option value="45" data-full-text="Utah">Utah</option>
+                                          <option value="46" data-full-text="Vermont">Vermont</option>
+                                          <option value="47" data-full-text="Virginia">Virginia</option>
+                                          <option value="48" data-full-text="Washington">Washington</option>
+                                          <option value="49" data-full-text="West Virginia">West Virginia</option>
+                                          <option value="50" data-full-text="Wisconsin">Wisconsin</option>
+                                          <option value="51" data-full-text="Wyoming">Wyoming</option>
+                                       </select>
+                                    </div>
+                                    <input type="text" class="form-control" id="" placeholder="Zipcode">
+                                    <input type="text" class="form-control ms-3 " id="" placeholder="County">
+
+                                 </div>
+                                 <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold">MAILING ADDRESS</span>
+                                    <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input same-address-checkbox" type="checkbox"
+                                             id="entityDetail-mailAddress2" checked="">
+                                          <label class="form-check-label fw-normal rights-label"
+                                             for="entityDetail-mailAddress2">Same
+                                             as
+                                             Principal Address</label>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="mailing-address-fields" style="display: none;">
+                                    <input type="text" class="form-control mt-4 mb-3" id=""
+                                       placeholder="Address Line 1">
+                                    <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
+                                    <input type="text" class="form-control mb-3 " id="" placeholder="City">
+
+                                    <div class="d-flex w-100 ">
+                                       <div class="w-100 me-3 custom-dropdown">
+                                          <select class="form-select" id="formation-model" required="">
                                              <option value="" disabled="" selected="" hidden="" data-full-text="State">
                                                 State</option>
                                              <option value="1" data-full-text="Alabama">Alabama</option>
@@ -1842,165 +1963,185 @@
                                              <option value="51" data-full-text="Wyoming">Wyoming</option>
                                           </select>
                                        </div>
-                                    </fieldset>
-                                    <fieldset class="mb-4">
-                                       <label for="formation-model" class="form-label">registration County<span
-                                             class="mandatory">*</span>
-                                       </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="formation-model" required="">
-                                             <option value="" disabled="" selected="" hidden=""
-                                                data-full-text="Select County">Select County</option>
-                                             <option value="1" data-full-text="Alabama">Alabama</option>
-                                             <option value="2" data-full-text="Alaska">Alaska</option>
-                                             <option value="3" data-full-text="Arizona">Arizona</option>
-                                             <option value="4" data-full-text="Arkansas">Arkansas</option>
-                                             <option value="5" data-full-text="California">California</option>
-                                             <option value="6" data-full-text="Colorado">Colorado</option>
-                                             <option value="7" data-full-text="Connecticut">Connecticut</option>
-                                             <option value="8" data-full-text="Delaware">Delaware</option>
-                                             <option value="9" data-full-text="District of Columbia">District of
-                                                Columbia</option>
-                                             <option value="10" data-full-text="Florida">Florida</option>
-                                             <option value="11" data-full-text="Georgia">Georgia</option>
-                                             <option value="12" data-full-text="Hawaii">Hawaii</option>
-                                             <option value="13" data-full-text="Idaho">Idaho</option>
-                                             <option value="14" data-full-text="Illinois">Illinois</option>
-                                             <option value="15" data-full-text="Indiana">Indiana</option>
-                                             <option value="16" data-full-text="Iowa">Iowa</option>
-                                             <option value="17" data-full-text="Kansas">Kansas</option>
-                                             <option value="18" data-full-text="Kentucky">Kentucky</option>
-                                             <option value="19" data-full-text="Louisiana">Louisiana</option>
-                                             <option value="20" data-full-text="Maine">Maine</option>
-                                             <option value="21" data-full-text="Maryland">Maryland</option>
-                                             <option value="22" data-full-text="Massachusetts">Massachusetts</option>
-                                             <option value="23" data-full-text="Michigan">Michigan</option>
-                                             <option value="24" data-full-text="Minnesota">Minnesota</option>
-                                             <option value="25" data-full-text="Mississippi">Mississippi</option>
-                                             <option value="26" data-full-text="Missouri">Missouri</option>
-                                             <option value="27" data-full-text="Montana">Montana</option>
-                                             <option value="28" data-full-text="Nebraska">Nebraska</option>
-                                             <option value="29" data-full-text="Nevada">Nevada</option>
-                                             <option value="30" data-full-text="New Hampshire">New Hampshire</option>
-                                             <option value="31" data-full-text="New Jersey">New Jersey</option>
-                                             <option value="32" data-full-text="New Mexico">New Mexico</option>
-                                             <option value="33" data-full-text="New York">New York</option>
-                                             <option value="34" data-full-text="North Carolina">North Carolina</option>
-                                             <option value="35" data-full-text="North Dakota">North Dakota</option>
-                                             <option value="36" data-full-text="Ohio">Ohio</option>
-                                             <option value="37" data-full-text="Oklahoma">Oklahoma</option>
-                                             <option value="38" data-full-text="Oregon">Oregon</option>
-                                             <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
-                                             <option value="40" data-full-text="Rhode Island">Rhode Island</option>
-                                             <option value="41" data-full-text="South Carolina">South Carolina</option>
-                                             <option value="42" data-full-text="South Dakota">South Dakota</option>
-                                             <option value="43" data-full-text="Tennessee">Tennessee</option>
-                                             <option value="44" data-full-text="Texas">Texas</option>
-                                             <option value="45" data-full-text="Utah">Utah</option>
-                                             <option value="46" data-full-text="Vermont">Vermont</option>
-                                             <option value="47" data-full-text="Virginia">Virginia</option>
-                                             <option value="48" data-full-text="Washington">Washington</option>
-                                             <option value="49" data-full-text="West Virginia">West Virginia</option>
-                                             <option value="50" data-full-text="Wisconsin">Wisconsin</option>
-                                             <option value="51" data-full-text="Wyoming">Wyoming</option>
-                                          </select>
-                                       </div>
-                                    </fieldset>
+                                       <input type="text" class="form-control" id="" placeholder="Zipcode">
+                                       <input type="text" class="form-control ms-3 " id="" placeholder="County">
 
-                                    <fieldset class="mb-4">
-                                       <label for="entityType-model" class="form-label">Select associated Entity <span
-                                             class="mandatory">*</span></label>
-                                       <div class="custom-dropdown">
-                                          <select
-                                             class="form-select select2 home-entity-field select2-hidden-accessible"
-                                             id="entityType-model4" tabindex="-1" aria-hidden="true"
-                                             data-select2-id="select2-data-entityType-model4">
-                                             <option value="" disabled="" selected="" hidden=""
-                                                data-full-text="Select entity" data-select2-id="select2-data-101-rhz8">
-                                                Select entity</option>
-                                             <option value="1" data-full-text="John’s Pizza - CA">John’s Pizza - CA
-                                             </option>
-                                             <option value="2" data-full-text="RASA Realty LLC">RASA Realty LLC
-                                             </option>
-                                             <option value="3" data-full-text="Pikewood Group, LLC">Pikewood Group, LLC
-                                             </option>
-                                             <option value="4" data-full-text="GDS DESIGNS, INC.">GDS DESIGNS, INC.
-                                             </option>
-                                             <option value="5"
-                                                data-full-text="RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP">RESOURCE
-                                                INCOME PARTNERS LIMITED PARTNERSHIP
-                                             </option>
-                                             <option value="6" data-full-text="KK RENEWAL HOLDINGS CORP">KK RENEWAL
-                                                HOLDINGS CORP
-                                             </option>
-                                             <option value="7" data-full-text="MARKSET FUND I -01-SERIES 1 L.L.C.,">
-                                                MARKSET FUND I -01-SERIES 1 L.L.C.,
-                                             </option>
-                                             <option value="8"
-                                                data-full-text="EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP">
-                                                EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHI...</option>
-                                             <option value="9" data-full-text="SEASCAPE VILLA LLC">SEASCAPE VILLA LLC
-                                             </option>
-
-                                          </select><span class="select2 select2-container select2-container--default"
-                                             dir="ltr" data-select2-id="select2-data-100-wx4n"
-                                             style="width: auto;"><span class="selection"><span
-                                                   class="select2-selection select2-selection--single" role="combobox"
-                                                   aria-haspopup="true" aria-expanded="false" tabindex="0"
-                                                   aria-disabled="false"
-                                                   aria-labelledby="select2-entityType-model4-container"
-                                                   aria-controls="select2-entityType-model4-container"><span
-                                                      class="select2-selection__rendered"
-                                                      id="select2-entityType-model4-container" role="textbox"
-                                                      aria-readonly="true" title="Entity"><span
-                                                         class="select2-selection__placeholder">Entity</span></span><span
-                                                      class="select2-selection__arrow" role="presentation"><b
-                                                         role="presentation"></b></span></span></span><span
-                                                class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                       </div>
-                                    </fieldset>
-
-                                    <fieldset>
-                                       <label for="entityType-model" class="form-label">Add to Group </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="entityType-model" required="">
-                                             <option value="" disabled="" selected="" hidden="" data-full-text="All">All
-                                             </option>
-                                             <option value="2" data-full-text="Adept HR">Adept HR</option>
-                                             <option value="3" data-full-text="AIC CAPITAL V V MANAGER - Terminated">AIC
-                                                CAPITAL V V MANAGER - Terminated</option>
-                                          </select>
-                                       </div>
-                                    </fieldset>
-
-
-
+                                    </div>
                                  </div>
-                              </form>
+                              </fieldset>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div class="accordion" id="accordionExample">
+                  <!-- State 01 Specific Information Accordion -->
+                  <div class="accordion mb-4" id="accordionExample3">
                      <div class="accordion-item m-0">
-                        <h2 class="accordion-header" id="headingOne">
-                           <button class="accordion-button collapsed mb-4" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapseStateFour" aria-expanded="false"
-                              aria-controls="panelsStayOpen-collapseStateFour">
-                              State 04 Specific Information
+                        <h2 class="accordion-header" id="headingThree1">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                              California Specific Information
                            </button>
                         </h2>
-                        <div id="collapseStateFour" class="accordion-collapse border-0 collapse"
-                           aria-labelledby="headingOne" style="">
-                           <div class="accordion-body pt-0 mb-4">
-                              <form class="" action="">
-                                 <div>
-                                    <fieldset class="mb-4">
-                                       <label for="formation-model" class="form-label">registration state<span
-                                             class="mandatory">*</span>
-                                       </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="formation-model" required="">
+                        <div id="collapseThree1" class="accordion-collapse collapse  border-0"
+                           aria-labelledby="headingThree1">
+                           <div class="accordion-body pt-0">
+                              <fieldset>
+                                 <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                                       <span class="fw-bold text-uppercase">Use Custom Articles</span>
+                                       <div class="d-flex align-items-center flex-column">
+                                          <div class="d-flex ">
+                                             <div class="form-check me-4 typecheckradio">
+                                                <input class="form-check-input no-checkbox" type="radio" id="no4"
+                                                   name="entitydetails-customArticles-3" checked>
+                                                <label class="form-check-label rights-label inactive"
+                                                   for="no4">No</label>
+                                             </div>
+                                             <div class="form-check typecheckradio">
+                                                <input class="form-check-input yes-checkbox" type="radio" id="yes4"
+                                                   name="entitydetails-customArticles-3">
+                                                <label class="form-check-label rights-label inactive"
+                                                   for="yes4">Yes</label>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!-- Upload button -->
+                                    <div class="upload-btn mt-3" style="display: none;">
+                                       <div>
+                                          <button type="button"
+                                             class="btn btn-small py-0 px-5 rounded-3 d-flex align-items-center"
+                                             id="uploadBtn">
+                                             Upload file <span class="icon icon-upload-article m-0 ms-3"></span>
+                                          </button>
+                                       </div>
+                                       <div class="uploadtable border rounded-3 mt-4">
+                                          <div class="fade show active rounded-3 overflow-hidden" id="all3">
+                                             <table class=" table table-striped w-100 m-0 border-1">
+                                                <thead>
+                                                   <tr>
+                                                      <th class="juridction-fixed-width">Date</th>
+                                                      <th>Document Name</th>
+                                                      <th class="juridction-fixed-width" data-orderable="false">Download
+                                                      </th>
+                                                      <th class="fixed-width-soi-table-70" data-orderable="false">Delete
+                                                      </th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <tr class="odd">
+                                                      <td>Feb 21 2025</td>
+                                                      <td>2025 COA </td>
+                                                      <td><span class="icon icon-download-purple m-0"></span></td>
+                                                      <td><span class="icon icon-new-delete m-0 deleteUser"></span></td>
+                                                   </tr>
+                                                   <tr class="even">
+                                                      <td>May 02 2025</td>
+                                                      <td>State specific Corporate ending requirements. </td>
+                                                      <td><span class="icon icon-download-purple m-0"></span></td>
+                                                      <td><span class="icon icon-new-delete m-0 deleteUser"></span></td>
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                 </div>
+                                 <label for="" class="form-label w-100 mt-3">Principal Address <span
+                                       class="mandatory">*</span>
+                                    <!-- <span class="icon icon-outline-info  m-0"></span>     -->
+                                 </label>
+                                 <input type="text" class="form-control mb-3" placeholder="Address Line 1">
+                                 <input type="text" class="form-control mb-3" placeholder="Address Line 2">
+                                 <input type="text" class="form-control mb-3 " id="" placeholder="City">
+
+                                 <div class="d-flex w-100 mb-4">
+                                    <div class="w-100 me-3 custom-dropdown">
+                                       <select class="form-select" id="formation-model" required="">
+                                          <option value="" disabled="" selected="" hidden="" data-full-text="State">
+                                             State</option>
+                                          <option value="1" data-full-text="Alabama">Alabama</option>
+                                          <option value="2" data-full-text="Alaska">Alaska</option>
+                                          <option value="3" data-full-text="Arizona">Arizona</option>
+                                          <option value="4" data-full-text="Arkansas">Arkansas</option>
+                                          <option value="5" data-full-text="California">California</option>
+                                          <option value="6" data-full-text="Colorado">Colorado</option>
+                                          <option value="7" data-full-text="Connecticut">Connecticut</option>
+                                          <option value="8" data-full-text="Delaware">Delaware</option>
+                                          <option value="9" data-full-text="District of Columbia">District of Columbia
+                                          </option>
+                                          <option value="10" data-full-text="Florida">Florida</option>
+                                          <option value="11" data-full-text="Georgia">Georgia</option>
+                                          <option value="12" data-full-text="Hawaii">Hawaii</option>
+                                          <option value="13" data-full-text="Idaho">Idaho</option>
+                                          <option value="14" data-full-text="Illinois">Illinois</option>
+                                          <option value="15" data-full-text="Indiana">Indiana</option>
+                                          <option value="16" data-full-text="Iowa">Iowa</option>
+                                          <option value="17" data-full-text="Kansas">Kansas</option>
+                                          <option value="18" data-full-text="Kentucky">Kentucky</option>
+                                          <option value="19" data-full-text="Louisiana">Louisiana</option>
+                                          <option value="20" data-full-text="Maine">Maine</option>
+                                          <option value="21" data-full-text="Maryland">Maryland</option>
+                                          <option value="22" data-full-text="Massachusetts">Massachusetts</option>
+                                          <option value="23" data-full-text="Michigan">Michigan</option>
+                                          <option value="24" data-full-text="Minnesota">Minnesota</option>
+                                          <option value="25" data-full-text="Mississippi">Mississippi</option>
+                                          <option value="26" data-full-text="Missouri">Missouri</option>
+                                          <option value="27" data-full-text="Montana">Montana</option>
+                                          <option value="28" data-full-text="Nebraska">Nebraska</option>
+                                          <option value="29" data-full-text="Nevada">Nevada</option>
+                                          <option value="30" data-full-text="New Hampshire">New Hampshire</option>
+                                          <option value="31" data-full-text="New Jersey">New Jersey</option>
+                                          <option value="32" data-full-text="New Mexico">New Mexico</option>
+                                          <option value="33" data-full-text="New York">New York</option>
+                                          <option value="34" data-full-text="North Carolina">North Carolina</option>
+                                          <option value="35" data-full-text="North Dakota">North Dakota</option>
+                                          <option value="36" data-full-text="Ohio">Ohio</option>
+                                          <option value="37" data-full-text="Oklahoma">Oklahoma</option>
+                                          <option value="38" data-full-text="Oregon">Oregon</option>
+                                          <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
+                                          <option value="40" data-full-text="Rhode Island">Rhode Island</option>
+                                          <option value="41" data-full-text="South Carolina">South Carolina</option>
+                                          <option value="42" data-full-text="South Dakota">South Dakota</option>
+                                          <option value="43" data-full-text="Tennessee">Tennessee</option>
+                                          <option value="44" data-full-text="Texas">Texas</option>
+                                          <option value="45" data-full-text="Utah">Utah</option>
+                                          <option value="46" data-full-text="Vermont">Vermont</option>
+                                          <option value="47" data-full-text="Virginia">Virginia</option>
+                                          <option value="48" data-full-text="Washington">Washington</option>
+                                          <option value="49" data-full-text="West Virginia">West Virginia</option>
+                                          <option value="50" data-full-text="Wisconsin">Wisconsin</option>
+                                          <option value="51" data-full-text="Wyoming">Wyoming</option>
+                                       </select>
+                                    </div>
+                                    <input type="text" class="form-control" id="" placeholder="Zipcode">
+                                    <input type="text" class="form-control ms-3 " id="" placeholder="County">
+
+                                 </div>
+                                 <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold">MAILING ADDRESS</span>
+                                    <div class="d-flex align-items-center">
+                                       <div class="form-check gap-2">
+                                          <input class="form-check-input same-address-checkbox" type="checkbox"
+                                             id="entityDetail-mailAddress3" checked="">
+                                          <label class="form-check-label fw-normal rights-label"
+                                             for="entityDetail-mailAddress3">Same
+                                             as
+                                             Principal Address</label>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="mailing-address-fields" style="display: none;">
+                                    <input type="text" class="form-control mt-4 mb-3" id=""
+                                       placeholder="Address Line 1">
+                                    <input type="text" class="form-control mb-3" id="" placeholder="Address Line 2">
+                                    <input type="text" class="form-control mb-3 " id="" placeholder="City">
+
+                                    <div class="d-flex w-100 ">
+                                       <div class="w-100 me-3 custom-dropdown">
+                                          <select class="form-select" id="formation-model" required="">
                                              <option value="" disabled="" selected="" hidden="" data-full-text="State">
                                                 State</option>
                                              <option value="1" data-full-text="Alabama">Alabama</option>
@@ -2057,141 +2198,12 @@
                                              <option value="51" data-full-text="Wyoming">Wyoming</option>
                                           </select>
                                        </div>
-                                    </fieldset>
-                                    <fieldset class="mb-4">
-                                       <label for="formation-model" class="form-label">registration County<span
-                                             class="mandatory">*</span>
-                                       </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="formation-model" required="">
-                                             <option value="" disabled="" selected="" hidden=""
-                                                data-full-text="Select County">Select County</option>
-                                             <option value="1" data-full-text="Alabama">Alabama</option>
-                                             <option value="2" data-full-text="Alaska">Alaska</option>
-                                             <option value="3" data-full-text="Arizona">Arizona</option>
-                                             <option value="4" data-full-text="Arkansas">Arkansas</option>
-                                             <option value="5" data-full-text="California">California</option>
-                                             <option value="6" data-full-text="Colorado">Colorado</option>
-                                             <option value="7" data-full-text="Connecticut">Connecticut</option>
-                                             <option value="8" data-full-text="Delaware">Delaware</option>
-                                             <option value="9" data-full-text="District of Columbia">District of
-                                                Columbia</option>
-                                             <option value="10" data-full-text="Florida">Florida</option>
-                                             <option value="11" data-full-text="Georgia">Georgia</option>
-                                             <option value="12" data-full-text="Hawaii">Hawaii</option>
-                                             <option value="13" data-full-text="Idaho">Idaho</option>
-                                             <option value="14" data-full-text="Illinois">Illinois</option>
-                                             <option value="15" data-full-text="Indiana">Indiana</option>
-                                             <option value="16" data-full-text="Iowa">Iowa</option>
-                                             <option value="17" data-full-text="Kansas">Kansas</option>
-                                             <option value="18" data-full-text="Kentucky">Kentucky</option>
-                                             <option value="19" data-full-text="Louisiana">Louisiana</option>
-                                             <option value="20" data-full-text="Maine">Maine</option>
-                                             <option value="21" data-full-text="Maryland">Maryland</option>
-                                             <option value="22" data-full-text="Massachusetts">Massachusetts</option>
-                                             <option value="23" data-full-text="Michigan">Michigan</option>
-                                             <option value="24" data-full-text="Minnesota">Minnesota</option>
-                                             <option value="25" data-full-text="Mississippi">Mississippi</option>
-                                             <option value="26" data-full-text="Missouri">Missouri</option>
-                                             <option value="27" data-full-text="Montana">Montana</option>
-                                             <option value="28" data-full-text="Nebraska">Nebraska</option>
-                                             <option value="29" data-full-text="Nevada">Nevada</option>
-                                             <option value="30" data-full-text="New Hampshire">New Hampshire</option>
-                                             <option value="31" data-full-text="New Jersey">New Jersey</option>
-                                             <option value="32" data-full-text="New Mexico">New Mexico</option>
-                                             <option value="33" data-full-text="New York">New York</option>
-                                             <option value="34" data-full-text="North Carolina">North Carolina</option>
-                                             <option value="35" data-full-text="North Dakota">North Dakota</option>
-                                             <option value="36" data-full-text="Ohio">Ohio</option>
-                                             <option value="37" data-full-text="Oklahoma">Oklahoma</option>
-                                             <option value="38" data-full-text="Oregon">Oregon</option>
-                                             <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
-                                             <option value="40" data-full-text="Rhode Island">Rhode Island</option>
-                                             <option value="41" data-full-text="South Carolina">South Carolina</option>
-                                             <option value="42" data-full-text="South Dakota">South Dakota</option>
-                                             <option value="43" data-full-text="Tennessee">Tennessee</option>
-                                             <option value="44" data-full-text="Texas">Texas</option>
-                                             <option value="45" data-full-text="Utah">Utah</option>
-                                             <option value="46" data-full-text="Vermont">Vermont</option>
-                                             <option value="47" data-full-text="Virginia">Virginia</option>
-                                             <option value="48" data-full-text="Washington">Washington</option>
-                                             <option value="49" data-full-text="West Virginia">West Virginia</option>
-                                             <option value="50" data-full-text="Wisconsin">Wisconsin</option>
-                                             <option value="51" data-full-text="Wyoming">Wyoming</option>
-                                          </select>
-                                       </div>
-                                    </fieldset>
+                                       <input type="text" class="form-control" id="" placeholder="Zipcode">
+                                       <input type="text" class="form-control ms-3 " id="" placeholder="County">
 
-                                    <fieldset class="mb-4">
-                                       <label for="entityType-model" class="form-label">Select associated Entity <span
-                                             class="mandatory">*</span></label>
-                                       <div class="custom-dropdown">
-                                          <select
-                                             class="form-select select2 home-entity-field select2-hidden-accessible"
-                                             id="entityType-model4" tabindex="-1" aria-hidden="true"
-                                             data-select2-id="select2-data-entityType-model4">
-                                             <option value="" disabled="" selected="" hidden=""
-                                                data-full-text="Select entity" data-select2-id="select2-data-101-rhz8">
-                                                Select entity</option>
-                                             <option value="1" data-full-text="John’s Pizza - CA">John’s Pizza - CA
-                                             </option>
-                                             <option value="2" data-full-text="RASA Realty LLC">RASA Realty LLC
-                                             </option>
-                                             <option value="3" data-full-text="Pikewood Group, LLC">Pikewood Group, LLC
-                                             </option>
-                                             <option value="4" data-full-text="GDS DESIGNS, INC.">GDS DESIGNS, INC.
-                                             </option>
-                                             <option value="5"
-                                                data-full-text="RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP">RESOURCE
-                                                INCOME PARTNERS LIMITED PARTNERSHIP
-                                             </option>
-                                             <option value="6" data-full-text="KK RENEWAL HOLDINGS CORP">KK RENEWAL
-                                                HOLDINGS CORP
-                                             </option>
-                                             <option value="7" data-full-text="MARKSET FUND I -01-SERIES 1 L.L.C.,">
-                                                MARKSET FUND I -01-SERIES 1 L.L.C.,
-                                             </option>
-                                             <option value="8"
-                                                data-full-text="EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHIP">
-                                                EXPLORATION CAPITAL PARTNERS 2012 LIMITED PARTNERSHI...</option>
-                                             <option value="9" data-full-text="SEASCAPE VILLA LLC">SEASCAPE VILLA LLC
-                                             </option>
-
-                                          </select><span class="select2 select2-container select2-container--default"
-                                             dir="ltr" data-select2-id="select2-data-100-wx4n"
-                                             style="width: auto;"><span class="selection"><span
-                                                   class="select2-selection select2-selection--single" role="combobox"
-                                                   aria-haspopup="true" aria-expanded="false" tabindex="0"
-                                                   aria-disabled="false"
-                                                   aria-labelledby="select2-entityType-model4-container"
-                                                   aria-controls="select2-entityType-model4-container"><span
-                                                      class="select2-selection__rendered"
-                                                      id="select2-entityType-model4-container" role="textbox"
-                                                      aria-readonly="true" title="Entity"><span
-                                                         class="select2-selection__placeholder">Entity</span></span><span
-                                                      class="select2-selection__arrow" role="presentation"><b
-                                                         role="presentation"></b></span></span></span><span
-                                                class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                       </div>
-                                    </fieldset>
-
-                                    <fieldset>
-                                       <label for="entityType-model" class="form-label">Add to Group </label>
-                                       <div class="custom-dropdown">
-                                          <select class="form-select " id="entityType-model" required="">
-                                             <option value="" disabled="" selected="" hidden="" data-full-text="All">All
-                                             </option>
-                                             <option value="2" data-full-text="Adept HR">Adept HR</option>
-                                             <option value="3" data-full-text="AIC CAPITAL V V MANAGER - Terminated">AIC
-                                                CAPITAL V V MANAGER - Terminated</option>
-                                          </select>
-                                       </div>
-                                    </fieldset>
-
-
-
+                                    </div>
                                  </div>
-                              </form>
+                              </fieldset>
                            </div>
                         </div>
                      </div>
