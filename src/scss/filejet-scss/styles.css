@@ -21781,19 +21781,10 @@ body *::-webkit-scrollbar-thumb {
   color: #6E7683 !important;
   cursor: not-allowed;
 }
-.entityDetails-dashboard .modal-bottom-right.fade {
-  opacity: 1;
-  transform: translateY(120%);
-  transition: transform ease 0.3s;
-}
-.entityDetails-dashboard .modal-bottom-right.show {
-  transform: translateY(0);
-}
-.entityDetails-dashboard .modal-bottom-right .modal-dialog {
-  bottom: 0 !important;
-}
-.entityDetails-dashboard .modal-bottom-right .modal-dialog-end {
-  align-items: end;
+.entityDetails-dashboard input[type=checkbox]:checked {
+  background-color: #272727;
+  border: 1.5px solid #272727 !important;
+  cursor: pointer;
 }
 
 .entityDetails-page {
@@ -21801,12 +21792,6 @@ body *::-webkit-scrollbar-thumb {
 }
 .entityDetails-page * {
   font-family: "Sora", sans-serif !important;
-}
-.entityDetails-page .icon-entity-edit {
-  background-image: url("../../../../dist/images/icons/new-edit-dark.svg");
-}
-.entityDetails-page .icon-entity-delete {
-  background-image: url("../../../../dist/images/icons/new-delete-dark.svg");
 }
 .entityDetails-page .notification {
   border: 2px solid #D8DDDF;
@@ -21846,6 +21831,10 @@ body *::-webkit-scrollbar-thumb {
 .entityDetails-page .entityDetailsEditBtn:hover {
   background-color: transparent;
   color: #3E484A;
+}
+.entityDetails-page .entityDetailsEditBtn:focus-visible {
+  border-color: #3E484A !important;
+  box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.5) !important;
 }
 .entityDetails-page .entityDetailsEditBtn .icon-entity-edit {
   width: 12px;
@@ -21989,13 +21978,19 @@ body *::-webkit-scrollbar-thumb {
   width: 4.5%;
 }
 .entityTabsContent .btn-add-owner {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 14px;
-  padding: 3px 4px;
+  padding: 5px;
 }
 
 .entityDetailTableCard {
   background-color: white;
+}
+.entityDetailTableCard .icon-entity-edit:hover {
+  background-image: url("../../../../dist/images/icons/edit-dark.svg");
+}
+.entityDetailTableCard .icon-entity-delete:hover {
+  background-image: url("../../../../dist/images/icons/delete-red.svg");
 }
 .entityDetailTableCard .dataTables_wrapper tbody td {
   font-weight: 400;
@@ -22043,11 +22038,23 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .entityDetailDBAsTable .badge {
   color: black;
 }
-.entityDetailTableCard .entityDetailOwnershipTable .icon-entity-edit:hover {
-  background-image: url("../../../../dist/images/icons/edit-dark.svg");
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr {
+  min-height: 0;
 }
-.entityDetailTableCard .entityDetailOwnershipTable .icon-entity-delete:hover {
-  background-image: url("../../../../dist/images/icons/delete-red.svg");
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-control {
+  color: transparent;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  background-color: transparent;
+  background-image: url("../../../../dist/images/icons/right-angle-table.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control {
+  transform: rotate(90deg);
 }
 .entityDetailTableCard .dataTables_wrapper .row:last-child:has(.dataTables_info), .entityDetailTableCard .dataTables_wrapper .boc-light .boc-filter > div:last-child:has(.dataTables_info), .boc-light .entityDetailTableCard .dataTables_wrapper .boc-filter > div:last-child:has(.dataTables_info) {
   display: none !important;
@@ -22126,6 +22133,46 @@ body *::-webkit-scrollbar-thumb {
 .SOP-model .form-control-search {
   background-image: url("../../../../dist/images/icons/search-light.svg") !important;
   background-position: right 5px center !important;
+}
+
+.enitityDetails_servicecards {
+  display: flex;
+  width: 100%;
+  max-width: 550px;
+  align-self: flex-start;
+  flex-direction: column;
+  gap: 5px;
+}
+.enitityDetails_servicecards .servicecards_header {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-bottom: 5px;
+}
+.enitityDetails_servicecards .servicecards_header h6 {
+  color: #0D2C36;
+  margin: 0;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.enitityDetails_servicecards .servicecards_header h6:nth-child(2) {
+  margin-left: 20px;
+}
+.enitityDetails_servicecards .servicecards_header h6:nth-child(3) {
+  margin-left: auto;
+}
+.enitityDetails_servicecards .form-check .form-check-label,
+.enitityDetails_servicecards span {
+  font-size: 13px !important;
+  line-height: 20px;
+  letter-spacing: -0.5px;
+  color: #3E484A;
+  font-weight: 400;
+}
+.enitityDetails_servicecards .form-check .form-check-label {
+  text-transform: capitalize !important;
 }
 
 /*# sourceMappingURL=styles.css.map */
