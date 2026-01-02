@@ -290,6 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "reqselectEntityContainer2":
         case "reqselectEntityContainer3": return "Select Entity";
         case "entityDetailOwnershipContainer": return "As of Today";
+        case "entityDetailDirectorContainer": return "As of Today";
         default: return "Status";
       }
     }
@@ -304,6 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ["entityJurisdictionContainer", "entityJurisdictionDropdown", "entityJurisdictionSearch", "entityJurisdiction-checkbox", "entityJurisdictionSelectAll"],
     ["orderJurisdictionContainer", "orderJurisdictionDropdown", "orderJurisdictionSearch", "orderJurisdiction-checkbox", "orderJurisdictionSelectAll"],
     ["entityDetailOwnershipContainer", "entityDetailOwnershipDropdown", "entityDetailOwnershipSearch", "entityDetailOwnership-checkbox"],
+    ["entityDetailDirectorContainer", "entityDetailDirectorDropdown", "entityDetailDirectorSearch", "entityDetailDirector-checkbox"],
     ["entityStatusContainer", "entityStatusDropdown", "entityStatusSearch", "entityStatus-checkbox", "entityStatusSelectAll"],
     ["orderStatusContainer", "orderStatusDropdown", "orderStatusSearch", "orderStatus-checkbox", "orderStatusSelectAll"],
     ["taskContainer", "taskDropdown", "taskSearch", "task-checkbox", "taskSelectAll"],
@@ -463,11 +465,7 @@ $(document).ready(function () {
       { data: "type" },
       { data: "jurisdiction" },
       { data: "registrations" },
-      {
-        data: "entity_file", render: function (data, type, row) {
-          return `<td>#${row.entity_file}</td>`
-        }
-      },
+      { data: "entity_file" },
       {
         data: "status", render: function (data, type, row) {
           return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
@@ -548,7 +546,7 @@ $(document).ready(function () {
         data: null, render: function (data, type, row) {
           return `
           <div class="d-flex align-items-center">
-            <span class=" me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#editOwnerModal">
+            <span class=" me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
               <span class="icon icon-entity-edit m-0"></span>
             </span>
             <span class=" me-1 me-md-2 d-inline-block" role="button">
@@ -563,9 +561,134 @@ $(document).ready(function () {
     lengthChange: false,  // Removed pagination
     paging: false,  // Disable pagination
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
-  })
+  });
 
-  $('.tab-trigger').on('click',function(){
+  let table5 = $("#entitydetails-director-table").DataTable({
+    ajax: {
+      url: "data5.json",
+      dataSrc: 'director_data'
+    },
+    scrollX: true,
+    columns: [
+      {
+        data: null, render: function () {
+          return `<input class="d-flex form-check-input" type="checkbox" />`;
+        }
+      },
+      { data: "name" },
+      { data: "role" },
+      { data: "email" },
+      {
+        data: "status", render: function (data, type, row) {
+          return `<span class="${data === "active" ? "text-green" : "text-red"} text-capitalize fw-semibold">${data}</span>`;
+        }
+      },
+      { data: "start_date" },
+      { data: "end_date" },
+      {
+        data: null, render: function () {
+          return `<input class="d-flex form-check-input" type="checkbox" />`;
+        }
+      },
+      {
+        data: null, render: function () {
+          return `
+          <button data-bs-toggle="modal" data-bs-target="#previewModal" aria-label="Preview" type="button" 
+          class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164 ">
+          Update
+          </button>`;
+        }
+      }
+    ],
+    order: [[1, "asc"]],
+    lengthChange: false,  // Removed pagination
+    paging: false,  // Disable pagination
+    info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+  });
+
+  let table6 = $("#entitydetails-documents-table").DataTable({
+    ajax: {
+      url: "data5.json",
+      dataSrc: 'documents_data'
+    },
+    scrollX: true,
+    columns: [
+      {
+        data: "document_name", render: function (data, type, row) {
+          return `
+         <div class="d-flex align-items-center gap-3">
+          <button tabindex="0" class="dt-control m-0" role="button"></button>
+          <div class="d-flex align-items-center gap-2">
+            <span class="icon ${data.toLowerCase().includes("folder") ? "icon-folder-upload-purple" : "icon-folder-upload-danger"} icon-md m-0"></span>
+            <span>${data}</span>
+          </div>
+         </div>
+        `;
+        }
+      },
+      { data: "modified_by" },
+      { data: "date_modified" },
+      {
+        data: null, render: function (data, type, row) {
+          return `
+          <div class="d-flex align-items-center">
+            <span class=" me-1 me-md-2 d-inline-block" role="button">
+              <span class="icon icon-entity-edit m-0"></span>
+            </span>
+            <span class=" me-1 me-md-2 d-inline-block" role="button">
+              <span class="icon icon-entity-delete m-0"></span>
+            </span>
+          </div>
+          `
+        }
+      }
+    ],
+    order: [[0, "asc"]],
+    lengthChange: false,  // Removed pagination
+    paging: false,  // Disable pagination
+    info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+  });
+
+  $("#entitydetails-documents-table tbody").on("click", "td .dt-control", function () {
+    let tr = $(this).closest("tr");
+    let row = table6.row(tr);
+    let rowId = row.data().id;
+
+    if (tr.hasClass("expanded-row")) {
+      $(`.expanded-content[data-parent="${rowId}"]`).remove();
+      tr.removeClass("expanded-row");
+    } else {
+      let expandedRows = formatExpandedRows(row.data(), rowId);
+      tr.after(expandedRows);
+      tr.addClass("expanded-row");
+    }
+    console.log("clicked")
+  });
+
+  function formatExpandedRows(d, rowId) {
+    console.log(d, rowId)
+    return d.expanded_rows.map((row, index, arr) => `
+          <tr class="${index % 2 == 0 ? "even" : "odd"} expanded-content" data-parent="${rowId}">
+              <td>${row.document_name || d.document_name}</td>
+              <td >${row.modified_by || d.modified_by}</td>
+              <td >${row.date_modified || d.date_modified}</td>
+              <td>
+              <div class="d-flex align-items-center">
+                <span class=" me-1 me-md-2 d-inline-block" role="button">
+                  <span class="icon icon-entity-edit m-0"></span>
+                </span>
+                <span class=" me-1 me-md-2 d-inline-block" role="button">
+                  <span class="icon icon-entity-delete m-0"></span>
+                </span>
+              </div>
+              </td>
+          </tr>
+      `).join("");
+  }
+
+
+
+  $('.tab-trigger').on('click', function () {
     const target = $(this).data('bs-target');
     $(`[data-bs-toggle="tab"][data-bs-target="${target}"]`).tab('show');
   });
@@ -577,6 +700,8 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
   $('#entitydetails-business-table').DataTable().columns.adjust();
   $("#entitydetails-dbas-table").DataTable().columns.adjust();
   $("#entitydetails-ownership-table").DataTable().columns.adjust();
+  $("#entitydetails-documents-table").DataTable().columns.adjust();
+  $("#entitydetails-director-table").DataTable().columns.adjust();
 })
 
 
