@@ -17,6 +17,14 @@ $font-sora: "Sora", sans-serif;
   background-image: url("../../../../dist/images/icons/new-delete-dark.svg");
 }
 
+.icon-document-gray{
+  background-image: url("../../../../dist/images/icons/document-gray.svg");
+}
+
+.icon-entity-download{
+  background-image: url("../../../../dist/images/icons/download-white-on-black.svg");
+}
+
 
 .form-disabled {
   background-image: none !important;
@@ -290,6 +298,10 @@ $font-sora: "Sora", sans-serif;
     font-size: 12px !important;
     padding: 0.5rem 0.9rem !important;
     line-height: 1.25rem !important;
+
+    .icon-document-gray{
+      margin-left: 27px !important;
+    }
   }
 
   .entityDetailRegistrationTable {
@@ -493,8 +505,8 @@ $font-sora: "Sora", sans-serif;
     background-image: url("../../../../dist/images/icons/arrow-digonal-right.svg");
     align-content: end;
     flex-shrink: 0;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     margin: 0;
     margin-left: auto !important;
     color: $color-medium-gray;
@@ -552,5 +564,67 @@ $font-sora: "Sora", sans-serif;
 
   .form-check .form-check-label {
     text-transform: capitalize !important;
+  }
+}
+
+
+.panel-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  .panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: #F3F5F8;
+    @extend .SOP-model;
+    z-index: 100;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: transform 0.25s ease, opacity 0.2s ease;
+    z-index: 10;
+
+    &.show{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &-content {
+      padding: 15px;
+      flex-grow: 1;
+      max-height: 100%;
+      overflow: hidden;
+    }
+
+    &-header {
+      margin-bottom: 15px;
+    }
+
+    &-body {
+      height: 100%;
+      overflow-y: auto;
+      padding-bottom: 15px;
+      // scrollbar-width: none;
+
+      // &::-webkit-scrollbar{
+      //   display: none;
+      // }
+    }
+
+    &-footer {
+      padding: 15px;
+      padding-bottom: 12px;
+      background-color: white;
+      box-shadow: 0px 0.627px 25.067px 0px rgba(0, 0, 0, 0.06), 0px 0.188px 7.513px 0px rgba(0, 0, 0, 0.04), 0px 0.1px 3.99px 0px rgba(0, 0, 0, 0.03), 0px 0.042px 1.66px 0px rgba(0, 0, 0, 0.02);
+    }
   }
 }
