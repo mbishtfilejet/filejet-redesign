@@ -485,7 +485,11 @@ $(document).ready(function () {
     },
     scrollX: true,
     columns: [
-      { data: "license_Name" },
+      {
+        data: "license_Name", render: function (data, type, row) {
+          return `<a href="javascript:void(0)">${data}</a>`;
+        }
+      },
       { data: "city_county" },
       { data: "registration_date" },
       { data: "license" },
@@ -511,7 +515,11 @@ $(document).ready(function () {
     },
     scrollX: true,
     columns: [
-      { data: "fictitious_trade_name" },
+      {
+        data: "fictitious_trade_name", render: function (data, type, row) {
+          return `<a href="javascript:void(0)">${data}</a>`;
+        }
+      },
       { data: "registration_date" },
       { data: "registration_number" },
       { data: "entity_name" },
@@ -669,13 +677,21 @@ $(document).ready(function () {
     console.log(d, rowId)
     return d.expanded_rows.map((row, index, arr) => `
           <tr class="${index % 2 == 0 ? "even" : "odd"} expanded-content" data-parent="${rowId}">
-              <td>${row.document_name || d.document_name}</td>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="icon icon-document-gray icon-md m-0"></span>
+                  <span>${row.document_name || d.document_name}</span>
+                </div>
+              </td>
               <td >${row.modified_by || d.modified_by}</td>
               <td >${row.date_modified || d.date_modified}</td>
               <td>
               <div class="d-flex align-items-center">
                 <span class=" me-1 me-md-2 d-inline-block" role="button">
                   <span class="icon icon-entity-edit m-0"></span>
+                </span>
+                <span class=" me-1 me-md-2 d-inline-block" role="button">
+                  <span class="icon icon-entity-download m-0"></span>
                 </span>
                 <span class=" me-1 me-md-2 d-inline-block" role="button">
                   <span class="icon icon-entity-delete m-0"></span>
@@ -693,6 +709,49 @@ $(document).ready(function () {
     $(`[data-bs-toggle="tab"][data-bs-target="${target}"]`).tab('show');
   });
 
+});
+
+// custom panel functionality code
+document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener('click', function (event) {
+    const toggle = event.target.closest('[data-panel-toggle="panel"]');
+    const close = event.target.closest('[data-panel-close="panel"]');
+
+    // OPEN / TOGGLE
+    if (toggle) {
+      event.stopPropagation();
+      const panel = document.querySelector(toggle.dataset.target);
+      if (!panel) return;
+
+      closeAllInScope(panel);
+      panel.classList.toggle('show');
+      return;
+    }
+
+    // Close Button
+    if (close) {
+      const panel = close.closest(".panel");
+      panel?.classList.remove("show")
+    }
+
+    // close on outside click inside the wrapper
+    document.querySelector(".panel-wrapper").addEventListener('click', function (event) {
+      this.querySelectorAll(".panel.show").forEach(pn => {
+        if (!pn?.contains(event.target)) {
+          pn.classList.remove("show");
+        }
+      });
+    })
+  });
+
+  // Close On tab change
+  document.addEventListener("shown.bs.tab", () => {
+    document.querySelectorAll(".panel.show").forEach((pn) => pn.classList.remove("show"));
+  })
+
+  function closeAllInScope(panel) {
+    panel.closest(".panel-wrapper")?.querySelectorAll(".panel.show").forEach((p) => p.classList.remove("show"));
+  }
 });
 
 $(document).on('shown.bs.tab shown.bs.modal', function () {
