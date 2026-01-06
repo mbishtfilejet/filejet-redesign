@@ -702,8 +702,6 @@ $(document).ready(function () {
       `).join("");
   }
 
-
-
   $('.tab-trigger').on('click', function () {
     const target = $(this).data('bs-target');
     $(`[data-bs-toggle="tab"][data-bs-target="${target}"]`).tab('show');
@@ -711,56 +709,36 @@ $(document).ready(function () {
 
 });
 
-// custom panel functionality code
-document.addEventListener("DOMContentLoaded", function () {
-  document.addEventListener('click', function (event) {
-    const toggle = event.target.closest('[data-panel-toggle="panel"]');
-    const close = event.target.closest('[data-panel-close="panel"]');
-
-    // OPEN / TOGGLE
-    if (toggle) {
-      event.stopPropagation();
-      const panel = document.querySelector(toggle.dataset.target);
-      if (!panel) return;
-
-      closeAllInScope(panel);
-      panel.classList.toggle('show');
-      return;
-    }
-
-    // Close Button
-    if (close) {
-      const panel = close.closest(".panel");
-      panel?.classList.remove("show")
-    }
-
-    // close on outside click inside the wrapper
-    document.querySelector(".panel-wrapper").addEventListener('click', function (event) {
-      this.querySelectorAll(".panel.show").forEach(pn => {
-        if (!pn?.contains(event.target)) {
-          pn.classList.remove("show");
-        }
-      });
-    })
-  });
-
-  // Close On tab change
-  document.addEventListener("shown.bs.tab", () => {
-    document.querySelectorAll(".panel.show").forEach((pn) => pn.classList.remove("show"));
-  })
-
-  function closeAllInScope(panel) {
-    panel.closest(".panel-wrapper")?.querySelectorAll(".panel.show").forEach((p) => p.classList.remove("show"));
-  }
-});
-
-$(document).on('shown.bs.tab shown.bs.modal', function () {
+$(document).on('shown.bs.tab', function () {
   $('#entitydetails-registration-table').DataTable().columns.adjust();
   $('#entitydetails-business-table').DataTable().columns.adjust();
   $("#entitydetails-dbas-table").DataTable().columns.adjust();
   $("#entitydetails-ownership-table").DataTable().columns.adjust();
   $("#entitydetails-documents-table").DataTable().columns.adjust();
   $("#entitydetails-director-table").DataTable().columns.adjust();
+
+
+  const tabsSelect = [
+    { id: "editOwner-select_1", placeholder: "Select Entity" },
+    { id: "editOwner-select_2", placeholder: "Select Entity Type" },
+    { id: "editOwner-select_3", placeholder: "Select State" },
+    { id: "addOwner-select_1", placeholder: "Select Entity" },
+    { id: "addOwner-select_2", placeholder: "Select Entity Type" },
+    { id: "addOwner-select_3", placeholder: "Select State" },
+  ]
+
+  tabsSelect.forEach(select => {
+    $(`.tab-content #${select.id}.select2`).select2({
+      dropdownParent: $(`#${select.id}`).closest("fieldset"),
+      placeholder: select.placeholder,
+      allowClear: true
+    });
+  })
+
+  $('.tab-content .select2').on('select2:open select2:select', () => {
+    $('.select2-search__field').attr('placeholder', 'Search...');
+  });
+
 })
 
 
