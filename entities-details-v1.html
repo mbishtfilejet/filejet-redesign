@@ -488,12 +488,13 @@
                         <div class="accordion-item">
                            <h2 class="accordion-header" id="headingOne">
                               <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse"
-                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                 data-bs-target="#collapseRegisrationCard" aria-expanded="true"
+                                 aria-controls="collapseRegisrationCard">
                                  Entity Information
                               </button>
                            </h2>
 
-                           <div id="collapseOne" class="accordion-collapse collapse show  border-0"
+                           <div id="collapseRegisrationCard" class="accordion-collapse collapse show  border-0"
                               aria-labelledby="headingOne" data-bs-parent="#entityinfo">
                               <div class="accordion-body pt-0">
 
@@ -710,9 +711,9 @@
                   </div>
                </div>
             </div>
-            <div class="entityTabsContent flex-grow-1 pt-4 panel-wrapper">
+            <div class="entityTabsContent flex-grow-1 pt-4">
                <div class="container-fluid container-lg">
-                  <div class="tab-content " id="myTabContent">
+                  <div class="tab-content mb-3" id="myTabContent">
                      <div class="tab-pane fade show active" id="en-registration-tab-pane" role="tabpanel"
                         aria-labelledby="en-registration-tab" tabindex="0">
                         <div class="entityDetailTableCard border rounded-2">
@@ -1335,25 +1336,27 @@
                            </div>
                         </div>
                         <div class="entityDetailTableCard mt-2 border rounded-2">
-                           <table id="entitydetails-director-table" class="table table-striped w-100 table-nowrap">
-                              <thead>
-                                 <tr>
-                                    <th data-orderable="false">
-                                       <input class="d-flex form-check-input" type="checkbox" />
-                                    </th>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Signer</th>
-                                    <th data-orderable="false">Action</th>
-                                 </tr>
-                              </thead>
-                           </table>
+                           <div class="entityDetailDirectorsTable">
+                              <table id="entitydetails-director-table" class="table table-striped w-100 table-nowrap">
+                                 <thead>
+                                    <tr>
+                                       <th data-orderable="false">
+                                          <input class="d-flex form-check-input" type="checkbox" />
+                                       </th>
+                                       <th>Name</th>
+                                       <th>Role</th>
+                                       <th>Email</th>
+                                       <th>Status</th>
+                                       <th>Start Date</th>
+                                       <th>End Date</th>
+                                       <th>Signer</th>
+                                       <th data-orderable="false">Action</th>
+                                    </tr>
+                                 </thead>
+                              </table>
+                           </div>
                         </div>
-                        <button data-bs-toggle="modal" data-bs-target="#add-owner-modal" aria-label="Add Owner"
+                        <button data-bs-toggle="" data-bs-target="" aria-label="Add"
                            type="button"
                            class="btn btn-secondary btn-add-owner rounded-3 my-3 text-white text-capitalize">Add
                         </button>
@@ -1411,101 +1414,13 @@
                               </table>
                            </div>
                         </div>
-                        <button data-panel-toggle="panel" data-target="#addOwnerPanel" aria-label="Add Owner" type="button"
+                        <button data-bs-toggle="modal" data-bs-target="#add-owner-modal" aria-label="Add Owner" type="button"
                            class="btn btn-secondary btn-add-owner rounded-3 my-3 text-white text-capitalize">Add
                            Owner
                         </button>
                      </div>
                      <div class="tab-pane fade" id="en-activity-tab-pane" role="tabpanel"
                         aria-labelledby="en-activity-tab" tabindex="0">Activity</div>
-                  </div>
-               </div>
-               <div class="panel border shadow-lg" id="addOwnerPanel">
-                  <div class="panel-content">
-                     <div class="panel-header">
-                        <h4 class="fw-bold m-0">Add Owner</h4>
-                     </div>
-                     <div class="panel-body">
-                        <div class="" id="entityModalAddOwner">
-                           <div class="m-0 mb-4 p-3 bg-white rounded-2">
-                              <div class="gap-4 radioDiv">
-                                 <div class="form-check">
-                                    <input class="form-check-input toggle-radio" type="radio" name="ownerType_8"
-                                       id="individual_6" data-target="individualForm_8">
-                                    <label class="form-check-label rights-label inactive"
-                                       for="individual_6">Individual</label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input class="form-check-input toggle-radio" type="radio" name="ownerType_8"
-                                       id="filejet_8" data-target="filejetForm_8">
-                                    <label class="form-check-label rights-label inactive" for="filejet_8">Filejet
-                                       Entity</label>
-                                 </div>
-                                 <div class="form-check">
-                                    <input class="form-check-input toggle-radio" type="radio" name="ownerType_8"
-                                       id="external_8" data-target="externalForm_8">
-                                    <label class="form-check-label rights-label inactive" for="external_8">External
-                                       Entity</label>
-                                 </div>
-                              </div>
-                              <form class="" action="">
-                                 <div>
-                                    <fieldset class="mt-3">
-                                       <label for="entityType-model" class="form-label">Search</label>
-                                       <input type="text" class="form-control form-control-search" id=""
-                                          placeholder="Search">
-                                    </fieldset>
-                                 </div>
-                              </form>
-                           </div>
-
-                           <div class="mb-4 p-3 bg-white rounded-2 mt-3">
-                              <fieldset class="mb-4">
-                                 <label for="" class="form-label ">First Name</label>
-                                 <input type="text" class="form-control" id="" placeholder="First Name">
-                              </fieldset>
-                              <fieldset class="mb-4">
-                                 <label for="" class="form-label ">Last Name</label>
-                                 <input type="text" class="form-control" id="" placeholder="Last Name">
-                              </fieldset>
-                              <fieldset class="mb-4">
-                                 <label for="" class="form-label ">Ownership Percentage</label>
-                                 <input type="text" class="form-control" id="" placeholder="Ownership Percentage">
-                              </fieldset>
-                              <fieldset class="calander-input mb-4">
-                                 <label for="" class="form-label">Start Date</label>
-                                 <input type="text" class="form-control modaldatepicker " placeholder="start date">
-                              </fieldset>
-                              <fieldset class="calander-input">
-                                 <label for="" class="form-label">End Date</label>
-                                 <input type="text" class="form-control modaldatepicker " placeholder="End date">
-                              </fieldset>
-                           </div>
-
-                           <div class="mb-4 p-3 bg-white rounded-2 mt-4">
-                              <div class="form-check typecheckradio">
-                                 <input class="form-check-input" type="checkbox" id="yes" name="primaryowner-8">
-                                 <label class="form-check-label rights-label fw-bold text-uppercase inactive"
-                                    for="yes">Set as
-                                    Primary
-                                    Owner</label>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="panel-footer">
-                     <div class="d-flex justify-content-between align-items-center w-100 m-0">
-                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
-                           data-panel-close="panel">
-                           CANCEL
-                        </button>
-                        <div class="d-flex align-items-center">
-                           <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" data-panel-close="panel">
-                              Add Owner
-                           </button>
-                        </div>
-                     </div>
                   </div>
                </div>
             </div>
@@ -1528,19 +1443,21 @@
                   <div class="m-0 mb-4 p-3 bg-white rounded-2">
                      <div class="gap-4 radioDiv">
                         <div class="form-check">
-                           <input class="form-check-input toggle-radio" type="radio" name="ownerType_8"
-                              id="individual_6" data-target="individualForm_8">
-                           <label class="form-check-label rights-label inactive" for="individual_6">Individual</label>
+                           <input class="form-check-input toggle-radio" type="radio" name="addownerType_8"
+                              id="add_individual_8" checked>
+                           <label class="form-check-label rights-label inactive"
+                              for="add_individual_8">Individual</label>
                         </div>
                         <div class="form-check">
-                           <input class="form-check-input toggle-radio" type="radio" name="ownerType_8" id="filejet_8"
-                              data-target="filejetForm_8">
-                           <label class="form-check-label rights-label inactive" for="filejet_8">Filejet Entity</label>
+                           <input class="form-check-input toggle-radio" type="radio" name="addownerType_8"
+                              id="add_filejet_8">
+                           <label class="form-check-label rights-label inactive" for="add_filejet_8">Filejet
+                              Entity</label>
                         </div>
                         <div class="form-check">
-                           <input class="form-check-input toggle-radio" type="radio" name="ownerType_8" id="external_8"
-                              data-target="externalForm_8">
-                           <label class="form-check-label rights-label inactive" for="external_8">External
+                           <input class="form-check-input toggle-radio" type="radio" name="addownerType_8"
+                              id="add_external_8">
+                           <label class="form-check-label rights-label inactive" for="add_external_8">External
                               Entity</label>
                         </div>
                      </div>
@@ -1618,66 +1535,256 @@
             <div class="modal-body">
                <div class="" id="entityModalAddOwner">
                   <div class="m-0 mb-4 p-3 bg-white rounded-2">
-                     <div class="gap-4 radioDiv">
-                        <div class="form-check">
-                           <input class="form-check-input toggle-radio" type="radio" name="editownerType_8" checked
-                              id="edit_ndividual_8" data-target="individualForm_8">
-                           <label class="form-check-label rights-label inactive"
-                              for="edit_ndividual_8">Individual</label>
-                        </div>
-                        <div class="form-check">
-                           <input class="form-check-input toggle-radio" type="radio" name="editownerType_8"
-                              id="edit_filejet_8" data-target="filejetForm_8">
-                           <label class="form-check-label rights-label inactive" for="edit_filejet_8">Filejet
-                              Entity</label>
-                        </div>
-                        <div class="form-check">
-                           <input class="form-check-input toggle-radio" type="radio" name="editownerType_8"
-                              id="edit_external_8" data-target="externalForm_8">
-                           <label class="form-check-label rights-label inactive" for="edit_external_8">External
-                              Entity</label>
-                        </div>
-                     </div>
-                     <form class="" action="">
-                        <div>
-                           <fieldset class="mt-3">
-                              <label for="entityType-model" class="form-label">Search</label>
-                              <input type="text" class="form-control form-control-search" id="" placeholder="Search">
+                     <div class="gap-4 d-flex" id="myAddOWnerTab" role="tablist">
+                        <div class="form-check" role="presentation">
+                           <fieldset>
+                              <input class="form-check-input active" type="radio" name="editownerType_8"
+                                 id="editowner-individual" checked data-bs-toggle="tab"
+                                 data-bs-target="#en-editowner-individual-tab-pane" role="tab"
+                                 aria-controls="en-editowner-individual-tab-pane" aria-selected="true">
+                              <label class="form-check-label rights-label p-0"
+                                 for="editowner-individual">Individual</label>
                            </fieldset>
                         </div>
-                     </form>
-                  </div>
-
-                  <div class="mb-4 p-3 bg-white rounded-2 mt-3">
-                     <fieldset class="mb-4">
-                        <label for="" class="form-label ">First Name</label>
-                        <input type="text" class="form-control" id="" placeholder="First Name">
-                     </fieldset>
-                     <fieldset class="mb-4">
-                        <label for="" class="form-label ">Last Name</label>
-                        <input type="text" class="form-control" id="" placeholder="Last Name">
-                     </fieldset>
-                     <fieldset class="mb-4">
-                        <label for="" class="form-label ">Ownership Percentage</label>
-                        <input type="text" class="form-control" id="" placeholder="Ownership Percentage">
-                     </fieldset>
-                     <fieldset class="calander-input mb-4">
-                        <label for="" class="form-label">Start Date</label>
-                        <input type="text" class="form-control modaldatepicker " placeholder="start date">
-                     </fieldset>
-                     <fieldset class="calander-input">
-                        <label for="" class="form-label">End Date</label>
-                        <input type="text" class="form-control modaldatepicker " placeholder="End date">
-                     </fieldset>
-                  </div>
-
-                  <div class="mb-4 p-3 bg-white rounded-2 mt-4">
-                     <div class="form-check typecheckradio">
-                        <input class="form-check-input" type="checkbox" id="yes" name="primaryowner-8">
-                        <label class="form-check-label rights-label fw-bold text-uppercase inactive" for="yes">Set as
-                           Primary
-                           Owner</label>
+                        <div class="form-check" role="presentation">
+                           <fieldset>
+                              <input class="form-check-input" type="radio" name="editownerType_8" id="editowner-filejet"
+                                 data-bs-toggle="tab" data-bs-target="#en-editowner-filejet-tab-pane" role="tab"
+                                 aria-controls="en-editowner-filejet-tab-pane" aria-selected="false">
+                              <label class="form-check-label rights-label p-0" for="editowner-filejet">Filejet
+                                 Entity</label>
+                           </fieldset>
+                        </div>
+                        <div class="form-check" role="presentation">
+                           <fieldset>
+                              <input class="form-check-input" type="radio" name="editownerType_8" id="editowner-external"
+                                 data-bs-toggle="tab" data-bs-target="#en-editowner-external-tab-pane" role="tab"
+                                 aria-controls="en-editowner-external-tab-pane" aria-selected="false">
+                              <label class="form-check-label rights-label p-0" for="editowner-external">External
+                                 Entity</label>
+                           </fieldset>
+                        </div>
                      </div>
+                  </div>
+
+                  <div class="tab-content shadow-none" id="myEditOwner">
+                     <div class="tab-pane fade show active" id="en-editowner-individual-tab-pane" role="tabpanel"
+                        aria-labelledby="en-editowner-individual-tab" tabindex="0">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                           <div>
+                              <fieldset>
+                                 <label for="entityType-model" class="form-label">Search</label>
+                                 <input type="text" class="form-control form-control-search" id="" placeholder="Search">
+                              </fieldset>
+                           </div>
+
+                        </div>
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                           <form class="" action="">
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label ">First Name</label>
+                                 <input type="text" class="form-control" id="" placeholder="First Name">
+                              </fieldset>
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label ">Last Name</label>
+                                 <input type="text" class="form-control" id="" placeholder="Last Name">
+                              </fieldset>
+                              <fieldset class="mb-2">
+                                 <label for="" class="form-label ">Ownership Percentage</label>
+                                 <input type="text" class="form-control" id="" placeholder="Ownership Percentage">
+                              </fieldset>
+                              <span class="d-block mb-4">Represents the percentage of ownership with this entity :
+                                 Beyond Boundaries Ventures</span>
+                              <fieldset class="calander-input mb-4">
+                                 <label for="" class="form-label">Start Date</label>
+                                 <input type="text" class="form-control modaldatepicker " placeholder="start date">
+                              </fieldset>
+                              <fieldset class="calander-input">
+                                 <label for="" class="form-label">End Date</label>
+                                 <input type="text" class="form-control modaldatepicker " placeholder="End date">
+                              </fieldset>
+                           </form>
+                        </div>
+                     </div>
+                     <div class="tab-pane fade" id="en-editowner-filejet-tab-pane" role="tabpanel"
+                        aria-labelledby="en-editowner-filejet-tab" tabindex="0">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                           <form class="" action="">
+                              <fieldset class="mb-4">
+                                 <label for="editOwner-select_1" class="form-label">Select Entity</label>
+                                 <div class="custom-dropdown">
+                                    <select class="form-select select2" id="editOwner-select_1" required>
+                                       <option value=""></option>
+                                       <option value="2">RASA Realty LLC (DE) - Domestic</option>
+                                       <option value="3">KK RENEWAL HOLDINGS CORP (CA) - Domestic</option>
+                                       <option value="4">RESOURCE INCOME PARTNERS LIMITED PARTNERSHIP (FL) - Foreign
+                                       </option>
+                                       <option value="5">Pikewood Group, LLC (AI) - Foreign</option>
+                                       <option value="6">MARKSET FUND I -01-SERIES 1 L.L.C., (WY) - Domestic</option>
+                                       <option value="7">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY
+                                          CORPORATION (CA) - Domestic</option>
+                                    </select>
+                                 </div>
+                              </fieldset>
+                              <fieldset class="mb-2">
+                                 <label for="" class="form-label ">Ownership Percentage</label>
+                                 <input type="text" class="form-control" id="" placeholder="Ownership Percentage">
+                              </fieldset>
+                              <span>Represents the percentage of ownership with this entity : Beyond Boundaries
+                                 Ventures</span>
+                           </form>
+                        </div>
+                     </div>
+                     <div class="tab-pane fade" id="en-editowner-external-tab-pane" role="tabpanel"
+                        aria-labelledby="en-editowner-external-tab" tabindex="0">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                           <form class="" action="">
+                              <div class="form-switch mb-4">
+                                 <input class="form-check-input" type="checkbox" id="editinternationalEntities1"
+                                    data-bs-toggle="collapse" data-bs-target=".toggle-content">
+                                 <label class="form-label text-nowrap" for="editinternationalEntities1">Add
+                                    International Entity</label>
+                              </div>
+
+                              <div id="showInternationalEntities" class="collapse toggle-content">
+                                 <div>
+                                    <div class="mb-4">
+                                       <label for="" class="form-label">Entity Name</label>
+                                       <input type="text" placeholder="Name of Entity" class="form-control" id="">
+                                    </div>
+                                    <div class="mb-4">
+                                       <label for="" class="form-label">Entity Country</label>
+                                       <input type="text" placeholder="Entity Country" class="form-control" id="">
+                                    </div>
+                                    <div class="mb-4">
+                                       <label for="" class="form-label">Entity Type</label>
+                                       <input type="text" placeholder="Entity Type" class="form-control" id="">
+                                    </div>
+                                    <div class="mb-4">
+                                       <label for="" class="form-label">State File Number</label>
+                                       <input type="text" placeholder="State File Number" class="form-control" id="">
+                                    </div>
+                                    <div class="mb-4">
+                                       <label for="" class="form-label">Registration Number</label>
+                                       <input type="text" placeholder="Registration Number" class="form-control" id="">
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div id="showEntities" class="collapse toggle-content show">
+                                 <fieldset class="mb-4">
+                                    <label for="entityInput" class="form-label">entity name</label>
+                                    <input type="text" class="form-control" id="entityInput"
+                                       placeholder="Name of Entity">
+                                 </fieldset>
+                                 <div class="alert alert-warning text-dark fw-normal py-2" role="alert"
+                                    style="display: none;">
+                                    <span class="icon icon-alert-info"></span>
+                                    <small>LLCs should generally end in LLC, L.L.C, or Limited Liability Company and not
+                                       have a comma. Jurisdiction requirements may vary - <a class="text-primary"
+                                          href="">See
+                                          State Specific Naming Requirements</a> </small>
+                                 </div>
+                                 <fieldset class="mb-4">
+                                    <label for="editOwner-select_2" class="form-label">Entity Type</label>
+                                    <div class="custom-dropdown">
+                                       <select class="form-select select2" id="editOwner-select_2" required>
+                                          <option value=""></option>
+                                          <option value="1">LLC</option>
+                                          <option value="2">Profit Corporation - General </option>
+                                          <option value="3">Profit Corporation - Professional </option>
+                                          <option value="4">Profit Corporation - Close </option>
+                                          <option value="5">Non-Profit - Religious</option>
+                                          <option value="6">Non-Profit - Mutual Benefit</option>
+                                          <option value="7">Non-Profit - Public Benefit</option>
+                                          <option value="8">Non-Profit - Common Interest Development</option>
+                                          <option value="9">Non-Profit - Exempt</option>
+                                          <option value="10">LLP</option>
+                                          <option value="11">LP</option>
+                                          <option value="12">GP</option>
+                                          <option value="13">Professional Limited Liability Company</option>
+                                          <option value="14">Trust</option>
+                                       </select>
+                                    </div>
+                                 </fieldset>
+                                 <fieldset class="mb-4">
+                                    <label for="editOwner-select_3" class="form-label">Jurisdication State</label>
+                                    <div class="custom-dropdown">
+                                       <select class="form-select select2" id="editOwner-select_3" required="">
+                                          <option value=""></option>
+                                          <option value="1">Alabama</option>
+                                          <option value="2">Alaska</option>
+                                          <option value="3">Arizona</option>
+                                          <option value="4">Arkansas</option>
+                                          <option value="5">California</option>
+                                          <option value="6">Colorado</option>
+                                          <option value="7">Connecticut</option>
+                                          <option value="8">Delaware</option>
+                                          <option value="9">District of Columbia</option>
+                                          <option value="10">Florida</option>
+                                          <option value="11">Georgia</option>
+                                          <option value="12">Hawaii</option>
+                                          <option value="13">Idaho</option>
+                                          <option value="14">Illinois</option>
+                                          <option value="15">Indiana</option>
+                                          <option value="16">Iowa</option>
+                                          <option value="17">Kansas</option>
+                                          <option value="18">Kentucky</option>
+                                          <option value="19">Louisiana</option>
+                                          <option value="20">Maine</option>
+                                          <option value="21">Maryland</option>
+                                          <option value="22">Massachusetts</option>
+                                          <option value="23">Michigan</option>
+                                          <option value="24">Minnesota</option>
+                                          <option value="25">Mississippi</option>
+                                          <option value="26">Missouri</option>
+                                          <option value="27">Montana</option>
+                                          <option value="28">Nebraska</option>
+                                          <option value="29">Nevada</option>
+                                          <option value="30">New Hampshire</option>
+                                          <option value="31">New Jersey</option>
+                                          <option value="32">New Mexico</option>
+                                          <option value="33">New York</option>
+                                          <option value="34">North Carolina</option>
+                                          <option value="35">North Dakota</option>
+                                          <option value="36">Ohio</option>
+                                          <option value="37">Oklahoma</option>
+                                          <option value="38">Oregon</option>
+                                          <option value="39">Pennsylvania</option>
+                                          <option value="40">Rhode Island</option>
+                                          <option value="41">South Carolina</option>
+                                          <option value="42">South Dakota</option>
+                                          <option value="43">Tennessee</option>
+                                          <option value="44">Texas</option>
+                                          <option value="45">Utah</option>
+                                          <option value="46">Vermont</option>
+                                          <option value="47">Virginia</option>
+                                          <option value="48">Washington</option>
+                                          <option value="49">West Virginia</option>
+                                          <option value="50">Wisconsin</option>
+                                          <option value="51">Wyoming</option>
+                                       </select>
+                                    </div>
+                                 </fieldset>
+                              </div>
+                              <fieldset class="mb-2">
+                                 <label for="" class="form-label ">Ownership Percentage</label>
+                                 <input type="text" class="form-control" id="" placeholder="Ownership Percentage">
+                              </fieldset>
+                              <span>Represents the percentage of ownership with this entity : Beyond Boundaries
+                                 Ventures</span>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="mb-4 p-3 bg-white rounded-2">
+                  <div class="form-check typecheckradio">
+                     <input class="form-check-input" type="checkbox" id="yes" name="primaryowner-8">
+                     <label class="form-check-label rights-label fw-bold text-uppercase inactive" for="yes">Set as
+                        Primary
+                        Owner</label>
                   </div>
                </div>
             </div>
@@ -1690,7 +1797,7 @@
                   <div class="d-flex align-items-center">
                      <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
                         data-bs-toggle="modal" data-bs-dismiss="modal">
-                        Add Owner
+                        Update Owner
                      </button>
                   </div>
                </div>
@@ -24987,10 +25094,6 @@
          });
       }
    </script>
-
-
-
-
 
 </body>
 
