@@ -17,12 +17,16 @@ $font-sora: "Sora", sans-serif;
   background-image: url("../../../../dist/images/icons/new-delete-dark.svg");
 }
 
-.icon-document-gray{
+.icon-document-gray {
   background-image: url("../../../../dist/images/icons/document-gray.svg");
 }
 
-.icon-entity-download{
+.icon-entity-download {
   background-image: url("../../../../dist/images/icons/download-white-on-black.svg");
+
+  &:hover {
+    background-image: url("../../../../dist/images/icons/download-white-on-green.svg");
+  }
 }
 
 
@@ -45,6 +49,15 @@ $font-sora: "Sora", sans-serif;
     background-color: #272727;
     border: 1.5px solid #272727 !important;
     cursor: pointer;
+  }
+
+  .toggle-content.show {
+    opacity: 100% !important;
+  }
+
+  .toggle-content {
+    opacity: 90% !important;
+    transition: all 0.01s ease-in-out;
   }
 }
 
@@ -299,7 +312,7 @@ $font-sora: "Sora", sans-serif;
     padding: 0.5rem 0.9rem !important;
     line-height: 1.25rem !important;
 
-    .icon-document-gray{
+    .icon-document-gray {
       margin-left: 27px !important;
     }
   }
@@ -418,6 +431,18 @@ $font-sora: "Sora", sans-serif;
     }
   }
 
+  .entityDetailDirectorsTable {
+    .dataTables_wrapper .dataTable {
+      thead {
+        th {
+          &:first-child {
+            width: 50px !important;
+          }
+        }
+      }
+    }
+  }
+
   .dataTables_wrapper .row:last-child:has(.dataTables_info) {
     display: none !important;
   }
@@ -436,7 +461,6 @@ $font-sora: "Sora", sans-serif;
     display: flex;
     flex-direction: column;
     gap: 5px;
-
     & .value-text {
       margin-top: auto !important;
     }
@@ -502,11 +526,11 @@ $font-sora: "Sora", sans-serif;
 
 
   .icon-diagonal-right {
-    background-image: url("../../../../dist/images/icons/arrow-digonal-right.svg");
+    background-image: url("../../../../dist/images/icons/status.svg");
     align-content: end;
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
     margin: 0;
     margin-left: auto !important;
     color: $color-medium-gray;
@@ -518,6 +542,11 @@ $font-sora: "Sora", sans-serif;
     background-image: url("../../../../dist/images/icons/search-light.svg") !important;
     background-position: right 5px center !important;
   }
+
+  .form-check.typecheckradio label {
+    text-transform: uppercase !important;
+  }
+  
 }
 
 
@@ -564,67 +593,5 @@ $font-sora: "Sora", sans-serif;
 
   .form-check .form-check-label {
     text-transform: capitalize !important;
-  }
-}
-
-
-.panel-wrapper {
-  position: relative;
-  overflow: hidden;
-
-  .panel {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    height: 100%;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-color: #F3F5F8;
-    @extend .SOP-model;
-    z-index: 100;
-    transform: translateY(100%);
-    opacity: 0;
-    pointer-events: none;
-
-    transition: transform 0.25s ease, opacity 0.2s ease;
-    z-index: 10;
-
-    &.show{
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    &-content {
-      padding: 15px;
-      flex-grow: 1;
-      max-height: 100%;
-      overflow: hidden;
-    }
-
-    &-header {
-      margin-bottom: 15px;
-    }
-
-    &-body {
-      height: 100%;
-      overflow-y: auto;
-      padding-bottom: 15px;
-      // scrollbar-width: none;
-
-      // &::-webkit-scrollbar{
-      //   display: none;
-      // }
-    }
-
-    &-footer {
-      padding: 15px;
-      padding-bottom: 12px;
-      background-color: white;
-      box-shadow: 0px 0.627px 25.067px 0px rgba(0, 0, 0, 0.06), 0px 0.188px 7.513px 0px rgba(0, 0, 0, 0.04), 0px 0.1px 3.99px 0px rgba(0, 0, 0, 0.03), 0px 0.042px 1.66px 0px rgba(0, 0, 0, 0.02);
-    }
   }
 }
