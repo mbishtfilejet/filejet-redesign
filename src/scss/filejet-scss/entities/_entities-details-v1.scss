@@ -38,18 +38,37 @@ $font-sora: "Sora", sans-serif;
 
 .entityDetails-dashboard {
 
-  input[disabled] {
-    background-image: none !important;
-    background-color: #F3F5F8 !important;
-    color: #6E7683 !important;
-    cursor: not-allowed;
+  & * {
+    font-family: $font-sora !important;
   }
 
-  input[type=checkbox]:checked {
-    background-color: #272727;
-    border: 1.5px solid #272727 !important;
-    cursor: pointer;
+  .SOP-model,
+  .entityTabsContent {
+    input[disabled] {
+      background-image: none !important;
+      background-color: #F3F5F8 !important;
+      color: #6E7683 !important;
+      cursor: not-allowed !important;
+    }
+
+    input[type=radio]:disabled{
+      background-image: url("../../../../dist/images/icons/view-checkbox-inactive.svg") !important;
+      &:checked{
+        background-image: url("../../../../dist/images/icons/view-checkbox-active-disabled.svg") !important;
+      }
+    }
+
+    input[type=checkbox]:checked {
+      background-color: #272727;
+      border: 1.5px solid #272727 !important;
+      cursor: pointer;
+    }
+
+    input[type=checkbox]:disabled:checked{
+      background-image: url("../../../../dist/images/icons/radio-check.svg") !important;
+    }
   }
+
 
   .toggle-content.show {
     opacity: 100% !important;
@@ -63,9 +82,6 @@ $font-sora: "Sora", sans-serif;
 
 
 .entityDetails-page {
-  & * {
-    font-family: $font-sora !important;
-  }
 
   max-width: 100% !important;
 
@@ -224,6 +240,31 @@ $font-sora: "Sora", sans-serif;
     font-family: $font-sora !important;
   }
 
+  .asofcalender-input,
+  .asofcalender-input-2 {
+      position: relative;
+
+      .form-label{
+        text-transform: capitalize !important;
+        font-size: 14px !important;
+        font-weight: normal;
+        flex-shrink: 0;
+        margin: 0;
+      }
+
+      .form-control {
+        background-image: url("../../../../dist/images/icons/calander-icon-light.svg") !important;
+        background-size: 14px !important;
+        background-position-x: 92% !important;
+        background-repeat: no-repeat !important;
+        background-position-y: center !important;
+        margin: 0 !important;
+        min-height: 0 !important;
+        box-shadow: none !important;
+        font-weight: normal;
+      }
+    }
+
   table,
   .dataTable {
     thead {
@@ -292,6 +333,36 @@ $font-sora: "Sora", sans-serif;
     line-height: 14px;
     padding: 5px;
   }
+
+  .form-select-container {
+    // min-height: 38px !important;
+    padding: 0px 10px !important;
+    padding-right: 15px !important;
+    font-size: 12px !important;
+    background-color: transparent;
+    border: 1px solid #d2d5da !important;
+    border-radius: 4.5px !important;
+    margin-bottom: 0px !important;
+    box-shadow: none !important;
+    color: var(--bs-filejet-medium-gray);
+    background-image: url("../../../../dist/images/icons/icon-angle-bottom.svg") !important;
+    background-size: 10px !important;
+    font-weight: normal !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    width: 100%;
+    cursor: pointer !important;
+
+    &:focus-within {
+      border: 2px solid var(--bs-filejet-purple-indigo) !important;
+      background-color: #f2f2ff;
+    }
+  }
+
+  select.form-select:invalid {
+    color: var(--bs-filejet-medium-gray-opacity-50);
+  }
 }
 
 .entityDetailTableCard {
@@ -311,10 +382,6 @@ $font-sora: "Sora", sans-serif;
     font-size: 12px !important;
     padding: 0.5rem 0.9rem !important;
     line-height: 1.25rem !important;
-
-    .icon-document-gray {
-      margin-left: 27px !important;
-    }
   }
 
   .entityDetailRegistrationTable {
@@ -413,21 +480,33 @@ $font-sora: "Sora", sans-serif;
       min-height: 0;
     }
 
-    .dataTable tr .dt-control {
-      color: transparent;
-      width: 1rem;
-      height: 1rem;
-      border: none;
-      background-color: transparent;
-      background-image: url("../../../../dist/images/icons/right-angle-table.svg");
-      background-repeat: no-repeat;
-      background-position: center;
-      transition: transform 0.2s ease-in-out;
-      cursor: pointer;
+    .dataTable tr {
+
+      .dt-control,
+      .dt-child-control {
+        color: transparent;
+        width: 1rem;
+        height: 1rem;
+        border: none;
+        background-color: transparent;
+        background-image: url("../../../../dist/images/icons/right-angle-table.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+      }
     }
 
-    .dataTable tr.expanded-row .dt-control {
-      transform: rotate(90deg);
+    .dataTable tr.expanded-row {
+
+      .dt-control,
+      .dt-child-control {
+        transform: rotate(90deg);
+      }
+    }
+
+    .dataTable tr.expanded-content td.doc_indent {
+      padding-left: 40px !important;
     }
   }
 
@@ -461,9 +540,6 @@ $font-sora: "Sora", sans-serif;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    & .value-text {
-      margin-top: auto !important;
-    }
   }
 }
 
@@ -501,7 +577,7 @@ $font-sora: "Sora", sans-serif;
     border: 0px;
     display: flex;
     align-items: center;
-    padding: 5px !important;
+    padding: 5px 0px !important;
 
     a.value-text:hover {
       color: var(--bs-gray-600) !important;
@@ -546,7 +622,6 @@ $font-sora: "Sora", sans-serif;
   .form-check.typecheckradio label {
     text-transform: uppercase !important;
   }
-  
 }
 
 
