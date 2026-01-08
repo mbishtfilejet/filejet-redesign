@@ -586,11 +586,6 @@ $(document).ready(function () {
       { data: "name" },
       { data: "role" },
       { data: "email" },
-      {
-        data: "status", render: function (data, type, row) {
-          return `<span class="${data === "active" ? "text-green" : "text-red"} text-capitalize fw-semibold">${data}</span>`;
-        }
-      },
       { data: "start_date" },
       { data: "end_date" },
       {
