@@ -487,7 +487,7 @@ $(document).ready(function () {
     columns: [
       {
         data: "license_Name", render: function (data, type, row) {
-          return `<a href="javascript:void(0)">${data}</a>`;
+          return `<a href="./business-licences.html">${data}</a>`;
         }
       },
       { data: "city_county" },
@@ -517,7 +517,7 @@ $(document).ready(function () {
     columns: [
       {
         data: "fictitious_trade_name", render: function (data, type, row) {
-          return `<a href="javascript:void(0)">${data}</a>`;
+          return `<a href="./trade.html">${data}</a>`;
         }
       },
       { data: "registration_date" },
@@ -601,7 +601,7 @@ $(document).ready(function () {
       {
         data: null, render: function () {
           return `
-          <button data-bs-toggle="modal" data-bs-target="#previewModal" aria-label="Preview" type="button" 
+          <button data-bs-toggle="modal" data-bs-target="#edit-stakeholder-modal" aria-label="editStakeHolder" type="button" 
           class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164 ">
           Update
           </button>`;
@@ -614,7 +614,16 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   });
 
-  let table6 = $("#entitydetails-documents-table").DataTable({
+  $('.tab-trigger').on('click', function () {
+    const target = $(this).data('bs-target');
+    $(`[data-bs-toggle="tab"][data-bs-target="${target}"]`).tab('show');
+  });
+
+});
+
+//document table code with subfolder logic
+$(document).ready(function () {
+  const table = $("#entitydetails-documents-table").DataTable({
     ajax: {
       url: "data5.json",
       dataSrc: 'documents_data'
@@ -622,7 +631,7 @@ $(document).ready(function () {
     scrollX: true,
     columns: [
       {
-        data: "document_name", render: function (data, type, row) {
+        data: "folder_name", render: function (data, type, row) {
           return `
          <div class="d-flex align-items-center gap-3">
           <button tabindex="0" class="dt-control m-0" role="button"></button>
@@ -638,7 +647,8 @@ $(document).ready(function () {
       { data: "date_modified" },
       {
         data: null, render: function (data, type, row) {
-          return `
+          if (row.folder_name.toLowerCase().includes("folder")) {
+            return `
           <div class="d-flex align-items-center">
             <span class=" me-1 me-md-2 d-inline-block" role="button">
               <span class="icon icon-entity-edit m-0"></span>
@@ -648,6 +658,8 @@ $(document).ready(function () {
             </span>
           </div>
           `
+          }
+          return null;
         }
       }
     ],
@@ -657,34 +669,43 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   });
 
+  // parent folder logic 
   $("#entitydetails-documents-table tbody").on("click", "td .dt-control", function () {
     let tr = $(this).closest("tr");
-    let row = table6.row(tr);
+    let row = table.row(tr);
     let rowId = row.data().id;
 
     if (tr.hasClass("expanded-row")) {
       $(`.expanded-content[data-parent="${rowId}"]`).remove();
       tr.removeClass("expanded-row");
     } else {
-      let expandedRows = formatExpandedRows(row.data(), rowId);
-      tr.after(expandedRows);
+      let expandedRowContent = formatChildRows(row.data(), rowId);
+      tr.after(expandedRowContent);
       tr.addClass("expanded-row");
+      tr.attr('data-level', rowId)
     }
-    console.log("clicked")
+    applyAlternateRowStyling();
   });
 
-  function formatExpandedRows(d, rowId) {
-    console.log(d, rowId)
-    return d.expanded_rows.map((row, index, arr) => `
-          <tr class="${index % 2 == 0 ? "even" : "odd"} expanded-content" data-parent="${rowId}">
-              <td>
+  function applyAlternateRowStyling() {
+    const rows = $('#entitydetails-documents-table tbody tr');
+    rows.removeClass('odd even');
+    rows.each(function (index) {
+      $(this).addClass(index % 2 === 0 ? 'odd' : 'even');
+    });
+  }
+
+  function formatChildRows(data, parentId) {
+    return data.expanded_rows.map((row, index, arr) => `
+          <tr class="expanded-content" data-parent="${parentId}">
+              <td class="doc_indent">
                 <div class="d-flex align-items-center gap-2">
-                  <span class="icon icon-document-gray icon-md m-0"></span>
-                  <span>${row.document_name || d.document_name}</span>
+                    <span class="icon icon-document-gray icon-md m-0"></span>
+                    <span>${row.folder_name || row.document_name || data.document_name}</span>
                 </div>
               </td>
-              <td >${row.modified_by || d.modified_by}</td>
-              <td >${row.date_modified || d.date_modified}</td>
+              <td >${row.modified_by || data.modified_by}</td>
+              <td >${row.date_modified || data.date_modified}</td>
               <td>
               <div class="d-flex align-items-center">
                 <span class=" me-1 me-md-2 d-inline-block" role="button">
@@ -699,17 +720,37 @@ $(document).ready(function () {
               </div>
               </td>
           </tr>
-      `).join("");
+      `
+    ).join("");
+  }
+})
+
+
+$(document).ready(function () {
+  function initializeTableFilterDatePicker(selector, parentEls) {
+    $(selector).daterangepicker({
+      singleDatePicker: true,
+      autoUpdateInput: false,
+      autoApply: true,
+      applyButtonClasses: 'btn-info',
+      parentEl: $(parentEls),
+      drops: 'auto',
+      opens: "left",
+      minYear: 1901,
+      maxYear: parseInt(moment().format('YYYY'), 10)
+    });
+
+    $(selector).on('apply.daterangepicker', function (ev, picker) {
+      $(this).val(picker.startDate.format('MM/DD/YYYY'));
+    });
   }
 
-  $('.tab-trigger').on('click', function () {
-    const target = $(this).data('bs-target');
-    $(`[data-bs-toggle="tab"][data-bs-target="${target}"]`).tab('show');
-  });
-
-});
+  initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-2');
+  initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-1');
+})
 
 $(document).on('shown.bs.tab', function () {
+
   $('#entitydetails-registration-table').DataTable().columns.adjust();
   $('#entitydetails-business-table').DataTable().columns.adjust();
   $("#entitydetails-dbas-table").DataTable().columns.adjust();
@@ -740,9 +781,3 @@ $(document).on('shown.bs.tab', function () {
   });
 
 })
-
-
-
-
-
-
