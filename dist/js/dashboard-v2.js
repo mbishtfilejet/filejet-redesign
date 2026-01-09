@@ -554,10 +554,10 @@ $(document).ready(function () {
         data: null, render: function (data, type, row) {
           return `
           <div class="d-flex align-items-center">
-            <span class=" me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
+            <span data-toggle="tooltip" data-bs-original-title="EDIT" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
               <span class="icon icon-entity-edit m-0"></span>
             </span>
-            <span class=" me-1 me-md-2 d-inline-block" role="button">
+            <span data-toggle="tooltip" data-bs-original-title="DELETE" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
               <span class="icon icon-entity-delete m-0"></span>
             </span>
           </div>
@@ -621,7 +621,10 @@ $(document).ready(function () {
   const table = $("#entitydetails-documents-table").DataTable({
     ajax: {
       url: "data5.json",
-      dataSrc: 'documents_data'
+      dataSrc: function (json) {
+        table.treeData = json.documents_data;
+        return json.documents_data;
+      }
     },
     scrollX: true,
     columns: [
@@ -629,7 +632,7 @@ $(document).ready(function () {
         data: "folder_name", render: function (data, type, row) {
           return `
          <div class="d-flex align-items-center gap-3">
-          <button tabindex="0" class="dt-control m-0" role="button"></button>
+          <button tabindex="0" class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
             <span class="icon ${data.toLowerCase().includes("folder") ? "icon-folder-upload-purple" : "icon-folder-upload-danger"} icon-md m-0"></span>
             <span>${data}</span>
@@ -645,10 +648,10 @@ $(document).ready(function () {
           if (row.folder_name.toLowerCase().includes("folder")) {
             return `
           <div class="d-flex align-items-center">
-            <span class=" me-1 me-md-2 d-inline-block" role="button">
+            <span data-toggle="tooltip" data-bs-original-title="EDIT" class="me-1 me-md-2 d-inline-block" role="button">
               <span class="icon icon-entity-edit m-0"></span>
             </span>
-            <span class=" me-1 me-md-2 d-inline-block" role="button">
+            <span data-toggle="tooltip" data-bs-original-title="DELETE" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
               <span class="icon icon-entity-delete m-0"></span>
             </span>
           </div>
@@ -668,19 +671,51 @@ $(document).ready(function () {
   $("#entitydetails-documents-table tbody").on("click", "td .dt-control", function () {
     let tr = $(this).closest("tr");
     let row = table.row(tr);
-    let rowId = row.data().id;
+    let rowId = row?.data()?.id || $(tr).data('id');
+    const rowData = findChildData(table.treeData, n => n?.id === rowId);
 
+    console.log(rowId, rowData)
     if (tr.hasClass("expanded-row")) {
-      $(`.expanded-content[data-parent="${rowId}"]`).remove();
+      collapseRow(rowId);
       tr.removeClass("expanded-row");
     } else {
-      let expandedRowContent = formatChildRows(row.data(), rowId);
+      let expandedRowContent = formatChildRows(rowData, rowId);
       tr.after(expandedRowContent);
       tr.addClass("expanded-row");
-      tr.attr('data-level', rowId)
     }
     applyAlternateRowStyling();
+
+    const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
+    $(`.expanded-content[data-parent="${rowId}"]`).each(function () {
+      $(this).children('td.doc_indent')[0].style.setProperty('padding-left', parentPadding + 38 + 'px', 'important')
+    });
   });
+
+  function findChildData(data, cb) {
+    const stack = [...data];
+    while (stack.length) {
+      const node = stack.pop();
+      if (cb(node)) return node;
+      if (node.expanded_rows) {
+        stack.push(...node.expanded_rows);
+      }
+    }
+    return null;
+  }
+
+  function collapseRow(parentId) {
+    console.log("collapse func", parentId)
+    console.log($(`.expanded-content[data-parent="${parentId}"]`));
+    $(`.expanded-content[data-parent="${parentId}"]`).each(function (index, el) {
+      const row = $(el);
+      if (row.hasClass("expanded-row")) {
+        const subFolderId = row.data('id');
+        collapseRow(subFolderId);
+      }
+      row.remove();
+      row.removeClass("expanded-row")
+    });
+  }
 
   function applyAlternateRowStyling() {
     const rows = $('#entitydetails-documents-table tbody tr');
@@ -692,33 +727,41 @@ $(document).ready(function () {
 
   function formatChildRows(data, parentId) {
     return data.expanded_rows.map((row, index, arr) => `
-          <tr class="expanded-content" data-parent="${parentId}">
+          <tr class="expanded-content" data-parent="${parentId}" data-id="${row?.id || ""}">
               <td class="doc_indent">
-                <div class="d-flex align-items-center gap-2">
+                ${row?.folder_name ? `<div class="d-flex align-items-center gap-3">
+                 <button tabindex="0" class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon icon-folder-upload-purple icon-md m-0"></span>
+                    <span>${row.folder_name}</span>
+                  </div>
+                </div>`:
+        `<div class="d-flex align-items-center gap-2">
                     <span class="icon icon-document-gray icon-md m-0"></span>
                     <span>${row.folder_name || row.document_name || data.document_name}</span>
-                </div>
+                </div>`}
               </td>
               <td >${row.modified_by || data.modified_by}</td>
               <td >${row.date_modified || data.date_modified}</td>
               <td>
-              <div class="d-flex align-items-center">
-                <span class=" me-1 me-md-2 d-inline-block" role="button">
-                  <span class="icon icon-entity-edit m-0"></span>
-                </span>
-                <span class=" me-1 me-md-2 d-inline-block" role="button">
-                  <span class="icon icon-entity-download m-0"></span>
-                </span>
-                <span class=" me-1 me-md-2 d-inline-block" role="button">
-                  <span class="icon icon-entity-delete m-0"></span>
-                </span>
-              </div>
+                <div class="d-flex align-items-center">
+                  <span data-toggle="tooltip" data-bs-original-title="EDIT" class="me-1 me-md-2 d-inline-block ${row?.folder_name ? row.isEditable ? "" : "icon-disabled" : ""}" role="button">
+                    <span class="icon icon-entity-edit m-0"></span>
+                  </span>
+                  <span data-toggle="tooltip" data-bs-original-title="DOWNLOAD" class="me-1 me-md-2 d-inline-block" role="button">
+                    <span class="icon icon-entity-download m-0"></span>
+                  </span>
+                  <span data-toggle="tooltip" data-bs-original-title="DELETE" class="me-1 me-md-2 d-inline-block ${row?.folder_name ? row.isDeleteable ? "" : "icon-disabled" : ""}" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                    <span class="icon icon-entity-delete m-0"></span>
+                  </span>
+                </div>
               </td>
           </tr>
       `
     ).join("");
   }
 })
+
 
 
 $(document).ready(function () {
