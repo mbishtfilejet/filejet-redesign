@@ -481,9 +481,9 @@ $font-sora: "Sora", sans-serif;
     }
 
     .dataTable tr {
+      transition: padding 0.5s ease-in-out;
 
-      .dt-control,
-      .dt-child-control {
+      .dt-control {
         color: transparent;
         width: 1rem;
         height: 1rem;
@@ -494,6 +494,11 @@ $font-sora: "Sora", sans-serif;
         background-position: center;
         transition: transform 0.2s ease-in-out;
         cursor: pointer;
+        &.no-control{
+          visibility: hidden;
+          pointer-events: none;
+          cursor: none;
+        }
       }
     }
 

@@ -22129,8 +22129,10 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr {
   min-height: 0;
 }
-.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-control,
-.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-child-control {
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr {
+  transition: padding 0.5s ease-in-out;
+}
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-control {
   color: transparent;
   width: 1rem;
   height: 1rem;
@@ -22141,6 +22143,11 @@ body *::-webkit-scrollbar-thumb {
   background-position: center;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
+}
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-control.no-control {
+  visibility: hidden;
+  pointer-events: none;
+  cursor: none;
 }
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control,
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-child-control {
