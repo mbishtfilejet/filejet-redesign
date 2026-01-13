@@ -22083,21 +22083,29 @@ body *::-webkit-scrollbar-thumb {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  transform: scale(0);
+  transform: scale(0.5);
+  transform-origin: top left;
   transition: opacity 0.1s ease, transform 0.15s ease;
   min-width: 180px;
-  background-color: white;
+  border: 0.5px solid #6E7683;
+  border-radius: 5px;
+  background-color: #ffffff;
+  overflow: hidden;
 }
-.entityDetailTableCard #contextmenu .list-group > .list-group-item {
+.entityDetailTableCard #contextmenu .context-item {
   display: flex;
-  padding: 0.6rem;
+  padding: 0.5rem;
   flex-grow: 1;
   align-items: center;
+  border-bottom: 0.5px solid #6E7683;
   justify-content: space-between;
   color: #6E7683 !important;
   cursor: pointer;
 }
-.entityDetailTableCard #contextmenu .list-group > .list-group-item:hover {
+.entityDetailTableCard #contextmenu .context-item:last-child {
+  border-bottom: none;
+}
+.entityDetailTableCard #contextmenu .context-item:hover {
   background-color: #e9ecef;
 }
 .entityDetailTableCard #contextmenu.show {
@@ -22196,10 +22204,6 @@ body *::-webkit-scrollbar-thumb {
 }
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-content td.doc_indent {
   padding-left: 40px !important;
-}
-.entityDetailTableCard .entityDetailDirectorsTable .dataTables_wrapper .dataTable thead th:first-child {
-  width: 20px !important;
-  max-width: 20px !important;
 }
 .entityDetailTableCard .dataTables_wrapper .row:last-child:has(.dataTables_info), .entityDetailTableCard .dataTables_wrapper .boc-light .boc-filter > div:last-child:has(.dataTables_info), .boc-light .entityDetailTableCard .dataTables_wrapper .boc-filter > div:last-child:has(.dataTables_info) {
   display: none !important;
@@ -22336,10 +22340,16 @@ body *::-webkit-scrollbar-thumb {
   padding: 5px 0px !important;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   padding-inline: 10px !important;
   background-color: transparent !important;
   border: none !important;
+}
+.SOP-model .subfolder-list .list-group .list-group-item:hover {
+  background-color: #D8DDDF !important;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.2 rem;
 }
 
 .enitityDetails_servicecards {

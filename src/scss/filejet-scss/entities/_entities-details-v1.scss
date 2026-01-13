@@ -378,19 +378,27 @@ $font-sora: "Sora", sans-serif;
     position: fixed;
     visibility: hidden;
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0.5);
+    transform-origin: top left ;
     transition: opacity 0.1s ease, transform 0.15s ease;
     min-width: 180px;
-    background-color: white;
+    border: 0.5px solid #6E7683;
+    border-radius: 5px;
+    background-color: #ffffff;
+    overflow: hidden;
 
-    .list-group>.list-group-item {
+    .context-item {
       display: flex;
-      padding: 0.6rem;
+      padding: 0.5rem;
       flex-grow: 1;
       align-items: center;
+      border-bottom: 0.5px solid #6E7683;
       justify-content: space-between;
       color: #6E7683 !important;
       cursor: pointer;
+      &:last-child{
+        border-bottom: none;
+      }
 
       &:hover {
         background-color: #e9ecef;
@@ -557,19 +565,6 @@ $font-sora: "Sora", sans-serif;
 
     .dataTable tr.expanded-content td.doc_indent {
       padding-left: 40px !important;
-    }
-  }
-
-  .entityDetailDirectorsTable {
-    .dataTables_wrapper .dataTable {
-      thead {
-        th {
-          &:first-child {
-            width: 20px !important;
-            max-width: 20px !important;
-          }
-        }
-      }
     }
   }
 
@@ -743,10 +738,16 @@ $font-sora: "Sora", sans-serif;
         padding: 5px 0px !important;
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 10px;
         padding-inline: 10px !important;
         background-color: transparent !important;
         border: none !important;
+        &:hover{
+          background-color: #D8DDDF !important;
+          cursor: pointer;
+          text-decoration: underline;
+          text-underline-offset: 0.2 rem;
+        }
       }
     }
   }
