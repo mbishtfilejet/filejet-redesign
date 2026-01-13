@@ -21780,6 +21780,10 @@ body *::-webkit-scrollbar-thumb {
   background-image: url("../../../../dist/images/icons/download-white-on-green.svg");
 }
 
+.icon-folder-outline {
+  background-image: url("../../../../dist/images/icons/folder-dark-outline.svg");
+}
+
 .form-disabled {
   background-image: none !important;
   background-color: #3E484A !important;
@@ -21976,9 +21980,9 @@ body *::-webkit-scrollbar-thumb {
 .boc-light #boc-ppdf-btns .entityTabsContent .asofcalender-input-2 #boc-ppdf-footer {
   background-image: url("../../../../dist/images/icons/calander-icon-light.svg") !important;
   background-size: 14px !important;
-  background-position-x: 92% !important;
+  background-position-x: 95% !important;
   background-repeat: no-repeat !important;
-  background-position-y: center !important;
+  background-position-y: 40% !important;
   margin: 0 !important;
   min-height: 0 !important;
   box-shadow: none !important;
@@ -22073,6 +22077,33 @@ body *::-webkit-scrollbar-thumb {
 
 .entityDetailTableCard {
   background-color: white;
+  position: relative;
+}
+.entityDetailTableCard #contextmenu {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.1s ease, transform 0.15s ease;
+  min-width: 180px;
+  background-color: white;
+}
+.entityDetailTableCard #contextmenu .list-group > .list-group-item {
+  display: flex;
+  padding: 0.6rem;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  color: #6E7683 !important;
+  cursor: pointer;
+}
+.entityDetailTableCard #contextmenu .list-group > .list-group-item:hover {
+  background-color: #e9ecef;
+}
+.entityDetailTableCard #contextmenu.show {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
 }
 .entityDetailTableCard .icon-entity-edit:hover {
   background-image: url("../../../../dist/images/icons/edit-dark.svg");
@@ -22126,6 +22157,12 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .entityDetailDBAsTable .badge {
   color: black;
 }
+.entityDetailTableCard .entityDetailDocumentsTable {
+  position: relative;
+}
+.entityDetailTableCard .entityDetailDocumentsTable .dataTables_scrollBody {
+  padding: 0px !important;
+}
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr {
   min-height: 0;
 }
@@ -22148,6 +22185,10 @@ body *::-webkit-scrollbar-thumb {
   visibility: hidden;
   pointer-events: none;
   cursor: none;
+}
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row {
+  background-color: #D8DDDF !important;
+  border: 2px solid rgba(0, 0, 0, 0.3) !important;
 }
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control,
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-child-control {
@@ -22237,6 +22278,68 @@ body *::-webkit-scrollbar-thumb {
 }
 .SOP-model .form-check.typecheckradio label {
   text-transform: uppercase !important;
+}
+.SOP-model .dropupload-zone {
+  border: none;
+  flex-direction: column;
+  padding: 20px;
+  color: #272A2E;
+}
+.SOP-model .dropupload-zone .dropupload-zone__prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.SOP-model .dropupload-zone .dropupload-zone__prompt .btn, .SOP-model .dropupload-zone .dropupload-zone__prompt .boc-light #boc-ppdf-btns #boc-prev-save, .boc-light #boc-ppdf-btns .SOP-model .dropupload-zone .dropupload-zone__prompt #boc-prev-save, .SOP-model .dropupload-zone .dropupload-zone__prompt .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-ppdf-btns .SOP-model .dropupload-zone .dropupload-zone__prompt #boc-prev-cancel {
+  background-color: var(--bs-purple);
+  color: white;
+  padding: 4px 10px !important;
+}
+.SOP-model .dropupload-zone .dropupload-zone__input {
+  display: none;
+  visibility: hidden;
+}
+.SOP-model .folder-info-wrapper h6 {
+  margin-bottom: 0.5rem !important;
+  font-size: 12px !important;
+  line-height: normal;
+}
+.SOP-model .folder-list .list-group {
+  background-color: transparent !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  align-items: center;
+}
+.SOP-model .folder-list .list-group .list-group-item {
+  padding: 0 !important;
+  border: none !important;
+  font-size: 13px !important;
+  margin-right: 5px !important;
+}
+.SOP-model .folder-list .list-group .list-group-item a.active {
+  font-weight: 700 !important;
+}
+.SOP-model .subfolder-list {
+  background-color: #F3F5F8;
+  overflow: hidden;
+  max-height: 178px;
+  overflow-y: auto;
+}
+.SOP-model .subfolder-list .list-group {
+  border-radius: 0 !important;
+  padding: 5px 0px;
+}
+.SOP-model .subfolder-list .list-group .list-group-item {
+  padding: 5px 0px !important;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-inline: 10px !important;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 .enitityDetails_servicecards {
