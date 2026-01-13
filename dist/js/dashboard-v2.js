@@ -626,6 +626,9 @@ $(document).ready(function () {
         return json.documents_data;
       }
     },
+    createdRow: function (row, data, dataIndex) {
+      $(row).addClass('parent');
+    },
     scrollX: true,
     columns: [
       {
@@ -668,20 +671,28 @@ $(document).ready(function () {
   });
 
   // parent folder logic 
+
   $("#entitydetails-documents-table tbody").on("click", "td .dt-control", function () {
     let tr = $(this).closest("tr");
+    let dataId = tr.data('id') || "";
     let row = table.row(tr);
-    let rowId = row?.data()?.id || $(tr).data('id');
+    let parentData = dataId ? table.row($(`tr.parent[data-id=${dataId}]`).first())?.data() : row?.data();
+    console.log(parentData)
+    let rowId = row?.data()?.id || $(tr).data('level-id');
+
     const rowData = findChildData(table.treeData, n => n?.id === rowId);
 
-    console.log(rowId, rowData)
+    // console.log(rowId, rowData)
     if (tr.hasClass("expanded-row")) {
       collapseRow(rowId);
       tr.removeClass("expanded-row");
     } else {
-      let expandedRowContent = formatChildRows(rowData, rowId);
+      let expandedRowContent = formatChildRows(rowData, rowId, dataId || rowId);
       tr.after(expandedRowContent);
       tr.addClass("expanded-row");
+      if (!dataId) {
+        tr.attr('data-id', rowId)
+      }
     }
     applyAlternateRowStyling();
 
@@ -704,12 +715,10 @@ $(document).ready(function () {
   }
 
   function collapseRow(parentId) {
-    console.log("collapse func", parentId)
-    console.log($(`.expanded-content[data-parent="${parentId}"]`));
     $(`.expanded-content[data-parent="${parentId}"]`).each(function (index, el) {
       const row = $(el);
       if (row.hasClass("expanded-row")) {
-        const subFolderId = row.data('id');
+        const subFolderId = row.data('level-id');
         collapseRow(subFolderId);
       }
       row.remove();
@@ -725,9 +734,9 @@ $(document).ready(function () {
     });
   }
 
-  function formatChildRows(data, parentId) {
+  function formatChildRows(data, parentId, dataLevelId = "") {
     return data.expanded_rows.map((row, index, arr) => `
-          <tr class="expanded-content" data-parent="${parentId}" data-id="${row?.id || ""}">
+          <tr class="expanded-content" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
               <td class="doc_indent">
                 ${row?.folder_name ? `<div class="d-flex align-items-center gap-3">
                  <button tabindex="0" class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
@@ -762,31 +771,6 @@ $(document).ready(function () {
   }
 })
 
-
-
-$(document).ready(function () {
-  function initializeTableFilterDatePicker(selector, parentEls) {
-    $(selector).daterangepicker({
-      singleDatePicker: true,
-      autoUpdateInput: false,
-      autoApply: true,
-      applyButtonClasses: 'btn-info',
-      parentEl: $(parentEls),
-      drops: 'auto',
-      opens: "left",
-      minYear: 1901,
-      maxYear: parseInt(moment().format('YYYY'), 10)
-    });
-
-    $(selector).on('apply.daterangepicker', function (ev, picker) {
-      $(this).val(picker.startDate.format('MM/DD/YYYY'));
-    });
-  }
-
-  initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-2');
-  initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-1');
-})
-
 $(document).on('shown.bs.tab', function () {
 
   $('#entitydetails-registration-table').DataTable().columns.adjust();
@@ -818,4 +802,81 @@ $(document).on('shown.bs.tab', function () {
     $('.select2-search__field').attr('placeholder', 'Search...');
   });
 
-})
+});
+
+
+
+$(function () {
+  const contextMenu = $('#contextmenu').get(0);
+  $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", function (e) {
+    e.preventDefault();
+    e.stopPropagation()
+
+    contextMenu.classList.add("show");
+    const menuWidth = contextMenu.offsetWidth;
+    const menuHeight = contextMenu.offsetHeight;
+
+    // Get viewport dimensions
+    let windowWidth = window.innerWidth || document.documentElement.clientWidth;
+    let windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    console.log(`menu -> height:${menuHeight}px width:${menuWidth}  viewport: width:${windowWidth} height:${windowHeight}`)
+
+    // Calculating the 'left' position
+    let leftPos = e.clientX;
+    if (leftPos + menuWidth > windowWidth) {
+      leftPos = windowWidth - menuWidth;
+    }
+
+    // Calculating the 'top' position
+    let topPos = e.clientY;
+    if (topPos + menuHeight > windowHeight) {
+      topPos = windowHeight - menuHeight;
+    }
+
+    // Set the menu's position
+    contextMenu.style.left = `${leftPos}px`;
+    contextMenu.style.top = `${topPos}px`;
+  });
+
+  $(this).on('contextmenu click scroll', function (e) {
+    if (contextMenu) {
+      contextMenu.classList.remove('show');
+    }
+  })
+});
+
+
+$(document).ready(function () {
+
+  function formatAsOfDate(date) {
+    const today = moment().startOf('day');
+    const picked = date.clone().startOf('day');
+
+    if (picked.isSame(today, 'day')) return 'As of Today';
+    return 'As of ' + picked.format('MM/DD/YYYY');
+  }
+
+  function initializeTableFilterDatePicker(selector, parentEls) {
+    $(selector).daterangepicker({
+      singleDatePicker: true,
+      autoUpdateInput: false,
+      autoApply: true,
+      startDate: moment(),
+      endDate: moment(),
+      applyButtonClasses: 'btn-info',
+      parentEl: $(parentEls),
+      drops: 'auto',
+      opens: "left",
+      minYear: 1901,
+      maxYear: parseInt(moment().format('YYYY'), 10)
+    });
+
+    $(selector).on('apply.daterangepicker', function (ev, picker) {
+      $(this).val(formatAsOfDate(picker.startDate));
+    });
+  }
+
+  initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-2');
+  initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-1');
+});
