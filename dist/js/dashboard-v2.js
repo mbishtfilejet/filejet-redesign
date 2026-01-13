@@ -578,11 +578,6 @@ $(document).ready(function () {
     },
     scrollX: true,
     columns: [
-      {
-        data: null, render: function () {
-          return `<input class="d-flex form-check-input" type="checkbox" />`;
-        }
-      },
       { data: "name" },
       { data: "role" },
       { data: "email" },
