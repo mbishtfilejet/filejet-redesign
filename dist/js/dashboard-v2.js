@@ -875,3 +875,73 @@ $(document).ready(function () {
   initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-2');
   initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-1');
 });
+
+
+
+function multipleFileUploadInput() {
+  document.querySelectorAll(".dropupload-zone__input").forEach(function (inputElement, index) {
+    const dropZoneElement = inputElement.closest('.dropupload-zone');
+
+
+
+    inputElement.addEventListener("change", (e) => {
+      if (inputElement.files.length) {
+        updateUploadFileList(dropZoneElement, index, inputElement.files);
+      }
+    });
+
+    dropZoneElement.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropZoneElement.classList.add("dragupload-over");
+    })
+
+    dropZoneElement.addEventListener("dragend", function () {
+      dropZoneElement.classList.remove("dragupload-over");
+    })
+
+    dropZoneElement.addEventListener("drop", (e) => {
+      e.preventDefault();
+      if (e.dataTransfer?.files?.length) {
+        updateUploadFileList(dropZoneElement, index, e.dataTransfer.files);
+      }
+
+      dropZoneElement.classList.remove("dragupload-over");
+
+
+    });
+  });
+}
+
+function updateUploadFileList(dropZoneElement, index, files) {
+  let mainWrapperElement = dropZoneElement.closest("form")
+  let uploadFileListElement = document.querySelector(`#uploadFilelist_${index}`);
+
+  if (!uploadFileListElement) {
+    uploadFileListElement = document.createElement("div");
+    uploadFileListElement.className = "uploadfilelist-wrapper m-0 mb-4 p-3 bg-white rounded-2";
+    uploadFileListElement.id = `uploadFilelist_${index}`;
+    mainWrapperElement.append(uploadFileListElement)
+  }
+  const htmlContent = [...files].map((item, index) => {
+    let filename = item.name.split(".");
+    let ext = filename.pop();
+    filename = filename.join("")
+    return `<div class="uploadfilelist-item">
+              <div class="uploadfile-info">
+                <span class="icon icon-document-gray icon-lg m-0"></span>
+                <div class="d-flex flex-column"> 
+                  <span class="text-capitalize">${filename}</span>
+                  <span class="context">Loream iplslum</span>
+                </div>
+              </div>
+              <div class="action">
+                <span class="icon icon-new-edit icon-lg m-0" data-toggle="tooltip"
+                  aria-label="EDIT" data-bs-original-title="EDIT"></span>
+                <span class="icon icon-new-delete icon-lg m-0" data-toggle="tooltip"
+                  aria-label="DELETE" data-bs-original-title="DELETE"></span>
+              </div>
+            </div>`;
+  }).join("");
+  uploadFileListElement.innerHTML += htmlContent;
+}
+multipleFileUploadInput();
