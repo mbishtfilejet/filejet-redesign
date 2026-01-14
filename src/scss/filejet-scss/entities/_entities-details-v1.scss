@@ -74,6 +74,148 @@ $font-sora: "Sora", sans-serif;
     }
   }
 
+  .SOP-model {
+    .form-control-search {
+      background-image: url("../../../../dist/images/icons/search-light.svg") !important;
+      background-position: right 5px center !important;
+    }
+
+    .form-check.typecheckradio label {
+      text-transform: uppercase !important;
+    }
+
+    .dropupload-zone {
+      flex-direction: column;
+      padding: 20px;
+      border: 1px dashed #dee2e6;
+      color: $color-gray-900;
+
+      &.dragupload-over {
+        border: 2px solid var(--bs-filejet-purple-indigo) !important;
+        background-color: #f2f2ff;
+      }
+
+      .dropupload-zone__prompt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .btn {
+          background-color: var(--bs-purple);
+          color: white;
+          padding: 4px 10px !important;
+        }
+      }
+
+      .dropupload-zone__input {
+        display: none;
+        visibility: hidden;
+      }
+    }
+
+    .folder-info-wrapper {
+      h6 {
+        margin-bottom: 0.5rem !important;
+        font-size: 12px !important;
+        line-height: normal;
+      }
+    }
+
+    .folder-list {
+      .list-group {
+        background-color: transparent !important;
+        flex-direction: row;
+        flex-wrap: wrap;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        align-items: center;
+        column-gap: 5px;
+
+        .list-group-item {
+          padding: 0 !important;
+          border: none !important;
+          font-size: 13px !important;
+
+          a.active {
+            font-weight: 700 !important;
+          }
+        }
+      }
+    }
+
+    .subfolder-list {
+      background-color: #F3F5F8;
+      overflow: hidden;
+      max-height: 170px;
+      overflow-y: auto;
+
+      .list-group {
+        border-radius: 0 !important;
+
+        .list-group-item {
+          padding: 5px 0px !important;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-inline: 10px !important;
+          background-color: transparent !important;
+          border: none !important;
+
+          &:hover {
+            background-color: #D8DDDF !important;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 0.2rem;
+          }
+        }
+      }
+    }
+
+    .uploadfilelist-wrapper {
+      width: 100%;
+
+      .uploadfilelist-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-block: 5px;
+
+        .action {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          .icon-lg {
+            width: 18px !important;
+            height: 18px !important;
+          }
+        }
+
+        &+.uploadfilelist-item {
+          border-top: 2px solid #dee2e6;
+        }
+
+        &:first-child {
+          padding-top: 0;
+        }
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+
+        .uploadfile-info {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          .context {
+            color: #8690A0;
+          }
+        }
+      }
+    }
+  }
+
 
   .toggle-content.show {
     opacity: 100% !important;
@@ -379,11 +521,10 @@ $font-sora: "Sora", sans-serif;
     visibility: hidden;
     opacity: 0;
     transform: scale(0.5);
-    transform-origin: top left ;
+    transform-origin: top left;
     transition: opacity 0.1s ease, transform 0.15s ease;
     min-width: 180px;
     border: 0.5px solid #6E7683;
-    border-radius: 5px;
     background-color: #ffffff;
     overflow: hidden;
 
@@ -396,7 +537,8 @@ $font-sora: "Sora", sans-serif;
       justify-content: space-between;
       color: #6E7683 !important;
       cursor: pointer;
-      &:last-child{
+
+      &:last-child {
         border-bottom: none;
       }
 
@@ -656,100 +798,6 @@ $font-sora: "Sora", sans-serif;
     margin: 0;
     margin-left: auto !important;
     color: $color-medium-gray;
-  }
-}
-
-.SOP-model {
-  .form-control-search {
-    background-image: url("../../../../dist/images/icons/search-light.svg") !important;
-    background-position: right 5px center !important;
-  }
-
-  .form-check.typecheckradio label {
-    text-transform: uppercase !important;
-  }
-
-  .dropupload-zone {
-    border: none;
-    flex-direction: column;
-    padding: 20px;
-    color: $color-gray-900;
-
-    .dropupload-zone__prompt {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      .btn {
-        background-color: var(--bs-purple);
-        color: white;
-        padding: 4px 10px !important;
-      }
-    }
-
-    .dropupload-zone__input {
-      display: none;
-      visibility: hidden;
-    }
-  }
-
-  .folder-info-wrapper {
-    h6 {
-      margin-bottom: 0.5rem !important;
-      font-size: 12px !important;
-      line-height: normal;
-    }
-  }
-
-  .folder-list {
-    .list-group {
-      background-color: transparent !important;
-      flex-direction: row;
-      flex-wrap: wrap;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-      align-items: center;
-
-      .list-group-item {
-        padding: 0 !important;
-        border: none !important;
-        font-size: 13px !important;
-        margin-right: 5px !important;
-
-        a.active {
-          font-weight: 700 !important;
-        }
-      }
-    }
-  }
-
-  .subfolder-list {
-    background-color: #F3F5F8;
-    overflow: hidden;
-    max-height: 178px;
-    overflow-y: auto;
-
-    .list-group {
-      border-radius: 0 !important;
-      padding: 5px 0px;
-
-      .list-group-item {
-        padding: 5px 0px !important;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding-inline: 10px !important;
-        background-color: transparent !important;
-        border: none !important;
-        &:hover{
-          background-color: #D8DDDF !important;
-          cursor: pointer;
-          text-decoration: underline;
-          text-underline-offset: 0.2rem;
-        }
-      }
-    }
   }
 }
 
