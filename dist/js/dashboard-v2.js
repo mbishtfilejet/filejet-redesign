@@ -470,7 +470,12 @@ $(document).ready(function () {
         data: "status", render: function (data, type, row) {
           return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
         }
-      }
+      },
+      { data: null , render: function (data, type, row){
+        return `<span class="d-inline-block ms-3" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
+                <span class="icon icon-stop-line m-0"></span>
+            </span>`;
+      } }
     ],
     order: [[0, "asc"]],
     lengthChange: false,  // Removed pagination
@@ -616,13 +621,10 @@ $(document).ready(function () {
   const table = $("#entitydetails-documents-table").DataTable({
     ajax: {
       url: "data5.json",
-      dataSrc: function (json) {
-        table.treeData = json.documents_data;
-        return json.documents_data;
-      }
+      dataSrc: 'documents_data',
     },
     createdRow: function (row, data, dataIndex) {
-      $(row).addClass('parent');
+      $(row).addClass('parent edit-name-parent');
     },
     scrollX: true,
     columns: [
@@ -633,7 +635,7 @@ $(document).ready(function () {
           <button tabindex="0" class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
             <span class="icon ${data.toLowerCase().includes("folder") ? "icon-folder-upload-purple" : "icon-folder-upload-danger"} icon-md m-0"></span>
-            <span>${data}</span>
+            <span class="item-name">${data}</span>
           </div>
          </div>
         `;
@@ -646,12 +648,12 @@ $(document).ready(function () {
           if (row.folder_name.toLowerCase().includes("folder")) {
             return `
           <div class="d-flex align-items-center">
-            <span data-toggle="tooltip" data-bs-original-title="EDIT" class="me-1 me-md-2 d-inline-block" role="button">
-              <span class="icon icon-entity-edit m-0"></span>
-            </span>
-            <span data-toggle="tooltip" data-bs-original-title="DELETE" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
-              <span class="icon icon-entity-delete m-0"></span>
-            </span>
+            <span role="button" data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+              class="icon icon-entity-edit edit-name me-1 me-md-2"></span>
+            <span role="button" data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
+              class="icon icon-save save-name me-1 me-md-2"></span>
+            <span role="button" data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+              class="icon icon-entity-delete me-1 me-md-2" data-bs-toggle="modal" data-bs-target="#delete-modal"></span>
           </div>
           `
           }
@@ -671,34 +673,34 @@ $(document).ready(function () {
     let tr = $(this).closest("tr");
     let dataId = tr.data('id') || "";
     let row = table.row(tr);
-    let parentData = dataId ? table.row($(`tr.parent[data-id=${dataId}]`).first())?.data() : row?.data();
-    console.log(parentData)
     let rowId = row?.data()?.id || $(tr).data('level-id');
 
-    const rowData = findChildData(table.treeData, n => n?.id === rowId);
 
-    // console.log(rowId, rowData)
     if (tr.hasClass("expanded-row")) {
       collapseRow(rowId);
       tr.removeClass("expanded-row");
     } else {
+      let parentData = dataId ? table.row($(`tr.parent[data-id=${dataId}]`).first())?.data() : row?.data();
+      const rowData = findChildData(parentData, n => n?.id === rowId);
       let expandedRowContent = formatChildRows(rowData, rowId, dataId || rowId);
       tr.after(expandedRowContent);
       tr.addClass("expanded-row");
       if (!dataId) {
         tr.attr('data-id', rowId)
       }
+      editDocumentName();
     }
     applyAlternateRowStyling();
 
     const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
     $(`.expanded-content[data-parent="${rowId}"]`).each(function () {
-      $(this).children('td.doc_indent')[0].style.setProperty('padding-left', parentPadding + 38 + 'px', 'important')
+      if (parentPadding === 0) return;
+      $(this).children('td.doc_indent')[0].style.setProperty('padding-left', parentPadding + 30 + 'px', 'important');
     });
   });
 
   function findChildData(data, cb) {
-    const stack = [...data];
+    const stack = [data];
     while (stack.length) {
       const node = stack.pop();
       if (cb(node)) return node;
@@ -731,33 +733,28 @@ $(document).ready(function () {
 
   function formatChildRows(data, parentId, dataLevelId = "") {
     return data.expanded_rows.map((row, index, arr) => `
-          <tr class="expanded-content" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
+          <tr class="expanded-content edit-name-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
               <td class="doc_indent">
                 ${row?.folder_name ? `<div class="d-flex align-items-center gap-3">
                  <button tabindex="0" class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
                   <div class="d-flex align-items-center gap-2">
                     <span class="icon icon-folder-upload-purple icon-md m-0"></span>
-                    <span>${row.folder_name}</span>
+                    <span class="item-name">${row.folder_name}</span>
                   </div>
                 </div>`:
         `<div class="d-flex align-items-center gap-2">
                     <span class="icon icon-document-gray icon-md m-0"></span>
-                    <span>${row.folder_name || row.document_name || data.document_name}</span>
+                    <span class="item-name">${row.folder_name || row.document_name || data.document_name}</span>
                 </div>`}
               </td>
               <td >${row.modified_by || data.modified_by}</td>
               <td >${row.date_modified || data.date_modified}</td>
               <td>
                 <div class="d-flex align-items-center">
-                  <span data-toggle="tooltip" data-bs-original-title="EDIT" class="me-1 me-md-2 d-inline-block ${row?.folder_name ? row.isEditable ? "" : "icon-disabled" : ""}" role="button">
-                    <span class="icon icon-entity-edit m-0"></span>
-                  </span>
-                  <span data-toggle="tooltip" data-bs-original-title="DOWNLOAD" class="me-1 me-md-2 d-inline-block" role="button">
-                    <span class="icon icon-entity-download m-0"></span>
-                  </span>
-                  <span data-toggle="tooltip" data-bs-original-title="DELETE" class="me-1 me-md-2 d-inline-block ${row?.folder_name ? row.isDeleteable ? "" : "icon-disabled" : ""}" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
-                    <span class="icon icon-entity-delete m-0"></span>
-                  </span>
+                  <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" class="icon icon-entity-edit edit-name me-1 me-md-2 ${row?.folder_name ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
+                  <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" class="icon icon-save save-name me-1 me-md-2"></span>
+                  <span data-toggle="tooltip" aria-label="DOWNLOAD" data-bs-original-title="DOWNLOAD" class="icon icon-entity-download me-1 me-md-2"></span>
+                  <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" class="icon icon-entity-delete me-1 me-md-2 ${row?.folder_name ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
                 </div>
               </td>
           </tr>
@@ -797,6 +794,7 @@ $(document).on('shown.bs.tab', function () {
     $('.select2-search__field').attr('placeholder', 'Search...');
   });
 
+  editDocumentName();
 });
 
 
@@ -814,8 +812,6 @@ $(function () {
     // Get viewport dimensions
     let windowWidth = window.innerWidth || document.documentElement.clientWidth;
     let windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-    console.log(`menu -> height:${menuHeight}px width:${menuWidth}  viewport: width:${windowWidth} height:${windowHeight}`)
 
     // Calculating the 'left' position
     let leftPos = e.clientX;
@@ -926,22 +922,25 @@ function updateUploadFileList(dropZoneElement, index, files) {
     let filename = item.name.split(".");
     let ext = filename.pop();
     filename = filename.join("")
-    return `<div class="uploadfilelist-item">
+    return `<div class="uploadfilelist-item edit-name-parent">
               <div class="uploadfile-info">
                 <span class="icon icon-document-gray icon-lg m-0"></span>
                 <div class="d-flex flex-column"> 
-                  <span class="text-capitalize">${filename}</span>
+                  <span class="text-capitalize item-name">${filename}</span>
                   <span class="context">Loream iplslum</span>
                 </div>
               </div>
               <div class="action">
-                <span class="icon icon-new-edit icon-lg m-0" data-toggle="tooltip"
+                <span class="icon icon-new-edit edit-name icon-lg m-0" data-toggle="tooltip"
                   aria-label="EDIT" data-bs-original-title="EDIT"></span>
+                <span class="icon icon-save save-name icon-lg m-0"
+                  data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE"></span>
                 <span class="icon icon-new-delete icon-lg m-0" data-toggle="tooltip"
                   aria-label="DELETE" data-bs-original-title="DELETE"></span>
               </div>
             </div>`;
   }).join("");
   uploadFileListElement.innerHTML += htmlContent;
+  editDocumentName();
 }
 multipleFileUploadInput();
