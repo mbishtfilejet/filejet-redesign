@@ -557,13 +557,18 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="entityDetails-description-card col-12 col-md-3 flex-grow-1">
+                                    <div
+                                       class="entityDetails-description-card col-12 col-md-3 flex-grow-1 edit-name-parent">
                                        <div class="border rounded p-3 h-100 d-flex flex-column">
                                           <div class="d-flex justify-content-between align-items-center">
                                              <h3 class="card-label-text text-uppercase m-0">Description</h3>
-                                             <span class="icon m-0 icon-entity-edit"></span>
+                                             <span class="icon m-0 icon-entity-edit icon-sm edit-name"
+                                                data-toggle="tooltip" aria-label="EDIT"
+                                                data-bs-original-title="EDIT"></span>
+                                             <span class="icon icon-save save-name icon-sm m-0" data-toggle="tooltip"
+                                                aria-label="SAVE" data-bs-original-title="SAVE"></span>
                                           </div>
-                                          <p class="m-0 mt-2 text-wrap mt-4">
+                                          <p class="m-0 mt-2 text-wrap mt-4 item-name">
                                              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
                                              ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
                                              parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
@@ -726,6 +731,7 @@
                                        <th>Registration</th>
                                        <th>Entity file #</th>
                                        <th>Status</th>
+                                       <th data-orderable="false">Action</th>
                                     </tr>
                                  </thead>
                               </table>
@@ -1404,6 +1410,56 @@
       </div>
    </div>
 
+   <!-- Archive Jurisdiction Modal Start -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="archiveJuridication" tabindex="-1" 
+      aria-labelledby="archiveJuridicationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                  <span class="bg-danger p-3 rounded-2 me-4 d-inline-block">
+                     <span class="icon icon-md icon-stop-line-white m-0"></span>
+                  </span>
+                  <div>
+                     <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Jurisdiction Archive</span>
+                     <h3 class="fs-3 m-0 font-weight-700">Archive This Jurisdiction?</h3>
+                  </div>
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+               <p>By selecting to archive this entity you will no longer have access to the entity profile or the
+                  documents for this entity. Maintenance triggers and notifications will be removed. </p>
+               <p>Your account will be updated for the next billing cycle.</p>
+               <p class="font-weight-500">You also have the option for Filejet to dissolve this Jurisdiction
+                  registration with the State on your behalf.</p>
+            </div>
+            <!-- Modal Body End -->
+
+            <div class="modal-footer mt-3 pb-0">
+               <div class="d-flex justify-content-end w-100">
+                  <button type="button"
+                     class="btn btn-link text-uppercase px-2 px-sm-4 text-decoration-none font-weight-600"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <button type="button"
+                     class="btn light-orange-bg text-uppercase px-2 px-sm-4 text-decoration-none font-weight-600 me-2 me-sm-3">
+                     <span class="text-brown opacity-100 ">Archive Only</span>
+                  </button>
+                  <button type="button"
+                     class="btn btn-danger text-uppercase px-2 px-sm-4 text-decoration-none font-weight-600">
+                     Archive and Dissolve
+                  </button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Archive Jurisdiction Modal End -->
+
    <!-- Upload Documents In SubFolder Modal 01 Start -->
    <div class="modal modal-right fade filter-slideout SOP-model" id="upload-doc-sub01-modal" tabindex="-1"
       aria-labelledby="upload-doc-sub01-label" aria-hidden="true">
@@ -1958,9 +2014,15 @@
                            <div class="custom-dropdown">
                               <select class="form-select">
                                  <option selected disabled hidden>Select Role</option>
+                                 <option value="CEO">CEO</option>
+                                 <option value="CFO">CFO</option>
                                  <option value="President">President</option>
+                                 <option value="Vice President">Vice President</option>
+                                 <option value="Secretary">Secretary</option>
+                                 <option value="Chairman">Chairman</option>
+                                 <option value="Vice Chairman">Vice Chairman</option>
+                                 <option value="Treasurer">Treasurer</option>
                                  <option value="Director">Director</option>
-                                 <option value="Shareholder">Shareholder</option>
                                  <option value="Other">Other</option>
                               </select>
                            </div>
@@ -2165,9 +2227,15 @@
                            <div class="custom-dropdown">
                               <select class="form-select">
                                  <option selected disabled hidden>Select Role</option>
+                                 <option value="CEO">CEO</option>
+                                 <option value="CFO">CFO</option>
                                  <option value="President">President</option>
+                                 <option value="Vice President">Vice President</option>
+                                 <option value="Secretary">Secretary</option>
+                                 <option value="Chairman">Chairman</option>
+                                 <option value="Vice Chairman">Vice Chairman</option>
+                                 <option value="Treasurer">Treasurer</option>
                                  <option value="Director">Director</option>
-                                 <option value="Shareholder">Shareholder</option>
                                  <option value="Other">Other</option>
                               </select>
                            </div>
