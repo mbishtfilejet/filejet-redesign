@@ -525,6 +525,7 @@ $font-sora: "Sora", sans-serif;
     transition: opacity 0.1s ease, transform 0.15s ease;
     min-width: 180px;
     border: 0.5px solid #6E7683;
+    border-radius: 3px;
     background-color: #ffffff;
     overflow: hidden;
 
@@ -580,8 +581,15 @@ $font-sora: "Sora", sans-serif;
 
           &:nth-child(3),
           &:nth-child(4),
-          &:nth-child(5) {
+          &:nth-child(5)
+          {
             width: 100px;
+          }
+
+          &:last-child
+           {
+            max-width: 60px !important;
+            width: 60px;
           }
         }
       }
@@ -713,14 +721,6 @@ $font-sora: "Sora", sans-serif;
   .dataTables_wrapper .row:last-child:has(.dataTables_info) {
     display: none !important;
   }
-
-  .dataTables_wrapper .dataTable thead th:last-child {
-
-    &::after,
-    &::before {
-      right: 7px !important;
-    }
-  }
 }
 
 .entityDetails-registration-card {
@@ -746,12 +746,6 @@ $font-sora: "Sora", sans-serif;
     font-weight: 400;
     letter-spacing: -0.3px;
   }
-
-  .icon-entity-edit {
-    width: 13px;
-    height: 13px;
-  }
-
 }
 
 .entityDetails-orders-card,
