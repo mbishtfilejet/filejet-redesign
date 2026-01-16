@@ -332,8 +332,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // filter end
 
 
-
-
 // external entity table start
 $(document).ready(function () {
   let isExternalDashboard = typeof dashboardType !== "undefined" && dashboardType === "external_dashboard";
@@ -454,7 +452,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // entity details table start
 $(document).ready(function () {
-  let table = $("#entitydetails-registration-table").DataTable({
+
+  // entity detail Registration Table
+  $("#entitydetails-registration-table").DataTable({
     ajax: {
       url: "data5.json",
       dataSrc: 'registration_data'
@@ -483,7 +483,8 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   });
 
-  let table2 = $("#entitydetails-business-table").DataTable({
+  // entity detail Business Table
+  $("#entitydetails-business-table").DataTable({
     ajax: {
       url: "data5.json",
       dataSrc: 'business_license_data'
@@ -513,7 +514,8 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   });
 
-  let table3 = $("#entitydetails-dbas-table").DataTable({
+  // entity detail DBAS Table
+  $("#entitydetails-dbas-table").DataTable({
     ajax: {
       url: "data5.json",
       dataSrc: 'dbas_data'
@@ -543,7 +545,8 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   })
 
-  let table4 = $("#entitydetails-ownership-table").DataTable({
+  // entity detail Business Table
+  $("#entitydetails-ownership-table").DataTable({
     ajax: {
       url: "data5.json",
       dataSrc: 'ownership_data'
@@ -576,7 +579,8 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   });
 
-  let table5 = $("#entitydetails-director-table").DataTable({
+  // entity detail Director Table
+  $("#entitydetails-director-table").DataTable({
     ajax: {
       url: "data5.json",
       dataSrc: 'director_data'
@@ -609,6 +613,7 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   });
 
+  // Trigger or route to associated tabs
   $('.tab-trigger').on('click', function () {
     const target = $(this).data('bs-target');
     $(`[data-bs-toggle="tab"][data-bs-target="${target}"]`).tab('show');
@@ -673,8 +678,7 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   });
 
-  // parent folder logic 
-
+  // Folder/SUbfolder like structure logic 
   $("#entitydetails-documents-table tbody").on("click", "td .dt-control", function () {
     let tr = $(this).closest("tr");
     let dataId = tr.data('id') || "";
@@ -781,6 +785,7 @@ $(document).ready(function () {
   }
 })
 
+//adjusting table on tabs change
 $(document).on('shown.bs.tab', function () {
 
   $('#entitydetails-registration-table').DataTable().columns.adjust();
@@ -816,7 +821,7 @@ $(document).on('shown.bs.tab', function () {
 });
 
 
-
+// context menu logic start
 $(function () {
   const contextMenu = $('#contextmenu').get(0);
   $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", function (e) {
@@ -855,7 +860,7 @@ $(function () {
   })
 });
 
-
+// Logic for intializeing date and format date 
 $(document).ready(function () {
 
   function formatAsOfDate(date) {
@@ -871,8 +876,6 @@ $(document).ready(function () {
       singleDatePicker: true,
       autoUpdateInput: false,
       autoApply: true,
-      startDate: moment(),
-      endDate: moment(),
       applyButtonClasses: 'btn-info',
       parentEl: $(parentEls),
       drops: 'auto',
@@ -891,7 +894,7 @@ $(document).ready(function () {
 });
 
 
-
+// code for multiple file upload and drag & drop
 function multipleFileUploadInput() {
   document.querySelectorAll(".dropupload-zone__input").forEach(function (inputElement, index) {
     const dropZoneElement = inputElement.closest('.dropupload-zone');
