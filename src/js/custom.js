@@ -427,6 +427,7 @@ function editDocumentName() {
   $('.save-name').hide();
 
   $('.edit-name').click(function () {
+    $('.tooltip').remove();
     $(this).hide();
     $(this).parents('.edit-name-parent').find('.item-name').attr('contentEditable', true).css('border', '1px solid #ccc').focus();
     $(this).parents('.edit-name-parent').find('.save-name').show();
