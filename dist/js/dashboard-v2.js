@@ -632,7 +632,7 @@ $(document).ready(function () {
         data: "folder_name", render: function (data, type, row) {
           return `
          <div class="d-flex align-items-center gap-3">
-          <button tabindex="0" class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
+          <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
             <span class="icon ${data.toLowerCase().includes("folder") ? "icon-folder-upload-purple" : "icon-folder-upload-danger"} icon-md m-0"></span>
             <span class="item-name">${data}</span>
@@ -648,12 +648,18 @@ $(document).ready(function () {
           if (row.folder_name.toLowerCase().includes("folder")) {
             return `
           <div class="d-flex align-items-center">
-            <span role="button" data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-              class="icon icon-entity-edit edit-name me-1 me-md-2"></span>
-            <span role="button" data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
-              class="icon icon-save save-name me-1 me-md-2"></span>
-            <span role="button" data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-              class="icon icon-entity-delete me-1 me-md-2" data-bs-toggle="modal" data-bs-target="#delete-modal"></span>
+            <span role="button" tabindex="0" class="edit-name"> 
+              <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                class="icon icon-entity-edit me-1 me-md-2"></span>
+            </span>
+            <span role="button" tabindex="0" class="save-name"> 
+              <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
+                class="icon icon-save me-1 me-md-2"></span>
+            </span>
+            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
+              <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                class="icon icon-entity-delete me-1 me-md-2"></span>
+            </span>
           </div>
           `
           }
@@ -736,13 +742,13 @@ $(document).ready(function () {
           <tr class="expanded-content edit-name-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
               <td class="doc_indent">
                 ${row?.folder_name ? `<div class="d-flex align-items-center gap-3">
-                 <button tabindex="0" class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
+                 <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
                   <div class="d-flex align-items-center gap-2">
                     <span class="icon icon-folder-upload-purple icon-md m-0"></span>
                     <span class="item-name">${row.folder_name}</span>
                   </div>
                 </div>`:
-        `<div class="d-flex align-items-center gap-2">
+                `<div class="d-flex align-items-center gap-2">
                     <span class="icon icon-document-gray icon-md m-0"></span>
                     <span class="item-name">${row.folder_name || row.document_name || data.document_name}</span>
                 </div>`}
@@ -751,10 +757,22 @@ $(document).ready(function () {
               <td >${row.date_modified || data.date_modified}</td>
               <td>
                 <div class="d-flex align-items-center">
-                  <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" class="icon icon-entity-edit edit-name me-1 me-md-2 ${row?.folder_name ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
-                  <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" class="icon icon-save save-name me-1 me-md-2"></span>
-                  <span data-toggle="tooltip" aria-label="DOWNLOAD" data-bs-original-title="DOWNLOAD" class="icon icon-entity-download me-1 me-md-2"></span>
-                  <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" class="icon icon-entity-delete me-1 me-md-2 ${row?.folder_name ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
+                  <span role="button" tabindex="0" class="edit-name"> 
+                    <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                    class="icon icon-entity-edit me-1 me-md-2 ${row?.folder_name ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
+                  </span>
+                  <span role="button" tabindex="0" class="save-name"> 
+                    <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
+                      class="icon icon-save me-1 me-md-2"></span>
+                  </span>
+                  <span role="button" tabindex="0"> 
+                    <span data-toggle="tooltip" aria-label="DOWNLOAD" data-bs-original-title="DOWNLOAD" 
+                    class="icon icon-entity-download me-1 me-md-2"></span>
+                  </span>
+                  <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
+                    <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                      class="icon icon-entity-delete me-1 me-md-2 ${row?.folder_name ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
+                  </span>
                 </div>
               </td>
           </tr>
@@ -878,8 +896,6 @@ function multipleFileUploadInput() {
   document.querySelectorAll(".dropupload-zone__input").forEach(function (inputElement, index) {
     const dropZoneElement = inputElement.closest('.dropupload-zone');
 
-
-
     inputElement.addEventListener("change", (e) => {
       if (inputElement.files.length) {
         updateUploadFileList(dropZoneElement, index, inputElement.files);
@@ -933,7 +949,7 @@ function updateUploadFileList(dropZoneElement, index, files) {
               <div class="action">
                 <span class="icon icon-new-edit edit-name icon-lg m-0" data-toggle="tooltip"
                   aria-label="EDIT" data-bs-original-title="EDIT"></span>
-                <span class="icon icon-save save-name icon-lg m-0"
+                <span class="icon icon-save-purple save-name icon-lg m-0"
                   data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE"></span>
                 <span class="icon icon-new-delete icon-lg m-0" data-toggle="tooltip"
                   aria-label="DELETE" data-bs-original-title="DELETE"></span>
