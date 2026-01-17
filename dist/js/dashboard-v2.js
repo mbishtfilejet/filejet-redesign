@@ -827,7 +827,7 @@ $(function () {
   $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", function (e) {
     e.preventDefault();
     e.stopPropagation()
-
+    this.hidden = false;l
     contextMenu.classList.add("show");
     const menuWidth = contextMenu.offsetWidth;
     const menuHeight = contextMenu.offsetHeight;
@@ -839,13 +839,13 @@ $(function () {
     // Calculating the 'left' position
     let leftPos = e.clientX;
     if (leftPos + menuWidth > windowWidth) {
-      leftPos = windowWidth - menuWidth;
+      leftPos = e.clientX - menuWidth;
     }
 
     // Calculating the 'top' position
     let topPos = e.clientY;
     if (topPos + menuHeight > windowHeight) {
-      topPos = windowHeight - menuHeight;
+      topPos = e.clientY - menuHeight;
     }
 
     // Set the menu's position
@@ -910,7 +910,7 @@ function multipleFileUploadInput() {
       dropZoneElement.classList.add("dragupload-over");
     })
 
-    dropZoneElement.addEventListener("dragend", function () {
+    $(dropZoneElement).on("dragend dragleave", function () {
       dropZoneElement.classList.remove("dragupload-over");
     })
 
