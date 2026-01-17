@@ -943,7 +943,7 @@ function updateUploadFileList(dropZoneElement, index, files) {
     filename = filename.join("")
     return `<div class="uploadfilelist-item edit-name-parent">
               <div class="uploadfile-info">
-                <span class="icon icon-document-gray icon-lg m-0"></span>
+                <span class="icon ${ext === "pdf" ? "icon-pdf-preview icon-md" : "icon-document-gray icon-lg"} m-0"></span>
                 <div class="d-flex flex-column"> 
                   <span class="text-capitalize item-name">${filename}</span>
                   <span class="context">Loream iplslum</span>
