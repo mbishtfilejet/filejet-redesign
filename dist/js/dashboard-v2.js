@@ -634,12 +634,12 @@ $(document).ready(function () {
     scrollX: true,
     columns: [
       {
-        data: "folder_name", render: function (data, type, row) {
+        data: "name", render: function (data, type, row) {
           return `
          <div class="d-flex align-items-center gap-3">
           <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
-            <span class="icon ${data.toLowerCase().includes("folder") ? "icon-folder-upload-purple" : "icon-folder-upload-danger"} icon-md m-0"></span>
+            <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md m-0"></span>
             <span class="item-name">${data}</span>
           </div>
          </div>
@@ -650,7 +650,7 @@ $(document).ready(function () {
       { data: "date_modified" },
       {
         data: null, render: function (data, type, row) {
-          if (row.folder_name.toLowerCase().includes("folder")) {
+          if (row?.type === "custom") {
             return `
           <div class="d-flex align-items-center">
             <span role="button" tabindex="0" class="edit-name"> 
@@ -745,16 +745,16 @@ $(document).ready(function () {
     return data.expanded_rows.map((row, index, arr) => `
           <tr class="expanded-content edit-name-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
               <td class="doc_indent">
-                ${row?.folder_name ? `<div class="d-flex align-items-center gap-3">
+                ${row?.type !== "doc" ? `<div class="d-flex align-items-center gap-3">
                  <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
                   <div class="d-flex align-items-center gap-2">
                     <span class="icon icon-folder-upload-purple icon-md m-0"></span>
-                    <span class="item-name">${row.folder_name}</span>
+                    <span class="item-name">${row.name}</span>
                   </div>
                 </div>`:
-                `<div class="d-flex align-items-center gap-2">
+        `<div class="d-flex align-items-center gap-2">
                     <span class="icon icon-document-gray icon-md m-0"></span>
-                    <span class="item-name">${row.folder_name || row.document_name || data.document_name}</span>
+                    <span class="item-name">${row.name || data.name}</span>
                 </div>`}
               </td>
               <td >${row.modified_by || data.modified_by}</td>
@@ -763,7 +763,7 @@ $(document).ready(function () {
                 <div class="d-flex align-items-center">
                   <span role="button" tabindex="0" class="edit-name"> 
                     <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-                    class="icon icon-entity-edit me-1 me-md-2 ${row?.folder_name ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
+                    class="icon icon-entity-edit me-1 me-md-2 ${row?.type !== "doc" ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
                   </span>
                   <span role="button" tabindex="0" class="save-name"> 
                     <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
@@ -775,7 +775,7 @@ $(document).ready(function () {
                   </span>
                   <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
                     <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                      class="icon icon-entity-delete me-1 me-md-2 ${row?.folder_name ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
+                      class="icon icon-entity-delete me-1 me-md-2 ${row?.type !== "doc" ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
                   </span>
                 </div>
               </td>
@@ -827,7 +827,7 @@ $(function () {
   $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", function (e) {
     e.preventDefault();
     e.stopPropagation()
-    this.hidden = false;l
+    this.hidden = false;
     contextMenu.classList.add("show");
     const menuWidth = contextMenu.offsetWidth;
     const menuHeight = contextMenu.offsetHeight;
