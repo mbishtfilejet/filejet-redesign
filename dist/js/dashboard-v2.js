@@ -282,8 +282,9 @@ document.addEventListener("DOMContentLoaded", function () {
         case "roleContainer1":
         case "roleContainer2":
         case "roleContainer4":
-        case "memberroleContainer":
-        case "annualroleContainer": return "Role";
+        case "memberroleContainer": return "Role";
+        case "roleContainer5":
+        case "roleContainer6": return "Select Role";
         case "selectEntityContainer":
         case "selectEntityContainer2":
         case "reqselectEntityContainer":
@@ -315,6 +316,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ["roleContainer1", "roleDropdown1", "roleSearch1", "role-checkbox1", "roleSelectAll1"],
     ["roleContainer2", "roleDropdown2", "roleSearch2", "role-checkbox2", "roleSelectAll2"],
     ["roleContainer4", "roleDropdown4", "roleSearch4", "role-checkbox4", "roleSelectAll4"],
+    ["roleContainer5", "roleDropdown5", "roleSearch5", "role-checkbox5"],
+    ["roleContainer6", "roleDropdown6", "roleSearch5", "role-checkbox5"],
     ["memberroleContainer", "memberroleDropdown", "memberroleSearch", "memberrole-checkbox", "memberroleSelectAll"],
     ["annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll", ["CEO"]],
     ["selectEntityContainer", "selectEntityDropdown", "selectEntitySearch", "selectEntity-checkbox"],
