@@ -786,7 +786,7 @@ $(document).ready(function () {
 })
 
 //adjusting table on tabs change
-$(document).on('shown.bs.tab', function () {
+$(document).on('shown.bs.tab shown.bs.modal', function () {
 
   $('#entitydetails-registration-table').DataTable().columns.adjust();
   $('#entitydetails-business-table').DataTable().columns.adjust();
@@ -943,7 +943,7 @@ function updateUploadFileList(dropZoneElement, index, files) {
     filename = filename.join("")
     return `<div class="uploadfilelist-item edit-name-parent">
               <div class="uploadfile-info">
-                <span class="icon ${ext === "pdf" ? "icon-pdf-preview icon-md" : "icon-document-gray icon-lg"} m-0"></span>
+                <span class="icon ${ext === "pdf" ? "icon-pdf-file icon-lg" : "icon-document-gray icon-lg"} m-0"></span>
                 <div class="d-flex flex-column"> 
                   <span class="text-capitalize item-name">${filename}</span>
                   <span class="context">Loream iplslum</span>
