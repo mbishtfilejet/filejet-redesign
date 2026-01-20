@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ["roleContainer2", "roleDropdown2", "roleSearch2", "role-checkbox2", "roleSelectAll2"],
     ["roleContainer4", "roleDropdown4", "roleSearch4", "role-checkbox4", "roleSelectAll4"],
     ["roleContainer5", "roleDropdown5", "roleSearch5", "role-checkbox5"],
-    ["roleContainer6", "roleDropdown6", "roleSearch5", "role-checkbox5"],
+    ["roleContainer6", "roleDropdown6", "roleSearch6", "role-checkbox6"],
     ["memberroleContainer", "memberroleDropdown", "memberroleSearch", "memberrole-checkbox", "memberroleSelectAll"],
     ["annualroleContainer", "annualroleDropdown", "annualroleSearch", "annualrole-checkbox", "annualroleSelectAll", ["CEO"]],
     ["selectEntityContainer", "selectEntityDropdown", "selectEntitySearch", "selectEntity-checkbox"],
