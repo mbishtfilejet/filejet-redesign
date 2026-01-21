@@ -474,11 +474,13 @@ $(document).ready(function () {
           return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
         }
       },
-      { data: null , render: function (data, type, row){
-        return `<span class="d-inline-block ms-3" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
+      {
+        data: null, render: function (data, type, row) {
+          return `<span class="d-inline-block ms-3" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
                 <span class="icon icon-stop-line m-0"></span>
             </span>`;
-      } }
+        }
+      }
     ],
     order: [[0, "asc"]],
     lengthChange: false,  // Removed pagination
@@ -712,6 +714,15 @@ $(document).ready(function () {
     });
   });
 
+
+  // Remove expand-row on sorting 
+  $(`#entitydetails-documents-table`).on('order.dt draw.dt', function () {
+    $(this).find(".expanded-row").each((_, element) => {
+      element.classList.remove("expanded-row");
+    });
+  })
+
+  // function to find child Data
   function findChildData(data, cb) {
     const stack = [data];
     while (stack.length) {
@@ -724,6 +735,7 @@ $(document).ready(function () {
     return null;
   }
 
+  // function collapseRow based on clicked row ID
   function collapseRow(parentId) {
     $(`.expanded-content[data-parent="${parentId}"]`).each(function (index, el) {
       const row = $(el);
@@ -736,6 +748,7 @@ $(document).ready(function () {
     });
   }
 
+  // function to keep alternative row design
   function applyAlternateRowStyling() {
     const rows = $('#entitydetails-documents-table tbody tr');
     rows.removeClass('odd even');
@@ -744,17 +757,20 @@ $(document).ready(function () {
     });
   }
 
+  // get expanded row structure
   function formatChildRows(data, parentId, dataLevelId = "") {
-    return data.expanded_rows.map((row, index, arr) => `
-          <tr class="expanded-content edit-name-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
-              <td class="doc_indent">
-                ${row?.type !== "doc" ? `<div class="d-flex align-items-center gap-3">
-                 <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
-                  <div class="d-flex align-items-center gap-2">
-                    <span class="icon icon-folder-upload-purple icon-md m-0"></span>
-                    <span class="item-name">${row.name}</span>
-                  </div>
-                </div>`:
+    return data.expanded_rows.map((row, index, arr) =>
+      `
+        <tr class="expanded-content edit-name-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
+          <td class="doc_indent">
+            ${row?.type !== "doc" ?
+          `<div class="d-flex align-items-center gap-3">
+              <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
+              <div class="d-flex align-items-center gap-2">
+                  <span class="icon icon-folder-upload-purple icon-md m-0"></span>
+                  <span class="item-name">${row.name}</span>
+              </div>
+          </div>`:
         `<div class="d-flex align-items-center gap-2">
                     <span class="icon icon-document-gray icon-md m-0"></span>
                     <span class="item-name">${row.name || data.name}</span>
