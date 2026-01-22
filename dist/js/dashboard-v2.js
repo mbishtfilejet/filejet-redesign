@@ -482,6 +482,11 @@ $(document).ready(function () {
         }
       }
     ],
+    createdRow: function (row, data) {
+      const isForeign = (data.registrations || '').toLowerCase() === 'foreign';
+      console.log($(row), isForeign)
+      if (isForeign) $(row).find('td').addClass('text-light-blue');
+    },
     order: [[0, "asc"]],
     lengthChange: false,  // Removed pagination
     paging: false,  // Disable pagination
@@ -634,7 +639,7 @@ $(document).ready(function () {
       dataSrc: 'documents_data',
     },
     createdRow: function (row, data, dataIndex) {
-      $(row).addClass('parent edit-name-parent');
+      $(row).addClass('parent editable-parent');
     },
     scrollX: true,
     columns: [
@@ -645,24 +650,32 @@ $(document).ready(function () {
           <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
             <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md m-0"></span>
-            <span class="item-name">${data}</span>
+            <span class="input-item">${data}</span>
           </div>
          </div>
         `;
         }
       },
-      { data: "modified_by" },
-      { data: "date_modified" },
+      {
+        data: "modified_by", render: function (data, type, row) {
+          return row.modified_by === "filejet" ? null : data;
+        }
+      },
+      {
+        data: "date_modified", render: function (data, type, row) {
+          return row.modified_by === "filejet" ? null : data;
+        }
+      },
       {
         data: null, render: function (data, type, row) {
           if (row?.type === "custom") {
             return `
           <div class="d-flex align-items-center">
-            <span role="button" tabindex="0" class="edit-name"> 
+            <span role="button" tabindex="0" class="edit-content"> 
               <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
                 class="icon icon-entity-edit me-1 me-md-2"></span>
             </span>
-            <span role="button" tabindex="0" class="save-name"> 
+            <span role="button" tabindex="0" class="save-content"> 
               <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
                 class="icon icon-save me-1 me-md-2"></span>
             </span>
@@ -703,7 +716,6 @@ $(document).ready(function () {
       if (!dataId) {
         tr.attr('data-id', rowId)
       }
-      editDocumentName();
     }
     applyAlternateRowStyling();
 
@@ -761,30 +773,30 @@ $(document).ready(function () {
   function formatChildRows(data, parentId, dataLevelId = "") {
     return data.expanded_rows.map((row, index, arr) =>
       `
-        <tr class="expanded-content edit-name-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
+        <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
           <td class="doc_indent">
             ${row?.type !== "doc" ?
-          `<div class="d-flex align-items-center gap-3">
+        `<div class="d-flex align-items-center gap-3">
               <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
               <div class="d-flex align-items-center gap-2">
                   <span class="icon icon-folder-upload-purple icon-md m-0"></span>
-                  <span class="item-name">${row.name}</span>
+                  <span class="input-item">${row.name}</span>
               </div>
           </div>`:
         `<div class="d-flex align-items-center gap-2">
                     <span class="icon icon-document-gray icon-md m-0"></span>
-                    <span class="item-name">${row.name || data.name}</span>
+                    <span class="input-item">${row.name || data.name}</span>
                 </div>`}
               </td>
               <td >${row.modified_by || data.modified_by}</td>
               <td >${row.date_modified || data.date_modified}</td>
               <td>
                 <div class="d-flex align-items-center">
-                  <span role="button" tabindex="0" class="edit-name"> 
+                  <span role="button" tabindex="0" class="edit-content"> 
                     <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
                     class="icon icon-entity-edit me-1 me-md-2 ${row?.type !== "doc" ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
                   </span>
-                  <span role="button" tabindex="0" class="save-name"> 
+                  <span role="button" tabindex="0" class="save-content"> 
                     <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
                       class="icon icon-save me-1 me-md-2"></span>
                   </span>
@@ -835,8 +847,6 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
   $('.tab-content .select2').on('select2:open select2:select', () => {
     $('.select2-search__field').attr('placeholder', 'Search...');
   });
-
-  editDocumentName();
 });
 
 
@@ -912,6 +922,28 @@ $(document).ready(function () {
   initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-1');
 });
 
+// function for adding editable functionality to folder/docuemnt name and make editable content 
+function editSaveableContent() {
+  $(document).off('click', '.edit-content').on('click', '.edit-content', function (e) {
+    console.log(e.target)
+    e.preventDefault();
+    e.stopPropagation();
+    $('.tooltip').remove();
+    $(this).hide();
+    $(this).parents('.editable-parent').find('.input-item').attr('contentEditable', true).css('border', '1px solid #ccc').focus();
+    $(this).parents('.editable-parent').find('.save-content').show();
+  });
+
+  $(document).off('click', '.save-content').on('click', '.save-content', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).hide();
+    $(this).parents('.editable-parent').find('.input-item').removeAttr('contentEditable', true).css('border', '0px solid #ccc');
+    $(this).parents('.editable-parent').find('.edit-content').show();
+  });
+}
+
+editSaveableContent();
 
 // code for multiple file upload and drag & drop
 function multipleFileUploadInput() {
@@ -946,6 +978,9 @@ function multipleFileUploadInput() {
   });
 }
 
+
+
+// function for listing upload/drag & drop files
 function updateUploadFileList(dropZoneElement, index, files) {
   let mainWrapperElement = dropZoneElement.closest("form")
   let uploadFileListElement = document.querySelector(`#uploadFilelist_${index}`);
@@ -960,18 +995,18 @@ function updateUploadFileList(dropZoneElement, index, files) {
     let filename = item.name.split(".");
     let ext = filename.pop();
     filename = filename.join("")
-    return `<div class="uploadfilelist-item edit-name-parent">
+    return `<div class="uploadfilelist-item editable-parent">
               <div class="uploadfile-info">
                 <span class="icon ${ext === "pdf" ? "icon-pdf-file icon-lg" : "icon-document-gray icon-lg"} m-0"></span>
                 <div class="d-flex flex-column"> 
-                  <span class="text-capitalize item-name">${filename}</span>
+                  <span class="text-capitalize input-item">${filename}</span>
                   <span class="context">Loream iplslum</span>
                 </div>
               </div>
               <div class="action">
-                <span class="icon icon-new-edit edit-name icon-lg m-0" data-toggle="tooltip"
+                <span class="icon icon-new-edit edit-content icon-lg m-0" data-toggle="tooltip"
                   aria-label="EDIT" data-bs-original-title="EDIT"></span>
-                <span class="icon icon-save-purple save-name icon-lg m-0"
+                <span class="icon icon-save-purple save-content icon-lg m-0"
                   data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE"></span>
                 <span class="icon icon-new-delete icon-lg m-0" data-toggle="tooltip"
                   aria-label="DELETE" data-bs-original-title="DELETE"></span>
@@ -979,6 +1014,5 @@ function updateUploadFileList(dropZoneElement, index, files) {
             </div>`;
   }).join("");
   uploadFileListElement.innerHTML += htmlContent;
-  editDocumentName();
 }
 multipleFileUploadInput();
