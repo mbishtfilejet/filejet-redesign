@@ -610,10 +610,15 @@ $(document).ready(function () {
       {
         data: null, render: function () {
           return `
-          <button data-bs-toggle="modal" data-bs-target="#edit-stakeholder-modal" aria-label="editStakeHolder" type="button" 
-          class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white outside-filing-no service-take-action-164 ">
-          Update
-          </button>`;
+          <div class="d-flex align-items-center">
+            <span data-toggle="tooltip" data-bs-original-title="EDIT" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-stakeholder-modal" aria-label="editStakeHolder"">
+              <span class="icon icon-entity-edit m-0"></span>
+            </span>
+            <span data-toggle="tooltip" data-bs-original-title="DELETE" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
+              <span class="icon icon-entity-delete m-0"></span>
+            </span>
+          </div>
+          `;
         }
       }
     ],
@@ -900,13 +905,11 @@ $(document).ready(function () {
     return 'As of ' + picked.format('MM/DD/YYYY');
   }
 
-  function initializeTableFilterDatePicker(selector, parentEls) {
+  function initializeTableFilterDatePicker(selector) {
     $(selector).daterangepicker({
       singleDatePicker: true,
       autoUpdateInput: false,
       autoApply: true,
-      applyButtonClasses: 'btn-info',
-      parentEl: $(parentEls),
       drops: 'auto',
       opens: "left",
       minYear: 1901,
@@ -918,8 +921,7 @@ $(document).ready(function () {
     });
   }
 
-  initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-2');
-  initializeTableFilterDatePicker(".asofdatepicker", '.asofcalender-input-1');
+  initializeTableFilterDatePicker(".asofdatepicker");
 });
 
 // function for adding editable functionality to folder/docuemnt name and make editable content 
