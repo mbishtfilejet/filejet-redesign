@@ -20892,7 +20892,7 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
 }
 .main-dashboard-v2 .group-search-d2 .dropdown-menu.show {
   max-height: 360px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden !important;
 }
 .main-dashboard-v2 .profile-nav-v2 {
@@ -21946,6 +21946,9 @@ body *::-webkit-scrollbar-thumb {
   opacity: 90% !important;
   transition: all 0.01s ease-in-out;
 }
+.entityDetails-dashboard .editable-parent .save-content {
+  display: none;
+}
 
 .entityDetails-page {
   max-width: 100% !important;
@@ -22199,11 +22202,14 @@ body *::-webkit-scrollbar-thumb {
   background-image: url("../../../../dist/images/icons/delete-red.svg");
 }
 .entityDetailTableCard .dataTables_wrapper tbody td {
-  font-weight: 400;
-  color: var(--bs-black-primary);
+  font-weight: 400 !important;
+  color: var(--bs-black-primary) !important;
   font-size: 12px !important;
   padding: 0.5rem 0.9rem !important;
   line-height: 1.25rem !important;
+}
+.entityDetailTableCard .dataTables_wrapper tbody td.text-light-blue {
+  color: var(--bs-light-blue) !important;
 }
 .entityDetailTableCard .entityDetailRegistrationTable .dataTables_wrapper .dataTable thead th:first-child {
   width: 200px;
