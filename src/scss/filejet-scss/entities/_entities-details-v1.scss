@@ -505,6 +505,15 @@ $font-sora: "Sora", sans-serif;
     }
   }
 
+  .dataTables_wrapper .dataTables_scroll {
+
+    .dataTables_scrollHeadInner,
+    .dataTable {
+      width: inherit !important;
+      max-width: inherit !important;
+    }
+  }
+
   .entityDetailRegistrationTable {
     .dataTables_wrapper .dataTable {
       thead {
@@ -581,14 +590,6 @@ $font-sora: "Sora", sans-serif;
           &:first-child {
             width: 200px;
           }
-
-          &:nth-child(4) {
-            width: 100px;
-          }
-
-          &:nth-child(5) {
-            width: 200px;
-          }
         }
       }
     }
@@ -639,8 +640,7 @@ $font-sora: "Sora", sans-serif;
       background-color: #D8DDDF !important;
       border: 2px solid rgba(0, 0, 0, 0.3) !important;
 
-      .dt-control,
-      .dt-child-control {
+      .dt-control {
         transform: rotate(90deg);
       }
     }
@@ -650,8 +650,94 @@ $font-sora: "Sora", sans-serif;
     }
   }
 
+  .entityDetailDocumentsTableV2 {
+    position: relative;
+
+    .dataTables_wrapper .dataTable {
+      thead {
+        th {
+          &:first-child {
+            width: 1rem !important;
+            max-width: 1rem !important;
+          }
+
+          &:nth-child(2) {
+            width: 260px;
+            min-width: 260px !important;
+          }
+
+          &:nth-child(3) {
+            width: 270px;
+            min-width: 270px !important;
+          }
+
+          &:nth-child(4) {
+            width: 100px;
+            min-width: 100px !important;
+          }
+        }
+      }
+    }
+
+    .dataTables_scrollBody {
+      padding: 0px !important;
+    }
+
+    .dataTable tr {
+      min-height: 0;
+      transition: padding 0.5s ease-in-out;
+      transition: background-color;
+
+      .dt-control {
+        color: transparent;
+        width: 1rem;
+        height: 1rem;
+        border: none;
+        background-color: transparent;
+        background-image: url("../../../../dist/images/icons/right-angle-table.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+
+        &.no-control {
+          visibility: hidden;
+          pointer-events: none;
+          cursor: none;
+        }
+      }
+
+      &.expanded-row {
+        background-color: #D8DDDF !important;
+        border: 2px solid rgba(0, 0, 0, 0.3) !important;
+        transition: background-color 0.5s ease-in-out;
+
+        .dt-control {
+          transform: rotate(90deg);
+        }
+      }
+
+      &.expanded-content td.doc_indent {
+        padding-left: 35px !important;
+      }
+
+      &.rowSelect,
+      &.expanded-row.rowSelect {
+        background-color: #E8F1FE !important;
+      }
+    }
+  }
+
   .dataTables_wrapper .row:last-child:has(.dataTables_info) {
     display: none !important;
+  }
+
+  .dataTables_wrapper .dataTable thead th:last-child {
+
+    &::after,
+    &::before {
+      right: 7px !important;
+    }
   }
 }
 
@@ -809,15 +895,6 @@ $font-sora: "Sora", sans-serif;
     }
   }
 }
-
-@media (min-width:1399.98px) {
-  .entityDetailTableCard {
-    .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
-      overflow-x: hidden !important;
-    }
-  }
-}
-
 
 @keyframes fadeIn {
   from {

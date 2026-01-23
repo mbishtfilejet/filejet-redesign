@@ -22202,6 +22202,11 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .dataTables_wrapper tbody td.text-light-blue {
   color: var(--bs-light-blue) !important;
 }
+.entityDetailTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollHeadInner,
+.entityDetailTableCard .dataTables_wrapper .dataTables_scroll .dataTable {
+  width: inherit !important;
+  max-width: inherit !important;
+}
 .entityDetailTableCard .entityDetailRegistrationTable .dataTables_wrapper .dataTable thead th:first-child {
   width: 200px;
 }
@@ -22234,12 +22239,6 @@ body *::-webkit-scrollbar-thumb {
   color: black;
 }
 .entityDetailTableCard .entityDetailBusinessTable .dataTables_wrapper .dataTable thead th:first-child {
-  width: 200px;
-}
-.entityDetailTableCard .entityDetailBusinessTable .dataTables_wrapper .dataTable thead th:nth-child(4) {
-  width: 100px;
-}
-.entityDetailTableCard .entityDetailBusinessTable .dataTables_wrapper .dataTable thead th:nth-child(5) {
   width: 200px;
 }
 .entityDetailTableCard .entityDetailDBAsTable .badge {
@@ -22278,15 +22277,75 @@ body *::-webkit-scrollbar-thumb {
   background-color: #D8DDDF !important;
   border: 2px solid rgba(0, 0, 0, 0.3) !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control,
-.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-child-control {
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control {
   transform: rotate(90deg);
 }
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-content td.doc_indent {
   padding-left: 40px !important;
 }
+.entityDetailTableCard .entityDetailDocumentsTableV2 {
+  position: relative;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:first-child {
+  width: 1rem !important;
+  max-width: 1rem !important;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(2) {
+  width: 260px;
+  min-width: 260px !important;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(3) {
+  width: 270px;
+  min-width: 270px !important;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(4) {
+  width: 100px;
+  min-width: 100px !important;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_scrollBody {
+  padding: 0px !important;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr {
+  min-height: 0;
+  transition: padding 0.5s ease-in-out;
+  transition: background-color;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control {
+  color: transparent;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  background-color: transparent;
+  background-image: url("../../../../dist/images/icons/right-angle-table.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control.no-control {
+  visibility: hidden;
+  pointer-events: none;
+  cursor: none;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row {
+  background-color: #D8DDDF !important;
+  border: 2px solid rgba(0, 0, 0, 0.3) !important;
+  transition: background-color 0.5s ease-in-out;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .dt-control {
+  transform: rotate(90deg);
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-content td.doc_indent {
+  padding-left: 35px !important;
+}
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.rowSelect, .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row.rowSelect {
+  background-color: #E8F1FE !important;
+}
 .entityDetailTableCard .dataTables_wrapper .row:last-child:has(.dataTables_info), .entityDetailTableCard .dataTables_wrapper .boc-light .boc-filter > div:last-child:has(.dataTables_info), .boc-light .entityDetailTableCard .dataTables_wrapper .boc-filter > div:last-child:has(.dataTables_info) {
   display: none !important;
+}
+.entityDetailTableCard .dataTables_wrapper .dataTable thead th:last-child::after, .entityDetailTableCard .dataTables_wrapper .dataTable thead th:last-child::before {
+  right: 7px !important;
 }
 
 .entityDetails-registration-card .row > div, .entityDetails-registration-card .boc-light .boc-filter > div > div, .boc-light .entityDetails-registration-card .boc-filter > div > div, .entityDetails-registration-card .subsidiary-chart.boc-light .boc-filter > div > div, .subsidiary-chart.boc-light .entityDetails-registration-card .boc-filter > div > div, .entityDetails-registration-card .org-chart-reboot.boc-light .boc-filter > div > div, .org-chart-reboot.boc-light .entityDetails-registration-card .boc-filter > div > div {
@@ -22418,11 +22477,6 @@ body *::-webkit-scrollbar-thumb {
   }
   .entitydetailstablist .nav-link {
     font-size: 14px;
-  }
-}
-@media (min-width: 1399.98px) {
-  .entityDetailTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
-    overflow-x: hidden !important;
   }
 }
 @keyframes fadeIn {
