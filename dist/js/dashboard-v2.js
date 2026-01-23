@@ -484,7 +484,6 @@ $(document).ready(function () {
     ],
     createdRow: function (row, data) {
       const isForeign = (data.registrations || '').toLowerCase() === 'foreign';
-      console.log($(row), isForeign)
       if (isForeign) $(row).find('td').addClass('text-light-blue');
     },
     order: [[0, "asc"]],
@@ -894,6 +893,12 @@ $(function () {
   })
 });
 
+$(function () {
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+
+  popoverTriggerList.forEach(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+})
+
 // Logic for intializeing date and format date 
 $(document).ready(function () {
 
@@ -927,7 +932,6 @@ $(document).ready(function () {
 // function for adding editable functionality to folder/docuemnt name and make editable content 
 function editSaveableContent() {
   $(document).off('click', '.edit-content').on('click', '.edit-content', function (e) {
-    console.log(e.target)
     e.preventDefault();
     e.stopPropagation();
     $('.tooltip').remove();
@@ -940,8 +944,17 @@ function editSaveableContent() {
     e.preventDefault();
     e.stopPropagation();
     $(this).hide();
-    $(this).parents('.editable-parent').find('.input-item').removeAttr('contentEditable', true).css('border', '0px solid #ccc');
+    const $editableItem = $(this).parents('.editable-parent').find('.input-item');
+    $editableItem.removeAttr('contentEditable', true).css('border', '0px solid #ccc');
+    if ($editableItem.scrollTop()) $editableItem.animate({ scrollTop: 0 }, 100);
     $(this).parents('.editable-parent').find('.edit-content').show();
+
+    const popoverInstance = bootstrap.Popover.getInstance($editableItem[0]);
+    if (popoverInstance) {
+      popoverInstance.setContent({
+        '.popover-body': $editableItem.text().trim()
+      });
+    }
   });
 }
 
