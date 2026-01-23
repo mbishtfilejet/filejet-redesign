@@ -991,10 +991,21 @@ $(document).ready(function () {
 
     $(selector).on('apply.daterangepicker', function (ev, picker) {
       $(this).val(formatAsOfDate(picker.startDate));
+      $(this).closest('.asofcalender-wrapper').find('.remove-calenderdate').show();
     });
   }
 
   initializeTableFilterDatePicker(".asofdatepicker");
+
+  $(this).on('click', ".remove-calenderdate", function () {
+    const $wrapper = $(this).closest('.asofcalender-wrapper');
+    const $input = $wrapper.find('.asofdatepicker');
+
+    // Clear input value
+    $input.val('');
+
+    $(this).hide();
+  })
 });
 
 //handle row click to show document/folder information
