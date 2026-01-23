@@ -160,6 +160,7 @@ $font-sora: "Sora", sans-serif;
           display: flex;
           align-items: center;
           gap: 10px;
+
           .icon-lg {
             width: 16px !important;
             height: 16px !important;
@@ -201,7 +202,7 @@ $font-sora: "Sora", sans-serif;
     transition: all 0.01s ease-in-out;
   }
 
-  .editable-parent .save-content{
+  .editable-parent .save-content {
     display: none;
   }
 }
@@ -305,7 +306,6 @@ $font-sora: "Sora", sans-serif;
     letter-spacing: -0.32px;
   }
 }
-
 
 .entitydetailstablist {
   position: relative;
@@ -481,7 +481,7 @@ $font-sora: "Sora", sans-serif;
     }
 
     &.show {
-     animation: fadeIn 250ms ease forwards;
+      animation: fadeIn 250ms ease forwards;
     }
   }
 
@@ -500,7 +500,7 @@ $font-sora: "Sora", sans-serif;
     padding: 0.5rem 0.9rem !important;
     line-height: 1.25rem !important;
 
-    &.text-light-blue{
+    &.text-light-blue {
       color: var(--bs-light-blue) !important;
     }
   }
@@ -515,13 +515,11 @@ $font-sora: "Sora", sans-serif;
 
           &:nth-child(3),
           &:nth-child(4),
-          &:nth-child(5)
-          {
+          &:nth-child(5) {
             width: 100px;
           }
 
-          &:last-child
-           {
+          &:last-child {
             max-width: 60px !important;
             width: 60px;
           }
@@ -666,11 +664,21 @@ $font-sora: "Sora", sans-serif;
 }
 
 .entityDetails-description-card {
-  p {
+  p.descriptionContent {
     color: $color-medium-gray;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: -0.3px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: 11;
+    -webkit-line-clamp: 11;
+
+    &[contentEditable=true] {
+      display: block;
+      overflow-block: auto;
+    }
   }
 }
 
@@ -681,11 +689,17 @@ $font-sora: "Sora", sans-serif;
     cursor: pointer;
   }
 
+  .list-group-flush {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
   .list-group-flush>.list-group-item {
     border: 0px;
     display: flex;
     align-items: center;
-    padding: 5px 0px !important;
+    padding: 0px !important;
 
     a.value-text:hover {
       color: var(--bs-gray-600) !important;
@@ -768,6 +782,14 @@ $font-sora: "Sora", sans-serif;
   }
 }
 
+@media (min-width:767.99px) {
+  .entitydetailsinfo {
+    .entitydetailsinfo-content {
+      max-height: 300px !important;
+    }
+  }
+}
+
 @media (min-width:991.98px) {
   .entitydetailstablist {
     gap: rem(12);
@@ -802,7 +824,8 @@ $font-sora: "Sora", sans-serif;
     opacity: 0;
     visibility: hidden;
   }
-  to{
+
+  to {
     opacity: 1;
     visibility: visible;
   }
