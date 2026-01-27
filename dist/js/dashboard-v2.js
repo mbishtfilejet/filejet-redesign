@@ -779,7 +779,7 @@ $(document).ready(function () {
       `
         <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
           <td class="doc_indent">
-            ${row?.type !== "doc" ?
+            ${row?.type !== "file" ?
         `<div class="d-flex align-items-center gap-3">
               <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
               <div class="d-flex align-items-center gap-2">
