@@ -13,6 +13,7 @@
    <link rel='stylesheet'
       href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+   <link rel="stylesheet" href="./src/js/lib/bootstrap-datepicker3.min.css">
    <!-- end date -->
 
    <!-- Scripts -->
@@ -763,20 +764,59 @@
                      <!-- Entity Details Document TabContent -->
                      <div class="tab-pane fade" id="en-documents-tab-pane" role="tabpanel"
                         aria-labelledby="en-documents-tab" tabindex="0">
-                        <div class="entityDetailTableCard border rounded-2">
+                        <div class="row g-3">
+                           <div class="col-12 col-md-9 flex-grow-1 mb-2 search-table-col">
+                              <div
+                                 class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                 <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                 <input type="text" class="custom-search-input border-0 p-0 w-100" placeholder="Search">
+                              </div>
+                           </div>
+
+                           <div class="filter2-dropdown col-12 col-md-3 tags-table-col mb-2 dropdown">
+                              <div
+                                 class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                 id="tagContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                              </div>
+                              <ul class="dropdown-menu" id="tagDropdown">
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Tag 01">
+                                       Tag 01</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Tag 02">
+                                       Tag 02</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Tag 03">
+                                       Tag 03</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Tag 04">
+                                       Tag 04</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Tag 05">
+                                       Tag 05</label>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="entityDetailTableCard mt-2 border rounded-2">
                            <div class="entityDetailDocumentsTableV2">
                               <table id="entitydetails-documents-table" class="table table-striped w-100 table-nowrap">
                                  <thead>
                                     <tr>
                                        <th data-orderable="false">
-                                          <input class="d-flex form-check-input" type="checkbox" />
+                                          <input id="document-clear-all" class="d-flex form-check-input"
+                                             type="checkbox" />
                                        </th>
                                        <th>Name</th>
                                        <th>Tags</th>
                                        <th>Modified By</th>
                                        <th>Date Modified</th>
                                        <th>Sync Status</th>
-                                       <th data-orderable="false">Actions</th>
+                                       <th data-orderable="false">Action</th>
                                     </tr>
                                  </thead>
                               </table>
@@ -977,8 +1017,6 @@
                                  class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
                                  id="jurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
                                  tabindex="0">
-                                 <input type="text" class="search-input" id="jurisdictionSearch"
-                                    placeholder="Jurisdictions" autocomplete="off">
                               </div>
                               <ul class="dropdown-menu" id="jurisdictionDropdown">
                                  <li><label class="dropdown-item"><input type="checkbox" id="jurisdictionSelectAll"
@@ -1011,8 +1049,6 @@
                               <div
                                  class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
                                  id="taskContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                 <input type="text" class="search-input" id="taskSearch" placeholder="Tasks"
-                                    autocomplete="off">
                               </div>
                               <ul class="dropdown-menu" id="taskDropdown">
                                  <li><label class="dropdown-item"><input type="checkbox"
@@ -1028,8 +1064,6 @@
                               <div
                                  class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
                                  id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                 <input type="text" class="search-input" id="statusSearch" placeholder="Status"
-                                    autocomplete="off">
                               </div>
                               <ul class="dropdown-menu" id="statusDropdown">
                                  <li><label class="dropdown-item"><input type="checkbox"
@@ -1193,8 +1227,6 @@
                                  class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
                                  id="orderJurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
                                  tabindex="0">
-                                 <input type="text" class="search-input" id="orderJurisdictionSearch"
-                                    placeholder="Jurisdictions" autocomplete="off">
                               </div>
                               <ul class="dropdown-menu" id="orderJurisdictionDropdown">
                                  <li><label class="dropdown-item"><input type="checkbox" id="orderJurisdictionSelectAll"
@@ -1221,8 +1253,6 @@
                               <div
                                  class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
                                  id="orderTaskContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                 <input type="text" class="search-input" id="orderTaskSearch" placeholder="Tasks"
-                                    autocomplete="off">
                               </div>
                               <ul class="dropdown-menu" id="orderTaskDropdown">
                                  <li><label class="dropdown-item"><input type="checkbox"
@@ -1241,8 +1271,6 @@
                               <div
                                  class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
                                  id="orderStatusContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                 <input type="text" class="search-input" id="orderStatusSearch" placeholder="Status"
-                                    autocomplete="off">
                               </div>
                               <ul class="dropdown-menu" id="orderStatusDropdown">
                                  <li><label class="dropdown-item"><input type="checkbox"
@@ -1466,7 +1494,135 @@
       </div>
    </div>
 
-   <!-- Folder/DOcument Flyout Modal Start -->
+   <!-- Document Flyout Modal Start -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="folderflyout-modal" tabindex="-1"
+      aria-labelledby="folderflyout-modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end folder_doc_dialog my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <div class="modal-header">
+               <h4 class="fw-bold m-0">Folder name</h4>
+            </div>
+            <div class="modal-body m-0">
+               <div class="" id="documentfolderdetail02">
+                  <div class="accordion mb-4" id="accordiondocumentDetail_1">
+                     <div class="accordion-item m-0">
+                        <h2 class="accordion-header" id="documentDetailHeader_1">
+                           <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapseDocumentDetail_1" aria-expanded="false"
+                              aria-controls="collapseDocumentDetail_1">
+                              General
+                           </button>
+                        </h2>
+                        <div id="collapseDocumentDetail_1" class="accordion-collapse border-0 collapse show"
+                           aria-labelledby="documentDetailHeader_1">
+                           <div class="accordion-body pt-0">
+                              <div class="folder-doc_grid">
+                                 <span class="form-label">Created By</span>
+                                 <span class="flex-grow-1">John Smith</span>
+                                 <span class="form-label">Last modified</span>
+                                 <span class="flex-grow-1">01/23/2026</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="accordion mb-4" id="accordiondocumentDetail_2">
+                     <div class="accordion-item m-0">
+                        <h2 class="accordion-header" id="documentDetailHeader_2">
+                           <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapseDocumentDetail_2" aria-expanded="false"
+                              aria-controls="collapseDocumentDetail_2">
+                              Details
+                           </button>
+                        </h2>
+                        <div id="collapseDocumentDetail_2" class="accordion-collapse border-0 collapse show"
+                           aria-labelledby="documentDetailHeader_2">
+                           <div class="accordion-body pt-0">
+                              <div class="folder-doc_grid">
+                                 <span class="form-label">Enitity</span>
+                                 <span class="flex-grow-1">Zenith Dynamics Group</span>
+                                 <span class="form-label">Jurisdiction</span>
+                                 <span class="flex-grow-1">Home/Foreign</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="accordion mb-4" id="accordiondocumentDetail_3">
+                     <div class="accordion-item m-0">
+                        <h2 class="accordion-header" id="documentDetailHeader_3">
+                           <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapseDocumentDetail_3" aria-expanded="false"
+                              aria-controls="collapseDocumentDetail_3">
+                              Tags
+                           </button>
+                        </h2>
+                        <div id="collapseDocumentDetail_3" class="accordion-collapse border-0 collapse show"
+                           aria-labelledby="documentDetailHeader_3">
+                           <div class="accordion-body pt-0 modal-tags-container">
+                              <div class="d-flex gap-2 align-items-center justify-content-between">
+                                 <div>
+                                    <div class="badge badge-Inactive text-black">Tag 01</div>
+                                    <div class="badge badge-good text-black">Tag 02</div>
+                                    <div class="badge badge-active text-black">Tag 03</div>
+                                    <div class="badge badge-inprogress text-black">Tag 04</div>
+                                 </div>
+
+                                 <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                    role="button" aria-expanded="false" data-bs-target="#collapseTagsContainer_1"
+                                    aria-controls="collapseTagsContainer_1"></span>
+                              </div>
+                              <div class="collapse mt-3" id="collapseTagsContainer_1">
+                                 <fieldset>
+                                    <label for="form-label">Apply Tag</label>
+                                    <div class="w-100 me-3 custom-dropdown">
+                                       <select class="form-select" id="" required="">
+                                          <option value="" disabled="" selected="" hidden="">
+                                             Select Tag
+                                          </option>
+                                          <option value="Tag 01">Tag 01</option>
+                                          <option value="Tag 02">Tag 02</option>
+                                          <option value="Tag 03">Tag 03</option>
+                                          <option value="Tag 04">Tag 04</option>
+                                          <option value="Tag 05">Tag 05</option>
+                                       </select>
+                                    </div>
+                                 </fieldset>
+                                 <fieldset class="mt-3">
+                                    <label for="form-label">Create Tag</label>
+                                    <div class="d-flex gap-3 align-items-center justify-content-between">
+                                       <input type="text" class="form-control" id="" placeholder="Create Tag">
+                                       <span class="icon icon-add-tag icon-lg m-0 ms-auto"></span>
+                                    </div>
+                                 </fieldset>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2 d-flex flex-column folder_note_wrapper editable-parent">
+                     <div class="d-flex justify-content-between align-items-center">
+                        <span class="folder_note_heading m-0">Notes</span>
+                        <span class="icon m-0 icon-entity-edit icon-sm edit-content" data-toggle="tooltip"
+                           aria-label="EDIT" data-bs-original-title="EDIT"></span>
+                        <span class="icon icon-save save-content icon-sm m-0" data-toggle="tooltip" aria-label="SAVE"
+                           data-bs-original-title="SAVE"></span>
+                     </div>
+                     <p class="m-0 mt-3 text-wrap input-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                        parturient montes, nascetur ridiculus mus.
+                     </p>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Document Flyout Modal End -->
+
+   <!-- Document Flyout Modal Start -->
    <div class="modal modal-right fade filter-slideout SOP-model" id="documentflyout-modal" tabindex="-1"
       aria-labelledby="documentflyout-modalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end folder_doc_dialog my-0 min-vh-100">
@@ -1537,13 +1693,42 @@
                         </h2>
                         <div id="collapseDocumentDetail3" class="accordion-collapse border-0 collapse show"
                            aria-labelledby="documentDetailHeader3">
-                           <div class="accordion-body pt-0">
-                              <div class="d-flex gap-2">
-                                 <div class="badge badge-Inactive text-black">Tag 01</div>
-                                 <div class="badge badge-good text-black">Tag 02</div>
-                                 <div class="badge badge-active text-black">Tag 03</div>
-                                 <div class="badge badge-inprogress text-black">Tag 04</div>
-                                 <span class="icon icon-add-tag icon-lg m-0 ms-auto"></span>
+                           <div class="accordion-body pt-0 modal-tags-container">
+                              <div class="d-flex gap-2 align-items-center justify-content-between">
+                                 <div>
+                                    <div class="badge badge-Inactive text-black">Tag 01</div>
+                                    <div class="badge badge-good text-black">Tag 02</div>
+                                    <div class="badge badge-active text-black">Tag 03</div>
+                                    <div class="badge badge-inprogress text-black">Tag 04</div>
+                                 </div>
+
+                                 <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                    role="button" aria-expanded="false" data-bs-target="#collapseTagsContainer"
+                                    aria-controls="collapseTagsContainer"></span>
+                              </div>
+                              <div class="collapse mt-3" id="collapseTagsContainer">
+                                 <fieldset>
+                                    <label for="form-label">Apply Tag</label>
+                                    <div class="w-100 me-3 custom-dropdown">
+                                       <select class="form-select" id="" required="">
+                                          <option value="" disabled="" selected="" hidden="">
+                                             Select Tag
+                                          </option>
+                                          <option value="Tag 01">Tag 01</option>
+                                          <option value="Tag 02">Tag 02</option>
+                                          <option value="Tag 03">Tag 03</option>
+                                          <option value="Tag 04">Tag 04</option>
+                                          <option value="Tag 05">Tag 05</option>
+                                       </select>
+                                    </div>
+                                 </fieldset>
+                                 <fieldset class="mt-3">
+                                    <label for="form-label">Create Tag</label>
+                                    <div class="d-flex gap-3 align-items-center justify-content-between">
+                                       <input type="text" class="form-control" id="" placeholder="Create Tag">
+                                       <span class="icon icon-add-tag icon-lg m-0 ms-auto"></span>
+                                    </div>
+                                 </fieldset>
                               </div>
                            </div>
                         </div>
@@ -1569,7 +1754,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="m-0 mb-4 p-3 bg-white rounded-2 d-flex flex-column editable-parent">
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2 d-flex flex-column folder_note_wrapper editable-parent">
                      <div class="d-flex justify-content-between align-items-center">
                         <span class="folder_note_heading m-0">Notes</span>
                         <span class="icon m-0 icon-entity-edit icon-sm edit-content" data-toggle="tooltip"
@@ -1577,13 +1762,11 @@
                         <span class="icon icon-save save-content icon-sm m-0" data-toggle="tooltip" aria-label="SAVE"
                            data-bs-original-title="SAVE"></span>
                      </div>
-                     <div class="folder_note_wrapper mt-3">
-                        <p class="m-0 text-wrap input-item">
-                           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                           ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                           parturient montes, nascetur ridiculus mus.
-                        </p>
-                     </div>
+                     <p class="m-0 mt-3 text-wrap input-item">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                        parturient montes, nascetur ridiculus mus.
+                     </p>
 
                   </div>
                </div>
@@ -1591,7 +1774,7 @@
          </div>
       </div>
    </div>
-   <!-- Folder/DOcument Flyout Modal End -->
+   <!-- Document Flyout Modal End -->
 
 
    <!-- Archive Jurisdiction Modal Start -->
@@ -2357,7 +2540,7 @@
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <div class="modal-header">
-               <h4 class="fw-bold m-0">Update StakeHolder</h4>
+               <h4 class="fw-bold m-0">Update Details</h4>
             </div>
             <div class="modal-body">
                <div class="" id="entitystakeholderUpdate">
@@ -3224,7 +3407,23 @@
                                  <input type="text" class="form-control" id="" value="541199 - All Other Legal Services"
                                     placeholder="Naic code">
                               </fieldset>
-                              <div class="mb-4">
+
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label">NUMBER OF SHARES Authorized TO ISSUE</label>
+                                 <input type="text" class="form-control" id=""
+                                    placeholder="Number of shares Authorized to issue">
+                              </fieldset>
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label ">NUMBER OF SHARES holders</label>
+                                 <input type="text" class="form-control" id="" placeholder="Number of shares holders">
+                              </fieldset>
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label ">PAR VALUE</label>
+                                 <div class="priceInput">
+                                    <input type="text" class="form-control " id="" placeholder="Par value holders">
+                                 </div>
+                              </fieldset>
+                              <div class="">
                                  <button type="button" class="btn btn-small py-0 px-5 rounded-3" id=""
                                     data-bs-toggle="collapse" data-bs-target="#sharesTableInputs" aria-expanded="false"
                                     aria-controls="sharesTableInputs">
@@ -3288,22 +3487,6 @@
                                     </div>
                                  </div>
                               </div>
-
-                              <fieldset class="mb-4">
-                                 <label for="" class="form-label">NUMBER OF SHARES Authorized TO ISSUE</label>
-                                 <input type="text" class="form-control" id=""
-                                    placeholder="Number of shares Authorized to issue">
-                              </fieldset>
-                              <fieldset class="mb-4">
-                                 <label for="" class="form-label ">NUMBER OF SHARES holders</label>
-                                 <input type="text" class="form-control" id="" placeholder="Number of shares holders">
-                              </fieldset>
-                              <fieldset class="">
-                                 <label for="" class="form-label ">PAR VALUE</label>
-                                 <div class="priceInput">
-                                    <input type="text" class="form-control " id="" placeholder="Par value holders">
-                                 </div>
-                              </fieldset>
                            </div>
                         </div>
                      </div>
@@ -26337,6 +26520,7 @@
    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
    <script
       src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
+   <script src='./src/js/lib/bootstrap-datepicker.min.js'></script>
    <!-- Scripts End-->
    <script> let dashboardType = "dashboard1"; </script>
    <script>

@@ -275,6 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "orderJurisdictionContainer":
           return "Jurisdictions";
         case "taskContainer": return "Tasks";
+        case "tagContainer": return "Filter By Tag";
         case "orderTaskContainer": return "Service";
         case "addjurisdictionContainer":
         case "exaddjurisdictionContainer": return "Select States";
@@ -310,6 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ["entityStatusContainer", "entityStatusDropdown", "entityStatusSearch", "entityStatus-checkbox", "entityStatusSelectAll"],
     ["orderStatusContainer", "orderStatusDropdown", "orderStatusSearch", "orderStatus-checkbox", "orderStatusSelectAll"],
     ["taskContainer", "taskDropdown", "taskSearch", "task-checkbox", "taskSelectAll"],
+    ["tagContainer", "tagDropdown", "tagSearch", "tag-checkbox"],
     ["orderTaskContainer", "orderTaskDropdown", "orderTaskSearch", "orderTask-checkbox", "orderTaskSelectAll"],
     ["addjurisdictionContainer", "addjurisdictionDropdown", "addjurisdictionSearch", "addjurisdiction-checkbox", "addjurisdictionSelectAll"],
     ["exaddjurisdictionContainer", "exaddjurisdictionDropdown", "exaddjurisdictionSearch", "exaddjurisdiction-checkbox", "exaddjurisdictionSelectAll"],
@@ -660,12 +662,13 @@ $(document).ready(function () {
     },
     createdRow: function (row, data, dataIndex) {
       $(row).addClass('parent editable-parent');
+      $(row).attr('data-type', data.type)
     },
     scrollX: true,
     columns: [
       {
         data: null, render: function (data, type, row) {
-          return `<input class="d-flex form-check-input" type="checkbox" value="${row?.id}">`;
+          return `<input class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}">`;
         }
       },
       {
@@ -816,12 +819,12 @@ $(document).ready(function () {
   function formatChildRows(data, parentId, dataLevelId = "") {
     return data.expanded_rows.map((row, index, arr) =>
       `
-        <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
+        <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}" data-type="${row.type}">
           <td>
-            <input class="d-flex form-check-input" type="checkbox" value="${row?.id}">
+            <input class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}">
           </td>
           <td class="doc_indent">
-            ${row?.type !== "doc" ?
+            ${row?.type !== "file" ?
         `<div class="d-flex align-items-center gap-3">
               <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
               <div class="d-flex align-items-center gap-2">
@@ -971,31 +974,29 @@ $(function () {
 $(document).ready(function () {
 
   function formatAsOfDate(date) {
+    if (!date) return '';
     const today = moment().startOf('day');
-    const picked = date.clone().startOf('day');
-
-    if (picked.isSame(today, 'day')) return 'As of Today';
+    const picked = moment(date).startOf('day');
+    if (picked.isSame(today, 'day')) {
+      return 'As of Today';
+    }
     return 'As of ' + picked.format('MM/DD/YYYY');
   }
 
   function initializeTableFilterDatePicker(selector) {
-    $(selector).daterangepicker({
-      singleDatePicker: true,
-      autoUpdateInput: false,
-      autoApply: true,
-      drops: 'auto',
-      opens: "left",
-      minYear: 1901,
-      maxYear: parseInt(moment().format('YYYY'), 10)
-    });
-
-    $(selector).on('apply.daterangepicker', function (ev, picker) {
-      $(this).val(formatAsOfDate(picker.startDate));
+    let $dateInput = $(selector);
+    $dateInput.datepicker({
+      format: 'mm/dd/yyyy',
+      autoclose: true
+    })
+    $dateInput.on('hide', function () {
+      const date = $(this).datepicker('getDate');
+      $(this).val(formatAsOfDate(date));
       $(this).closest('.asofcalender-wrapper').find('.remove-calenderdate').show();
     });
   }
 
-  initializeTableFilterDatePicker(".asofdatepicker");
+  initializeTableFilterDatePicker('.asofdatepicker');
 
   $(this).on('click', ".remove-calenderdate", function () {
     const $wrapper = $(this).closest('.asofcalender-wrapper');
@@ -1011,19 +1012,32 @@ $(document).ready(function () {
 //handle row click to show document/folder information
 $(document).ready(function () {
   let activeRow = null;
+  let modal = ""
   $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr', function (e) {
     if ($(e.target).closest('input[type="checkbox"], .edit-content, .save-content, .delete-btn').length) return;
     if (activeRow) {
       $(activeRow).removeClass("rowSelect")
     }
     activeRow = this;
+    if ($(activeRow).attr('data-type') === "file") {
+      $('#documentflyout-modal').modal("show");
+    } else {
+      $('#folderflyout-modal').modal("show");
+    }
 
     $(activeRow).addClass("rowSelect");
-    $('#documentflyout-modal').modal("show");
   });
 
   //Listen for the modal close event
   $('#documentflyout-modal').on('hidden.bs.modal', function () {
+    // When the modal is completely hidden, remove the class from the active row
+    if (activeRow) {
+      $(activeRow).removeClass('rowSelect');
+      activeRow = null; // Clear the reference
+    }
+  });
+
+  $('#folderflyout-modal').on('hidden.bs.modal', function () {
     // When the modal is completely hidden, remove the class from the active row
     if (activeRow) {
       $(activeRow).removeClass('rowSelect');
