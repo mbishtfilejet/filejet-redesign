@@ -914,6 +914,7 @@ $(document).ready(function () {
     $(selector).daterangepicker({
       singleDatePicker: true,
       autoUpdateInput: false,
+      showDropdowns: true,
       autoApply: true,
       drops: 'auto',
       opens: "left",
