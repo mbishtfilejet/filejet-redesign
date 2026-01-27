@@ -901,34 +901,33 @@ $(function () {
 
 // Logic for intializeing date and format date 
 $(document).ready(function () {
-
+  
   function formatAsOfDate(date) {
+    if (!date) return '';
     const today = moment().startOf('day');
-    const picked = date.clone().startOf('day');
-
-    if (picked.isSame(today, 'day')) return 'As of Today';
+    const picked = moment(date).startOf('day');
+    if (picked.isSame(today, 'day')) {
+      return 'As of Today';
+    }
     return 'As of ' + picked.format('MM/DD/YYYY');
   }
 
-  function initializeTableFilterDatePicker(selector) {
-    $(selector).daterangepicker({
-      singleDatePicker: true,
-      autoUpdateInput: false,
-      showDropdowns: true,
-      autoApply: true,
-      drops: 'auto',
-      opens: "left",
-      minYear: 1901,
-      maxYear: parseInt(moment().format('YYYY'), 10)
-    });
 
-    $(selector).on('apply.daterangepicker', function (ev, picker) {
-      $(this).val(formatAsOfDate(picker.startDate));
+
+  function initializeTableFilterDatePicker(selector) {
+    let $dateInput = $(selector);
+    $dateInput.datepicker({
+      format: 'mm/dd/yyyy',
+      autoclose: true
+    })
+    $dateInput.on('hide', function () {
+      const date = $(this).datepicker('getDate');
+      $(this).val(formatAsOfDate(date));
       $(this).closest('.asofcalender-wrapper').find('.remove-calenderdate').show();
     });
   }
 
-  initializeTableFilterDatePicker(".asofdatepicker");
+  initializeTableFilterDatePicker('.asofdatepicker');
 
   $(this).on('click', ".remove-calenderdate", function () {
     const $wrapper = $(this).closest('.asofcalender-wrapper');
@@ -939,6 +938,7 @@ $(document).ready(function () {
 
     $(this).hide();
   })
+
 });
 
 // function for adding editable functionality to folder/docuemnt name and make editable content 

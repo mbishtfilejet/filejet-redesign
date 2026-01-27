@@ -326,7 +326,6 @@ function initializeDatePicker(selector) {
   $(selector).daterangepicker({
     singleDatePicker: true,
     autoUpdateInput: false,
-    showDropdowns: true,
     autoApply: true,
     parentEl: $('.calender-input'),
     applyButtonClasses: 'btn-info',
