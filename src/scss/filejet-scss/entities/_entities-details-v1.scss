@@ -23,13 +23,14 @@ $font-sora: "Sora", sans-serif;
 
   .dashboard-page {
     &>.container-fluid {
-      display: flex !important;
+      display: grid !important;
+      grid-template-columns: repeat(2, auto);
+      background-color: $color-gray-opacity !important;
       height: auto !important;
 
       .main-content-wrapper {
         display: flex;
         flex-direction: column;
-        background-color: $color-gray-opacity;
         flex-grow: 1;
         padding: 0 !important;
         max-width: 100% !important;
@@ -105,7 +106,7 @@ $font-sora: "Sora", sans-serif;
           margin-inline: 0 !important;
           max-width: 100% !important;
 
-          &:last-child{
+          &:last-child {
             padding-inline: 0 !important;
           }
         }
@@ -121,6 +122,12 @@ $font-sora: "Sora", sans-serif;
       .entityDetail-header,
       .entitydetailsinfo {
         padding-inline: 1.5rem !important;
+      }
+
+      &>.container {
+        .main-content {
+          background-color: red !important;
+        }
       }
     }
   }
