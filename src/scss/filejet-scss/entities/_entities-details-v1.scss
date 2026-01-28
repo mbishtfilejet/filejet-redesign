@@ -21,6 +21,102 @@ $font-sora: "Sora", sans-serif;
     font-family: $font-sora !important;
   }
 
+  .dashboard-page {
+    &>.container-fluid {
+      display: flex !important;
+      height: auto !important;
+
+      .main-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        background-color: $color-gray-opacity;
+        flex-grow: 1;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100%;
+
+        max-width: 100% !important;
+
+        .notification {
+          border: 2px solid #D8DDDF;
+          border-radius: 100% !important;
+          height: 100%;
+
+          a {
+            width: 32px !important;
+            height: 32px !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .notification-dot-v2 {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: $color-crimson-red;
+            top: 7px;
+            right: 8px;
+          }
+        }
+
+        .main-content {
+          .fw-bold {
+            letter-spacing: -0.3px !important;
+          }
+        }
+
+        .entityDetailsEditBtn {
+          display: flex;
+          gap: 4px;
+          font-weight: 400;
+          line-height: 16px;
+          padding: 5px 6px;
+          border-radius: 8px;
+          text-transform: capitalize !important;
+          color: $color-medium-gray;
+          border-color: $color-medium-gray;
+
+          &:hover {
+            background-color: transparent;
+            color: $color-medium-gray;
+          }
+
+          &:focus-visible {
+            border-color: $color-medium-gray !important;
+            box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.5) !important;
+          }
+
+          .icon-entity-edit {
+            width: 12px;
+            height: 12px;
+          }
+        }
+
+        &>.container-fluid.container-lg {
+          padding-inline: 1.5rem !important;
+          background: var(--bs-purple-filejet) !important;
+          margin-inline: 0 !important;
+          max-width: 100% !important;
+
+          &:last-child {
+            background-color: $color-gray-opacity !important;
+          }
+        }
+      }
+
+      .entityTabsContent {
+        height: inherit;
+      }
+    }
+  }
+
+  .sidebar-wrapper {
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
   .badge {
     padding: 8px 10px;
     border-radius: 30px;
@@ -283,67 +379,7 @@ $font-sora: "Sora", sans-serif;
 }
 
 
-.entityDetails-page {
 
-  max-width: 100% !important;
-
-  .notification {
-    border: 2px solid #D8DDDF;
-    border-radius: 100% !important;
-    height: 100%;
-
-    a {
-      width: 32px !important;
-      height: 32px !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .notification-dot-v2 {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border-radius: 100%;
-      background-color: $color-crimson-red;
-      top: 7px;
-      right: 8px;
-    }
-  }
-
-  .main-content {
-    .fw-bold {
-      letter-spacing: -0.3px !important;
-    }
-  }
-
-  .entityDetailsEditBtn {
-    display: flex;
-    gap: 4px;
-    font-weight: 400;
-    line-height: 16px;
-    padding: 5px 6px;
-    border-radius: 8px;
-    text-transform: capitalize !important;
-    color: $color-medium-gray;
-    border-color: $color-medium-gray;
-
-    &:hover {
-      background-color: transparent;
-      color: $color-medium-gray;
-    }
-
-    &:focus-visible {
-      border-color: $color-medium-gray !important;
-      box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.5) !important;
-    }
-
-    .icon-entity-edit {
-      width: 12px;
-      height: 12px;
-    }
-  }
-}
 
 .entitydetails-info-modal {
   .entity-info-container {
@@ -354,11 +390,6 @@ $font-sora: "Sora", sans-serif;
       flex-grow: 1;
     }
   }
-}
-
-.entityDetails-page,
-.entityTabsContent {
-  padding-inline: calc(0.5rem + 4px) !important;
 }
 
 .entitydetailsinfo {
@@ -415,7 +446,6 @@ $font-sora: "Sora", sans-serif;
 }
 
 .entityTabsContent {
-  background-color: $color-gray-opacity;
   border-top: 1px solid #D8DDDF;
 
   & * {
@@ -822,12 +852,14 @@ $font-sora: "Sora", sans-serif;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    transition: all 0.5s ease-in-out;
     line-clamp: 11;
     -webkit-line-clamp: 11;
 
     &[contentEditable=true] {
       display: block;
       overflow-block: auto;
+      padding: 10px;
     }
   }
 }
