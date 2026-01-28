@@ -37,6 +37,11 @@ $font-sora: "Sora", sans-serif;
 
         max-width: 100% !important;
 
+        .main-content {
+          display: flex;
+          flex-direction: column;
+        }
+
         .notification {
           border: 2px solid #D8DDDF;
           border-radius: 100% !important;
@@ -100,14 +105,22 @@ $font-sora: "Sora", sans-serif;
           margin-inline: 0 !important;
           max-width: 100% !important;
 
-          &:last-child {
-            background-color: transparent !important;
+          &:last-child{
+            padding-inline: 0 !important;
           }
         }
       }
 
       .entityTabsContent {
         height: inherit;
+        background-color: $color-gray-opacity;
+      }
+
+      .entitydetailstablist,
+      .entityTabsContent,
+      .entityDetail-header,
+      .entitydetailsinfo {
+        padding-inline: 1.5rem !important;
       }
     }
   }
@@ -361,6 +374,14 @@ $font-sora: "Sora", sans-serif;
         }
       }
     }
+
+    .tag-color-picker {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
   }
 
 
@@ -537,6 +558,10 @@ $font-sora: "Sora", sans-serif;
 .entityDetailTableCard {
   background-color: white;
   position: relative;
+
+  .table {
+    margin-bottom: 0rem !important;
+  }
 
   #contextmenu {
     position: fixed;
@@ -860,6 +885,11 @@ $font-sora: "Sora", sans-serif;
       display: block;
       overflow-block: auto;
       padding: 10px;
+      box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.05) inset;
+    }
+
+    &.skeleton {
+      height: 200px;
     }
   }
 }
@@ -875,6 +905,10 @@ $font-sora: "Sora", sans-serif;
     display: flex;
     flex-direction: column;
     gap: 7px;
+  }
+
+  .list-group-flush>.skeleton {
+    margin-block: 1.5px !important;
   }
 
   .list-group-flush>.list-group-item {
