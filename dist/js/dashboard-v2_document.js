@@ -465,6 +465,7 @@ $(document).ready(function () {
       dataSrc: 'registration_data'
     },
     scrollX: true,
+    scrollY: false,
     columns: [
       { data: "entity_name" },
       { data: "type" },
@@ -501,6 +502,7 @@ $(document).ready(function () {
       dataSrc: 'business_license_data'
     },
     scrollX: true,
+    scrollY: false,
     columns: [
       {
         data: "license_Name", render: function (data, type, row) {
@@ -532,6 +534,7 @@ $(document).ready(function () {
       dataSrc: 'dbas_data'
     },
     scrollX: true,
+    scrollY: false,
     columns: [
       {
         data: "fictitious_trade_name", render: function (data, type, row) {
@@ -563,6 +566,7 @@ $(document).ready(function () {
       dataSrc: 'ownership_data'
     },
     scrollX: true,
+    scrollY: false,
     columns: [
       { data: "owner" },
       { data: "primary_owner" },
@@ -597,6 +601,7 @@ $(document).ready(function () {
       dataSrc: 'director_data'
     },
     scrollX: true,
+    scrollY: false,
     columns: [
       { data: "name" },
       { data: "role" },
@@ -631,6 +636,7 @@ $(document).ready(function () {
 
   $('#entitydetails-opentask-table').DataTable({
     scrollX: true,
+    scrollY: false,
     order: [[0, "asc"]],
     lengthChange: false,  // Removed pagination
     paging: false,  // Disable pagination
@@ -639,6 +645,7 @@ $(document).ready(function () {
 
   $('#entitydetails-orders-table').DataTable({
     scrollX: true,
+    scrollY: false,
     order: [[0, "asc"]],
     lengthChange: false,  // Removed pagination
     paging: false,  // Disable pagination
@@ -665,6 +672,7 @@ $(document).ready(function () {
       $(row).attr('data-type', data.type)
     },
     scrollX: true,
+    scrollY: false,
     columns: [
       {
         data: null, render: function (data, type, row) {
@@ -699,16 +707,16 @@ $(document).ready(function () {
           return row.modified_by === "filejet" ? null : data;
         }
       },
-      {
-        data: "sync_status", render: function (data, type, row) {
-          return `
-          <div class="d-flex align-items-center gap-1">
-            <span class="icon ${data === "Synced" ? "icon-file-synced" : "icon-file-error"} icon-md m-0"></span>
-            <span>${data}</span>
-          </div>
-          `;
-        }
-      },
+      // {
+      //   data: "sync_status", render: function (data, type, row) {
+      //     return `
+      //     <div class="d-flex align-items-center gap-1">
+      //       <span class="icon ${data === "Synced" ? "icon-file-synced" : "icon-file-error"} icon-md m-0"></span>
+      //       <span>${data}</span>
+      //     </div>
+      //     `;
+      //   }
+      // },
       {
         data: null, render: function (data, type, row) {
           if (row?.type === "custom") {
@@ -840,17 +848,17 @@ $(document).ready(function () {
               <td >${renderTagsOnRow(row.tags)}</td>
               <td >${row.modified_by}</td>
               <td >${row.date_modified}</td>
-              <td >
+              ${null && `<td >
                 <div class="d-flex align-items-center gap-1">
                   <span class="icon ${row.sync_status === "Synced" ? "icon-file-synced" : "icon-file-error"} icon-md m-0"></span>
                   <span>${row.sync_status}</span>
                 </div>
-              </td>
+              </td>`}
               <td>
                 <div class="d-flex align-items-center">
                   <span role="button" tabindex="0" class="edit-content"> 
                     <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-                    class="icon icon-entity-edit me-1 me-md-2 ${row?.type !== "doc" ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
+                    class="icon icon-entity-edit me-1 me-md-2 ${row?.type !== "file" ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
                   </span>
                   <span role="button" tabindex="0" class="save-content"> 
                     <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
@@ -858,7 +866,7 @@ $(document).ready(function () {
                   </span>
                   <span role="button" tabindex="0" class-"delete-btn" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
                     <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                      class="icon icon-entity-delete me-1 me-md-2 ${row?.type !== "doc" ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
+                      class="icon icon-entity-delete me-1 me-md-2 ${row?.type !== "file" ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
                   </span>
                 </div>
               </td>
@@ -928,7 +936,7 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
 // context menu logic start
 $(function () {
   const contextMenu = $('#contextmenu').get(0);
-  $(".entityDetailDocumentsTableV2 .dataTables_scrollBody").on("contextmenu", function (e) {
+  $(".entityDetailDocumentsTableV2 .dataTables_scrollBody").on("contextmenu", "tr>td:nth-child(2)", function (e) {
     e.preventDefault();
     e.stopPropagation()
     this.hidden = false;
@@ -958,17 +966,11 @@ $(function () {
   });
 
   $(this).on('contextmenu click scroll', function (e) {
-    if (contextMenu) {
+    if (contextMenu.classList.contains("show")) {
       contextMenu.classList.remove('show');
     }
   })
 });
-
-$(function () {
-  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-
-  popoverTriggerList.forEach(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-})
 
 // Logic for intializeing date and format date 
 $(document).ready(function () {
@@ -1065,13 +1067,6 @@ function editSaveableContent() {
     $editableItem.removeAttr('contentEditable', true).css('border', '0px solid #ccc');
     if ($editableItem.scrollTop()) $editableItem.animate({ scrollTop: 0 }, 100);
     $(this).parents('.editable-parent').find('.edit-content').show();
-
-    const popoverInstance = bootstrap.Popover.getInstance($editableItem[0]);
-    if (popoverInstance) {
-      popoverInstance.setContent({
-        '.popover-body': $editableItem.text().trim()
-      });
-    }
   });
 }
 
@@ -1146,3 +1141,12 @@ function updateUploadFileList(dropZoneElement, index, files) {
   uploadFileListElement.innerHTML += htmlContent;
 }
 multipleFileUploadInput();
+
+// function to handle tags creation and apply custom tags with remove option
+$(document).ready(function () {
+  const tag_wrapper = document.querySelector(".tagsbadge-wrapper");
+  const alltags = tag_wrapper.querySelectorAll(".badge");
+  const alltags_value = Array.from(alltags).map(cb => cb.getAttribute("data-value"));
+
+  console.log(tag_wrapper, alltags, alltags_value);
+})

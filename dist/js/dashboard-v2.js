@@ -875,7 +875,7 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
 // context menu logic start
 $(function () {
   const contextMenu = $('#contextmenu').get(0);
-  $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", function (e) {
+  $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", "tr>td:nth-child(1)", function (e) {
     e.preventDefault();
     e.stopPropagation()
     this.hidden = false;
