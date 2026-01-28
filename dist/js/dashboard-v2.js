@@ -456,13 +456,16 @@ document.addEventListener("DOMContentLoaded", function () {
 // entity details table start
 $(document).ready(function () {
 
-  // entity detail Registration Table
+  //entity detail Registration Table
   $("#entitydetails-registration-table").DataTable({
     ajax: {
       url: "data5.json",
       dataSrc: 'registration_data'
     },
+    processing: true,
+    serverSide: true,
     scrollX: true,
+    scrollY: false,
     columns: [
       { data: "entity_name" },
       { data: "type" },
@@ -498,7 +501,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'business_license_data'
     },
+    processing: true,
+    serverSide: true,
     scrollX: true,
+    scrollY: false,
     columns: [
       {
         data: "license_Name", render: function (data, type, row) {
@@ -529,7 +535,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'dbas_data'
     },
+    processing: true,
+    serverSide: true,
     scrollX: true,
+    scrollY: false,
     columns: [
       {
         data: "fictitious_trade_name", render: function (data, type, row) {
@@ -560,7 +569,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'ownership_data'
     },
+    processing: true,
+    serverSide: true,
     scrollX: true,
+    scrollY: false,
     columns: [
       { data: "owner" },
       { data: "primary_owner" },
@@ -594,7 +606,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'director_data'
     },
+    processing: true,
+    serverSide: true,
     scrollX: true,
+    scrollY: false,
     columns: [
       { data: "name" },
       { data: "role" },
@@ -645,7 +660,10 @@ $(document).ready(function () {
     createdRow: function (row, data, dataIndex) {
       $(row).addClass('parent editable-parent');
     },
+    processing: true,
+    serverSide: true,
     scrollX: true,
+    scrollY: false,
     columns: [
       {
         data: "name", render: function (data, type, row) {
@@ -896,7 +914,7 @@ $(function () {
 
 // Logic for intializeing date and format date 
 $(document).ready(function () {
-  
+
   function formatAsOfDate(date) {
     if (!date) return '';
     const today = moment().startOf('day');
