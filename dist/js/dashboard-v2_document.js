@@ -464,6 +464,8 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'registration_data'
     },
+    processing: true,
+    serverSide: true,
     scrollX: true,
     scrollY: false,
     columns: [
@@ -901,11 +903,50 @@ $(document).ready(function () {
 
 })
 
+
+// filjet services initialization code 
+
+$(document).ready(function () {
+  const table = $("#entitydetails-services-table").DataTable({
+    ajax: {
+      url: "data5.json",
+      dataSrc: 'services_data'
+    },
+    scrollX: true,
+    scrollY: false,
+    columns: [
+      { data: "entity_name" },
+      { data: "jurisdiction" },
+      { data: "service" },
+      {
+        data: "isEnabled", render: function (data, type, row) {
+          return `<input id="" class="d-flex form-check-input" type="checkbox" ${data && "checked"} />`
+        }
+      },
+      { data: "renewal_date" },
+      {
+        data: null, render: function (data, type, row) {
+          return `
+          <fieldset class="d-flex flex-wrap gap-1 align-items-center">
+            <input id="filejetservices_${row.id}" class="d-flex form-check-input" type="checkbox"/> 
+            <label class="text-capitalize fw-normal m-0" for="filejetservices_${row.id}">Disabled</label>
+          </fieldset>
+          `;
+        }
+      }
+    ],
+    order: [[0, "asc"]],
+    lengthChange: false,  // Removed pagination
+    paging: false,  // Disable pagination
+    info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+  })
+})
+
 //adjusting table on tabs change
 $(document).on('shown.bs.tab shown.bs.modal', function () {
 
   const entityDetailsTables = ["entitydetails-registration-table", "entitydetails-business-table", "entitydetails-dbas-table",
-    "entitydetails-ownership-table", "entitydetails-documents-table", "entitydetails-director-table", "entitydetails-opentask-table", "entitydetails-orders-table"]
+    "entitydetails-ownership-table", "entitydetails-documents-table", "entitydetails-director-table", "entitydetails-opentask-table", "entitydetails-orders-table", "entitydetails-services-table"]
 
   entityDetailsTables.forEach((tableId) => $(`#${tableId}`).DataTable().columns.adjust())
 
@@ -1014,8 +1055,8 @@ $(document).ready(function () {
 //handle row click to show document/folder information
 $(document).ready(function () {
   let activeRow = null;
-  let modal = ""
   $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr', function (e) {
+    if ($('#contextmenu').hasClass('show')) return;
     if ($(e.target).closest('input[type="checkbox"], .edit-content, .save-content, .delete-btn').length) return;
     if (activeRow) {
       $(activeRow).removeClass("rowSelect")
@@ -1144,9 +1185,58 @@ multipleFileUploadInput();
 
 // function to handle tags creation and apply custom tags with remove option
 $(document).ready(function () {
-  const tag_wrapper = document.querySelector(".tagsbadge-wrapper");
-  const alltags = tag_wrapper.querySelectorAll(".badge");
-  const alltags_value = Array.from(alltags).map(cb => cb.getAttribute("data-value"));
+  $(".tag-color-picker").on('input change', function (e) {
+    const $picker = $(this);
+    const tagColorPicker_wrapper = $(this).closest(".tag-colorPicker-wrapper");
+    const svg = tagColorPicker_wrapper.find('.tagSvg');
+    const gradientID = svg.find('linearGradient').attr('id');
 
-  console.log(tag_wrapper, alltags, alltags_value);
+    const pickedColor = e.type === "change" ? $picker.val() : "";
+    const fillColor = pickedColor || `url(#${gradientID})`
+
+    svg.find('.svgBackground').attr("fill", fillColor);
+    svg.data('color-picked', pickedColor);
+  });
+
+  $(".addtag-btn").on('click', function () {
+    const tagContainer = $(this).closest(".modal-tags-container");
+    const svg = tagContainer.find(".tagSvg");
+    const tagCreateInput = tagContainer.find(".tagfields input");
+    const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
+    const svgBackground = svg.find('.svgBackground');
+
+    const tagValue = tagCreateInput.val().trim();
+    const colorPicked = svg.data('color-picked');
+    const gradientID = svg.find('linearGradient').attr('id');
+
+    const existingTags = tagBadgeWrapper.children().map((_, el) => $(el).data('value')).get();
+
+    // reset state
+    const resetState = () => {
+      svgBackground.attr("fill", `url(#${gradientID})`);
+      tagCreateInput.val("");
+      svg.data('color-picked', "");
+    }
+
+    if (existingTags.length === 20) {
+      resetState();
+      return
+
+    };
+
+    if (existingTags.includes(tagValue)) {
+      resetState();
+      return;
+    };
+
+    if (colorPicked && tagValue) {
+      const newTag = `<div class="badge text-black position-relative" data-value="${tagValue}" style="background-color:${colorPicked}">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
+      tagBadgeWrapper.append(newTag);
+      resetState();
+    }
+  })
+
+  $(this).on('click', ".remove-tag", function () {
+    $(this).closest('.badge').remove();
+  })
 })
