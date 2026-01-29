@@ -24,7 +24,7 @@ $font-sora: "Sora", sans-serif;
   .dashboard-page {
     &>.container-fluid {
       display: grid !important;
-      grid-template-columns: repeat(2, auto);
+      grid-template-columns: auto 1fr;
       background-color: $color-gray-opacity !important;
       height: auto !important;
 
@@ -125,15 +125,13 @@ $font-sora: "Sora", sans-serif;
       }
 
       &>.container {
-        .main-content {
-          background-color: red !important;
-        }
+        grid-column: 1 / -1;
       }
     }
   }
 
   .sidebar-wrapper {
-    flex-shrink: 0;
+    flex-shrink: 1;
     align-self: flex-start;
   }
 
