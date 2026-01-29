@@ -6,6 +6,7 @@ $color-dark-gray: #262626;
 $color-light-gray: #6C6C6C;
 $color-medium-gray: #3E484A;
 $color-crimson-red: #E73B18;
+$color-lighter-gray: #F3F5F8;
 $font-sora: "Sora", sans-serif;
 
 
@@ -27,14 +28,15 @@ $font-sora: "Sora", sans-serif;
       grid-template-columns: auto 1fr;
       background-color: $color-gray-opacity !important;
       height: auto !important;
+      min-width: 0;
 
       .main-content-wrapper {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
         padding: 0 !important;
-        max-width: 100% !important;
         width: 100%;
+        min-width: 0;
 
         max-width: 100% !important;
 
@@ -125,7 +127,7 @@ $font-sora: "Sora", sans-serif;
       }
 
       &>.container {
-        grid-column: 1 / -1;
+        grid-column: 2 / span 2;
       }
     }
   }
@@ -133,6 +135,7 @@ $font-sora: "Sora", sans-serif;
   .sidebar-wrapper {
     flex-shrink: 0;
     align-self: flex-start;
+    grid-row: 1 / span 2;
   }
 
   .badge {
@@ -380,12 +383,32 @@ $font-sora: "Sora", sans-serif;
       }
     }
 
-    .tag-color-picker {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-      pointer-events: none;
+    .modal-tags-container {
+      .tagfields {
+        background-color: $color-lighter-gray;
+
+        select,
+        input {
+          background-color: white;
+        }
+      }
+
+      .tag-color-picker {
+        position: absolute;
+        top: -5px;
+        right: 0;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+      }
+    }
+
+    .icon-remove-tag {
+      width: 1rem;
+      right: -4px;
+      top: -5px;
+      cursor: pointer;
     }
   }
 
@@ -473,6 +496,7 @@ $font-sora: "Sora", sans-serif;
 
 .entityTabsContent {
   border-top: 1px solid #D8DDDF;
+  width: inherit !important;
 
   & * {
     font-family: $font-sora !important;
