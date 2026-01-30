@@ -27,14 +27,12 @@ $font-sora: "Sora", sans-serif;
       display: grid !important;
       grid-template-columns: auto 1fr;
       background-color: $color-gray-opacity !important;
-      height: auto !important;
       min-width: 0;
 
       .main-content-wrapper {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        height: 100%;
         padding: 0 !important;
         width: 100%;
         min-width: 0;
@@ -116,7 +114,6 @@ $font-sora: "Sora", sans-serif;
       }
 
       .entityTabsContent {
-        height: inherit;
         background-color: $color-gray-opacity;
       }
 
@@ -496,9 +493,9 @@ $font-sora: "Sora", sans-serif;
 
 .entityTabsContent {
   border-top: 1px solid #D8DDDF;
-  min-height: 0;
+  min-height: 0 !important;
 
-  .tab-content{
+  .tab-content {
     margin-inline: 1.5rem !important;
   }
 
@@ -550,7 +547,6 @@ $font-sora: "Sora", sans-serif;
 
   table,
   .dataTable {
-    min-height: 0;
 
     thead {
       & th:first-child {
@@ -560,10 +556,6 @@ $font-sora: "Sora", sans-serif;
       & th:last-child {
         border-top-right-radius: 5px;
       }
-    }
-
-    tbody {
-      min-height: 0;
     }
 
     tbody tr:last-child {
@@ -664,6 +656,8 @@ $font-sora: "Sora", sans-serif;
     .dataTable {
       width: inherit !important;
       max-width: inherit !important;
+      min-height: 0 !important;
+      overflow-y: hidden;
     }
   }
 
@@ -757,16 +751,9 @@ $font-sora: "Sora", sans-serif;
   .entityDetailDocumentsTable {
     position: relative;
 
-    .dataTables_scrollBody {
-      padding: 0px !important;
-    }
-
     .dataTable tr {
       min-height: 0;
-    }
-
-    .dataTable tr {
-      transition: padding 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
 
       .dt-control {
         color: transparent;
@@ -791,7 +778,7 @@ $font-sora: "Sora", sans-serif;
     .dataTable tr.expanded-row {
 
       background-color: #D8DDDF !important;
-      border: 2px solid rgba(0, 0, 0, 0.3) !important;
+      box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
 
       .dt-control {
         transform: rotate(90deg);
@@ -843,8 +830,7 @@ $font-sora: "Sora", sans-serif;
 
     .dataTable tr {
       min-height: 0;
-      transition: padding 0.5s ease-in-out;
-      transition: background-color;
+      transition: all 0.5s ease-in-out;
 
       .dt-control {
         color: transparent;
@@ -867,7 +853,7 @@ $font-sora: "Sora", sans-serif;
 
       &.expanded-row {
         background-color: #D8DDDF !important;
-        border: 2px solid rgba(0, 0, 0, 0.3) !important;
+        box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
         transition: background-color 0.5s ease-in-out;
 
         .dt-control {
