@@ -34,6 +34,7 @@ $font-sora: "Sora", sans-serif;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+        height: 100%;
         padding: 0 !important;
         width: 100%;
         min-width: 0;
@@ -120,10 +121,9 @@ $font-sora: "Sora", sans-serif;
       }
 
       .entitydetailstablist,
-      .entityTabsContent,
       .entityDetail-header,
       .entitydetailsinfo {
-        padding-inline: 1.5rem !important;
+        margin-inline: 1.5rem !important;
       }
 
       &>.container {
@@ -496,7 +496,11 @@ $font-sora: "Sora", sans-serif;
 
 .entityTabsContent {
   border-top: 1px solid #D8DDDF;
-  width: inherit !important;
+  min-height: 0;
+
+  .tab-content{
+    margin-inline: 1.5rem !important;
+  }
 
   & * {
     font-family: $font-sora !important;
@@ -546,6 +550,8 @@ $font-sora: "Sora", sans-serif;
 
   table,
   .dataTable {
+    min-height: 0;
+
     thead {
       & th:first-child {
         border-top-left-radius: 5px;
@@ -554,6 +560,10 @@ $font-sora: "Sora", sans-serif;
       & th:last-child {
         border-top-right-radius: 5px;
       }
+    }
+
+    tbody {
+      min-height: 0;
     }
 
     tbody tr:last-child {
