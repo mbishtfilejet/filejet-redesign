@@ -904,8 +904,7 @@ $(document).ready(function () {
 })
 
 
-// filjet services initialization code 
-
+// filjet services table initialization code 
 $(document).ready(function () {
   const table = $("#entitydetails-services-table").DataTable({
     ajax: {
@@ -926,12 +925,7 @@ $(document).ready(function () {
       { data: "renewal_date" },
       {
         data: null, render: function (data, type, row) {
-          return `
-          <fieldset class="d-flex flex-wrap gap-1 align-items-center">
-            <input id="filejetservices_${row.id}" class="d-flex form-check-input" type="checkbox"/> 
-            <label class="text-capitalize fw-normal m-0" for="filejetservices_${row.id}">Disabled</label>
-          </fieldset>
-          `;
+          return `<a href="#">Disable</a>`;
         }
       }
     ],
