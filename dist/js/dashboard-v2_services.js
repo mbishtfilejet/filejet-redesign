@@ -1260,26 +1260,33 @@ multipleFileUploadInput();
 $(document).ready(function () {
   $(".tag-color-picker").on('input change', function (e) {
     const $picker = $(this);
-    const tagColorPicker_wrapper = $(this).closest(".tag-colorPicker-wrapper");
+    const tagContainer = $picker.closest(".modal-tags-container");
+    const tagColorPicker_wrapper = $picker.closest(".tag-colorPicker-wrapper");
+    const colorType = $picker.data('color-type');
     const svg = tagColorPicker_wrapper.find('.tagSvg');
     const gradientID = svg.find('linearGradient').attr('id');
 
-    const pickedColor = e.type === "change" ? $picker.val() : "";
+    const pickedColor = $picker.val() || "";
     const fillColor = pickedColor || `url(#${gradientID})`
 
     svg.find('.svgBackground').attr("fill", fillColor);
-    svg.data('color-picked', pickedColor);
+
+    const colors = tagContainer.data('colors') || {};
+    colors[colorType] = pickedColor;
+    tagContainer.data('colors', colors);
   });
 
   $(".addtag-btn").on('click', function () {
     const tagContainer = $(this).closest(".modal-tags-container");
+    const colors = tagContainer.data('colors') || {};
     const svg = tagContainer.find(".tagSvg");
     const tagCreateInput = tagContainer.find(".tagfields input");
     const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
     const svgBackground = svg.find('.svgBackground');
 
     const tagValue = tagCreateInput.val().trim();
-    const colorPicked = svg.data('color-picked');
+    const bgColor = colors.bg;
+    const textColor = colors.text;
     const gradientID = svg.find('linearGradient').attr('id');
 
     const existingTags = tagBadgeWrapper.children().map((_, el) => $(el).data('value')).get();
@@ -1288,7 +1295,7 @@ $(document).ready(function () {
     const resetState = () => {
       svgBackground.attr("fill", `url(#${gradientID})`);
       tagCreateInput.val("");
-      svg.data('color-picked', "");
+      tagContainer.data('colors', {});
     }
 
     if (existingTags.length === 20) {
@@ -1302,8 +1309,8 @@ $(document).ready(function () {
       return;
     };
 
-    if (colorPicked && tagValue) {
-      const newTag = `<div class="badge text-black position-relative" data-value="${tagValue}" style="background-color:${colorPicked}">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
+    if (bgColor && tagValue && textColor) {
+      const newTag = `<div class="badge text-black position-relative" data-value="${tagValue}" style="background-color:${bgColor}; color:${textColor} !important;">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
       tagBadgeWrapper.append(newTag);
       resetState();
     }
