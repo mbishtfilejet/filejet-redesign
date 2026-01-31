@@ -659,7 +659,7 @@ $font-sora: "Sora", sans-serif;
       min-height: 0 !important;
     }
 
-    .dataTables_scrollBody{
+    .dataTables_scrollBody {
       overflow-y: hidden !important;
     }
   }
@@ -831,9 +831,26 @@ $font-sora: "Sora", sans-serif;
       }
     }
 
+
     .dataTables_scrollBody {
       padding: 0px !important;
     }
+
+    .dataTable tr {
+      &.expanded-content td.doc_indent {
+        padding-left: 35px !important;
+      }
+
+      &.rowSelect,
+      &.expanded-row.rowSelect {
+        background-color: #E8F1FE !important;
+      }
+    }
+  }
+
+  .entityDetailServicesTable,
+  .entityDetailDocumentsTableV2 {
+    position: relative;
 
     .dataTable tr {
       min-height: 0;
@@ -867,14 +884,20 @@ $font-sora: "Sora", sans-serif;
           transform: rotate(90deg);
         }
       }
+    }
+  }
 
-      &.expanded-content td.doc_indent {
-        padding-left: 35px !important;
-      }
+  .entityDetailServicesTable {
+    .dataTables_wrapper .dataTable {
+      thead {
+        th {
 
-      &.rowSelect,
-      &.expanded-row.rowSelect {
-        background-color: #E8F1FE !important;
+          &:nth-child(5),
+          &:last-child {
+            width: 100px;
+            min-width: 100px !important;
+          }
+        }
       }
     }
   }
