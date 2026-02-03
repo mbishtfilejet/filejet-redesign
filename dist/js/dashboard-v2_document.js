@@ -688,7 +688,7 @@ $(document).ready(function () {
           <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
             <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md flex-shrink-0 m-0"></span>
-            <span class="input-item flex-shrink-0">${data}</span>
+            <span class="input-item text-break">${data}</span>
           </div>
          </div>
         `;
