@@ -669,10 +669,10 @@ $(document).ready(function () {
         data: "name", render: function (data, type, row) {
           return `
          <div class="d-flex align-items-center gap-3">
-          <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
+          <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
-            <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md m-0"></span>
-            <span class="input-item">${data}</span>
+            <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md flex-shrink-0 m-0"></span>
+            <span class="input-item text-break">${data}</span>
           </div>
          </div>
         `;
@@ -680,7 +680,7 @@ $(document).ready(function () {
       },
       {
         data: "modified_by", render: function (data, type, row) {
-          return row.modified_by === "filejet" ? null : data;
+          return row.modified_by === "filejet" ? null : `<span class="text-break">${data}</span>`;
         }
       },
       {
@@ -799,18 +799,18 @@ $(document).ready(function () {
           <td class="doc_indent">
             ${row?.type !== "file" ?
         `<div class="d-flex align-items-center gap-3">
-              <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
+              <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
               <div class="d-flex align-items-center gap-2">
-                  <span class="icon icon-folder-upload-purple icon-md m-0"></span>
-                  <span class="input-item">${row.name}</span>
+                  <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
+                  <span class="input-item text-break">${row.name}</span>
               </div>
           </div>`:
         `<div class="d-flex align-items-center gap-2">
-                    <span class="icon icon-document-gray icon-md m-0"></span>
-                    <span class="input-item">${row.name || data.name}</span>
+                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
+                    <span class="input-item text-break">${row.name || data.name}</span>
                 </div>`}
               </td>
-              <td >${row.modified_by || data.modified_by}</td>
+              <td> <span class="text-break">${row.modified_by || data.modified_by}</span></td>
               <td >${row.date_modified || data.date_modified}</td>
               <td>
                 <div class="d-flex align-items-center">
