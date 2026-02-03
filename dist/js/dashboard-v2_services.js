@@ -701,7 +701,7 @@ $(document).ready(function () {
       },
       {
         data: "modified_by", render: function (data, type, row) {
-          return row.modified_by === "filejet" ? null : data;
+          return row.modified_by === "filejet" ? null : `<span class="text-break">${data}</span>`;
         }
       },
       {
@@ -830,16 +830,16 @@ $(document).ready(function () {
               <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
               <div class="d-flex align-items-center gap-2">
                   <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
-                  <span class="input-item flex-shrink-0">${row.name}</span>
+                  <span class="input-item text-break">${row.name}</span>
               </div>
           </div>`:
         `<div class="d-flex align-items-center gap-2">
-                    <span class="icon icon-document-gray icon-md m-0"></span>
-                    <span class="input-item">${row.name}</span>
+                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
+                    <span class="input-item text-break">${row.name}</span>
                 </div>`}
               </td>
               <td >${renderTagsOnRow(row.tags)}</td>
-              <td >${row.modified_by}</td>
+              <td> <span class="text-break">${row.modified_by || data.modified_by}</span></td>
               <td >${row.date_modified}</td>
               ${null && `<td >
                 <div class="d-flex align-items-center gap-1">
@@ -910,9 +910,7 @@ $(document).ready(function () {
           return `
          <div class="d-flex align-items-center gap-3">
           <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
-          <div class="d-flex align-items-center gap-2">
-            <span class="input-item">${data}</span>
-          </div>
+          <span class="input-item">${data}</span>
          </div>
         `;
         }
@@ -976,12 +974,7 @@ $(document).ready(function () {
     return d.expanded_rows.map((row, index, arr) => `
           <tr class="expanded-content" data-parent="${rowId}">
               <td>
-                <div class="d-flex align-items-center gap-3">
-                  <button class="dt-control no-control m-0" role="button"></button>
-                  <div class="d-flex align-items-center gap-2">
-                    <span class="input-item">${row.entity_name}</span>
-                  </div>
-                </div>
+                ${row.entity_name}
               </td>
               <td>${row.jurisdiction}</td>
               <td>

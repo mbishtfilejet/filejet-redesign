@@ -739,7 +739,8 @@ $(document).ready(function () {
         tr.attr('data-id', rowId)
       }
     }
-    applyAlternateRowStyling();
+    
+    applyAlternateRowStyling("entitydetails-documents-table");
 
     const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
     $(`.expanded-content[data-parent="${rowId}"]`).each(function () {
@@ -779,15 +780,6 @@ $(document).ready(function () {
       }
       row.remove();
       row.removeClass("expanded-row")
-    });
-  }
-
-  // function to keep alternative row design
-  function applyAlternateRowStyling() {
-    const rows = $('#entitydetails-documents-table tbody tr');
-    rows.removeClass('odd even');
-    rows.each(function (index) {
-      $(this).addClass(index % 2 === 0 ? 'odd' : 'even');
     });
   }
 
@@ -837,6 +829,17 @@ $(document).ready(function () {
     ).join("");
   }
 })
+
+
+// function to keep alternative row design
+function applyAlternateRowStyling(id) {
+  const rows = $(`#${id} tbody tr`);
+  rows.removeClass('odd even');
+  rows.each(function (index) {
+    $(this).addClass(index % 2 === 0 ? 'odd' : 'even');
+  });
+}
+
 
 //adjusting table on tabs change
 $(document).on('shown.bs.tab shown.bs.modal', function () {

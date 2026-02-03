@@ -701,7 +701,7 @@ $(document).ready(function () {
       },
       {
         data: "modified_by", render: function (data, type, row) {
-          return row.modified_by === "filejet" ? null : data;
+          return row.modified_by === "filejet" ? null : `<span class="text-break">${data}</span>`;
         }
       },
       {
@@ -773,7 +773,7 @@ $(document).ready(function () {
       }
     }
     table.columns.adjust();
-    applyAlternateRowStyling();
+    applyAlternateRowStyling("entitydetails-documents-table");
 
     const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
     $(`.expanded-content[data-parent="${rowId}"]`).each(function () {
@@ -816,15 +816,6 @@ $(document).ready(function () {
     });
   }
 
-  // function to keep alternative row design
-  function applyAlternateRowStyling() {
-    const rows = $('#entitydetails-documents-table tbody tr');
-    rows.removeClass('odd even');
-    rows.each(function (index) {
-      $(this).addClass(index % 2 === 0 ? 'odd' : 'even');
-    });
-  }
-
   // get expanded row structure
   function formatChildRows(data, parentId, dataLevelId = "") {
     return data.expanded_rows.map((row, index, arr) =>
@@ -839,16 +830,16 @@ $(document).ready(function () {
               <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
               <div class="d-flex align-items-center gap-2">
                   <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
-                  <span class="input-item flex-shrink-0">${row.name}</span>
+                  <span class="input-item text-break">${row.name}</span>
               </div>
           </div>`:
         `<div class="d-flex align-items-center gap-2">
-                    <span class="icon icon-document-gray icon-md m-0"></span>
-                    <span class="input-item">${row.name}</span>
+                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
+                    <span class="input-item text-break">${row.name}</span>
                 </div>`}
               </td>
               <td >${renderTagsOnRow(row.tags)}</td>
-              <td >${row.modified_by}</td>
+              <td> <span class="text-break">${row.modified_by || data.modified_by}</span></td>
               <td >${row.date_modified}</td>
               ${null && `<td >
                 <div class="d-flex align-items-center gap-1">
@@ -935,6 +926,16 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   })
 })
+
+// function to keep alternative row design
+function applyAlternateRowStyling(id) {
+  const rows = $(`#${id} tbody tr`);
+  rows.removeClass('odd even');
+  rows.each(function (index) {
+    $(this).addClass(index % 2 === 0 ? 'odd' : 'even');
+  });
+}
+
 
 //adjusting table on tabs change
 $(document).on('shown.bs.tab shown.bs.modal', function () {
