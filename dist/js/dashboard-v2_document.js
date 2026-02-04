@@ -916,7 +916,7 @@ $(document).ready(function () {
       { data: "renewal_date" },
       {
         data: null, render: function (data, type, row) {
-          return `<a href="#">Disable</a>`;
+          return `<a href="javascript:void(0)" role="button" data-bs-toggle="modal" data-bs-target="#disableService-modal">Disable</a>`;
         }
       }
     ],
