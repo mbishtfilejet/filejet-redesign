@@ -1263,8 +1263,19 @@ $(document).ready(function () {
       { data: "case_number" },
       { data: "check_number" },
       {
-        data: null, render: function () {
-          return `<button  type="button" class="btn  btn-secondary rounded-1 p-2 m-0 text-white">Take action</button>`
+        data: null, render: function (data, type, row) {
+          return `<div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle p-2 m-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Take Action
+            </a>
+
+            <ul class="dropdown-menu">
+              ${row.acknowledged_by ? `<li><a class="dropdown-item border-bottom" href="">View</a></li>` : `<li><a class="dropdown-item border-bottom" href="" data-bs-toggle="modal" data-bs-target="#sopAcknowledge-modal">Acknowledge</a></li>`}
+              <li><a class="dropdown-item border-bottom" href="">Edit</a></li>
+              <li><a class="dropdown-item" href="">Download</a></li>
+            </ul>
+          </div>
+          `;
         }
       }
     ],
@@ -1284,10 +1295,19 @@ $(document).ready(function () {
       { data: "group" },
       { data: "entity_name" },
       { data: "jurisdiction" },
-      { data: "registered_agent" },
+      {
+        data: "registered_agent", render: function (data, type, row) {
+          return `
+        <div class="d-flex align-items-center gap-1">
+          ${data.toLowerCase() === "filejet" ? '<span class="icon icon-orange-white-tick m-0"></span>' : ""} 
+          <span class="fw-bold">${data}</span>
+        </div>
+        `
+        }
+      },
       {
         data: null, render: function (data, type, row) {
-          return `<button  type="button" class="btn  btn-secondary rounded-1 p-2 m-0 text-white">${row.registered_agent.toLowerCase() === "filejet" ? "Edit" : "Appoint Filejet"}</button>`
+          return `<button  type="button" class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white">${row.registered_agent.toLowerCase() === "filejet" ? "Edit" : "Appoint Filejet"}</button>`
         }
       }
     ],
