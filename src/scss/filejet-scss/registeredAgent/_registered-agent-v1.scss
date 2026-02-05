@@ -40,11 +40,11 @@
         font-weight: 400 !important;
         color: var(--bs-black-primary) !important;
         font-size: 12px !important;
-        padding: 0.5rem 0.9rem !important;
+        padding: 0.8rem 0.8rem !important;
         line-height: 1.25rem !important;
 
-        &.text-light-blue {
-            color: var(--bs-light-blue) !important;
+        .btn {
+            font-size: 11px !important;
         }
     }
 
@@ -68,7 +68,7 @@
 
         thead {
             th:nth-child(n) {
-                padding: 0.9rem 0.9rem !important;
+                padding: 0.8rem !important;
             }
 
             th:first-child {
@@ -114,6 +114,49 @@
                     &:nth-child(3) {
                         max-width: 180px !important;
                     }
+                }
+            }
+        }
+    }
+
+    .dropdown {
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:hover {
+                color: white !important;
+                background-color: #2E2E36 !important;
+            }
+
+            &::after {
+                border: none !important;
+                width: 11px;
+                height: 11px;
+                background-image: url("../../../../dist/images/icons/white-angle-bottom.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+                transition: transform 0.2s ease-in-out;
+            }
+
+            &.show::after {
+                transform: rotate(-180deg);
+            }
+        }
+
+        .dropdown-menu {
+            z-index: 200;
+
+            .dropdown-item {
+                padding: 11.5px 13px;
+
+                &:hover,
+                &:active,
+                &:focus,
+                &.active {
+                    color: var(--bs-dropdown-link-hover-color);
+                    background-color: var(--bs-dropdown-link-hover-bg);
                 }
             }
         }
