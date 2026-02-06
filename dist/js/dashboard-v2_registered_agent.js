@@ -1307,7 +1307,7 @@ $(document).ready(function () {
       },
       {
         data: null, render: function (data, type, row) {
-          return `<button  type="button" class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white">${row.registered_agent.toLowerCase() === "filejet" ? "Edit" : "Appoint Filejet"}</button>`
+          return `<button ${row.registered_agent.toLowerCase() !== "filejet" ? 'data-bs-toggle="modal" data-bs-target="#appointRA"' : ""} type="button" class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white">${row.registered_agent.toLowerCase() === "filejet" ? "Edit" : "Appoint Filejet"}</button>`
         }
       }
     ],
