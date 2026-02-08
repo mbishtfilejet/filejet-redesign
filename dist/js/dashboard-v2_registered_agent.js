@@ -273,6 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "jurisdictionContainer":
         case "entityJurisdictionContainer":
         case "orderJurisdictionContainer":
+        case "RAjurisdictionContainer":
           return "Jurisdictions";
         case "taskContainer": return "Tasks";
         case "tagContainer": return "Filter By Tag";
@@ -293,6 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "reqselectEntityContainer3": return "Select Entity";
         case "entityDetailOwnershipContainer": return "As of Today";
         case "entityDetailDirectorContainer": return "As of Today";
+        case "registeredAgentContainer": return "Filejet and Others";
         default: return "Status";
       }
     }
@@ -327,7 +329,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ["reqselectEntityContainer", "reqselectEntityDropdown", "reqselectEntitySearch", "reqselectEntity-checkbox"],
     ["reqselectEntityContainer2", "reqselectEntityDropdown2", "reqselectEntitySearch2", "reqselectEntity-checkbox2"],
     ["reqselectEntityContainer3", "reqselectEntityDropdown3", "reqselectEntitySearch3", "reqselectEntity-checkbox3"],
-    ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]]
+    ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]],
+    ["RAjurisdictionContainer", "RAjurisdictionDropdown", "RAjurisdictionSearch", "RAjurisdiction-checkbox", "RAjurisdictionSelectAll"],
+    ["registeredAgentContainer", "registeredAgentDropdown", "registeredAgentSearch", "registeredAgent-checkbox"]
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));

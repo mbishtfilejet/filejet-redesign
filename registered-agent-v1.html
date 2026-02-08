@@ -526,11 +526,53 @@
                                     class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
                                     <span class="icon icon-search-grey icon-sm opacity-25"></span>
                                     <input type="text" class="custom-search-input border-0 p-0 w-100"
-                                       placeholder="Search by Entity Name">
+                                       placeholder="Search by Entity Name or Case # or Check #">
                                  </div>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-2 Jurisdiction-table-col mb-2 dropdown">
+                              <div class="filter2-dropdown col-12 col-md-1 flex-grow-1 mb-2 dropdown">
+                                 <div
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                    id="sopReceivedContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                                    <input type="text" class="search-input" id="sopReceivedSearch" placeholder="Received"
+                                       autocomplete="off">
+                                 </div>
+                                 <ul class="dropdown-menu" id="sopReceivedDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input sopReceived-checkbox me-2" data-value="Yes">
+                                          Yes</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input sopReceived-checkbox me-2" data-value="No">
+                                          No</label>
+                                    </li>
+                                 </ul>
+                              </div>
+
+                              <div class="filter2-dropdown col-12 col-md-2 flex-grow-1 mb-2 dropdown">
+                                 <div
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                    id="orderStatusContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                    tabindex="0">
+                                    <input type="text" class="search-input" id="orderStatusSearch" placeholder="Status"
+                                       autocomplete="off">
+                                 </div>
+                                 <ul class="dropdown-menu" id="orderStatusDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input orderStatus-checkbox me-2" data-value="In Process">
+                                          In
+                                          Process</label></li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input orderStatus-checkbox me-2"
+                                             data-value="Sent To State">
+                                          Sent To State</label></li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input orderStatus-checkbox me-2"
+                                             data-value="Recently Completed"> Recently Completed</label></li>
+                                 </ul>
+                              </div>
+
+                              <div class="filter2-dropdown col-12 col-md-2 mb-2 dropdown">
                                  <div
                                     class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
                                     id="jurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
@@ -565,28 +607,25 @@
                                  </ul>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-3 status-table-col mb-2 dropdown">
+                              <div class="filter2-dropdown col-md-1 flex-grow-1 mb-2 dropdown">
                                  <div
-                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
-                                    id="orderStatusContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                    tabindex="0">
-                                    <input type="text" class="search-input" id="orderStatusSearch" placeholder="Status"
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                    id="sopCheckContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                                    <input type="text" class="search-input" id="sopCheckSearch" placeholder="Has Check"
                                        autocomplete="off">
                                  </div>
-                                 <ul class="dropdown-menu" id="orderStatusDropdown">
+                                 <ul class="dropdown-menu" id="sopCheckDropdown">
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input orderStatus-checkbox me-2" data-value="In Process">
-                                          In
-                                          Process</label></li>
+                                             class="form-check-input sopCheck-checkbox me-2" data-value="Yes">
+                                          Yes</label>
+                                    </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input orderStatus-checkbox me-2"
-                                             data-value="Sent To State">
-                                          Sent To State</label></li>
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input orderStatus-checkbox me-2"
-                                             data-value="Recently Completed"> Recently Completed</label></li>
+                                             class="form-check-input sopCheck-checkbox me-2" data-value="No">
+                                          No</label>
+                                    </li>
                                  </ul>
                               </div>
+
                            </div>
 
                            <div class="registeredAgentTableCard mt-3 border rounded-2">
@@ -615,7 +654,7 @@
                         <div class="tab-pane fade" id="en-registeredAgent-tab-pane" role="tabpanel"
                            aria-labelledby="en-registeredAgent-tab" tabindex="0">
                            <div class="row g-3">
-                              <div class="col-12 col-md-4 mb-2 search-table-col">
+                              <div class="col-12 col-md-7 mb-2 search-table-col">
                                  <div
                                     class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg px-3 py-2 py-md-2 h-100">
                                     <span class="icon icon-search-grey icon-sm opacity-25"></span>
@@ -624,84 +663,61 @@
                                  </div>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-2 Jurisdiction-table-col mb-2 dropdown">
+                              <div class="filter2-dropdown col-12 col-md-2 RAjurisdiction-table-col mb-2 dropdown">
                                  <div
                                     class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
-                                    id="jurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                    id="RAjurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
                                     tabindex="0">
-                                    <input type="text" class="search-input" id="jurisdictionSearch"
+                                    <input type="text" class="search-input" id="RAjurisdictionSearch"
                                        placeholder="Jurisdictions" autocomplete="off">
                                  </div>
-                                 <ul class="dropdown-menu" id="jurisdictionDropdown">
-                                    <li><label class="dropdown-item"><input type="checkbox" id="jurisdictionSelectAll"
+                                 <ul class="dropdown-menu" id="RAjurisdictionDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox" id="RAjurisdictionSelectAll"
                                              class="form-check-input me-2">All</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="CA">
+                                             class="form-check-input RAjurisdiction-checkbox me-2" data-value="CA">
                                           CA</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="NV">
+                                             class="form-check-input RAjurisdiction-checkbox me-2" data-value="NV">
                                           NV</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="FL">
+                                             class="form-check-input RAjurisdiction-checkbox me-2" data-value="FL">
                                           FL</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="MN">
+                                             class="form-check-input RAjurisdiction-checkbox me-2" data-value="MN">
                                           MN</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="OR">
+                                             class="form-check-input RAjurisdiction-checkbox me-2" data-value="OR">
                                           OR</label>
                                     </li>
                                  </ul>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-2 flex-grow-1 task-tble-col mb-2 dropdown">
+                              <div class="filter2-dropdown col-12 col-md-3 registered-table-col mb-2 dropdown">
                                  <div
                                     class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
-                                    id="taskContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                    <input type="text" class="search-input" id="taskSearch" placeholder="Tasks"
-                                       autocomplete="off">
+                                    id="registeredAgentContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                    tabindex="0">
+                                    <input type="text" class="search-input" id="registeredAgentSearch"
+                                       placeholder="Filejet and Others" autocomplete="off">
                                  </div>
-                                 <ul class="dropdown-menu" id="taskDropdown">
+                                 <ul class="dropdown-menu" id="registeredAgentDropdown">
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input task-checkbox me-2" data-value="Annual Report">
-                                          Annual Report</label></li>
+                                             class="form-check-input registeredAgent-checkbox me-2"
+                                             data-value="Filejet as Registered Agent">
+                                          Filejet as Registered Agent</label></li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input task-checkbox me-2" data-value="SOP">
-                                          SOP</label></li>
+                                             class="form-check-input registeredAgent-checkbox me-2"
+                                             data-value="Other Registred Agent">
+                                          Other Registred Agent</label></li>
                                  </ul>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-3 status-table-col mb-2 dropdown">
-                                 <div
-                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
-                                    id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                    <input type="text" class="search-input" id="statusSearch" placeholder="Status"
-                                       autocomplete="off">
-                                 </div>
-                                 <ul class="dropdown-menu" id="statusDropdown">
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Overdue">
-                                          Overdue</label></li>
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Urgent">
-                                          Urgent</label></li>
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Upcoming">
-                                          Upcoming</label></li>
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Unacknowledged">
-                                          Unacknowledged</label></li>
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Future">
-                                          Future</label></li>
-
-                                 </ul>
-                              </div>
                            </div>
                            <div class="registeredAgentTableCard mt-3 border rounded-2">
                               <table id="registeredAgent-table" class="table table-striped w-100 table-nowrap mb-0">
@@ -737,7 +753,7 @@
    <div class="modal modal-right fade filter-slideout SOP-model" id="sopAcknowledge-modal" tabindex="-1"
       aria-labelledby="sopAcknowledge-Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100"
-         style="max-width: 650px !important;">
+         style="max-width: 700px !important;">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <div class="modal-header">
                <h4 class="fw-bold m-0">Service of Process Acknowledge</h4>
@@ -749,8 +765,8 @@
                      <div class="accordion mb-4" id="accordionExample4">
                         <div class="accordion-item m-0">
                            <h2 class="accordion-header" id="headingFour1">
-                              <button class="accordion-button collapsed mb-0" type="button" data-bs-toggle="collapse"
-                                 data-bs-target="#collapseFour1" aria-expanded="false" aria-controls="collapseFour1">
+                              <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                                 data-bs-target="#collapseFour1" aria-expanded="true" aria-controls="collapseFour1">
                                  General
                               </button>
                            </h2>
@@ -758,55 +774,55 @@
                               aria-labelledby="headingFour1">
                               <div class="accordion-body pt-0">
                                  <div class="row g-4">
-                                    <div class="col-md-8 d-flex align-items-center gap-2">
+                                    <div class="col-12 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Entity Name</span>
                                        <span class="text-break">Delaware Foreign New Filing, CORP</span>
                                     </div>
-                                    <div class="col-md-4 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Jurisdiction</span>
                                        <span>CA</span>
                                     </div>
-                                    <div class="col-md-8 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Entity File Number</span>
                                        <span>#7817402905</span>
                                     </div>
-                                    <div class="col-md-4 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">MAtter #</span>
                                        <span>9517402905</span>
                                     </div>
-                                    <div class="col-md-8 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">SOP Type</span>
                                        <span>Wage Garnisment</span>
                                     </div>
-                                    <div class="col-md-4 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Case #</span>
                                        <span>6567523478</span>
                                     </div>
-                                    <div class="col-md-8 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Delivery Method</span>
                                        <span>Email</span>
                                     </div>
-                                    <div class="col-md-4 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Date Served</span>
                                        <span>01/23/2026</span>
                                     </div>
-                                    <div class="col-md-5 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Issuer</span>
                                        <span>Jane Smith</span>
                                     </div>
-                                    <div class="col-md-3 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Cover Page</span>
                                        <span>Yes</span>
                                     </div>
-                                    <div class="col-md-4 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Check</span>
                                        <span>Yes</span>
                                     </div>
-                                    <div class="col-md-5 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Check #</span>
                                        <span>5627309111</span>
                                     </div>
-                                    <div class="col-md-7 d-flex align-items-center gap-2">
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">Check Amount</span>
                                        <span>$ 200000</span>
                                     </div>
@@ -819,8 +835,8 @@
                      <div class="accordion mb-4" id="accordionExample2">
                         <div class="accordion-item m-0">
                            <h2 class="accordion-header" id="headingTwo1">
-                              <button class="accordion-button collapsed mb-0" type="button" data-bs-toggle="collapse"
-                                 data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                              <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                                 data-bs-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo1">
                                  AI Summary
                               </button>
                            </h2>
@@ -882,20 +898,8 @@
                            <div id="collapseTwo_300" class="accordion-collapse collapse border-0"
                               aria-labelledby="headingTwo_300">
                               <div class="accordion-body pt-0">
-                                 <div class="d-flex flex-column gap-2">
-                                    <a class="d-flex align-items-end" href="">
-                                       <span class="icon icon-pdf-doc icon-md"></span>
-                                       <span>California(SOP).pdf</span>
-                                    </a>
-                                    <a class="d-flex align-items-center" href="">
-                                       <span class="icon icon-pdf-doc icon-md"></span>
-                                       <span>California(SOP).pdf</span>
-                                    </a>
-                                    <a class="d-flex align-items-center" href="">
-                                       <span class="icon icon-pdf-doc icon-md"></span>
-                                       <span>California(SOP).pdf</span>
-                                    </a>
-                                 </div>
+                                 <iframe src="dist/images/ANNUAL REPORT 2020 BrightPath Enterprises.pdf"
+                                    class="w-100 min-vh-100 border-0"></iframe>
                               </div>
                            </div>
                         </div>
@@ -912,7 +916,7 @@
                   <div class="d-flex align-items-center">
                      <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
                         data-bs-toggle="modal" data-bs-dismiss="modal">
-                        Acknowledge Document
+                        Acknowledge
                      </button>
                   </div>
                </div>
