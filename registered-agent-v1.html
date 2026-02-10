@@ -533,9 +533,10 @@
                               <div class="filter2-dropdown col-12 col-md-1 flex-grow-1 mb-2 dropdown">
                                  <div
                                     class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
-                                    id="sopReceivedContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                    <input type="text" class="search-input" id="sopReceivedSearch" placeholder="Received"
-                                       autocomplete="off">
+                                    id="sopReceivedContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                    tabindex="0">
+                                    <input type="text" class="search-input" id="sopReceivedSearch"
+                                       placeholder="Received" autocomplete="off">
                                  </div>
                                  <ul class="dropdown-menu" id="sopReceivedDropdown">
                                     <li><label class="dropdown-item"><input type="checkbox"
@@ -559,16 +560,12 @@
                                  </div>
                                  <ul class="dropdown-menu" id="orderStatusDropdown">
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input orderStatus-checkbox me-2" data-value="In Process">
-                                          In
-                                          Process</label></li>
+                                             class="form-check-input orderStatus-checkbox me-2" data-value="Acknowledged">
+                                          Acknowledged</label></li>
                                     <li><label class="dropdown-item"><input type="checkbox"
                                              class="form-check-input orderStatus-checkbox me-2"
-                                             data-value="Sent To State">
-                                          Sent To State</label></li>
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input orderStatus-checkbox me-2"
-                                             data-value="Recently Completed"> Recently Completed</label></li>
+                                             data-value="UnAcknowledged">
+                                          UnAcknowledged</label></li>
                                  </ul>
                               </div>
 
@@ -748,15 +745,298 @@
       </div>
    </div>
 
-
    <!-- Edit Information Modal Start-->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="sopDocView-modal" tabindex="-1"
+      aria-labelledby="sopDocView-modal-Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100"
+         style="max-width: 700px !important;">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <div class="modal-header">
+               <h4 class="fw-bold m-0">Service of Process</h4>
+            </div>
+            <div class="modal-body">
+               <div id="sopDocView-modalDetails">
+                  <form class="" action="">
+
+                     <div class="accordion mb-4" id="accordionExample4">
+                        <div class="accordion-item m-0">
+                           <h2 class="accordion-header" id="headingFour1">
+                              <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                                 data-bs-target="#collapseFour1" aria-expanded="true" aria-controls="collapseFour1">
+                                 General
+                              </button>
+                           </h2>
+                           <div id="collapseFour1" class="accordion-collapse border-0 collapse show"
+                              aria-labelledby="headingFour1">
+                              <div class="accordion-body pt-0">
+                                 <div class="row g-4">
+                                    <div class="col-12 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Entity Name</span>
+                                       <span class="text-break">Delaware Foreign New Filing, CORP</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Jurisdiction</span>
+                                       <span>CA</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Entity File Number</span>
+                                       <span>#7817402905</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Matter #</span>
+                                       <span>Smith</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">SOP Type</span>
+                                       <span>Wage Garnisment</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Case #</span>
+                                       <span>6567523478</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Delivery Method</span>
+                                       <span>Email</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Date Served</span>
+                                       <span>01/23/2026</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Issuer</span>
+                                       <span>Jane Smith</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Acknowledged By</span>
+                                       <span>John Smith</span>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center gap-2">
+                                       <span class="fw-bold flex-shrink-0">Acknowledged Date</span>
+                                       <span>08/11/2025</span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                      <div class="accordion mb-4" id="accordionRAView_3">
+                        <div class="accordion-item m-0">
+                           <h2 class="accordion-header" id="RAViewHeader_3">
+                              <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                                 data-bs-target="#collapseRAView_3" aria-expanded="true"
+                                 aria-controls="collapseRAView_3">
+                                 Tags
+                              </button>
+                           </h2>
+                           <div id="collapseRAView_3" class="accordion-collapse border-0 collapse show"
+                              aria-labelledby="RAViewHeader_3">
+                              <div class="accordion-body pt-0 modal-tags-container">
+                                 <div class="d-flex gap-2 align-items-center justify-content-between">
+                                    <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
+                                       <div class="badge badge-Inactive text-black" data-value="SOP">SOP</div>
+                                       <div class="badge badge-active text-black" data-value="Wage Garnishment">Wage Garnishment</div>
+                                    </div>
+
+                                    <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                       role="button" aria-expanded="false" data-bs-target="#collapseTagsContainer2"
+                                       aria-controls="collapseTagsContainer2"></span>
+                                 </div>
+                                 <div class="collapse mt-3" id="collapseTagsContainer2">
+                                    <fieldset class="rounded-2 p-2 tagfields">
+                                       <label for="form-label">Apply Tag</label>
+                                       <div class="w-100 me-3 custom-dropdown">
+                                          <select class="form-select" id="" required="">
+                                             <option value="" disabled="" selected="" hidden=""
+                                                data-full-text="Select Tag">
+                                                Select Tag
+                                             </option>
+                                             <option value="Tag 01" data-full-text="SOP">SOP</option>
+                                             <option value="Tag 02" data-full-text="Wage Garnishment">Wage Garnishment</option>
+                                             <option value="Tag 03" data-full-text="Tag 03">Tag 03</option>
+                                             <option value="Tag 04" data-full-text="Tag 04">Tag 04</option>
+                                             <option value="Tag 05" data-full-text="Tag 05">Tag 05</option>
+                                          </select>
+                                       </div>
+                                    </fieldset>
+                                    <fieldset class="mt-3 rounded-2 p-2 tagfields">
+                                       <label for="form-label">Create Tag</label>
+                                       <div class="d-flex gap-3 align-items-center justify-content-between">
+                                          <input type="text" class="form-control" id="" placeholder="Create Tag">
+                                          <div class="position-relative tag-colorPicker-wrapper">
+                                             <label data-toggle="tooltip" data-bs-original-title="Tag Color"
+                                                for="tagColor0"
+                                                class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                                <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31"
+                                                   fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                   <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                      fill="url(#paint2_linear_5599_132194)"></rect>
+                                                   <rect width="31" height="31" rx="15.5" fill="black"
+                                                      fill-opacity="0.3"></rect>
+                                                   <path d="M15.5 8V23M8 15.5H23" stroke="white" stroke-width="1.2">
+                                                   </path>
+                                                   <defs>
+                                                      <linearGradient id="paint2_linear_5599_132194" x1="5.16667"
+                                                         y1="6.57576" x2="26.7727" y2="27.2424"
+                                                         gradientUnits="userSpaceOnUse">
+                                                         <stop stop-color="#FF0000"></stop>
+                                                         <stop offset="0.144247" stop-color="#FFEA00"></stop>
+                                                         <stop offset="0.307713" stop-color="#6AFF00"></stop>
+                                                         <stop offset="0.548103" stop-color="#00EEFF"></stop>
+                                                         <stop offset="0.701953" stop-color="#2F00FF"></stop>
+                                                         <stop offset="0.826956" stop-color="#FF00E6"></stop>
+                                                         <stop offset="1" stop-color="#FF0000"></stop>
+                                                      </linearGradient>
+                                                   </defs>
+                                                </svg>
+
+                                             </label>
+                                             <input type="color" id="tagColor0" class="tag-color-picker"
+                                                data-color-type="bg">
+                                          </div>
+                                          <div class="position-relative tag-colorPicker-wrapper">
+                                             <label data-toggle="tooltip" data-bs-original-title="Text Color"
+                                                for="tagColor1"
+                                                class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                                <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31"
+                                                   fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                   <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                      fill="url(#paint88_linear_5599_132194)"></rect>
+                                                   <rect width="31" height="31" rx="15.5" fill="black"
+                                                      fill-opacity="0.3"></rect>
+
+                                                   <path transform="translate(8, 7) scale(1.7)"
+                                                      d="M5.89475 1.70928L7.69475 3.50928M0.494751 8.90928L1.09475 6.50928L7.09475 0.509277L8.89475 2.30928L2.89475 8.30928L0.494751 8.90928Z"
+                                                      stroke="white" stroke-width="0.72"></path>
+                                                   <defs>
+                                                      <linearGradient id="paint88_linear_5599_132194" x1="5.16667"
+                                                         y1="6.57576" x2="26.7727" y2="27.2424"
+                                                         gradientUnits="userSpaceOnUse">
+                                                         <stop stop-color="#FF0000"></stop>
+                                                         <stop offset="0.144247" stop-color="#FFEA00"></stop>
+                                                         <stop offset="0.307713" stop-color="#6AFF00"></stop>
+                                                         <stop offset="0.548103" stop-color="#00EEFF"></stop>
+                                                         <stop offset="0.701953" stop-color="#2F00FF"></stop>
+                                                         <stop offset="0.826956" stop-color="#FF00E6"></stop>
+                                                         <stop offset="1" stop-color="#FF0000"></stop>
+                                                      </linearGradient>
+                                                   </defs>
+                                                </svg>
+
+                                             </label>
+                                             <input type="color" id="tagColor1" class="tag-color-picker"
+                                                data-color-type="text">
+                                          </div>
+                                       </div>
+                                    </fieldset>
+
+                                    <button type="button"
+                                       class="addtag-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
+                                       Add Tag
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="accordion mb-4" id="accordionExample2">
+                        <div class="accordion-item m-0">
+                           <h2 class="accordion-header" id="headingTwo1">
+                              <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                                 data-bs-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo1">
+                                 AI Summary
+                              </button>
+                           </h2>
+                           <div id="collapseTwo1" class="accordion-collapse collapse border-0 show"
+                              aria-labelledby="headingTwo1">
+                              <div class="accordion-body pt-0">
+                                 <ul class="pl-1 m-0 d-flex flex-column gap-2">
+                                    <li>
+                                       <span class="text-muted">
+                                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                          Quae necessitatibus
+                                          maiores obcaecati veritatis, exercitationem recusandae! Minus, repellat?
+                                       </span>
+                                    </li>
+                                    <li>
+                                       <span class="text-muted">
+                                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+                                          atque quo
+                                          voluptatibus odit amet, nam quis, dicta mollitia incidunt placeat
+                                       </span>
+                                    </li>
+                                    <li>
+                                       <span class="text-muted">
+                                          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                          Magni facilis sit
+                                          cupiditate hic nostrum delectus minima voluptatem elit
+                                       </span>
+                                    </li>
+                                    <li>
+                                       <span class="text-muted">
+
+                                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+                                          velit est possimus
+                                          beatae minima nostrum obcaecati placeat ex maiores assumenda?
+                                       </span>
+                                    </li>
+                                    <li>
+                                       <span class="text-muted">
+                                          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                          Libero neque earum
+                                          facilis beatae blanditiis unde culpa architecto quibusdam
+                                       </span>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="accordion mb-4" id="accordionExample_300">
+                        <div class="accordion-item m-0">
+                           <h2 class="accordion-header" id="headingTwo_300">
+                              <button class="accordion-button collapsed mb-0" type="button" data-bs-toggle="collapse"
+                                 data-bs-target="#collapseTwo_300" aria-expanded="false"
+                                 aria-controls="collapseTwo_300">
+                                 Preview
+                              </button>
+                           </h2>
+                           <div id="collapseTwo_300" class="accordion-collapse collapse border-0"
+                              aria-labelledby="headingTwo_300">
+                              <div class="accordion-body pt-0">
+                                 <iframe src="dist/images/ANNUAL REPORT 2020 BrightPath Enterprises.pdf"
+                                    class="w-100 min-vh-100 border-0"></iframe>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="d-flex justify-content-end w-100 m-0">
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-dismiss="modal">
+                        Close
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- RA View Modal End -->
+
+   <!-- RA Acknowledged Modal Start-->
    <div class="modal modal-right fade filter-slideout SOP-model" id="sopAcknowledge-modal" tabindex="-1"
       aria-labelledby="sopAcknowledge-Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100"
          style="max-width: 700px !important;">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <div class="modal-header">
-               <h4 class="fw-bold m-0">Service of Process Acknowledge</h4>
+               <h4 class="fw-bold m-0">Service of Process</h4>
             </div>
             <div class="modal-body">
                <div id="sopAcknowledgeDetails">
@@ -787,8 +1067,8 @@
                                        <span>#7817402905</span>
                                     </div>
                                     <div class="col-md-6 d-flex align-items-center gap-2">
-                                       <span class="fw-bold flex-shrink-0">MAtter #</span>
-                                       <span>9517402905</span>
+                                       <span class="fw-bold flex-shrink-0">Matter #</span>
+                                       <span>Willam</span>
                                     </div>
                                     <div class="col-md-6 d-flex align-items-center gap-2">
                                        <span class="fw-bold flex-shrink-0">SOP Type</span>
@@ -826,6 +1106,126 @@
                                        <span class="fw-bold flex-shrink-0">Check Amount</span>
                                        <span>$ 200000</span>
                                     </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="accordion mb-4" id="accordionRA_3">
+                        <div class="accordion-item m-0">
+                           <h2 class="accordion-header" id="RAHeader_3">
+                              <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                                 data-bs-target="#collapseRA_3" aria-expanded="true"
+                                 aria-controls="collapseRA_3">
+                                 Tags
+                              </button>
+                           </h2>
+                           <div id="collapseRA_3" class="accordion-collapse border-0 collapse show"
+                              aria-labelledby="RAHeader_3">
+                              <div class="accordion-body pt-0 modal-tags-container">
+                                 <div class="d-flex gap-2 align-items-center justify-content-between">
+                                    <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
+                                       <div class="badge badge-Inactive text-black" data-value="SOP">SOP</div>
+                                       <div class="badge badge-active text-black" data-value="Wage Garnishment">Wage Garnishment</div>
+                                    </div>
+
+                                    <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                       role="button" aria-expanded="false" data-bs-target="#collapseTagsContainer2"
+                                       aria-controls="collapseTagsContainer2"></span>
+                                 </div>
+                                 <div class="collapse mt-3" id="collapseTagsContainer2">
+                                    <fieldset class="rounded-2 p-2 tagfields">
+                                       <label for="form-label">Apply Tag</label>
+                                       <div class="w-100 me-3 custom-dropdown">
+                                          <select class="form-select" id="" required="">
+                                             <option value="" disabled="" selected="" hidden=""
+                                                data-full-text="Select Tag">
+                                                Select Tag
+                                             </option>
+                                             <option value="Tag 01" data-full-text="SOP">SOP</option>
+                                             <option value="Tag 02" data-full-text="Wage Garnishment">Wage Garnishment</option>
+                                             <option value="Tag 03" data-full-text="Tag 03">Tag 03</option>
+                                             <option value="Tag 04" data-full-text="Tag 04">Tag 04</option>
+                                             <option value="Tag 05" data-full-text="Tag 05">Tag 05</option>
+                                          </select>
+                                       </div>
+                                    </fieldset>
+                                    <fieldset class="mt-3 rounded-2 p-2 tagfields">
+                                       <label for="form-label">Create Tag</label>
+                                       <div class="d-flex gap-3 align-items-center justify-content-between">
+                                          <input type="text" class="form-control" id="" placeholder="Create Tag">
+                                          <div class="position-relative tag-colorPicker-wrapper">
+                                             <label data-toggle="tooltip" data-bs-original-title="Tag Color"
+                                                for="tagColor0"
+                                                class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                                <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31"
+                                                   fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                   <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                      fill="url(#paint0_linear_5599_132194)"></rect>
+                                                   <rect width="31" height="31" rx="15.5" fill="black"
+                                                      fill-opacity="0.3"></rect>
+                                                   <path d="M15.5 8V23M8 15.5H23" stroke="white" stroke-width="1.2">
+                                                   </path>
+                                                   <defs>
+                                                      <linearGradient id="paint0_linear_5599_132194" x1="5.16667"
+                                                         y1="6.57576" x2="26.7727" y2="27.2424"
+                                                         gradientUnits="userSpaceOnUse">
+                                                         <stop stop-color="#FF0000"></stop>
+                                                         <stop offset="0.144247" stop-color="#FFEA00"></stop>
+                                                         <stop offset="0.307713" stop-color="#6AFF00"></stop>
+                                                         <stop offset="0.548103" stop-color="#00EEFF"></stop>
+                                                         <stop offset="0.701953" stop-color="#2F00FF"></stop>
+                                                         <stop offset="0.826956" stop-color="#FF00E6"></stop>
+                                                         <stop offset="1" stop-color="#FF0000"></stop>
+                                                      </linearGradient>
+                                                   </defs>
+                                                </svg>
+
+                                             </label>
+                                             <input type="color" id="tagColor0" class="tag-color-picker"
+                                                data-color-type="bg">
+                                          </div>
+                                          <div class="position-relative tag-colorPicker-wrapper">
+                                             <label data-toggle="tooltip" data-bs-original-title="Text Color"
+                                                for="tagColor1"
+                                                class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                                <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31"
+                                                   fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                   <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                      fill="url(#paint0_linear_5599_132194)"></rect>
+                                                   <rect width="31" height="31" rx="15.5" fill="black"
+                                                      fill-opacity="0.3"></rect>
+
+                                                   <path transform="translate(8, 7) scale(1.7)"
+                                                      d="M5.89475 1.70928L7.69475 3.50928M0.494751 8.90928L1.09475 6.50928L7.09475 0.509277L8.89475 2.30928L2.89475 8.30928L0.494751 8.90928Z"
+                                                      stroke="white" stroke-width="0.72"></path>
+                                                   <defs>
+                                                      <linearGradient id="paint0_linear_5599_132194" x1="5.16667"
+                                                         y1="6.57576" x2="26.7727" y2="27.2424"
+                                                         gradientUnits="userSpaceOnUse">
+                                                         <stop stop-color="#FF0000"></stop>
+                                                         <stop offset="0.144247" stop-color="#FFEA00"></stop>
+                                                         <stop offset="0.307713" stop-color="#6AFF00"></stop>
+                                                         <stop offset="0.548103" stop-color="#00EEFF"></stop>
+                                                         <stop offset="0.701953" stop-color="#2F00FF"></stop>
+                                                         <stop offset="0.826956" stop-color="#FF00E6"></stop>
+                                                         <stop offset="1" stop-color="#FF0000"></stop>
+                                                      </linearGradient>
+                                                   </defs>
+                                                </svg>
+
+                                             </label>
+                                             <input type="color" id="tagColor1" class="tag-color-picker"
+                                                data-color-type="text">
+                                          </div>
+                                       </div>
+                                    </fieldset>
+
+                                    <button type="button"
+                                       class="addtag-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
+                                       Add Tag
+                                    </button>
                                  </div>
                               </div>
                            </div>
@@ -924,7 +1324,7 @@
          </div>
       </div>
    </div>
-   <!-- Edit Information Modal End -->
+   <!-- RA Acknowledged Modal End -->
 
    <!--form validation Modal start-->
    <div class=" modal modal-right fade filter-slideout SOP-model" id="formValidation" tabindex="-1"

@@ -295,6 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "entityDetailOwnershipContainer": return "As of Today";
         case "entityDetailDirectorContainer": return "As of Today";
         case "registeredAgentContainer": return "Filejet and Others";
+        case "sopCheckContainer": return "Has Check";
         default: return "Status";
       }
     }
@@ -331,7 +332,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ["reqselectEntityContainer3", "reqselectEntityDropdown3", "reqselectEntitySearch3", "reqselectEntity-checkbox3"],
     ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]],
     ["RAjurisdictionContainer", "RAjurisdictionDropdown", "RAjurisdictionSearch", "RAjurisdiction-checkbox", "RAjurisdictionSelectAll"],
-    ["registeredAgentContainer", "registeredAgentDropdown", "registeredAgentSearch", "registeredAgent-checkbox"]
+    ["registeredAgentContainer", "registeredAgentDropdown", "registeredAgentSearch", "registeredAgent-checkbox"],
+    ["sopCheckContainer", "sopCheckDropdown", "sopCheckSearch", "sopCheck-checkbox"]
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));
@@ -1268,16 +1270,9 @@ $(document).ready(function () {
       { data: "check_number" },
       {
         data: null, render: function (data, type, row) {
-          return `<div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle p-2 m-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Take Action
-            </a>
-
-            <ul class="dropdown-menu">
-              ${row.acknowledged_by ? `<li><a class="dropdown-item border-bottom" href="">View</a></li>` : `<li><a class="dropdown-item border-bottom" href="" data-bs-toggle="modal" data-bs-target="#sopAcknowledge-modal">Acknowledge</a></li>`}
-              <li><a class="dropdown-item border-bottom" href="">Edit</a></li>
-              <li><a class="dropdown-item" href="">Download</a></li>
-            </ul>
+          return `<div class="d-flex align-items-center gap-2">
+          ${row.acknowledged_by ? '<button data-bs-toggle="modal" data-bs-target="#sopDocView-modal" class="btn btn-secondary p-2 m-0">View</button>' : '<button data-bs-toggle="modal" data-bs-target="#sopAcknowledge-modal" class="btn btn-secondary btn-acknowledge p-2 m-0">Acknowledge</button>'}
+              <span class="icon icon-download-dark icon-sm m-0"></span>
           </div>
           `;
         }
@@ -1311,7 +1306,8 @@ $(document).ready(function () {
       },
       {
         data: null, render: function (data, type, row) {
-          return `<button ${row.registered_agent.toLowerCase() !== "filejet" ? 'data-bs-toggle="modal" data-bs-target="#appointRA"' : ""} type="button" class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white">${row.registered_agent.toLowerCase() === "filejet" ? "Edit" : "Appoint Filejet"}</button>`
+          if (row.registered_agent.toLowerCase() === "filejet") return null;
+          return `<button data-bs-toggle="modal" data-bs-target="#appointRA" type="button" class="btn  btn-secondary rounded-1 px-3 py-2 m-0 text-white">Appoint Filejet As RA</button>`
         }
       }
     ],
