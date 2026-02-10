@@ -739,7 +739,7 @@ $(document).ready(function () {
         tr.attr('data-id', rowId)
       }
     }
-    
+
     applyAlternateRowStyling("entitydetails-documents-table");
 
     const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
@@ -1052,3 +1052,58 @@ function updateUploadFileList(dropZoneElement, index, files) {
   uploadFileListElement.innerHTML += htmlContent;
 }
 multipleFileUploadInput();
+
+
+
+
+Dropzone.autoDiscover = false;
+
+$(function () {
+  $('[data-plugin="dropzone"]').each(function () {
+    let dropzoneContainer = $(this)
+    let previewSelector = dropzoneContainer.data('previewsContainer');
+    let uploadTemplate = dropzoneContainer.data('uploadPreviewTemplate');
+
+    console.log(dropzoneContainer, previewSelector)
+
+    let opts = {
+      url: '/',
+      previewsContainer: previewSelector,
+      previewTemplate: $(uploadTemplate).html(),
+      init: function () {
+        this.on('addedfile', function (file) {
+          const previewEl = file.previewElement;
+          if (!previewEl) return;
+
+          const typeEl = previewEl.querySelector('[data-type]');
+          if (!typeEl) return;
+
+
+          let iconClass = '';
+
+          if (file.type === 'application/pdf') {
+            iconClass = 'icon-pdf-file';
+          }
+          else {
+            iconClass = 'icon-document-gray';
+          }
+
+          typeEl.classList.add(iconClass);
+
+          $(previewSelector).removeClass('d-none');
+        }).on('uploadprogress', function (file, progress, bytesSent) {
+        }).on('removedfile', function (file) {
+        })
+      }
+
+    }
+
+
+    dropzoneContainer.dropzone(opts);
+  });
+
+
+
+
+
+})
