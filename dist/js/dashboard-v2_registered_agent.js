@@ -170,6 +170,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
 
     function getMaxSelection() {
+      if (window.innerWidth < 1600 && ["orderStatusContainer", "sopCheckContainer", "SOPjurisdictionContainer"].includes(containerId)) return 1;
+
       if (window.innerWidth < 1300) {
         if ([
           "addjurisdictionContainer", "roleContainer1", "roleContainer2", "roleContainer4",
@@ -180,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return 1;
       }
+
       return maxSelection;
     }
 
@@ -274,6 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "entityJurisdictionContainer":
         case "orderJurisdictionContainer":
         case "RAjurisdictionContainer":
+        case "SOPjurisdictionContainer":
           return "Jurisdictions";
         case "taskContainer": return "Tasks";
         case "tagContainer": return "Filter By Tag";
@@ -332,6 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ["reqselectEntityContainer3", "reqselectEntityDropdown3", "reqselectEntitySearch3", "reqselectEntity-checkbox3"],
     ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]],
     ["RAjurisdictionContainer", "RAjurisdictionDropdown", "RAjurisdictionSearch", "RAjurisdiction-checkbox", "RAjurisdictionSelectAll"],
+    ["SOPjurisdictionContainer", "SOPjurisdictionDropdown", "SOPjurisdictionSearch", "SOPjurisdiction-checkbox", "SOPjurisdictionSelectAll"],
     ["registeredAgentContainer", "registeredAgentDropdown", "registeredAgentSearch", "registeredAgent-checkbox"],
     ["sopCheckContainer", "sopCheckDropdown", "sopCheckSearch", "sopCheck-checkbox"]
   ];
@@ -1316,5 +1321,29 @@ $(document).ready(function () {
     lengthChange: false,  // Removed pagination
     paging: false,  // Disable pagination
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+  });
+});
+
+
+$(function () {
+  $('input[name="daterange"]').daterangepicker({
+    ranges: {
+      'Today': [moment(), moment()],
+      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+      '3 Months': [moment().subtract(2, 'month').startOf('month'), moment().endOf('month')],
+      '6 Months': [moment().subtract(5, 'month').startOf('month'), moment().endOf('month')],
+      '1 Year': [moment().subtract(11, 'month').startOf('month'), moment().endOf('month')]
+    },
+    opens: 'center',
+    linkedCalendars: false,
+    alwaysShowCalendars: true,
+    cancelClass: 'btn-secondary',
+    autoUpdateInput: false,
+  });
+
+  $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
+    $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
   });
 })

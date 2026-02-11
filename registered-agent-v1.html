@@ -514,45 +514,33 @@
                         </ul>
                      </div>
 
-                     <div class="tab-content w-100 mt-4" id="myTabContent">
+                     <div class="ra-tab-content tab-content w-100 mt-4" id="myTabContent">
 
-                        <!-- Entity Details Directors & Officers TabContent -->
+                        <!-- SOP Notification TabContent Start -->
                         <div class="tab-pane fade show active" id="en-sopNotification-tab-pane" role="tabpanel"
                            aria-labelledby="en-sopNotification-tab" tabindex="0">
 
-                           <div class="row g-3">
-                              <div class="col-12 col-md-4 mb-2 search-table-col">
+                           <div class="row g-2">
+                              <div class="col-12 col-md-3 flex-grow-1 mb-2 search-table-col">
                                  <div
-                                    class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                    class="table-search-field d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg p-2 h-100">
                                     <span class="icon icon-search-grey icon-sm opacity-25"></span>
                                     <input type="text" class="custom-search-input border-0 p-0 w-100"
                                        placeholder="Search by Entity Name or Case # or Check #">
                                  </div>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-1 flex-grow-1 mb-2 dropdown">
+                              <div class="col-12 col-md-2 flex-grow-1 mb-2 ">
                                  <div
-                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
-                                    id="sopReceivedContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                    tabindex="0">
-                                    <input type="text" class="search-input" id="sopReceivedSearch"
-                                       placeholder="Received" autocomplete="off">
+                                    class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1">
+                                    <input type="text" name="daterange" class="form-control received-datepicker w-100 border-0 p-0 my-auto"
+                                       placeholder="Received" value="" />
                                  </div>
-                                 <ul class="dropdown-menu" id="sopReceivedDropdown">
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input sopReceived-checkbox me-2" data-value="Yes">
-                                          Yes</label>
-                                    </li>
-                                    <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input sopReceived-checkbox me-2" data-value="No">
-                                          No</label>
-                                    </li>
-                                 </ul>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-2 flex-grow-1 mb-2 dropdown">
+                              <div class="filter2-dropdown col-12 col-md-1 flex-grow-1 mb-2 dropdown">
                                  <div
-                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                    class="multi-select-container d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2"
                                     id="orderStatusContainer" data-bs-toggle="dropdown" aria-expanded="false"
                                     tabindex="0">
                                     <input type="text" class="search-input" id="orderStatusSearch" placeholder="Status"
@@ -560,7 +548,8 @@
                                  </div>
                                  <ul class="dropdown-menu" id="orderStatusDropdown">
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input orderStatus-checkbox me-2" data-value="Acknowledged">
+                                             class="form-check-input orderStatus-checkbox me-2"
+                                             data-value="Acknowledged">
                                           Acknowledged</label></li>
                                     <li><label class="dropdown-item"><input type="checkbox"
                                              class="form-check-input orderStatus-checkbox me-2"
@@ -569,44 +558,45 @@
                                  </ul>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-2 mb-2 dropdown">
+                              <div class="filter2-dropdown col-12 col-md-auto mb-2 dropdown">
                                  <div
-                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
-                                    id="jurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                    class="multi-select-container d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2"
+                                    id="SOPjurisdictionContainer" data-bs-toggle="dropdown" aria-expanded="false"
                                     tabindex="0">
-                                    <input type="text" class="search-input" id="jurisdictionSearch"
+                                    <input type="text" class="search-input" id="SOPjurisdictionSearch"
                                        placeholder="Jurisdictions" autocomplete="off">
                                  </div>
-                                 <ul class="dropdown-menu" id="jurisdictionDropdown">
-                                    <li><label class="dropdown-item"><input type="checkbox" id="jurisdictionSelectAll"
+                                 <ul class="dropdown-menu" id="SOPjurisdictionDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox" id="SOPjurisdictionSelectAll"
                                              class="form-check-input me-2">All</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="CA">
+                                             class="form-check-input SOPjurisdiction-checkbox me-2" data-value="CA">
                                           CA</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="NV">
+                                             class="form-check-input SOPjurisdiction-checkbox me-2" data-value="NV">
                                           NV</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="FL">
+                                             class="form-check-input SOPjurisdiction-checkbox me-2" data-value="FL">
                                           FL</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="MN">
+                                             class="form-check-input SOPjurisdiction-checkbox me-2" data-value="MN">
                                           MN</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input jurisdiction-checkbox me-2" data-value="OR">
+                                             class="form-check-input SOPjurisdiction-checkbox me-2" data-value="OR">
                                           OR</label>
                                     </li>
                                  </ul>
                               </div>
 
-                              <div class="filter2-dropdown col-md-1 flex-grow-1 mb-2 dropdown">
+
+                              <div class="filter2-dropdown col-12 col-md-auto mb-2 dropdown">
                                  <div
-                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg p-2"
                                     id="sopCheckContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
                                     <input type="text" class="search-input" id="sopCheckSearch" placeholder="Has Check"
                                        autocomplete="off">
@@ -624,7 +614,6 @@
                               </div>
 
                            </div>
-
                            <div class="registeredAgentTableCard mt-3 border rounded-2">
                               <div class="sopNotificationTable">
                                  <table id="sopNotification-table" class="table table-striped w-100 table-nowrap mb-0">
@@ -645,9 +634,9 @@
                               </div>
                            </div>
                         </div>
-                        <!-- Entity Details Directors & Officers TabContent End -->
+                        <!-- SOP Notification TabContent End -->
 
-                        <!-- Entity Details registered Agent TabContent -->
+                        <!-- Registered Agent TabContent -->
                         <div class="tab-pane fade" id="en-registeredAgent-tab-pane" role="tabpanel"
                            aria-labelledby="en-registeredAgent-tab" tabindex="0">
                            <div class="row g-3">
@@ -731,7 +720,7 @@
                            </div>
 
                         </div>
-                        <!-- Entity Details registered Agent TabContent End -->
+                        <!-- Registered Agent TabContent End -->
                      </div>
 
                   </div>
@@ -820,7 +809,7 @@
                         </div>
                      </div>
 
-                      <div class="accordion mb-4" id="accordionRAView_3">
+                     <div class="accordion mb-4" id="accordionRAView_3">
                         <div class="accordion-item m-0">
                            <h2 class="accordion-header" id="RAViewHeader_3">
                               <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
@@ -835,7 +824,8 @@
                                  <div class="d-flex gap-2 align-items-center justify-content-between">
                                     <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
                                        <div class="badge badge-Inactive text-black" data-value="SOP">SOP</div>
-                                       <div class="badge badge-active text-black" data-value="Wage Garnishment">Wage Garnishment</div>
+                                       <div class="badge badge-active text-black" data-value="Wage Garnishment">Wage
+                                          Garnishment</div>
                                     </div>
 
                                     <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
@@ -852,7 +842,8 @@
                                                 Select Tag
                                              </option>
                                              <option value="Tag 01" data-full-text="SOP">SOP</option>
-                                             <option value="Tag 02" data-full-text="Wage Garnishment">Wage Garnishment</option>
+                                             <option value="Tag 02" data-full-text="Wage Garnishment">Wage Garnishment
+                                             </option>
                                              <option value="Tag 03" data-full-text="Tag 03">Tag 03</option>
                                              <option value="Tag 04" data-full-text="Tag 04">Tag 04</option>
                                              <option value="Tag 05" data-full-text="Tag 05">Tag 05</option>
@@ -1116,8 +1107,7 @@
                         <div class="accordion-item m-0">
                            <h2 class="accordion-header" id="RAHeader_3">
                               <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
-                                 data-bs-target="#collapseRA_3" aria-expanded="true"
-                                 aria-controls="collapseRA_3">
+                                 data-bs-target="#collapseRA_3" aria-expanded="true" aria-controls="collapseRA_3">
                                  Tags
                               </button>
                            </h2>
@@ -1127,7 +1117,8 @@
                                  <div class="d-flex gap-2 align-items-center justify-content-between">
                                     <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
                                        <div class="badge badge-Inactive text-black" data-value="SOP">SOP</div>
-                                       <div class="badge badge-active text-black" data-value="Wage Garnishment">Wage Garnishment</div>
+                                       <div class="badge badge-active text-black" data-value="Wage Garnishment">Wage
+                                          Garnishment</div>
                                     </div>
 
                                     <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
@@ -1144,7 +1135,8 @@
                                                 Select Tag
                                              </option>
                                              <option value="Tag 01" data-full-text="SOP">SOP</option>
-                                             <option value="Tag 02" data-full-text="Wage Garnishment">Wage Garnishment</option>
+                                             <option value="Tag 02" data-full-text="Wage Garnishment">Wage Garnishment
+                                             </option>
                                              <option value="Tag 03" data-full-text="Tag 03">Tag 03</option>
                                              <option value="Tag 04" data-full-text="Tag 04">Tag 04</option>
                                              <option value="Tag 05" data-full-text="Tag 05">Tag 05</option>
