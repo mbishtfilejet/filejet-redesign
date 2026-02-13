@@ -347,6 +347,10 @@ $(document).ready(function () {
       {
         data: "entity_name",
         render: function (data, type, row) {
+          // code updated for Dissolved/archived entity
+          if (row.status.class === 'inactive') {
+            return `<a href="./entities-details-v1-inactive.html">${data} ${row.status.class === 'inactive' ? '<span class="icon icon-stop-dark ms-2 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="<b>Inactivated Date </b> <br>10/14/2023" data-bs-html="true" data-action-type="stop"></span>' : ''}</a>`;
+          }
           return `<a href="./entities-details-v1.html">${data}</a>`;
         }
       },
@@ -382,7 +386,7 @@ $(document).ready(function () {
           <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
               <td></td>
               <td>${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only for Domestic -->
-              <td>${row.entity_name || d.entity_name}</td>
+              <td>${row.entity_name || d.entity_name} ${row.status?.class === 'inactive' ? '<span class="icon icon-stop-dark ms-2 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="&lt;b&gt;Inactivated Date &lt;/b&gt; &lt;br&gt;10/14/2023" data-bs-html="true" data-action-type="stop"></span>' : ''}</td>
               <td >${row.type || d.type}</td>
               <td >${row.jurisdiction || d.jurisdiction}</td>
               <td >${row.registrations || d.registrations}</td>
@@ -467,7 +471,14 @@ $(document).ready(function () {
     scrollX: true,
     scrollY: false,
     columns: [
-      { data: "entity_name" },
+      {
+        data: "entity_name", render: function (data, type, row) {
+          if (row.status.class === 'inactive') {
+            return `<span class="d-flex align-items-center text-break">${data} <span class="icon icon-stop-dark ms-2 m-0 icon-sm flex-shrink-0" data-toggle="tooltip" data-bs-original-title="&lt;b&gt;Inactivated Date &lt;/b&gt; &lt;br&gt;10/14/2023" data-bs-html="true" data-action-type="stop"></span></span>`
+          }
+          return data;
+        }
+      },
       { data: "type" },
       { data: "jurisdiction" },
       { data: "registrations" },
@@ -479,13 +490,14 @@ $(document).ready(function () {
       },
       {
         data: null, render: function (data, type, row) {
-          return `<span class="d-inline-block ms-3" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
+          return `<span class="d-inline-block ms-3 ${row.status.class === 'inactive' ? "icon-disabled" : ""}" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
                 <span class="icon icon-stop-line m-0"></span>
             </span>`;
         }
       }
     ],
     createdRow: function (row, data) {
+      if (data.status.class === 'inactive') return;
       const isForeign = (data.registrations || '').toLowerCase() === 'foreign';
       if (isForeign) $(row).find('td').addClass('text-light-blue');
     },
@@ -643,9 +655,16 @@ $(document).ready(function () {
   });
 
   // Trigger or route to associated tabs
-  $('.tab-trigger').on('click', function () {
-    const target = $(this).data('bs-target');
-    $(`[data-bs-toggle="tab"][data-bs-target="${target}"]`).tab('show');
+  $('.tab-trigger').on('click', function (e) {
+    const tabtarget = $(this).data('bs-target');
+    $(`[data-bs-toggle="tab"][data-bs-target="${tabtarget}"]`).tab('show');
+
+    let target = $(e.target);
+
+    let dataName = target.attr('data-name');
+    if (dataName) {
+      highlightStatus(dataName)
+    }
   });
 
 });
@@ -659,6 +678,10 @@ $(document).ready(function () {
     },
     createdRow: function (row, data, dataIndex) {
       $(row).addClass('parent editable-parent');
+
+      if (['inactive', 'archived'].includes(data.folder_status.toLowerCase())) {
+        $(row).attr('disabled', true).find('td').addClass('disabled-column')
+      }
     },
     processing: true,
     serverSide: true,
@@ -672,7 +695,12 @@ $(document).ready(function () {
           <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
             <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md flex-shrink-0 m-0"></span>
-            <span class="input-item text-break">${data}</span>
+            <span class="input-item text-break">${data} 
+                ${['inactive', 'archived'].includes(row.folder_status.toLowerCase())
+              ?
+              `<span class="icon icon-stop-dark ms-1 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="<b>Archived Date </b> <br>10/14/2023" data-bs-html="true" data-action-type="stop"></span>` : ''
+            }
+            </span>
           </div>
          </div>
         `;
@@ -693,7 +721,7 @@ $(document).ready(function () {
           if (row?.type === "custom") {
             return `
           <div class="d-flex align-items-center">
-            <span role="button" tabindex="0" class="edit-content"> 
+            <span role="button" tabindex="0" class="edit-content ${['inactive', 'archived'].includes(row.folder_status.toLowerCase()) ? 'icon-disabled' : ''}" > 
               <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
                 class="icon icon-entity-edit me-1 me-md-2"></span>
             </span>
@@ -701,10 +729,19 @@ $(document).ready(function () {
               <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
                 class="icon icon-save me-1 me-md-2"></span>
             </span>
-            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
-              <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                class="icon icon-entity-delete me-1 me-md-2"></span>
-            </span>
+             
+            ${['inactive', 'archived'].includes(row.folder_status.toLowerCase()) ?
+                `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                  <span data-toggle="tooltip" aria-label="UNARCHIVE" data-bs-original-title="UNARCHIVE" 
+                    class="icon icon-delete-danger me-1 me-md-2"></span> 
+                  </span>`
+                :
+                `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                  <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                  </span>`
+              }
+           
           </div>
           `
           }
@@ -721,6 +758,8 @@ $(document).ready(function () {
   // Folder/SUbfolder like structure logic 
   $("#entitydetails-documents-table tbody").on("click", "td .dt-control", function () {
     let tr = $(this).closest("tr");
+
+    if (tr.attr('disabled')) return;
     let dataId = tr.data('id') || "";
     let row = table.row(tr);
     let rowId = row?.data()?.id || $(tr).data('level-id');
@@ -806,21 +845,17 @@ $(document).ready(function () {
               <td >${row.date_modified || data.date_modified}</td>
               <td>
                 <div class="d-flex align-items-center">
-                  <span role="button" tabindex="0" class="edit-content"> 
-                    <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-                    class="icon icon-entity-edit me-1 me-md-2 ${row?.type !== "file" ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
+                  <span role="button" tabindex="0" class="edit-content ${row?.type !== "file" ? row.isEditable ? "" : "icon-disabled" : ""}"> 
+                    <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" class="icon icon-entity-edit me-1 me-md-2"></span>
                   </span>
-                  <span role="button" tabindex="0" class="save-content"> 
-                    <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
-                      class="icon icon-save me-1 me-md-2"></span>
+                  <span role="button" tabindex="0" class="save-content" data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE"> 
+                    <span class="icon icon-save me-1 me-md-2"></span>
                   </span>
-                  <span role="button" tabindex="0"> 
-                    <span data-toggle="tooltip" aria-label="DOWNLOAD" data-bs-original-title="DOWNLOAD" 
-                    class="icon icon-entity-download me-1 me-md-2"></span>
+                  <span role="button" tabindex="0" data-toggle="tooltip" aria-label="DOWNLOAD" data-bs-original-title="DOWNLOAD"> 
+                    <span class="icon icon-entity-download me-1 me-md-2"></span>
                   </span>
-                  <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
-                    <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                      class="icon icon-entity-delete me-1 me-md-2 ${row?.type !== "file" ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
+                  <span role="button" tabindex="0" class="${row?.type !== "file" ? row.isDeleteable ? "" : "icon-disabled" : ""}" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
+                    <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" class="icon icon-entity-delete me-1 me-md-2"></span>
                   </span>
                 </div>
               </td>
@@ -879,6 +914,7 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
 $(function () {
   const contextMenu = $('#contextmenu').get(0);
   $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", "tr>td:nth-child(1)", function (e) {
+    if ($(this).hasClass('disabled-column')) return;
     e.preventDefault();
     e.stopPropagation()
     this.hidden = false;
@@ -1063,8 +1099,6 @@ $(function () {
     let dropzoneContainer = $(this)
     let previewSelector = dropzoneContainer.data('previewsContainer');
     let uploadTemplate = dropzoneContainer.data('uploadPreviewTemplate');
-
-    console.log(dropzoneContainer, previewSelector)
 
     let opts = {
       url: '/',
