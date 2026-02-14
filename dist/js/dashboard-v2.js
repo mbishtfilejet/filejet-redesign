@@ -348,6 +348,9 @@ $(document).ready(function () {
         data: "entity_name",
         render: function (data, type, row) {
           // code updated for Dissolved/archived entity
+          if(row.id == 17){
+            return `<a href="./entities-details-v1-international.html">${data}</a>`;
+          }
           if (row.status.class === 'inactive') {
             return `<a href="./entities-details-v1-inactive.html">${data} ${row.status.class === 'inactive' ? '<span class="icon icon-stop-dark ms-2 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="<b>Inactivated Date </b> <br>10/14/2023" data-bs-html="true" data-action-type="stop"></span>' : ''}</a>`;
           }
