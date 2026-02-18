@@ -12,8 +12,22 @@ $font-sora: "Sora", sans-serif;
 
 .form-disabled {
   background-image: none !important;
-  background-color: $color-medium-gray !important;
-  color: #6E7683 !important;
+  background-color: #eee !important;
+  color: var(--bs-filejet-medium-gray) !important;
+  pointer-events: none;
+
+  &+.select2-container--default {
+
+    .select2-selection--single {
+      background-color: #eee !important;
+      color: var(--bs-filejet-medium-gray) !important;
+      pointer-events: none !important;
+
+      .select2-selection__arrow {
+        background-image: none !important;
+      }
+    }
+  }
 }
 
 .active-status {
@@ -68,16 +82,16 @@ $font-sora: "Sora", sans-serif;
     font-family: $font-sora !important;
   }
 
-  .customTooltip{
-    .tooltipText{
+  .customTooltip {
+    .tooltipText {
       width: 400px !important;
       padding: 10px !important;
 
-      &.tooltipRight{
+      &.tooltipRight {
         top: 0%;
-        transform: translate(-190px,-155px);
+        transform: translate(-190px, -155px);
 
-        &::after{
+        &::after {
           top: 80% !important;
         }
       }
@@ -199,11 +213,27 @@ $font-sora: "Sora", sans-serif;
 
   .SOP-model,
   .entityTabsContent {
-    input[disabled] {
+
+    input[disabled],
+    select[disabled],
+    .form-disabled {
       background-image: none !important;
-      background-color: #F3F5F8 !important;
-      color: #6E7683 !important;
-      cursor: not-allowed !important;
+      background-color: #eee !important;
+      color: var(--bs-filejet-medium-gray) !important;
+      pointer-events: none;
+
+      &+.select2-container--default {
+
+        .select2-selection--single {
+          background-color: #eee !important;
+          color: var(--bs-filejet-medium-gray) !important;
+          pointer-events: none !important;
+
+          .select2-selection__arrow {
+            background-image: none !important;
+          }
+        }
+      }
     }
 
     input[type=radio]:disabled {

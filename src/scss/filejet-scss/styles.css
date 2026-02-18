@@ -21855,8 +21855,17 @@ body *::-webkit-scrollbar-thumb {
 
 .form-disabled {
   background-image: none !important;
-  background-color: #3E484A !important;
-  color: #6E7683 !important;
+  background-color: #eee !important;
+  color: var(--bs-filejet-medium-gray) !important;
+  pointer-events: none;
+}
+.form-disabled + .select2-container--default .select2-selection--single {
+  background-color: #eee !important;
+  color: var(--bs-filejet-medium-gray) !important;
+  pointer-events: none !important;
+}
+.form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow {
+  background-image: none !important;
 }
 
 .active-status {
@@ -22010,11 +22019,33 @@ body *::-webkit-scrollbar-thumb {
   grid-row: 1/span 2;
 }
 .entityDetails-dashboard .SOP-model input[disabled],
-.entityDetails-dashboard .entityTabsContent input[disabled] {
+.entityDetails-dashboard .SOP-model select[disabled],
+.entityDetails-dashboard .SOP-model .form-disabled,
+.entityDetails-dashboard .entityTabsContent input[disabled],
+.entityDetails-dashboard .entityTabsContent select[disabled],
+.entityDetails-dashboard .entityTabsContent .form-disabled {
   background-image: none !important;
-  background-color: #F3F5F8 !important;
-  color: #6E7683 !important;
-  cursor: not-allowed !important;
+  background-color: #eee !important;
+  color: var(--bs-filejet-medium-gray) !important;
+  pointer-events: none;
+}
+.entityDetails-dashboard .SOP-model input[disabled] + .select2-container--default .select2-selection--single,
+.entityDetails-dashboard .SOP-model select[disabled] + .select2-container--default .select2-selection--single,
+.entityDetails-dashboard .SOP-model .form-disabled + .select2-container--default .select2-selection--single,
+.entityDetails-dashboard .entityTabsContent input[disabled] + .select2-container--default .select2-selection--single,
+.entityDetails-dashboard .entityTabsContent select[disabled] + .select2-container--default .select2-selection--single,
+.entityDetails-dashboard .entityTabsContent .form-disabled + .select2-container--default .select2-selection--single {
+  background-color: #eee !important;
+  color: var(--bs-filejet-medium-gray) !important;
+  pointer-events: none !important;
+}
+.entityDetails-dashboard .SOP-model input[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.entityDetails-dashboard .SOP-model select[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.entityDetails-dashboard .SOP-model .form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.entityDetails-dashboard .entityTabsContent input[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.entityDetails-dashboard .entityTabsContent select[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.entityDetails-dashboard .entityTabsContent .form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow {
+  background-image: none !important;
 }
 .entityDetails-dashboard .SOP-model input[type=radio]:disabled,
 .entityDetails-dashboard .entityTabsContent input[type=radio]:disabled {
