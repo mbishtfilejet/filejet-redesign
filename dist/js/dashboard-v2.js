@@ -493,8 +493,8 @@ $(document).ready(function () {
       },
       {
         data: null, render: function (data, type, row) {
-          return `<span class="d-inline-block ms-3 ${row.status.class === 'inactive' ? "icon-disabled" : ""}" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
-                <span class="icon icon-stop-line m-0"></span>
+          return `<span class="d-inline-block ms-3" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
+                <span class="icon  ${row.status.class === 'inactive' ? "icon-stop-line-orange" : "icon-stop-line"}  m-0"></span>
             </span>`;
         }
       }
