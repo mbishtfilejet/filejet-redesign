@@ -348,7 +348,7 @@ $(document).ready(function () {
         data: "entity_name",
         render: function (data, type, row) {
           // code updated for Dissolved/archived entity
-          if(row.id == 17){
+          if (row.id == 17) {
             return `<a href="./entities-details-v1-international.html">${data}</a>`;
           }
           if (row.status.class === 'inactive') {
@@ -1017,6 +1017,97 @@ function editSaveableContent() {
     $(this).parents('.editable-parent').find('.edit-content').show();
   });
 }
+
+// logic for description clamp Text 
+$(function () {
+  const desCont = $('.descriptionContent').get(0);
+
+  console.log("onLoad")
+
+  clampText(desCont);
+
+  $(window).on('resize', function () {
+    clampText(desCont)
+  })
+})
+
+function editDescriptionContent() {
+  $(document).off('click', '.edit-desc-content').on('click', '.edit-desc-content', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $('.tooltip').remove();
+    $(this).hide();
+    const $editableItem = $(this).parents('.editable-desc-parent').find('.input-desc-item');
+
+    $editableItem.data('trimmedText', $editableItem.text().trim())
+
+    $editableItem.text($editableItem.attr('data-full-text').trim());
+
+    $editableItem.attr('contentEditable', true).css('border', '1px solid #ccc').focus();
+    $(this).parents('.editable-desc-parent').find('.save-desc-content').show();
+  });
+
+
+  $(document).off('click', '.save-desc-content').on('click', '.save-desc-content', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).hide();
+    const $editableItem = $(this).parents('.editable-desc-parent').find('.input-desc-item');
+
+    const newText = $editableItem.text().trim();
+    const oldFullText = $editableItem.attr('data-full-text')?.trim() || '';
+
+    if (oldFullText === newText) {
+      $editableItem.text($editableItem.data('trimmedText'));
+    } else {
+      $editableItem.attr('data-full-text', newText);
+      clampText($editableItem.get(0));
+    }
+
+
+    $editableItem.removeAttr('contentEditable', true).css('border', '0px solid #ccc');
+    if ($editableItem.scrollTop()) $editableItem.animate({ scrollTop: 0 }, 100);
+
+    $(this).parents('.editable-desc-parent').find('.edit-desc-content').show();
+
+  });
+}
+
+
+editDescriptionContent();
+
+function clampText(element) {
+
+  let originalText = element.dataset.fullText.trim();
+
+  element.textContent = originalText;
+
+  if (element.scrollHeight <= element.clientHeight) {
+    return;
+  }
+
+  console.log(element.scrollHeight, element.clientHeight, element.style)
+
+  let words = originalText.split(" ");
+  let start = 0;
+  let end = words.length;
+  let clampedText = "";
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    element.textContent = words.slice(0, mid).join(" ");
+
+    if (element.scrollHeight <= element.clientHeight) {
+      clampedText = words.slice(0, mid).join(" ");
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }
+  }
+
+  element.textContent = clampedText.slice(0, clampedText.length - 3).replace(/\s+$/, '') + "...";
+}
+
 
 editSaveableContent();
 
