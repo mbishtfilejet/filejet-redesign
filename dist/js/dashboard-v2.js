@@ -1086,8 +1086,6 @@ function clampText(element) {
     return;
   }
 
-  console.log(element.scrollHeight, element.clientHeight, element.style)
-
   let words = originalText.split(" ");
   let start = 0;
   let end = words.length;
