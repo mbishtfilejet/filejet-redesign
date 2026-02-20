@@ -690,7 +690,7 @@ $(document).ready(function () {
       {
         data: "name", render: function (data, type, row) {
           return `
-         <div class="d-flex align-items-center gap-3">
+         <div class="d-flex align-items-center gap-3 ${row.type === "custom" ? "folder-name" : ""}">
           <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
             <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md flex-shrink-0 m-0"></span>
@@ -815,14 +815,14 @@ $(document).ready(function () {
         <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
           <td class="doc_indent">
             ${row?.type !== "file" ?
-        `<div class="d-flex align-items-center gap-3">
+        `<div class="d-flex align-items-center gap-3 ${row.type === "custom" ? "folder-name" : ""}">
               <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
               <div class="d-flex align-items-center gap-2">
                   <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
                   <span class="input-item text-break">${row.name}</span>
               </div>
           </div>`:
-        `<div class="d-flex align-items-center gap-2">
+        `<div class="d-flex align-items-center gap-2 ${row.type === "custom" ? "folder-name" : ""}">
                     <span class="icon icon-document-gray icon-md flex-shrink-0 m-0" role="button" data-bs-target="#previewModal" data-bs-toggle="modal"></span>
                     <span class="input-item text-break" role="button" data-bs-target="#previewModal" data-bs-toggle="modal">${row.name || data.name}</span>
                 </div>`}
@@ -899,7 +899,7 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
 // context menu logic start
 $(function () {
   const contextMenu = $('#contextmenu').get(0);
-  $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", "tr>td:nth-child(1)", function (e) {
+  $(".entityDetailDocumentsTable .dataTables_scrollBody").on("contextmenu", ".folder-name", function (e) {
     if ($(this).hasClass('disabled-column')) return;
     e.preventDefault();
     e.stopPropagation()
