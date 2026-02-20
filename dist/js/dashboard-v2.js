@@ -470,15 +470,11 @@ $(document).ready(function () {
       dataSrc: 'registration_data'
     },
     processing: true,
-    serverSide: true,
     scrollX: true,
     scrollY: false,
     columns: [
       {
         data: "entity_name", render: function (data, type, row) {
-          if (row.status.class === 'inactive') {
-            return `<span class="d-flex align-items-center text-break">${data} <span class="icon icon-stop-dark ms-2 m-0 icon-sm flex-shrink-0" data-toggle="tooltip" data-bs-original-title="&lt;b&gt;Inactivated Date &lt;/b&gt; &lt;br&gt;10/14/2023" data-bs-html="true" data-action-type="stop"></span></span>`
-          }
           return data;
         }
       },
@@ -493,14 +489,19 @@ $(document).ready(function () {
       },
       {
         data: null, render: function (data, type, row) {
-          return `<span class="d-inline-block ms-3" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
-                <span class="icon  ${row.status.class === 'inactive' ? "icon-stop-line-orange" : "icon-stop-line"}  m-0"></span>
-            </span>`;
+          return row.status.class === "inactive" ?
+            `<span class="d-inline-block ms-3" role="button" data-bs-toggle="modal" data-bs-target="#" data-toggle="tooltip" aria-label="Unarchive" data-bs-original-title="Unarchive">
+            <span class="icon icon-stop-line-orange"m-0"></span>
+          </span>`
+            :
+            `<span class="d-inline-block ms-3" role="button" data-bs-toggle="modal" data-bs-target="#archiveJuridication" data-toggle="tooltip" aria-label="Archive" data-bs-original-title="Archive">
+              <span class="icon icon-stop-line m-0"></span>
+            </span>`
+            ;
         }
       }
     ],
     createdRow: function (row, data) {
-      if (data.status.class === 'inactive') return;
       const isForeign = (data.registrations || '').toLowerCase() === 'foreign';
       if (isForeign) $(row).find('td').addClass('text-light-blue');
     },
@@ -517,7 +518,6 @@ $(document).ready(function () {
       dataSrc: 'business_license_data'
     },
     processing: true,
-    serverSide: true,
     scrollX: true,
     scrollY: false,
     columns: [
@@ -551,7 +551,6 @@ $(document).ready(function () {
       dataSrc: 'dbas_data'
     },
     processing: true,
-    serverSide: true,
     scrollX: true,
     scrollY: false,
     columns: [
@@ -585,7 +584,6 @@ $(document).ready(function () {
       dataSrc: 'ownership_data'
     },
     processing: true,
-    serverSide: true,
     scrollX: true,
     scrollY: false,
     columns: [
@@ -622,7 +620,6 @@ $(document).ready(function () {
       dataSrc: 'director_data'
     },
     processing: true,
-    serverSide: true,
     scrollX: true,
     scrollY: false,
     columns: [
@@ -687,7 +684,6 @@ $(document).ready(function () {
       }
     },
     processing: true,
-    serverSide: true,
     scrollX: true,
     scrollY: false,
     columns: [
@@ -698,12 +694,7 @@ $(document).ready(function () {
           <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
           <div class="d-flex align-items-center gap-2">
             <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md flex-shrink-0 m-0"></span>
-            <span class="input-item text-break">${data} 
-                ${['inactive', 'archived'].includes(row.folder_status.toLowerCase())
-              ?
-              `<span class="icon icon-stop-dark ms-1 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="<b>Archived Date </b> <br>10/14/2023" data-bs-html="true" data-action-type="stop"></span>` : ''
-            }
-            </span>
+            <span class="input-item text-break">${data}</span>
           </div>
          </div>
         `;
@@ -733,18 +724,10 @@ $(document).ready(function () {
                 class="icon icon-save me-1 me-md-2"></span>
             </span>
              
-            ${['inactive', 'archived'].includes(row.folder_status.toLowerCase()) ?
-                `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
-                  <span data-toggle="tooltip" aria-label="UNARCHIVE" data-bs-original-title="UNARCHIVE" 
-                    class="icon icon-delete-danger me-1 me-md-2"></span> 
-                  </span>`
-                :
-                `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#delete-modal">
-                  <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                    class="icon icon-entity-delete me-1 me-md-2"></span> 
-                  </span>`
-              }
-           
+            <span role="button" tabindex="0" class="${['inactive', 'archived'].includes(row.folder_status.toLowerCase()) ? 'icon-disabled' : ''}" data-bs-toggle="modal" data-bs-target="#delete-modal">
+              <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                class="icon icon-entity-delete me-1 me-md-2"></span> 
+            </span>
           </div>
           `
           }
@@ -840,8 +823,8 @@ $(document).ready(function () {
               </div>
           </div>`:
         `<div class="d-flex align-items-center gap-2">
-                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
-                    <span class="input-item text-break">${row.name || data.name}</span>
+                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0" role="button" data-bs-target="#previewModal" data-bs-toggle="modal"></span>
+                    <span class="input-item text-break" role="button" data-bs-target="#previewModal" data-bs-toggle="modal">${row.name || data.name}</span>
                 </div>`}
               </td>
               <td> <span class="text-break">${row.modified_by || data.modified_by}</span></td>
