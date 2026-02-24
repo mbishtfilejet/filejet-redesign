@@ -671,7 +671,11 @@ $(document).ready(function () {
     },
     createdRow: function (row, data, dataIndex) {
       $(row).addClass('parent editable-parent');
-      $(row).attr('data-type', data.type)
+      $(row).attr('data-type', data.type);
+
+      if (['inactive', 'archived'].includes(data.folder_status.toLowerCase())) {
+        $(row).attr('disabled', true).find('td').addClass('disabled-column')
+      }
     },
     scrollX: true,
     scrollY: false,
@@ -724,7 +728,7 @@ $(document).ready(function () {
           if (row?.type === "custom") {
             return `
           <div class="d-flex align-items-center">
-            <span role="button" tabindex="0" class="edit-content"> 
+            <span role="button" tabindex="0" class="edit-content ${['inactive', 'archived'].includes(row.folder_status.toLowerCase()) ? 'icon-disabled' : ''}" > 
               <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
                 class="icon icon-entity-edit me-1 me-md-2"></span>
             </span>
@@ -732,9 +736,10 @@ $(document).ready(function () {
               <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
                 class="icon icon-save me-1 me-md-2"></span>
             </span>
-            <span role="button" tabindex="0" class="delete-btn" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
+             
+            <span role="button" tabindex="0" class="${['inactive', 'archived'].includes(row.folder_status.toLowerCase()) ? 'icon-disabled' : ''}" data-bs-toggle="modal" data-bs-target="#delete-modal">
               <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                class="icon icon-entity-delete me-1 me-md-2"></span>
+                class="icon icon-entity-delete me-1 me-md-2"></span> 
             </span>
           </div>
           `
@@ -773,6 +778,7 @@ $(document).ready(function () {
       }
     }
     table.columns.adjust();
+    // applyTagOverflow();
     applyAlternateRowStyling("entitydetails-documents-table");
 
     const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
@@ -897,7 +903,7 @@ $(document).ready(function () {
     return tagWrapper.outerHTML;
   }
 
-  table.on('draw.dt', function () {
+  table.on('column-sizing.dt', function () {
     applyTagOverflow();
   })
 
@@ -905,11 +911,19 @@ $(document).ready(function () {
 
 
 function applyTagOverflow() {
+
   $('.d-tag-wrapper').each(function () {
     const wrapper = $(this);
-    const wrapperWidth = wrapper.innerWidth();
+    const td = wrapper.closest('td');
+
     const tags = wrapper.find('.d-tag');
     const moreBadge = wrapper.find('.d-tag-more');
+
+    const colIndex = td[0].cellIndex;
+
+    const parent = td.closest('.dataTables_scroll');
+
+    const th = parent.find('.dataTables_scrollHeadInner table thead th').eq(colIndex);
 
     let usedWidth = 0;
     let hiddenCount = 0;
@@ -917,12 +931,14 @@ function applyTagOverflow() {
     tags.css('display', 'inline-block');
     moreBadge.addClass('d-none').text("");
 
+    const colWidth = th.outerWidth(true) - 50;
+
     tags.each(function () {
       let tag = $(this);
 
       let tagWidth = tag.outerWidth(true);
 
-      if (usedWidth + tagWidth > wrapperWidth) {
+      if (usedWidth + tagWidth > colWidth) {
         tag.css('display', 'none');
         hiddenCount++;
       } else {
@@ -930,11 +946,14 @@ function applyTagOverflow() {
       }
     });
 
+    console.log(usedWidth, colWidth);
+
     if (hiddenCount > 0) {
       moreBadge.text('+' + hiddenCount).removeClass('d-none')
     }
   })
 }
+
 
 // filjet services table initialization code 
 $(document).ready(function () {
