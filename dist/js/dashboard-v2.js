@@ -822,10 +822,11 @@ $(document).ready(function () {
                   <span class="input-item text-break">${row.name}</span>
               </div>
           </div>`:
-        `<div class="d-flex align-items-center gap-2 ${row.type === "custom" ? "folder-name" : ""}">
-                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0" role="button" data-bs-target="#previewModal" data-bs-toggle="modal"></span>
-                    <span class="input-item text-break" role="button" data-bs-target="#previewModal" data-bs-toggle="modal">${row.name || data.name}</span>
-                </div>`}
+        `<a href="javascript:void(0);" class="text-decoration-none text-dark d-flex align-items-center gap-2 ${row.type === "custom" ? "folder-name" : ""}"
+          role="button" data-bs-target="#file-preview-modal" data-bs-toggle="modal">
+                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0" ></span>
+                    <span class="input-item text-break">${row.name || data.name}</span>
+                </a>`}
               </td>
               <td> <span class="text-break">${row.modified_by || data.modified_by}</span></td>
               <td >${row.date_modified || data.date_modified}</td>
