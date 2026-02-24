@@ -827,15 +827,17 @@ $(document).ready(function () {
           <td class="doc_indent">
             ${row?.type !== "file" ?
         `<div class="d-flex align-items-center gap-3">
-              <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
-              <div class="d-flex align-items-center gap-2">
-                  <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
-                  <span class="input-item text-break">${row.name}</span>
-              </div>
-          </div>`:
-        `<div class="d-flex align-items-center gap-2">
-                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
-                    <span class="input-item text-break">${row.name}</span>
+                      <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
+                      <div class="d-flex align-items-center gap-2">
+                          <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
+                          <span class="input-item text-break">${row.name}</span>
+                      </div>
+                  </div>`:
+        `<div class="d-flex">
+                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
+                      <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
+                      <span class="input-item text-break">${row.name}</span>
+                    </a>
                 </div>`}
               </td>
               <td >${renderTagsOnRow(row.tags)}</td>
@@ -872,28 +874,67 @@ $(document).ready(function () {
   //function to render tags
   function renderTagsOnRow(tagdata, maxTag = 4) {
     const tagWrapper = document.createElement("div");
-    tagWrapper.className = "d-flex gap-1 align-items-center";
+    tagWrapper.className = "d-flex gap-1 align-items-center d-tag-wrapper";
+    tagWrapper.style.whiteSpace = "nowrap";
+    tagWrapper.style.overflow = "hidden";
 
-    tagdata.slice(0, maxTag).forEach((value, index) => {
+    tagdata.forEach((value, index) => {
       const span = document.createElement("span");
-      span.innerHTML = `
-        <span class="badge text-black" style="background-color:${value.tagColor}">${value.tagName}</span>
-      `;
+      span.className = "badge text-black d-tag";
+      span.style.backgroundColor = value.tagColor;
+      span.innerText = value.tagName;
       tagWrapper.appendChild(span);
     })
 
-    if (tagdata.length > maxTag) {
-      const span = document.createElement("span");
-      span.innerHTML = `
-        <span class="badge text-black" style="background-color:#E6E8EC;">+${tagdata.length - maxTag}</span>
+    // +N placeholder (keeping empty for now will alter while table draws)
+
+    const span = document.createElement("span");
+    span.innerHTML = `
+        <span class="badge text-black d-tag-more d-none" style="background-color:#E6E8EC;"></span>
       `;
-      tagWrapper.appendChild(span);
-    }
+    tagWrapper.appendChild(span);
+
     return tagWrapper.outerHTML;
   }
 
+  table.on('draw.dt', function () {
+    applyTagOverflow();
+  })
+
 })
 
+
+function applyTagOverflow() {
+  $('.d-tag-wrapper').each(function () {
+    const wrapper = $(this);
+    const wrapperWidth = wrapper.innerWidth();
+    const tags = wrapper.find('.d-tag');
+    const moreBadge = wrapper.find('.d-tag-more');
+
+    let usedWidth = 0;
+    let hiddenCount = 0;
+
+    tags.css('display', 'inline-block');
+    moreBadge.addClass('d-none').text("");
+
+    tags.each(function () {
+      let tag = $(this);
+
+      let tagWidth = tag.outerWidth(true);
+
+      if (usedWidth + tagWidth > wrapperWidth) {
+        tag.css('display', 'none');
+        hiddenCount++;
+      } else {
+        usedWidth += tagWidth;
+      }
+    });
+
+    if (hiddenCount > 0) {
+      moreBadge.text('+' + hiddenCount).removeClass('d-none')
+    }
+  })
+}
 
 // filjet services table initialization code 
 $(document).ready(function () {
@@ -1106,6 +1147,93 @@ function editSaveableContent() {
   });
 }
 
+// logic for description clamp Text 
+$(function () {
+  const desCont = $('.descriptionContent').get(0);
+
+  console.log("onLoad")
+
+  clampText(desCont);
+
+  $(window).on('resize', function () {
+    clampText(desCont)
+  })
+})
+
+function editDescriptionContent() {
+  $(document).off('click', '.edit-desc-content').on('click', '.edit-desc-content', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $('.tooltip').remove();
+    $(this).hide();
+    const $editableItem = $(this).parents('.editable-desc-parent').find('.input-desc-item');
+
+    $editableItem.data('trimmedText', $editableItem.text().trim())
+
+    $editableItem.text($editableItem.attr('data-full-text').trim());
+
+    $editableItem.attr('contentEditable', true).css('border', '1px solid #ccc').focus();
+    $(this).parents('.editable-desc-parent').find('.save-desc-content').show();
+  });
+
+
+  $(document).off('click', '.save-desc-content').on('click', '.save-desc-content', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).hide();
+    const $editableItem = $(this).parents('.editable-desc-parent').find('.input-desc-item');
+
+    const newText = $editableItem.text().trim();
+    const oldFullText = $editableItem.attr('data-full-text')?.trim() || '';
+
+    if (oldFullText === newText) {
+      $editableItem.text($editableItem.data('trimmedText'));
+    } else {
+      $editableItem.attr('data-full-text', newText);
+      clampText($editableItem.get(0));
+    }
+
+
+    $editableItem.removeAttr('contentEditable', true).css('border', '0px solid #ccc');
+    if ($editableItem.scrollTop()) $editableItem.animate({ scrollTop: 0 }, 100);
+
+    $(this).parents('.editable-desc-parent').find('.edit-desc-content').show();
+
+  });
+}
+
+function clampText(element) {
+
+  let originalText = element.dataset.fullText.trim();
+
+  element.textContent = originalText;
+
+  if (element.scrollHeight <= element.clientHeight) {
+    return;
+  }
+
+  let words = originalText.split(" ");
+  let start = 0;
+  let end = words.length;
+  let clampedText = "";
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    element.textContent = words.slice(0, mid).join(" ");
+
+    if (element.scrollHeight <= element.clientHeight) {
+      clampedText = words.slice(0, mid).join(" ");
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }
+  }
+
+  element.textContent = clampedText.slice(0, clampedText.length - 3).replace(/\s+$/, '') + "...";
+}
+
+editDescriptionContent();
+
 editSaveableContent();
 
 // code for multiple file upload and drag & drop
@@ -1185,8 +1313,6 @@ $(function () {
     let dropzoneContainer = $(this)
     let previewSelector = dropzoneContainer.data('previewsContainer');
     let uploadTemplate = dropzoneContainer.data('uploadPreviewTemplate');
-
-    console.log(dropzoneContainer, previewSelector)
 
     let opts = {
       url: '/',

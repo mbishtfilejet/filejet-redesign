@@ -850,14 +850,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // selet2 
 $(document).ready(function () {
   // List of modal IDs
-  const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices', '#INTentity', '#BLentity', '#requestCSGood', '#disEntity', '#addEXEntity', '#docEntity'];
+  const modals = ['#NWForeign', '#NWexistingForeign', '#appointRA', '#requestCS', '#entityFRServices', '#INTentity', '#BLentity', '#requestCSGood', '#disEntity', '#addEXEntity', '#docEntity', '#EINEntity', '#f25102Entity', "#subSEntity"];
 
   // Attach the same event handler to all modals
   modals.forEach(modalId => {
     $(modalId).on('show.bs.modal', function (e) {
       $('.home-entity-field').select2({
         dropdownParent: $(modalId),
-        placeholder: modalId === "#docEntity" ? "Select Entity" : "Entity",  // Add placeholder here
+        placeholder: ["#docEntity", "#EINEntity", "#f25102Entity", "#subSEntity"].includes(modalId) ? "Select Entity" : "Entity",  // Add placeholder here
       });
     });
   });
