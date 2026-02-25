@@ -777,8 +777,8 @@ $(document).ready(function () {
         tr.attr('data-id', rowId)
       }
     }
-    table.columns.adjust();
-    // applyTagOverflow();
+    // table.columns.adjust();
+    applyTagOverflow();
     applyAlternateRowStyling("entitydetails-documents-table");
 
     const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
