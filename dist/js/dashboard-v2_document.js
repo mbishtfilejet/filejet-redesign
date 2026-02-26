@@ -998,7 +998,7 @@ function applyAlternateRowStyling(id) {
 
 
 //adjusting table on tabs change
-$(document).on('shown.bs.tab shown.bs.modal', function () {
+$(document).on('shown.bs.tab', function () {
 
   const entityDetailsTables = ["entitydetails-registration-table", "entitydetails-business-table", "entitydetails-dbas-table",
     "entitydetails-ownership-table", "entitydetails-documents-table", "entitydetails-director-table", "entitydetails-opentask-table", "entitydetails-orders-table", "entitydetails-services-table"]
