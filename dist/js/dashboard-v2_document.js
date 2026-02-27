@@ -1042,9 +1042,7 @@ $(document).on('shown.bs.tab', function () {
     dropdownParent: $('.tagselect').closest(".tagfields"),
 
     createTag: function (params) {
-      const term = $.trim(params.term);
-
-      console.log(term)
+      const term = params.term.trim();
 
       if (term.length < 3) return null;
 
@@ -1502,8 +1500,6 @@ $(document).ready(function () {
 
       let tagfieldset = $(this).closest('.tagfields');
 
-      console.log(tagfieldset)
-
       let tagColorWrapper = tagfieldset.find('.tag-colorPicker-wrapper');
       tagColorWrapper.removeClass('d-none').hide().fadeIn(100);
 
@@ -1514,7 +1510,6 @@ $(document).ready(function () {
   })
 
   $('.addtagnew-btn').on('click', function () {
-    const actionBtn = $(this)
     const tagContainer = $(this).closest(".modal-tags-container");
     const tagColorWrapper = tagContainer.find('.tag-colorPicker-wrapper');
     const colors = tagContainer.data('colors') || {};
@@ -1522,10 +1517,12 @@ $(document).ready(function () {
     const tagSelectInput = tagContainer.find(".tagselect");
     const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
     const svgBackground = svg.find('.svgBackground');
+    const tagValue = tagSelectInput.val()?.trim() || "";
 
-    const tagValue = tagSelectInput.val().trim();
-    const bgColor = colors.bg;
-    const textColor = colors.text;
+    const optionSelected = tagSelectInput.find(`option[data-value="${tagValue}"]`);
+
+    const bgColor = optionSelected?.data('bgColor') || colors.bg;
+    const textColor = optionSelected?.data('textColor') || colors.text;
     const gradientID = svg.find('linearGradient').attr('id');
 
     const noTagSpan = tagBadgeWrapper.find(".no-tag-span");
@@ -1550,16 +1547,16 @@ $(document).ready(function () {
       return;
     };
 
-    console.log(tagValue)
-
     if (bgColor && tagValue && textColor) {
-      const newTag = `<div class="badge text-black position-relative" data-value="${tagValue}" style="background-color:${bgColor}; color:${textColor} !important;">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
+      const newTag = `<div class="badge position-relative" data-value="${tagValue}" style="background-color:${bgColor}; color:${textColor};">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
       tagBadgeWrapper.append(newTag);
 
-      const option = `<option value="Tag 01" data-value="${tagValue}" data-text-color="${textColor}" data-bg-color="${bgColor}" >${tagValue}</option>`;
 
       resetState();
-      tagSelectInput.append(option);
+      if (optionSelected.length === 0) {
+        const option = `<option value="${tagValue}" data-value="${tagValue}" data-text-color="${textColor}" data-bg-color="${bgColor}" >${tagValue}</option>`;
+        tagSelectInput.append(option);
+      }
       tagColorWrapper.fadeOut(10).addClass('d-none')
 
 
