@@ -563,8 +563,9 @@
                                           <span class="icon m-0 icon-entity-edit icon-sm edit-desc-content"
                                              data-toggle="tooltip" aria-label="EDIT"
                                              data-bs-original-title="EDIT"></span>
-                                          <span class="icon icon-save save-desc-content icon-sm m-0" data-toggle="tooltip"
-                                             aria-label="SAVE" data-bs-original-title="SAVE"></span>
+                                          <span class="icon icon-save save-desc-content icon-sm m-0"
+                                             data-toggle="tooltip" aria-label="SAVE"
+                                             data-bs-original-title="SAVE"></span>
                                        </div>
                                        <p class="m-0 text-wrap text-break mt-3 descriptionContent input-desc-item"
                                           data-full-text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibu."
@@ -2333,7 +2334,6 @@
                                        </div>
                                     </div>
                                  </fieldset>
-
                                  <button type="button"
                                     class="addtag-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
                                     Add Tag
@@ -2366,8 +2366,8 @@
    <!-- Document Flyout Modal End -->
 
    <!-- Document Flyout Modal Start -->
-   <div class="modal modal-right fade filter-slideout SOP-model" id="documentflyout-modal" tabindex="-1"
-      aria-labelledby="documentflyout-modalLabel" aria-hidden="true">
+   <div class="modal modal-right fade filter-slideout SOP-model" id="documentflyout-modal"
+      tabindex="-1" aria-labelledby="documentflyout-modalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end folder_doc_dialog my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <div class="modal-header">
@@ -2451,26 +2451,22 @@
                                     aria-controls="collapseTagsContainer"></span>
                               </div>
                               <div class="collapse mt-3" id="collapseTagsContainer">
-                                 <fieldset class="rounded-2 p-2 tagfields">
-                                    <label for="form-label">Apply Tag</label>
-                                    <div class="w-100 me-3 custom-dropdown">
-                                       <select class="form-select" id="" required="">
-                                          <option value="" disabled="" selected="" hidden="">
-                                             Select Tag
-                                          </option>
-                                          <option value="Tag 01">Tag 01</option>
-                                          <option value="Tag 02">Tag 02</option>
-                                          <option value="Tag 03">Tag 03</option>
-                                          <option value="Tag 04">Tag 04</option>
-                                          <option value="Tag 05">Tag 05</option>
-                                       </select>
-                                    </div>
-                                 </fieldset>
                                  <fieldset class="mt-3 rounded-2 p-2 tagfields">
-                                    <label for="form-label">Create Tag</label>
+                                    <label for="form-label">Apply Tag</label>
                                     <div class="d-flex gap-3 align-items-center justify-content-between">
-                                       <input type="text" class="form-control" id="" placeholder="Create Tag">
-                                       <div class="position-relative tag-colorPicker-wrapper">
+                                       <div class="w-100 custom-dropdown">
+                                          <select class="form-select select2 tagselect" id="" required="">
+                                             <option value="" disabled="" selected="" hidden="">
+                                                Select Tag
+                                             </option>
+                                             <option value="Tag 01">Tag 01</option>
+                                             <option value="Tag 02">Tag 02</option>
+                                             <option value="Tag 03">Tag 03</option>
+                                             <option value="Tag 04">Tag 04</option>
+                                             <option value="Tag 05">Tag 05</option>
+                                          </select>
+                                       </div>
+                                       <div class="position-relative tag-colorPicker-wrapper d-none">
                                           <label data-toggle="tooltip" data-bs-original-title="Tag Color"
                                              for="tagColor2"
                                              class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
@@ -2500,7 +2496,7 @@
                                           <input type="color" id="tagColor2" class="tag-color-picker"
                                              data-color-type="bg" />
                                        </div>
-                                       <div class="position-relative tag-colorPicker-wrapper">
+                                       <div class="position-relative tag-colorPicker-wrapper d-none">
                                           <label data-toggle="tooltip" data-bs-original-title="Text Color"
                                              for="tagColor3"
                                              class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
@@ -2536,7 +2532,7 @@
                                     </div>
                                  </fieldset>
                                  <button type="button"
-                                    class="addtag-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
+                                    class="addtagnew-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
                                     Add Tag
                                  </button>
                               </div>
@@ -2720,6 +2716,117 @@
                         </div>
                      </div>
                   </div>
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label">File Type</label>
+                        <div class="custom-dropdown">
+                           <select class="form-select" id="" required>
+                              <option value="" selected disabled hidden>Select File Type</option>
+                              <option value="pdf">PDF</option>
+                              <option value="doc">DOC</option>
+                           </select>
+                        </div>
+                     </fieldset>
+                     <div id="documentAddTag_2">
+                        <label for="" class="form-label">Add Tag</label>
+                        <div class="p-0 modal-tags-container">
+                           <div class="d-flex gap-2 align-items-center justify-content-between">
+                              <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
+                                 <span class="text-muted fw-normal no-tag-span">No Tag Applied</span>
+                              </div>
+
+                              <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                 role="button" aria-expanded="false" data-bs-target="#collapseAddTagContainer_2"
+                                 aria-controls="collapseAddTagContainer_2"></span>
+                           </div>
+                           <div class="collapse mt-3" id="collapseAddTagContainer_2">
+                              <fieldset class="rounded-2 p-2 tagfields">
+                                 <label for="form-label">Apply Tag</label>
+                                 <div class="w-100 me-3 custom-dropdown">
+                                    <select class="form-select" id="" required="">
+                                       <option value="" disabled="" selected="" hidden="">
+                                          Select Tag
+                                       </option>
+                                       <option value="Tag 01">Tag 01</option>
+                                       <option value="Tag 02">Tag 02</option>
+                                       <option value="Tag 03">Tag 03</option>
+                                       <option value="Tag 04">Tag 04</option>
+                                       <option value="Tag 05">Tag 05</option>
+                                    </select>
+                                 </div>
+                              </fieldset>
+                              <fieldset class="mt-3 p-2 rounded-2 tagfields">
+                                 <label for="form-label">Create Tag</label>
+                                 <div class="d-flex gap-3 align-items-center justify-content-between">
+                                    <input type="text" class="form-control" id="" placeholder="Create Tag">
+                                    <div class="position-relative tag-colorPicker-wrapper">
+                                       <label data-toggle="tooltip" data-bs-original-title="Tag Color" for="tagColor6"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint6_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+                                             <path d="M15.5 8V23M8 15.5H23" stroke="white" stroke-width="1.2" />
+                                             <defs>
+                                                <linearGradient id="paint6_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor6" class="tag-color-picker"
+                                          data-color-type="bg" />
+                                    </div>
+                                    <div class="position-relative tag-colorPicker-wrapper">
+                                       <label data-toggle="tooltip" data-bs-original-title="Text Color" for="tagColor7"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint7_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+
+                                             <path transform="translate(8, 7) scale(1.7)"
+                                                d="M5.89475 1.70928L7.69475 3.50928M0.494751 8.90928L1.09475 6.50928L7.09475 0.509277L8.89475 2.30928L2.89475 8.30928L0.494751 8.90928Z"
+                                                stroke="white" stroke-width="0.72" />
+                                             <defs>
+                                                <linearGradient id="paint7_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor7" class="tag-color-picker"
+                                          data-color-type="text" />
+                                    </div>
+                                 </div>
+                              </fieldset>
+
+                              <button type="button"
+                                 class="addtag-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
+                                 Add Tag
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                   <div class="d-none dropzone-previews uploadfilelist-wrapper m-0 mb-4 p-3 bg-white rounded-2"
                      id="file-previews"></div>
                </div>
@@ -2831,7 +2938,118 @@
                         </div>
                      </div>
                   </div>
-                  <div class="d-none dropzone-previews uploadfilelist-wrapper m-0 mb-4 p-3 bg-white rounded-2"
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label">File Type</label>
+                        <div class="custom-dropdown">
+                           <select class="form-select" id="" required>
+                              <option value="" selected disabled hidden>Select File Type</option>
+                              <option value="pdf">PDF</option>
+                              <option value="doc">DOC</option>
+                           </select>
+                        </div>
+                     </fieldset>
+                     <div id="documentAddTag_3">
+                        <label for="" class="form-label">Add Tag</label>
+                        <div class="accordion-body p-0 modal-tags-container">
+                           <div class="d-flex gap-2 align-items-center justify-content-between">
+                              <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
+                                 <span class="text-muted fw-normal no-tag-span">No Tag Applied</span>
+                              </div>
+
+                              <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                 role="button" aria-expanded="false" data-bs-target="#collapseAddTagContainer_3"
+                                 aria-controls="collapseAddTagContainer_3"></span>
+                           </div>
+                           <div class="collapse mt-3" id="collapseAddTagContainer_3">
+                              <fieldset class="rounded-2 p-2 tagfields">
+                                 <label for="form-label">Apply Tag</label>
+                                 <div class="w-100 me-3 custom-dropdown">
+                                    <select class="form-select" id="" required="">
+                                       <option value="" disabled="" selected="" hidden="">
+                                          Select Tag
+                                       </option>
+                                       <option value="Tag 01">Tag 01</option>
+                                       <option value="Tag 02">Tag 02</option>
+                                       <option value="Tag 03">Tag 03</option>
+                                       <option value="Tag 04">Tag 04</option>
+                                       <option value="Tag 05">Tag 05</option>
+                                    </select>
+                                 </div>
+                              </fieldset>
+                              <fieldset class="mt-3 p-2 rounded-2 tagfields">
+                                 <label for="form-label">Create Tag</label>
+                                 <div class="d-flex gap-3 align-items-center justify-content-between">
+                                    <input type="text" class="form-control" id="" placeholder="Create Tag">
+                                    <div class="position-relative tag-colorPicker-wrapper">
+                                       <label data-toggle="tooltip" data-bs-original-title="Tag Color" for="tagColor8"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint8_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+                                             <path d="M15.5 8V23M8 15.5H23" stroke="white" stroke-width="1.2" />
+                                             <defs>
+                                                <linearGradient id="paint8_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor8" class="tag-color-picker"
+                                          data-color-type="bg" />
+                                    </div>
+                                    <div class="position-relative tag-colorPicker-wrapper">
+                                       <label data-toggle="tooltip" data-bs-original-title="Text Color" for="tagColor9"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint9_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+
+                                             <path transform="translate(8, 7) scale(1.7)"
+                                                d="M5.89475 1.70928L7.69475 3.50928M0.494751 8.90928L1.09475 6.50928L7.09475 0.509277L8.89475 2.30928L2.89475 8.30928L0.494751 8.90928Z"
+                                                stroke="white" stroke-width="0.72" />
+                                             <defs>
+                                                <linearGradient id="paint9_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor9" class="tag-color-picker"
+                                          data-color-type="text" />
+                                    </div>
+                                 </div>
+                              </fieldset>
+
+                              <button type="button"
+                                 class="addtag-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
+                                 Add Tag
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="d-none dropzone-previews uploadfilelist-wrapper m-0 p-3 bg-white rounded-2"
                      id="file-previews_01"></div>
 
                </div>
@@ -2895,8 +3113,8 @@
                         </fieldset>
                      </div>
                   </form> -->
-               
-               
+
+
                   <div class="m-0 mb-4 p-3 bg-white rounded-2">
                      <div class="dropzone dropupload-zone" id="myAwesomeDropzone_02" data-plugin="dropzone"
                         data-previews-container="#file-previews_02"
@@ -2931,7 +3149,122 @@
                         </div>
                      </div>
                   </div>
-                  <div class="d-none dropzone-previews uploadfilelist-wrapper m-0 mb-4 p-3 bg-white rounded-2"
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label">File Type</label>
+                        <div class="custom-dropdown">
+                           <select class="form-select" id="" required>
+                              <option value="" selected disabled hidden>Select File Type</option>
+                              <option value="pdf">PDF</option>
+                              <option value="doc">DOC</option>
+                           </select>
+                        </div>
+                     </fieldset>
+                     <div id="documentAddTag_1" class="accordion-collapse border-0 collapse show"
+                        aria-labelledby="documentAddTag">
+                        <label for="" class="form-label">Add Tag</label>
+                        <div class="accordion-body p-0 modal-tags-container">
+                           <div class="d-flex gap-2 align-items-center justify-content-between">
+                              <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
+                                 <span class="text-muted fw-normal no-tag-span">No Tag Applied</span>
+                              </div>
+
+                              <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                 role="button" aria-expanded="false" data-bs-target="#collapseAddTagContainer_1"
+                                 aria-controls="collapseAddTagContainer_1"></span>
+                           </div>
+                           <div class="collapse mt-3" id="collapseAddTagContainer_1">
+                              <fieldset class="rounded-2 p-2 tagfields">
+                                 <label for="form-label">Apply Tag</label>
+                                 <div class="w-100 me-3 custom-dropdown">
+                                    <select class="form-select" id="" required="">
+                                       <option value="" disabled="" selected="" hidden="">
+                                          Select Tag
+                                       </option>
+                                       <option value="Tag 01">Tag 01</option>
+                                       <option value="Tag 02">Tag 02</option>
+                                       <option value="Tag 03">Tag 03</option>
+                                       <option value="Tag 04">Tag 04</option>
+                                       <option value="Tag 05">Tag 05</option>
+                                    </select>
+                                 </div>
+                              </fieldset>
+                              <fieldset class="mt-3 p-2 rounded-2 tagfields">
+                                 <label for="form-label">Create Tag</label>
+                                 <div class="d-flex gap-3 align-items-center justify-content-between">
+                                    <input type="text" class="form-control" id="" placeholder="Create Tag">
+                                    <div class="position-relative tag-colorPicker-wrapper">
+                                       <label data-toggle="tooltip" data-bs-original-title="Tag Color" for="tagColor4"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint4_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+                                             <path d="M15.5 8V23M8 15.5H23" stroke="white" stroke-width="1.2" />
+                                             <defs>
+                                                <linearGradient id="paint4_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor4" class="tag-color-picker"
+                                          data-color-type="bg" />
+                                    </div>
+                                    <div class="position-relative tag-colorPicker-wrapper">
+                                       <label data-toggle="tooltip" data-bs-original-title="Text Color" for="tagColor5"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint5_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+
+                                             <path transform="translate(8, 7) scale(1.7)"
+                                                d="M5.89475 1.70928L7.69475 3.50928M0.494751 8.90928L1.09475 6.50928L7.09475 0.509277L8.89475 2.30928L2.89475 8.30928L0.494751 8.90928Z"
+                                                stroke="white" stroke-width="0.72" />
+                                             <defs>
+                                                <linearGradient id="paint5_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor5" class="tag-color-picker"
+                                          data-color-type="text" />
+                                    </div>
+                                 </div>
+                              </fieldset>
+
+                              <button type="button"
+                                 class="addtag-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
+                                 Add Tag
+                              </button>
+
+
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="d-none dropzone-previews uploadfilelist-wrapper m-0 p-3 bg-white rounded-2"
                      id="file-previews_02"></div>
                </div>
             </div>

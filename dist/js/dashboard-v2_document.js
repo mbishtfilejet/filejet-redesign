@@ -946,8 +946,6 @@ function applyTagOverflow() {
       }
     });
 
-    console.log(usedWidth, colWidth);
-
     if (hiddenCount > 0) {
       moreBadge.text('+' + hiddenCount).removeClass('d-none')
     }
@@ -998,10 +996,10 @@ function applyAlternateRowStyling(id) {
 
 
 //adjusting table on tabs change
-$(document).on('shown.bs.tab', function () {
+$(document).on('shown.bs.tab shown.bs.modal', function () {
 
   const entityDetailsTables = ["entitydetails-registration-table", "entitydetails-business-table", "entitydetails-dbas-table",
-    "entitydetails-ownership-table", "entitydetails-documents-table", "entitydetails-director-table", "entitydetails-opentask-table", "entitydetails-orders-table", "entitydetails-services-table"]
+    "entitydetails-ownership-table", "entitydetails-director-table", "entitydetails-opentask-table", "entitydetails-orders-table", "entitydetails-services-table"]
 
   entityDetailsTables.forEach((tableId) => $(`#${tableId}`).DataTable().columns.adjust())
 
@@ -1018,15 +1016,65 @@ $(document).on('shown.bs.tab', function () {
   tabsSelect.forEach(select => {
     $(`.tab-content #${select.id}.select2`).select2({
       dropdownParent: $(`#${select.id}`).closest("fieldset"),
-      placeholder: select.placeholder,
-      allowClear: true
+      placeholder: select.placeholder
     });
   })
 
   $('.tab-content .select2').on('select2:open select2:select', () => {
     $('.select2-search__field').attr('placeholder', 'Search...');
   });
+
 });
+
+//separating document column adjusment and tags logic
+$(document).on('shown.bs.tab', function () {
+  $("#entitydetails-documents-table").DataTable().columns.adjust();
+
+  // initializing tagselect options
+  // $('.tagselect').select2({
+  //   placeholder: 'Select Tag',
+  //   dropdownParent: $('.tagselect').closest(".tagfields"),
+  // });
+
+  $('.tagselect').select2({
+    tags: true,
+    placeholder: 'Select Tag',
+    dropdownParent: $('.tagselect').closest(".tagfields"),
+
+    createTag: function (params) {
+      const term = $.trim(params.term);
+
+      console.log(term)
+
+      if (term.length < 3) return null;
+
+      // Check if term already exists
+      const exists = $('.tagselect option').filter(function () {
+        return $(this).text().toLowerCase() === term.toLowerCase();
+      }).length > 0;
+
+      if (exists) return null;
+
+      return {
+        id: term,
+        text: term,
+        newTag: true
+      };
+    },
+
+    templateResult: function (data) {
+      if (data.newTag) {
+        return "Create new Tag - " + data.text;
+      }
+
+      return data.text;
+    }
+  });
+
+  $(document).on('select2:open select2:select', '.tagselect', () => {
+    $('.select2-search__field').attr('placeholder', 'Search...');
+  });
+})
 
 
 // context menu logic start
@@ -1110,13 +1158,12 @@ $(document).ready(function () {
 //handle row click to show document/folder information
 $(document).ready(function () {
   let activeRow = null;
-  $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr', function (e) {
+  $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr>td:nth-child(2)', function (e) {
     if ($('#contextmenu').hasClass('show')) return;
-    if ($(e.target).closest('input[type="checkbox"], .edit-content, .save-content, .delete-btn').length) return;
     if (activeRow) {
       $(activeRow).removeClass("rowSelect")
     }
-    activeRow = this;
+    activeRow = $(this).closest('tr');
     if ($(activeRow).attr('data-type') === "file") {
       $('#documentflyout-modal').modal("show");
     } else {
@@ -1169,8 +1216,6 @@ function editSaveableContent() {
 // logic for description clamp Text 
 $(function () {
   const desCont = $('.descriptionContent').get(0);
-
-  console.log("onLoad")
 
   clampText(desCont);
 
@@ -1404,7 +1449,9 @@ $(document).ready(function () {
     const textColor = colors.text;
     const gradientID = svg.find('linearGradient').attr('id');
 
-    const existingTags = tagBadgeWrapper.children().map((_, el) => $(el).data('value')).get();
+    const noTagSpan = tagBadgeWrapper.find(".no-tag-span");
+
+    const existingTags = tagBadgeWrapper.children(".badge").map((_, el) => $(el).data('value')).get();
 
     // reset state
     const resetState = () => {
@@ -1427,11 +1474,101 @@ $(document).ready(function () {
     if (bgColor && tagValue && textColor) {
       const newTag = `<div class="badge text-black position-relative" data-value="${tagValue}" style="background-color:${bgColor}; color:${textColor} !important;">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
       tagBadgeWrapper.append(newTag);
+      if (noTagSpan.length) {
+        noTagSpan.hide();
+      }
       resetState();
     }
   })
 
   $(this).on('click', ".remove-tag", function () {
+    const tagContainer = $(this).closest(".modal-tags-container");
+    const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
+    const noSpanTag = tagBadgeWrapper.find(".no-tag-span");
     $(this).closest('.badge').remove();
+
+    if (tagBadgeWrapper.children('.badge').length === 0 && noSpanTag.length) {
+      noSpanTag.show();
+    }
+  });
+
+
+  $(document).on('select2:select', '.tagselect', function (e) {
+    if (e.params.data.newTag) {
+
+      let value = e.params.data.id;
+      let option = $(this).find("option[value='" + value + "']");
+
+
+      let tagfieldset = $(this).closest('.tagfields');
+
+      console.log(tagfieldset)
+
+      let tagColorWrapper = tagfieldset.find('.tag-colorPicker-wrapper');
+      tagColorWrapper.removeClass('d-none').hide().fadeIn(100);
+
+      let addNewTag = tagfieldset.next('.addtagnew-btn');
+
+      addNewTag.removeClass('d-none').hide().fadeIn(100);
+    }
   })
+
+  $('.addtagnew-btn').on('click', function () {
+    const actionBtn = $(this)
+    const tagContainer = $(this).closest(".modal-tags-container");
+    const tagColorWrapper = tagContainer.find('.tag-colorPicker-wrapper');
+    const colors = tagContainer.data('colors') || {};
+    const svg = tagContainer.find(".tagSvg");
+    const tagSelectInput = tagContainer.find(".tagselect");
+    const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
+    const svgBackground = svg.find('.svgBackground');
+
+    const tagValue = tagSelectInput.val().trim();
+    const bgColor = colors.bg;
+    const textColor = colors.text;
+    const gradientID = svg.find('linearGradient').attr('id');
+
+    const noTagSpan = tagBadgeWrapper.find(".no-tag-span");
+
+    const existingTags = tagBadgeWrapper.children(".badge").map((_, el) => $(el).data('value')).get();
+
+    // reset state
+    const resetState = () => {
+      svgBackground.attr("fill", `url(#${gradientID})`);
+      tagSelectInput.val(null).trigger('change');
+      tagContainer.data('colors', {});
+    }
+
+    if (existingTags.length === 20) {
+      resetState();
+      return
+
+    };
+
+    if (existingTags.includes(tagValue)) {
+      resetState();
+      return;
+    };
+
+    console.log(tagValue)
+
+    if (bgColor && tagValue && textColor) {
+      const newTag = `<div class="badge text-black position-relative" data-value="${tagValue}" style="background-color:${bgColor}; color:${textColor} !important;">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
+      tagBadgeWrapper.append(newTag);
+
+      const option = `<option value="Tag 01" data-value="${tagValue}" data-text-color="${textColor}" data-bg-color="${bgColor}" >${tagValue}</option>`;
+
+      resetState();
+      tagSelectInput.append(option);
+      tagColorWrapper.fadeOut(10).addClass('d-none')
+
+
+
+      if (noTagSpan.length) {
+        noTagSpan.hide();
+      }
+    }
+  })
+
+
 })
