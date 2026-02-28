@@ -770,7 +770,7 @@ $(document).ready(function () {
     } else {
       let parentData = dataId ? table.row($(`tr.parent[data-id=${dataId}]`).first())?.data() : row?.data();
       const rowData = findChildData(parentData, n => n?.id === rowId);
-      let expandedRowContent = formatChildRows(rowData, rowId, dataId || rowId);
+      let expandedRowContent = formatChildRows(rowData, rowId, dataId || rowId, tr.find('.row-select').is(":checked"));
       tr.after(expandedRowContent);
       tr.addClass("expanded-row");
       if (!dataId) {
@@ -823,12 +823,12 @@ $(document).ready(function () {
   }
 
   // get expanded row structure
-  function formatChildRows(data, parentId, dataLevelId = "") {
+  function formatChildRows(data, parentId, dataLevelId = "", parentCheckboxIsChecked) {
     return data.expanded_rows.map((row, index, arr) =>
       `
         <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}" data-type="${row.type}">
           <td>
-            <input class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}">
+            <input class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}" ${parentCheckboxIsChecked ? "checked" : ""} >
           </td>
           <td class="doc_indent">
             ${row?.type !== "file" ?
@@ -1567,5 +1567,53 @@ $(document).ready(function () {
     }
   })
 
+
+})
+
+
+
+// logic for document tabs select checkbox to download doc or folders
+$(function () {
+  $("#document-clear-all").on('click', function () {
+    const selectAllcheckbox = $(this);
+
+    const tableContainer = selectAllcheckbox.closest('.entityDetailDocumentsTableV2');
+
+    const allRowcheckbox = tableContainer.find('td:not(.disabled-column) .row-select');
+
+    allRowcheckbox.prop('checked', selectAllcheckbox.prop('checked')).trigger('change');
+  });
+
+
+  $('.entityDetailDocumentsTableV2').on('change', ".row-select", function () {
+
+    if ($('.row-select:checked').length > 0) {
+      $('.downloadBtn').removeClass('d-none');
+    } else {
+      $('.downloadBtn').addClass('d-none');
+    }
+
+    if ($('.row-select:checked').length === $("td:not(.disabled-column) .row-select").length) {
+      $("#document-clear-all").prop('checked', true);
+    } else {
+      $("#document-clear-all").prop('checked', false);
+    }
+
+    // const selectedCheckbox = $(this)
+    // const tr = selectedCheckbox.closest('tr');
+    // const tableContainer = tr.closest('table');
+    // const dataId = tr.data('id');
+
+    // const rowCheckBox = tableContainer.find(`tr[data-id="${dataId}"] .row-select`);
+
+    // if (tr.hasClass("expanded-content")) {
+    //   rowCheckBox.prop('checked', selectedCheckbox.prop('checked')).trigger('change')
+    // }
+
+    // if (!selectedCheckbox.is(":checked")) {
+    //   tableContainer.find(`tr.expanded-row[data-id="${dataId}"]`).prop('checked', false);
+    // }
+
+  })
 
 })
