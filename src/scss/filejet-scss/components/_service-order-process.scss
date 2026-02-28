@@ -94,17 +94,73 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
 
 
 .sidebar {
-  box-shadow: none !important;
-  border-right: 1px solid #aaa9a9 !important;
+  box-shadow: 0.8px 0 0 0 #aaa9a9;
 }
+
+.sidebar .menu-link .nav-link a{
+  position: relative;
+  border: 0;
+}
+
 .sidebar .menu-link .nav-link.active a {
   background: var(--bs-purple-filejet) !important;
-  box-shadow: none !important;
-  border: 1px solid #aaa9a9 !important;
-  border-right: 0px !important;
+  box-sizing: border-box;
+  box-shadow: 
+    inset 0.8px 0 0 #aaa9a9,
+    inset 0 0.8px 0 #aaa9a9,
+    inset 0 -0.8px 0 #aaa9a9;
+    
+  &::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    right: -3px;
+    background-color: var(--bs-purple-filejet) !important;
+    background-image: none !important;
+    width: 5px;
+  }
 }
+
 .sidebar .menu-link .nav-link{
-  right: -1px;
+  position: relative;
+}
+
+.sidebar .menu-link .nav-link.active{
+   &::before{
+      content: "";
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      bottom: -20px;
+      right: 0px;
+      background: var(--bs-white) !important;
+      border-top-right-radius: 50%;
+      box-shadow:
+        -0.8px 2px 0 0 var(--bs-white),
+        0.8px 0 0 0 #aaa9a9,
+        0 -0.8px 0 0 #aaa9a9,
+        5px -5px 0 0 var(--bs-purple-filejet);
+        z-index: 1;
+  }
+
+  &::after{
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: -20px;
+    right: 0px;
+    background: var(--bs-white) !important;
+    border-bottom-right-radius: 50%;
+    box-shadow:
+        -0.8px -0.8px 0 0 var(--bs-white),
+        0.8px 0 0 0 #aaa9a9,
+        0 0.8px 0 0 #aaa9a9,
+        5px 5px 0 0 var(--bs-purple-filejet);
+    z-index: 1;
+  }
 }
   .icon-urgent-entity-status {
     background-image: url("../../../dist/images/icons/urgent-entity-status.svg");
