@@ -1574,46 +1574,117 @@ $(document).ready(function () {
 
 // logic for document tabs select checkbox to download doc or folders
 $(function () {
-  $("#document-clear-all").on('click', function () {
-    const selectAllcheckbox = $(this);
 
-    const tableContainer = selectAllcheckbox.closest('.entityDetailDocumentsTableV2');
+  const tableContainer = $('.entityDetailDocumentsTableV2');
 
-    const allRowcheckbox = tableContainer.find('td:not(.disabled-column) .row-select');
+  const CHECKBOX_SELECTOR = 'td:not(.disabled-column) .row-select';
 
-    allRowcheckbox.prop('checked', selectAllcheckbox.prop('checked')).trigger('change');
-  });
+  function getAllCheckboxes() {
+    return tableContainer.find(CHECKBOX_SELECTOR);
+  }
 
+  function getCheckedCheckboxes() {
+    return tableContainer.find(CHECKBOX_SELECTOR + ':checked');
+  }
 
-  $('.entityDetailDocumentsTableV2').on('change', ".row-select", function () {
+  // Select All Checkbox  
+  tableContainer.on('change', "#document-clear-all", function () {
+    const isChecked = $(this).prop('checked');
 
-    if ($('.row-select:checked').length > 0) {
-      $('.downloadBtn').removeClass('d-none');
-    } else {
-      $('.downloadBtn').addClass('d-none');
-    }
+    getAllCheckboxes().prop('checked', isChecked);
 
-    if ($('.row-select:checked').length === $("td:not(.disabled-column) .row-select").length) {
-      $("#document-clear-all").prop('checked', true);
-    } else {
-      $("#document-clear-all").prop('checked', false);
-    }
+    $(this).removeClass('icon-optional-check');
 
-    // const selectedCheckbox = $(this)
-    // const tr = selectedCheckbox.closest('tr');
-    // const tableContainer = tr.closest('table');
-    // const dataId = tr.data('id');
-
-    // const rowCheckBox = tableContainer.find(`tr[data-id="${dataId}"] .row-select`);
-
-    // if (tr.hasClass("expanded-content")) {
-    //   rowCheckBox.prop('checked', selectedCheckbox.prop('checked')).trigger('change')
-    // }
-
-    // if (!selectedCheckbox.is(":checked")) {
-    //   tableContainer.find(`tr.expanded-row[data-id="${dataId}"]`).prop('checked', false);
-    // }
-
+    toggleDownloadButton();
   })
 
-})
+  // row checkbox event handle
+
+  tableContainer.on('change', '.row-select', function () {
+    const checkbox = $(this);
+    const row = checkbox.closest('tr');
+    const isChecked = $(this).prop("checked");
+
+    let levelId = row.hasClass("parent") ? row.data('id') : row.data('levelId');
+    toggleChildren(row, isChecked, levelId);
+    updateParent(row);
+    updateSelectAllState();
+    toggleDownloadButton();
+  })
+
+  // update children checkbox
+  function toggleChildren(row, isChecked, levelId) {
+    if (!levelId) return;
+
+    const children = tableContainer.find(`tr[data-parent="${levelId}"]`);
+
+    if (!children.length) return;
+
+    children.find(CHECKBOX_SELECTOR).prop('checked', isChecked);
+
+    // Parent -> toggle direct children
+    children.each(function () {
+      const childlevelId = $(this).data('levelId');
+      console.log("Inside Loop", this, childlevelId)
+      toggleChildren($(this), isChecked, childlevelId);
+    })
+  }
+
+  // update parent
+  function updateParent(row) {
+    const parentId = row.data('parent');
+
+    if (parentId === undefined || parentId === null) return;
+
+    const checkbox = tableContainer.find(`tr.expanded-content[data-parent="${parentId}"] ${CHECKBOX_SELECTOR}`);
+
+    if (!checkbox.length) return;
+
+    const totalCheckbox = checkbox.length;
+    const checkedCheckbox = checkbox.filter(':checked').length;
+
+
+    let parentRow = tableContainer.find(`tr.expanded-content[data-level-id="${parentId}"]`);
+
+    if (parentRow.length === 0) {
+      parentRow = tableContainer.find(`tr.parent[data-id="${parentId}"]`)
+    }
+
+    const parentCheckbox = parentRow.find('.row-select');
+
+    if (checkedCheckbox === totalCheckbox) {
+      parentCheckbox.prop('checked', true);
+    } else {
+      parentCheckbox.prop('checked', false);
+    }
+
+    updateParent(parentRow);
+  }
+
+
+  // select all state change
+
+  function updateSelectAllState() {
+    const allCheckbox = getAllCheckboxes();
+    const totalCheckbox = allCheckbox.length;
+    const checkedCheckbox = allCheckbox.filter(':checked').length;
+
+    const selectAll = tableContainer.find('#document-clear-all');
+
+    if (checkedCheckbox === totalCheckbox) {
+      selectAll.prop('checked', true).removeClass("icon-optional-check");
+    }
+    else if (checkedCheckbox === 0) {
+      selectAll.prop('checked', false).removeClass("icon-optional-check");
+    }
+    else {
+      selectAll.prop('checked', true).addClass("icon-optional-check");
+    }
+  }
+
+  // hide or show download button based on checkbox being checked
+  function toggleDownloadButton() {
+    const hasNoCheckedCheckbox = getCheckedCheckboxes().length === 0;
+    $('.downloadBtn').toggleClass('d-none', hasNoCheckedCheckbox);
+  }
+});
