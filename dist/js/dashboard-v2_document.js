@@ -931,7 +931,7 @@ function applyTagOverflow() {
     tags.css('display', 'inline-block');
     moreBadge.addClass('d-none').text("");
 
-    const colWidth = th.outerWidth(true) - 50;
+    const colWidth = th.outerWidth(true) - 60;
 
     tags.each(function () {
       let tag = $(this);
