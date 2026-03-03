@@ -4,11 +4,11 @@ $(document).ready(function () {
     const section = $(this);
 
     // Initial setup
-    section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form').hide();
+    section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form, .bill-to-client').hide();
 
     section.find('.pricing-method').on('change', function () {
       const selected = $(this).val();
-      section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form').hide();
+      section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form, .bill-to-client').hide();
 
       if (selected === 'account-default') {
         // No additional section shown
@@ -19,6 +19,8 @@ $(document).ready(function () {
         section.find('.ach-option').prop('checked', true);
         section.find('.credit-option').prop('checked', false);
         section.find('.ach-form').show();
+      } else if(selected === "bill-to-client"){
+        section.find('.bill-to-client').show();
       }
     });
 
