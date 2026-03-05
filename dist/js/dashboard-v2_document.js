@@ -1038,7 +1038,7 @@ $(document).on('shown.bs.tab', function () {
 
   $('.tagselect').select2({
     tags: true,
-    placeholder: 'Select Tag',
+    placeholder: 'Select or Create Tag',
     dropdownParent: $('.tagselect').closest(".tagfields"),
 
     createTag: function (params) {
