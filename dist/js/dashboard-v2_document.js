@@ -1551,16 +1551,16 @@ $(document).ready(function () {
 
       if (optionSelected.length === 0) {
         const option = `<option value="${tagValue}" data-value="${tagValue}" data-text-color="${textColor}" data-bg-color="${bgColor}" >${tagValue}</option>`;
-        tagSelectInput.append(option);
+        tagSelectInput.append(option).trigger('change');
       }
       tagColorWrapper.fadeOut(10).addClass('d-none')
-
-
 
       if (noTagSpan.length) {
         noTagSpan.hide();
       }
-      resetState();
+      setTimeout(() => {
+        resetState();
+      }, 50)
     }
   })
 })
