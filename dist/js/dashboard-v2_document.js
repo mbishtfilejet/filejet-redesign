@@ -1024,55 +1024,58 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
     $('.select2-search__field').attr('placeholder', 'Search...');
   });
 
+
+  // for tagselect functionality, initialization one time whenever modal close or open
+
+  $(this).find('.tagselect').each(function () {
+    const tagSelect = $(this);
+    if (tagSelect.hasClass('select2-hidden-accessible')) {
+      tagSelect.select2('destroy');
+    }
+    tagSelect.select2({
+      tags: true,
+      placeholder: 'Select or Create Tag',
+      dropdownParent: tagSelect.closest(".modal"),
+
+      createTag: function (params) {
+        const term = params.term.trim();
+
+        if (term.length < 3) return null;
+
+        // Check if term already exists
+        const exists = tagSelect.find('option').filter(function () {
+          return $(this).text().toLowerCase() === term.toLowerCase();
+        }).length > 0;
+
+        if (exists) return null;
+
+        return {
+          id: term,
+          text: term,
+          newTag: true
+        };
+      },
+
+      templateResult: function (data) {
+        if (data.newTag) {
+          return "Create new Tag - " + data.text;
+        }
+
+        return data.text;
+      }
+    });
+  });
+
+  $(this).on('select2:open select2:select', '.tagselect', () => {
+    $('.select2-search__field').attr('placeholder', 'Search...');
+  });
+
 });
 
 //separating document column adjusment and tags logic
 $(document).on('shown.bs.tab', function () {
   $("#entitydetails-documents-table").DataTable().columns.adjust();
-
-  // initializing tagselect options
-  // $('.tagselect').select2({
-  //   placeholder: 'Select Tag',
-  //   dropdownParent: $('.tagselect').closest(".tagfields"),
-  // });
-
-  $('.tagselect').select2({
-    tags: true,
-    placeholder: 'Select or Create Tag',
-    dropdownParent: $('.tagselect').closest(".tagfields"),
-
-    createTag: function (params) {
-      const term = params.term.trim();
-
-      if (term.length < 3) return null;
-
-      // Check if term already exists
-      const exists = $('.tagselect option').filter(function () {
-        return $(this).text().toLowerCase() === term.toLowerCase();
-      }).length > 0;
-
-      if (exists) return null;
-
-      return {
-        id: term,
-        text: term,
-        newTag: true
-      };
-    },
-
-    templateResult: function (data) {
-      if (data.newTag) {
-        return "Create new Tag - " + data.text;
-      }
-
-      return data.text;
-    }
-  });
-
-  $(document).on('select2:open select2:select', '.tagselect', () => {
-    $('.select2-search__field').attr('placeholder', 'Search...');
-  });
-})
+});
 
 
 // context menu logic start
@@ -1434,50 +1437,50 @@ $(document).ready(function () {
     tagContainer.data('colors', colors);
   });
 
-  $(".addtag-btn").on('click', function () {
-    const tagContainer = $(this).closest(".modal-tags-container");
-    const colors = tagContainer.data('colors') || {};
-    const svg = tagContainer.find(".tagSvg");
-    const tagCreateInput = tagContainer.find(".tagfields input");
-    const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
-    const svgBackground = svg.find('.svgBackground');
+  // $(".addtag-btn").on('click', function () {
+  //   const tagContainer = $(this).closest(".modal-tags-container");
+  //   const colors = tagContainer.data('colors') || {};
+  //   const svg = tagContainer.find(".tagSvg");
+  //   const tagCreateInput = tagContainer.find(".tagfields input");
+  //   const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
+  //   const svgBackground = svg.find('.svgBackground');
 
-    const tagValue = tagCreateInput.val().trim();
-    const bgColor = colors.bg;
-    const textColor = colors.text;
-    const gradientID = svg.find('linearGradient').attr('id');
+  //   const tagValue = tagCreateInput.val().trim();
+  //   const bgColor = colors.bg;
+  //   const textColor = colors.text;
+  //   const gradientID = svg.find('linearGradient').attr('id');
 
-    const noTagSpan = tagBadgeWrapper.find(".no-tag-span");
+  //   const noTagSpan = tagBadgeWrapper.find(".no-tag-span");
 
-    const existingTags = tagBadgeWrapper.children(".badge").map((_, el) => $(el).data('value')).get();
+  //   const existingTags = tagBadgeWrapper.children(".badge").map((_, el) => $(el).data('value')).get();
 
-    // reset state
-    const resetState = () => {
-      svgBackground.attr("fill", `url(#${gradientID})`);
-      tagCreateInput.val("");
-      tagContainer.data('colors', {});
-    }
+  //   // reset state
+  //   const resetState = () => {
+  //     svgBackground.attr("fill", `url(#${gradientID})`);
+  //     tagCreateInput.val("");
+  //     tagContainer.data('colors', {});
+  //   }
 
-    if (existingTags.length === 20) {
-      resetState();
-      return
+  //   if (existingTags.length === 20) {
+  //     resetState();
+  //     return
 
-    };
+  //   };
 
-    if (existingTags.includes(tagValue)) {
-      resetState();
-      return;
-    };
+  //   if (existingTags.includes(tagValue)) {
+  //     resetState();
+  //     return;
+  //   };
 
-    if (bgColor && tagValue && textColor) {
-      const newTag = `<div class="badge text-black position-relative" data-value="${tagValue}" style="background-color:${bgColor}; color:${textColor} !important;">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
-      tagBadgeWrapper.append(newTag);
-      if (noTagSpan.length) {
-        noTagSpan.hide();
-      }
-      resetState();
-    }
-  })
+  //   if (bgColor && tagValue && textColor) {
+  //     const newTag = `<div class="badge text-black position-relative" data-value="${tagValue}" style="background-color:${bgColor}; color:${textColor} !important;">${tagValue} <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span></div>`;
+  //     tagBadgeWrapper.append(newTag);
+  //     if (noTagSpan.length) {
+  //       noTagSpan.hide();
+  //     }
+  //     resetState();
+  //   }
+  // })
 
   $(this).on('click', ".remove-tag", function () {
     const tagContainer = $(this).closest(".modal-tags-container");
@@ -1493,19 +1496,13 @@ $(document).ready(function () {
 
   $(document).on('select2:select', '.tagselect', function (e) {
     if (e.params.data.newTag) {
-
-      let value = e.params.data.id;
-      let option = $(this).find("option[value='" + value + "']");
-
-
       let tagfieldset = $(this).closest('.tagfields');
 
       let tagColorWrapper = tagfieldset.find('.tag-colorPicker-wrapper');
       tagColorWrapper.removeClass('d-none').hide().fadeIn(100);
 
       let addNewTag = tagfieldset.next('.addtagnew-btn');
-
-      addNewTag.removeClass('d-none').hide().fadeIn(100);
+      console.log(addNewTag)
     }
   })
 
@@ -1552,7 +1549,6 @@ $(document).ready(function () {
       tagBadgeWrapper.append(newTag);
 
 
-      resetState();
       if (optionSelected.length === 0) {
         const option = `<option value="${tagValue}" data-value="${tagValue}" data-text-color="${textColor}" data-bg-color="${bgColor}" >${tagValue}</option>`;
         tagSelectInput.append(option);
@@ -1564,10 +1560,9 @@ $(document).ready(function () {
       if (noTagSpan.length) {
         noTagSpan.hide();
       }
+      resetState();
     }
   })
-
-
 })
 
 
