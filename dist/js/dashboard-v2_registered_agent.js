@@ -331,8 +331,11 @@ $(document).ready(function () {
       {
         data: null, render: function (data, type, row) {
           return `<div class="d-flex align-items-center gap-2">
-          ${row.acknowledged_by ? '<button data-bs-toggle="modal" data-bs-target="#sopDocView-modal" class="btn btn-secondary p-2 m-0">View</button>' : '<button data-bs-toggle="modal" data-bs-target="#sopAcknowledge-modal" class="btn btn-secondary btn-acknowledge p-2 m-0">Acknowledge</button>'}
-              <span class="icon icon-download-dark icon-sm m-0"></span>
+          ${row.acknowledged_by ?
+              '<button data-bs-toggle="modal" data-bs-target="#sopDocView-modal" class="btn btn-secondary p-2 m-0">View</button>'
+              :
+              '<button data-bs-toggle="modal" data-bs-target="#sopAcknowledge-modal" class="btn btn-secondary btn-acknowledge p-2 m-0">Acknowledge</button>'}
+              <span class="icon icon-download-dark icon-sm m-0 flex-shrink-0"></span>
           </div>
           `;
         }
