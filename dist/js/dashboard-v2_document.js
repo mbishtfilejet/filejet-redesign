@@ -1165,6 +1165,14 @@ function editSaveableContent() {
     if ($editableItem.scrollTop()) $editableItem.animate({ scrollTop: 0 }, 100);
     $(this).parents('.editable-parent').find('.edit-content').show();
   });
+
+  $(document).on('show.bs.modal', function (e) {
+    const link = $(e.relatedTarget);
+    if (link.find('.input-item').attr('contentEditable')) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
 }
 
 // logic for description clamp Text 
@@ -1538,7 +1546,7 @@ $(function () {
     const fillColor = pickedColor || url(`#${gradientID}`);
     svg.find('.svgBackground').attr("fill", fillColor);
     const colors = tagContainer.data('colors') || {};
-    colors[colorType] = pickedColor; 
+    colors[colorType] = pickedColor;
     tagContainer.data('colors', colors);
   });
 
