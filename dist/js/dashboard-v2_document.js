@@ -1023,20 +1023,22 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
   $('.tab-content .select2').on('select2:open select2:select', () => {
     $('.select2-search__field').attr('placeholder', 'Search...');
   });
+});
 
 
-  // for tagselect functionality, initialization one time whenever modal close or open
+// for tagselect functionality, initialization one time whenever modal close or open
 
+$(document).on('shown.bs.modal', function () {
   $(this).find('.tagselect').each(function () {
     const tagSelect = $(this);
     if (tagSelect.hasClass('select2-hidden-accessible')) {
-      tagSelect.select2('destroy');
+      return;
     }
     tagSelect.select2({
       tags: true,
       placeholder: 'Select or Create Tag',
-      dropdownParent: tagSelect.closest(".modal"),
-
+      dropdownParent: tagSelect.closest('.modal'),
+      width: '100%',
       createTag: function (params) {
         const term = params.term.trim();
 
