@@ -1123,6 +1123,7 @@ $(document).ready(function () {
   let activeRow = null;
   $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr', function (e) {
     if ($('#contextmenu').hasClass('show')) return;
+    if($(this).find('.input-item').attr('contenteditable')) return;
     if ($(e.target).closest('input[type="checkbox"], .edit-content, .save-content, .delete-btn').length) return;
     if (activeRow) {
       $(activeRow).removeClass("rowSelect")
@@ -1175,15 +1176,6 @@ function editSaveableContent() {
     if ($editableItem.scrollTop()) $editableItem.animate({ scrollTop: 0 }, 100);
     $(this).parents('.editable-parent').find('.edit-content').show();
   });
-
-  $(document).on('show.bs.modal', function (e) {
-    const link = $(e.relatedTarget);
-    if (link.find('.input-item').attr('contentEditable')) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  });
-  
 }
 
 editSaveableContent();
