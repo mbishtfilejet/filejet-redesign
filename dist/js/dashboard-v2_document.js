@@ -1505,7 +1505,7 @@ $(function () {
 
           // Check if term already exists 
           const exists = tagSelect.find('option').filter(function () {
-            return $(this).text().toLowerCase() === term.toLowerCase();
+            return $(this).text().toLowerCase().includes(term.toLowerCase());
           }).length;
           if (exists) return null;
           return { id: term, text: term, newTag: true };
@@ -1538,7 +1538,8 @@ $(function () {
     const fillColor = pickedColor || url(`#${gradientID}`);
     svg.find('.svgBackground').attr("fill", fillColor);
     const colors = tagContainer.data('colors') || {};
-    colors[colorType] = pickedColor; tagContainer.data('colors', colors);
+    colors[colorType] = pickedColor; 
+    tagContainer.data('colors', colors);
   });
 
   // New Tag created 
@@ -1571,6 +1572,7 @@ $(function () {
       return;
     };
     if (bgColor && textColor) {
+      tagContainer.find('.tag-colorPicker-wrapper').addClass('d-none');
       const newTag = `
       <div class="badge position-relative" 
         data-value="${tagValue}" 
@@ -1588,7 +1590,6 @@ $(function () {
       }
     }
     resetState(tagContainer);
-    return;
   });
   // remove tag functionality 
   $(document).on('click', ".remove-tag", function () {
@@ -1604,8 +1605,8 @@ $(function () {
     const selectInput = container.find(".tagselect");
     const svg = container.find(".tagSvg");
     const gradientID = svg.find('linearGradient').attr('id');
-    selectInput.val(null).trigger('change.select2'); 
+    selectInput.val(null).trigger('change.select2');
     svg.find('.svgBackground').attr("fill", `url(#${gradientID})`);
-    container.data('colors', {}); container.find('.tag-colorPicker-wrapper').addClass('d-none');
+    container.data('colors', {});
   }
 })
