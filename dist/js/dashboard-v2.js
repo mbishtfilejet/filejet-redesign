@@ -815,14 +815,14 @@ $(document).ready(function () {
         <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
           <td class="doc_indent">
             ${row?.type !== "file" ?
-              `<div class="d-flex align-items-center gap-3 ${row.type === "custom" ? "folder-name" : ""}">
+        `<div class="d-flex align-items-center gap-3 ${row.type === "custom" ? "folder-name" : ""}">
                     <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
                     <div class="d-flex align-items-center gap-2">
                         <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
                         <span class="input-item text-break">${row.name}</span>
                     </div>
                 </div>`:
-              `<div class="d-flex">
+        `<div class="d-flex">
                 <a href="javascript:void(0);" class="text-decoration-none text-dark d-flex align-items-center gap-2 ${row.type === "custom" ? "folder-name" : ""}"
                   role="button" data-bs-target="#file-preview-modal" data-bs-toggle="modal">
                     <span class="icon icon-document-gray icon-md flex-shrink-0 m-0" ></span>
@@ -1003,13 +1003,20 @@ function editSaveableContent() {
     if ($editableItem.scrollTop()) $editableItem.animate({ scrollTop: 0 }, 100);
     $(this).parents('.editable-parent').find('.edit-content').show();
   });
+
+  $(document).on('show.bs.modal', function (e) {
+    const link = $(e.relatedTarget);
+    if (link.find('.input-item').attr('contentEditable')) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  })
+
 }
 
 // logic for description clamp Text 
 $(function () {
   const desCont = $('.descriptionContent').get(0);
-
-  console.log("onLoad")
 
   clampText(desCont);
 
