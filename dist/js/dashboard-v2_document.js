@@ -690,10 +690,11 @@ $(document).ready(function () {
           return `
          <div class="d-flex align-items-center gap-3">
           <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
-          <div class="d-flex align-items-center gap-2">
+          <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none text-dark"
+            role="button" data-bs-target="#folderflyout-modal" data-bs-toggle="modal">
             <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md flex-shrink-0 m-0"></span>
             <span class="input-item text-break">${data}</span>
-          </div>
+          </a>
          </div>
         `;
         }
@@ -834,13 +835,15 @@ $(document).ready(function () {
             ${row?.type !== "file" ?
         `<div class="d-flex align-items-center gap-3">
                       <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
-                      <div class="d-flex align-items-center gap-2">
+                      <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none text-dark"
+                      role="button" data-bs-target="#folderflyout-modal" data-bs-toggle="modal">
                           <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
                           <span class="input-item text-break">${row.name}</span>
-                      </div>
+                      </a>
                   </div>`:
         `<div class="d-flex">
-                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none text-dark">
+                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none text-dark"
+                    role="button" data-bs-target="#documentflyout-modal" data-bs-toggle="modal">
                       <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
                       <span class="input-item text-break">${row.name}</span>
                     </a>
@@ -1111,39 +1114,59 @@ $(document).ready(function () {
 
 //handle row click to show document/folder information
 $(document).ready(function () {
-  let activeRow = null;
-  $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr>td:nth-child(2)', function (e) {
-    if ($('#contextmenu').hasClass('show')) return;
-    if($(this).find('.input-item').attr('contenteditable')) return;
-    if (activeRow) {
-      $(activeRow).removeClass("rowSelect")
-    }
-    activeRow = $(this).closest('tr');
-    if ($(activeRow).attr('data-type') === "file") {
-      $('#documentflyout-modal').modal("show");
-    } else {
-      $('#folderflyout-modal').modal("show");
-    }
 
-    $(activeRow).addClass("rowSelect");
+  $(document).on('show.bs.modal', function (e) {
+    const link = $(e.relatedTarget);
+    if (link.find('.input-item').attr('contentEditable') ) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    const activeRow = $(link).closest('tr');
+
+    activeRow.addClass("rowSelect");
   });
 
-  //Listen for the modal close event
-  $('#documentflyout-modal').on('hidden.bs.modal', function () {
-    // When the modal is completely hidden, remove the class from the active row
+  $(document).on('hidden.bs.modal', function () {
+    const activeRow = $('tr.rowSelect');
     if (activeRow) {
-      $(activeRow).removeClass('rowSelect');
-      activeRow = null; // Clear the reference
-    }
-  });
-
-  $('#folderflyout-modal').on('hidden.bs.modal', function () {
-    // When the modal is completely hidden, remove the class from the active row
-    if (activeRow) {
-      $(activeRow).removeClass('rowSelect');
-      activeRow = null; // Clear the reference
+      activeRow.removeClass('rowSelect');
     }
   })
+
+  // let activeRow = null;
+  // $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr>td:nth-child(2)', function (e) {
+  //   if ($('#contextmenu').hasClass('show')) return;
+  //   if($(this).find('.input-item').attr('contenteditable')) return;
+  //   if (activeRow) {
+  //     $(activeRow).removeClass("rowSelect")
+  //   }
+  //   activeRow = $(this).closest('tr');
+  //   if ($(activeRow).attr('data-type') === "file") {
+  //     $('#documentflyout-modal').modal("show");
+  //   } else {
+  //     $('#folderflyout-modal').modal("show");
+  //   }
+
+  //   $(activeRow).addClass("rowSelect");
+  // });
+
+  //Listen for the modal close event
+  // $('#documentflyout-modal').on('hidden.bs.modal', function () {
+  //   // When the modal is completely hidden, remove the class from the active row
+  //   if (activeRow) {
+  //     $(activeRow).removeClass('rowSelect');
+  //     activeRow = null; // Clear the reference
+  //   }
+  // });
+
+  // $('#folderflyout-modal').on('hidden.bs.modal', function () {
+  //   // When the modal is completely hidden, remove the class from the active row
+  //   if (activeRow) {
+  //     $(activeRow).removeClass('rowSelect');
+  //     activeRow = null; // Clear the reference
+  //   }
+  // })
 })
 
 // function for adding editable functionality to folder/docuemnt name and make editable content 
