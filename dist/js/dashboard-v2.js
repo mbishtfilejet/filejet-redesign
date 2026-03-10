@@ -400,14 +400,17 @@ $(document).ready(function () {
   }
 });
 
-function renderDotsTable1(data) {
+function renderDotsTable1(data, type, row) {
+  console.log(data);
+  //adding draft badge just for refernce for showcasing on the listing page
   return `
       <div class="status-dots">
           <div class="status-dot status-good" data-bs-toggle="tooltip" title="In Good Standing">1</div>
           <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not Good Standing">1</div>
           <div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">1</div>
-          <div class="status-dot status-unknown" data-bs-toggle="tooltip" title="Unknown">1</div>
-
+          ${row.id == 4 ? `<div class="status-dot status-draft" data-bs-toggle="tooltip" title="Draft">1</div>` 
+            : 
+            `<div class="status-dot status-unknown" data-bs-toggle="tooltip" title="Unknown">1</div>`}
       </div>
   `;
 }
