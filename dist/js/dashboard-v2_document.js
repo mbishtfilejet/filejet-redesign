@@ -690,11 +690,11 @@ $(document).ready(function () {
           return `
          <div class="d-flex align-items-center gap-3">
           <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
-          <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none text-dark"
+          <div class="d-flex align-items-center gap-2"
             role="button" data-bs-target="#folderflyout-modal" data-bs-toggle="modal">
             <span class="icon ${row?.type === "state" ? "icon-folder-upload-danger" : "icon-folder-upload-purple"} icon-md flex-shrink-0 m-0"></span>
             <span class="input-item text-break">${data}</span>
-          </a>
+          </div>
          </div>
         `;
         }
@@ -832,21 +832,23 @@ $(document).ready(function () {
             <input class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}" ${parentCheckboxIsChecked ? "checked" : ""} >
           </td>
           <td class="doc_indent">
-            ${row?.type !== "file" ?
+            ${row?.type !== "file"
+        ?
         `<div class="d-flex align-items-center gap-3">
                       <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
-                      <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none text-dark"
+                      <div class="d-flex align-items-center gap-2"
                       role="button" data-bs-target="#folderflyout-modal" data-bs-toggle="modal">
                           <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
                           <span class="input-item text-break">${row.name}</span>
-                      </a>
-                  </div>`:
+                      </div>
+                  </div>`
+        :
         `<div class="d-flex">
-                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none text-dark"
-                    role="button" data-bs-target="#documentflyout-modal" data-bs-toggle="modal">
-                      <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
-                      <span class="input-item text-break">${row.name}</span>
-                    </a>
+                  <div class="d-flex align-items-center gap-2"
+                  role="button" data-bs-target="#documentflyout-modal" data-bs-toggle="modal">
+                    <span class="icon icon-document-gray icon-md flex-shrink-0 m-0"></span>
+                    <span class="input-item text-break">${row.name}</span>
+                  </div>
                 </div>`}
               </td>
               <td >${renderTagsOnRow(row.tags)}</td>
@@ -1117,7 +1119,7 @@ $(document).ready(function () {
 
   $(document).on('show.bs.modal', function (e) {
     const link = $(e.relatedTarget);
-    if (link.find('.input-item').attr('contentEditable') ) {
+    if (link.find('.input-item').attr('contentEditable')) {
       e.preventDefault();
       e.stopPropagation();
       return;
@@ -1447,7 +1449,6 @@ $(function () {
     // Parent -> toggle direct children
     children.each(function () {
       const childlevelId = $(this).data('levelId');
-      console.log("Inside Loop", this, childlevelId)
       toggleChildren($(this), isChecked, childlevelId);
     })
   }

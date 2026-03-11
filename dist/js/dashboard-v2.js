@@ -401,16 +401,15 @@ $(document).ready(function () {
 });
 
 function renderDotsTable1(data, type, row) {
-  console.log(data);
   //adding draft badge just for refernce for showcasing on the listing page
   return `
       <div class="status-dots">
           <div class="status-dot status-good" data-bs-toggle="tooltip" title="In Good Standing">1</div>
           <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not Good Standing">1</div>
           <div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">1</div>
-          ${row.id == 4 ? `<div class="status-dot status-draft" data-bs-toggle="tooltip" title="Draft">1</div>` 
-            : 
-            `<div class="status-dot status-unknown" data-bs-toggle="tooltip" title="Unknown">1</div>`}
+          ${row.id == 4 ? `<div class="status-dot status-draft" data-bs-toggle="tooltip" title="Draft">1</div>`
+      :
+      `<div class="status-dot status-unknown" data-bs-toggle="tooltip" title="Unknown">1</div>`}
       </div>
   `;
 }
@@ -817,20 +816,22 @@ $(document).ready(function () {
       `
         <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}">
           <td class="doc_indent">
-            ${row?.type !== "file" ?
+            ${row?.type !== "file"
+        ?
         `<div class="d-flex align-items-center gap-3 ${row.type === "custom" ? "folder-name" : ""}">
                     <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
                     <div class="d-flex align-items-center gap-2">
                         <span class="icon icon-folder-upload-purple icon-md flex-shrink-0 m-0"></span>
                         <span class="input-item text-break">${row.name}</span>
                     </div>
-                </div>`:
+                </div>`
+        :
         `<div class="d-flex">
-                <a href="javascript:void(0);" class="text-decoration-none text-dark d-flex align-items-center gap-2 ${row.type === "custom" ? "folder-name" : ""}"
-                  role="button" data-bs-target="#file-preview-modal" data-bs-toggle="modal">
+              <div class="d-flex align-items-center gap-2 ${row.type === "custom" ? "folder-name" : ""}"
+                 role="button" data-bs-target="#file-preview-modal" data-bs-toggle="modal">
                     <span class="icon icon-document-gray icon-md flex-shrink-0 m-0" ></span>
                     <span class="input-item text-break">${row.name || data.name}</span>
-                </a>
+                    <div>
               </div>
               `}
               </td>
@@ -1012,6 +1013,7 @@ function editSaveableContent() {
     if (link.find('.input-item').attr('contentEditable')) {
       e.preventDefault();
       e.stopPropagation();
+      return false;
     }
   })
 
