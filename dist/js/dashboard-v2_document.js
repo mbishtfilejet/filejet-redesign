@@ -1511,6 +1511,7 @@ $(function () {
   }
 });
 
+// function to handle tags creation and apply custom tags with remove option
 $(function () {
 
   // Select2 Initialization 
