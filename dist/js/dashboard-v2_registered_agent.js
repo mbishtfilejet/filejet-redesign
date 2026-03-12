@@ -245,6 +245,33 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
 
 });
 
+// adding sliding effect on tabs
+$(document).ready(function () {
+  function highlightTabs(tab) {
+
+    const tabOffset = tab.position();
+ 
+    $(".registeredAgent_tablist").css({
+      '--tab-left': tabOffset.left + 'px',
+      '--tab-top': tabOffset.top + 'px',
+      '--tab-width': tab.outerWidth() + 'px',
+      '--tab-height': tab.outerHeight() + 'px'
+    })
+  }
+
+  //tab change event
+  $('.registeredAgent_tablist .nav-link').on('shown.bs.tab', function () {
+    highlightTabs($(this));
+  });
+
+  // handle resize
+  $(window).on('resize', function () {
+    highlightTabs($('.registeredAgent_tablist  .nav-link.active'));
+  });
+
+  highlightTabs($(".registeredAgent_tablist .nav-link.active"))
+})
+
 
 // function to handle tags creation and apply custom tags with remove option
 $(function () {
