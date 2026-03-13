@@ -465,7 +465,6 @@ $(document).ready(function () {
       dataSrc: 'registration_data'
     },
     processing: true,
-    serverSide: true,
     scrollX: true,
     scrollY: false,
     columns: [
@@ -662,7 +661,7 @@ $(document).ready(function () {
 
 });
 
-//document table initialization code with subfolder logic
+//document table v2 initialization code with subfolder logic
 $(document).ready(function () {
   const table = $("#entitydetails-documents-table").DataTable({
     ajax: {
@@ -1030,11 +1029,6 @@ $(document).on('shown.bs.tab shown.bs.modal', function () {
   });
 });
 
-//separating document column adjusment and tags logic
-$(document).on('shown.bs.tab', function () {
-  $("#entitydetails-documents-table").DataTable().columns.adjust();
-});
-
 
 // context menu logic start
 $(function () {
@@ -1114,62 +1108,6 @@ $(document).ready(function () {
   })
 });
 
-//handle row click to show document/folder information
-$(document).ready(function () {
-
-  $(document).on('show.bs.modal', function (e) {
-    const link = $(e.relatedTarget);
-    if (link.find('.input-item').attr('contentEditable')) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-    const activeRow = $(link).closest('tr');
-
-    activeRow.addClass("rowSelect");
-  });
-
-  $(document).on('hidden.bs.modal', function () {
-    const activeRow = $('tr.rowSelect');
-    if (activeRow) {
-      activeRow.removeClass('rowSelect');
-    }
-  })
-
-  // let activeRow = null;
-  // $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr>td:nth-child(2)', function (e) {
-  //   if ($('#contextmenu').hasClass('show')) return;
-  //   if($(this).find('.input-item').attr('contenteditable')) return;
-  //   if (activeRow) {
-  //     $(activeRow).removeClass("rowSelect")
-  //   }
-  //   activeRow = $(this).closest('tr');
-  //   if ($(activeRow).attr('data-type') === "file") {
-  //     $('#documentflyout-modal').modal("show");
-  //   } else {
-  //     $('#folderflyout-modal').modal("show");
-  //   }
-
-  //   $(activeRow).addClass("rowSelect");
-  // });
-
-  //Listen for the modal close event
-  // $('#documentflyout-modal').on('hidden.bs.modal', function () {
-  //   // When the modal is completely hidden, remove the class from the active row
-  //   if (activeRow) {
-  //     $(activeRow).removeClass('rowSelect');
-  //     activeRow = null; // Clear the reference
-  //   }
-  // });
-
-  // $('#folderflyout-modal').on('hidden.bs.modal', function () {
-  //   // When the modal is completely hidden, remove the class from the active row
-  //   if (activeRow) {
-  //     $(activeRow).removeClass('rowSelect');
-  //     activeRow = null; // Clear the reference
-  //   }
-  // })
-})
 
 // function for adding editable functionality to folder/docuemnt name and make editable content 
 function editSaveableContent() {
@@ -1311,8 +1249,6 @@ function multipleFileUploadInput() {
   });
 }
 
-
-
 // function for listing upload/drag & drop files
 function updateUploadFileList(dropZoneElement, index, files) {
   let mainWrapperElement = dropZoneElement.closest("form")
@@ -1394,6 +1330,68 @@ $(function () {
     dropzoneContainer.dropzone(opts);
   });
 
+})
+
+//separating document table column adjusment
+$(document).on('shown.bs.tab', function () {
+  $("#entitydetails-documents-table").DataTable().columns.adjust();
+});
+
+//handle row click to show document/folder information
+$(document).ready(function () {
+
+  $(document).on('show.bs.modal', function (e) {
+    const link = $(e.relatedTarget);
+    if (link.find('.input-item').attr('contentEditable')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    const activeRow = $(link).closest('tr');
+
+    activeRow.addClass("rowSelect");
+  });
+
+  $(document).on('hidden.bs.modal', function () {
+    const activeRow = $('tr.rowSelect');
+    if (activeRow) {
+      activeRow.removeClass('rowSelect');
+    }
+  })
+
+  // let activeRow = null;
+  // $(".entityDetailDocumentsTableV2 tbody").on('click', 'tr>td:nth-child(2)', function (e) {
+  //   if ($('#contextmenu').hasClass('show')) return;
+  //   if($(this).find('.input-item').attr('contenteditable')) return;
+  //   if (activeRow) {
+  //     $(activeRow).removeClass("rowSelect")
+  //   }
+  //   activeRow = $(this).closest('tr');
+  //   if ($(activeRow).attr('data-type') === "file") {
+  //     $('#documentflyout-modal').modal("show");
+  //   } else {
+  //     $('#folderflyout-modal').modal("show");
+  //   }
+
+  //   $(activeRow).addClass("rowSelect");
+  // });
+
+  //Listen for the modal close event
+  // $('#documentflyout-modal').on('hidden.bs.modal', function () {
+  //   // When the modal is completely hidden, remove the class from the active row
+  //   if (activeRow) {
+  //     $(activeRow).removeClass('rowSelect');
+  //     activeRow = null; // Clear the reference
+  //   }
+  // });
+
+  // $('#folderflyout-modal').on('hidden.bs.modal', function () {
+  //   // When the modal is completely hidden, remove the class from the active row
+  //   if (activeRow) {
+  //     $(activeRow).removeClass('rowSelect');
+  //     activeRow = null; // Clear the reference
+  //   }
+  // })
 })
 
 // logic for document tabs select checkbox to download doc or folders
