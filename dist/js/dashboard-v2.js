@@ -363,6 +363,10 @@ $(document).ready(function () {
       ...(!isExternalDashboard ? [{ data: "dbas" }, { data: "business_licenses" }] : []),
       { data: "status", render: renderDotsTable1 }
     ],
+    createdRow: function (row, data) {
+      const isInternational = (data.jurisdiction || '') === 'Denmark';
+      if (isInternational) $(row).find('td').addClass('text-light-blue');
+    },
     order: [[1, "asc"]],
     lengthChange: false,  // Removed pagination
     paging: false,  // Disable pagination
@@ -385,15 +389,17 @@ $(document).ready(function () {
   });
 
   function formatExpandedRows(d, rowId, hideDBAAndLicense) {
+    // class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}" this condition is added just for showcase that if 
+    // entity is forgein then text should be set blue in color
     return d.expanded_rows.map((row, index, arr) => `
           <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
               <td></td>
-              <td>${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only for Domestic -->
-              <td>${row.entity_name || d.entity_name} ${row.status?.class === 'inactive' ? '<span class="icon icon-stop-dark ms-2 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="&lt;b&gt;Inactivated Date &lt;/b&gt; &lt;br&gt;10/14/2023" data-bs-html="true" data-action-type="stop"></span>' : ''}</td>
-              <td >${row.type || d.type}</td>
-              <td >${row.jurisdiction || d.jurisdiction}</td>
-              <td >${row.registrations || d.registrations}</td>
-              ${!hideDBAAndLicense ? `<td >${row.dbas ?? d.dbas}</td><td>${row.business_licenses ?? d.business_licenses}</td>` : ""}
+              <td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.type === "Domestic" ? d.group : ""}</td> <!-- Show group name only for Domestic -->
+              <td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.entity_name || d.entity_name} ${row.status?.class === 'inactive' ? '<span class="icon icon-stop-dark ms-2 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="&lt;b&gt;Inactivated Date &lt;/b&gt; &lt;br&gt;10/14/2023" data-bs-html="true" data-action-type="stop"></span>' : ''}</td>
+              <td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.type || d.type}</td>
+              <td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.jurisdiction || d.jurisdiction}</td>
+              <td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.registrations || d.registrations}</td>
+              ${!hideDBAAndLicense ? `<td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}" >${row.dbas ?? d.dbas}</td><td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.business_licenses ?? d.business_licenses}</td>` : ""}
               <td><span class="badge badge-${row.status.class}">${row.status.label}</span></td>
           </tr>
       `).join("");
