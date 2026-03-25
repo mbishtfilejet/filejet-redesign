@@ -7,7 +7,11 @@ $(document).ready(function () {
         },
         scrollX: true,
         columns: [
-            { data: "group_name" },
+            {
+                data: "group_name", render: function (data, type, row) {
+                    return `<a href="./group-details.html">${data}</a>`;
+                }
+            },
             { data: "primary_contact" },
             { data: "entities" },
             { data: "registrations" },
