@@ -9,7 +9,7 @@ $(document).ready(function () {
         columns: [
             {
                 data: "group_name", render: function (data, type, row) {
-                    return `<a href="./group-details.html">${data}</a>`;
+                    return `<a href="./group-details-v1.html">${data}</a>`;
                 }
             },
             { data: "primary_contact" },
