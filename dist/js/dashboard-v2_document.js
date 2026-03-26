@@ -170,6 +170,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
 
     function getMaxSelection() {
+      // added-code-start this need to be added to actual code of setupMultiSelect
+      if (window.innerWidth < 1600 && ["sopStatusContainer", "sopCheckContainer", "SOPjurisdictionContainer", "RAjurisdictionContainer"].includes(containerId)) return 1;
+      // added-code-end
+
       if (window.innerWidth < 1300) {
         if ([
           "addjurisdictionContainer", "roleContainer1", "roleContainer2", "roleContainer4",
@@ -189,7 +193,11 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput.classList.add("dropdown-search-input");
     searchInput.placeholder = "Search...";
     searchInput.autocomplete = "off";
-    dropdown.prepend(searchInput);
+
+    // add search field only when search is allowed
+    if (!dropdown.classList.contains('search-disabled')) {
+      dropdown.prepend(searchInput);
+    }
 
     // Set default checkboxes
     checkboxes.forEach(cb => {
@@ -273,6 +281,8 @@ document.addEventListener("DOMContentLoaded", function () {
         case "jurisdictionContainer":
         case "entityJurisdictionContainer":
         case "orderJurisdictionContainer":
+        case "RAjurisdictionContainer":
+        case "SOPjurisdictionContainer":
           return "Jurisdictions";
         case "taskContainer": return "Tasks";
         case "tagContainer": return "Filter By Tag";
@@ -293,6 +303,8 @@ document.addEventListener("DOMContentLoaded", function () {
         case "reqselectEntityContainer3": return "Select Entity";
         case "entityDetailOwnershipContainer": return "As of Today";
         case "entityDetailDirectorContainer": return "As of Today";
+        case "registeredAgentContainer": return "Filejet and Others";
+        case "sopCheckContainer": return "Has Check";
         default: return "Status";
       }
     }
@@ -327,7 +339,12 @@ document.addEventListener("DOMContentLoaded", function () {
     ["reqselectEntityContainer", "reqselectEntityDropdown", "reqselectEntitySearch", "reqselectEntity-checkbox"],
     ["reqselectEntityContainer2", "reqselectEntityDropdown2", "reqselectEntitySearch2", "reqselectEntity-checkbox2"],
     ["reqselectEntityContainer3", "reqselectEntityDropdown3", "reqselectEntitySearch3", "reqselectEntity-checkbox3"],
-    ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]]
+    ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]],
+    ["RAjurisdictionContainer", "RAjurisdictionDropdown", "RAjurisdictionSearch", "RAjurisdiction-checkbox", "RAjurisdictionSelectAll"],
+    ["SOPjurisdictionContainer", "SOPjurisdictionDropdown", "SOPjurisdictionSearch", "SOPjurisdiction-checkbox", "SOPjurisdictionSelectAll"],
+    ["registeredAgentContainer", "registeredAgentDropdown", "registeredAgentSearch", "registeredAgent-checkbox"],
+    ["sopStatusContainer", "sopStatusDropdown", "sopStatusSearch", "sopStatus-checkbox"],
+    ["sopCheckContainer", "sopCheckDropdown", "sopCheckSearch", "sopCheck-checkbox"]
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));
@@ -1063,7 +1080,7 @@ $(function () {
   });
 
   $(this).on('contextmenu click scroll', function (e) {
-    if (contextMenu.classList.contains("show")) {
+    if (contextMenu?.classList.contains("show")) {
       contextMenu.classList.remove('show');
     }
   })
@@ -1286,7 +1303,10 @@ function updateUploadFileList(dropZoneElement, index, files) {
 }
 multipleFileUploadInput();
 
-Dropzone.autoDiscover = false;
+
+if (typeof Dropzone !== "undefined") {
+    Dropzone.autoDiscover = false;
+}
 
 $(function () {
   $('[data-plugin="dropzone"]').each(function () {
@@ -1511,36 +1531,36 @@ $(function () {
 });
 
 // function to handle tags creation and apply custom tags with remove option
-$(function () {
 
-  // Select2 Initialization 
-  function initTagSelect(context) {
-    $(context).find('.tagselect').each(function () {
-      const tagSelect = $(this);
-      if (tagSelect.data('select2')) return;
-      tagSelect.select2({
-        tags: true,
-        width: '100%',
-        placeholder: 'Select or Create Tag',
-        dropdownParent: tagSelect.closest('.modal'),
-        createTag: function (params) {
-          const term = params.term.trim();
-          if (term.length < 3) return null;
+function initTagSelect(context) {
+  $(context).find('.tagselect').each(function () {
+    const tagSelect = $(this);
+    if (tagSelect.data('select2')) return;
+    tagSelect.select2({
+      tags: true,
+      width: '100%',
+      placeholder: 'Select or Create Tag',
+      dropdownParent: context,
+      createTag: function (params) {
+        const term = params.term.trim();
+        if (term.length < 3) return null;
 
-          // Check if term already exists 
-          const exists = tagSelect.find('option').filter(function () {
-            return $(this).text().toLowerCase().includes(term.toLowerCase());
-          }).length;
-          if (exists) return null;
-          return { id: term, text: term, newTag: true };
-        },
-        templateResult: function (data) {
-          return data.newTag ? "Create new Tag - " + data.text : data.text;
-        }
-      });
-    })
-  }
+        // Check if term already exists 
+        const exists = tagSelect.find('option').filter(function () {
+          return $(this).text().toLowerCase().includes(term.toLowerCase());
+        }).length;
+        if (exists) return null;
+        return { id: term, text: term, newTag: true };
+      },
+      templateResult: function (data) {
+        return data.newTag ? "Create new Tag - " + data.text : data.text;
+      }
+    });
+  })
+}
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Select2 Initialization
   // attach initTagselect on modal open event 
   $(document).on('shown.bs.modal', function (e) {
     initTagSelect(e.target);
@@ -1630,7 +1650,69 @@ $(function () {
     const svg = container.find(".tagSvg");
     const gradientID = svg.find('linearGradient').attr('id');
     selectInput.val(null).trigger('change.select2');
+    container.find('.tag-colorPicker-wrapper').addClass('d-none');
     svg.find('.svgBackground').attr("fill", `url(#${gradientID})`);
     container.data('colors', {});
   }
 })
+
+
+// generate ai button click event to show ai summary on click
+
+$(document).ready(function () {
+  $('.generate-ai-btn').on('click', function () {
+    const generateBtn = $(this);
+    const aiSummaryContainer = generateBtn.closest('.ai-summary-container');
+    const aiSummaryPlaceholder = aiSummaryContainer.find(".ai-summary-placeholder")
+    const aiSummaryContent = aiSummaryContainer.find('.ai-summary-content');
+    generateBtn.fadeOut(200)
+
+    aiSummaryPlaceholder.removeClass("d-none").hide().fadeIn(10)
+
+    setTimeout(() => {
+      aiSummaryPlaceholder.fadeOut().addClass("d-none")
+      aiSummaryContent.removeClass("d-none").hide().fadeIn(10)
+      renderSummary(aiSummaryContent)
+    }, 3000)
+
+  })
+})
+
+
+function typeText(element, text, speed = 30) {
+  words = text.split(" ")
+  let i = 0;
+  return new Promise(resolve => {
+    function typing() {
+      if (i < words.length) {
+        console.log(words[i])
+        element.innerHTML += words[i] + (i === words.length - 1 ? "" : " ");
+        i++;
+        setTimeout(typing, speed);
+      } else {
+        resolve()
+        clearTimeout()
+      }
+    }
+
+    typing();
+  })
+}
+
+
+async function renderSummary(container) {
+  const ai_summary_data = [
+    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae necessitatibus maiores obcaecati veritatis, exercitationem recusandae! Minus, repellat?",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Undeatque quo voluptatibus odit amet, nam quis, dicta mollitia incidunt placeat",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni facilis sit cupiditate hic nostrum delectus minima voluptatem elit",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab velit est possimus beatae minima nostrum obcaecati placeat ex maiores assumenda?",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero neque earum facilis beatae blanditiis unde culpa architecto quibusdam."
+  ]
+
+  for (let point of ai_summary_data) {
+    const li = document.createElement('li')
+    container.append(li);
+    await typeText(li, point, 60)
+  }
+
+}
