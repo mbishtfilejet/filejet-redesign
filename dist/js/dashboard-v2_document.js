@@ -1711,6 +1711,7 @@ async function renderSummary(container) {
 
   for (let point of ai_summary_data) {
     const li = document.createElement('li')
+    li.className = "text-muted"
     container.append(li);
     await typeText(li, point, 60)
   }
