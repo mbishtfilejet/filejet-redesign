@@ -354,7 +354,7 @@ $(document).ready(function () {
           if (row.status.class === 'inactive') {
             return `<a href="./entities-details-v1-inactive.html">${data} ${row.status.class === 'inactive' ? '<span class="icon icon-stop-dark ms-2 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="<b>Inactivated Date </b> <br>10/14/2023" data-bs-html="true" data-action-type="stop"></span>' : ''}</a>`;
           }
-          return `<a href="./entities-details-v1.html">${data}</a>`;
+          return `<a href="./entities-details-v2.html">${data}</a>`;
         }
       },
       { data: "type" },
