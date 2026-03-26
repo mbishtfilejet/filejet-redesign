@@ -36,4 +36,10 @@ $(document).ready(function () {
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
     });
+
+    const groupTagwrapper = $('.group-tags-container')
+
+    if(groupTagwrapper.length){
+        initTagSelect(groupTagwrapper)
+    }
 })
