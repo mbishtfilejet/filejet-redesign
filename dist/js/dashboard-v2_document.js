@@ -1685,7 +1685,6 @@ function typeText(element, text, speed = 30) {
   return new Promise(resolve => {
     function typing() {
       if (i < words.length) {
-        console.log(words[i])
         element.innerHTML += words[i] + (i === words.length - 1 ? "" : " ");
         i++;
         setTimeout(typing, speed);
