@@ -3392,10 +3392,36 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="drop-zone mt-4 mb-3 mx-4">
-                            <span class="drop-zone__prompt">DRAG & DROP TO UPLOAD FILE</span>
-                            <input type="file" name="myFile" class="drop-zone__input" />
-                        </div>
+                        <div class="doc_upload_section">
+                            <fieldset class=" mt-2 mx-4">
+                                <label for="" class="form-label">Document Type</label>
+                                <div class="custom-dropdown">
+                                <select class="form-select" id="" required="">
+                                    <option value="" selected="" disabled="" hidden="" data-full-text="Select Document Type">Select Document Type</option>
+                                    <option value="Annual Report" data-full-text="Annual Report">Annual Report</option>
+                                    <option value="Dissolution" data-full-text="Dissolution">Dissolution</option>
+                                    <option value="SOP" data-full-text="SOP">SOP</option>
+                                    <option value="BOI" data-full-text="BOI">BOI</option>
+                                    <option value="Good Standing" data-full-text="Good Standing">Good Standing</option>
+                                    <option value="Amendments" data-full-text="Amendments">Amendments</option>
+                                    <option value="Business License" data-full-text="Business License">Business License</option>
+                                    <option value="DBA" data-full-text="DBA">DBA</option>
+                                    <option value="Formations" data-full-text="Formations">Formations</option>
+                                    <option value="EIN" data-full-text="EIN">EIN</option>
+                                    <option value="Restate" data-full-text="Restate">Restate</option>
+                                    <option value="Certificate of Cancellation" data-full-text="Certificate of Cancellation">Certificate of Cancellation</option>
+                                    <option value="Merger" data-full-text="Merger">Merger</option>
+                                    <option value="25102f" data-full-text="25102f">25102f</option>
+                                    <option value="Certificate of Correction" data-full-text="Certificate of Corrections">Certificate of Corrections</option>
+                                    <option value="Other" data-full-text="Other">Other</option>
+                                </select>
+                            </div>
+                            </fieldset>
+                            <div class="drop-zone mt-4 mb-3 mx-4 d-none">
+                                <span class="drop-zone__prompt">DRAG & DROP TO UPLOAD FILE</span>
+                                <input type="file" name="myFile" class="drop-zone__input" />
+                            </div>
+                        <div>
                     </div>
                 </div>`
             );
@@ -3438,6 +3464,16 @@
             // Add event listener for opening and closing details
             $('.groups-details-table tbody').on('click', 'td.dt-control', handleTable(AllTable));
         });
+
+        $(document).on('change','.form-select', function(){
+            const select = $(this)
+            
+            const uploadSection = select.closest(".doc_upload_section");
+
+            const dropzoneEl = uploadSection.find(".drop-zone");
+
+            dropzoneEl.removeClass("d-none")
+        })
     </script>
     <!-- Notification tabs button when click show and hide footer button -->
     <script>
