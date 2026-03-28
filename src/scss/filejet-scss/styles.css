@@ -22592,8 +22592,9 @@ body *::-webkit-scrollbar-thumb {
   cursor: none;
 }
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row {
-  background-color: #D8DDDF !important;
+  background-color: #5B5559 !important;
   box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
+  color: white !important;
 }
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control {
   transform: rotate(90deg);
@@ -22604,55 +22605,52 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-content td.doc_indent {
   padding-left: 40px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 {
+.entityDetailTableCard .entityDetailDocumentsTableV2, .entityDetailTableCard .groupEntityDocumentsTable {
   position: relative;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:first-child {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:first-child, .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:first-child {
   width: 1rem !important;
   max-width: 1rem !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(2) {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(2), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(2) {
   width: 260px;
   min-width: 260px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(3) {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(3), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(3) {
   width: 300px;
   min-width: 300px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(4) {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(4), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(4) {
   width: 100px;
   min-width: 100px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:last-child {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:last-child, .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:last-child {
   width: 50px;
   max-width: 50px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_scrollBody {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_scrollBody, .entityDetailTableCard .groupEntityDocumentsTable .dataTables_scrollBody {
   padding: 0px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-content td.doc_indent {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-content td.doc_indent, .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-content td.doc_indent {
   padding-left: 35px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.rowSelect, .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row.rowSelect {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.rowSelect, .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.rowSelect, .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row.rowSelect {
   background-color: #E8F1FE !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .badge {
-  max-width: 12.5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .entityDetailTableCard .entityDetailServicesTable,
-.entityDetailTableCard .entityDetailDocumentsTableV2 {
+.entityDetailTableCard .entityDetailDocumentsTableV2,
+.entityDetailTableCard .groupEntityDocumentsTable {
   position: relative;
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr,
+.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr {
   min-height: 0;
   transition: background-color 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr .dt-control,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control,
+.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr .dt-control {
   color: transparent;
   width: 1rem;
   height: 1rem;
@@ -22665,20 +22663,38 @@ body *::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr .dt-control.no-control,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control.no-control {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control.no-control,
+.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr .dt-control.no-control {
   visibility: hidden;
   pointer-events: none;
   cursor: none;
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row {
-  background-color: #D8DDDF !important;
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row,
+.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row {
+  background-color: #5B5559 !important;
   box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
   transition: background-color 0.5s ease-in-out;
 }
+.entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row td,
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row td,
+.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row td {
+  color: white !important;
+}
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row .dt-control,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .dt-control {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .dt-control,
+.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row .dt-control {
+  filter: contrast(0) brightness(2);
+  background-size: contain;
   transform: rotate(90deg);
+}
+.entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row .icon-entity-edit,
+.entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row .icon-entity-delete,
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .icon-entity-edit,
+.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row .icon-entity-edit,
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .icon-entity-delete,
+.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row .icon-entity-delete {
+  filter: contrast(0) brightness(2);
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTables_wrapper .dataTable thead th:nth-child(5), .entityDetailTableCard .entityDetailServicesTable .dataTables_wrapper .dataTable thead th:last-child {
   width: 100px;
