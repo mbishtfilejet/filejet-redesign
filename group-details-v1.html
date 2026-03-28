@@ -194,7 +194,7 @@
                      <div class="col-3 col-xl-3 col-lg-3">
                         <h2 class="m-0">
                            <strong>
-                              Group
+                              Groups
                            </strong>
                         </h2>
                      </div>
@@ -254,7 +254,7 @@
                <div class="main-content pt-3">
                   <div class="entityDetail-header row align-items-start">
                      <div class="col-12 col-sm-8">
-                        <h4 class="fw-bold mb-0">Zenith Dynamics</h4>
+                        <h4 class="fw-bold mb-0">Alliance Laundry Systems</h4>
                      </div>
                      <div class="col-12 col-sm-4 d-flex flex-column gap-2 group-tags-container">
                         <div class="accordion-body pt-0 modal-tags-container">
@@ -463,16 +463,19 @@
                         <li class="nav-item" role="presentation">
                            <a href="javascript:void(0)" id="en-group-entites-tab" class="nav-link p-0 active"
                               data-bs-toggle="tab" data-bs-target="#en-group-entites-tab-pane" role="tab"
+                              data-table-key="entitydetails-opentask-table"
                               aria-controls="en-group-entites-tab-pane" aria-selected="true">Entities</a>
                         </li>
                         <li class="nav-item" role="presentation">
                            <a href="javascript:void(0)" class="nav-link p-0" id="en-group-documents-tab"
                               data-bs-toggle="tab" data-bs-target="#en-group-documents-tab-pane" role="tab"
+                              data-table-key="groupentity-documents-table"
                               aria-controls="en-group-documents-tab-pane" aria-selected="false">Documents</a>
                         </li>
                         <li class="nav-item" role="presentation">
                            <a href="javascript:void(0)" id="en-group-userAccess-tab" class="nav-link p-0"
                               data-bs-toggle="tab" data-bs-target="#en-group-userAccess-tab-pane" role="tab"
+                              data-table-key="entitydetails-dbas-table"
                               aria-controls="en-group-userAccess-tab-pane" aria-selected="false">
                               User Access
                            </a>
@@ -480,6 +483,7 @@
                         <li class="nav-item" role="presentation">
                            <a href="javascript:void(0)" id="en-group-extUsers-tab" class="nav-link p-0"
                               data-bs-toggle="tab" data-bs-target="#en-group-extUsers-tab-pane" role="tab"
+                              data-table-key="entitydetails-registration-table"
                               aria-controls="en-group-extUsers-tab-pane" aria-selected="false">
                               External Users
                            </a>
@@ -779,25 +783,25 @@
                               <div class="filter2-dropdown col-12 col-md-3 flex-grow-1 status-table-col mb-2 dropdown">
                                  <div
                                     class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
-                                    id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
-                                    <input type="text" class="search-input" id="statusSearch" placeholder="Status"
+                                    id="entityStatusContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                                    <input type="text" class="search-input" id="entityStatusSearch" placeholder="Status"
                                        autocomplete="off">
                                  </div>
-                                 <ul class="dropdown-menu" id="statusDropdown">
+                                 <ul class="dropdown-menu search-disabled" id="entityStatusDropdown">
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Overdue">
+                                             class="form-check-input entityStatus-checkbox me-2" data-value="Overdue">
                                           Overdue</label></li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Urgent">
+                                             class="form-check-input entityStatus-checkbox me-2" data-value="Urgent">
                                           Urgent</label></li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Upcoming">
+                                             class="form-check-input entityStatus-checkbox me-2" data-value="Upcoming">
                                           Upcoming</label></li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Unacknowledged">
+                                             class="form-check-input entityStatus-checkbox me-2" data-value="Unacknowledged">
                                           Unacknowledged</label></li>
                                     <li><label class="dropdown-item"><input type="checkbox"
-                                             class="form-check-input status-checkbox me-2" data-value="Future">
+                                             class="form-check-input entityStatus-checkbox me-2" data-value="Future">
                                           Future</label></li>
 
                                  </ul>
@@ -813,8 +817,8 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="entityDetailTableCard mt-2 border rounded-2">
-                              <div class="card-table-d2 entityDetailOpenTaskTable">
+                           <div class="groupsTableCard mt-2 border rounded-2">
+                              <div class="groupEntityTable">
                                  <table id="entitydetails-opentask-table"
                                     class="table table-striped w-100 table-nowrap">
                                     <thead>
@@ -940,23 +944,28 @@
                         <div class="tab-pane fade" id="en-group-documents-tab-pane" role="tabpanel"
                            aria-labelledby="en-group-documents-tab" tabindex="0">
                            <div class="entityDetailTableCard border rounded-2">
-                              <div class="entityDetailDocumentsTable">
-                                 <table id="groupdetails-documents-table"
+                              <div class="groupEntityDocumentsTable">
+                                 <table id="groupentity-documents-table"
                                     class="table table-striped w-100 table-nowrap">
                                     <thead>
                                        <tr>
+                                          <th data-orderable="false">
+                                             <input id="document-clear-all" class="d-flex form-check-input"
+                                                type="checkbox" />
+                                          </th>
                                           <th>Name</th>
+                                          <th>Tags</th>
                                           <th>Modified By</th>
                                           <th>Date Modified</th>
-                                          <th data-orderable="false">Actions</th>
+                                          <!-- <th>Sync Status</th> -->
+                                          <th data-orderable="false">Action</th>
                                        </tr>
                                     </thead>
                                  </table>
 
                                  <div id="contextmenu">
                                     <div class="context-item" data-bs-toggle="modal"
-                                       data-bs-target="#add-subfolder-modal" aria-label="Add Folder" role="button">
-                                       Add
+                                       data-bs-target="#add-subfolder-modal" aria-label="Add Folder" role="button">Add
                                        Folder
                                        <span class="icon icon-arrow-forward-black icon-smd m-0 opacity-50"></span>
                                     </div>
@@ -968,6 +977,16 @@
                                     </div>
                                  </div>
                               </div>
+                           </div>
+                           <div class="d-flex align-items-center gap-4 mt-3">
+                              <button data-bs-toggle="modal" data-bs-target="#add-folder-modal" aria-label="Add Folder" type="button" class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Add
+                                 Folder
+                              </button>
+                              <button data-bs-toggle="modal" data-bs-target="#upload-doc-modal" aria-label="Upload Documents" type="button" class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Upload
+                                 Document
+                              </button>
+                              <button aria-label="Download" type="button" class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize downloadBtn d-none">Download
+                              </button>
                            </div>
                         </div>
                         <!-- Entity Details Document TabContent End-->
@@ -1546,7 +1565,7 @@
    <script src="dist/js/plugins.min.js"></script>
    <script src="dist/js/custom.min.js"></script>
    <script src="dist/js/dashboard-v2_document.js"></script>
-   <script src="dist/js/service-order-process.js"></script>
+   <!-- <script src="dist/js/service-order-process.js"></script> -->
    <script src="dist/js/dashboard-v2-groups.js"></script>
    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
    <script
