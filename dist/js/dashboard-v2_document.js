@@ -366,7 +366,14 @@ $(document).ready(function () {
       {
         data: "entity_name",
         render: function (data, type, row) {
-          return `<a href="./entities-details-v1.html">${data}</a>`;
+          // code updated for Dissolved/archived entity
+          if (row.id == 17) {
+            return `<a href="./entities-details-v1-international.html">${data}</a>`;
+          }
+          if (row.status.class === 'inactive') {
+            return `<a href="./entities-details-v1-inactive.html">${data} ${row.status.class === 'inactive' ? '<span class="icon icon-stop-dark ms-2 m-0 icon-sm" data-toggle="tooltip" data-bs-original-title="<b>Inactivated Date </b> <br>10/14/2023" data-bs-html="true" data-action-type="stop"></span>' : ''}</a>`;
+          }
+          return `<a href="./entities-details-v2.html">${data}</a>`;
         }
       },
       { data: "type" },
@@ -837,6 +844,15 @@ $(document).ready(function () {
       row.remove();
       row.removeClass("expanded-row")
     });
+
+    const tableContainer = $('.entityDetailDocumentsTableV2');
+    const allCheckbox = tableContainer.find('td:not(.disabled-column) .row-select');
+    const checkedCheckbox = allCheckbox.filter(':checked').length;
+
+    const selectAll = tableContainer.find('#document-clear-all');
+    if (checkedCheckbox === 0) {
+      selectAll.prop('checked', false).removeClass("icon-optional-check").trigger('change');
+    }
   }
 
   // get expanded row structure
@@ -897,39 +913,37 @@ $(document).ready(function () {
     ).join("");
   }
 
-
-  //function to render tags
-  function renderTagsOnRow(tagdata, maxTag = 4) {
-    const tagWrapper = document.createElement("div");
-    tagWrapper.className = "d-flex gap-1 align-items-center d-tag-wrapper";
-    tagWrapper.style.whiteSpace = "nowrap";
-    tagWrapper.style.overflow = "hidden";
-
-    tagdata.forEach((value, index) => {
-      const span = document.createElement("span");
-      span.className = "badge text-black d-tag";
-      span.style.backgroundColor = value.tagColor;
-      span.innerText = value.tagName;
-      tagWrapper.appendChild(span);
-    })
-
-    // +N placeholder (keeping empty for now will alter while table draws)
-
-    const span = document.createElement("span");
-    span.innerHTML = `
-        <span class="badge text-black d-tag-more d-none" style="background-color:#E6E8EC;"></span>
-      `;
-    tagWrapper.appendChild(span);
-
-    return tagWrapper.outerHTML;
-  }
-
   table.on('column-sizing.dt', function () {
     applyTagOverflow();
   })
 
 })
 
+//function to render tags
+function renderTagsOnRow(tagdata, maxTag = 4) {
+  const tagWrapper = document.createElement("div");
+  tagWrapper.className = "d-flex gap-1 align-items-center d-tag-wrapper";
+  tagWrapper.style.whiteSpace = "nowrap";
+  tagWrapper.style.overflow = "hidden";
+
+  tagdata.forEach((value, index) => {
+    const span = document.createElement("span");
+    span.className = "badge text-black d-tag";
+    span.style.backgroundColor = value.tagColor;
+    span.innerText = value.tagName;
+    tagWrapper.appendChild(span);
+  })
+
+  // +N placeholder (keeping empty for now will alter while table draws)
+
+  const span = document.createElement("span");
+  span.innerHTML = `
+        <span class="badge text-black d-tag-more d-none" style="background-color:#E6E8EC;"></span>
+      `;
+  tagWrapper.appendChild(span);
+
+  return tagWrapper.outerHTML;
+}
 
 function applyTagOverflow() {
 
@@ -973,6 +987,14 @@ function applyTagOverflow() {
   })
 }
 
+// function to keep alternative row design
+function applyAlternateRowStyling(id) {
+  const rows = $(`#${id} tbody tr`);
+  rows.removeClass('odd even');
+  rows.each(function (index) {
+    $(this).addClass(index % 2 === 0 ? 'odd' : 'even');
+  });
+}
 
 // filjet services table initialization code 
 $(document).ready(function () {
@@ -1005,16 +1027,6 @@ $(document).ready(function () {
     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
   })
 })
-
-// function to keep alternative row design
-function applyAlternateRowStyling(id) {
-  const rows = $(`#${id} tbody tr`);
-  rows.removeClass('odd even');
-  rows.each(function (index) {
-    $(this).addClass(index % 2 === 0 ? 'odd' : 'even');
-  });
-}
-
 
 //adjusting table on tabs change
 $(document).on('shown.bs.tab shown.bs.modal', function () {
@@ -1305,7 +1317,7 @@ multipleFileUploadInput();
 
 
 if (typeof Dropzone !== "undefined") {
-    Dropzone.autoDiscover = false;
+  Dropzone.autoDiscover = false;
 }
 
 $(function () {
@@ -1418,7 +1430,10 @@ $(document).ready(function () {
 $(function () {
 
   const tableContainer = $('.entityDetailDocumentsTableV2');
+  multiSelectRow(tableContainer)
+});
 
+function multiSelectRow(tableContainer) {
   const CHECKBOX_SELECTOR = 'td:not(.disabled-column) .row-select';
 
   function getAllCheckboxes() {
@@ -1528,7 +1543,7 @@ $(function () {
     const hasNoCheckedCheckbox = getCheckedCheckboxes().length === 0;
     $('.downloadBtn').toggleClass('d-none', hasNoCheckedCheckbox);
   }
-});
+}
 
 // function to handle tags creation and apply custom tags with remove option
 
