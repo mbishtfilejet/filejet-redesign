@@ -1,11 +1,14 @@
 $(document).ready(function () {
     //entity detail Registration Table
-    $("#group-listing-table").DataTable({
+
+    const tableOptions = {
         ajax: {
             url: "data5.json",
             dataSrc: 'groups_listing_data'
         },
+        processing: true,
         scrollX: true,
+        scrollY: false,
         columns: [
             {
                 data: "group_name", render: function (data, type, row) {
@@ -35,7 +38,9 @@ $(document).ready(function () {
         lengthChange: false,  // Removed pagination
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
-    });
+    }
+
+    $("#group-listing-table").DataTable(tableOptions);
 
     const groupTagwrapper = $('.group-tags-container')
 
@@ -44,12 +49,126 @@ $(document).ready(function () {
     }
 })
 
+//group entities table initializtion code
+
+$(document).ready(function () {
+    const tableOptions = {
+        ajax: "data4.json",
+        processing: true,
+        scrollX: true,
+        scrollY: false,
+        createdRow: function (row, data) {
+            $(row).find('td').toggleClass('text-light-blue', data.id == 17);
+        },
+        columns: [
+            {
+                data: "entity_name", render: function (data, type, row) {
+                    return `
+                        <div class="d-flex align-items-center gap-3">
+                            <button class="dt-control ${row?.expanded_rows.length ? "" : "no-control"} m-0" role="button"></button>
+                            ${row.id == 17
+                            ?
+                            `<a href="./entities-details-v1-international.html">${data}</a>`
+                            :
+                            `<a href="./entities-details-v2.html">
+                                    <span class="text-break">${data}</span>
+                            </a>`
+                        }
+                        </div>
+                    `;
+                }
+            },
+            { data: "type" },
+            { data: "jurisdiction" },
+            { data: "registrations" },
+            { data: "dbas" },
+            { data: "business_licenses" },
+            { data: "status", render: renderDotsTable1 },
+            {
+                data: null, render: function (data, type, row) {
+                    return `
+                <div class="d-flex align-items-center">
+                    <span role="button" tabindex="0" > 
+                        <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                            class="icon icon-entity-edit me-1 me-md-2">
+                        </span>
+                    </span>                    
+                    <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                        <span data-toggle="tooltip" aria-label="GROUP REASSIGN" data-bs-original-title="GROUP REASSIGN" 
+                            class="icon icon-group-reassign icon-md me-1 me-md-2">
+                        </span> 
+                    </span>
+                </div>`;
+                }
+            }
+        ],
+        order: [[0, "asc"]],
+        lengthChange: false,  // Removed pagination
+        paging: false,  // Disable pagination
+        info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+    }
+    const table1 = $('#groupdetails-entities-table').DataTable(tableOptions)
+    $("#groupdetails-entities-table tbody").on("click", "td .dt-control", function () {
+        let tr = $(this).closest("tr");
+        let row = table1.row(tr);
+        let rowId = row.data().id;
+
+        if (tr.hasClass("expanded-row")) {
+            $(`.expanded-content[data-parent="${rowId}"]`).remove();
+            tr.removeClass("expanded-row");
+        } else {
+            let expandedRows = formatExpandedRows(row.data(), rowId);
+            tr.after(expandedRows);
+            tr.addClass("expanded-row");
+        }
+        applyAlternateRowStyling("groupdetails-entities-table");
+    });
+
+
+    function formatExpandedRows(data, rowId) {
+        console.log(data)
+        return data.expanded_rows.map((row, index, arr) => `
+          <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
+              <td class="${rowId == 17 ? 'text-light-blue' : ''}">
+                <span class="d-flex text-break" style="padding-left: 27px;">${row.entity_name}</span>
+              </td>
+              <td class="${rowId == 17 ? 'text-light-blue' : ''}">${row.type}</td>
+              <td class="${rowId == 17 ? 'text-light-blue' : ''}">${row.jurisdiction}</td>
+              <td class="${rowId == 17 ? 'text-light-blue' : ''}">${row.registrations}</td>
+              <td class="${rowId == 17 ? 'text-light-blue' : ''}">${row.dbas}</td>
+              <td class="${rowId == 17 ? 'text-light-blue' : ''}">${row.business_licenses}</td>
+              <td>
+                <span class="badge badge-${row.status.class}">${row.status.label}</span>
+              </td>
+              <td>
+                <div class="d-flex align-items-center">
+                    <span role="button" tabindex="0"> 
+                        <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                            class="icon icon-entity-edit me-1 me-md-2">
+                        </span>
+                    </span>                    
+                    <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                        <span data-toggle="tooltip" aria-label="GROUP REASSIGN" data-bs-original-title="GROUP REASSIGN" 
+                            class="icon icon-group-reassign icon-md me-1 me-md-2">
+                        </span> 
+                    </span>
+                </div>
+              </td>
+          </tr>
+      `).join("");
+    }
+
+    // Remove expand-row on sorting 
+    table1.on('order.dt draw.dt', function () {
+        $(this).find(".expanded-row").each((_, element) => {
+            element.classList.remove("expanded-row");
+        });
+    })
+})
+
 //groups document table initialization code with subfolder logic
 $(document).ready(function () {
-    const tableEl = $("#groupentity-documents-table");
-
-    const tableId = $(tableEl).attr('id')
-    const tableoptions = {
+    const tableOptions = {
         ajax: {
             url: "data5.json",
             dataSrc: 'group_entity_documents_data',
@@ -105,22 +224,12 @@ $(document).ready(function () {
                     return row.modified_by === "filejet" ? null : data;
                 }
             },
-            // {
-            //   data: "sync_status", render: function (data, type, row) {
-            //     return `
-            //     <div class="d-flex align-items-center gap-1">
-            //       <span class="icon ${data === "Synced" ? "icon-file-synced" : "icon-file-error"} icon-md m-0"></span>
-            //       <span>${data}</span>
-            //     </div>
-            //     `;
-            //   }
-            // },
             {
                 data: null, render: function (data, type, row) {
-                    if (["custom", "entity"].includes(row?.type)) {
-                        return `
+                    // if (["custom", "entity"].includes(row?.type)) {
+                    return `
                         <div class="d-flex align-items-center">
-                            <span role="button" tabindex="0" class="edit-content ${['inactive', 'archived'].includes(row.folder_status.toLowerCase()) ? 'icon-disabled' : ''}" > 
+                            <span role="button" tabindex="0" class="edit-content" > 
                             <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
                                 class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
@@ -129,14 +238,14 @@ $(document).ready(function () {
                                 class="icon icon-save me-1 me-md-2"></span>
                             </span>
                             
-                            <span role="button" tabindex="0" class="${['inactive', 'archived'].includes(row.folder_status.toLowerCase()) ? 'icon-disabled' : ''}" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
                             <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
                                 class="icon icon-entity-delete me-1 me-md-2"></span> 
                             </span>
                         </div>
                         `
-                    }
-                    return null;
+                    // }
+                    // return null;
                 }
             }
         ],
@@ -145,10 +254,10 @@ $(document).ready(function () {
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
     }
-    const table = tableEl.DataTable(tableoptions);
+    const table = $("#groupentity-documents-table").DataTable(tableOptions);
 
     // Folder/SUbfolder like structure logic 
-    $(`#${tableId} tbody`).on("click", "td .dt-control", function (e) {
+    $(`#groupentity-documents-table tbody`).on("click", "td .dt-control", function (e) {
         e.preventDefault();
         e.stopPropagation();
         let tr = $(this).closest("tr");
@@ -156,6 +265,7 @@ $(document).ready(function () {
         let row = table.row(tr);
         let rowId = row?.data()?.id || $(tr).data('level-id');
 
+        console.log($(table))
 
         if (tr.hasClass("expanded-row")) {
             collapseRow(rowId);
@@ -172,7 +282,7 @@ $(document).ready(function () {
         }
         // table.columns.adjust();
         applyTagOverflow();
-        applyAlternateRowStyling(tableId);
+        applyAlternateRowStyling("groupentity-documents-table");
 
         const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
         $(`.expanded-content[data-parent="${rowId}"]`).each(function () {
@@ -218,22 +328,22 @@ $(document).ready(function () {
                   <span>${row.sync_status}</span>
                 </div>
               </td>`}
-              ${["custom", "entity"].includes(row?.type) ? `<td>
+              <td>
                 <div class="d-flex align-items-center">
                   <span role="button" tabindex="0" class="edit-content"> 
                     <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-                    class="icon icon-entity-edit me-1 me-md-2 ${row?.type !== "file" ? row.isEditable ? "" : "icon-disabled" : ""}"></span>
+                    class="icon icon-entity-edit me-1 me-md-2"></span>
                   </span>
                   <span role="button" tabindex="0" class="save-content"> 
                     <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
                       class="icon icon-save me-1 me-md-2"></span>
                   </span>
-                  <span role="button" tabindex="0" class-"delete-btn" data-bs-toggle="modal" data-bs-target="#delete-modal"> 
+                  <span role="button" tabindex="0" class-"delete-btn" data-bs-toggle="modal" data-bs-target="#"> 
                     <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                      class="icon icon-entity-delete me-1 me-md-2 ${row?.type !== "file" ? row.isDeleteable ? "" : "icon-disabled" : ""}"></span>
+                      class="icon icon-entity-delete me-1 me-md-2"></span>
                   </span>
                 </div>
-              </td>`: "<td></td>"}
+              </td>
           </tr>
       `
         ).join("");

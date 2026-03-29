@@ -1,3 +1,42 @@
+.status-dots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.status-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.status-dot:hover {
+    background-color: var(--bs-external-gray);
+}
+
+.status-good {
+    background: var(--bs-green);
+}
+
+.status-not-good {
+    background-color: #E73B18;
+}
+
+.status-inactive {
+    background-color: #8690A0;
+}
+
+.status-unknown {
+    background-color: #1a4d9e;
+}
+
 .group-tags-container {
     .icon-remove-tag {
         width: 1rem;
@@ -103,6 +142,110 @@
 
         }
     }
+
+    .groupEntitiesTable {
+        .dataTable tr {
+            min-height: 0;
+            transition: background-color 0.5s ease-in-out, padding 0.5s ease-in-out;
+
+            td.text-light-blue {
+                a {
+                    @extend .text-light-blue
+                }
+            }
+
+            .dt-control {
+                color: transparent;
+                width: 1rem;
+                height: 0.85rem;
+                border: none;
+                background-color: transparent;
+                background-image: url("../../../../dist/images/icons/right-angle-table.svg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                transition: transform 0.2s ease-in-out;
+                cursor: pointer;
+
+                &.no-control {
+                    visibility: hidden;
+                    pointer-events: none;
+                    cursor: none;
+                }
+            }
+
+            &.expanded-row {
+                background-color: #5B5559 !important;
+                box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
+                transition: background-color 0.5s ease-in-out;
+
+                td {
+                    color: white !important;
+
+                    a {
+                        color: white !important;
+                    }
+                }
+
+                .dt-control {
+                    filter: contrast(0) brightness(2);
+                    transform: rotate(90deg);
+                }
+
+                .icon-entity-edit,
+                .icon-entity-delete,
+                .icon-group-reassign {
+                    filter: contrast(0) brightness(2);
+                }
+            }
+
+            &.expanded-content {
+                td {
+                    &:first-child {
+                        border-left: 2px solid #5B5559;
+                    }
+
+                    &:last-child {
+                        border-right: 2px solid #5B5559;
+                    }
+                }
+
+                &.last-expanded-content {
+                    box-shadow: inset 0 -2px #5B5559;
+                }
+            }
+        }
+
+        .dataTables_wrapper .dataTable {
+
+            th,
+            td {
+                &:first-child {
+                    min-width: 250px !important;
+                }
+
+                &:nth-child(2) {
+                    min-width: 65px !important;
+                }
+
+                &:nth-child(7) {
+                    min-width: 140px !important;
+                }
+
+                &:last-child {
+                    max-width: 50px !important;
+                }
+            }
+        }
+
+        .dataTables_scroll .dataTables_scrollBody {
+            padding-top: 0px;
+        }
+    }
+
+    .icon-entity-edit:hover {
+        background-image: url("../../../../dist/images/icons/edit-dark.svg");
+    }
 }
 
 @media (min-width: 767.99px) {
@@ -111,11 +254,23 @@
     }
 }
 
+
+@media (min-width: 1400px) {
+    .dataTables_wrapper {
+        .dataTables_scroll {
+            .dataTables_scrollBody {
+                overflow: hidden !important;
+            }
+        }
+    }
+}
+
+
 .groupEntityDocumentsTable {
     @extend .entityDetailDocumentsTableV2;
 
-    .dataTable tr.expanded-row .icon-entity-main {
+    .dataTable tr.expanded-row .icon-entity-main,
+    .dataTable tr.expanded-row .icon-group-reassign {
         filter: contrast(0) brightness(2);
     }
-
 }
