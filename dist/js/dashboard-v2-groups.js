@@ -23,10 +23,10 @@ $(document).ready(function () {
                 data: null, render: function (data, type, row) {
                     return `
                         <div class="d-flex align-items-center">
-                            <span data-toggle="tooltip" data-bs-original-title="EDIT" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
+                            <span data-toggle="tooltip" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#editGroup-modal" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
                             <span class="icon icon-entity-edit m-0"></span>
                             </span>
-                            <span data-toggle="tooltip" data-bs-original-title="DELETE" class="me-1 me-md-2 d-inline-block icon-disabled" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                            <span data-toggle="tooltip" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deleteGroup-modal" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
                             <span class="icon icon-entity-delete m-0"></span>
                             </span>
                         </div>
@@ -93,8 +93,8 @@ $(document).ready(function () {
                             class="icon icon-entity-edit me-1 me-md-2">
                         </span>
                     </span>                    
-                    <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
-                        <span data-toggle="tooltip" aria-label="GROUP REASSIGN" data-bs-original-title="GROUP REASSIGN" 
+                    <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#reAssignEnities-modal">
+                        <span data-toggle="tooltip" aria-label="REASSIGN" data-bs-original-title="REASSIGN" 
                             class="icon icon-group-reassign icon-md me-1 me-md-2">
                         </span> 
                     </span>
@@ -126,7 +126,6 @@ $(document).ready(function () {
 
 
     function formatExpandedRows(data, rowId) {
-        console.log(data)
         return data.expanded_rows.map((row, index, arr) => `
           <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
               <td class="${rowId == 17 ? 'text-light-blue' : ''}">
@@ -148,7 +147,7 @@ $(document).ready(function () {
                         </span>
                     </span>                    
                     <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
-                        <span data-toggle="tooltip" aria-label="GROUP REASSIGN" data-bs-original-title="GROUP REASSIGN" 
+                        <span data-toggle="tooltip" aria-label="REASSIGN" data-bs-original-title="REASSIGN" 
                             class="icon icon-group-reassign icon-md me-1 me-md-2">
                         </span> 
                     </span>
@@ -176,6 +175,7 @@ $(document).ready(function () {
         createdRow: function (row, data, dataIndex) {
             $(row).addClass('parent editable-parent');
             $(row).attr('data-type', data.type);
+            $(row).attr('data-id', data.id);
 
             if (['inactive', 'archived'].includes(data.folder_status.toLowerCase())) {
                 $(row).attr('disabled', true).find('td').addClass('disabled-column')
@@ -226,8 +226,8 @@ $(document).ready(function () {
             },
             {
                 data: null, render: function (data, type, row) {
-                    // if (["custom", "entity"].includes(row?.type)) {
-                    return `
+                    if (row?.type === "custom") {
+                        return `
                         <div class="d-flex align-items-center">
                             <span role="button" tabindex="0" class="edit-content" > 
                             <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
@@ -238,14 +238,14 @@ $(document).ready(function () {
                                 class="icon icon-save me-1 me-md-2"></span>
                             </span>
                             
-                            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deletefolder-modal">
                             <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
                                 class="icon icon-entity-delete me-1 me-md-2"></span> 
                             </span>
                         </div>
                         `
-                    // }
-                    // return null;
+                    }
+                    return null;
                 }
             }
         ],
@@ -265,20 +265,15 @@ $(document).ready(function () {
         let row = table.row(tr);
         let rowId = row?.data()?.id || $(tr).data('level-id');
 
-        console.log($(table))
-
         if (tr.hasClass("expanded-row")) {
             collapseRow(rowId);
             tr.removeClass("expanded-row");
         } else {
             let parentData = dataId ? table.row($(`tr.parent[data-id=${dataId}]`).first())?.data() : row?.data();
             const rowData = findChildData(parentData, n => n?.id === rowId);
-            let expandedRowContent = formatChildRows(rowData, rowId, dataId || rowId, tr.find('.row-select').is(":checked"));
+            let expandedRowContent = formatChildRows(rowData, rowId, dataId, tr.find('.row-select').is(":checked"));
             tr.after(expandedRowContent);
             tr.addClass("expanded-row");
-            if (!dataId) {
-                tr.attr('data-id', rowId)
-            }
         }
         // table.columns.adjust();
         applyTagOverflow();
@@ -322,27 +317,26 @@ $(document).ready(function () {
               <td >${renderTagsOnRow(row.tags)}</td>
               <td> <span class="text-break">${row.modified_by === "filejet" ? "" : row.modified_by}</span></td>
               <td> <span class="text-break">${row.modified_by === "filejet" ? "" : row.date_modified}</span></td>
-              ${null && `<td >
-                <div class="d-flex align-items-center gap-1">
-                  <span class="icon ${row.sync_status === "Synced" ? "icon-file-synced" : "icon-file-error"} icon-md m-0"></span>
-                  <span>${row.sync_status}</span>
-                </div>
-              </td>`}
               <td>
-                <div class="d-flex align-items-center">
+                ${row?.type !== "state"
+                ?
+                `<div class="d-flex align-items-center">
                   <span role="button" tabindex="0" class="edit-content"> 
                     <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-                    class="icon icon-entity-edit me-1 me-md-2"></span>
+                    class="icon icon-entity-edit me-1 me-md-2 ${row?.type !== "file" ? row.isEditable == false ? "icon-disabled" : "" : ""}"></span>
                   </span>
                   <span role="button" tabindex="0" class="save-content"> 
                     <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
                       class="icon icon-save me-1 me-md-2"></span>
                   </span>
-                  <span role="button" tabindex="0" class-"delete-btn" data-bs-toggle="modal" data-bs-target="#"> 
+                  <span role="button" tabindex="0" class-"delete-btn" data-bs-toggle="modal" data-bs-target="#deletefolder-modal"> 
                     <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                      class="icon icon-entity-delete me-1 me-md-2"></span>
+                      class="icon icon-entity-delete me-1 me-md-2 ${row?.type !== "file" ? row.isDeleteable == false ? "icon-disabled" : "" : ""}"></span>
                   </span>
-                </div>
+                </div>`
+                :
+                ''
+            }
               </td>
           </tr>
       `

@@ -252,7 +252,14 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         span.querySelector(".remove-option").addEventListener("click", function () {
           const checkbox = [...dropdown.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
-          if (checkbox) checkbox.checked = false;
+          if (checkbox) {
+            if (checkbox.getAttribute("data-value") === "All") {
+              checkboxes.forEach(cb => {
+                cb.checked = false;
+              });
+            }
+            checkbox.checked = false;
+          };
           updateSelectedOptions(true);
         });
         multiSelectContainer.appendChild(span);
@@ -424,16 +431,16 @@ $(document).ready(function () {
 });
 
 function renderDotsTable1(data, type, row) {
-   //adding draft badge just for refernce for showcasing on the listing page
+  //adding draft badge just for refernce for showcasing on the listing page
+  const { ingood, notgood, inactive, unknown, draft } = row.status_count
   return `
       <div class="status-dots">
-          <div class="status-dot status-good" data-bs-toggle="tooltip" title="In Good Standing">1</div>
-          <div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not Good Standing">1</div>
-          <div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">1</div>
-          ${row.id == 4 ? `<div class="status-dot status-draft" data-bs-toggle="tooltip" title="Draft">1</div>`
-      :
-      `<div class="status-dot status-unknown" data-bs-toggle="tooltip" title="Unknown">1</div>`}
-      </div>
+          ${ingood > 0 ? `<div class="status-dot status-good" data - bs - toggle="tooltip" title = "In Good Standing" >${ingood}</div >` : ""}
+          ${notgood > 0 ? `<div class="status-dot status-not-good" data-bs-toggle="tooltip" title="Not Good Standing">${notgood}</div>` : ""}
+          ${inactive > 0 ? `<div class="status-dot status-inactive" data-bs-toggle="tooltip" title="Inactive">${inactive}</div>` : ""}
+          ${draft > 0 ? `<div class="status-dot status-draft" data-bs-toggle="tooltip" title="Draft">${draft}</div>` : ""}
+          ${unknown > 0 ? `<div class="status-dot status-unknown" data-bs-toggle="tooltip" title="Unknown">${unknown}</div>` : ""}
+      </div >
   `;
 }
 // external entity end
@@ -607,7 +614,7 @@ $(document).ready(function () {
       {
         data: null, render: function (data, type, row) {
           return `
-          <div class="d-flex align-items-center">
+  <div class="d-flex align-items-center">
             <span data-toggle="tooltip" data-bs-original-title="EDIT" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
               <span class="icon icon-entity-edit m-0"></span>
             </span>
@@ -701,6 +708,7 @@ $(document).ready(function () {
     createdRow: function (row, data, dataIndex) {
       $(row).addClass('parent editable-parent');
       $(row).attr('data-type', data.type);
+      $(row).attr('data-id', data.id);
 
       if (['inactive', 'archived'].includes(data.folder_status.toLowerCase())) {
         $(row).attr('disabled', true).find('td').addClass('disabled-column')
@@ -788,11 +796,14 @@ $(document).ready(function () {
   $("#entitydetails-documents-table tbody").on("click", "td .dt-control", function (e) {
     e.preventDefault();
     e.stopPropagation();
+    if ($('#contextmenu').hasClass('show')) {
+      $('#contextmenu').removeClass('show')
+    };
     let tr = $(this).closest("tr");
     let dataId = tr.data('id') || "";
     let row = table.row(tr);
     let rowId = row?.data()?.id || $(tr).data('level-id');
-
+    
 
     if (tr.hasClass("expanded-row")) {
       collapseRow(rowId);
@@ -800,12 +811,9 @@ $(document).ready(function () {
     } else {
       let parentData = dataId ? table.row($(`tr.parent[data-id=${dataId}]`).first())?.data() : row?.data();
       const rowData = findChildData(parentData, n => n?.id === rowId);
-      let expandedRowContent = formatChildRows(rowData, rowId, dataId || rowId, tr.find('.row-select').is(":checked"));
+      let expandedRowContent = formatChildRows(rowData, rowId, dataId, tr.find('.row-select').is(":checked"));
       tr.after(expandedRowContent);
       tr.addClass("expanded-row");
-      if (!dataId) {
-        tr.attr('data-id', rowId)
-      }
     }
     // table.columns.adjust();
     applyTagOverflow();
@@ -862,10 +870,10 @@ $(document).ready(function () {
   }
 
   // get expanded row structure
-  function formatChildRows(data, parentId, dataLevelId = "", parentCheckboxIsChecked) {
+  function formatChildRows(data, parentId, dataId = "", parentCheckboxIsChecked) {
     return data.expanded_rows.map((row, index, arr) =>
       `
-        <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataLevelId}" data-type="${row.type}">
+        <tr class="expanded-content editable-parent" data-parent="${parentId}" data-level-id="${row?.id || ""}" data-id="${dataId}" data-type="${row.type}">
           <td>
             <input class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}" ${parentCheckboxIsChecked ? "checked" : ""} >
           </td>
