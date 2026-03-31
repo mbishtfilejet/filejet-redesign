@@ -13982,6 +13982,14 @@ input[type=radio] {
   background-image: url("../../../dist/images/icons/group-reassign.svg");
 }
 
+.icon-edit-group {
+  background-image: url("../../../dist/images/icons/new-edit-group.svg");
+}
+
+.icon-entity-reassign {
+  background-image: url("../../../dist/images/icons/entity-reassign.svg");
+}
+
 .login-page {
   background: url("../../../../dist/images/login-banner.jpg") no-repeat center center/cover;
 }
@@ -19461,7 +19469,7 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   right: 0px;
   background: var(--bs-white) !important;
   border-top-right-radius: 50%;
-  box-shadow: inset -0.5px 1px 0 0 #aaa9a9, inset -1px 0.5px 0 0 #aaa9a9;
+  box-shadow: inset -0.2px 1px 0px 0px #aaa9a9, inset -1px 0.2px 0px 0px #aaa9a9;
   z-index: 1;
 }
 .sidebar .menu-link .nav-link.active::after {
@@ -19473,7 +19481,7 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   right: 0px;
   background: var(--bs-white) !important;
   border-bottom-right-radius: 50%;
-  box-shadow: inset -0.5px -1px 0 0 #aaa9a9, inset -1px -0.5px 0 0 #aaa9a9;
+  box-shadow: inset -0.2px -1px 0px 0px #aaa9a9, inset -1px -0.2px 0px 0px #aaa9a9;
   z-index: 1;
 }
 
@@ -21966,6 +21974,7 @@ body *::-webkit-scrollbar-thumb {
   font-size: 10px;
   color: #fff;
   display: inline-block;
+  font-weight: 500;
 }
 
 .badge-good {
@@ -22615,33 +22624,23 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .entityDetailDocumentsTableV2, .entityDetailTableCard .groupEntityDocumentsTable {
   position: relative;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable th:first-child, .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable th:first-child,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable td:first-child,
-.entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable td:first-child {
-  width: 0.8rem !important;
-  max-width: 0.8rem !important;
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:first-child, .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:first-child {
+  width: 1rem !important;
+  max-width: 1rem !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable th:nth-child(2), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable th:nth-child(2),
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable td:nth-child(2),
-.entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable td:nth-child(2) {
-  width: 260px !important;
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(2), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(2) {
+  width: 260px;
   min-width: 260px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable th:nth-child(3), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable th:nth-child(3),
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable td:nth-child(3),
-.entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable td:nth-child(3) {
-  width: 300px !important;
-  min-width: 300px !important;
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(3), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(3) {
+  width: 320px;
+  min-width: 320px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable th:nth-child(4), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable th:nth-child(4),
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable td:nth-child(4),
-.entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable td:nth-child(4) {
-  width: 100px !important;
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:nth-child(4), .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(4) {
+  width: 100px;
   min-width: 100px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable th:last-child, .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable th:last-child,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable td:last-child,
-.entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable td:last-child {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTable thead th:last-child, .entityDetailTableCard .groupEntityDocumentsTable .dataTables_wrapper .dataTable thead th:last-child {
   width: 50px !important;
   max-width: 50px !important;
 }
@@ -22651,17 +22650,8 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-content td.doc_indent, .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-content td.doc_indent {
   padding-left: 35px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-content td:first-child, .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-content td:first-child {
-  border-left: 2px solid #5B5559;
-}
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-content td:last-child, .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-content td:last-child {
-  border-right: 2px solid #5B5559;
-}
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.rowSelect, .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.rowSelect, .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row.rowSelect {
+.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.rowSelect, .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.rowSelect, .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row.rowSelect, .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row.activeRow.rowSelect {
   background-color: #E8F1FE !important;
-}
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-content + tr.parent, .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-content + tr.parent {
-  box-shadow: 0 -1.8px #5B5559;
 }
 .entityDetailTableCard .entityDetailServicesTable,
 .entityDetailTableCard .entityDetailDocumentsTableV2,
@@ -22696,31 +22686,10 @@ body *::-webkit-scrollbar-thumb {
   pointer-events: none;
   cursor: none;
 }
-.entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row,
-.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row {
-  background-color: #5B5559 !important;
-  box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
-  transition: background-color 0.5s ease-in-out;
-}
-.entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row td,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row td,
-.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row td {
-  color: white !important;
-}
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row .dt-control,
 .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .dt-control,
 .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row .dt-control {
-  filter: contrast(0) brightness(2);
   transform: rotate(90deg);
-}
-.entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row .icon-entity-edit,
-.entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row .icon-entity-delete,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .icon-entity-edit,
-.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row .icon-entity-edit,
-.entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .icon-entity-delete,
-.entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row .icon-entity-delete {
-  filter: contrast(0) brightness(2);
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTables_wrapper .dataTable thead th:nth-child(5), .entityDetailTableCard .entityDetailServicesTable .dataTables_wrapper .dataTable thead th:last-child {
   width: 100px;
@@ -23107,6 +23076,16 @@ body:has(.registeredAgentTableCard) button {
   cursor: pointer;
 }
 
+.tag-color-picker {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
 .groupsTableCard {
   background-color: white;
   position: relative;
@@ -23258,10 +23237,6 @@ body:has(.registeredAgentTableCard) button {
   .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
     overflow: hidden !important;
   }
-}
-.groupEntityDocumentsTable .dataTable tr.expanded-row .icon-entity-main,
-.groupEntityDocumentsTable .dataTable tr.expanded-row .icon-group-reassign {
-  filter: contrast(0) brightness(2);
 }
 
 /*# sourceMappingURL=filejet-style.css.map */
