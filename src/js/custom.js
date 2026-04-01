@@ -45,7 +45,6 @@ $(function () {
   });
 
   $('.data-table-listing12').DataTable({
-    
     columns: [{}, { orderable: false }, { orderable: false }, { orderable: false }, { orderable: false }],
     "lengthChange": false,
     order: [3, 'desc'],
@@ -59,7 +58,6 @@ $(function () {
     "scrollY": "50vh",
   })
   $('.data-table-listing').DataTable({
-    
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "processing": true,
@@ -71,7 +69,6 @@ $(function () {
     "scrollY": "50vh",
   })
   $('.data-table-listing-auto').DataTable({
-    
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "processing": true,
@@ -85,7 +82,6 @@ $(function () {
     "autoWidth": false,
   })
   $('.data-table-listing-folder').DataTable({
-    
     "lengthChange": false,
     "pagingType": "simple_numbers",
     "processing": true,
@@ -118,6 +114,21 @@ $(function () {
     "responsive": true,
     "scrollX": true,
     "scrollY": "50vh",
+  })
+
+  $('.data-table-payment-summary').DataTable({
+    "lengthChange": false,
+    "pagingType": "simple_numbers",
+    "processing": true,
+    "info": false,
+    "ordering": true,
+    "paging": false,
+    "language": {
+      "processing": '<div  role="status"> </div>',
+    },
+    "responsive": true,
+    "scrollX": true,
+    "scrollY": "30vh",
   })
 
   // :has() selector is not compatable with firefox which causes scroll height issue in .long-data-table-listing table.
@@ -420,6 +431,7 @@ function adjustDataTable() {
   $('#completed-table').DataTable().columns.adjust();
   $('#exempt-entity-table').DataTable().columns.adjust();
   $('.data-table-listing-folder').DataTable().columns.adjust();
+  $('.data-table-payment-summary').DataTable().columns.adjust();
 }
 
 function editDocumentName() {
@@ -590,4 +602,3 @@ $(document).ready(function () {
 
 // Attach the function to the window.onload event
 window.onload = addAttributeOnLoad;
- 
