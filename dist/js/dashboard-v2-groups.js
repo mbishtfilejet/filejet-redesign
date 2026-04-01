@@ -87,12 +87,7 @@ $(document).ready(function () {
             {
                 data: null, render: function (data, type, row) {
                     return `
-                <div class="d-flex align-items-center">
-                    <span role="button" tabindex="0" > 
-                        <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-                            class="icon icon-entity-edit me-1 me-md-2">
-                        </span>
-                    </span>                    
+                <div class="d-flex align-items-center">                   
                     <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#reAssignEnities-modal">
                         <span data-toggle="tooltip" aria-label="REASSIGN" data-bs-original-title="REASSIGN" 
                             class="icon icon-group-reassign icon-md me-1 me-md-2">
@@ -140,13 +135,8 @@ $(document).ready(function () {
                 <span class="badge badge-${row.status.class}">${row.status.label}</span>
               </td>
               <td>
-                <div class="d-flex align-items-center">
-                    <span role="button" tabindex="0"> 
-                        <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-                            class="icon icon-entity-edit me-1 me-md-2">
-                        </span>
-                    </span>                    
-                    <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                <div class="d-flex align-items-center">                   
+                    <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#reAssignEnities-modal">
                         <span data-toggle="tooltip" aria-label="REASSIGN" data-bs-original-title="REASSIGN" 
                             class="icon icon-group-reassign icon-md me-1 me-md-2">
                         </span> 
