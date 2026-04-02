@@ -19444,7 +19444,7 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   box-sizing: border-box;
   box-shadow: -1px 0 0 #aaa9a9, 0 -1px 0 #aaa9a9, 0 1px 0 #aaa9a9;
 }
-.sidebar .menu-link .nav-link.active a::before {
+.sidebar .menu-link .nav-link.active a::before, .sidebar .menu-link .nav-link.active a::after {
   position: absolute;
   content: "";
   top: -10px;
@@ -19454,12 +19454,16 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   right: -1.5px;
   background-color: var(--bs-purple-filejet) !important;
   background-image: none !important;
+  transform: none !important;
 }
 
 .sidebar .menu-link .nav-link {
   position: relative;
 }
 
+.sidebar .menu-link .nav-link.active {
+  background-color: var(--bs-purple-filejet) !important;
+}
 .sidebar .menu-link .nav-link.active::before {
   content: "";
   position: absolute;
@@ -22010,27 +22014,27 @@ body *::-webkit-scrollbar-thumb {
   background-color: #5E6879;
 }
 
-.entityDetails-dashboard * {
+.entityDetails-dashboard *, .invoices-dashboard * {
   font-family: "Sora", sans-serif !important;
 }
-.entityDetails-dashboard .customTooltip .tooltipText {
+.entityDetails-dashboard .customTooltip .tooltipText, .invoices-dashboard .customTooltip .tooltipText {
   width: 400px !important;
   padding: 10px !important;
 }
-.entityDetails-dashboard .customTooltip .tooltipText.tooltipRight {
+.entityDetails-dashboard .customTooltip .tooltipText.tooltipRight, .invoices-dashboard .customTooltip .tooltipText.tooltipRight {
   top: 0%;
   transform: translate(-190px, -155px);
 }
-.entityDetails-dashboard .customTooltip .tooltipText.tooltipRight::after {
+.entityDetails-dashboard .customTooltip .tooltipText.tooltipRight::after, .invoices-dashboard .customTooltip .tooltipText.tooltipRight::after {
   top: 80% !important;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid {
+.entityDetails-dashboard .dashboard-page > .container-fluid, .invoices-dashboard .dashboard-page > .container-fluid {
   display: grid !important;
   grid-template-columns: auto 1fr;
   background-color: rgba(223, 223, 223, 0.6) !important;
   min-width: 0;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper {
   display: flex;
   z-index: 2;
   flex-direction: column;
@@ -22040,23 +22044,23 @@ body *::-webkit-scrollbar-thumb {
   min-width: 0;
   max-width: 100% !important;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .main-content {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .main-content, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .main-content {
   display: flex;
   flex-direction: column;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification {
   border: 2px solid #D8DDDF;
   border-radius: 100% !important;
   height: 100%;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification a {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification a, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification a {
   width: 32px !important;
   height: 32px !important;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification .notification-dot-v2 {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification .notification-dot-v2, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .notification .notification-dot-v2 {
   position: absolute;
   width: 6px;
   height: 6px;
@@ -22065,10 +22069,10 @@ body *::-webkit-scrollbar-thumb {
   top: 7px;
   right: 8px;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .main-content .fw-bold {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .main-content .fw-bold, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .main-content .fw-bold {
   letter-spacing: -0.3px !important;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn {
   display: flex;
   gap: 4px;
   font-weight: 400;
@@ -22079,129 +22083,150 @@ body *::-webkit-scrollbar-thumb {
   color: #3E484A;
   border-color: #3E484A;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn:hover {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn:hover, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn:hover {
   background-color: transparent;
   color: #3E484A;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn:focus-visible {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn:focus-visible, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn:focus-visible {
   border-color: #3E484A !important;
   box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.5) !important;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn .icon-entity-edit {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn .icon-entity-edit, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper .entityDetailsEditBtn .icon-entity-edit {
   width: 12px;
   height: 12px;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper > .container-fluid.container-lg {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper > .container-fluid.container-lg, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper > .container-fluid.container-lg {
   padding-inline: 1.5rem !important;
   background: var(--bs-purple-filejet) !important;
   margin-inline: 0 !important;
   max-width: 100% !important;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper > .container-fluid.container-lg:last-child {
+.entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper > .container-fluid.container-lg:last-child, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper > .container-fluid.container-lg:last-child {
   padding-inline: 0 !important;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .entityTabsContent {
+.entityDetails-dashboard .dashboard-page > .container-fluid .entityTabsContent, .invoices-dashboard .dashboard-page > .container-fluid .entityTabsContent {
   background-color: rgba(223, 223, 223, 0.6);
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid .entitydetailstablist,
+.entityDetails-dashboard .dashboard-page > .container-fluid .entitydetailstablist, .invoices-dashboard .dashboard-page > .container-fluid .entitydetailstablist,
 .entityDetails-dashboard .dashboard-page > .container-fluid .entityDetail-header,
-.entityDetails-dashboard .dashboard-page > .container-fluid .entitydetailsinfo {
+.invoices-dashboard .dashboard-page > .container-fluid .entityDetail-header,
+.entityDetails-dashboard .dashboard-page > .container-fluid .entitydetailsinfo,
+.invoices-dashboard .dashboard-page > .container-fluid .entitydetailsinfo {
   margin-inline: 1.5rem !important;
 }
-.entityDetails-dashboard .dashboard-page > .container-fluid > .container {
+.entityDetails-dashboard .dashboard-page > .container-fluid > .container, .invoices-dashboard .dashboard-page > .container-fluid > .container {
   grid-column: 2/span 2;
 }
-.entityDetails-dashboard .sidebar-wrapper {
+.entityDetails-dashboard .sidebar-wrapper, .invoices-dashboard .sidebar-wrapper {
   flex-shrink: 0;
   align-self: flex-start;
   grid-row: 1/span 2;
 }
-.entityDetails-dashboard .SOP-model input[disabled],
+.entityDetails-dashboard .SOP-model input[disabled], .invoices-dashboard .SOP-model input[disabled],
 .entityDetails-dashboard .SOP-model select[disabled],
+.invoices-dashboard .SOP-model select[disabled],
 .entityDetails-dashboard .SOP-model .form-disabled,
+.invoices-dashboard .SOP-model .form-disabled,
 .entityDetails-dashboard .entityTabsContent input[disabled],
+.invoices-dashboard .entityTabsContent input[disabled],
 .entityDetails-dashboard .entityTabsContent select[disabled],
-.entityDetails-dashboard .entityTabsContent .form-disabled {
+.invoices-dashboard .entityTabsContent select[disabled],
+.entityDetails-dashboard .entityTabsContent .form-disabled,
+.invoices-dashboard .entityTabsContent .form-disabled {
   background-image: none !important;
   background-color: #eee !important;
   color: var(--bs-filejet-medium-gray) !important;
   pointer-events: none;
 }
-.entityDetails-dashboard .SOP-model input[disabled] + .select2-container--default .select2-selection--single,
+.entityDetails-dashboard .SOP-model input[disabled] + .select2-container--default .select2-selection--single, .invoices-dashboard .SOP-model input[disabled] + .select2-container--default .select2-selection--single,
 .entityDetails-dashboard .SOP-model select[disabled] + .select2-container--default .select2-selection--single,
+.invoices-dashboard .SOP-model select[disabled] + .select2-container--default .select2-selection--single,
 .entityDetails-dashboard .SOP-model .form-disabled + .select2-container--default .select2-selection--single,
+.invoices-dashboard .SOP-model .form-disabled + .select2-container--default .select2-selection--single,
 .entityDetails-dashboard .entityTabsContent input[disabled] + .select2-container--default .select2-selection--single,
+.invoices-dashboard .entityTabsContent input[disabled] + .select2-container--default .select2-selection--single,
 .entityDetails-dashboard .entityTabsContent select[disabled] + .select2-container--default .select2-selection--single,
-.entityDetails-dashboard .entityTabsContent .form-disabled + .select2-container--default .select2-selection--single {
+.invoices-dashboard .entityTabsContent select[disabled] + .select2-container--default .select2-selection--single,
+.entityDetails-dashboard .entityTabsContent .form-disabled + .select2-container--default .select2-selection--single,
+.invoices-dashboard .entityTabsContent .form-disabled + .select2-container--default .select2-selection--single {
   background-color: #eee !important;
   color: var(--bs-filejet-medium-gray) !important;
   pointer-events: none !important;
 }
-.entityDetails-dashboard .SOP-model input[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.entityDetails-dashboard .SOP-model input[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow, .invoices-dashboard .SOP-model input[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
 .entityDetails-dashboard .SOP-model select[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.invoices-dashboard .SOP-model select[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
 .entityDetails-dashboard .SOP-model .form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.invoices-dashboard .SOP-model .form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow,
 .entityDetails-dashboard .entityTabsContent input[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.invoices-dashboard .entityTabsContent input[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
 .entityDetails-dashboard .entityTabsContent select[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
-.entityDetails-dashboard .entityTabsContent .form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow {
+.invoices-dashboard .entityTabsContent select[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.entityDetails-dashboard .entityTabsContent .form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.invoices-dashboard .entityTabsContent .form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow {
   background-image: none !important;
 }
-.entityDetails-dashboard .SOP-model input[type=radio]:disabled,
-.entityDetails-dashboard .entityTabsContent input[type=radio]:disabled {
+.entityDetails-dashboard .SOP-model input[type=radio]:disabled, .invoices-dashboard .SOP-model input[type=radio]:disabled,
+.entityDetails-dashboard .entityTabsContent input[type=radio]:disabled,
+.invoices-dashboard .entityTabsContent input[type=radio]:disabled {
   background-image: url("../../../../dist/images/icons/view-checkbox-inactive.svg") !important;
 }
-.entityDetails-dashboard .SOP-model input[type=radio]:disabled:checked,
-.entityDetails-dashboard .entityTabsContent input[type=radio]:disabled:checked {
+.entityDetails-dashboard .SOP-model input[type=radio]:disabled:checked, .invoices-dashboard .SOP-model input[type=radio]:disabled:checked,
+.entityDetails-dashboard .entityTabsContent input[type=radio]:disabled:checked,
+.invoices-dashboard .entityTabsContent input[type=radio]:disabled:checked {
   background-image: url("../../../../dist/images/icons/view-checkbox-active-disabled.svg") !important;
 }
-.entityDetails-dashboard .SOP-model input[type=checkbox]:checked,
-.entityDetails-dashboard .entityTabsContent input[type=checkbox]:checked {
+.entityDetails-dashboard .SOP-model input[type=checkbox]:checked, .invoices-dashboard .SOP-model input[type=checkbox]:checked,
+.entityDetails-dashboard .entityTabsContent input[type=checkbox]:checked,
+.invoices-dashboard .entityTabsContent input[type=checkbox]:checked {
   background-color: #272727;
   border: 1.5px solid #272727 !important;
   cursor: pointer;
 }
-.entityDetails-dashboard .SOP-model input[type=checkbox]:disabled:checked,
-.entityDetails-dashboard .entityTabsContent input[type=checkbox]:disabled:checked {
+.entityDetails-dashboard .SOP-model input[type=checkbox]:disabled:checked, .invoices-dashboard .SOP-model input[type=checkbox]:disabled:checked,
+.entityDetails-dashboard .entityTabsContent input[type=checkbox]:disabled:checked,
+.invoices-dashboard .entityTabsContent input[type=checkbox]:disabled:checked {
   background-image: url("../../../../dist/images/icons/radio-check.svg") !important;
 }
-.entityDetails-dashboard .SOP-model .form-control-search {
+.entityDetails-dashboard .SOP-model .form-control-search, .invoices-dashboard .SOP-model .form-control-search {
   background-image: url("../../../../dist/images/icons/search-light.svg") !important;
   background-position: right 5px center !important;
 }
-.entityDetails-dashboard .SOP-model .form-check.typecheckradio label {
+.entityDetails-dashboard .SOP-model .form-check.typecheckradio label, .invoices-dashboard .SOP-model .form-check.typecheckradio label {
   text-transform: uppercase !important;
 }
-.entityDetails-dashboard .SOP-model .dropupload-zone {
+.entityDetails-dashboard .SOP-model .dropupload-zone, .invoices-dashboard .SOP-model .dropupload-zone {
   flex-direction: column;
   padding: 20px;
   border: 1px dashed #dee2e6;
   color: #272A2E;
 }
-.entityDetails-dashboard .SOP-model .dropupload-zone.dragupload-over {
+.entityDetails-dashboard .SOP-model .dropupload-zone.dragupload-over, .invoices-dashboard .SOP-model .dropupload-zone.dragupload-over {
   border: 2px solid var(--bs-filejet-purple-indigo) !important;
   background-color: #f2f2ff;
 }
-.entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt {
+.entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt, .invoices-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 !important;
 }
-.entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .btn, .entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .boc-light #boc-ppdf-btns #boc-prev-save, .boc-light #boc-ppdf-btns .entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt #boc-prev-save, .entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-ppdf-btns .entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt #boc-prev-cancel {
+.entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .btn, .invoices-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .btn, .entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .boc-light #boc-ppdf-btns #boc-prev-save, .invoices-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .boc-light #boc-ppdf-btns #boc-prev-save, .boc-light #boc-ppdf-btns .entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt #boc-prev-save, .boc-light #boc-ppdf-btns .invoices-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt #boc-prev-save, .entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .boc-light #boc-ppdf-btns #boc-prev-cancel, .invoices-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-ppdf-btns .entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt #boc-prev-cancel, .boc-light #boc-ppdf-btns .invoices-dashboard .SOP-model .dropupload-zone .dropupload-zone__prompt #boc-prev-cancel {
   background-color: var(--bs-purple);
   color: white;
   padding: 4px 10px !important;
 }
-.entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__input {
+.entityDetails-dashboard .SOP-model .dropupload-zone .dropupload-zone__input, .invoices-dashboard .SOP-model .dropupload-zone .dropupload-zone__input {
   display: none;
   visibility: hidden;
 }
-.entityDetails-dashboard .SOP-model .folder-info-wrapper h6 {
+.entityDetails-dashboard .SOP-model .folder-info-wrapper h6, .invoices-dashboard .SOP-model .folder-info-wrapper h6 {
   margin-bottom: 0.5rem !important;
   font-size: 12px !important;
   line-height: normal;
 }
-.entityDetails-dashboard .SOP-model .folder-list .list-group {
+.entityDetails-dashboard .SOP-model .folder-list .list-group, .invoices-dashboard .SOP-model .folder-list .list-group {
   background-color: transparent !important;
   flex-direction: row;
   flex-wrap: wrap;
@@ -22210,24 +22235,24 @@ body *::-webkit-scrollbar-thumb {
   align-items: center;
   column-gap: 5px;
 }
-.entityDetails-dashboard .SOP-model .folder-list .list-group .list-group-item {
+.entityDetails-dashboard .SOP-model .folder-list .list-group .list-group-item, .invoices-dashboard .SOP-model .folder-list .list-group .list-group-item {
   padding: 0 !important;
   border: none !important;
   font-size: 13px !important;
 }
-.entityDetails-dashboard .SOP-model .folder-list .list-group .list-group-item a.active {
+.entityDetails-dashboard .SOP-model .folder-list .list-group .list-group-item a.active, .invoices-dashboard .SOP-model .folder-list .list-group .list-group-item a.active {
   font-weight: 700 !important;
 }
-.entityDetails-dashboard .SOP-model .subfolder-list {
+.entityDetails-dashboard .SOP-model .subfolder-list, .invoices-dashboard .SOP-model .subfolder-list {
   background-color: #F3F5F8;
   overflow: hidden;
   max-height: 170px;
   overflow-y: auto;
 }
-.entityDetails-dashboard .SOP-model .subfolder-list .list-group {
+.entityDetails-dashboard .SOP-model .subfolder-list .list-group, .invoices-dashboard .SOP-model .subfolder-list .list-group {
   border-radius: 0 !important;
 }
-.entityDetails-dashboard .SOP-model .subfolder-list .list-group .list-group-item {
+.entityDetails-dashboard .SOP-model .subfolder-list .list-group .list-group-item, .invoices-dashboard .SOP-model .subfolder-list .list-group .list-group-item {
   padding: 5px 0px !important;
   display: flex;
   align-items: center;
@@ -22236,67 +22261,67 @@ body *::-webkit-scrollbar-thumb {
   background-color: transparent !important;
   border: none !important;
 }
-.entityDetails-dashboard .SOP-model .subfolder-list .list-group .list-group-item:hover {
+.entityDetails-dashboard .SOP-model .subfolder-list .list-group .list-group-item:hover, .invoices-dashboard .SOP-model .subfolder-list .list-group .list-group-item:hover {
   background-color: #D8DDDF !important;
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 0.2rem;
 }
-.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper {
+.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper, .invoices-dashboard .SOP-model .uploadfilelist-wrapper {
   width: 100%;
 }
-.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item {
+.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item, .invoices-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-block: 10px;
 }
-.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .action {
+.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .action, .invoices-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .action {
   display: flex;
   margin-left: 5px;
   align-items: center;
   gap: 10px;
 }
-.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .action .icon-lg {
+.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .action .icon-lg, .invoices-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .action .icon-lg {
   width: 16px !important;
   height: 16px !important;
 }
-.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item + .uploadfilelist-item {
+.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item + .uploadfilelist-item, .invoices-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item + .uploadfilelist-item {
   border-top: 2px solid #dee2e6;
 }
-.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item:first-child {
+.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item:first-child, .invoices-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item:first-child {
   padding-top: 0;
 }
-.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item:last-child {
+.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item:last-child, .invoices-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item:last-child {
   padding-bottom: 0;
 }
-.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .uploadfile-info {
+.entityDetails-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .uploadfile-info, .invoices-dashboard .SOP-model .uploadfilelist-wrapper .uploadfilelist-item .uploadfile-info {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.entityDetails-dashboard .SOP-model .folder_doc_dialog {
+.entityDetails-dashboard .SOP-model .folder_doc_dialog, .invoices-dashboard .SOP-model .folder_doc_dialog {
   max-width: 650px !important;
 }
-.entityDetails-dashboard .SOP-model .folder_doc_dialog .folder-doc_grid {
+.entityDetails-dashboard .SOP-model .folder_doc_dialog .folder-doc_grid, .invoices-dashboard .SOP-model .folder_doc_dialog .folder-doc_grid {
   display: grid;
   align-items: center;
   grid-template-columns: 95px 2fr 95px 1fr;
   row-gap: 10px;
   column-gap: 5px;
 }
-.entityDetails-dashboard .SOP-model .folder_doc_dialog .form-label {
+.entityDetails-dashboard .SOP-model .folder_doc_dialog .form-label, .invoices-dashboard .SOP-model .folder_doc_dialog .form-label {
   margin: 0 !important;
 }
-.entityDetails-dashboard .SOP-model .folder_note_wrapper .folder_note_heading {
+.entityDetails-dashboard .SOP-model .folder_note_wrapper .folder_note_heading, .invoices-dashboard .SOP-model .folder_note_wrapper .folder_note_heading {
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.5px !important;
 }
-.entityDetails-dashboard .SOP-model .folder_note_wrapper .input-item {
+.entityDetails-dashboard .SOP-model .folder_note_wrapper .input-item, .invoices-dashboard .SOP-model .folder_note_wrapper .input-item {
   transition: all 0.5s ease-in-out;
 }
-.entityDetails-dashboard .SOP-model .folder_note_wrapper .input-item[contenteditable=true] {
+.entityDetails-dashboard .SOP-model .folder_note_wrapper .input-item[contenteditable=true], .invoices-dashboard .SOP-model .folder_note_wrapper .input-item[contenteditable=true] {
   padding: 8px;
   padding-left: 12px;
   border: 1px solid #F3F5F8;
@@ -22306,17 +22331,17 @@ body *::-webkit-scrollbar-thumb {
   font-size: 12px;
   letter-spacing: -0.24px;
 }
-.entityDetails-dashboard .toggle-content.show {
+.entityDetails-dashboard .toggle-content.show, .invoices-dashboard .toggle-content.show {
   opacity: 100% !important;
 }
-.entityDetails-dashboard .toggle-content {
+.entityDetails-dashboard .toggle-content, .invoices-dashboard .toggle-content {
   opacity: 90% !important;
   transition: all 0.01s ease-in-out;
 }
-.entityDetails-dashboard .editable-parent .save-content {
+.entityDetails-dashboard .editable-parent .save-content, .invoices-dashboard .editable-parent .save-content {
   display: none;
 }
-.entityDetails-dashboard .save-desc-content {
+.entityDetails-dashboard .save-desc-content, .invoices-dashboard .save-desc-content {
   display: none;
 }
 
@@ -23231,8 +23256,8 @@ body:has(.registeredAgentTableCard) button {
     max-height: 260px;
   }
 }
-@media (min-width: 1400px) {
-  .entityDetailDocumentsTableV2 .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody, .groupEntityDocumentsTable .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
+@media (min-width: 1450px) {
+  .entityDetailTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
     overflow: hidden !important;
   }
 }
@@ -23343,6 +23368,62 @@ body:has(.registeredAgentTableCard) button {
   --bs-btn-disabled-color: #000;
   --bs-btn-disabled-bg: #EAEAEA;
   --bs-btn-disabled-border-color: #EAEAEA;
+}
+
+.invoices-dashboard .sidebar .menu-link .nav-link.active a {
+  background: rgba(223, 223, 223, 0.6) !important;
+}
+.invoices-dashboard .sidebar .menu-link .nav-link.active a::after {
+  background-color: rgba(223, 223, 223, 0.6) !important;
+}
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(1), .invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(2),
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(1),
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(2) {
+  min-width: 150px !important;
+}
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(3), .invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(4), .invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(7), .invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(8),
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(3),
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(4),
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(7),
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(8) {
+  min-width: 60px !important;
+  width: 60px;
+}
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(6),
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(6) {
+  min-width: 74px !important;
+  width: 74px;
+}
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:last-child,
+.invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:last-child {
+  min-width: 105px !important;
+  width: 105px !important;
+}
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable th:nth-child(1), .invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable th:nth-child(2),
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable td:nth-child(1),
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable td:nth-child(2) {
+  max-width: 90px !important;
+}
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable th:nth-child(3),
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable td:nth-child(3) {
+  min-width: 150px !important;
+}
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable th:nth-child(5), .invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable th:nth-child(6),
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable td:nth-child(5),
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable td:nth-child(6) {
+  min-width: 65px !important;
+  width: 65px;
+}
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable th:nth-child(7), .invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable th:nth-child(8),
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable td:nth-child(7),
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable td:nth-child(8) {
+  min-width: 74px !important;
+  width: 74px;
+}
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable th:last-child,
+.invoices-dashboard .invoicesPayHistoryTable .dataTables_wrapper .dataTable td:last-child {
+  min-width: 105px !important;
+  width: 105px !important;
 }
 
 /*# sourceMappingURL=styles.css.map */
