@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>File Jet: Dashboard</title>
+   <!-- Styles -->
+   <link rel="stylesheet" href="src/scss/filejet-style.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+   <!-- date picker -->
+   <link rel='stylesheet'
+      href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+   <link rel="stylesheet" href="./src/js/lib/bootstrap-datepicker3.min.css">
+   <!-- end date -->
+
+   <!-- Scripts -->
+   <script src="dist/js/jquery.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+</head>
+
+<body class="main-dashboard-v2 invoices-dashboard">
+
+   <div class="filejet-bg dashboard-page min-vh-100">
+      <div class="container-fluid p-0">
+         <div class="sidebar-wrapper">
+            <div class="sidebar sidebar-v2 py-3 ps-3 min-vh-100">
+               <div class="ps-2 pb-4">
+                  <a href="/" class="logo">
+                     <img src="dist/images/logo.png" class="d-none d-lg-block" alt="FileJet">
+                     <img src="dist/images/filejet-pinLogo.png" class="d-block d-lg-none" alt="FileJet">
+                  </a>
+               </div>
+               <div>
+                  <ul class="menu-link p-0 m-0">
+                     <!-- Dashboard -->
+                     <li class="nav-link ">
+                        <a href="./index.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-dashboard normal-icon"></span>
+                              <span class="icon icon-dashboard-purple active-icon"></span>
+                           </span>
+
+                           <span class="text nav-text">Dashboard</span>
+                        </a>
+                     </li>
+                     <!-- Entities -->
+                     <li class="nav-link">
+                        <a href="./entity-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-entities normal-icon"></span>
+                              <span class="icon icon-entities-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text position-relative">
+                              Entities
+
+                           </span>
+                        </a>
+                     </li>
+                     <!-- Groups -->
+                     <li class="nav-link">
+                        <a href="./groups-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-group normal-icon"></span>
+                              <span class="icon icon-group-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text">Groups</span>
+                        </a>
+                     </li>
+                     <!-- Calendar -->
+                     <li class="nav-link">
+                        <a href="./calender-view.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-calender normal-icon"></span>
+                              <span class="icon icon-calender-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text">Calendar</span>
+                        </a>
+                     </li>
+                     <!-- Registered Agent -->
+                     <li class="nav-link">
+                        <a href="./registered-agent-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-users-check normal-icon"></span>
+                              <span class="icon icon-users-check-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text position-relative">
+                              Registered Agent
+                              <span class="count-notification position-absolute">12</span>
+                           </span>
+                        </a>
+                     </li>
+                     <!-- Business Licenses -->
+                     <li class="nav-link">
+                        <a href="./business-licences.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-business normal-icon"></span>
+                              <span class="icon icon-business-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text position-relative">Business Licenses
+                              <span class="count-notification position-absolute">3</span>
+                           </span>
+                        </a>
+                     </li>
+                     <!-- Fictitious / Trade Name -->
+                     <li class="nav-link">
+                        <a href="./trade.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-certificate-black normal-icon"></span>
+                              <span class="icon icon-certificate-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text position-relative">Fictitious / Trade Name
+                              <span class="count-notification position-absolute">6</span>
+                           </span>
+                        </a>
+                     </li>
+                     <!-- Organization Charts  -->
+                     <li class="nav-link">
+                        <a href="./org-chart-reboot-v4.html"
+                           class="text-decoration-none ps-3 py-3 d-flex align-items-center" data-bs-toggle="#"
+                           data-bs-target="#organizationChartModal">
+                           <span>
+                              <span class="icon icon-chart normal-icon"></span>
+                              <span class="icon icon-chart-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text d-inline-block">
+                              Organization Charts
+
+                           </span>
+                        </a>
+                     </li>
+                     <!-- CTA -->
+                     <li class="nav-link">
+                        <a href="./cta.html" class="text-decoration-none ps-3 py-3 d-flex align-items-center">
+                           <span>
+                              <span class="icon icon-cta normal-icon"></span>
+                              <span class="icon icon-cta-purple active-icon"></span>
+                           </span>
+
+                           <span class="text nav-text position-relative">
+                              Corporate Transparency Act
+                           </span>
+                        </a>
+                     </li>
+                     <!-- Cap Table
+                            <li class="nav-link">
+                                <a href="" class="text-decoration-none ps-3 py-3 d-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#capTableModal">
+                                    <span>
+                                        <span class="icon icon-table normal-icon"></span>
+                                        <span class="icon icon-table-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text d-inline-block position-relative">
+                                        Cap Table
+                                        <span class="small-tag">Coming soon</span>
+                                    </span>
+                                </a>
+                            </li> -->
+                     <!-- Reports -->
+                     <li class="nav-link active">
+                        <a href="./invoices.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-report normal-icon"></span>
+                              <span class="icon icon-report-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text">Invoices </span>
+                        </a>
+                     </li>
+                     <!-- Additional Services -->
+                     <li class="nav-link">
+                        <a href="#" class="text-decoration-none ps-3 py-3 d-block" data-bs-toggle="modal"
+                           data-bs-target="#servicesModal">
+                           <span>
+                              <span class="icon icon-services normal-icon"></span>
+                              <span class="icon icon-services-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text">Additional Services </span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+         <div class="main-content-wrapper">
+            <div class="container-fluid container-lg">
+               <div class="header mt-3">
+                  <div class="row align-items-center d2-search">
+                     <div class="col-3 col-xl-3 col-lg-3">
+                        <h2 class="m-0">
+                           <strong>
+                              Invoices
+                           </strong>
+                        </h2>
+                     </div>
+                     <div
+                        class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center justify-content-between justify-content-md-end gap-3">
+                        <div class="filter2-dropdown w-50 me-3 group-search-d2 shadow-sm rounded border">
+                           <select class="form-select w-100 p-2 px-3 m-0 rounded custom-select groupSelect" id="">
+                              <option value="" hidden="" selected="" data-full-text="Group" title="Group">Group</option>
+                              <option value="1" selected="" data-full-text="All Group" title="All Groups">All Groups</option>
+                              <option value="2" data-full-text="Unassigned" title="Unassigned">Unassigned</option>
+                              <option value="3" data-full-text="Rachel Feder" title="Rachel Feder">Rachel Feder</option>
+                              <option value="4" data-full-text="Gerald S. Papazian" title="Gerald S. Papazian">Gerald S. Papazian</option>
+                              <option value="5" data-full-text="CHARLEY M. STOLL, A PROFESSIONAL CORPORATION CHARLEY M. STOLL, A PROFESSIONAL CORPORATION" title="CHARLEY M. STOLL, A PROFESSIONAL CORPORATION CHARLEY M. STOLL, A PROFESSIONAL CORPORATION">CHARLEY M. STOLL, A PROFES...</option>
+                              <option value="5" data-full-text="Charly M. Stoll, A Professional Corporation Charly M. Stoll, A Professional Corporation" title="Charly M. Stoll, A Professional Corporation Charly M. Stoll, A Professional Corporation">Charly M. Stoll, A Profess...</option>
+                              <option value="6" data-full-text="Christopher Law Group, Inc." title="Christopher Law Group, Inc.">Christopher Law Group, Inc...</option>
+                           </select>
+                        </div>
+                        <div class="notification position-relative white-bg p-10">
+                           <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#notificationModal">
+                              <span class="icon icon-bell icon-xxxl m-0"></span>
+                              <span class="notification-dot-v2"></span>
+                           </a>
+                        </div>
+                        <div class="profile-nav profile-nav-v2">
+                           <div class="dropdown white-bg p-0">
+
+                              <a class="nav-link dropdown show" href="#" data-bs-toggle="dropdown" aria-expanded="true">
+                                 <span class="avatar avatar-lg m-0 overflow-hidden">
+                                    <img class="" src="../dist/images/avatar.png" alt="" />
+                                 </span>
+                              </a>
+                              <ul class="dropdown-menu" data-bs-popper="static">
+                                 <li>
+                                    <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                       Account
+                                    </span>
+                                 </li>
+                                 <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                       href="./account/settings.html">
+                                       <span class="avatar avatar-sm me-4">
+                                          <img src="dist/images/avatar.png" alt="">
+                                       </span>
+                                       View Profile
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom" href="#">
+                                       <span class="icon icon-user me-4"></span>
+                                       Switch Account (Member)
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center" href="../../login.html">
+                                       <span class="icon icon-logout me-4"></span>
+                                       Logout
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <hr>
+            </div>
+            <div class="container-fluid container-lg">
+               <div class="main-content  pt-3">
+
+                  <!-- Entity Details Different TabList -->
+                  <div class="">
+                     <ul class="nav entitydetailstablist" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                           <a href="javascript:void(0)" id="en-invoiceHistory-tab" class="nav-link p-0 active"
+                              data-bs-toggle="tab" data-bs-target="#en-invoiceHistory-tab-pane" role="tab"
+                              data-table-key="invoices-history-table" aria-controls="en-invoiceHistory-tab-pane"
+                              aria-selected="true">Invoices History</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                           <a href="javascript:void(0)" class="nav-link p-0" id="en-paymentHistory-tab"
+                              data-bs-toggle="tab" data-table-key="invoices-payhistory-table"
+                              data-bs-target="#en-paymentHistory-tab-pane" role="tab"
+                              aria-controls="en-paymentHistory-tab-pane" aria-selected="false">Payment History</a>
+                        </li>
+                     </ul>
+                  </div>
+                  <!-- Invoices Different TabList End -->
+
+                  <!-- Invoices Tabs Content Start -->
+                  <div class="entityTabsContent flex-grow-1 pt-4">
+                     <div class="tab-content mb-3" id="myTabContent">
+
+                        <!-- Invoices Invoice History Start -->
+                        <div class="tab-pane fade show active" id="en-invoiceHistory-tab-pane" role="tabpanel"
+                           aria-labelledby="en-invoiceHistory-tab" tabindex="0">
+                           <div class="row g-2">
+                              <div class="col-12 col-md-5 mb-2 search-table-col">
+                                 <div
+                                    class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                    <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                    <input type="text" class="custom-search-input border-0 p-0 w-100"
+                                       placeholder="Search (Order ID#, Entity, External Ref#)">
+                                 </div>
+                              </div>
+
+                              <div class="filter2-dropdown col-12 col-md-3 invoice-table-col mb-2 dropdown">
+                                 <div
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                    id="invoiceContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                    tabindex="0">
+                                    <input type="text" class="search-input" id="invoiceSearch"
+                                       placeholder="Date Range" autocomplete="off">
+                                 </div>
+                                 <ul class="dropdown-menu search-disabled" id="invoiceDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox" checked
+                                             class="form-check-input invoice-checkbox me-2" data-value="Last 90 Days">
+                                          Last 90 Days</label></li>
+                                 </ul>
+                              </div>
+
+                              <div class="filter2-dropdown col-12 col-md-3 flex-grow-1 status-table-col mb-2 dropdown">
+                                 <div
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                    id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                                    <input type="text" class="search-input" id="statusSearch" placeholder="Status"
+                                       autocomplete="off">
+                                 </div>
+                                 <ul class="dropdown-menu search-disabled" id="statusDropdown">
+                                    <li>
+                                       <label class="dropdown-item">
+                                          <input type="checkbox" id="statusSelectAll"
+                                             class="form-check-input me-2 status-checkbox" data-value="All">All
+                                       </label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input status-checkbox me-2" data-value="Paid">
+                                          Paid</label></li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input status-checkbox me-2" data-value="Unpaid">
+                                          Unpaid</label></li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input status-checkbox me-2" data-value="Over due">
+                                          Over due</label></li>
+                                 </ul>
+                              </div>
+
+                              <div class="col-12 col-md-auto px-1 mb-2">
+                                 <div class="border border-1 rounded-2 shadow-sm export-csv-col px-2 h-100 bg-white">
+                                    <a href="#"
+                                       class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
+                                       <span class="icon m-0 my-1 icon-export-csv flex-shrink-0 icon-lg"></span>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="entityDetailTableCard mt-2 border rounded-2">
+                              <div class="invoicesHistoryTable">
+                                 <table id="invoices-history-table" class="table table-striped w-100 table-nowrap">
+                                    <thead>
+                                       <tr>
+                                          <th>Group</th>
+                                          <th>Entity Name</th>
+                                          <th>Store #</th>
+                                          <th>OrderId #</th>
+                                          <th>External Ref#</th>
+                                          <th>Date</th>
+                                          <th>Amount</th>
+                                          <th>Due</th>
+                                          <th data-orderable="false">Action</th>
+                                       </tr>
+                                    </thead>
+                                 </table>
+                              </div>
+                           </div>
+                           <div class="d-flex align-items-center gap-4 mt-3">
+                              <button data-bs-toggle="modal" data-bs-target="#" aria-label="Generate Summary"
+                                 type="button"
+                                 class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Generate
+                                 Summary
+                              </button>
+                           </div>
+                        </div>
+                        <!-- Invoices Invoice History End -->
+
+                        <!-- Invoices Payment History Start -->
+                        <div class="tab-pane fade" id="en-paymentHistory-tab-pane" role="tabpanel"
+                           aria-labelledby="en-paymentHistory-tab" tabindex="0">
+                           <div class="row g-2">
+                              <div class="col-12 col-md-8 mb-2 search-table-col">
+                                 <div
+                                    class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                    <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                    <input type="text" class="custom-search-input border-0 p-0 w-100"
+                                       placeholder="Search (Order ID#, Entity, External Ref#)">
+                                 </div>
+                              </div>
+
+                              <div class="filter2-dropdown col-12 col-md-3 flex-grow-1 payment-table-col mb-2 dropdown">
+                                 <div
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                    id="paymentContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                    tabindex="0">
+                                    <input type="text" class="search-input" id="paymentSearch"
+                                       placeholder="Date Range" autocomplete="off">
+                                 </div>
+                                 <ul class="dropdown-menu search-disabled" id="paymentDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox" checked
+                                             class="form-check-input payment-checkbox me-2" data-value="Last 90 Days">
+                                          Last 90 Days</label></li>
+                                 </ul>
+                              </div>
+
+                              <div class="col-12 col-md-auto px-1 mb-2">
+                                 <div class="border border-1 rounded-2 shadow-sm export-csv-col px-2 h-100 bg-white">
+                                    <a href="#"
+                                       class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
+                                       <span class="icon m-0 my-1 icon-export-csv flex-shrink-0 icon-lg"></span>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="entityDetailTableCard border rounded-2">
+                              <div class="invoicesPayHistoryTable">
+                                 <table id="invoices-payhistory-table" class="table table-striped w-100 table-nowrap">
+                                    <thead>
+                                       <tr>
+                                          <th>OrderId #</th>
+                                          <th>External Ref #</th>
+                                          <th>Entity</th>
+                                          <th>State</th>
+                                          <th>Amount</th>
+                                          <th>Status</th>
+                                          <th>Order Date</th>
+                                          <th>Date Paid</th>
+                                          <th>Order Status</th>
+                                          <th data-orderable="false">Action</th>
+                                       </tr>
+                                    </thead>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Invoices Payment History End-->
+                     </div>
+                  </div>
+                  <!-- Invoices Tabs Content End -->
+               </div>
+            </div>
+         </div>
+
+         <div class="container">
+            <div class="main-content pt-3">
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Notification Modal Starts -->
+   <div class="modal modal-right fade" id="notificationModal" tabindex="-1" aria-labelledby="searchModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                  <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                     <span class="icon icon-sm icon-bell-white m-0"></span>
+                  </span>
+                  <div>
+                     <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Notifications</span>
+                     <h3 class="fs-3 m-0 mt-2">Your Notifications</h3>
+                  </div>
+               </div>
+               <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100 shadow">
+                  <span class="icon icon-search-grey opacity-25"></span>
+                  <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                     placeholder="Find a Notification">
+               </div>
+            </div>
+
+            <!-- Modal Header Ends -->
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+               <div class="d-flex justify-content-between align-items-center">
+                  <ul class="nav nav-tabs pt-2" id="notificationTab" role="tablist">
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link active border-0 text-uppercase" id="unread-notification-tab"
+                           data-bs-toggle="tab" data-bs-target="#unread-notification" type="button" role="tab"
+                           aria-controls="unreadNotification" aria-selected="true">UNREAD</button>
+                     </li>
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link border-0 text-uppercase" id="read-notification-tab" data-bs-toggle="tab"
+                           data-bs-target="#read-notification" type="button" role="tab" aria-controls="readNotification"
+                           aria-selected="false">READ</button>
+                     </li>
+                  </ul>
+                  <div class="d-flex gap-3">
+                     <a href="#" class="text-purple text-decoration-none d-inline-block text-uppercase"> ALL</a>
+                     <a href="#" class="text-purple text-decoration-none d-inline-block text-uppercase"> None</a>
+
+                  </div>
+               </div>
+               <div class="tab-content bg-white" id="notificationTabContent">
+
+                  <!-- Unread Notification -->
+                  <div class="tab-pane fade show active" id="unread-notification" role="tabpanel"
+                     aria-labelledby="unread-notification-tab">
+                     <ul class="list-group m-0 p-0 border-0 list-table">
+                        <li
+                           class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                           <div class="flex-fill">
+                              <div class="dropdown white-bg p-0 rounded-5">
+
+                                 <a class="nav-link px-0">
+                                    <span class="fw-bold">Notification</span>
+                                 </a>
+                              </div>
+                           </div>
+                           <div>
+                              <div class="dropdown white-bg p-0 rounded-5">
+
+                                 <a class="nav-link dropdown-toggle show px-0" href="#" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    <span class="user-name">Date</span>
+                                 </a>
+                              </div>
+                           </div>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                     </ul>
+                     <div class="px-4 mb-3 pt-5 mt-2">
+                        <p class="text-uppercase mb-0">Notifications based on Partner inviting a Client </p>
+                     </div>
+                     <ul class="list-group m-0 p-0 border-0 list-table">
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 gap-lg-0 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="">
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+                  <!-- Unread Notification -->
+
+                  <!-- Read Notification -->
+                  <div class="tab-pane fade" id="read-notification" role="tabpanel"
+                     aria-labelledby="read-notification-tab">
+                     <ul class="list-group m-0 p-0 border-0 list-table">
+                        <li
+                           class="list-group-item border-0 border-bottom rounded-0 d-flex justify-content-between align-items-center px-4">
+                           <div class="flex-fill">
+                              <div class="dropdown white-bg p-0 rounded-5">
+
+                                 <a class="nav-link px-0">
+                                    <span class="fw-bold">Notification</span>
+                                 </a>
+                                 <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                                <li>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                        Latest
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                        Older
+                                                    </a>
+                                                </li>
+                                            </ul> -->
+                              </div>
+                           </div>
+                           <div>
+                              <div class="dropdown white-bg p-0 rounded-5">
+
+                                 <a class="nav-link dropdown-toggle show px-0" href="#" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    <span class="user-name">Date</span>
+                                 </a>
+                                 <!-- <ul class="dropdown-menu p-0" data-bs-popper="static">
+                                                <li>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                        Past date
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center border-bottom" href="#">
+                                                        Latest Date
+                                                    </a>
+                                                </li>
+                                            </ul> -->
+                              </div>
+                           </div>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="" checked>
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="" checked>
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="" checked>
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="" checked>
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                        <li class="list-group-item border-0 border-bottom rounded-0 p-4">
+                           <a class="d-flex flex-wrap flex-sm-nowrap gap-3 align-items-center text-decoration-none w-100"
+                              href="">
+                              <div>
+                                 <input type="checkbox" class="form-check-input" name="" id="" checked>
+                              </div>
+                              <div>
+                                 <p class="mb-2">**Item Name** has been shipped/emailed</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">**Entity Name**</span>
+                              </div>
+                              <div>
+                                 <p class="mb-2">10 / 29 / 2021</p>
+                                 <span class="d-block text-dark text-opacity-50 fs-8">08:15 AM</span>
+                              </div>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+                  <!-- Read Notification -->
+               </div>
+            </div>
+
+            <!-- Modal Body Ends-->
+
+            <div class="modal-footer mt-3 pb-0">
+               <div class="d-flex justify-content-end">
+                  <button type="button" class="btn btn-info px-5 py-3 me-3" id="markAsReadBtn">Mark as Read</button>
+                  <button type="button" class="btn btn-info px-5 py-3 me-3 d-none" id="markAsUnreadBtn">Mark as
+                     UnRead</button>
+                  <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <!-- Notification Modal Ends -->
+
+   <!-- Service Modal Starts -->
+   <div class="modal modal-right fade" id="servicesModal" tabindex="0" aria-labelledby="servicesModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                  <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                     <span class="icon icon-md icon-cart-white m-0"></span>
+                  </span>
+                  <div>
+                     <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Additional
+                        Services</span>
+                     <h3 class="fs-3 m-0 mt-2 fw-bold">Select a Service</h3>
+                  </div>
+               </div>
+               <div class="d-flex align-items-center white-bg px-4 py-3 rounded-2 w-100 shadow">
+                  <span class="icon icon-search-grey"></span>
+                  <input class="w-100 bg-transparent p-0 rounded-2 border-0" id="search" type="text" name="seach"
+                     placeholder="Find a Service">
+               </div>
+               <div class="d-flex pt-4 w-100 btn-tab">
+                  <button data-id="new" type="button"
+                     class="active btn btn-light text-capitalize w-100 me-2 py-2">New</button>
+                  <button data-id="inProcess" type="button" class="btn btn-light text-capitalize w-100 py-2">In
+                     Progress</button>
+               </div>
+            </div>
+
+            <!-- Modal Header Ends -->
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+               <div id="new" class="btn-tab-content" style="display: block;">
+                  <div class="col-12 mb-4">
+                     <div class="mb-3">
+                        <span class="me-2 d-inline-block">
+                           <span class="icon icon-bag-black m-0"></span>
+                        </span>
+                        <span class="text-uppercase font-weight-700 fs-9">Annual Recurring
+                           Service</span>
+                     </div>
+                     <p class="fs-7 opacity-50 font-weight-500">These tasks are added onto your portal
+                        for
+                        ongoing annual compliance automation.</p>
+                  </div>
+                  <div class="col-12 mb-4">
+                     <ul class="list-group list-group-flush rounded-3">
+                        <li class="list-group-item"><a href="./additional-services.html"
+                              class="text-decoration-none">Create New Entity</a></li>
+                        <li class="list-group-item"><a href="./additional-services.html"
+                              class="text-decoration-none">Add Existing Entity</a></li>
+                        <li class="list-group-item"><a href="./additional-services.html"
+                              class="text-decoration-none">DBA|FBN</a></li>
+                        <li class="list-group-item"><a href="./additional-services.html"
+                              class="text-decoration-none">Existing DBA|FBN</a></li>
+                        <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                              class="text-decoration-none">Statement of Information (CA)</a></li>
+                        <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                              class="text-decoration-none">Annual Report (outside of CA)</a></li>
+                        <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                              class="text-decoration-none">Franchise Tax report</a></li>
+                        <li class="list-group-item"><a href="./additional-services-select.html?tab=options"
+                              class="text-decoration-none">Registered Agent</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-12 mb-4">
+                     <div class="mb-3">
+                        <span class="me-2 d-inline-block">
+                           <span class="icon icon-document-black m-0"></span>
+                        </span>
+                        <span class="text-uppercase font-weight-700 fs-9">ONE-OFF FILINGs</span>
+                     </div>
+                     <p class="fs-7 opacity-50 font-weight-500">These tasks are for events that do not
+                        happen
+                        regularly.</p>
+                  </div>
+                  <div class="col-12 mb-4">
+                     <ul class="list-group list-group-flush rounded-3">
+                        <li class="list-group-item">Amendments</li>
+                        <li class="list-group-item">Dissolutions</li>
+                        <li class="list-group-item">Restated articles</li>
+                        <li class="list-group-item">Corrections</li>
+                        <li class="list-group-item">EIN</li>
+                        <li class="list-group-item">25102f</li>
+                        <li class="list-group-item">Conversion</li>
+                        <li class="list-group-item">Certificate of status retrieval</li>
+                        <li class="list-group-item">Document Retrievals (assorted)</li>
+                        <li class="list-group-item">Name Reservation\Verify</li>
+                        <li class="list-group-item">Business license renewal</li>
+                     </ul>
+                  </div>
+                  <div class="col-12 mb-4">
+                     <div class="mb-3">
+                        <span class="me-2 d-inline-block">
+                           <span class="icon icon-folder-black m-0"></span>
+                        </span>
+                        <span class="text-uppercase font-weight-700 fs-9">PRODUCTS</span>
+                     </div>
+                     <p class="fs-7 opacity-50 font-weight-500">These products are for a suite of
+                        documents.
+                     </p>
+                  </div>
+                  <div class="col-12 mb-4">
+                     <ul class="list-group list-group-flush rounded-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                           data-bs-toggle="modal" data-bs-target="#customizedKits">
+                           Corporate kits
+                           <span class="badge">
+                              <span class="me-2 d-inline-block" data-toggle="tooltip" data-placement="top"
+                                 title="Service Info">
+                                 <span class="icon icon-info m-0"></span>
+                              </span>
+                           </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                           data-bs-toggle="modal" data-bs-target="#customizedKits">
+                           Stocks & Certificates
+                           <span class="badge">
+                              <span class="me-2 d-inline-block" data-toggle="tooltip" title="Service Info">
+                                 <span class="icon icon-info m-0"></span>
+                              </span>
+                           </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center cursor-pointer"
+                           data-bs-toggle="modal" data-bs-target="#customizedKits">
+                           Custom Tabs
+                           <span class="badge">
+                              <span class="me-2 d-inline-block" data-toggle="tooltip" title="Service Info">
+                                 <span class="icon icon-info m-0"></span>
+                              </span>
+                           </span>
+                        </li>
+                        <li class="list-group-item">Corporate books (1.5" 2.0")</li>
+                        <li class="list-group-item">Estate Planning books</li>
+                        <li class="list-group-item">Minutes & Bylaws</li>
+                        <li class="list-group-item">Operating Agreement</li>
+                        <li class="list-group-item">Corporate seals</li>
+                     </ul>
+                  </div>
+               </div>
+               <div id="inProcess" class="btn-tab-content">
+                  <div class="d-flex align-items-center pt-1">
+                     <span class="icon icon-sm icon-bag-black"></span>
+                     <span class="text-uppercase fs-9 fw-bold letter-spacing-2">annual recurring
+                        serviceS</span>
+                  </div>
+                  <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These tasks are added onto your portal
+                     for
+                     ongoing annual compliance automation.</p>
+                  <div class="bg-white shadow rounded-2 mb-4">
+                     <table class="table table-spacing">
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <div>
+                                    <span>Bluebird Business Strategies (DE)</span>
+                                    <span class="fs-10 d-block text-secondary">Registered Agent</span>
+                                 </div>
+                              </td>
+                              <td>10/14/2023</td>
+                              <td width="84px" class="p-0">
+                                 <div class="progress progress-xs progress-orange" role="progressbar"
+                                    aria-label="Service" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-orange" style="width:40%">
+                                    </div>
+                                 </div>
+                              </td>
+                              <td>
+                                 <span class="text-orange">60%</span>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>
+                                 <div><span>Elite Enterprises (DE)</span>
+                                    <span class="fs-10 d-block text-secondary">Annual Report
+                                       Filing</span>
+                                 </div>
+                              </td>
+                              <td>10/14/2023</td>
+                              <td width="84px" class="p-0">
+                                 <div class="progress progress-xs progress-green" role="progressbar"
+                                    aria-label="Service" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                                 </div>
+                              </td>
+                              <td><span class="text-green">80%</span></td>
+                           </tr>
+
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <div class="d-flex align-items-center pt-3">
+                     <span class="icon icon-sm icon-document-black"></span>
+                     <span class="text-uppercase fs-9 fw-bold letter-spacing-2">ONE-OFF FILINGs</span>
+                  </div>
+                  <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These tasks are for events that do not
+                     happen
+                     regularly.</p>
+                  <div class="bg-white shadow rounded-2 mb-4">
+                     <table class="table table-spacing">
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <span>Quantum Quest Solutions (TX)</span>
+                                 <span class="fs-10 d-block text-secondary">Prepare and File
+                                    Dissolution</span>
+                              </td>
+                              <td>10/14/2023</td>
+                              <td width="84px" class="p-0">
+                                 <div class="progress progress-xs progress-red" role="progressbar" aria-label="Service"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-red" style="width: 20%">
+                                    </div>
+                                 </div>
+                              </td>
+                              <td><span class="text-red">20%</span></td>
+                           </tr>
+                           <tr>
+                              <td>
+                                 <span>Envision Endurance LLC (CA)</span>
+                                 <span class="fs-10 d-block text-secondary">Prepare and File Amendments
+                                    Article</span>
+                              </td>
+                              <td>10/14/2023</td>
+                              <td width="84px" class="p-0">
+                                 <div class="progress progress-xs progress-orange" role="progressbar"
+                                    aria-label="Service" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-green" style="width: 80%">
+                                    </div>
+                                 </div>
+                              </td>
+                              <td><span class="text-green">80%</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class="d-flex align-items-center pt-3">
+                     <span class="icon icon-sm icon-folder-black"></span>
+                     <span class="text-uppercase fs-9 fw-bold letter-spacing-2">PRODUCTS</span>
+                  </div>
+                  <p class="text-dark text-opacity-50 fs-7 py-4 m-0">These products are for a suite of
+                     documents.
+                  </p>
+                  <div class="bg-white shadow rounded-2 mb-4">
+                     <table class="table table-spacing">
+                        <tbody>
+                           <tr>
+                              <td>
+                                 <span>Ollivander's Tier Technologies (AK)</span>
+                                 <span class="fs-10 d-block text-secondary">Space Saver Kit</span>
+                              </td>
+                              <td>09/18/2023</td>
+                              <td width="84px" class="p-0">
+                                 <div class="progress progress-xs progress-orange" role="progressbar"
+                                    aria-label="Service" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-orange" style="width: 40%">
+                                    </div>
+                                 </div>
+                              </td>
+                              <td>
+                                 <span class="text-orange">40%</span>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>
+                                 <span>Fortitude Finance Co. (NV)</span>
+                                 <span class="fs-10 d-block text-secondary">Short Form</span>
+                              </td>
+                              <td>09/18/2023</td>
+                              <td width="84px" class="p-0">
+                                 <div class="progress progress-xs progress-orange" role="progressbar"
+                                    aria-label="Service" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-orange" style="width: 60%">
+                                    </div>
+                                 </div>
+                              </td>
+                              <td>
+                                 <span class="text-orange">60%</span>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+
+               </div>
+            </div>
+
+            <!-- Modal Body Ends-->
+
+            <div class="modal-footer mt-3 pb-0">
+               <div class="d-flex justify-content-end">
+                  <button type="button" class="btn btn-info px-5 py-3" data-bs-dismiss="modal">Close</button>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <!-- Service Modal Ends -->
+
+   <!-- Notification tabs button when click show and hide footer button -->
+   <script>
+      const markAsReadBtn = document.getElementById('markAsReadBtn');
+      const markAsUnreadBtn = document.getElementById('markAsUnreadBtn');
+
+      document.querySelectorAll('.nav-link').forEach(button => {
+         button.addEventListener('click', () => {
+            markAsReadBtn.classList.add('d-none');
+            markAsUnreadBtn.classList.add('d-none');
+
+            if (button.id === 'unread-notification-tab') {
+               markAsReadBtn.classList.remove('d-none');
+            } else if (button.id === 'read-notification-tab') {
+               markAsUnreadBtn.classList.remove('d-none');
+            }
+         });
+      });
+   </script>
+   <!-- end -->
+
+   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+   <!-- Scripts start-->
+   <script src="dist/js/plugins.min.js"></script>
+   <script src="./src/js/lib/dropzone.min.js"></script>
+   <script src="dist/js/custom.min.js"></script>
+   <script src="dist/js/dashboard-v2_document.js"></script>
+   <script src="dist/js/service-order-process.js"></script>
+   <script src="dist/js/dashboard-v2_invoices.js"></script>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+   <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
+   <script src='./src/js/lib/bootstrap-datepicker.min.js'></script>
+   <!-- Scripts End-->
+   <script> let dashboardType = "dashboard1"; </script>
+   <script>
+      // Initialize all tooltips on the page
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+   </script>
+
+
+   <script>
+      if (/Mobi/.test(navigator.userAgent)) {
+         // if mobile device, use native pickers
+         $(".time input").attr("type", "time");
+      } else {
+         // if desktop device, use DateTimePicker
+         $("#setuptimepicker").datetimepicker({
+            format: "LT",
+            icons: {
+               up: "fa fa-chevron-up",
+               down: "fa fa-chevron-down"
+            }
+         });
+      }
+   </script>
+
+</body>
+
+</html>

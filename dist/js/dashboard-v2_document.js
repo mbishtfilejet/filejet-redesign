@@ -312,6 +312,8 @@ document.addEventListener("DOMContentLoaded", function () {
         case "entityDetailDirectorContainer": return "As of Today";
         case "registeredAgentContainer": return "Filejet and Others";
         case "sopCheckContainer": return "Has Check";
+        case "invoiceContainer":
+        case "paymentContainer": return "Date Range"
         default: return "Status";
       }
     }
@@ -351,7 +353,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ["SOPjurisdictionContainer", "SOPjurisdictionDropdown", "SOPjurisdictionSearch", "SOPjurisdiction-checkbox", "SOPjurisdictionSelectAll"],
     ["registeredAgentContainer", "registeredAgentDropdown", "registeredAgentSearch", "registeredAgent-checkbox"],
     ["sopStatusContainer", "sopStatusDropdown", "sopStatusSearch", "sopStatus-checkbox"],
-    ["sopCheckContainer", "sopCheckDropdown", "sopCheckSearch", "sopCheck-checkbox"]
+    ["sopCheckContainer", "sopCheckDropdown", "sopCheckSearch", "sopCheck-checkbox"],
+    ["invoiceContainer", "invoiceDropdown", "invoiceSearch", "invoice-checkbox"],
+    ["paymentContainer", "paymentDropdown", "paymentSearch", "payment-checkbox"]
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));
