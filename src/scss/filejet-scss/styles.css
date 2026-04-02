@@ -12787,10 +12787,8 @@ input[type=radio] {
   display: inline-block;
 }
 .menu-link .nav-link.active a {
-  background: var(--bs-gray-light);
   border-top-left-radius: 35px;
   border-bottom-left-radius: 35px;
-  box-shadow: inset 10px 3px 36px rgba(0, 0, 0, 0.1);
   color: #6E72EE;
 }
 .menu-link .nav-link.active a::after {
@@ -19440,7 +19438,6 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
 }
 
 .sidebar .menu-link .nav-link.active a {
-  background: var(--bs-purple-filejet) !important;
   box-sizing: border-box;
   box-shadow: -1px 0 0 #aaa9a9, 0 -1px 0 #aaa9a9, 0 1px 0 #aaa9a9;
 }
@@ -19452,17 +19449,26 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   height: inherit;
   width: 10px;
   right: -1.5px;
-  background-color: var(--bs-purple-filejet) !important;
+  background-color: var(--bs-purple-filejet);
   background-image: none !important;
   transform: none !important;
 }
 
+.sidebar .menu-link .nav-link.active.dark a::after {
+  background-color: rgba(223, 223, 223, 0.6);
+}
+
 .sidebar .menu-link .nav-link {
-  position: relative;
+  position: relative !important;
 }
 
 .sidebar .menu-link .nav-link.active {
-  background-color: var(--bs-purple-filejet) !important;
+  background: #FAFAFA;
+  border-top-left-radius: 35px;
+  border-bottom-left-radius: 35px;
+}
+.sidebar .menu-link .nav-link.active.dark {
+  background: linear-gradient(rgba(223, 223, 223, 0.6)), #FAFAFA;
 }
 .sidebar .menu-link .nav-link.active::before {
   content: "";
@@ -20904,9 +20910,6 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   width: 31px;
   height: 31px;
   border-radius: 100%;
-}
-.main-dashboard-v2 .sidebar-v2 .menu-link .nav-link.active a {
-  background: var(--bs-purple-filejet);
 }
 .main-dashboard-v2 .custom-select:focus {
   outline: none;
@@ -23370,12 +23373,6 @@ body:has(.registeredAgentTableCard) button {
   --bs-btn-disabled-border-color: #EAEAEA;
 }
 
-.invoices-dashboard .sidebar .menu-link .nav-link.active a {
-  background: rgba(223, 223, 223, 0.6) !important;
-}
-.invoices-dashboard .sidebar .menu-link .nav-link.active a::after {
-  background-color: rgba(223, 223, 223, 0.6) !important;
-}
 .invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(1), .invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable th:nth-child(2),
 .invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(1),
 .invoices-dashboard .invoicesHistoryTable .dataTables_wrapper .dataTable td:nth-child(2) {

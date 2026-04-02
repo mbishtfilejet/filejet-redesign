@@ -807,7 +807,7 @@ $(document).ready(function () {
     let dataId = tr.data('id') || "";
     let row = table.row(tr);
     let rowId = row?.data()?.id || $(tr).data('level-id');
-    
+
 
     if (tr.hasClass("expanded-row")) {
       collapseRow(rowId);
@@ -1749,3 +1749,22 @@ async function renderSummary(container) {
   }
 
 }
+
+$(function () {
+  const section = $('.entityTabsContent');
+  const navLink = $('.nav-link.active');
+
+  console.log(section)
+
+  if (!section.length) return;
+  function updateNavColor() {
+    const tabsTop = section[0].getBoundingClientRect().top;
+    const navBottom = navLink[0].getBoundingClientRect().bottom;
+
+    // Toggle dark class
+    navLink.toggleClass('dark', tabsTop <= navBottom);
+  }
+
+  updateNavColor();
+  $(window).on('scroll', updateNavColor)
+})
