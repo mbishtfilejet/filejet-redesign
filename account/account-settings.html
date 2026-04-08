@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>File Jet: Dashboard</title>
+   <!-- Styles -->
+   <link rel="stylesheet" href="../src/scss/filejet-style.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+   <!-- date picker -->
+   <link rel='stylesheet'
+      href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
+   <!-- end date -->
+
+   <!-- Scripts -->
+   <script src="../dist/js/jquery.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <style>
+      :root {
+         --bs-body-font-family: "Sora"
+      }
+   </style>
+
+
+</head>
+
+<body class="main-dashboard-v2">
+
+   <div class="filejet-bg dashboard-page  min-vh-100">
+      <div class="container-fluid p-0">
+         <div class="sidebar-wrapper">
+            <div class="sidebar sidebar-v2 min-vh-100 py-3 ps-3">
+               <div class="pb-4">
+                  <a href="../index.html" class="btn btn-info p-2 text-uppercase">
+                     <div class="icon icon-sm icon-back-arrow-white me-0 me-md-2"></div>
+                     <span class="d-none d-lg-inline-block">Go back</span>
+                  </a>
+               </div>
+               <div>
+                  <ul class="menu-link p-0 m-0">
+                     <!-- Profile Settings -->
+                     <li class="nav-link">
+                        <a href="./settings.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-user normal-icon"></span>
+                              <span class="icon icon-users-dark active-icon"></span>
+                           </span>
+
+                           <span class="text nav-text">Profile Settings</span>
+                        </a>
+                     </li>
+                     <!-- Account Settings -->
+                     <li class="nav-link active">
+                        <a href="./account-settings.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-settings-dark normal-icon"></span>
+                              <span class="icon icon-settings-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text position-relative">
+                              Account Settings
+                           </span>
+                        </a>
+                     </li>
+                     <!-- Billing -->
+                     <li class="nav-link">
+                        <a href="./billing.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-group normal-icon"></span>
+                              <span class="icon icon-group-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text">Billing</span>
+                        </a>
+                     </li>
+                     <!-- Users -->
+                     <li class="nav-link">
+                        <a href="./users.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-calender normal-icon"></span>
+                              <span class="icon icon-calender-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text">Users</span>
+                        </a>
+                     </li>
+                     <!-- Account Security -->
+                     <li class="nav-link">
+                        <a href="./account-security.html" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-users-check normal-icon"></span>
+                              <span class="icon icon-users-check-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text position-relative">
+                              Account Security
+                           </span>
+                        </a>
+                     </li>
+                     <!-- Business Licenses -->
+                     <hr class="m-0 me-3">
+                     <li class="nav-link">
+                        <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block font-weight-600">
+                           <span class="text text-break position-relative">
+                              Admin User
+                           </span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="main-content-wrapper">
+            <div class="container-fluid container-lg">
+               <div class="header mt-3">
+                  <div class="row align-items-center d2-search">
+                     <div class="col-3 col-xl-3 col-lg-3">
+                        <h2 class="m-0">
+                           <strong>
+                              Account Settings
+                           </strong>
+                        </h2>
+                     </div>
+                     <div
+                        class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center gap-3 justify-content-between justify-content-md-end">
+                        <div class="profile-nav profile-nav-v2">
+                           <div class="dropdown white-bg p-0 rounded-5">
+
+                              <a class="nav-link dropdown show " href="#" data-bs-toggle="dropdown"
+                                 aria-expanded="true">
+                                 <span class="avatar avatar-lg m-0">
+                                    <img src="../dist/images/avatar.png" alt="" />
+                                 </span>
+                                 <!-- <span class="user-name">Roman Lorem ipsum</span> -->
+                              </a>
+                              <ul class="dropdown-menu" data-bs-popper="static">
+                                 <li>
+                                    <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                       Account
+                                    </span>
+                                 </li>
+                                 <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                       href="./account/settings.html">
+                                       <span class="avatar avatar-sm me-4">
+                                          <img src="../dist/images/avatar.png" alt="">
+                                       </span>
+                                       View Profile
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom" href="#">
+                                       <span class="icon icon-user me-4"></span>
+                                       Switch Account (Member)
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a class="dropdown-item py-3 d-flex align-items-center" href="../../login.html">
+                                       <span class="icon icon-logout me-4"></span>
+                                       Logout
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <hr>
+            </div>
+            <div class="container-fluid container-lg">
+               <div class="main-content pt-3">
+                  <div class="w-100 bg-white p-4 rounded-3 shadow-sm mb-3 account-setting-section">
+                     <div class="row">
+                        <div class="text-center text-md-start">
+                           <img src="../dist/images/logo-round.png"
+                              class="avatar-dimensions rounded-circle border border-2 shadow-sm" alt="file jet logo">
+                        </div>
+                        <div class="col-12">
+                           <div class="row my-4">
+                              <div class="col-lg-6">
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">Entity File #</label>
+                                    <input type="text" class="form-control" id="" value="#4526281992"
+                                       placeholder="Entity file number">
+                                 </fieldset>
+                              </div>
+
+                              <div class="col-lg-6">
+                                 <div class="form-group mb-3">
+                                    <label for="" class="form-label">EMAIL ADDRESS</label>
+                                    <input type="text" class="form-control" placeholder="Email"
+                                       value="Keegan@filejet.com">
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="" class="form-label">PHONE NUMBER</label>
+                                    <input type="text" class="form-control" placeholder="Phone Number"
+                                       value="(554) 545-4544">
+                                 </div>
+                              </div>
+
+                           </div>
+
+                           <div class="row">
+                              <div class="col-lg-12">
+                                 <div class="form-group mb-3">
+                                    <label for="" class="form-label text-uppercase">Business address</label>
+                                    <input type="text" class="form-control" placeholder="Name" value="5901 center dr">
+                                 </div>
+                              </div>
+                              <!-- 
+                              <div class="col-lg-12">
+                                 <div class="form-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Address line 1">
+                                 </div>
+                              </div> -->
+                              <div class="col-4">
+                                 <div class="form-group mb-3">
+                                    <input type="text" class="form-control" placeholder="City" value="Los Angles">
+
+                                 </div>
+                              </div>
+                              <div class="col-4">
+                                 <div class="custom-dropdown">
+                                    <select class="form-select" id="formation-model" required="">
+                                       <option value="" disabled="" hidden="" data-full-text="State">
+                                          State</option>
+                                       <option value="1" data-full-text="Alabama">Alabama</option>
+                                       <option value="2" data-full-text="Alaska">Alaska</option>
+                                       <option value="3" data-full-text="Arizona">Arizona</option>
+                                       <option value="4" data-full-text="Arkansas">Arkansas</option>
+                                       <option value="5" selected="" data-full-text="California">California</option>
+                                       <option value="6" data-full-text="Colorado">Colorado</option>
+                                       <option value="7" data-full-text="Connecticut">Connecticut</option>
+                                       <option value="8" data-full-text="Delaware">Delaware</option>
+                                       <option value="9" data-full-text="District of Columbia">District of
+                                          Columbia
+                                       </option>
+                                       <option value="10" data-full-text="Florida">Florida</option>
+                                       <option value="11" data-full-text="Georgia">Georgia</option>
+                                       <option value="12" data-full-text="Hawaii">Hawaii</option>
+                                       <option value="13" data-full-text="Idaho">Idaho</option>
+                                       <option value="14" data-full-text="Illinois">Illinois</option>
+                                       <option value="15" data-full-text="Indiana">Indiana</option>
+                                       <option value="16" data-full-text="Iowa">Iowa</option>
+                                       <option value="17" data-full-text="Kansas">Kansas</option>
+                                       <option value="18" data-full-text="Kentucky">Kentucky</option>
+                                       <option value="19" data-full-text="Louisiana">Louisiana</option>
+                                       <option value="20" data-full-text="Maine">Maine</option>
+                                       <option value="21" data-full-text="Maryland">Maryland</option>
+                                       <option value="22" data-full-text="Massachusetts">Massachusetts</option>
+                                       <option value="23" data-full-text="Michigan">Michigan</option>
+                                       <option value="24" data-full-text="Minnesota">Minnesota</option>
+                                       <option value="25" data-full-text="Mississippi">Mississippi</option>
+                                       <option value="26" data-full-text="Missouri">Missouri</option>
+                                       <option value="27" data-full-text="Montana">Montana</option>
+                                       <option value="28" data-full-text="Nebraska">Nebraska</option>
+                                       <option value="29" data-full-text="Nevada">Nevada</option>
+                                       <option value="30" data-full-text="New Hampshire">New Hampshire</option>
+                                       <option value="31" data-full-text="New Jersey">New Jersey</option>
+                                       <option value="32" data-full-text="New Mexico">New Mexico</option>
+                                       <option value="33" data-full-text="New York">New York</option>
+                                       <option value="34" data-full-text="North Carolina">North Carolina</option>
+                                       <option value="35" data-full-text="North Dakota">North Dakota</option>
+                                       <option value="36" data-full-text="Ohio">Ohio</option>
+                                       <option value="37" data-full-text="Oklahoma">Oklahoma</option>
+                                       <option value="38" data-full-text="Oregon">Oregon</option>
+                                       <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
+                                       <option value="40" data-full-text="Rhode Island">Rhode Island</option>
+                                       <option value="41" data-full-text="South Carolina">South Carolina</option>
+                                       <option value="42" data-full-text="South Dakota">South Dakota</option>
+                                       <option value="43" data-full-text="Tennessee">Tennessee</option>
+                                       <option value="44" data-full-text="Texas">Texas</option>
+                                       <option value="45" data-full-text="Utah">Utah</option>
+                                       <option value="46" data-full-text="Vermont">Vermont</option>
+                                       <option value="47" data-full-text="Virginia">Virginia</option>
+                                       <option value="48" data-full-text="Washington">Washington</option>
+                                       <option value="49" data-full-text="West Virginia">West Virginia</option>
+                                       <option value="50" data-full-text="Wisconsin">Wisconsin</option>
+                                       <option value="51" data-full-text="Wyoming">Wyoming</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-4">
+                                 <input type="text" class="form-control" placeholder="Zip" value="92880">
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-lg-12">
+                                 <div class="d-flex mt-2">
+                                    <button aria-label="Save Changes" type="button"
+                                       class="btn btn-secondary p-2 py-0 rounded-3 text-white text-capitalize">
+                                       Save Changes
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="w-100 bg-white p-4 rounded-3 shadow-sm mb-3 account-setting-section">
+                     <h5 for="" class="font-weight-700 fs-5 mb-1">Auto File</h5>
+                     <div class="form-check gap-2 d-flex align-items-center">
+                        <input class="form-check-input" type="checkbox" id="enable-auto-file">
+                        <p class="fw-normal rights-label m-0 lh-1">
+                           Enable automatic submission of annual reports
+                           <input id="autofile-date" type="number" value="7" min="0" max="30" maxlength="2"
+                              class="mx-1 d-inline-block border form-control px-2 text-center no-back-image" />
+                           says in advance of the due date when no information is missing
+                        </p>
+                     </div>
+                     <div class="row">
+                        <div class="col-lg-12">
+                           <div class="d-flex mt-2">
+                              <button aria-label="Save Changes" type="button"
+                                 class="btn btn-secondary p-2 py-0 rounded-3 text-white text-capitalize">
+                                 Save Changes
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="w-100 bg-white p-4 rounded-3 shadow-sm mb-3 account-setting-section">
+                     <div class="d-flex align-items-center justify-content-between mb-3 payment-card-header">
+                        <h5 class="font-weight-700 fs-5 m-0">Payment</h5>
+                        <a href="#" data-bs-target="#addPaymentModal" data-bs-toggle="modal" class="d-flex align-items-center text-decoration-none" type="button">
+                           <span class="icon icon-add-circle-plus"></span> Add
+                        </a>
+                     </div>
+                     <div class="border rounded-3 h-auto">
+                        <div class="paymentcard_table overflow-hidden">
+                           <table id="paymentCardTable"
+                              class="table table-striped w-100 table-nowrap long-data-table-listing">
+                              <thead>
+                                 <tr>
+                                    <th data-orderable="false"></th>
+                                    <th data-orderable="false" class="fixed-width-soi-table-50"></th>
+                                    <th data-orderable="false" class="fixed-width-soi-table-80"></th>
+                                    <th data-orderable="false" class="fixed-width-soi-table-80"></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr class="edit-name-parent">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                 </tr>
+                                 <tr class="edit-name-parent">
+                                    <td><span class="item-name">Mastercard</span></td>
+                                    <td>**** **** **** 4242</td>
+                                    <td>
+                                       <div class="d-flex align-items-center gap-2">
+                                          <input type="radio" id="card-default-676" name="card"
+                                             class="form-check-input">
+                                          <label class="form-check-label fw-normal m-0 rights-label"
+                                             for="card-default-676">Set as Default</label>
+                                       </div>
+                                    </td>
+
+                                    <td>
+                                       <div class="d-flex align-items-center">
+                                          <span class="icon icon-new-edit icon-md edit-name cursor-pointer"
+                                             data-toggle="tooltip" title="EDIT"></span>
+                                          <span class="icon icon-save-purple icon-md save-name cursor-pointer"
+                                             data-toggle="tooltip" title="SAVE" style="display: none;"></span>
+                                          <span class="icon icon-new-delete icon-md m-0 me-4 d-inline-block"
+                                             data-toggle="tooltip" title="DELETE" data-bs-toggle="modal"
+                                             data-bs-target="#deletePayment"></span>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr class="edit-name-parent">
+                                    <td><span class="item-name">AMEX</span></td>
+                                    <td>**** **** **** 1121</td>
+                                    <td>
+                                       <div class="d-flex align-items-center gap-2">
+                                          <input type="radio" id="card-default-678" name="card"
+                                             class="form-check-input">
+                                          <label class="form-check-label fw-normal m-0 rights-label"
+                                             for="card-default-678">Set as Default</label>
+                                       </div>
+                                    </td>
+                                    <td>
+                                       <div class="d-flex align-items-center">
+                                          <span class="icon icon-new-edit icon-md edit-name cursor-pointer"
+                                             data-toggle="tooltip" title="EDIT"></span>
+                                          <span class="icon icon-save-purple icon-md save-name cursor-pointer"
+                                             data-toggle="tooltip" title="SAVE" style="display: none;"></span>
+                                          <span class="icon icon-new-delete icon-md m-0 me-4 d-inline-block"
+                                             data-toggle="tooltip" title="DELETE" data-bs-toggle="modal"
+                                             data-bs-target="#deletePayment"></span>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr class="edit-name-parent">
+                                    <td><span class="item-name">ACH Payment</span></td>
+                                    <td>**** **** **** 9212</td>
+                                    <td>
+                                       <div class="d-flex align-items-center gap-2">
+                                          <input type="radio" id="card-default-677" name="card"
+                                             class="form-check-input">
+                                          <label class="form-check-label fw-normal m-0 rights-label"
+                                             for="card-default-677">Set as Default</label>
+                                       </div>
+                                    </td>
+                                    <td>
+                                       <div class="d-flex align-items-center">
+                                          <span class="icon icon-new-edit icon-md edit-name cursor-pointer"
+                                             data-toggle="tooltip" title="EDIT"></span>
+                                          <span class="icon icon-save-purple icon-md save-name cursor-pointer"
+                                             data-toggle="tooltip" title="SAVE" style="display: none;"></span>
+                                          <span class="icon icon-new-delete icon-md m-0 me-4 d-inline-block"
+                                             data-toggle="tooltip" title="DELETE" data-bs-toggle="modal"
+                                             data-bs-target="#deletePayment"></span>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="main-content pt-3">
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Add Payment  Starts -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="addPaymentModal" tabindex="-1"
+      aria-labelledby="addPaymentModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex flex-column w-100 mb-0">
+                  <div class="d-flex align-items-center">
+                     <span class="icon icon-new-group icon-md me-3"></span>
+                     <h4 class="fw-bold m-0">
+                        Add Payment Method</h3>
+                  </div>
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+               <form class="payment-section">
+                  <div class="mb-4 p-3 bg-white rounded-2">
+                     <fieldset>
+                        <label class="form-label">Payment Method<span class="mandatory">*</span></label>
+                        <div class="custom-dropdown">
+                           <select class="form-select pricing-method">
+                              <option value="">No Payment Method</option>
+                              <option value="account-default">Account Default (Visa 1111)</option>
+                              <option value="on-file">On File</option>
+                              <option value="add-new">Add New</option>
+                           </select>
+                        </div>
+                     </fieldset>
+                     <div class="on-file-content mt-4 border rounded-2" style="display: none;">
+                        <div>
+                           <div class="payment-card d-flex odd border-bottom">
+                              <div class="d-flex align-items-center">
+                                 <div class="ms-2 d-flex">
+                                    <div class="methodiv">Mastercard </div>
+                                    <div class="methodcard">Mastercard ...4444</div>
+                                 </div>
+                              </div>
+                              <div class="d-flex align-items-start defaultdiv">
+                                 <span class="btn btn-outline-success btn-sm">Default</span>
+                              </div>
+                           </div>
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column even border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv text-disabled">ACH Payment</div>
+                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="d-flex align-items-start defaultdiv" data-toggle="tooltip"
+                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
+                                    <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
+                                 </div>
+
+
+                              </div>
+                           </div>
+
+                           <!-- Payment Method 2 -->
+                           <div class="container p-0 d-flex flex-column odd border-bottom">
+                              <div class="payment-card">
+                                 <div class="d-flex align-items-center">
+                                    <div class="ms-2 d-flex">
+                                       <div class="methodiv">ACH Payment</div>
+                                       <div class="methodcard">Stripe Test Bank ...4786</div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </div>
+
+                           <!-- Payment Method 3 -->
+                           <div class="payment-card d-flex even ">
+                              <div class="d-flex align-items-center">
+                                 <div class="ms-2 d-flex">
+                                    <div class="methodiv">Card 2</div>
+                                    <div class="methodcard">Mastercard ...1111</div>
+                                 </div>
+                              </div>
+                              <div class="d-flex align-items-start defaultdiv">
+                              </div>
+
+                           </div>
+
+
+
+                        </div>
+                     </div>
+                     <div class="add-new-content mt-4" style="display: none;">
+                        <div class="d-flex justify-content-between">
+                           <span class="fw-bold">SELECT METHOD</span>
+                           <div class="d-flex align-items-center">
+                              <div class="form-check me-4">
+                                 <input class="form-check-input ach-option" id="achCheck_payMethod" type="checkbox"
+                                    checked>
+                                 <label class="form-check-label rights-label" for="achCheck_payMethod">ACH</label>
+                              </div>
+                              <div class="form-check">
+                                 <input class="form-check-input credit-option" id="creditCheck_payMethod"
+                                    type="checkbox">
+                                 <label class="form-check-label rights-label" for="creditCheck_payMethod">Credit
+                                    Card</label>
+                              </div>
+                           </div>
+
+                        </div>
+
+                        <!-- ACH Form -->
+                        <div class="ach-form mt-4" style="display: none;">
+                           <fieldset class="mb-4">
+                              <label class="form-label">Account Holder Name</label>
+                              <input type="text" class="form-control" placeholder="Name">
+                           </fieldset>
+                           <div class="d-flex justify-content-between align-items-center upload-group w-100 mb-4">
+                              <span class="fw-bold text-uppercase">ACCOUNT TYPE</span>
+                              <div class="d-flex align-items-center flex-column">
+                                 <div class="d-flex">
+                                    <div class="form-check me-4 typecheckradio">
+                                       <input class="form-check-input no-checkbox" type="radio" id="ACtype_payMethod"
+                                          name="customArticles-2" checked="">
+                                       <label class="form-check-label rights-label "
+                                          for="ACtype_payMethod">Individual</label>
+                                    </div>
+                                    <div class="form-check typecheckradio">
+                                       <input class="form-check-input yes-checkbox" type="radio" id="ACompany_payMethod"
+                                          name="customArticles-2">
+                                       <label class="form-check-label rights-label " for="ACompany_payMethod">
+                                          Company</label>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <fieldset class="mb-4">
+                              <div class="d-flex justify-content-between">
+                                 <label class="form-label">Routing Number</label>
+                                 <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative">
+                                    <div class="text-start tooltipText tooltipRight"> Please note that the
+                                       Routing/Account numbers must have a minimum of 12 digits when
+                                       adding. Your
+                                       Routing/Account number is less than 12 digits, you may add zeros at
+                                       the beginning
+                                       of the Routing/Account number. (see example)</div>
+                                 </div>
+                              </div>
+                              <span>Also known as ABA Number</span>
+                              <input type="text" class="form-control" placeholder="EX. 11000000">
+                           </fieldset>
+                           <fieldset>
+                              <label class="form-label">Account Number</label>
+                              <input type="text" class="form-control" placeholder="EX. 000123455678">
+                           </fieldset>
+                           <div class="mt-4">
+                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
+                                 SAVE
+                              </button>
+                           </div>
+                        </div>
+
+                        <!-- Credit Card Form -->
+                        <div class="credit-card-form mt-4" style="display: none;">
+                           <fieldset class="mb-4">
+                              <label class="form-label">Card Holder Name</label>
+                              <input type="text" class="form-control" placeholder="Name">
+                           </fieldset>
+                           <fieldset class="mb-4">
+                              <label class="form-label">Card Details</label>
+                              <input type="text" class="form-control" placeholder="**** **** **** 1111">
+                           </fieldset>
+                           <div class="d-flex justify-content-between">
+                              <fieldset class="w-50 me-2">
+                                 <label class="form-label">Expiry Date</label>
+                                 <input type="text" class="form-control" placeholder="MM/YY">
+                              </fieldset>
+                              <fieldset class="w-50 ms-2">
+                                 <label class="form-label">CVV</label>
+                                 <input type="text" class="form-control" placeholder="CVV">
+                              </fieldset>
+                           </div>
+                           <div class="mt-4">
+                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
+                                 SAVE
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+            <!-- Modal Body End -->
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Add
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Add Payment  Starts -->
+
+
+   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+   <!-- Scripts start-->
+   <script src="../dist/js/plugins.min.js"></script>
+   <script src="../dist/js/custom.min.js"></script>
+   <script src="../dist/js/service-order-process.js"></script>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+   <script
+      src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
+   <!-- Scripts End-->
+   <script>
+      // Initialize all tooltips on the page
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+   </script>
+
+
+   <script>
+      if (/Mobi/.test(navigator.userAgent)) {
+         // if mobile device, use native pickers
+         $(".time input").attr("type", "time");
+      } else {
+         // if desktop device, use DateTimePicker
+         $("#setuptimepicker").datetimepicker({
+            format: "LT",
+            icons: {
+               up: "fa fa-chevron-up",
+               down: "fa fa-chevron-down"
+            }
+         });
+      }
+   </script>
+
+
+
+
+
+</body>
+
+</html>
