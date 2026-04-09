@@ -1267,15 +1267,8 @@ editSaveableContent();
 
 // code for multiple file upload and drag & drop
 function multipleFileUploadInput() {
-  document.querySelectorAll(".dropupload-zone__input").forEach(function (inputElement, index) {
+  document.querySelectorAll(".dropupload-zone__prompt").forEach(function (inputElement, index) {
     const dropZoneElement = inputElement.closest('.dropupload-zone');
-
-    inputElement.addEventListener("change", (e) => {
-      if (inputElement.files.length) {
-        updateUploadFileList(dropZoneElement, index, inputElement.files);
-      }
-    });
-
     dropZoneElement.addEventListener("dragover", (e) => {
       e.preventDefault();
       dropZoneElement.classList.add("dragupload-over");
@@ -1287,50 +1280,46 @@ function multipleFileUploadInput() {
 
     dropZoneElement.addEventListener("drop", (e) => {
       e.preventDefault();
-      if (e.dataTransfer?.files?.length) {
-        updateUploadFileList(dropZoneElement, index, e.dataTransfer.files);
-      }
-
       dropZoneElement.classList.remove("dragupload-over");
     });
   });
 }
 
 // function for listing upload/drag & drop files
-function updateUploadFileList(dropZoneElement, index, files) {
-  let mainWrapperElement = dropZoneElement.closest("form")
-  let uploadFileListElement = document.querySelector(`#uploadFilelist_${index}`);
+// function updateUploadFileList(dropZoneElement, index, files) {
+//   let mainWrapperElement = dropZoneElement.closest("form")
+//   let uploadFileListElement = document.querySelector(`#uploadFilelist_${index}`);
 
-  if (!uploadFileListElement) {
-    uploadFileListElement = document.createElement("div");
-    uploadFileListElement.className = "uploadfilelist-wrapper m-0 mb-4 p-3 bg-white rounded-2";
-    uploadFileListElement.id = `uploadFilelist_${index}`;
-    mainWrapperElement.append(uploadFileListElement)
-  }
-  const htmlContent = [...files].map((item, index) => {
-    let filename = item.name.split(".");
-    let ext = filename.pop();
-    filename = filename.join("")
-    return `<div class="uploadfilelist-item editable-parent">
-              <div class="uploadfile-info">
-                <span class="icon ${ext === "pdf" ? "icon-pdf-file icon-lg" : "icon-document-gray icon-lg"} m-0"></span>
-                <div class="d-flex flex-column"> 
-                  <span class="text-capitalize input-item">${filename}</span>
-                  <span class="context">Loream iplslum</span>
-                </div>
-              </div>
-              <div class="action">
-                <span class="icon icon-new-edit edit-content icon-lg m-0" data-toggle="tooltip"
-                  aria-label="EDIT" data-bs-original-title="EDIT"></span>
-                <span class="icon icon-save-purple save-content icon-lg m-0"
-                  data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE"></span>
-                <span class="icon icon-new-delete icon-lg m-0" data-toggle="tooltip"
-                  aria-label="DELETE" data-bs-original-title="DELETE"></span>
-              </div>
-            </div>`;
-  }).join("");
-  uploadFileListElement.innerHTML += htmlContent;
-}
+//   if (!uploadFileListElement) {
+//     uploadFileListElement = document.createElement("div");
+//     uploadFileListElement.className = "uploadfilelist-wrapper m-0 mb-4 p-3 bg-white rounded-2";
+//     uploadFileListElement.id = `uploadFilelist_${index}`;
+//     mainWrapperElement.append(uploadFileListElement)
+//   }
+//   const htmlContent = [...files].map((item, index) => {
+//     let filename = item.name.split(".");
+//     let ext = filename.pop();
+//     filename = filename.join("")
+//     return `<div class="uploadfilelist-item editable-parent">
+//               <div class="uploadfile-info">
+//                 <span class="icon ${ext === "pdf" ? "icon-pdf-file icon-lg" : "icon-document-gray icon-lg"} m-0"></span>
+//                 <div class="d-flex flex-column"> 
+//                   <span class="text-capitalize input-item">${filename}</span>
+//                   <span class="context">Loream iplslum</span>
+//                 </div>
+//               </div>
+//               <div class="action">
+//                 <span class="icon icon-new-edit edit-content icon-lg m-0" data-toggle="tooltip"
+//                   aria-label="EDIT" data-bs-original-title="EDIT"></span>
+//                 <span class="icon icon-save-purple save-content icon-lg m-0"
+//                   data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE"></span>
+//                 <span class="icon icon-new-delete icon-lg m-0" data-toggle="tooltip"
+//                   aria-label="DELETE" data-bs-original-title="DELETE"></span>
+//               </div>
+//             </div>`;
+//   }).join("");
+//   uploadFileListElement.innerHTML += htmlContent;
+// }
 multipleFileUploadInput();
 
 
@@ -1371,6 +1360,16 @@ $(function () {
           $(previewSelector).removeClass('d-none');
         }).on('uploadprogress', function (file, progress, bytesSent) {
         }).on('removedfile', function (file) {
+          const btn = $(file.previewElement).find('[data-dz-remove]');
+          const tooltip = bootstrap.Tooltip.getInstance(btn);
+          if (tooltip) {
+            tooltip.dispose();
+          }
+
+
+          if (this.files.length === 0) {
+            $(previewSelector).addClass('d-none');
+          }
         })
       }
 
