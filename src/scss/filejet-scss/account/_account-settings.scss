@@ -24,56 +24,49 @@
 .paymentcard_table {
     @extend .entitytable;
 
-    .dataTables_wrapper {
-        .dataTables_scrollHead {
+    table {
+        tr:first-child {
+            border-top: 0px transparent !important;
 
-            thead {
-                display: none !important;
-                opacity: 0 !important;
-                pointer-events: none;
+            td:first-child {
+                border-top-left-radius: 6px !important;
             }
 
-        }
-
-        .dataTables_scrollBody {
-            padding-top: 0px !important;
-
-
-            table {
-                tr:first-child {
-                    display: none !important;
-                    opacity: 0 !important;
-                    pointer-events: none;
-
-                }
-
-                tr:nth-child(2) {
-                    border-top: 0px transparent !important;
-
-                    td:first-child {
-                        border-top-left-radius: 6px !important;
-                    }
-
-                    td:last-child {
-                        border-top-right-radius: 6px !important;
-                    }
-                }
-
-                tr:last-child {
-                    & td:first-child {
-                        border-bottom-left-radius: 6px;
-                    }
-
-                    & td:last-child {
-                        border-bottom-right-radius: 6px;
-                    }
-                }
-
-                .form-check-label {
-                    text-transform: none !important;
-                }
+            td:last-child {
+                border-top-right-radius: 6px !important;
             }
         }
+
+        tr{
+            td:nth-child(1),
+            td:nth-child(3){
+                min-width: 140px;
+            }
+
+            
+            td:nth-child(2){
+                min-width: 160px;
+            }
+            td:last-child{
+                width: 100px;
+            }
+        }
+
+        tr:last-child {
+            & td:first-child {
+                border-bottom-left-radius: 6px;
+            }
+
+            & td:last-child {
+                border-bottom-right-radius: 6px;
+            }
+        }
+
+        .form-check-label {
+            text-transform: none !important;
+        }
+
+
     }
 
     .icon-new-edit,
@@ -104,6 +97,7 @@
     }
 }
 
-.notification-section{
+.notification-section {
     padding: 0.9rem;
+    color: var(--bs-nw-gray-600);
 }
