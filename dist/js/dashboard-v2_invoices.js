@@ -98,3 +98,34 @@ $(document).on('shown.bs.tab', function (e) {
     const tableKey = currentTab.data('table-key');
     $(`#${tableKey}`).DataTable().columns.adjust();
 });
+
+
+$(function () {
+    $('input[name="daterange"]').daterangepicker({
+        startDate: moment().subtract(89, 'days'),
+        endDate: moment(),
+        ranges: {
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'Last 90 Days': [moment().subtract(89, 'days'), moment()],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            '3 Months': [moment().subtract(2, 'month').startOf('month'), moment().endOf('month')],
+            '6 Months': [moment().subtract(5, 'month').startOf('month'), moment().endOf('month')],
+            '1 Year': [moment().subtract(11, 'month').startOf('month'), moment().endOf('month')]
+        },
+        opens: 'center',
+        linkedCalendars: false,
+        alwaysShowCalendars: true,
+        cancelClass: 'btn-secondary',
+        autoUpdateInput: false,
+    });
+
+    $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
+        if (picker.chosenLabel === "Custom Range") {
+            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        }else{
+            $(this).val(picker.chosenLabel)
+        }
+    });
+    $('input[name="daterange"]').val('Last 90 Days');
+})

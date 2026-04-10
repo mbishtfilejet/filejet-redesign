@@ -35,8 +35,8 @@
          <div class="sidebar-wrapper">
             <div class="sidebar sidebar-v2 min-vh-100 py-3 ps-3">
                <div class="pb-4">
-                  <a href="../index.html" class="btn btn-info p-2 text-uppercase">
-                     <div class="icon icon-sm icon-back-arrow-white me-0 me-md-2"></div>
+                  <a href="../index.html" class="btn btn-info p-2 text-uppercase d-inline-flex align-items-center">
+                     <span class="icon icon-md icon-arrow-left m-0 me-md-2"></span>
                      <span class="d-none d-lg-inline-block">Go back</span>
                   </a>
                </div>
@@ -46,8 +46,8 @@
                      <li class="nav-link">
                         <a href="./settings.html" class="text-decoration-none ps-3 py-3 d-block">
                            <span>
-                              <span class="icon icon-user normal-icon"></span>
-                              <span class="icon icon-users-dark active-icon"></span>
+                              <span class="icon icon-profile normal-icon"></span>
+                              <span class="icon icon-profile-purple active-icon"></span>
                            </span>
 
                            <span class="text nav-text">Profile Settings</span>
@@ -57,8 +57,8 @@
                      <li class="nav-link active">
                         <a href="./account-settings.html" class="text-decoration-none ps-3 py-3 d-block">
                            <span>
-                              <span class="icon icon-settings-dark normal-icon"></span>
-                              <span class="icon icon-settings-purple active-icon"></span>
+                              <span class="icon icon-accountsettings normal-icon"></span>
+                              <span class="icon icon-accountsettings-purple active-icon"></span>
                            </span>
                            <span class="text nav-text position-relative">
                               Account Settings
@@ -69,8 +69,8 @@
                      <li class="nav-link">
                         <a href="./billing.html" class="text-decoration-none ps-3 py-3 d-block">
                            <span>
-                              <span class="icon icon-group normal-icon"></span>
-                              <span class="icon icon-group-purple active-icon"></span>
+                              <span class="icon icon-billing normal-icon"></span>
+                              <span class="icon icon-billing-purple active-icon"></span>
                            </span>
                            <span class="text nav-text">Billing</span>
                         </a>
@@ -79,8 +79,8 @@
                      <li class="nav-link">
                         <a href="./users.html" class="text-decoration-none ps-3 py-3 d-block">
                            <span>
-                              <span class="icon icon-calender normal-icon"></span>
-                              <span class="icon icon-calender-purple active-icon"></span>
+                              <span class="icon icon-users normal-icon"></span>
+                              <span class="icon icon-users-purple active-icon"></span>
                            </span>
                            <span class="text nav-text">Users</span>
                         </a>
@@ -89,8 +89,8 @@
                      <li class="nav-link">
                         <a href="./account-security.html" class="text-decoration-none ps-3 py-3 d-block">
                            <span>
-                              <span class="icon icon-users-check normal-icon"></span>
-                              <span class="icon icon-users-check-purple active-icon"></span>
+                              <span class="icon icon-security normal-icon"></span>
+                              <span class="icon icon-security-purple active-icon"></span>
                            </span>
                            <span class="text nav-text position-relative">
                               Account Security
@@ -103,6 +103,17 @@
                         <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block font-weight-600">
                            <span class="text text-break position-relative">
                               Admin User
+                           </span>
+                        </a>
+                     </li>
+                     <li class="nav-link">
+                        <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block">
+                           <span>
+                              <span class="icon icon-document normal-icon"></span>
+                              <span class="icon icon-document-purple active-icon"></span>
+                           </span>
+                           <span class="text nav-text position-relative">
+                              Policies
                            </span>
                         </a>
                      </li>
@@ -141,7 +152,7 @@
                                  </li>
                                  <li>
                                     <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
-                                       href="./account/settings.html">
+                                       href="../account/settings.html">
                                        <span class="avatar avatar-sm me-4">
                                           <img src="../dist/images/avatar.png" alt="">
                                        </span>
@@ -336,11 +347,15 @@
                         </div>
                         <div class="border rounded-3 w-100">
                            <div class="paymentcard_table overflow-auto">
-                              <table id="paymentCardTable"
-                                 class="table table-striped w-100 table-nowrap">
+                              <table id="paymentCardTable" class="table table-striped w-100 table-nowrap">
                                  <tbody>
                                     <tr class="edit-name-parent even">
-                                       <td><span class="item-name">Mastercard</span></td>
+                                       <td>
+                                          <div class="d-flex align-items-center gap-2">
+                                             <input id="" class="d-flex form-check-input" type="checkbox"><span
+                                                class="item-name">Mastercard</span>
+                                          </div>
+                                       </td>
                                        <td>Mastercard ...4444</td>
                                        <td>
                                           <div class="d-flex align-items-center gap-2">
@@ -353,18 +368,25 @@
 
                                        <td>
                                           <div class="d-flex align-items-center justify-content-end">
-                                             <span class="icon icon-new-edit icon-md edit-name flex-shrink-0cursor-pointer"
+                                             <span
+                                                class="icon icon-new-edit icon-md edit-name flex-shrink-0cursor-pointer"
                                                 data-toggle="tooltip" title="EDIT"></span>
-                                             <span class="icon icon-save-purple icon-md save-name flex-shrink-0 cursor-pointer"
+                                             <span
+                                                class="icon icon-save-purple icon-md save-name flex-shrink-0 cursor-pointer"
                                                 data-toggle="tooltip" title="SAVE" style="display: none;"></span>
                                              <span class="icon icon-new-delete icon-md m-0 me-4 flex-shrink-0""
-                                                data-toggle="tooltip" title="DELETE" data-bs-toggle="modal"
+                                                data-toggle=" tooltip" title="DELETE" data-bs-toggle="modal"
                                                 data-bs-target="#deletePayment"></span>
                                           </div>
                                        </td>
                                     </tr>
                                     <tr class="edit-name-parent odd">
-                                       <td><span class="item-name">AMEX</span></td>
+                                       <td>
+                                          <div class="d-flex align-items-center gap-2">
+                                             <input id="" class="d-flex form-check-input" type="checkbox">
+                                             <span class="item-name">AMEX</span>
+                                          </div>
+                                       </td>
                                        <td>Stripe Test Bank ...4786</td>
                                        <td>
                                           <div class="d-flex align-items-center gap-2">
@@ -376,9 +398,11 @@
                                        </td>
                                        <td>
                                           <div class="d-flex align-items-center justify-content-end">
-                                             <span class="icon icon-new-edit icon-md edit-name flex-shrink-0 cursor-pointer"
+                                             <span
+                                                class="icon icon-new-edit icon-md edit-name flex-shrink-0 cursor-pointer"
                                                 data-toggle="tooltip" title="EDIT"></span>
-                                             <span class="icon icon-save-purple icon-md save-name flex-shrink-0 cursor-pointer"
+                                             <span
+                                                class="icon icon-save-purple icon-md save-name flex-shrink-0 cursor-pointer"
                                                 data-toggle="tooltip" title="SAVE" style="display: none;"></span>
                                              <span class="icon icon-new-delete icon-md m-0 me-4 flex-shrink-0"
                                                 data-toggle="tooltip" title="DELETE" data-bs-toggle="modal"
@@ -387,7 +411,12 @@
                                        </td>
                                     </tr>
                                     <tr class="edit-name-parent even">
-                                       <td><span class="item-name">ACH Payment</span></td>
+                                       <td>
+                                          <div class="d-flex align-items-center gap-2">
+                                             <input id="" class="d-flex form-check-input" type="checkbox">
+                                             <span class="item-name">ACH Payment</span>
+                                          </div>
+                                       </td>
                                        <td>Mastercard ...4444</td>
                                        <td>
                                           <div class="d-flex align-items-center gap-2">
@@ -399,9 +428,11 @@
                                        </td>
                                        <td>
                                           <div class="d-flex align-items-center justify-content-end">
-                                             <span class="icon icon-new-edit icon-md edit-name flex-shrink-0cursor-pointer"
+                                             <span
+                                                class="icon icon-new-edit icon-md edit-name flex-shrink-0cursor-pointer"
                                                 data-toggle="tooltip" title="EDIT"></span>
-                                             <span class="icon icon-save-purple icon-md save-name flex-shrink-0 cursor-pointer"
+                                             <span
+                                                class="icon icon-save-purple icon-md save-name flex-shrink-0 cursor-pointer"
                                                 data-toggle="tooltip" title="SAVE" style="display: none;"></span>
                                              <span class="icon icon-new-delete icon-md m-0 me-4 flex-shrink-0"
                                                 data-toggle="tooltip" title="DELETE" data-bs-toggle="modal"
@@ -457,8 +488,7 @@
                                        for="notes-all">All</label>
                                  </span>
                                  <span class="col-auto mx-3 form-check d-flex align-items-center gap-2">
-                                    <input type="radio" id="notes-mention" name="notes-items"
-                                       class="form-check-input">
+                                    <input type="radio" id="notes-mention" name="notes-items" class="form-check-input">
                                     <label class="form-check-label fw-normal m-0 rights-label"
                                        for="notes-mention">Mentions</label>
                                  </span>
@@ -473,7 +503,8 @@
                               <span class="col-3 form-check-label ps-4 fw-normal">Activity Logs</span>
                               <span class="col-sm-9 row g-0">
                                  <span class="col-auto me-3 form-check d-flex align-items-center gap-2">
-                                    <input type="radio" id="activity-all" name="activity-items" class="form-check-input">
+                                    <input type="radio" id="activity-all" name="activity-items"
+                                       class="form-check-input">
                                     <label class="form-check-label fw-normal m-0 rights-label"
                                        for="activity-all">All</label>
                                  </span>
@@ -484,7 +515,8 @@
                                        for="activity-mention">Mentions</label>
                                  </span>
                                  <span class="col-auto ms-3 form-check d-flex align-items-center gap-2">
-                                    <input type="radio" id="activity-none" name="activity-items" class="form-check-input">
+                                    <input type="radio" id="activity-none" name="activity-items"
+                                       class="form-check-input">
                                     <label class="form-check-label fw-normal m-0 rights-label"
                                        for="activity-none">None</label>
                                  </span>
