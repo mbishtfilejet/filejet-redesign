@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function getMaxSelection() {
       // added-code-start this need to be added to actual code of setupMultiSelect
-      if (window.innerWidth < 1600 && ["sopStatusContainer", "sopCheckContainer", "SOPjurisdictionContainer", "RAjurisdictionContainer"].includes(containerId)) return 1;
+      if (window.innerWidth <= 1600 && ["sopStatusContainer", "sopCheckContainer", "SOPjurisdictionContainer", "RAjurisdictionContainer"].includes(containerId)) return 1;
       // added-code-end
 
       if (window.innerWidth < 1300) {
@@ -1752,8 +1752,6 @@ async function renderSummary(container) {
 $(function () {
   const section = $('.entityTabsContent');
   const navLink = $('.nav-link.active');
-
-  console.log(section)
 
   if (!section.length) return;
   function updateNavColor() {

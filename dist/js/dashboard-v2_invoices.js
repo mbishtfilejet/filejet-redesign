@@ -35,7 +35,7 @@ $(function () {
             {
                 data: null, render: function () {
                     return `
-                    <button data-bs-toggle="modal" data-bs-target="#" aria-label="View Invoice" 
+                    <button data-bs-toggle="modal" data-bs-target="#invoiceModal" aria-label="View Invoice" 
                         type="button" class="btn btn-secondary rounded-1 px-3 py-2 m-0 text-white">
                         View Invoice
                     </button>
@@ -75,7 +75,7 @@ $(function () {
             {
                 data: null, render: function () {
                     return `
-                    <button data-bs-toggle="modal" data-bs-target="#" aria-label="View Invoice" 
+                    <button data-bs-toggle="modal" data-bs-target="#invoiceModal" aria-label="View Invoice" 
                         type="button" class="btn btn-secondary rounded-1 px-3 py-2 m-0 text-white">
                         View Invoice
                     </button>
@@ -102,30 +102,31 @@ $(document).on('shown.bs.tab', function (e) {
 
 $(function () {
     $('input[name="daterange"]').daterangepicker({
-        startDate: moment().subtract(89, 'days'),
-        endDate: moment(),
-        ranges: {
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'Last 90 Days': [moment().subtract(89, 'days'), moment()],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-            '3 Months': [moment().subtract(2, 'month').startOf('month'), moment().endOf('month')],
-            '6 Months': [moment().subtract(5, 'month').startOf('month'), moment().endOf('month')],
-            '1 Year': [moment().subtract(11, 'month').startOf('month'), moment().endOf('month')]
-        },
-        opens: 'center',
-        linkedCalendars: false,
-        alwaysShowCalendars: true,
-        cancelClass: 'btn-secondary',
-        autoUpdateInput: false,
-    });
+            ranges: {
+                'Today': [moment(), moment()],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'Last 90 Days': [moment().subtract(89, 'days'), moment()],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                '3 Months': [moment().subtract(2, 'month').startOf('month'), moment().endOf('month')],
+                '6 Months': [moment().subtract(5, 'month').startOf('month'), moment().endOf('month')],
+                '1 Year': [moment().subtract(11, 'month').startOf('month'), moment().endOf('month')]
+            },
+            opens: 'center',
+            linkedCalendars: false,
+            alwaysShowCalendars: true,
+            cancelClass: 'btn-secondary',
+            locale: {
+                format: 'MMM D, YYYY',
+            },
+            startDate: moment().subtract(89, 'days'),
+            endDate: moment(),
+        });
 
-    $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
-        if (picker.chosenLabel === "Custom Range") {
-            $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-        }else{
-            $(this).val(picker.chosenLabel)
-        }
-    });
-    $('input[name="daterange"]').val('Last 90 Days');
+    // $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
+    //     if (picker.chosenLabel !== "Custom Range") {
+    //         $(this).val(picker.chosenLabel)
+    //     }
+    // });
+    // $('input[name="daterange"]').val('Last 90 Days');
 })

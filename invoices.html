@@ -206,10 +206,18 @@
                               <option value="1" data-full-text="All" title="All">All</option>
                               <option value="2" data-full-text="Unassigned" title="Unassigned">Unassigned</option>
                               <option value="3" data-full-text="Rachel Feder" title="Rachel Feder">Rachel Feder</option>
-                              <option value="4" data-full-text="Gerald S. Papazian" title="Gerald S. Papazian">Gerald S. Papazian</option>
-                              <option value="5" data-full-text="CHARLEY M. STOLL, A PROFESSIONAL CORPORATION CHARLEY M. STOLL, A PROFESSIONAL CORPORATION" title="CHARLEY M. STOLL, A PROFESSIONAL CORPORATION CHARLEY M. STOLL, A PROFESSIONAL CORPORATION">CHARLEY M. STOLL, A PROFES...</option>
-                              <option value="5" data-full-text="Charly M. Stoll, A Professional Corporation Charly M. Stoll, A Professional Corporation" title="Charly M. Stoll, A Professional Corporation Charly M. Stoll, A Professional Corporation">Charly M. Stoll, A Profess...</option>
-                              <option value="6" data-full-text="Christopher Law Group, Inc." title="Christopher Law Group, Inc.">Christopher Law Group, Inc...</option>
+                              <option value="4" data-full-text="Gerald S. Papazian" title="Gerald S. Papazian">Gerald S.
+                                 Papazian</option>
+                              <option value="5"
+                                 data-full-text="CHARLEY M. STOLL, A PROFESSIONAL CORPORATION CHARLEY M. STOLL, A PROFESSIONAL CORPORATION"
+                                 title="CHARLEY M. STOLL, A PROFESSIONAL CORPORATION CHARLEY M. STOLL, A PROFESSIONAL CORPORATION">
+                                 CHARLEY M. STOLL, A PROFES...</option>
+                              <option value="5"
+                                 data-full-text="Charly M. Stoll, A Professional Corporation Charly M. Stoll, A Professional Corporation"
+                                 title="Charly M. Stoll, A Professional Corporation Charly M. Stoll, A Professional Corporation">
+                                 Charly M. Stoll, A Profess...</option>
+                              <option value="6" data-full-text="Christopher Law Group, Inc."
+                                 title="Christopher Law Group, Inc.">Christopher Law Group, Inc...</option>
                            </select>
                         </div>
                         <div class="notification position-relative white-bg p-10">
@@ -291,7 +299,7 @@
                         <div class="tab-pane fade show active" id="en-invoiceHistory-tab-pane" role="tabpanel"
                            aria-labelledby="en-invoiceHistory-tab" tabindex="0">
                            <div class="row g-2">
-                              <div class="col-12 col-md-5 mb-2 search-table-col">
+                              <div class="col-12 col-md-4 flex-grow-1 mb-2 search-table-col">
                                  <div
                                     class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
                                     <span class="icon icon-search-grey icon-sm opacity-25"></span>
@@ -300,19 +308,13 @@
                                  </div>
                               </div>
 
-                              <div class="filter2-dropdown col-12 col-md-3 invoice-table-col mb-2 dropdown">
+                              <div class="filter2-dropdown col-12 col-md-3 flex-grow-1 invoice-table-col mb-2">
                                  <div
-                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
-                                    id="invoiceContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                    tabindex="0">
-                                    <input type="text" class="search-input" id="invoiceSearch"
-                                       placeholder="Date Range" autocomplete="off">
+                                    class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1">
+                                    <input type="text" name="daterange"
+                                       class="form-control history-datepicker w-100 border-0 p-0 my-auto"
+                                       placeholder="Date Range" value="" />
                                  </div>
-                                 <ul class="dropdown-menu search-disabled" id="invoiceDropdown">
-                                    <li><label class="dropdown-item"><input type="checkbox" checked
-                                             class="form-check-input invoice-checkbox me-2" data-value="Last 90 Days">
-                                          Last 90 Days</label></li>
-                                 </ul>
                               </div>
 
                               <div class="filter2-dropdown col-12 col-md-3 flex-grow-1 status-table-col mb-2 dropdown">
@@ -394,17 +396,11 @@
 
                               <div class="filter2-dropdown col-12 col-md-3 flex-grow-1 payment-table-col mb-2 dropdown">
                                  <div
-                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
-                                    id="paymentContainer" data-bs-toggle="dropdown" aria-expanded="false"
-                                    tabindex="0">
-                                    <input type="text" class="search-input" id="paymentSearch"
-                                       placeholder="Date Range" autocomplete="off">
+                                    class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1">
+                                    <input type="text" name="daterange"
+                                       class="form-control history-datepicker w-100 border-0 p-0 my-auto"
+                                       placeholder="Date Range" value="" />
                                  </div>
-                                 <ul class="dropdown-menu search-disabled" id="paymentDropdown">
-                                    <li><label class="dropdown-item"><input type="checkbox" checked
-                                             class="form-check-input payment-checkbox me-2" data-value="Last 90 Days">
-                                          Last 90 Days</label></li>
-                                 </ul>
                               </div>
 
                               <div class="col-12 col-md-auto px-1 mb-2">
@@ -451,6 +447,45 @@
          </div>
       </div>
    </div>
+
+   <!-- Invoice Modal Starts -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="invoiceModal" tabindex="-1"
+      aria-labelledby="invoiceModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-xl my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <!-- Modal Header -->
+            <div class="modal-header flex-wrap">
+               <div class="d-flex align-items-center w-100 pb-2">
+                  <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                     <span class="icon icon-md icon-clipboard-white m-0"></span>
+                  </span>
+                  <div>
+                     <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">PREVIEW</span>
+                     <h3 class="fs-3 m-0 mt-2">Invoice</h3>
+                  </div>
+               </div>
+            </div>
+            <!-- Modal Header Ends -->
+            <!-- Modal Body Start-->
+            <div class="modal-body">
+               <div class="">
+                  <iframe src="dist/images/DE ANNUAL REPORT CORP FORM .pdf" class="w-100 min-vh-100 border-0"></iframe>
+               </div>
+            </div>
+            <!-- Modal Body End -->
+
+            <div class="modal-footer mt-3 pb-0">
+               <div class="d-flex justify-content-end w-100">
+                  <button type="button" data-bs-dismiss="modal"
+                     class="btn btn-info py-0 px-5 rounded-3 ms-3">
+                     Go Back
+                  </button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Invoice Modal Ends -->
 
    <!-- Notification Modal Starts -->
    <div class="modal modal-right fade" id="notificationModal" tabindex="-1" aria-labelledby="searchModalLabel"
