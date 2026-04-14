@@ -946,8 +946,9 @@ function renderTagsOnRow(tagdata, maxTag = 4) {
 
   tagdata.forEach((value, index) => {
     const span = document.createElement("span");
-    span.className = "badge text-black d-tag";
+    span.className = "badge d-tag";
     span.style.backgroundColor = value.tagColor;
+    span.style.color = value.textColor;
     span.innerText = value.tagName;
     tagWrapper.appendChild(span);
   })
