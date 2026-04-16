@@ -1430,6 +1430,524 @@
    </div>
    <!-- Edit Group Modal End -->
 
+   <!-- Upload Documents In SubFolder Modal 01 Start -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="upload-doc-sub01-modal" tabindex="-1"
+      aria-labelledby="upload-doc-sub01-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <div class="modal-header">
+               <h4 class="fw-bold m-0">Upload Documents</h4>
+            </div>
+            <div class="modal-body">
+               <div class="" id="entityModalUploadDocument">
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <div class="folder-info-wrapper">
+                        <h6 for="" class="fw-bold text-uppercase">Folder Location</h6>
+                        <div class="folder-list">
+                           <ul class="list-group">
+                              <li class="list-group-item">
+                                 Adept HR
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#upload-doc-modal">
+                                 <a href="javascript:void(0)" class=""> Zenith Dynamics Group</a>
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#upload-doc-sub-modal">
+                                 <a href="javascript:void(0)" class="">Entity Folder Group Custom State</a>
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item">
+                                 <a href="javascript:void(0)" class="active">Sub Folder 01</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- <form class="" action="">
+                     <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                        <fieldset class="dropupload-zone border rounded">
+                           <label for="uploadfile3" class="dropupload-zone__prompt gap-3" tabindex="0"
+                              aria-label="Browse File or Drag and Drop">
+                              <span class="icon icon-upload-article"></span>
+                              <span>Choose a file or drag & drop it here</span>
+                              <span class="btn py-0 px-2 rounded-3">
+                                 Browse Files
+                              </span>
+                           </label>
+                           <input id="uploadfile3" type="file" name="myFile" class="dropupload-zone__input" multiple />
+                        </fieldset>
+                     </div>
+                  </form> -->
+
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <div class="dropzone dropupload-zone" id="myAwesomeDropzone" data-plugin="dropzone"
+                        data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
+                        <div class="fallback">
+                           <input name="file" type="file" multiple />
+                        </div>
+                        <div class="dz-message dropupload-zone__prompt gap-3">
+                           <span class="icon icon-upload-article"></span>
+                           <span class="text-uppercase fs-9 fw-semibold">Choose a file or drag & drop it here</span>
+                           <span class="btn py-0 px-2 rounded-3">
+                              Browse Files
+                           </span>
+                        </div>
+                     </div>
+                     <div class="d-none" id="uploadPreviewTemplate">
+                        <div class="uploadfilelist-item editable-parent">
+                           <div class="uploadfile-info">
+                              <span class="icon icon-lg m-0 flex-shrink-0" data-type></span>
+                              <div class="d-flex flex-column">
+                                 <span class="text-capitalize text-break input-item" data-dz-name></span>
+                              </div>
+                           </div>
+                           <div class="action">
+                              <span class="icon icon-new-edit edit-content icon-lg m-0" data-toggle="tooltip"
+                                 aria-label="EDIT" data-bs-original-title="EDIT"></span>
+                              <span class="icon icon-save-purple save-content icon-lg m-0" data-toggle="tooltip"
+                                 aria-label="SAVE" data-bs-original-title="SAVE"></span>
+                              <span class="icon icon-new-delete icon-lg m-0" data-toggle="tooltip" aria-label="DELETE"
+                                 data-bs-original-title="DELETE" data-dz-remove></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label">Document Type</label>
+                        <div class="custom-dropdown">
+                           <select class="form-select" id="" required>
+                              <option value="" selected disabled hidden>Select Document Type</option>
+                              <option value="Annual Report">Annual Report</option>
+                              <option value="Dissolution">Dissolution</option>
+                              <option value="SOP">SOP</option>
+                              <option value="BOI">BOI</option>
+                              <option value="Good Standing">Good Standing</option>
+                              <option value="Amendments">Amendments</option>
+                              <option value="Business License">Business License</option>
+                              <option value="DBA">DBA</option>
+                              <option value="Formations">Formations</option>
+                              <option value="EIN">EIN</option>
+                              <option value="Restate">Restate</option>
+                              <option value="Certificate of Cancellation">Certificate of Cancellation</option>
+                              <option value="Merger">Merger</option>
+                              <option value="25102f">25102f</option>
+                              <option value="Certificate of Correction">Certificate of Corrections</option>
+                              <option value="Other">Other</option>
+                           </select>
+                        </div>
+                     </fieldset>
+                     <div id="documentAddTag_2">
+                        <label for="" class="form-label">Add Tag</label>
+                        <div class="p-0 modal-tags-container">
+                           <div class="d-flex gap-2 align-items-center justify-content-between">
+                              <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
+                                 <span class="text-muted fw-normal no-tag-span">No Tag Applied</span>
+                              </div>
+
+                              <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                 role="button" aria-expanded="false" data-bs-target="#collapseAddTagContainer_2"
+                                 aria-controls="collapseAddTagContainer_2"></span>
+                           </div>
+                           <div class="collapse mt-3" id="collapseAddTagContainer_2">
+                              <fieldset class="rounded-2 p-2 tagfields">
+                                 <label for="form-label">Apply Tag</label>
+                                 <div class="d-flex gap-3 align-items-center justify-content-between">
+                                    <div class="w-100 custom-dropdown">
+                                       <select class="form-select tagselect" id="" required="">
+                                          <option value="" disabled="" selected="" hidden="">
+                                             Select or Create Tag
+                                          </option>
+                                          <option value="Annual report" data-value="Annual report"
+                                             data-text-color="#262626" data-bg-color="#C7F5FC">Annual report</option>
+                                          <option value="Dissolution" data-value="Dissolution" data-text-color="#262626"
+                                             data-bg-color="#FDEFB6">Dissolution</option>
+                                          <option value="SOP" data-value="SOP" data-text-color="#262626"
+                                             data-bg-color="#D0F4DC">SOP</option>
+                                          <option value="Beneficial Ownership Information Report"
+                                             data-value="Beneficial Ownership Information Report"
+                                             data-text-color="#262626" data-bg-color="#FEE2CE">Beneficial Ownership
+                                             Information Report</option>
+                                          <option value="Good standing" data-value="Good standing"
+                                             data-text-color="#262626" data-bg-color="#F9B1AB">Good standing</option>
+                                          <option value="Amendments" data-value="Amendments" data-text-color="#262626"
+                                             data-bg-color="#F4AFD8">Amendments</option>
+                                          <option value="Business License" data-value="Business License"
+                                             data-text-color="#262626" data-bg-color="#A1EABA">Business License</option>
+                                          <option value="DBA: Doing Business As" data-value="DBA: Doing Business As"
+                                             data-text-color="#262626" data-bg-color="#A6C8FD">DBA: Doing Business As
+                                          </option>
+                                          <option value="Formations" data-value="Formations" data-text-color="white"
+                                             data-bg-color="#C33529">Formations</option>
+                                          <option value="EIN" data-value="EIN" data-text-color="#262626"
+                                             data-bg-color="#D9B421">EIN</option>
+                                          <option value="Restate" data-value="Restate" data-text-color="#262626"
+                                             data-bg-color="#1FB8CE">Restate</option>
+                                          <option value="Certificate of Cancellation"
+                                             data-value="Certificate of Cancellation" data-text-color="white"
+                                             data-bg-color="#BA3082">Certificate of Cancellation</option>
+                                          <option value="Merger" data-value="Merger" data-text-color="white"
+                                             data-bg-color="#1E61CD">Merger</option>
+                                          <option value="25102f" data-value="25102f" data-text-color="white"
+                                             data-bg-color="#8F2866">25102f</option>
+                                          <option value="Certificate of Correction"
+                                             data-value="Certificate of Correction" data-text-color="white"
+                                             data-bg-color="#17396F">Certificate of Correction</option>
+                                       </select>
+                                    </div>
+                                    <div class="position-relative tag-colorPicker-wrapper d-none">
+                                       <label data-toggle="tooltip" data-bs-original-title="Tag Color" for="tagColor6"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint6_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+                                             <path d="M15.5 8V23M8 15.5H23" stroke="white" stroke-width="1.2" />
+                                             <defs>
+                                                <linearGradient id="paint6_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor6" class="tag-color-picker"
+                                          data-color-type="bg" />
+                                    </div>
+                                    <div class="position-relative tag-colorPicker-wrapper d-none">
+                                       <label data-toggle="tooltip" data-bs-original-title="Text Color" for="tagColor7"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint7_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+
+                                             <path transform="translate(8, 7) scale(1.7)"
+                                                d="M5.89475 1.70928L7.69475 3.50928M0.494751 8.90928L1.09475 6.50928L7.09475 0.509277L8.89475 2.30928L2.89475 8.30928L0.494751 8.90928Z"
+                                                stroke="white" stroke-width="0.72" />
+                                             <defs>
+                                                <linearGradient id="paint7_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor7" class="tag-color-picker"
+                                          data-color-type="text" />
+                                    </div>
+                                 </div>
+                              </fieldset>
+                              <button type="button"
+                                 class="addtagnew-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
+                                 Apply Tag
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="d-none dropzone-previews uploadfilelist-wrapper m-0 mb-4 p-3 bg-white rounded-2"
+                     id="file-previews"></div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Upload Document
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Upload Documents In SubFolder Modal 01 End -->
+
+   <!-- Upload Documents In SubFolder Modal Start -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="upload-doc-sub-modal" tabindex="-1"
+      aria-labelledby="upload-doc-sub-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <div class="modal-header">
+               <h4 class="fw-bold m-0">Upload Documents</h4>
+            </div>
+            <div class="modal-body">
+               <div class="" id="entityModalUploadDocument">
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <div class="folder-info-wrapper">
+                        <h6 for="" class="fw-bold text-uppercase">Folder Location</h6>
+                        <div class="folder-list">
+                           <ul class="list-group">
+                              <li class="list-group-item">
+                                 Adept HR
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#upload-doc-modal">
+                                 <a href="javascript:void(0)" class=""> Zenith Dynamics Group</a>
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item">
+                                 <a href="javascript:void(0)" class="active">Entity Folder Group Custom State</a>
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="subfolder-list mt-2">
+                           <ul class="list-group">
+                              <li class="list-group-item" data-bs-target="#upload-doc-sub01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 01
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- <form class="" action="">
+                     <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                        <fieldset class="dropupload-zone border rounded">
+                           <label for="uploadfile1" class="dropupload-zone__prompt gap-3" tabindex="0"
+                              aria-label="Browse File or Drag and Drop">
+                              <span class="icon icon-upload-article"></span>
+                              <span>Choose a file or drag & drop it here</span>
+                              <span class="btn py-0 px-2 rounded-3">
+                                 Browse Files
+                              </span>
+                           </label>
+                           <input id="uploadfile1" type="file" name="myFile" class="dropupload-zone__input" multiple />
+                        </fieldset>
+                     </div>
+                  </form> -->
+
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <div class="dropzone dropupload-zone" id="myAwesomeDropzone_01" data-plugin="dropzone"
+                        data-previews-container="#file-previews_01"
+                        data-upload-preview-template="#uploadPreviewTemplate">
+                        <div class="fallback">
+                           <input name="file" type="file" multiple />
+                        </div>
+                        <div class="dz-message dropupload-zone__prompt gap-3">
+                           <span class="icon icon-upload-article"></span>
+                           <span class="text-uppercase fs-9 fw-semibold">Choose a file or drag & drop it here</span>
+                           <span class="btn py-0 px-2 rounded-3">
+                              Browse Files
+                           </span>
+                        </div>
+                     </div>
+                     <div class="d-none" id="uploadPreviewTemplate">
+                        <div class="uploadfilelist-item editable-parent">
+                           <div class="uploadfile-info">
+                              <span class="icon icon-lg m-0 flex-shrink-0" data-type></span>
+                              <div class="d-flex flex-column">
+                                 <span class="text-capitalize text-break input-item" data-dz-name></span>
+                              </div>
+                           </div>
+                           <div class="action">
+                              <span class="icon icon-new-edit edit-content icon-lg m-0" data-toggle="tooltip"
+                                 aria-label="EDIT" data-bs-original-title="EDIT"></span>
+                              <span class="icon icon-save-purple save-content icon-lg m-0" data-toggle="tooltip"
+                                 aria-label="SAVE" data-bs-original-title="SAVE"></span>
+                              <span class="icon icon-new-delete icon-lg m-0" data-toggle="tooltip" aria-label="DELETE"
+                                 data-bs-original-title="DELETE" data-dz-remove></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <fieldset class="mb-4">
+                        <label for="" class="form-label">Document Type</label>
+                        <div class="custom-dropdown">
+                           <select class="form-select" id="" required>
+                              <option value="" selected disabled hidden>Select Document Type</option>
+                              <option value="Annual Report">Annual Report</option>
+                              <option value="Dissolution">Dissolution</option>
+                              <option value="SOP">SOP</option>
+                              <option value="BOI">BOI</option>
+                              <option value="Good Standing">Good Standing</option>
+                              <option value="Amendments">Amendments</option>
+                              <option value="Business License">Business License</option>
+                              <option value="DBA">DBA</option>
+                              <option value="Formations">Formations</option>
+                              <option value="EIN">EIN</option>
+                              <option value="Restate">Restate</option>
+                              <option value="Certificate of Cancellation">Certificate of Cancellation</option>
+                              <option value="Merger">Merger</option>
+                              <option value="25102f">25102f</option>
+                              <option value="Certificate of Correction">Certificate of Corrections</option>
+                              <option value="Other">Other</option>
+                           </select>
+                        </div>
+                     </fieldset>
+                     <div id="documentAddTag_3">
+                        <label for="" class="form-label">Add Tag</label>
+                        <div class="accordion-body p-0 modal-tags-container">
+                           <div class="d-flex gap-2 align-items-center justify-content-between">
+                              <div class="tagsbadge-wrapper d-flex align-items-center flex-wrap gap-2 mt-1">
+                                 <span class="text-muted fw-normal no-tag-span">No Tag Applied</span>
+                              </div>
+
+                              <span class="icon icon-add-tag icon-lg m-0 ms-auto" data-bs-toggle="collapse"
+                                 role="button" aria-expanded="false" data-bs-target="#collapseAddTagContainer_3"
+                                 aria-controls="collapseAddTagContainer_3"></span>
+                           </div>
+                           <div class="collapse mt-3" id="collapseAddTagContainer_3">
+                              <fieldset class="rounded-2 p-2 tagfields">
+                                 <label for="form-label">Apply Tag</label>
+                                 <div class="d-flex gap-3 align-items-center justify-content-between">
+                                    <div class="w-100 custom-dropdown">
+                                       <select class="form-select tagselect" id="" required="">
+                                          <option value="" disabled="" selected="" hidden="">
+                                             Select or Create Tag
+                                          </option>
+                                          <option value="Annual report" data-value="Annual report"
+                                             data-text-color="#262626" data-bg-color="#C7F5FC">Annual report</option>
+                                          <option value="Dissolution" data-value="Dissolution" data-text-color="#262626"
+                                             data-bg-color="#FDEFB6">Dissolution</option>
+                                          <option value="SOP" data-value="SOP" data-text-color="#262626"
+                                             data-bg-color="#D0F4DC">SOP</option>
+                                          <option value="Beneficial Ownership Information Report"
+                                             data-value="Beneficial Ownership Information Report"
+                                             data-text-color="#262626" data-bg-color="#FEE2CE">Beneficial Ownership
+                                             Information Report</option>
+                                          <option value="Good standing" data-value="Good standing"
+                                             data-text-color="#262626" data-bg-color="#F9B1AB">Good standing</option>
+                                          <option value="Amendments" data-value="Amendments" data-text-color="#262626"
+                                             data-bg-color="#F4AFD8">Amendments</option>
+                                          <option value="Business License" data-value="Business License"
+                                             data-text-color="#262626" data-bg-color="#A1EABA">Business License</option>
+                                          <option value="DBA: Doing Business As" data-value="DBA: Doing Business As"
+                                             data-text-color="#262626" data-bg-color="#A6C8FD">DBA: Doing Business As
+                                          </option>
+                                          <option value="Formations" data-value="Formations" data-text-color="white"
+                                             data-bg-color="#C33529">Formations</option>
+                                          <option value="EIN" data-value="EIN" data-text-color="#262626"
+                                             data-bg-color="#D9B421">EIN</option>
+                                          <option value="Restate" data-value="Restate" data-text-color="#262626"
+                                             data-bg-color="#1FB8CE">Restate</option>
+                                          <option value="Certificate of Cancellation"
+                                             data-value="Certificate of Cancellation" data-text-color="white"
+                                             data-bg-color="#BA3082">Certificate of Cancellation</option>
+                                          <option value="Merger" data-value="Merger" data-text-color="white"
+                                             data-bg-color="#1E61CD">Merger</option>
+                                          <option value="25102f" data-value="25102f" data-text-color="white"
+                                             data-bg-color="#8F2866">25102f</option>
+                                          <option value="Certificate of Correction"
+                                             data-value="Certificate of Correction" data-text-color="white"
+                                             data-bg-color="#17396F">Certificate of Correction</option>
+                                       </select>
+                                    </div>
+                                    <div class="position-relative tag-colorPicker-wrapper d-none">
+                                       <label data-toggle="tooltip" data-bs-original-title="Tag Color" for="tagColor8"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint8_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+                                             <path d="M15.5 8V23M8 15.5H23" stroke="white" stroke-width="1.2" />
+                                             <defs>
+                                                <linearGradient id="paint8_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor8" class="tag-color-picker"
+                                          data-color-type="bg" />
+                                    </div>
+                                    <div class="position-relative tag-colorPicker-wrapper d-none">
+                                       <label data-toggle="tooltip" data-bs-original-title="Text Color" for="tagColor9"
+                                          class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
+                                          <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <rect class="svgBackground" width="31" height="31" rx="15.5"
+                                                fill="url(#paint9_linear_5599_132194)" />
+                                             <rect width="31" height="31" rx="15.5" fill="black" fill-opacity="0.3" />
+
+                                             <path transform="translate(8, 7) scale(1.7)"
+                                                d="M5.89475 1.70928L7.69475 3.50928M0.494751 8.90928L1.09475 6.50928L7.09475 0.509277L8.89475 2.30928L2.89475 8.30928L0.494751 8.90928Z"
+                                                stroke="white" stroke-width="0.72" />
+                                             <defs>
+                                                <linearGradient id="paint9_linear_5599_132194" x1="5.16667" y1="6.57576"
+                                                   x2="26.7727" y2="27.2424" gradientUnits="userSpaceOnUse">
+                                                   <stop stop-color="#FF0000" />
+                                                   <stop offset="0.144247" stop-color="#FFEA00" />
+                                                   <stop offset="0.307713" stop-color="#6AFF00" />
+                                                   <stop offset="0.548103" stop-color="#00EEFF" />
+                                                   <stop offset="0.701953" stop-color="#2F00FF" />
+                                                   <stop offset="0.826956" stop-color="#FF00E6" />
+                                                   <stop offset="1" stop-color="#FF0000" />
+                                                </linearGradient>
+                                             </defs>
+                                          </svg>
+
+                                       </label>
+                                       <input type="color" id="tagColor9" class="tag-color-picker"
+                                          data-color-type="text" />
+                                    </div>
+                                 </div>
+                              </fieldset>
+                              <button type="button"
+                                 class="addtagnew-btn btn btn-secondary rounded-2 py-1 px-3 m-0 mt-3 text-white text-capitalize">
+                                 Apply Tag
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="d-none dropzone-previews uploadfilelist-wrapper m-0 p-3 bg-white rounded-2"
+                     id="file-previews_01"></div>
+
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Upload Document
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Upload Documents In SubFolder Modal End -->
+
    <!-- Upload Documents Modal Start -->
    <div class="modal modal-right fade filter-slideout SOP-model" id="upload-doc-modal" tabindex="-1"
       aria-labelledby="upload-doc-label" aria-hidden="true">
@@ -1655,6 +2173,168 @@
       </div>
    </div>
    <!-- Upload Documents Modal End -->
+   
+   <!-- Add New Sub Folder 01 Modal Start -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="add-subfolder01-modal" tabindex="-1"
+      aria-labelledby="add-subfolder01-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <div class="modal-header">
+               <h4 class="fw-bold m-0">Add Folder</h4>
+            </div>
+            <div class="modal-body">
+               <div class="" id="entityModalAddFolder">
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <div class="folder-info-wrapper">
+                        <h6 for="" class="fw-bold text-uppercase">Folder Location</h6>
+                        <div class="folder-list">
+                           <ul class="list-group">
+                              <li class="list-group-item">
+                                 Adept HR
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#add-folder-modal">
+                                 <a href="javascript:void(0)" class=""> Zenith Dynamics Group</a>
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#add-subfolder-modal">
+                                 <a href="javascript:void(0)" class=""> Jurisdiction Folder Group Custom State</a>
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item">
+                                 <a href="javascript:void(0)" class="active">Sub Folder 01</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <form class="" action="">
+                     <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                        <fieldset>
+                           <label for="" class="form-label ">Folder Name</label>
+                           <input type="text" class="form-control" id="" placeholder="Folder Name">
+                        </fieldset>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Add Folder
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Add New Sub Folder 01 Modal End -->
+
+   <!-- Add New Sub Folder Modal Start -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="add-subfolder-modal" tabindex="-1"
+      aria-labelledby="add-subfolder-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <div class="modal-header">
+               <h4 class="fw-bold m-0">Add Folder</h4>
+            </div>
+            <div class="modal-body">
+               <div class="" id="entityModalAddFolder">
+                  <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                     <div class="folder-info-wrapper">
+                        <h6 for="" class="fw-bold text-uppercase">Folder Location</h6>
+                        <div class="folder-list">
+                           <ul class="list-group">
+                              <li class="list-group-item">
+                                 Adept HR
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item" data-bs-toggle="modal" data-bs-target="#add-folder-modal">
+                                 <a href="javascript:void(0)" class=""> Zenith Dynamics Group</a>
+                              </li>
+                              <span class="icon icon-arrow-right-black icon-sm m-0"></span>
+                              <li class="list-group-item">
+                                 <a href="javascript:void(0)" class="active"> Jurisdiction Folder Group Custom State</a>
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="subfolder-list mt-2">
+                           <ul class="list-group">
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 01
+                              </li>
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 02
+                              </li>
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 03
+                              </li>
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 04
+                              </li>
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 05
+                              </li>
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 06
+                              </li>
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 07
+                              </li>
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 08
+                              </li>
+                              <li class="list-group-item" data-bs-target="#add-subfolder01-modal"
+                                 data-bs-toggle="modal">
+                                 <span class="icon icon-folder-outline m-0"></span> Sub Folder 09
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <form class="" action="">
+                     <div class="m-0 mb-4 p-3 bg-white rounded-2">
+                        <fieldset>
+                           <label for="" class="form-label ">Folder Name</label>
+                           <input type="text" class="form-control" id="" placeholder="Folder Name">
+                        </fieldset>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Add Folder
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Add New Sub Folder Modal End -->
 
    <!-- Add New Folder Modal Start -->
    <div class="modal modal-right fade filter-slideout SOP-model" id="add-folder-modal" tabindex="-1"
@@ -2396,17 +3076,17 @@
                                        </div>
                                        <div class="position-relative tag-colorPicker-wrapper d-none">
                                           <label data-toggle="tooltip" data-bs-original-title="Tag Color"
-                                             for="tagColor6"
+                                             for="tagColor10"
                                              class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
                                              <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <rect class="svgBackground" width="31" height="31" rx="15.5"
-                                                   fill="url(#paint6_linear_5599_132194)" />
+                                                   fill="url(#paint10_linear_5599_132194)" />
                                                 <rect width="31" height="31" rx="15.5" fill="black"
                                                    fill-opacity="0.3" />
                                                 <path d="M15.5 8V23M8 15.5H23" stroke="white" stroke-width="1.2" />
                                                 <defs>
-                                                   <linearGradient id="paint6_linear_5599_132194" x1="5.16667"
+                                                   <linearGradient id="paint10_linear_5599_132194" x1="5.16667"
                                                       y1="6.57576" x2="26.7727" y2="27.2424"
                                                       gradientUnits="userSpaceOnUse">
                                                       <stop stop-color="#FF0000" />
@@ -2421,17 +3101,17 @@
                                              </svg>
 
                                           </label>
-                                          <input type="color" id="tagColor6" class="tag-color-picker"
+                                          <input type="color" id="tagColor10" class="tag-color-picker"
                                              data-color-type="bg" />
                                        </div>
                                        <div class="position-relative tag-colorPicker-wrapper d-none">
                                           <label data-toggle="tooltip" data-bs-original-title="Text Color"
-                                             for="tagColor7"
+                                             for="tagColor11"
                                              class="icon icon-lg m-0 ms-auto d-flex align-items-center justify-content-between">
                                              <svg class="tagSvg" width="31" height="31" viewBox="0 0 31 31" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <rect class="svgBackground" width="31" height="31" rx="15.5"
-                                                   fill="url(#paint7_linear_5599_132194)" />
+                                                   fill="url(#paint11_linear_5599_132194)" />
                                                 <rect width="31" height="31" rx="15.5" fill="black"
                                                    fill-opacity="0.3" />
 
@@ -2439,7 +3119,7 @@
                                                    d="M5.89475 1.70928L7.69475 3.50928M0.494751 8.90928L1.09475 6.50928L7.09475 0.509277L8.89475 2.30928L2.89475 8.30928L0.494751 8.90928Z"
                                                    stroke="white" stroke-width="0.72" />
                                                 <defs>
-                                                   <linearGradient id="paint7_linear_5599_132194" x1="5.16667"
+                                                   <linearGradient id="paint11_linear_5599_132194" x1="5.16667"
                                                       y1="6.57576" x2="26.7727" y2="27.2424"
                                                       gradientUnits="userSpaceOnUse">
                                                       <stop stop-color="#FF0000" />
@@ -2454,7 +3134,7 @@
                                              </svg>
 
                                           </label>
-                                          <input type="color" id="tagColor7" class="tag-color-picker"
+                                          <input type="color" id="tagColor11" class="tag-color-picker"
                                              data-color-type="text" />
                                        </div>
                                     </div>

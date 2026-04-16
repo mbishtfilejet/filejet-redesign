@@ -250,6 +250,9 @@ $(document).ready(function () {
     $(`#groupentity-documents-table tbody`).on("click", "td .dt-control", function (e) {
         e.preventDefault();
         e.stopPropagation();
+        if ($('#contextmenu').hasClass('show')) {
+            $('#contextmenu').removeClass('show')
+        };
         let tr = $(this).closest("tr");
         let dataId = tr.data('id') || "";
         let row = table.row(tr);
@@ -389,4 +392,44 @@ $(document).on('shown.bs.tab', function (e) {
     const currentTab = $(e.target);
     const tableKey = currentTab.data('table-key');
     $(`#${tableKey}`).DataTable().columns.adjust();
+});
+
+
+// context menu logic start
+$(function () {
+    const contextMenu = $('#contextmenu').get(0);
+    $(".groupEntityDocumentsTable .dataTables_scrollBody").on("contextmenu", "tr>td:nth-child(2)", function (e) {
+        e.preventDefault();
+        e.stopPropagation()
+        this.hidden = false;
+        contextMenu.classList.add("show");
+        const menuWidth = contextMenu.offsetWidth;
+        const menuHeight = contextMenu.offsetHeight;
+
+        // Get viewport dimensions
+        let windowWidth = window.innerWidth || document.documentElement.clientWidth;
+        let windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        // Calculating the 'left' position
+        let leftPos = e.clientX;
+        if (leftPos + menuWidth > windowWidth) {
+            leftPos = e.clientX - menuWidth;
+        }
+
+        // Calculating the 'top' position
+        let topPos = e.clientY;
+        if (topPos + menuHeight > windowHeight) {
+            topPos = e.clientY - menuHeight;
+        }
+
+        // Set the menu's position
+        contextMenu.style.left = `${leftPos}px`;
+        contextMenu.style.top = `${topPos}px`;
+    });
+
+    $(this).on('contextmenu click scroll', function (e) {
+        if (contextMenu?.classList.contains("show")) {
+            contextMenu.classList.remove('show');
+        }
+    })
 });
