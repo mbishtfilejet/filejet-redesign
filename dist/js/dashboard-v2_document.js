@@ -1742,10 +1742,12 @@ async function renderSummary(container) {
   ]
 
   for (let point of ai_summary_data) {
-    const li = document.createElement('li')
-    li.className = "text-muted"
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    span.className = "text-muted";
+    li.append(span);
     container.append(li);
-    await typeText(li, point, 60)
+    await typeText(span, point, 60)
   }
 
 }
