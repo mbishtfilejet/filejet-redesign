@@ -313,7 +313,10 @@ document.addEventListener("DOMContentLoaded", function () {
         case "registeredAgentContainer": return "Filejet and Others";
         case "sopCheckContainer": return "Has Check";
         case "invoiceContainer":
-        case "paymentContainer": return "Date Range"
+        case "paymentContainer": return "Date Range";
+        case "groupUserRoleContainer": return "Filter by Role";
+        case "usersAccessContainer":
+        case "externalUserContainer": return "Filter by Access"
         default: return "Status";
       }
     }
@@ -355,7 +358,11 @@ document.addEventListener("DOMContentLoaded", function () {
     ["sopStatusContainer", "sopStatusDropdown", "sopStatusSearch", "sopStatus-checkbox"],
     ["sopCheckContainer", "sopCheckDropdown", "sopCheckSearch", "sopCheck-checkbox"],
     ["invoiceContainer", "invoiceDropdown", "invoiceSearch", "invoice-checkbox"],
-    ["paymentContainer", "paymentDropdown", "paymentSearch", "payment-checkbox"]
+    ["paymentContainer", "paymentDropdown", "paymentSearch", "payment-checkbox"],
+    ["groupUserRoleContainer", "groupUserRoleDropdown", "groupUserRoleSearch", "groupUserRole-checkbox"],
+    ["usersAccessContainer", "usersAccessDropdown", "usersAccessSearch", "usersAccess-checkbox"],
+    ["externalUserContainer", "externalUserDropdown", "externalUserSearch", "externalUser-checkbox"]
+
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));

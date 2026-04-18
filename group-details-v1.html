@@ -517,7 +517,7 @@
                         <li class="nav-item" role="presentation">
                            <a href="javascript:void(0)" id="en-group-userAccess-tab" class="nav-link p-0"
                               data-bs-toggle="tab" data-bs-target="#en-group-userAccess-tab-pane" role="tab"
-                              data-table-key="entitydetails-dbas-table" aria-controls="en-group-userAccess-tab-pane"
+                              data-table-key="group-usersAccess-table" aria-controls="en-group-userAccess-tab-pane"
                               aria-selected="false">
                               User Access
                            </a>
@@ -525,7 +525,7 @@
                         <li class="nav-item" role="presentation">
                            <a href="javascript:void(0)" id="en-group-extUsers-tab" class="nav-link p-0"
                               data-bs-toggle="tab" data-bs-target="#en-group-extUsers-tab-pane" role="tab"
-                              data-table-key="entitydetails-registration-table"
+                              data-table-key="group-externalUser-table"
                               aria-controls="en-group-extUsers-tab-pane" aria-selected="false">
                               External Users
                            </a>
@@ -873,7 +873,7 @@
                                           <th>DBAs</th>
                                           <th>Business Licenses</th>
                                           <th>Status</th>
-                                          <th data-orderable="false">Action</th>
+                                          <th data-orderable="false">Actions</th>
                                        </tr>
                                     </thead>
                                  </table>
@@ -989,7 +989,7 @@
                                           <th>Modified By</th>
                                           <th>Date Modified</th>
                                           <!-- <th>Sync Status</th> -->
-                                          <th data-orderable="false">Action</th>
+                                          <th data-orderable="false">Actions</th>
                                        </tr>
                                     </thead>
                                  </table>
@@ -1030,19 +1030,63 @@
                         <!-- Entity Details DBAs TabContent -->
                         <div class="tab-pane fade" id="en-group-userAccess-tab-pane" role="tabpanel"
                            aria-labelledby="en-group-userAccess-tab" tabindex="0">
-                           <div class="entityDetailTableCard border rounded-2">
-                              <div class="entityDetailDBAsTable">
-                                 <table id="entitydetails-dbas-table" class="table table-striped w-100 table-nowrap">
+                           <div class="row g-2">
+                              <div class="col-12 col-md-5 flex-grow-1 mb-2 search-table-col">
+                                 <div
+                                    class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                    <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                    <input type="text" class="custom-search-input border-0 p-0 w-100"
+                                       placeholder="Search">
+                                 </div>
+                              </div>
+
+                              <div class="filter2-dropdown col-12 col-md-3 tags-table-col mb-2 dropdown">
+                                 <div
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                    id="groupUserRoleContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                                 </div>
+                                 <ul class="dropdown-menu search-disabled" id="groupUserRoleDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input groupUserRole-checkbox me-2" data-value="Super Admin">
+                                          Super Admin</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input groupUserRole-checkbox me-2" data-value="Admin">
+                                          Admin</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input groupUserRole-checkbox me-2" data-value="User">
+                                          User</label>
+                                    </li>
+                                 </ul>
+                              </div>
+                              <div class="filter2-dropdown col-12 col-md-3 tags-table-col mb-2 dropdown">
+                                 <div
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                    id="usersAccessContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                                 </div>
+                                 <ul class="dropdown-menu search-disabled" id="usersAccessDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input usersAccess-checkbox me-2" data-value="Editor">
+                                          Editor</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input usersAccess-checkbox me-2" data-value="Viewer">
+                                          Viewer</label>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                           <div class="entityDetailTableCard mt-2 border rounded-2">
+                              <div class="groupUsersAccessTable">
+                                 <table id="group-usersAccess-table" class="table table-striped w-100 table-nowrap">
                                     <thead>
                                        <tr>
-                                          <th>Fictitious/Trade Name</th>
-                                          <th>Registration Date</th>
-                                          <th>Registration Number</th>
-                                          <th>Entity Name</th>
-                                          <th>County</th>
-                                          <th>State</th>
-                                          <th>Renewal Date</th>
-                                          <th>Status</th>
+                                          <th>Username</th>
+                                          <th>Email</th>
+                                          <th>Role</th>
+                                          <th>Access</th>
+                                          <th data-orderable="false">Actions</th>
                                        </tr>
                                     </thead>
                                  </table>
@@ -1054,19 +1098,42 @@
                         <!-- Entity Details Open Task TabContent -->
                         <div class="tab-pane fade" id="en-group-extUsers-tab-pane" role="tabpanel"
                            aria-labelledby="en-group-extUsers-tab" tabindex="0">
-                           <div class="entityDetailTableCard border rounded-2">
-                              <div class="entityDetailRegistrationTable">
-                                 <table id="entitydetails-registration-table"
-                                    class="table table-striped w-100 table-nowrap">
+                           <div class="row g-2">
+                              <div class="col-12 col-md-8 flex-grow-1 mb-2 search-table-col">
+                                 <div
+                                    class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                    <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                    <input type="text" class="custom-search-input border-0 p-0 w-100"
+                                       placeholder="Search">
+                                 </div>
+                              </div>
+
+                              <div class="filter2-dropdown col-12 col-md-3 tags-table-col mb-2 dropdown">
+                                 <div
+                                    class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                    id="externalUserContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                                 </div>
+                                 <ul class="dropdown-menu search-disabled" id="externalUserDropdown">
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input externalUser-checkbox me-2" data-value="Editor">
+                                          Editor</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input externalUser-checkbox me-2" data-value="Viewer">
+                                          Viewer</label>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                           <div class="entityDetailTableCard mt-2 border rounded-2">
+                              <div class="groupExternalUserTable">
+                                 <table id="group-externalUser-table" class="table table-striped w-100 table-nowrap">
                                     <thead>
                                        <tr>
-                                          <th>Entity Name</th>
-                                          <th>Type</th>
-                                          <th>Jurisdiction</th>
-                                          <th>Registration</th>
-                                          <th>Entity file #</th>
-                                          <th>Status</th>
-                                          <th data-orderable="false">Action</th>
+                                          <th>Username</th>
+                                          <th>Email</th>
+                                          <th>Access</th>
+                                          <th data-orderable="false">Actions</th>
                                        </tr>
                                     </thead>
                                  </table>
@@ -1102,7 +1169,7 @@
                <form>
                   <div class="mb-4 p-3 bg-white rounded-2">
                      <fieldset class="mb-4">
-                        <label for="" class="form-label w-100">Primary Contact Number <span
+                        <label for="" class="form-label w-100">Primary Contact Name <span
                               class="icon icon-outline-info m-0"></span></label>
                         <input type="text" class="form-control" id="" placeholder="Email Address" value="John Doe">
                      </fieldset>
