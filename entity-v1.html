@@ -423,7 +423,7 @@
                                     <div>
                                        <a href=""
                                           class="text-decoration-none dropdown-item py-3 d-flex align-items-center justify-content-between border-bottom"
-                                          data-bs-toggle="modal" data-bs-target="#docServices" data-bs-dismiss="modal">
+                                          data-bs-toggle="modal" data-bs-target="#docEntity" data-bs-dismiss="modal">
                                           <span class="other-placeholder">Document Retrieval</span>
                                           <span
                                              class="icon icon-arrow-forward-black icon-smd m-0 icon-smd opacity-50"></span>
@@ -7351,13 +7351,13 @@
                   </div>
                   <!-- stepper start -->
                   <div class="service-step-group service-step3">
+                     <div class="step" data-bs-toggle="modal" data-bs-target="#docEntity" data-bs-dismiss="modal">
+                        <div class="circle completed"></div>
+                        <span class="step3-text">ENTITY</span>
+                     </div>
                      <div class="step " data-bs-toggle="modal" data-bs-target="#docServices" data-bs-dismiss="modal">
                         <div class="circle active"></div>
                         <span class="step3-text">SERVICES</span>
-                     </div>
-                     <div class="step" data-bs-toggle="modal" data-bs-target="#docEntity" data-bs-dismiss="modal">
-                        <div class="circle "></div>
-                        <span class="step3-text">ENTITY</span>
                      </div>
                      <div class="step" data-bs-toggle="modal" data-bs-target="#docSummary" data-bs-dismiss="modal">
                         <div class="circle"></div>
@@ -7371,7 +7371,7 @@
             <!-- Modal Body Start-->
             <div class="modal-body">
 
-                  <div class="accordion" id="accordionExample91">
+               <div class="accordion" id="accordionExample91">
                   <div class="accordion-item m-0">
                      <h2 class="accordion-header" id="headingOne91">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -7385,62 +7385,158 @@
                         <div class="accordion-body pt-0">
 
                            <div class="d-flex  align-items-start">
-                           <input class="form-check-input me-3 collapsed" type="checkbox" id="formCheckbox1" data-bs-toggle="collapse" data-bs-target="#form123a" aria-expanded="false">
-                           <label class="fw-bold fs-12 text-uppercase" for="formCheckbox1">FORMATION DOCUMENTS ONLY</label>
+                              <input class="form-check-input me-3 collapsed" type="checkbox" id="formCheckbox1"
+                                 data-bs-toggle="collapse" data-bs-target="#form123a" aria-expanded="false">
+                              <label class="fw-bold fs-12 text-uppercase" for="formCheckbox1">FORMATION DOCUMENTS
+                                 ONLY</label>
                            </div>
                            <div class="collapse px-4 py-3 pb-0" id="form123a">
-                           <div class="d-flex px-2 flex-column">
-                              <div class="form-check gap-2 mb-3">
-                                 <input class="form-check-input" type="checkbox" id="certifiedCheck1">
-                                 <label class="form-check-label fw-normal fs-12 text-uppercase rights-label" for="certifiedCheck1">Certified Copy</label>
-                              </div>
+                              <div class="d-flex px-2 flex-column">
+                                 <div class="form-check gap-2 mb-3">
+                                    <div>
+                                       <input class="form-check-input" type="checkbox" id="certifiedCheck1">
+                                       <label class="form-check-label fw-normal fs-12 text-uppercase rights-label"
+                                          for="certifiedCheck1">Certified Copy</label>
+                                    </div>
+                                    <div class="ms-auto d-flex align-items-center gap-2">
+                                       <label class="mb-0 form-check-label fw-normal fs-12" for="certifiedCheckQty1">Qty</label>
+                                       <div class="border rounded-2 p-2 d-flex align-items-center">
+                                          <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
+                                             <input class="ps-1 border-0 numberInput fs-12" type="text" id="certifiedCheckQty1" value="0">
+                                             <div class="d-flex">
+                                                <button type="button" class="numDec border-0" onclick="changeValue(this, -1)"></button>
+                                                <button type="button" class="numInce border-0 ms-2" onclick="changeValue(this, 1)"></button><button></button>
+                                             </div>
+                                          </div>
+                                       </div> 
+                                    </div>
+                                 </div>
 
-                              <div class="form-check gap-2">
-                                 <input class="form-check-input" type="checkbox" id="plainCheck2">
-                                 <label class="form-check-label fw-normal fs-12 text-uppercase rights-label" for="plainCheck2">Plain Copy</label>
+                                 <div class="form-check gap-2">
+                                    <div>
+                                       <input class="form-check-input" type="checkbox" id="plainCheck2">
+                                       <label class="form-check-label fw-normal fs-12 text-uppercase rights-label"
+                                          for="plainCheck2">Plain Copy</label>
+                                    </div>
+                                    <div class="ms-auto d-flex align-items-center gap-2">
+                                       <label class="mb-0 form-check-label fw-normal fs-12" for="plainCheckQty2">Qty</label>
+                                       <div class="border rounded-2 p-2 d-flex align-items-center">
+                                          <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
+                                             <input class="ps-1 border-0 numberInput fs-12" type="text" id="plainCheckQty2" value="0">
+                                             <div class="d-flex">
+                                                <button type="button" class="numDec border-0" onclick="changeValue(this, -1)"></button>
+                                                <button type="button" class="numInce border-0 ms-2" onclick="changeValue(this, 1)"></button><button></button>
+                                             </div>
+                                          </div>
+                                       </div>  
+                                    </div>
+                                 </div>
                               </div>
-                           </div>
 
                            </div>
 
                            <hr>
 
                            <div class="d-flex  align-items-start">
-                           <input class="form-check-input me-3 collapsed" type="checkbox" id="formCheckbox2" data-bs-toggle="collapse" data-bs-target="#form123b" aria-expanded="false">
-                           <label class="fw-bold fs-12 text-uppercase" for="formCheckbox2">AMENDMENT DOCUMENTS ONLY</label>
+                              <input class="form-check-input me-3 collapsed" type="checkbox" id="formCheckbox2"
+                                 data-bs-toggle="collapse" data-bs-target="#form123b" aria-expanded="false">
+                              <label class="fw-bold fs-12 text-uppercase" for="formCheckbox2">AMENDMENT DOCUMENTS
+                                 ONLY</label>
                            </div>
-                           <div class="collapse px-4 py-3 pb-0" id="form123b" >
+                           <div class="collapse px-4 py-3 pb-0" id="form123b">
                               <div class="d-flex px-2 flex-column">
-                              <div class="form-check gap-2 mb-3">
-                                 <input class="form-check-input" type="checkbox" id="certifiedCheck2">
-                                 <label class="form-check-label fw-normal fs-12 text-uppercase rights-label" for="certifiedCheck2">Certified Copy</label>
-                              </div>
+                                 <div class="form-check gap-2 mb-3">
+                                    <div>
+                                       <input class="form-check-input" type="checkbox" id="certifiedCheck2">
+                                       <label class="form-check-label fw-normal fs-12 text-uppercase rights-label"
+                                          for="certifiedCheck2">Certified Copy</label>
+                                    </div>
+                                    <div class="ms-auto d-flex align-items-center gap-2">
+                                       <label class="mb-0 form-check-label fw-normal fs-12" for="certifiedCheckQty2">Qty</label>
+                                       <div class="border rounded-2 p-2 d-flex align-items-center">
+                                          <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
+                                             <input class="ps-1 border-0 numberInput fs-12" type="text" id="certifiedCheckQty2" value="0">
+                                             <div class="d-flex">
+                                                <button type="button" class="numDec border-0" onclick="changeValue(this, -1)"></button>
+                                                <button type="button" class="numInce border-0 ms-2" onclick="changeValue(this, 1)"></button><button></button>
+                                             </div>
+                                          </div>
+                                       </div> 
+                                    </div>
+                                 </div>
 
-                              <div class="form-check gap-2">
-                                 <input class="form-check-input" type="checkbox" id="plainCheck3">
-                                 <label class="form-check-label fw-normal fs-12 text-uppercase rights-label" for="plainCheck3">Plain Copy</label>
+                                 <div class="form-check gap-2">
+                                    <div>
+                                       <input class="form-check-input" type="checkbox" id="plainCheck3">
+                                       <label class="form-check-label fw-normal fs-12 text-uppercase rights-label"
+                                          for="plainCheck3">Plain Copy</label>
+                                    </div>
+                                    <div class="ms-auto d-flex align-items-center gap-2">
+                                       <label class="mb-0 form-check-label fw-normal fs-12" for="plainCheckQty3">Qty</label>
+                                       <div class="border rounded-2 p-2 d-flex align-items-center">
+                                          <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
+                                             <input class="ps-1 border-0 numberInput fs-12" type="text" id="plainCheckQty3" value="0">
+                                             <div class="d-flex">
+                                                <button type="button" class="numDec border-0" onclick="changeValue(this, -1)"></button>
+                                                <button type="button" class="numInce border-0 ms-2" onclick="changeValue(this, 1)"></button><button></button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
-                           </div>
                            </div>
 
                            <hr>
 
                            <div class="d-flex  align-items-start">
-                           <input class="form-check-input me-3 collapsed" type="checkbox" id="formCheckbox3" data-bs-toggle="collapse" data-bs-target="#form123c" aria-expanded="false">
-                           <label class="fw-bold fs-12 text-uppercase" for="formCheckbox3">ALL FILED DOCUMENTS</label>
+                              <input class="form-check-input me-3 collapsed" type="checkbox" id="formCheckbox3"
+                                 data-bs-toggle="collapse" data-bs-target="#form123c" aria-expanded="false">
+                              <label class="fw-bold fs-12 text-uppercase" for="formCheckbox3">ALL FILED
+                                 DOCUMENTS</label>
                            </div>
-                           <div class="collapse px-4 py-3 pb-0" id="form123c" >
+                           <div class="collapse px-4 py-3 pb-0" id="form123c">
                               <div class="d-flex px-2 flex-column">
-                              <div class="form-check gap-2 mb-3">
-                                 <input class="form-check-input" type="checkbox" id="certifiedCheck3">
-                                 <label class="form-check-label fw-normal fs-12 text-uppercase rights-label" for="certifiedCheck3">Certified Copy</label>
-                              </div>
+                                 <div class="form-check gap-2 mb-3">
+                                    <div>
+                                       <input class="form-check-input" type="checkbox" id="certifiedCheck3">
+                                       <label class="form-check-label fw-normal fs-12 text-uppercase rights-label"
+                                          for="certifiedCheck3">Certified Copy</label>
+                                    </div>
+                                    <div class="ms-auto d-flex align-items-center gap-2">
+                                       <label class="mb-0 form-check-label fw-normal fs-12" for="certifiedCheckQty3">Qty</label>
+                                       <div class="border rounded-2 p-2 d-flex align-items-center">
+                                          <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
+                                             <input class="ps-1 border-0 numberInput fs-12" type="text" id="certifiedCheckQty3" value="0">
+                                             <div class="d-flex">
+                                                <button type="button" class="numDec border-0" onclick="changeValue(this, -1)"></button>
+                                                <button type="button" class="numInce border-0 ms-2" onclick="changeValue(this, 1)"></button><button></button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
 
-                              <div class="form-check gap-2">
-                                 <input class="form-check-input" type="checkbox" id="plainCheck4">
-                                 <label class="form-check-label fw-normal fs-12 text-uppercase rights-label" for="plainCheck4">Plain Copy</label>
+                                 <div class="form-check gap-2">
+                                    <div>
+                                       <input class="form-check-input" type="checkbox" id="plainCheck4">
+                                       <label class="form-check-label fw-normal fs-12 text-uppercase rights-label"
+                                          for="plainCheck4">Plain Copy</label>
+                                    </div>
+                                    <div class="ms-auto d-flex align-items-center gap-2">
+                                       <label class="mb-0 form-check-label fw-normal fs-12" for="plainCheckQty4">Qty</label>
+                                       <div class="border rounded-2 p-2 d-flex align-items-center">
+                                          <div class="w-100 d-flex align-items-center justify-content-between incDecNum">
+                                             <input class="ps-1 border-0 numberInput fs-12" type="text" id="plainCheckQty4" value="0">
+                                             <div class="d-flex">
+                                                <button type="button" class="numDec border-0" onclick="changeValue(this, -1)"></button>
+                                                <button type="button" class="numInce border-0 ms-2" onclick="changeValue(this, 1)"></button><button></button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
-                           </div>
                            </div>
 
                         </div>
@@ -7459,7 +7555,7 @@
                   </button>
                   <div class="d-flex align-items-center">
                      <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
-                        data-bs-target="#docEntity" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        data-bs-target="#docSummary" data-bs-toggle="modal" data-bs-dismiss="modal">
                         Next
                      </button>
                   </div>
@@ -7485,13 +7581,13 @@
                   </div>
                   <!-- stepper start -->
                   <div class="service-step-group service-step3">
-                     <div class="step " data-bs-toggle="modal" data-bs-target="#docServices" data-bs-dismiss="modal">
-                        <div class="circle completed"></div>
-                        <span class="step3-text">SERVICES</span>
-                     </div>
                      <div class="step" data-bs-toggle="modal" data-bs-target="#docEntity" data-bs-dismiss="modal">
                         <div class="circle active"></div>
                         <span class="step3-text">ENTITY</span>
+                     </div>
+                     <div class="step " data-bs-toggle="modal" data-bs-target="#docServices" data-bs-dismiss="modal">
+                        <div class="circle"></div>
+                        <span class="step3-text">SERVICES</span>
                      </div>
                      <div class="step" data-bs-toggle="modal" data-bs-target="#docSummary" data-bs-dismiss="modal">
                         <div class="circle"></div>
@@ -7568,7 +7664,7 @@
                   </button>
                   <div class="d-flex align-items-center">
                      <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
-                        data-bs-target="#docSummary" data-bs-toggle="modal" data-bs-dismiss="modal">
+                        data-bs-target="#docServices" data-bs-toggle="modal" data-bs-dismiss="modal">
                         Next
                      </button>
                   </div>
@@ -7638,17 +7734,35 @@
                            </thead>
                            <tbody>
                               <tr class="odd">
-                                 <td>CA Document Retrieval</td>
+                                 <td>FORMATION DOCUMENTS ONLY - Certified Copy</td>
                                  <td>1</td>
                                  <td>$99</td>
-                                 <td>$15</td>
-                              </tr>                           
-                           <tfoot>
+                                 <td>$99</td>
+                              </tr>
                               <tr class="even">
+                                 <td>AMENDMENT DOCUMENTS ONLY - Plain Copy</td>
+                                 <td>2</td>
+                                 <td>$99</td>
+                                 <td>$198</td>
+                              </tr>
+                              <tr class="odd">
+                                 <td>ALL FILED DOCUMENTS - Certified Copy</td>
+                                 <td>2</td>
+                                 <td>$99</td>
+                                 <td>$198</td>
+                              </tr>
+                              <tr class="even">
+                                 <td>ALL FILED DOCUMENTS - Plain Copy</td>
+                                 <td>10</td>
+                                 <td>$99</td>
+                                 <td>$990</td>
+                              </tr>
+                           <tfoot>
+                              <tr class="odd">
                                  <td class="fw-bold">Total</td>
-                                 <td class="fw-bold">1</td>
+                                 <td class="fw-bold">15</td>
                                  <td class="fw-bold"></td>
-                                 <td class="fw-bold">$15</td>
+                                 <td class="fw-bold">$1485</td>
                               </tr>
                            </tfoot>
 
