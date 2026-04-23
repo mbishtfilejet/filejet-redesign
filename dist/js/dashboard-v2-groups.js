@@ -124,7 +124,9 @@ $(document).ready(function () {
         return data.expanded_rows.map((row, index, arr) => `
           <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
               <td class="${rowId == 17 ? 'text-light-blue' : ''}">
-                <span class="d-flex text-break" style="padding-left: 27px;">${row.entity_name}</span>
+                <a href="./entities-details-v2.html">
+                    <span class="d-flex text-break" style="padding-left: 27px;">${row.entity_name}</span>
+                </a>
               </td>
               <td class="${rowId == 17 ? 'text-light-blue' : ''}">${row.type}</td>
               <td class="${rowId == 17 ? 'text-light-blue' : ''}">${row.jurisdiction}</td>
