@@ -420,6 +420,7 @@
                                           <th>Order ID#</th>
                                           <th>External Ref #</th>
                                           <th>Entity</th>
+                                          <th>Store #</th>
                                           <th>State</th>
                                           <th>Amount</th>
                                           <th>Status</th>
@@ -447,6 +448,112 @@
          </div>
       </div>
    </div>
+
+   <!-- Upload Documents Modal Start -->
+   <div class="modal modal-right fade filter-slideout SOP-model" id="payBill_modal" tabindex="-1"
+      aria-labelledby="payBill_label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+         <div class="modal-content border-0 rounded-0 min-vh-100">
+            <div class="modal-header">
+               <div class="d-flex align-items-center w-100 pb-2">
+                  <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                     <span class="icon icon-md icon-user-white m-0"></span>
+                  </span>
+                  <div>
+                     <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Billing</span>
+                     <h3 class="fs-3 m-0 mt-2">Complete Payment</h3>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-body">
+               <p>Complete Payment for order #33456 (FEXI TOR DISTRIBUTED NODE CLUSTER)</p>
+
+               <div class="bg-white py-3 px-4 rounded-2">
+                  <form action="" class="w-100">
+                     <div class="mb-3">
+                        <label for="" class="form-label text-uppercase">Payment by</label>
+                        <select class="form-select payer-type" name="payer_type" parsley-trigger="change" required="">
+                           <option value="" disabled="" hidden="">Select Payment By</option>
+                           <option value="partner" selected="">Customer</option>
+                        </select>
+                     </div>
+                     <div class="mb-3">
+                        <label for="" class="form-label text-uppercase">Payment Method</label>
+                        <select class="form-select payment-mode" name="payment_mode" parsley-trigger="change"
+                           required="" data-attr-class="payment-mode-fields">
+                           <option value="" disabled="" hidden="">Select Payment Mode</option>
+                           <option value="offline" selected="">With Filejet</option>
+                           <option value="online">Other</option>
+                        </select>
+                     </div>
+                     <div class="offline-fields billing-options payment-options">
+                        <div class="mb-3">
+                           <div class="form-group billing-option partner-billing d-none">
+                              <label for="" class="form-label text-uppercase">Choose Payment Method</label>
+                           </div>
+                           <div class="form-group billing-option client-billing d-none col-md-12">
+                              <p class="alert alert-warning client-billing-info"><i class="fa fa-info-circle"></i>
+                                 Please add a Client in order to add the Client's Billing.</p>
+                           </div>
+
+                        </div>
+                        <div class="mb-3 billing-option other-billing">
+                           <label for="" class="form-label text-uppercase">Card Number</label>
+                           <input class="form-control card-number" data-card-type="" name="cardNumber"
+                              placeholder="Card Number" autocomplete="off" parsley-trigger="change">
+                        </div>
+                        <div class="mb-3">
+                           <label for="" class="form-label text-uppercase billing-option other-billing">Card
+                              Expiration</label>
+                           <div class="row  gy-3">
+                              <div class="col-12 col-md-6 billing-option other-billing">
+
+                                 <input class="form-control input-date-b" name="cardExpiry" placeholder="MM/YYYY"
+                                    autocomplete="off" parsley-trigger="change">
+                              </div>
+                              <div class="col-12 col-md-6 billing-option other-billing">
+                                 <input class="form-control input-date-b" type="password" name="cardCvv"
+                                    placeholder="CVV" autocomplete="off" maxlength="4">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="mb-3">
+                        <div class="row">
+                           <div class="col-6">
+                              <label class="mb-3 text-uppercase" for="">Total amount</label>
+                              <h5 class="m-0"><strong>$464.50</strong></h5>
+                           </div>
+                           <div class="col-6 text-end">
+                              <div class="d-inline-block text-start">
+                                 <label class="mb-3 text-uppercase" for="">Total Unpaid</label>
+                                 <h5 class="m-0"><strong>$464.50</strong></h5>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+
+            </div>
+            <div class="modal-footer">
+               <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                     data-bs-dismiss="modal">
+                     CANCEL
+                  </button>
+                  <div class="d-flex align-items-center">
+                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                        data-bs-toggle="modal" data-bs-dismiss="modal">
+                        Pay Now
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Upload Documents Modal End -->
 
    <!-- Invoice Modal Starts -->
    <div class="modal modal-right fade filter-slideout SOP-model" id="invoiceModal" tabindex="-1"
@@ -476,8 +583,7 @@
 
             <div class="modal-footer mt-3 pb-0">
                <div class="d-flex justify-content-end w-100">
-                  <button type="button" data-bs-dismiss="modal"
-                     class="btn btn-info py-0 px-5 rounded-3 ms-3">
+                  <button type="button" data-bs-dismiss="modal" class="btn btn-info py-0 px-5 rounded-3 ms-3">
                      Go Back
                   </button>
                </div>

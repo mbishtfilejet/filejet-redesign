@@ -33,12 +33,12 @@ $(function () {
                 }
             },
             {
-                data: null, render: function () {
+                data: null, render: function (data, type, row) {
                     return `
-                    <button data-bs-toggle="modal" data-bs-target="#invoiceModal" aria-label="View Invoice" 
-                        type="button" class="btn btn-secondary rounded-1 px-3 py-2 m-0 text-white">
-                        View Invoice
-                    </button>
+                    <div class="d-flex align-items-center justify-content-end me-1">
+                        ${row.due > 0 ? '<span class="icon icon-money-red cursor-pointer" data-toggle="tooltip" title="Complete payment" data-bs-toggle="modal" data-bs-target="#payBill_modal"></span>' : ''}
+                        <span class="icon icon-pdf-black me-0 cursor-pointer" data-toggle="tooltip" title="VIEW INVOICE" data-bs-toggle="modal" data-bs-target="#invoiceModal"></span>
+                    </div>
                 `
                 }
             }
@@ -62,23 +62,28 @@ $(function () {
             { data: "orderId" },
             { data: "external_reference_no" },
             { data: "entity_name" },
+            { data: "store_no" },
             { data: "state" },
             {
-                data: "amount", render: function (data) {
+                data: "amount_to_be_paid", render: function (data) {
                     return formatCurrency(data)
                 }
             },
-            { data: "status" },
+            {
+                data: "status", render: function (data) {
+                    return `<span class="${data?.toLowerCase() === "pending" ? "text-danger" : ""}">${data}</span>`
+                }
+            },
             { data: "orderDate" },
             { data: "datePaid" },
             { data: "orderStatus" },
             {
-                data: null, render: function () {
+                data: null, render: function (data, type, row) {
                     return `
-                    <button data-bs-toggle="modal" data-bs-target="#invoiceModal" aria-label="View Invoice" 
-                        type="button" class="btn btn-secondary rounded-1 px-3 py-2 m-0 text-white">
-                        View Invoice
-                    </button>
+                    <div class="d-flex align-items-center justify-content-end me-1">
+                        ${row.status?.toLowerCase() === "pending" ? '<span class="icon icon-money-red cursor-pointer" data-toggle="tooltip" title="Complete payment" data-bs-toggle="modal" data-bs-target="#payBill_modal"></span>' : ''}
+                        <span class="icon icon-pdf-black me-0 cursor-pointer" data-toggle="tooltip" title="VIEW INVOICE" data-bs-toggle="modal" data-bs-target="#invoiceModal"></span>
+                    </div>
                 `
                 }
             }
@@ -102,26 +107,26 @@ $(document).on('shown.bs.tab', function (e) {
 
 $(function () {
     $('input[name="daterange"]').daterangepicker({
-            ranges: {
-                'Today': [moment(), moment()],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'Last 90 Days': [moment().subtract(89, 'days'), moment()],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                '3 Months': [moment().subtract(2, 'month').startOf('month'), moment().endOf('month')],
-                '6 Months': [moment().subtract(5, 'month').startOf('month'), moment().endOf('month')],
-                '1 Year': [moment().subtract(11, 'month').startOf('month'), moment().endOf('month')]
-            },
-            opens: 'center',
-            linkedCalendars: false,
-            alwaysShowCalendars: true,
-            cancelClass: 'btn-secondary',
-            locale: {
-                format: 'MMM D, YYYY',
-            },
-            startDate: moment().subtract(89, 'days'),
-            endDate: moment(),
-        });
+        ranges: {
+            'Today': [moment(), moment()],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'Last 90 Days': [moment().subtract(89, 'days'), moment()],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            '3 Months': [moment().subtract(2, 'month').startOf('month'), moment().endOf('month')],
+            '6 Months': [moment().subtract(5, 'month').startOf('month'), moment().endOf('month')],
+            '1 Year': [moment().subtract(11, 'month').startOf('month'), moment().endOf('month')]
+        },
+        opens: 'center',
+        linkedCalendars: false,
+        alwaysShowCalendars: true,
+        cancelClass: 'btn-secondary',
+        locale: {
+            format: 'MMM D, YYYY',
+        },
+        startDate: moment().subtract(89, 'days'),
+        endDate: moment(),
+    });
 
     // $('input[name="daterange"]').on('apply.daterangepicker', function (ev, picker) {
     //     if (picker.chosenLabel !== "Custom Range") {
