@@ -65,7 +65,7 @@ $(function () {
             { data: "store_no" },
             { data: "state" },
             {
-                data: "amount_to_be_paid", render: function (data) {
+                data: "total_amount", render: function (data) {
                     return formatCurrency(data)
                 }
             },
