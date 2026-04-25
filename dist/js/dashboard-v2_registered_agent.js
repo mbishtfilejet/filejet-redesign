@@ -8,18 +8,8 @@ $(document).on('shown.bs.tab', function () {
 });
 
 // adding sliding effect on tabs
-$(document).ready(function () {
-  function highlightTabs(tab) {
 
-    const tabOffset = tab.position();
- 
-    $(".registeredAgent_tablist").css({
-      '--tab-left': tabOffset.left + 'px',
-      '--tab-top': tabOffset.top + 'px',
-      '--tab-width': tab.outerWidth() + 'px',
-      '--tab-height': tab.outerHeight() + 'px'
-    })
-  }
+$(document).ready(function () {
 
   //tab change event
   $('.registeredAgent_tablist .nav-link').on('shown.bs.tab', function () {
