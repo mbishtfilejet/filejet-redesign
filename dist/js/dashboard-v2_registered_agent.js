@@ -13,15 +13,15 @@ $(document).ready(function () {
 
   //tab change event
   $('.registeredAgent_tablist .nav-link').on('shown.bs.tab', function () {
-    highlightTabs($(this));
+    highlightTabs($('.registeredAgent_tablist'));
   });
 
   // handle resize
   $(window).on('resize', function () {
-    highlightTabs($('.registeredAgent_tablist  .nav-link.active'));
+    highlightTabs($('.registeredAgent_tablist'));
   });
 
-  highlightTabs($(".registeredAgent_tablist .nav-link.active"))
+  highlightTabs($('.registeredAgent_tablist'));
 })
 
 // dashboard - registered agent start

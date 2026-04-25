@@ -1,11 +1,11 @@
-function highlightTabs(tab) {
+function highlightTabs(tabparent) {
+    const activeTab = tabparent.find('.nav-link.active');
+    const tabOffset = activeTab.position();
 
-    const tabOffset = tab.position();
-
-    $(".registeredAgent_tablist").css({
+    tabparent.css({
         '--tab-left': tabOffset.left + 'px',
         '--tab-top': tabOffset.top + 'px',
-        '--tab-width': tab.outerWidth() + 'px',
-        '--tab-height': tab.outerHeight() + 'px'
+        '--tab-width': activeTab.outerWidth() + 'px',
+        '--tab-height': activeTab.outerHeight() + 'px'
     })
 }
