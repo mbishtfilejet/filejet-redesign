@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Jet: Dashboard</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../src/scss/filejet-style.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- date picker -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" />
+    <!-- end date -->
+
+    <!-- Scripts -->
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body class="main-dashboard-v2">
+    <div class="filejet-bg dashboard-page min-vh-100">
+        <div class="container-fluid p-0">
+            <div class="sidebar-wrapper">
+                <div class="sidebar sidebar-v2 min-vh-100 py-3 ps-3">
+                    <div class="pb-4">
+                        <a href="../index.html"
+                            class="btn btn-info p-2 text-uppercase d-inline-flex align-items-center">
+                            <span class="icon icon-md icon-arrow-left m-0 me-md-2"></span>
+                            <span class="d-none d-lg-inline-block">Go back</span>
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="menu-link p-0 m-0">
+                            <!-- Profile Settings -->
+                            <li class="nav-link">
+                                <a href="./settings.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-profile normal-icon"></span>
+                                        <span class="icon icon-profile-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text">Profile Settings</span>
+                                </a>
+                            </li>
+                            <!-- Account Settings -->
+                            <li class="nav-link">
+                                <a href="./account-settings.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-accountsettings normal-icon"></span>
+                                        <span class="icon icon-accountsettings-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Account Settings
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Billing -->
+                            <li class="nav-link">
+                                <a href="./billing.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-billing normal-icon"></span>
+                                        <span class="icon icon-billing-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Billing</span>
+                                </a>
+                            </li>
+                            <!-- Users -->
+                            <li class="nav-link active">
+                                <a href="./users-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-users normal-icon"></span>
+                                        <span class="icon icon-users-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Users</span>
+                                </a>
+                            </li>
+                            <!-- Account Security -->
+                            <li class="nav-link">
+                                <a href="./account-security.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-security normal-icon"></span>
+                                        <span class="icon icon-security-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Account Security
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Business Licenses -->
+                            <hr class="m-0 me-3" />
+                            <li class="nav-link">
+                                <a href="javascript:void(0)"
+                                    class="text-decoration-none ps-3 py-3 d-block font-weight-600">
+                                    <span class="text text-break position-relative">
+                                        Admin User
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-document normal-icon"></span>
+                                        <span class="icon icon-document-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Policies
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-wrapper">
+                <div class="container-fluid container-lg">
+                    <div class="header mt-3">
+                        <div class="row align-items-center d2-search">
+                            <div class="col-3 col-xl-3 col-lg-3">
+                                <h2 class="m-0">
+                                    <strong> Users </strong>
+                                </h2>
+                            </div>
+                            <div
+                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center gap-3 justify-content-between justify-content-md-end">
+                                <div class="profile-nav profile-nav-v2">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+                                        <a class="nav-link dropdown show" href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg m-0">
+                                                <img src="../dist/images/avatar.png" alt="" />
+                                            </span>
+                                            <!-- <span class="user-name">Roman Lorem ipsum</span> -->
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <span
+                                                    class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                                    Account
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="../account/settings.html">
+                                                    <span class="avatar avatar-sm me-4">
+                                                        <img src="../dist/images/avatar.png" alt="" />
+                                                    </span>
+                                                    View Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center"
+                                                    href="../../login.html">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="container-fluid container-lg">
+                    <div class="main-content pt-3">
+                        <div class="row g-0">
+                            <div class="col-12 bg-white shadow-sm rounded-2 p-4">
+                                <div>
+                                    <ul class="nav users_tablist p-1 shadow-sm" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a href="javascript:void(0)" id="en-users-tab"
+                                                class="nav-link py-2 px-3 text-uppercase active" data-bs-toggle="tab"
+                                                data-bs-target="#en-users-tab-pane" role="tab"
+                                                data-table-key="users-listing-table" aria-controls="en-users-tab-pane"
+                                                aria-selected="true">Users</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a href="javascript:void(0)" class="nav-link py-2 px-3 text-uppercase"
+                                                id="en-roles-tab" data-bs-toggle="tab"
+                                                data-bs-target="#en-roles-tab-pane" role="tab"
+                                                data-table-key="roles-listing-table" aria-controls="en-roles-tab-pane"
+                                                aria-selected="false" tabindex="-1">
+                                                Roles</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="ra-tab-content tab-content w-100 mt-4" id="myTabContent">
+                                    <!-- Users TabContent Start -->
+                                    <div class="tab-pane fade show active" id="en-users-tab-pane" role="tabpanel"
+                                        aria-labelledby="en-users-tab" tabindex="0">
+                                        <div class="row g-2"></div>
+                                        <div class="usersTableCard border rounded-2">
+                                            <div class="usersListingTable">
+                                                <table id="users-listing-table"
+                                                    class="table table-striped w-100 table-nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Username</th>
+                                                            <th>Email</th>
+                                                            <th>Phone</th>
+                                                            <th>Role</th>
+                                                            <th>Status</th>
+                                                            <th>Groups</th>
+                                                            <th>Entities</th>
+                                                            <th data-orderable="false">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Users TabContent End -->
+
+                                    <!-- Roles TabContent Start -->
+                                    <div class="tab-pane fade" id="en-roles-tab-pane" role="tabpanel"
+                                        aria-labelledby="en-roles-tab" tabindex="0">
+                                        <div class="row g-2"></div>
+                                        <div class="usersTableCard border rounded-2">
+                                            <div class="rolesListingTable">
+                                                <table id="roles-listing-table"
+                                                    class="table table-striped w-100 table-nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Role Name</th>
+                                                            <th>Groups</th>
+                                                            <th>Entities</th>
+                                                            <th data-orderable="false">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Roles TabContent End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="main-content pt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Scripts start-->
+    <script src="../dist/js/plugins.min.js"></script>
+    <script src="../dist/js/custom.min.js"></script>
+    <script src="/dist/js/comman.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Scripts End-->
+    <script>
+        // Initialize all tooltips on the page
+        const tooltipTriggerList = [].slice.call(
+            document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+        );
+        tooltipTriggerList.map((el) => new bootstrap.Tooltip(el));
+    </script>
+
+    <script>
+        //tab change event
+        $(document).ready(function () {
+            $(".users_tablist .nav-link").on("shown.bs.tab", function () {
+                highlightTabs($(".users_tablist"));
+            });
+
+            // handle resize
+            $(window).on("resize", function () {
+                highlightTabs($(".users_tablist"));
+            });
+
+            highlightTabs($(".users_tablist"));
+        })
+
+
+        // users listing table
+
+        const tableOptions = {
+            ajax: {
+                url: "../data5.json",
+                dataSrc: 'account_users_data',
+            },
+            scrollX: true,
+            scrollY: false,
+            columns: [
+                { data: "username" },
+                { data: "email" },
+                { data: "phone" },
+                { data: "role" },
+                { data: "status" },
+                { data: "groups" },
+                { data: "entities" },
+                {
+                    data: null, render: function (data, type, row) {
+                        return `
+                        <div class="d-flex align-items-center">
+                            <span role="button" tabindex="0"> 
+                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                                    class="icon icon-entity-edit me-1 me-md-2"></span>
+                            </span>
+                            
+                            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                            </span>
+                        </div>
+                        `
+                    }
+                }
+            ],
+            order: [[0, "asc"]],
+            lengthChange: false,  // Removed pagination
+            paging: false,  // Disable pagination
+            info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+        }
+
+        $('#users-listing-table').DataTable(tableOptions);
+
+
+        const tableOptions_1 = {
+            ajax: {
+                url: "../data5.json",
+                dataSrc: 'account_users_data',
+            },
+            scrollX: true,
+            scrollY: false,
+            columns: [
+                { data: "role" },
+                { data: "groups" },
+                { data: "entities" },
+                {
+                    data: null, render: function (data, type, row) {
+                        return `
+                        <div class="d-flex align-items-center">
+                            <span role="button" tabindex="0"> 
+                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                                    class="icon icon-entity-edit me-1 me-md-2"></span>
+                            </span>
+                            
+                            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                            </span>
+                        </div>
+                        `
+                    }
+                }
+            ],
+            order: [[0, "asc"]],
+            lengthChange: false,  // Removed pagination
+            paging: false,  // Disable pagination
+            info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+        }
+
+
+        $('#roles-listing-table').DataTable(tableOptions_1)
+
+
+        $(document).on('shown.bs.tab', function (e) {
+            const currentTab = $(e.target);
+            const tableKey = currentTab.data('table-key');
+            $(`#${tableKey}`).DataTable().columns.adjust();
+        });
+
+
+    </script>
+
+    <script>
+        if (/Mobi/.test(navigator.userAgent)) {
+            // if mobile device, use native pickers
+            $(".time input").attr("type", "time");
+        } else {
+            // if desktop device, use DateTimePicker
+            $("#setuptimepicker").datetimepicker({
+                format: "LT",
+                icons: {
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                },
+            });
+        }
+    </script>
+</body>
+
+</html>
