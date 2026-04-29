@@ -992,7 +992,7 @@ function applyTagOverflow() {
     tags.css('display', 'inline-block');
     moreBadge.addClass('d-none').text("");
 
-    const colWidth = th.outerWidth(true) - 60;
+    const colWidth = th.width() - 50;
 
     tags.each(function () {
       let tag = $(this);
@@ -1675,6 +1675,60 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     resetState(tagContainer);
   });
+
+  // add tag to header when added using flyout/modal
+  $(document).on('click', '.addHeaderTag-btn', function () {
+    // get the tags parent from inside modal to update tags on both part
+    const tagParent = $(this).closest('.modal');
+
+    const tagContainer = tagParent.find('.modal-tags-container')
+    const tagSelectInput = tagContainer.find(".tagselect");
+    const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
+
+    const headerTagContainer = $('.header-tags-container').find('.modal-tags-container');
+    const headerTagBadgeWrapper = headerTagContainer.find(".tagsbadge-wrapper");
+
+    const colors = tagContainer.data('colors') || {};
+    const tagValue = tagSelectInput.val()?.trim() || "";
+
+    if (!tagValue) return;
+
+    const optionSelected = tagSelectInput.find(`option[data-value="${tagValue}"]`);
+
+    const bgColor = optionSelected?.data('bgColor') || colors.bg;
+    const textColor = optionSelected?.data('textColor') || colors.text;
+
+    const existingTags = tagBadgeWrapper.children(".badge").map((_, el) => $(el).data('value')).get();
+
+    if (existingTags.length >= 20 || existingTags.includes(tagValue)) {
+      resetState(tagContainer);
+      return;
+    };
+
+    if (bgColor && textColor) {
+      tagContainer.find('.tag-colorPicker-wrapper').addClass('d-none');
+      const newTag = `
+      <div class="badge position-relative" 
+        data-value="${tagValue}" 
+        style="background-color:${bgColor}; color:${textColor};">
+        ${tagValue}
+        <span class="position-absolute icon icon-remove-tag m-0 remove-tag"></span> 
+      </div>`;
+
+      tagBadgeWrapper.append(newTag);
+      headerTagBadgeWrapper.append(newTag);
+
+      if (!optionSelected.length) {
+        const newOption = `<option value="${tagValue}" data-value="${tagValue}" data-text-color="${textColor}" data-bg-color="${bgColor}"> ${tagValue} </option>`;
+        // add custom attributes
+        tagSelectInput.append(newOption);
+      }
+    }
+    resetState(tagContainer);
+
+
+  });
+
   // remove tag functionality 
   $(document).on('click', ".remove-tag", function () {
     const tagContainer = $(this).closest(".modal-tags-container");
