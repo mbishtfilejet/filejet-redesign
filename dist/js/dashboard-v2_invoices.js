@@ -79,9 +79,10 @@ $(function () {
             { data: "orderStatus" },
             {
                 data: null, render: function (data, type, row) {
+                    console.log(["pending", "in progress"].includes(row.status?.toLowerCase()), row.status?.toLowerCase() )
                     return `
                     <div class="d-flex align-items-center justify-content-end me-1">
-                        ${row.status?.toLowerCase() === "pending" ? '<span class="icon icon-money-red cursor-pointer" data-toggle="tooltip" title="Complete payment" data-bs-toggle="modal" data-bs-target="#payBill_modal"></span>' : ''}
+                        ${["pending", "in progress"].includes(row.status?.toLowerCase()) ? '<span class="icon icon-money-red cursor-pointer" data-toggle="tooltip" title="Complete payment" data-bs-toggle="modal" data-bs-target="#payBill_modal"></span>' : ''}
                         <span class="icon icon-pdf-black me-0 cursor-pointer" data-toggle="tooltip" title="VIEW INVOICE" data-bs-toggle="modal" data-bs-target="#invoiceModal"></span>
                     </div>
                 `
