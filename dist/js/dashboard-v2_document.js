@@ -1733,7 +1733,20 @@ document.addEventListener("DOMContentLoaded", function () {
   $(document).on('click', ".remove-tag", function () {
     const tagContainer = $(this).closest(".modal-tags-container");
     const tagBadgeWrapper = tagContainer.find(".tagsbadge-wrapper");
-    $(this).closest('.badge').remove();
+
+    const badge = $(this).closest('.badge');
+    const tagValue = badge.data('value');
+
+
+    if (tagContainer.find('.header-tags-list').length) {
+      $(`.header-tags-list .badge[data-value="${tagValue}"]`).remove();
+      console.log('hi')
+    } else {
+      // Otherwise remove only this instance
+      badge.remove();
+    }
+
+
     if (!tagBadgeWrapper.children('.badge').length) {
       tagBadgeWrapper.find(".no-tag-span").show();
     }
