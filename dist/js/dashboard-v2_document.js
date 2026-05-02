@@ -1740,7 +1740,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (tagContainer.find('.header-tags-list').length) {
       $(`.header-tags-list .badge[data-value="${tagValue}"]`).remove();
-      console.log('hi')
     } else {
       // Otherwise remove only this instance
       badge.remove();
