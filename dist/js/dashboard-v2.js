@@ -361,6 +361,11 @@ $(document).ready(function () {
       { data: "jurisdiction" },
       { data: "registrations" },
       ...(!isExternalDashboard ? [{ data: "dbas" }, { data: "business_licenses" }] : []),
+      {
+        data: "tags", render: function (data, type, row) {
+          return renderTagsOnRow(data)
+        }
+      },
       { data: "status", render: renderDotsTable1 }
     ],
     createdRow: function (row, data) {
@@ -386,6 +391,7 @@ $(document).ready(function () {
       tr.after(expandedRows);
       tr.addClass("expanded-row");
     }
+    applyTagOverflow();
   });
 
   function formatExpandedRows(d, rowId, hideDBAAndLicense) {
@@ -400,11 +406,89 @@ $(document).ready(function () {
               <td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.jurisdiction || d.jurisdiction}</td>
               <td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.registrations || d.registrations}</td>
               ${!hideDBAAndLicense ? `<td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}" >${row.dbas ?? d.dbas}</td><td class="${row.jurisdiction === 'Denmark' ? 'text-light-blue' : ''}">${row.business_licenses ?? d.business_licenses}</td>` : ""}
+              <td >${renderTagsOnRow(row.tags)}</td>
               <td><span class="badge badge-${row.status.class}">${row.status.label}</span></td>
           </tr>
       `).join("");
   }
+
+  table1.on('column-sizing.dt', function () {
+    applyTagOverflow();
+  })
+
+  $(window).on('resize', function () {
+    table1.columns.adjust().draw();
+  });
 });
+
+//function to render tags
+function renderTagsOnRow(tagdata, maxTag = 4) {
+  const tagWrapper = document.createElement("div");
+  tagWrapper.className = "d-flex gap-1 align-items-center d-tag-wrapper";
+  tagWrapper.style.whiteSpace = "nowrap";
+  tagWrapper.style.overflow = "hidden";
+
+  tagdata.forEach((value, index) => {
+    const span = document.createElement("span");
+    span.className = "badge d-tag";
+    span.style.backgroundColor = value.tagColor;
+    span.style.color = value.textColor;
+    span.innerText = value.tagName;
+    tagWrapper.appendChild(span);
+  })
+
+  // +N placeholder (keeping empty for now will alter while table draws)
+
+  const span = document.createElement("span");
+  span.innerHTML = `
+        <span class="badge text-black d-tag-more d-none" style="background-color:#E6E8EC;"></span>
+      `;
+  tagWrapper.appendChild(span);
+
+  return tagWrapper.outerHTML;
+}
+
+function applyTagOverflow() {
+
+  $('.d-tag-wrapper').each(function () {
+    const wrapper = $(this);
+    const td = wrapper.closest('td');
+
+    const tags = wrapper.find('.d-tag');
+    const moreBadge = wrapper.find('.d-tag-more');
+
+    const colIndex = td[0].cellIndex;
+
+    const parent = td.closest('.dataTable');
+
+    const th = parent.find('thead th').eq(colIndex);
+
+    let usedWidth = 0;
+    let hiddenCount = 0;
+
+    tags.css('display', 'inline-block');
+    moreBadge.addClass('d-none').text("");
+
+    const colWidth = th.width() - 50;
+
+    tags.each(function () {
+      let tag = $(this);
+
+      let tagWidth = tag.outerWidth(true);
+
+      if (usedWidth + tagWidth > colWidth) {
+        tag.css('display', 'none');
+        hiddenCount++;
+      } else {
+        usedWidth += tagWidth;
+      }
+    });
+
+    if (hiddenCount > 0) {
+      moreBadge.text('+' + hiddenCount).removeClass('d-none')
+    }
+  })
+}
 
 function renderDotsTable1(data, type, row) {
   //adding draft badge just for refernce for showcasing on the listing page

@@ -477,43 +477,173 @@
                            <option value="partner" selected="">Customer</option>
                         </select>
                      </div>
-                     <div class="mb-3">
-                        <label for="" class="form-label text-uppercase">Payment Method</label>
-                        <select class="form-select payment-mode" name="payment_mode" parsley-trigger="change"
-                           required="" data-attr-class="payment-mode-fields">
-                           <option value="" disabled="" hidden="">Select Payment Mode</option>
-                           <option value="offline" selected="">With Filejet</option>
-                           <option value="online">Other</option>
-                        </select>
-                     </div>
-                     <div class="offline-fields billing-options payment-options">
-                        <div class="mb-3">
-                           <div class="form-group billing-option partner-billing d-none">
-                              <label for="" class="form-label text-uppercase">Choose Payment Method</label>
-                           </div>
-                           <div class="form-group billing-option client-billing d-none col-md-12">
-                              <p class="alert alert-warning client-billing-info"><i class="fa fa-info-circle"></i>
-                                 Please add a Client in order to add the Client's Billing.</p>
-                           </div>
-
-                        </div>
-                        <div class="mb-3 billing-option other-billing">
-                           <label for="" class="form-label text-uppercase">Card Number</label>
-                           <input class="form-control card-number" data-card-type="" name="cardNumber"
-                              placeholder="Card Number" autocomplete="off" parsley-trigger="change">
-                        </div>
-                        <div class="mb-3">
-                           <label for="" class="form-label text-uppercase billing-option other-billing">Card
-                              Expiration</label>
-                           <div class="row  gy-3">
-                              <div class="col-12 col-md-6 billing-option other-billing">
-
-                                 <input class="form-control input-date-b" name="cardExpiry" placeholder="MM/YYYY"
-                                    autocomplete="off" parsley-trigger="change">
+                     <div class="payment-section">
+                        <div class="mb-4">
+                           <fieldset>
+                              <label class="form-label">Payment Method<span class="mandatory">*</span></label>
+                              <div class="custom-dropdown">
+                                 <select class="form-select pricing-method">
+                                    <option value="account-default" data-full-text="Pay Later">Pay Later</option>
+                                    <option value="account-default">Account Default (Visa 1111)</option>
+                                    <option value="on-file">On File</option>
+                                    <option value="add-new">Add New</option>
+                                 </select>
                               </div>
-                              <div class="col-12 col-md-6 billing-option other-billing">
-                                 <input class="form-control input-date-b" type="password" name="cardCvv"
-                                    placeholder="CVV" autocomplete="off" maxlength="4">
+                           </fieldset>
+                           <div class="on-file-content mt-4 border rounded-2" style="display: none;">
+                              <div>
+                                 <div class="payment-card d-flex odd border-bottom">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex">
+                                          <div class="methodiv">Mastercard </div>
+                                          <div class="methodcard">Mastercard ...4444</div>
+                                       </div>
+                                    </div>
+                                    <div class="d-flex align-items-start  defaultdiv">
+                                       <span class="btn btn-outline-success btn-sm">Default</span>
+                                    </div>
+                                 </div>
+                                 <!-- Payment Method 2 -->
+                                 <div class="container p-0 d-flex flex-column even border-bottom">
+                                    <div class="payment-card">
+                                       <div class="d-flex align-items-center">
+                                          <input class="form-check-input" type="checkbox" disabled="">
+                                          <div class="ms-2 d-flex">
+                                             <div class="methodiv text-disabled">ACH Payment</div>
+                                             <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
+                                          </div>
+                                       </div>
+
+                                       <div class="d-flex align-items-start defaultdiv" data-toggle="tooltip"
+                                          title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
+                                          <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <!-- Payment Method 2 -->
+                                 <div class="container p-0 d-flex flex-column odd border-bottom">
+                                    <div class="payment-card">
+                                       <div class="d-flex align-items-center">
+                                          <input class="form-check-input" type="checkbox">
+                                          <div class="ms-2 d-flex">
+                                             <div class="methodiv">ACH Payment</div>
+                                             <div class="methodcard">Stripe Test Bank ...4786</div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                                 <!-- Payment Method 3 -->
+                                 <div class="payment-card d-flex even ">
+                                    <div class="d-flex align-items-center">
+                                       <input class="form-check-input" type="checkbox">
+                                       <div class="ms-2 d-flex">
+                                          <div class="methodiv">Card 2</div>
+                                          <div class="methodcard">Mastercard ...1111</div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+
+
+                              </div>
+                           </div>
+                           <div class="add-new-content mt-4" style="display: none;">
+                              <div class="d-flex justify-content-between">
+                                 <span class="fw-bold">SELECT METHOD</span>
+                                 <div class="d-flex align-items-center">
+                                    <div class="form-check me-4">
+                                       <input class="form-check-input ach-option" id="achCheck" type="checkbox" checked>
+                                       <label class="form-check-label rights-label" for="achCheck">ACH</label>
+                                    </div>
+                                    <div class="form-check">
+                                       <input class="form-check-input credit-option" id="creditCheck" type="checkbox">
+                                       <label class="form-check-label rights-label" for="creditCheck">Credit
+                                          Card</label>
+                                    </div>
+                                 </div>
+
+                              </div>
+
+                              <!-- ACH Form -->
+                              <div class="ach-form mt-4" style="display: none;">
+                                 <fieldset class="mb-4">
+                                    <label class="form-label">Account Holder Name</label>
+                                    <input type="text" class="form-control" placeholder="Name">
+                                 </fieldset>
+                                 <div class="d-flex justify-content-between align-items-center upload-group w-100 mb-4">
+                                    <span class="fw-bold text-uppercase">ACCOUNT TYPE</span>
+                                    <div class="d-flex align-items-center flex-column">
+                                       <div class="d-flex">
+                                          <div class="form-check me-4 typecheckradio">
+                                             <input class="form-check-input no-checkbox" type="radio" id="ACtype"
+                                                name="customArticles-2" checked="">
+                                             <label class="form-check-label rights-label "
+                                                for="ACtype">Individual</label>
+                                          </div>
+                                          <div class="form-check typecheckradio">
+                                             <input class="form-check-input yes-checkbox" type="radio" id="ACompany"
+                                                name="customArticles-2">
+                                             <label class="form-check-label rights-label " for="ACompany">
+                                                Company</label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <fieldset class="mb-4">
+                                    <div class="d-flex justify-content-between">
+                                       <label class="form-label">Routing Number</label>
+                                       <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative">
+                                          <div class="text-start tooltipText tooltipRight"> Please note that the
+                                             Routing/Account numbers must have a minimum of 12 digits when adding. Your
+                                             Routing/Account number is less than 12 digits, you may add zeros at the
+                                             beginning
+                                             of the Routing/Account number. (see example)</div>
+                                       </div>
+                                    </div>
+                                    <span>Also known as ABA Number</span>
+                                    <input type="text" class="form-control" placeholder="EX. 11000000">
+                                 </fieldset>
+                                 <fieldset>
+                                    <label class="form-label">Account Number</label>
+                                    <input type="text" class="form-control" placeholder="EX. 000123455678">
+                                 </fieldset>
+                                 <div class="mt-4">
+                                    <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3"
+                                       id="officeraddBtn">
+                                       SAVE
+                                    </button>
+                                 </div>
+                              </div>
+
+                              <!-- Credit Card Form -->
+                              <div class="credit-card-form mt-4" style="display: none;">
+                                 <fieldset class="mb-4">
+                                    <label class="form-label">Card Holder Name</label>
+                                    <input type="text" class="form-control" placeholder="Name">
+                                 </fieldset>
+                                 <fieldset class="mb-4">
+                                    <label class="form-label">Card Details</label>
+                                    <input type="text" class="form-control" placeholder="**** **** **** 1111">
+                                 </fieldset>
+                                 <div class="d-flex justify-content-between">
+                                    <fieldset class="w-50 me-2">
+                                       <label class="form-label">Expiry Date</label>
+                                       <input type="text" class="form-control" placeholder="MM/YY">
+                                    </fieldset>
+                                    <fieldset class="w-50 ms-2">
+                                       <label class="form-label">CVV</label>
+                                       <input type="text" class="form-control" placeholder="CVV">
+                                    </fieldset>
+                                 </div>
+                                 <div class="mt-4">
+                                    <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3"
+                                       id="officeraddBtn">
+                                       SAVE
+                                    </button>
+                                 </div>
                               </div>
                            </div>
                         </div>
