@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
         span.innerHTML = `
           <span class="selected-option-text">${value}</span>
           <span class="remove-option">
-            <img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img">
+            <img src="/dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img">
           </span>
         `;
         span.querySelector(".remove-option").addEventListener("click", function () {
