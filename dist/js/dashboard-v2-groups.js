@@ -116,7 +116,6 @@ $(document).ready(function () {
             tr.after(expandedRows);
             tr.addClass("expanded-row");
         }
-        applyAlternateRowStyling("groupdetails-entities-table");
     });
 
 
