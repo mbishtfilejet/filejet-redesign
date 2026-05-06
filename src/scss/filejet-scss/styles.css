@@ -14106,6 +14106,10 @@ input[type=radio] {
   background-image: url("../../../dist/images/icons/light-green-check.svg");
 }
 
+.icon-folder-thin {
+  background-image: url("../../../dist/images/icons/icon-folder-thin.svg");
+}
+
 .login-page {
   background: url("../../../../dist/images/login-banner.jpg") no-repeat center center/cover;
 }
@@ -20854,6 +20858,24 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   color: var(--bs-yellow-bg);
 }
 
+.SOP-model .green-checkbox[type=checkbox]:checked,
+.green-checkbox[type=checkbox]:checked {
+  background-color: #72E097;
+  background-image: url("../../../../dist/images/icons/light-green-check.svg");
+}
+
+.SOP-model .light-green-checkbox[type=checkbox]:checked,
+.light-green-checkbox[type=checkbox]:checked {
+  background-color: #E7F9ED;
+  background-image: url("../../../../dist/images/icons/light-green-check.svg");
+}
+
+.SOP-model .intermediate-checkbox[type=checkbox]:checked,
+.intermediate-checkbox[type=checkbox]:checked {
+  background-color: #E7F9ED;
+  background-image: url("../../../../dist/images/icons/light-green-check.svg");
+}
+
 @media (min-width: 1920px) {
   .tradenameTable .dataTables_scroll .dataTables_scrollHeadInner {
     width: 100% !important;
@@ -23744,14 +23766,34 @@ body *::-webkit-scrollbar-thumb {
   width: 70px !important;
 }
 
-.green-checkbox[type=checkbox]:checked,
-.SOP-model .green-checkbox[type=checkbox]:checked {
-  background-color: #72E097;
-  border-color: #215233 !important;
-  background-image: url("../../../../dist/images/icons/light-green-check.svg");
-  background-size: contain;
+.userAccessTable {
+  padding-top: 0.1px;
+}
+.userAccessTable .dataTables_wrapper {
+  max-height: 400px !important;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.userAccessTable .dataTable tr .dt-control {
+  color: transparent;
+  width: 1rem;
+  height: 0.85rem;
+  border: none;
+  background-color: transparent;
+  background-image: url("../../../../dist/images/icons/right-angle-table.svg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+.userAccessTable .dataTable tr .dt-control.no-control {
+  display: none;
+  pointer-events: none;
+  cursor: none;
+}
+.userAccessTable .dataTable tr.expanded-row .dt-control {
+  transform: rotate(90deg);
 }
 
 /*# sourceMappingURL=styles.css.map */
