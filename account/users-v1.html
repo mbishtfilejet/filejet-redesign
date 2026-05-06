@@ -436,8 +436,8 @@
     </div>
 
     <!-- Add New Role Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model show" style="display: block;" id="AddNewRole"
-        tabindex="-1" aria-labelledby="AddNewRoleModalLabel" aria-hidden="true">
+    <div class="modal modal-right fade filter-slideout SOP-model show" style="display: block;" id="AddNewRole" tabindex="-1"
+        aria-labelledby="AddNewRoleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
@@ -479,7 +479,8 @@
                                                     <span class="icon icon-md icon-view"></span>View
                                                 </div>
                                             </td>
-                                            <td><input class="form-check-input green-checkbox ms-3" type="checkbox" id=""></td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
                                         </tr>
                                         <tr class="even">
                                             <td>
@@ -487,7 +488,8 @@
                                                     <span class="icon icon-edit-grey icon-md"></span>Edit
                                                 </div>
                                             </td>
-                                            <td><input class="form-check-input green-checkbox ms-3" type="checkbox" id=""></td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
                                         </tr>
                                         <tr class="odd">
                                             <td>
@@ -495,7 +497,8 @@
                                                     <span class="icon icon-submit icon-md"></span>Submit
                                                 </div>
                                             </td>
-                                            <td><input class="form-check-input green-checkbox ms-3" type="checkbox" id=""></td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
                                         </tr>
                                         <tr class="even">
                                             <td>
@@ -503,7 +506,8 @@
                                                     <span class="icon icon-upload icon-md"></span>Upload
                                                 </div>
                                             </td>
-                                            <td><input class="form-check-input green-checkbox ms-3" type="checkbox" id=""></td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
                                         </tr>
                                         <tr class="odd">
                                             <td>
@@ -511,7 +515,8 @@
                                                     <span class="icon icon-download icon-md"></span>Download
                                                 </div>
                                             </td>
-                                            <td><input class="form-check-input green-checkbox ms-3" type="checkbox" id=""></td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
                                         </tr>
                                         <tr class="even">
                                             <td>
@@ -519,7 +524,8 @@
                                                     <span class="icon icon-invoices icon-md"></span>Invoices
                                                 </div>
                                             </td>
-                                            <td><input class="form-check-input green-checkbox ms-3" type="checkbox" id=""></td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
                                         </tr>
                                         <tr class="odd">
                                             <td>
@@ -527,13 +533,34 @@
                                                     <span class="icon icon-acknowledge icon-md"></span>Acknowledge
                                                 </div>
                                             </td>
-                                            <td><input class="form-check-input green-checkbox ms-3" type="checkbox" id=""></td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <label for="" class="text-capitalize fs-5 mb-4">Access</label>
+                            <div class="bg-white rounded-2 position-relative mb-4">
+                                <span
+                                    class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                                <input type="text"
+                                    class="no-bg form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border border-1"
+                                    placeholder="Search">
+                            </div>
+                            <div class="userAccessTable border rounded-3 overflow-hidden">
+                                <table id="user-access-table" class="table table-striped w-100 table-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-75" data-orderable="false"></th>
+                                            <th data-orderable="false">Permissions</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <!-- Modal Body End -->
@@ -688,6 +715,71 @@
             const tableKey = currentTab.data('table-key');
             $(`#${tableKey}`).DataTable().columns.adjust();
         });
+
+        $(document).on('shown.bs.modal', function () {
+            $(`#user-access-table`).DataTable().columns.adjust();
+        })
+        const tableAccess = $('#user-access-table').DataTable({
+            ajax: {
+                url: "../data5.json",
+                dataSrc: 'group_entities_data',
+            },
+            columns: [
+                {
+                    data: "group_name", render: function (data, type, row) {
+                        return `
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="dt-control ${!row?.entities?.length ? "no-control" : ""} m-0"></button>
+                            <div class="d-flex align-items-center gap-2" role="button">
+                                <span class="icon icon-folder-thin icon-md flex-shrink-0 m-0"></span>
+                                <span class="text-break mt-1">${data}</span>
+                            </div>
+                        </div>
+                        `
+                    }
+                },
+                {
+                    data: null, render: function () {
+                        return `<input class="form-check-input green-checkbox ms-4" type="checkbox" id="">`;
+                    }
+                }
+            ],
+            lengthChange: false,
+            info: false,
+            order: false,
+            scrollY: "450px",
+            paging: false,
+        });
+
+        $("#user-access-table tbody").on("click", "td .dt-control", function () {
+            let tr = $(this).closest("tr");
+            let row = tableAccess.row(tr);
+            let rowId = row.data().id;
+            console.log(rowId)
+
+            if (tr.hasClass("expanded-row")) {
+                $(`.expanded-content[data-parent="${rowId}"]`).remove();
+                tr.removeClass("expanded-row");
+            } else {
+                let expandedRows = formatExpandedRows(row.data(), rowId);
+                tr.after(expandedRows);
+                tr.addClass("expanded-row");
+            }
+        });
+
+        function formatExpandedRows(data, rowId) {
+            return data.entities.map((row) => `
+                <tr class="expanded-content" data-parent="${rowId}">
+                    <td>
+                        <div class="ms-4 d-flex align-items-center gap-2">
+                            <span class="icon icon-entity-main icon-md flex-shrink-0 m-0"></span>
+                            <span class="text-break mt-1">${row}</span>
+                        </div>
+                    </td>
+                    <td><input class="form-check-input light-green-checkbox ms-4" type="checkbox" id=""></td>
+                </tr>
+            `).join("");
+        }
 
 
     </script>
