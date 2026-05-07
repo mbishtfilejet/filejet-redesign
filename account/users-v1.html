@@ -436,8 +436,8 @@
     </div>
 
     <!-- Add New Role Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model show" style="display: block;" id="AddNewRole" tabindex="-1"
-        aria-labelledby="AddNewRoleModalLabel" aria-hidden="true">
+    <div class="modal modal-right fade filter-slideout SOP-model show" style="display: block;" id="AddNewRole"
+        tabindex="-1" aria-labelledby="AddNewRoleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
@@ -463,8 +463,8 @@
                             </div>
                         </div>
                         <div class="mb-4 p-3 bg-white rounded-2">
-                            <label for="" class="text-capitalize fs-5">Rights</label>
-                            <div class="border rounded-3 mt-4 overflow-hidden">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Rights</h4>
+                            <div class="border rounded-3 overflow-hidden">
                                 <table id="" class="table table-striped w-100 table-nowrap">
                                     <thead>
                                         <tr class="even">
@@ -542,7 +542,7 @@
                         </div>
 
                         <div class="mb-4 p-3 bg-white rounded-2">
-                            <label for="" class="text-capitalize fs-5 mb-4">Access</label>
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Access</h4>
                             <div class="bg-white rounded-2 position-relative mb-4">
                                 <span
                                     class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
@@ -560,6 +560,31 @@
                                     </thead>
                                 </table>
                             </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Notifications</h4>
+
+                            <div class="d-flex flex-column">
+                                <div class="form-check gap-2">
+                                    <input class="form-check-input" type="checkbox" id="">
+                                    <label class="form-check-label fw-normal rights-label" for="">Invoices</label>
+                                </div>
+                                <div class="form-check row g-0">
+                                    <input class="col-1 form-check-input" type="checkbox" id="">
+                                    <label class="col-11 form-check-label fw-normal rights-label text-dark" for="">Compliance
+                                        Reminders</label>
+                                    <span class="col-12 text-muted fw-light fs-6">Notifications for compliances will be
+                                        sent
+                                        to you.</span>
+                                </div>
+                                <div class="form-check gap-2">
+                                    <input class="form-check-input" type="checkbox" id="">
+                                    <label class="form-check-label fw-normal rights-label" for="">Service of Process
+                                        Notifications</label>
+                                </div>
+                            </div>
+
                         </div>
                     </form>
                 </div>
@@ -719,10 +744,14 @@
         $(document).on('shown.bs.modal', function () {
             $(`#user-access-table`).DataTable().columns.adjust();
         })
+
         const tableAccess = $('#user-access-table').DataTable({
             ajax: {
                 url: "../data5.json",
                 dataSrc: 'group_entities_data',
+            },
+            createdRow: function (row, data, dataIndex) {
+                $(row).attr('data-id', data.id);
             },
             columns: [
                 {
@@ -740,7 +769,7 @@
                 },
                 {
                     data: null, render: function () {
-                        return `<input class="form-check-input green-checkbox ms-4" type="checkbox" id="">`;
+                        return ` <div class="d-flex align-item-center"><input data-column="permission" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id=""></div>`;
                     }
                 }
             ],
@@ -755,20 +784,19 @@
             let tr = $(this).closest("tr");
             let row = tableAccess.row(tr);
             let rowId = row.data().id;
-            console.log(rowId)
 
             if (tr.hasClass("expanded-row")) {
                 $(`.expanded-content[data-parent="${rowId}"]`).remove();
                 tr.removeClass("expanded-row");
             } else {
-                let expandedRows = formatExpandedRows(row.data(), rowId);
+                let expandedRows = formatExpandedRows(row.data(), rowId, tr.find('.row-select').is(":checked"));
                 tr.after(expandedRows);
                 tr.addClass("expanded-row");
             }
         });
 
-        function formatExpandedRows(data, rowId) {
-            return data.entities.map((row) => `
+        function formatExpandedRows(data, rowId, parentCheckboxIsChecked) {
+            return data.entities.map((row, index) => `
                 <tr class="expanded-content" data-parent="${rowId}">
                     <td>
                         <div class="ms-4 d-flex align-items-center gap-2">
@@ -776,12 +804,100 @@
                             <span class="text-break mt-1">${row}</span>
                         </div>
                     </td>
-                    <td><input class="form-check-input light-green-checkbox ms-4" type="checkbox" id=""></td>
+                    <td> 
+                        <div class="d-flex align-item-center"><input data-column="permission" class="form-check-input row-select light-green-checkbox ms-4" type="checkbox" ${parentCheckboxIsChecked ? "checked" : ""} id=""></div>
+                    </td>
                 </tr>
             `).join("");
         }
 
+        function multiSelectRow(tableContainer) {
 
+            // row checkbox event handle
+
+            tableContainer.on('change', '.row-select', function () {
+                const checkbox = $(this);
+                const row = checkbox.closest('tr');
+                const column = checkbox.data('column');
+                const isChecked = $(this).prop("checked");
+
+                const parentId = row.data('id') || row.data('parent');
+
+                if (row.hasClass('expanded-row')) {
+                    toggleChildren(isChecked, parentId, column);
+                }
+
+                if (row.hasClass('expanded-content')) {
+                    updateParent(parentId, column);
+                }
+
+            })
+
+            // update children checkbox
+            function toggleChildren(isChecked, parentId, column) {
+                if (!parentId) return;
+
+                const children = tableContainer.find(`tr.expanded-content[data-parent="${parentId}"]`);
+
+                if (!children.length) return;
+
+                const childValidCheckBox = children.find(
+                    `td:not(.disabled-column) .row-select[data-column="${column}"]`
+                );
+
+                childValidCheckBox.prop('checked', isChecked)
+            }
+
+
+
+            // update parent
+            function updateParent(parentId, column) {
+
+                if (!parentId) return;
+
+                const children = tableContainer.find(`tr[data-parent="${parentId}"]`);
+
+                if (!children.length) return;
+
+                const validCheckBox = children.find(
+                    `td:not(.disabled-column) .row-select[data-column="${column}"]`
+                );
+
+                if (!validCheckBox.length) return;
+
+                const totalCheckbox = validCheckBox.length;
+                const checkedCheckbox = validCheckBox.filter(':checked').length;
+
+                const parentCheckbox = tableContainer.find(
+                    `tr.expanded-row[data-id="${parentId}"] .row-select[data-column="${column}"]`
+                );
+
+                if (!parentCheckbox.length) return;
+
+                if (checkedCheckbox === 0) {
+                    parentCheckbox.prop({
+                        checked: false,
+                        indeterminate: false
+                    });
+
+                } else if (checkedCheckbox === totalCheckbox) {
+                    parentCheckbox.prop({
+                        checked: true,
+                        indeterminate: false
+                    });
+
+                } else {
+                    parentCheckbox.prop({
+                        checked: false,
+                        indeterminate: true
+                    });
+
+                }
+            }
+        }
+
+
+        multiSelectRow($('#user-access-table'))
     </script>
 
     <script>
