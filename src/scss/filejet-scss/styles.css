@@ -8908,7 +8908,7 @@ input[type=time]:active:before, .modal-header .btn-outline-dark:hover .icon-mail
   color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
 }
 
-.text-light-blue, .groupsTableCard .groupEntitiesTable .dataTable tr td.text-light-blue a {
+.text-light-blue, .groupsTableCard .groupEntitiesTable .dataTable tr td.text-light-blue a, .usersTableCard .groupEntitiesTable .dataTable tr td.text-light-blue a {
   color: var(--bs-light-blue);
 }
 
@@ -11873,7 +11873,7 @@ input[type=time]:active {
   color: var(--bs-blue);
 }
 
-.text-light-blue, .groupsTableCard .groupEntitiesTable .dataTable tr td.text-light-blue a {
+.text-light-blue, .groupsTableCard .groupEntitiesTable .dataTable tr td.text-light-blue a, .usersTableCard .groupEntitiesTable .dataTable tr td.text-light-blue a {
   color: var(--bs-light-blue);
 }
 
@@ -14068,6 +14068,46 @@ input[type=radio] {
 
 .icon-document-purple {
   background-image: url("../../../dist/images/icons/document-icon-purple.svg");
+}
+
+.icon-view {
+  background-image: url("../../../dist/images/icons/eye-icon.svg");
+}
+
+.icon-info-card {
+  background-image: url("../../../dist/images/icons/identification-card.svg");
+}
+
+.icon-submit {
+  background-image: url("../../../dist/images/icons/clipboard-icon.svg");
+}
+
+.icon-upload {
+  background-image: url("../../../dist/images/icons/upload-icon.svg");
+}
+
+.icon-download {
+  background-image: url("../../../dist/images/icons/download-icon.svg");
+}
+
+.icon-invoices {
+  background-image: url("../../../dist/images/icons/invoice-icon.svg");
+}
+
+.icon-acknowledge {
+  background-image: url("../../../dist/images/icons/seal-check-icon.svg");
+}
+
+.icon-edit-grey {
+  background-image: url("../../../dist/images/icons/new-edit-grey.svg");
+}
+
+.icon-check-green {
+  background-image: url("../../../dist/images/icons/light-green-check.svg");
+}
+
+.icon-folder-thin {
+  background-image: url("../../../dist/images/icons/icon-folder-thin.svg");
 }
 
 .login-page {
@@ -20818,6 +20858,25 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   color: var(--bs-yellow-bg);
 }
 
+.SOP-model .green-checkbox[type=checkbox]:checked,
+.green-checkbox[type=checkbox]:checked {
+  background-color: #72E097;
+  background-image: url("../../../../dist/images/icons/light-green-check.svg");
+}
+
+.SOP-model .light-green-checkbox[type=checkbox]:checked,
+.light-green-checkbox[type=checkbox]:checked {
+  background-color: #E7F9ED;
+  background-image: url("../../../../dist/images/icons/light-green-check.svg");
+}
+
+.SOP-model .green-checkbox[type=checkbox]:indeterminate,
+.green-checkbox[type=checkbox]:indeterminate {
+  background-color: #D8DDDF;
+  border-color: #272727 !important;
+  background-image: url("../../../../dist/images/icons/checkmark-optional-dark.svg");
+}
+
 @media (min-width: 1920px) {
   .tradenameTable .dataTables_scroll .dataTables_scrollHeadInner {
     width: 100% !important;
@@ -23038,13 +23097,13 @@ body *::-webkit-scrollbar-thumb {
     visibility: visible;
   }
 }
-.registeredAgent_tablist {
+.registeredAgent_tablist, .users_tablist {
   position: relative;
   background-color: #F3F5F8;
   max-width: fit-content;
   border-radius: 5px;
 }
-.registeredAgent_tablist::after {
+.registeredAgent_tablist::after, .users_tablist::after {
   position: absolute;
   content: "";
   background-color: #D8DDDF;
@@ -23056,13 +23115,13 @@ body *::-webkit-scrollbar-thumb {
   z-index: 0;
   border-radius: 5px;
 }
-.registeredAgent_tablist .nav-link {
+.registeredAgent_tablist .nav-link, .users_tablist .nav-link {
   position: relative;
   z-index: 1;
   color: var(--bs-nw-gray-600);
   font-size: 14px;
 }
-.registeredAgent_tablist .nav-link[aria-selected=true], .registeredAgent_tablist .nav-link.active {
+.registeredAgent_tablist .nav-link[aria-selected=true], .users_tablist .nav-link[aria-selected=true], .registeredAgent_tablist .nav-link.active, .users_tablist .nav-link.active {
   color: #272A2E;
   font-weight: 700;
 }
@@ -23256,85 +23315,100 @@ body *::-webkit-scrollbar-thumb {
   pointer-events: none;
 }
 
-.groupsTableCard {
+.groupsTableCard, .usersTableCard {
   background-color: white;
   position: relative;
 }
-.groupsTableCard .table {
+.groupsTableCard .table, .usersTableCard .table {
   margin-bottom: 0rem !important;
 }
-.groupsTableCard table thead th:first-child,
-.groupsTableCard .dataTable thead th:first-child {
+.groupsTableCard table thead th:first-child, .usersTableCard table thead th:first-child,
+.groupsTableCard .dataTable thead th:first-child,
+.usersTableCard .dataTable thead th:first-child {
   border-top-left-radius: 5px;
 }
-.groupsTableCard table thead th:last-child,
-.groupsTableCard .dataTable thead th:last-child {
+.groupsTableCard table thead th:last-child, .usersTableCard table thead th:last-child,
+.groupsTableCard .dataTable thead th:last-child,
+.usersTableCard .dataTable thead th:last-child {
   border-top-right-radius: 5px;
 }
-.groupsTableCard table tbody tr:last-child td,
-.groupsTableCard .dataTable tbody tr:last-child td {
+.groupsTableCard table tbody tr:last-child td, .usersTableCard table tbody tr:last-child td,
+.groupsTableCard .dataTable tbody tr:last-child td,
+.usersTableCard .dataTable tbody tr:last-child td {
   border: none;
 }
-.groupsTableCard table tbody tr:last-child td:first-child,
-.groupsTableCard .dataTable tbody tr:last-child td:first-child {
+.groupsTableCard table tbody tr:last-child td:first-child, .usersTableCard table tbody tr:last-child td:first-child,
+.groupsTableCard .dataTable tbody tr:last-child td:first-child,
+.usersTableCard .dataTable tbody tr:last-child td:first-child {
   border-bottom-left-radius: 5px;
 }
-.groupsTableCard table tbody tr:last-child td:last-child,
-.groupsTableCard .dataTable tbody tr:last-child td:last-child {
+.groupsTableCard table tbody tr:last-child td:last-child, .usersTableCard table tbody tr:last-child td:last-child,
+.groupsTableCard .dataTable tbody tr:last-child td:last-child,
+.usersTableCard .dataTable tbody tr:last-child td:last-child {
   border-bottom-right-radius: 5px;
 }
-.groupsTableCard .dataTables_wrapper tbody td {
+.groupsTableCard .dataTables_wrapper tbody td, .usersTableCard .dataTables_wrapper tbody td {
   font-weight: 400 !important;
   color: var(--bs-black-primary) !important;
   font-size: 12px !important;
   padding: 0.5rem 0.9rem !important;
   line-height: 1.25rem !important;
 }
-.groupsTableCard .dataTables_wrapper tbody td.text-light-blue {
+.groupsTableCard .dataTables_wrapper tbody td.text-light-blue, .usersTableCard .dataTables_wrapper tbody td.text-light-blue {
   color: var(--bs-light-blue) !important;
 }
-.groupsTableCard .dataTables_wrapper tbody td.disabled-column {
+.groupsTableCard .dataTables_wrapper tbody td.disabled-column, .usersTableCard .dataTables_wrapper tbody td.disabled-column {
   color: rgb(177, 176, 176) !important;
   pointer-events: none;
 }
-.groupsTableCard .dataTables_wrapper tbody td.disabled-column .dt-control,
+.groupsTableCard .dataTables_wrapper tbody td.disabled-column .dt-control, .usersTableCard .dataTables_wrapper tbody td.disabled-column .dt-control,
 .groupsTableCard .dataTables_wrapper tbody td.disabled-column .icon-folder-upload-purple,
+.usersTableCard .dataTables_wrapper tbody td.disabled-column .icon-folder-upload-purple,
 .groupsTableCard .dataTables_wrapper tbody td.disabled-column .icon-folder-upload-danger,
+.usersTableCard .dataTables_wrapper tbody td.disabled-column .icon-folder-upload-danger,
 .groupsTableCard .dataTables_wrapper tbody td.disabled-column .badge,
-.groupsTableCard .dataTables_wrapper tbody td.disabled-column input {
+.usersTableCard .dataTables_wrapper tbody td.disabled-column .badge,
+.groupsTableCard .dataTables_wrapper tbody td.disabled-column input,
+.usersTableCard .dataTables_wrapper tbody td.disabled-column input {
   opacity: 0.35;
 }
-.groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollHeadInner,
-.groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTable {
+.groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollHeadInner, .usersTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollHeadInner,
+.groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTable,
+.usersTableCard .dataTables_wrapper .dataTables_scroll .dataTable {
   width: inherit !important;
   max-width: inherit !important;
   min-height: 0 !important;
 }
-.groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
+.groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody, .usersTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
   overflow-y: hidden !important;
 }
-.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:first-child,
-.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td:first-child {
+.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:first-child, .usersTableCard .groupsListingTable .dataTables_wrapper .dataTable th:first-child,
+.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td:first-child,
+.usersTableCard .groupsListingTable .dataTables_wrapper .dataTable td:first-child {
   min-width: 150px !important;
 }
-.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(3), .groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(5), .groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(6),
+.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(3), .usersTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(3), .groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(5), .usersTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(5), .groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(6), .usersTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(6),
 .groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(3),
+.usersTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(3),
 .groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(5),
-.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(6) {
+.usersTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(5),
+.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(6),
+.usersTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(6) {
   max-width: 65px !important;
 }
-.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(4),
-.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(4) {
+.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(4), .usersTableCard .groupsListingTable .dataTables_wrapper .dataTable th:nth-child(4),
+.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(4),
+.usersTableCard .groupsListingTable .dataTables_wrapper .dataTable td:nth-child(4) {
   max-width: 75px !important;
 }
-.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td {
+.groupsTableCard .groupsListingTable .dataTables_wrapper .dataTable td, .usersTableCard .groupsListingTable .dataTables_wrapper .dataTable td {
   padding: 0.9rem !important;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr {
+.groupsTableCard .groupEntitiesTable .dataTable tr, .usersTableCard .groupEntitiesTable .dataTable tr {
   min-height: 0;
   transition: background-color 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr .dt-control {
+.groupsTableCard .groupEntitiesTable .dataTable tr .dt-control, .usersTableCard .groupEntitiesTable .dataTable tr .dt-control {
   color: transparent;
   width: 1rem;
   height: 0.85rem;
@@ -23347,63 +23421,69 @@ body *::-webkit-scrollbar-thumb {
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr .dt-control.no-control {
+.groupsTableCard .groupEntitiesTable .dataTable tr .dt-control.no-control, .usersTableCard .groupEntitiesTable .dataTable tr .dt-control.no-control {
   visibility: hidden;
   pointer-events: none;
   cursor: none;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row {
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row, .usersTableCard .groupEntitiesTable .dataTable tr.expanded-row {
   background-color: #5B5559 !important;
   box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
   transition: background-color 0.5s ease-in-out;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row td {
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row td, .usersTableCard .groupEntitiesTable .dataTable tr.expanded-row td {
   color: white !important;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row td a {
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row td a, .usersTableCard .groupEntitiesTable .dataTable tr.expanded-row td a {
   color: white !important;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row .dt-control {
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row .dt-control, .usersTableCard .groupEntitiesTable .dataTable tr.expanded-row .dt-control {
   filter: contrast(0) brightness(2);
   transform: rotate(90deg);
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row .icon-entity-edit,
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row .icon-entity-edit, .usersTableCard .groupEntitiesTable .dataTable tr.expanded-row .icon-entity-edit,
 .groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row .icon-entity-delete,
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row .icon-group-reassign {
+.usersTableCard .groupEntitiesTable .dataTable tr.expanded-row .icon-entity-delete,
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-row .icon-group-reassign,
+.usersTableCard .groupEntitiesTable .dataTable tr.expanded-row .icon-group-reassign {
   filter: contrast(0) brightness(2);
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-content td:first-child {
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-content td:first-child, .usersTableCard .groupEntitiesTable .dataTable tr.expanded-content td:first-child {
   border-left: 2px solid #5B5559;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-content td:last-child {
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-content td:last-child, .usersTableCard .groupEntitiesTable .dataTable tr.expanded-content td:last-child {
   border-right: 2px solid #5B5559;
 }
-.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-content.last-expanded-content {
+.groupsTableCard .groupEntitiesTable .dataTable tr.expanded-content.last-expanded-content, .usersTableCard .groupEntitiesTable .dataTable tr.expanded-content.last-expanded-content {
   box-shadow: inset 0 -2px #5B5559;
 }
-.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:first-child,
-.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:first-child {
+.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:first-child, .usersTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:first-child,
+.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:first-child,
+.usersTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:first-child {
   min-width: 200px !important;
 }
-.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:nth-child(2),
-.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:nth-child(2) {
+.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:nth-child(2), .usersTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:nth-child(2),
+.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:nth-child(2),
+.usersTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:nth-child(2) {
   min-width: 65px !important;
 }
-.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:nth-child(7),
-.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:nth-child(7) {
+.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:nth-child(7), .usersTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:nth-child(7),
+.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:nth-child(7),
+.usersTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:nth-child(7) {
   min-width: 140px !important;
 }
-.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:last-child,
-.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:last-child {
+.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:last-child, .usersTableCard .groupEntitiesTable .dataTables_wrapper .dataTable th:last-child,
+.groupsTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:last-child,
+.usersTableCard .groupEntitiesTable .dataTables_wrapper .dataTable td:last-child {
   max-width: 50px !important;
 }
-.groupsTableCard .groupEntitiesTable .dataTables_scroll .dataTables_scrollBody {
+.groupsTableCard .groupEntitiesTable .dataTables_scroll .dataTables_scrollBody, .usersTableCard .groupEntitiesTable .dataTables_scroll .dataTables_scrollBody {
   padding-top: 0px;
 }
-.groupsTableCard .icon-entity-edit:hover {
+.groupsTableCard .icon-entity-edit:hover, .usersTableCard .icon-entity-edit:hover {
   background-image: url("../../../../dist/images/icons/edit-dark.svg");
 }
-.groupsTableCard .icon-entity-delete:hover {
+.groupsTableCard .icon-entity-delete:hover, .usersTableCard .icon-entity-delete:hover {
   background-image: url("../../../../dist/images/icons/delete-red.svg");
 }
 
@@ -23414,7 +23494,8 @@ body *::-webkit-scrollbar-thumb {
 }
 @media (min-width: 1450px) {
   .entityDetailTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody,
-  .groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
+  .groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody,
+  .usersTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
     overflow: hidden !important;
   }
 }
@@ -23596,6 +23677,7 @@ body *::-webkit-scrollbar-thumb {
   width: 55px !important;
 }
 
+/* account */
 .no-back-image, .account-setting-section .no-back-image {
   background-image: none !important;
 }
@@ -23668,6 +23750,81 @@ body *::-webkit-scrollbar-thumb {
 .notification-section {
   padding: 0.9rem;
   color: var(--bs-nw-gray-600);
+}
+
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable th:first-child, .usersTableCard .usersListingTable .dataTables_wrapper .dataTable th:nth-child(3), .usersTableCard .usersListingTable .dataTables_wrapper .dataTable th:nth-child(4),
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable td:first-child,
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable td:nth-child(3),
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable td:nth-child(4) {
+  min-width: 150px !important;
+}
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable th:nth-child(2),
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable td:nth-child(2) {
+  min-width: 200px !important;
+}
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable th:nth-child(5), .usersTableCard .usersListingTable .dataTables_wrapper .dataTable th:nth-child(6), .usersTableCard .usersListingTable .dataTables_wrapper .dataTable th:nth-child(7),
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable td:nth-child(5),
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable td:nth-child(6),
+.usersTableCard .usersListingTable .dataTables_wrapper .dataTable td:nth-child(7) {
+  min-width: 60px !important;
+}
+.usersTableCard .rolesListingTable .dataTables_wrapper .dataTable th:first-child,
+.usersTableCard .rolesListingTable .dataTables_wrapper .dataTable td:first-child {
+  min-width: 150px !important;
+}
+.usersTableCard .rolesListingTable .dataTables_wrapper .dataTable th:last-child,
+.usersTableCard .rolesListingTable .dataTables_wrapper .dataTable td:last-child {
+  max-width: 70px !important;
+  width: 70px !important;
+}
+
+.userAccessTable {
+  padding-top: 0.1px;
+}
+.userAccessTable .dataTables_wrapper {
+  max-height: 400px !important;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.userAccessTable .dataTable tr .dt-control {
+  color: transparent;
+  width: 1rem;
+  height: 0.85rem;
+  border: none;
+  background-color: transparent;
+  background-image: url("../../../../dist/images/icons/right-angle-table.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+.userAccessTable .dataTable tr .dt-control.no-control {
+  display: none;
+  pointer-events: none;
+  cursor: none;
+}
+.userAccessTable .dataTable tr.expanded-row .dt-control {
+  transform: rotate(90deg);
+}
+
+.user-step-group {
+  justify-content: unset !important;
+  gap: 100px;
+}
+.user-step-group .step {
+  flex: 0 !important;
+}
+.user-step-group .step::after {
+  left: 75% !important;
+  width: 120% !important;
+}
+
+.notification-option .form-check label {
+  font-size: 14px !important;
+}
+.notification-option .info {
+  font-size: 12px !important;
 }
 
 /*# sourceMappingURL=styles.css.map */
