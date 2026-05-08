@@ -1785,24 +1785,24 @@ $(document).ready(function () {
 })
 
 
-function typeText(element, text, speed = 30) {
-  words = text.split(" ")
-  let i = 0;
-  return new Promise(resolve => {
-    function typing() {
-      if (i < words.length) {
-        element.innerHTML += words[i] + (i === words.length - 1 ? "" : " ");
-        i++;
-        setTimeout(typing, speed);
-      } else {
-        resolve()
-        clearTimeout()
-      }
-    }
+// function typeText(element, text, speed = 30) {
+//   words = text.split(" ")
+//   let i = 0;
+//   return new Promise(resolve => {
+//     function typing() {
+//       if (i < words.length) {
+//         element.innerHTML += words[i] + (i === words.length - 1 ? "" : " ");
+//         i++;
+//         setTimeout(typing, speed);
+//       } else {
+//         resolve()
+//         clearTimeout()
+//       }
+//     }
 
-    typing();
-  })
-}
+//     typing();
+//   })
+// }
 
 
 async function renderSummary(container) {
@@ -1818,11 +1818,10 @@ async function renderSummary(container) {
     const li = document.createElement('li');
     const span = document.createElement('span');
     span.className = "text-muted";
+    span.innerText = point;
     li.append(span);
     container.append(li);
-    await typeText(span, point, 60)
   }
-
 }
 
 $(function () {
