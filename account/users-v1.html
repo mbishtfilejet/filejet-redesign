@@ -303,8 +303,8 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center gap-4 mt-3">
-                                            <button data-bs-toggle="modal" data-bs-target="#" aria-label="Add New User"
-                                                type="button"
+                                            <button data-bs-toggle="modal" data-bs-target="#AddUserDetails"
+                                                aria-label="Add New User" type="button"
                                                 class="btn btn-secondary p-0 px-2 rounded-3 text-white text-capitalize">Add
                                                 New User
                                             </button>
@@ -435,9 +435,455 @@
         </div>
     </div>
 
+    <!-- Edit User Modal Start -->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="EditUser"
+        tabindex="-1" aria-labelledby="EditUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center">
+                            <span class="icon icon-info-card icon-xxl me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Edit User</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-3 fw-semibold">Profile Details</h4>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="First Name">
+                                </fieldset>
+                            </div>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Last Name">
+                                </fieldset>
+                            </div>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="" placeholder="Email Address>">
+                                </fieldset>
+                            </div>
+                            <div>
+                                <fieldset>
+                                    <label for="" class="form-label">Phone Nunber</label>
+                                    <input type="text" class="form-control" id="" placeholder="Phone Nunber">
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-3 fw-semibold">Reset Password</h4>
+
+                            <p class="text-muted fw-normal">A password reset has been requested for this user. Please acknowledge and take action.</p>
+
+                            <div class="form-check">
+                                <input class="form-check-input m-0" type="checkbox" id="">
+                                <label class="fw-normal rights-label text-muted fs-6" for="">Reset Password</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-3 fw-semibold">Unlock Account</h4>
+
+                            <p class="text-muted fw-normal">A request has been submitted to unlock this user's account. Please acknowledge and take action.</p>
+
+                            <div class="form-check">
+                                <input class="form-check-input m-0" type="checkbox" id="">
+                                <label class="fw-normal rights-label text-muted fs-6" for="">Unlock Account</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit User Modal End -->
+
+    <!--New User step-1 Modal start-->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="AddUserDetails" tabindex="-1"
+        aria-labelledby="AddUserDetailsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="icon icon-new-group icon-md me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Add New User</h3>
+                        </div>
+                        <!-- stepper start -->
+                        <div class="service-step-group user-step-group">
+                            <div class="step" data-bs-toggle="modal" data-bs-target="#AddUserDetails"
+                                data-bs-dismiss="modal">
+                                <div class="circle active"></div>
+                                <span class="step-text">DETAILS</span>
+                            </div>
+                            <div class="step" data-bs-toggle="modal" data-bs-target="#AddUserRole"
+                                data-bs-dismiss="modal">
+                                <div class="circle"></div>
+                                <span class="step-text">ROLE</span>
+                            </div>
+                        </div>
+
+                        <!-- stepper end -->
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form class="" action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="First Name">
+                                </fieldset>
+                            </div>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Last Name">
+                                </fieldset>
+                            </div>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="" placeholder="Email Address>">
+                                </fieldset>
+                            </div>
+                            <div>
+                                <fieldset>
+                                    <label for="" class="form-label">Phone Nunber</label>
+                                    <input type="text" class="form-control" id="" placeholder="Phone Nunber">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Notifications</h4>
+
+                            <div class="notification-option d-flex flex-column gap-3">
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark fs-6" for="">Invoices
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for created
+                                            and
+                                            submitted
+                                            invoices will be sent to you.</span>
+                                    </label>
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Compliance
+                                        Reminders
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                            compliances
+                                            will be sent to
+                                            you.</span>
+                                    </label>
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Service of Process
+                                        Notifications
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for Service of
+                                            Process
+                                            will be
+                                            sent to you.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
+                            data-bs-target="#AddUserRole" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New User step-1 Modal End-->
+
+    <!--New User step-2 Modal start-->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="AddUserRole" tabindex="-1"
+        aria-labelledby="AddUserRoleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="icon icon-new-group icon-md me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Add New User</h3>
+                        </div>
+                        <!-- stepper start -->
+                        <div class="service-step-group user-step-group">
+                            <div class="step completed" data-bs-toggle="modal" data-bs-target="#AddUserDetails"
+                                data-bs-dismiss="modal">
+                                <div class="circle completed"></div>
+                                <span class="step-text">DETAILS</span>
+                            </div>
+                            <div class="step" data-bs-toggle="modal" data-bs-target="#AddUserRole"
+                                data-bs-dismiss="modal">
+                                <div class="circle active"></div>
+                                <span class="step-text">ROLE</span>
+                            </div>
+                        </div>
+
+                        <!-- stepper end -->
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form class="" action="">
+
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
+                            data-bs-target="#" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New User step-2 Modal End-->
+
+    <!-- Edit Role Modal Start -->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="EditRole" tabindex="-1"
+        aria-labelledby="EditRoleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center">
+                            <span class="icon icon-info-card icon-xxl me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Edit Role</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <div>
+                                <fieldset>
+                                    <label for="entityType-model" class="form-label">Role Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Profile Name">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Rights</h4>
+                            <div class="border rounded-3 overflow-hidden">
+                                <table id="" class="table table-striped w-100 table-nowrap">
+                                    <thead>
+                                        <tr class="even">
+                                            <th class="w-75"></th>
+                                            <th>Rights</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-md icon-view"></span>View
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-edit-grey icon-md"></span>Edit
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id="" checked></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-submit icon-md"></span>Submit
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-upload icon-md"></span>Upload
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-download icon-md"></span>Download
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id="" checked></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-invoices icon-md"></span>Invoices
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-acknowledge icon-md"></span>Acknowledge
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id="" checked></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Access</h4>
+                            <div class="bg-white rounded-2 position-relative mb-4">
+                                <span
+                                    class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                                <input type="text"
+                                    class="no-bg form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border border-1"
+                                    placeholder="Search">
+                            </div>
+                            <div class="userAccessTable border rounded-3 overflow-hidden">
+                                <table id="user-access-table-1"
+                                    class="table table-striped w-100 table-nowrap user-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-75" data-orderable="false"></th>
+                                            <th data-orderable="false">Permissions</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Notifications</h4>
+
+                            <div class="notification-option d-flex flex-column gap-3">
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark fs-6" for="">Invoices
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for created
+                                            and
+                                            submitted
+                                            invoices will be sent to you.</span>
+                                    </label>
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Compliance
+                                        Reminders
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                            compliances
+                                            will be sent to
+                                            you.</span>
+                                    </label>
+
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Service of Process
+                                        Notifications
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for Service of
+                                            Process
+                                            will be
+                                            sent to you.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Role Modal End -->
+
     <!-- Add New Role Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model show" style="display: block;" id="AddNewRole"
-        tabindex="-1" aria-labelledby="AddNewRoleModalLabel" aria-hidden="true">
+    <div class="modal modal-right fade filter-slideout SOP-model" id="AddNewRole" tabindex="-1"
+        aria-labelledby="AddNewRoleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
@@ -551,7 +997,8 @@
                                     placeholder="Search">
                             </div>
                             <div class="userAccessTable border rounded-3 overflow-hidden">
-                                <table id="user-access-table" class="table table-striped w-100 table-nowrap">
+                                <table id="user-access-table"
+                                    class="table table-striped w-100 table-nowrap user-data-table">
                                     <thead>
                                         <tr>
                                             <th class="w-75" data-orderable="false"></th>
@@ -565,26 +1012,38 @@
                         <div class="mb-4 p-3 bg-white rounded-2">
                             <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Notifications</h4>
 
-                            <div class="d-flex flex-column">
-                                <div class="form-check gap-2">
-                                    <input class="form-check-input" type="checkbox" id="">
-                                    <label class="form-check-label fw-normal rights-label" for="">Invoices</label>
+                            <div class="notification-option d-flex flex-column gap-3">
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark fs-6" for="">Invoices
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for created
+                                            and
+                                            submitted
+                                            invoices will be sent to you.</span>
+                                    </label>
                                 </div>
-                                <div class="form-check row g-0">
-                                    <input class="col-1 form-check-input" type="checkbox" id="">
-                                    <label class="col-11 form-check-label fw-normal rights-label text-dark" for="">Compliance
-                                        Reminders</label>
-                                    <span class="col-12 text-muted fw-light fs-6">Notifications for compliances will be
-                                        sent
-                                        to you.</span>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Compliance
+                                        Reminders
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                            compliances
+                                            will be sent to
+                                            you.</span>
+                                    </label>
+
                                 </div>
-                                <div class="form-check gap-2">
-                                    <input class="form-check-input" type="checkbox" id="">
-                                    <label class="form-check-label fw-normal rights-label" for="">Service of Process
-                                        Notifications</label>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Service of Process
+                                        Notifications
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for Service of
+                                            Process
+                                            will be
+                                            sent to you.</span>
+                                    </label>
                                 </div>
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -670,7 +1129,7 @@
                         return `
                         <div class="d-flex align-items-center">
                             <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#EditUser" aria-label="EDIT" data-bs-original-title="EDIT" 
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
                             
@@ -712,7 +1171,7 @@
                         return `
                         <div class="d-flex align-items-center">
                             <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditRole"
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
                             
@@ -742,16 +1201,40 @@
         });
 
         $(document).on('shown.bs.modal', function () {
-            $(`#user-access-table`).DataTable().columns.adjust();
+            $('.user-data-table').DataTable().columns.adjust();
         })
 
-        const tableAccess = $('#user-access-table').DataTable({
+
+        const tableAccessOption = {
             ajax: {
                 url: "../data5.json",
                 dataSrc: 'group_entities_data',
             },
             createdRow: function (row, data, dataIndex) {
-                $(row).attr('data-id', data.id);
+                $(row).attr('data-id', data.id).addClass("parent");
+            },
+            drawCallback: function () {
+
+                const tbody = $(this.api().table().body());
+
+                // prevent duplicates
+                tbody.find('.group-row').remove();
+
+                // add custom row at top
+                tbody.prepend(`
+                    <tr class="group-row">
+                        <td>All Groups & Entities</td>
+                        <td><div class="d-flex align-item-center"><input data-column="permission" class="form-check-input green-checkbox allgroup-select row-select ms-4" type="checkbox" id=""></div></td>
+                    </tr>
+                `);
+
+                const realRows = tbody.find('tr');
+                realRows.removeClass('odd even');
+                realRows.each(function (index) {
+                    $(this).addClass(
+                        index % 2 === 0 ? 'odd' : 'even'
+                    );
+                });
             },
             columns: [
                 {
@@ -769,7 +1252,7 @@
                 },
                 {
                     data: null, render: function () {
-                        return ` <div class="d-flex align-item-center"><input data-column="permission" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id=""></div>`;
+                        return `<div class="d-flex align-item-center"><input data-column="permission" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id=""></div>`;
                     }
                 }
             ],
@@ -777,35 +1260,52 @@
             info: false,
             order: false,
             scrollY: "450px",
+            scrollX: false,
             paging: false,
-        });
+        }
 
-        $("#user-access-table tbody").on("click", "td .dt-control", function () {
-            let tr = $(this).closest("tr");
-            let row = tableAccess.row(tr);
-            let rowId = row.data().id;
+
+
+        $('#user-access-table').DataTable(tableAccessOption)
+        $('#user-access-table-1').DataTable(tableAccessOption)
+
+        multiSelectRow($('#user-access-table'))
+        multiSelectRow($('#user-access-table-1'))
+
+
+        $(".user-data-table tbody").on("click", "td .dt-control", function () {
+            const tr = $(this).closest("tr");
+
+            const table = tr.closest('table');
+            const td = $(this).closest('td')
+            const dataTable = table.DataTable();
+            const row = dataTable.row(tr);
+
+            const cacheCheckBox = table?.data('cacheCheckBox')
+
+            const rowId = row.data().id;
 
             if (tr.hasClass("expanded-row")) {
-                $(`.expanded-content[data-parent="${rowId}"]`).remove();
+                table.find(`tr.expanded-content[data-parent="${rowId}"]`).remove();
                 tr.removeClass("expanded-row");
             } else {
-                let expandedRows = formatExpandedRows(row.data(), rowId, tr.find('.row-select').is(":checked"));
+                let expandedRows = formatExpandedRows(row.data(), "permission", rowId, tr.find('.row-select').is(":checked"), cacheCheckBox);
                 tr.after(expandedRows);
                 tr.addClass("expanded-row");
             }
         });
 
-        function formatExpandedRows(data, rowId, parentCheckboxIsChecked) {
-            return data.entities.map((row, index) => `
+        function formatExpandedRows(data, column, rowId, checkboxIsChecked, cache) {
+            return data.entities.map((value, index) => `
                 <tr class="expanded-content" data-parent="${rowId}">
                     <td>
                         <div class="ms-4 d-flex align-items-center gap-2">
                             <span class="icon icon-entity-main icon-md flex-shrink-0 m-0"></span>
-                            <span class="text-break mt-1">${row}</span>
+                            <span class="text-break mt-1">${value}</span>
                         </div>
                     </td>
-                    <td> 
-                        <div class="d-flex align-item-center"><input data-column="permission" class="form-check-input row-select light-green-checkbox ms-4" type="checkbox" ${parentCheckboxIsChecked ? "checked" : ""} id=""></div>
+                    <td data-value="${value}"> 
+                        <div class="d-flex align-item-center"><input data-column="${column}" class="form-check-input row-select light-green-checkbox ms-4" type="checkbox" ${checkboxIsChecked || cache.getChildValue(rowId, column, value) ? "checked" : ""} id=""></div>
                     </td>
                 </tr>
             `).join("");
@@ -814,14 +1314,34 @@
         function multiSelectRow(tableContainer) {
 
             // row checkbox event handle
+            const cacheCheckBox = cacheChildCheckboxState();
+            tableContainer.data('cacheCheckBox', cacheCheckBox);
 
             tableContainer.on('change', '.row-select', function () {
                 const checkbox = $(this);
+                const dataTable = tableContainer.DataTable()
                 const row = checkbox.closest('tr');
+                const td = checkbox.closest('td');
+                const columnValue = td.data('value');
                 const column = checkbox.data('column');
                 const isChecked = $(this).prop("checked");
 
                 const parentId = row.data('id') || row.data('parent');
+
+                if (row.hasClass('expanded-content')) {
+                    cacheCheckBox.setChildValue(parentId, column, columnValue, isChecked)
+                }
+
+                if (row.hasClass('expanded-row') || row.hasClass('parent')) {
+                    const rowData = dataTable.row(row).data();
+
+                    if (!row.find('.row-select').prop('indeterminate')) {
+                        rowData.entities.forEach((value) => {
+                            cacheCheckBox.setChildValue(parentId, column, value, isChecked)
+                        })
+                    }
+                }
+
 
                 if (row.hasClass('expanded-row')) {
                     toggleChildren(isChecked, parentId, column);
@@ -830,8 +1350,49 @@
                 if (row.hasClass('expanded-content')) {
                     updateParent(parentId, column);
                 }
-
+                console.log(checkbox.hasClass('allgroup-select'))
+                updateAllState(checkbox, column, isChecked);
             })
+
+            //update All State Checkbox
+
+            function updateAllState(checkbox, column, isChecked) {
+
+                const checkboxes = tableContainer.find(`tr:not(.group-row) td:not(.disabled-column) .row-select[data-column="${column}"]`);
+                if (checkbox.hasClass('allgroup-select')) {
+                    checkboxes.prop({
+                        checked: isChecked,
+                        indeterminate: false
+                    }).trigger('change');
+                    return;
+                }
+
+                const groupallcheckbox = tableContainer.find(`tr.group-row .allgroup-select[data-column="${column}"]`)
+
+                const totalCheckbox = checkboxes.length;
+                const checkedCheckbox = checkboxes.filter(':checked').length;
+
+                const hasIndeterminate = checkboxes.filter(function () { return $(this).prop('indeterminate'); }).length > 0;
+
+                if (checkedCheckbox === 0 && !hasIndeterminate) {
+                    groupallcheckbox.prop({
+                        checked: false,
+                        indeterminate: false
+                    });
+                } else if (checkedCheckbox === totalCheckbox && !hasIndeterminate) {
+                    groupallcheckbox.prop({
+                        checked: true,
+                        indeterminate: false
+                    });
+                } else {
+                    groupallcheckbox.prop({
+                        checked: false,
+                        indeterminate: true
+                    });
+                }
+
+
+            }
 
             // update children checkbox
             function toggleChildren(isChecked, parentId, column) {
@@ -897,7 +1458,55 @@
         }
 
 
-        multiSelectRow($('#user-access-table'))
+
+
+        //cache row child state
+
+        function cacheChildCheckboxState() {
+            const cache = new Map();
+
+            function getKey(parentId, column) {
+                return `${parentId}_${column}`;
+            }
+
+            function cached(parentId, column) {
+                const key = getKey(parentId, column);
+
+                if (!cache.has(key)) {
+                    cache.set(key, {
+                        childValue: {}
+                    })
+                }
+
+                return cache.get(key)
+            }
+
+            function setChildValue(parentId, column, childId, checkboxValue) {
+
+                const entry = cached(parentId, column);
+                entry.childValue[childId] = checkboxValue;
+            }
+
+            function getChildValue(parentId, column, childId) {
+
+                const entry = cached(parentId, column);
+                return entry.childValue[childId] ?? false;
+            }
+
+            function deleteKeyValue(parentId, column) {
+                const key = getKey(parentId, column);
+                if (cache.has(key)) {
+                    cache.delete(key)
+                }
+            }
+
+            return {
+                setChildValue,
+                getChildValue,
+                deleteKeyValue,
+                value: cache,
+            }
+        }
     </script>
 
     <script>
