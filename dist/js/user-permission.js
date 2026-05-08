@@ -1,0 +1,256 @@
+
+$(document).ready(function () {
+    $(".users_tablist .nav-link").on("shown.bs.tab", function () {
+        highlightTabs($(".users_tablist"));
+    });
+
+    // handle resize
+    $(window).on("resize", function () {
+        highlightTabs($(".users_tablist"));
+    });
+
+    highlightTabs($(".users_tablist"));
+})
+
+
+// users listing table
+
+$(document).ready(function () {
+    const tableOptions = {
+        ajax: {
+            url: "../data5.json",
+            dataSrc: 'account_users_data',
+        },
+        scrollX: true,
+        scrollY: false,
+        columns: [
+            { data: "username" },
+            { data: "email" },
+            { data: "phone" },
+            {
+                data: "role", render: function (data, type, row) {
+                    return `<span class="d-inline-block p-2 rounded-2" style="background-color:${row.bgColor};">${data}</span>`;
+                }
+            },
+            { data: "status" },
+            { data: "groups" },
+            { data: "entities" },
+            {
+                data: null, render: function (data, type, row) {
+                    return `
+                        <div class="d-flex align-items-center">
+                            <span role="button" tabindex="0"> 
+                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#EditUser" aria-label="EDIT" data-bs-original-title="EDIT" 
+                                    class="icon icon-entity-edit me-1 me-md-2"></span>
+                            </span>
+                            
+                            ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                            </span>`}
+                        </div>
+                        `
+                }
+            }
+        ],
+        order: [[0, "asc"]],
+        lengthChange: false,  // Removed pagination
+        paging: false,  // Disable pagination
+        info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+    }
+
+    $('#users-listing-table').DataTable(tableOptions);
+
+
+    const tableOptions_1 = {
+        ajax: {
+            url: "../data5.json",
+            dataSrc: 'account_users_data',
+        },
+        scrollX: true,
+        scrollY: false,
+        columns: [
+            {
+                data: "role", render: function (data, type, row) {
+                    return `<span class="d-inline-block p-2 rounded-2" style="background-color:${row.bgColor};">${data}</span>`;
+                }
+            },
+            { data: "groups" },
+            { data: "entities" },
+            {
+                data: null, render: function (data, type, row) {
+                    return `
+                        <div class="d-flex align-items-center">
+                            <span role="button" tabindex="0"> 
+                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditRole"
+                                    class="icon icon-entity-edit me-1 me-md-2"></span>
+                            </span>
+                            
+                            ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                            </span>`}
+                        </div>
+                        `
+                }
+            }
+        ],
+        order: [[0, "asc"]],
+        lengthChange: false,  // Removed pagination
+        paging: false,  // Disable pagination
+        info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+    }
+
+
+    $('#roles-listing-table').DataTable(tableOptions_1)
+})
+
+
+
+
+$(document).on('shown.bs.tab', function (e) {
+    const currentTab = $(e.target);
+    const tableKey = currentTab.data('table-key');
+    $(`#${tableKey}`).DataTable().columns.adjust();
+});
+
+$(document).on('shown.bs.modal', function () {
+    $('.user-data-table').DataTable().columns.adjust();
+})
+
+
+$(document).ready(function () {
+
+    const tableAccessOption = {
+        ajax: {
+            url: "../data5.json",
+            dataSrc: 'group_entities_data',
+        },
+        createdRow: function (row, data, dataIndex) {
+            $(row).attr('data-id', data.id).addClass("parent");
+        },
+        drawCallback: function () {
+
+            const tbody = $(this.api().table().body());
+
+            // prevent duplicates
+            tbody.find('.group-row').remove();
+
+            const columnNames = this.api().table().columns().header().toArray().map(th => $(th).text().toLowerCase()).slice(1);
+            
+
+            // add custom row at top
+            tbody.prepend(`
+                    <tr class="group-row">
+                        <td>All Groups & Entities</td>
+                        ${
+                            columnNames.map(column => `<td>
+                                <div class="d-flex align-item-center">
+                                    <input data-column="${column}" class="form-check-input green-checkbox allgroup-select row-select ms-4" type="checkbox" id="">
+                                </div>
+                                </td>` ).join("")
+                        }
+                        
+                    </tr>
+                `);
+
+            const realRows = tbody.find('tr');
+            realRows.removeClass('odd even');
+            realRows.each(function (index) {
+                $(this).addClass(
+                    index % 2 === 0 ? 'odd' : 'even'
+                );
+            });
+        },
+        columns: [
+            {
+                data: "group_name", render: function (data, type, row) {
+                    return `
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="dt-control ${!row?.entities?.length ? "no-control" : ""} m-0"></button>
+                            <div class="d-flex align-items-center gap-2" role="button">
+                                <span class="icon icon-folder-thin icon-md flex-shrink-0 m-0"></span>
+                                <span class="text-break mt-1">${data}</span>
+                            </div>
+                        </div>
+                        `
+                }
+            },
+            {
+                data: null, render: function () {
+                    return `<div class="d-flex align-item-center"><input data-column="permissions" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id=""></div>`;
+                }
+            }
+        ],
+        lengthChange: false,
+        info: false,
+        order: false,
+        scrollY: "450px",
+        scrollX: false,
+        paging: false,
+    }
+
+
+
+    $('#user-access-table').DataTable(tableAccessOption)
+    multiSelectRowPermission($('#user-access-table'))
+
+    $('#user-access-table-1').DataTable(tableAccessOption)
+    multiSelectRowPermission($('#user-access-table-1'))
+
+
+    $(".user-data-table tbody").on("click", "td .dt-control", function () {
+        const tr = $(this).closest("tr");
+
+        const table = tr.closest('table');
+        const td = $(this).closest('td')
+        const dataTable = table.DataTable();
+        const row = dataTable.row(tr);
+
+        const cacheCheckBox = table?.data('cacheCheckBox');
+
+        const columnNames = dataTable.columns().header().toArray().map(th => $(th).text().toLowerCase()).slice(1);
+        const rowId = row.data().id;
+
+        if (tr.hasClass("expanded-row")) {
+            table.find(`tr.expanded-content[data-parent="${rowId}"]`).remove();
+            tr.removeClass("expanded-row");
+        } else {
+            let expandedRows = formatExpandedRows(row.data(), columnNames, rowId, tr.find('.row-select').is(":checked"), cacheCheckBox);
+            tr.after(expandedRows);
+            tr.addClass("expanded-row");
+        }
+    });
+
+    function formatExpandedRows(data, columnNames, rowId, checkboxIsChecked, cache) {
+        return data.entities.map((value, index) => `
+                <tr class="expanded-content" data-parent="${rowId}">
+                    <td>
+                        <div class="ms-4 d-flex align-items-center gap-2">
+                            <span class="icon icon-entity-main icon-md flex-shrink-0 m-0"></span>
+                            <span class="text-break mt-1">${value}</span>
+                        </div>
+                    </td>
+                    ${columnNames.map(column => `<td data-value="${value}"> 
+                        <div class="d-flex align-item-center"><input data-column="${column}" class="form-check-input row-select light-green-checkbox ms-4" type="checkbox" ${checkboxIsChecked || cache.getChildValue(rowId, column, value) ? "checked" : ""} id=""></div>
+                    </td>`).join("")
+                    }
+                </tr>
+            `).join("");
+    }
+
+
+    $(`.customSelect2`).each(function () {
+        const parent = $(this).closest('.custom-dropdown')
+        $(this).select2({
+            dropdownParent: parent,
+            placeholder: $(this).find('option[value=""]').text().trim()
+        })
+    });
+
+    $('.customSelect2').on('select2:open', function () {
+        // Finds the search field within the opened dropdown and sets its placeholder
+        $('.select2-search__field').attr('placeholder', 'Search...');
+    });
+})
+

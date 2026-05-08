@@ -221,6 +221,11 @@
                                                 </div>
                                                 <ul class="dropdown-menu" id="statusDropdown">
                                                     <li><label class="dropdown-item"><input type="checkbox"
+                                                                id="statusSelectAll"
+                                                                class="form-check-input status-checkbox me-2"
+                                                                data-value="All">
+                                                            All</label></li>
+                                                    <li><label class="dropdown-item"><input type="checkbox"
                                                                 class="form-check-input status-checkbox me-2"
                                                                 data-value="Active">
                                                             Active</label></li>
@@ -230,15 +235,15 @@
                                                             Inactive</label></li>
                                                     <li><label class="dropdown-item"><input type="checkbox"
                                                                 class="form-check-input status-checkbox me-2"
-                                                                data-value="Locked">
-                                                            Locked</label>
+                                                                data-value="Invited">
+                                                            Invited</label>
                                                     </li>
                                                 </ul>
                                             </div>
 
                                             <div
                                                 class="filter2-dropdown col-12 col-md-3 flex-grow-1 status-table-col mb-2 dropdown">
-                                                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg"
+                                                <div class="multi-select-container d-flex align-items-center shadow-sm border border-1 rounded-2 m-0 white-bg"
                                                     id="roleContainer1" data-bs-toggle="dropdown" aria-expanded="false"
                                                     tabindex="0"><input type="button" class="search-input"
                                                         id="roleSearch1" value="Role" autocomplete="off">
@@ -328,33 +333,38 @@
                                             <div
                                                 class="filter2-dropdown col-12 col-md-3 status-table-col mb-2 dropdown">
                                                 <div class="multi-select-container d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2"
-                                                    id="sopStatusContainer" data-bs-toggle="dropdown"
+                                                    id="orderStatusContainer" data-bs-toggle="dropdown"
                                                     aria-expanded="false" tabindex="0">
-                                                    <input type="text" class="search-input" id="sopStatusSearch"
+                                                    <input type="text" class="search-input" id="orderStatusSearch"
                                                         placeholder="Status" autocomplete="off">
                                                 </div>
-                                                <ul class="dropdown-menu" id="sopStatusDropdown">
+                                                <ul class="dropdown-menu" id="orderStatusDropdown">
+                                                    <li><label class="dropdown-item px-2 px-xxl-3"><input
+                                                                type="checkbox" id="orderStatusSelectAll"
+                                                                class="form-check-input orderStatus-checkbox me-1"
+                                                                data-value="All">
+                                                            All</label></li>
                                                     <li><label class="dropdown-item px-2 px-xxl-3"><input
                                                                 type="checkbox"
-                                                                class="form-check-input sopStatus-checkbox me-1"
+                                                                class="form-check-input orderStatus-checkbox me-1"
                                                                 data-value="Active">
                                                             Active</label></li>
                                                     <li><label class="dropdown-item px-2 px-xxl-3"><input
                                                                 type="checkbox"
-                                                                class="form-check-input sopStatus-checkbox me-1"
+                                                                class="form-check-input orderStatus-checkbox me-1"
                                                                 data-value="Inactive">
                                                             Inactive</label></li>
                                                     <li><label class="dropdown-item px-2 px-xxl-3"><input
                                                                 type="checkbox"
-                                                                class="form-check-input sopStatus-checkbox me-1"
-                                                                data-value="Locked">
-                                                            Locked</label></li>
+                                                                class="form-check-input orderStatus-checkbox me-1"
+                                                                data-value="Invited">
+                                                            Invited</label></li>
                                                 </ul>
                                             </div>
 
                                             <div
                                                 class="filter2-dropdown col-12 col-md-3 flex-grow-1 status-table-col mb-2 dropdown">
-                                                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg"
+                                                <div class="multi-select-container d-flex align-items-center shadow-sm border border-1 rounded-2 m-0 white-bg"
                                                     id="roleContainer2" data-bs-toggle="dropdown" aria-expanded="false"
                                                     tabindex="0"><input type="button" class="search-input"
                                                         id="roleSearch2" value="Role" autocomplete="off">
@@ -436,8 +446,8 @@
     </div>
 
     <!-- Edit User Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model" id="EditUser"
-        tabindex="-1" aria-labelledby="EditUserModalLabel" aria-hidden="true">
+    <div class="modal modal-right fade filter-slideout SOP-model" id="EditUser" tabindex="-1"
+        aria-labelledby="EditUserModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
@@ -485,7 +495,8 @@
                         <div class="mb-4 p-3 bg-white rounded-2">
                             <h4 class="text-capitalize fs-5 mb-3 fw-semibold">Reset Password</h4>
 
-                            <p class="text-muted fw-normal">A password reset has been requested for this user. Please acknowledge and take action.</p>
+                            <p class="text-muted fw-normal">A password reset has been requested for this user. Please
+                                acknowledge and take action.</p>
 
                             <div class="form-check">
                                 <input class="form-check-input m-0" type="checkbox" id="">
@@ -496,7 +507,8 @@
                         <div class="mb-4 p-3 bg-white rounded-2">
                             <h4 class="text-capitalize fs-5 mb-3 fw-semibold">Unlock Account</h4>
 
-                            <p class="text-muted fw-normal">A request has been submitted to unlock this user's account. Please acknowledge and take action.</p>
+                            <p class="text-muted fw-normal">A request has been submitted to unlock this user's account.
+                                Please acknowledge and take action.</p>
 
                             <div class="form-check">
                                 <input class="form-check-input m-0" type="checkbox" id="">
@@ -641,9 +653,9 @@
     <!-- New User step-1 Modal End-->
 
     <!--New User step-2 Modal start-->
-    <div class="modal modal-right fade filter-slideout SOP-model" id="AddUserRole" tabindex="-1"
-        aria-labelledby="AddUserRoleLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+    <div class="modal modal-right fade filter-slideout SOP-model" id="AddUserRole"
+        tabindex="-1" aria-labelledby="AddUserRoleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-lg my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
@@ -674,6 +686,76 @@
                 <!-- Modal Body Start-->
                 <div class="modal-body">
                     <form class="" action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <fieldset>
+                                <label for="" class="form-label">Role</label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select customSelect2" id="">
+                                        <option value="" disabled="" selected="" hidden="">Select Role</option>
+                                        <option value="Admin">Admin</label>
+                                        <option value="User Admin">User Admin</label>
+                                        <option value="Invoice Admin">Invoice Admin</label>
+                                        <option value="Customer User">Customer User</label>
+                                        <option value="Role 1">Role 1</label>
+                                        <option value="Role 2">Role 2</label>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Access</h4>
+                            <div class="bg-white rounded-2 position-relative mb-4">
+                                <span
+                                    class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                                <input type="text"
+                                    class="no-bg form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border border-1"
+                                    placeholder="Search">
+                            </div>
+                            <div class="userAccessTable border rounded-3 overflow-hidden">
+                                <table id="" class="table table-striped w-100 table-nowrap user-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th data-orderable="false"></th>
+                                            <th data-orderable="false">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-md icon-view"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-edit-grey icon-md"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-submit icon-md"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-upload icon-md"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-download icon-md"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-invoices icon-md"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-acknowledge icon-md"></span>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
 
                     </form>
                 </div>
@@ -1075,6 +1157,7 @@
     <script src="../dist/js/custom.min.js"></script>
     <script src="/dist/js/comman.js"></script>
     <script src="/dist/js/dashboard-v2_document.js"></script>
+    <script src="/dist/js/user-permission.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
@@ -1085,428 +1168,6 @@
             document.querySelectorAll('[data-bs-toggle="tooltip"]'),
         );
         tooltipTriggerList.map((el) => new bootstrap.Tooltip(el));
-    </script>
-
-    <script>
-        //tab change event
-        $(document).ready(function () {
-            $(".users_tablist .nav-link").on("shown.bs.tab", function () {
-                highlightTabs($(".users_tablist"));
-            });
-
-            // handle resize
-            $(window).on("resize", function () {
-                highlightTabs($(".users_tablist"));
-            });
-
-            highlightTabs($(".users_tablist"));
-        })
-
-
-        // users listing table
-
-        const tableOptions = {
-            ajax: {
-                url: "../data5.json",
-                dataSrc: 'account_users_data',
-            },
-            scrollX: true,
-            scrollY: false,
-            columns: [
-                { data: "username" },
-                { data: "email" },
-                { data: "phone" },
-                {
-                    data: "role", render: function (data, type, row) {
-                        return `<span class="d-inline-block p-2 rounded-2" style="background-color:${row.bgColor};">${data}</span>`;
-                    }
-                },
-                { data: "status" },
-                { data: "groups" },
-                { data: "entities" },
-                {
-                    data: null, render: function (data, type, row) {
-                        return `
-                        <div class="d-flex align-items-center">
-                            <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#EditUser" aria-label="EDIT" data-bs-original-title="EDIT" 
-                                    class="icon icon-entity-edit me-1 me-md-2"></span>
-                            </span>
-                            
-                            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
-                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
-                            </span>
-                        </div>
-                        `
-                    }
-                }
-            ],
-            order: [[0, "asc"]],
-            lengthChange: false,  // Removed pagination
-            paging: false,  // Disable pagination
-            info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
-        }
-
-        $('#users-listing-table').DataTable(tableOptions);
-
-
-        const tableOptions_1 = {
-            ajax: {
-                url: "../data5.json",
-                dataSrc: 'account_users_data',
-            },
-            scrollX: true,
-            scrollY: false,
-            columns: [
-                {
-                    data: "role", render: function (data, type, row) {
-                        return `<span class="d-inline-block p-2 rounded-2" style="background-color:${row.bgColor};">${data}</span>`;
-                    }
-                },
-                { data: "groups" },
-                { data: "entities" },
-                {
-                    data: null, render: function (data, type, row) {
-                        return `
-                        <div class="d-flex align-items-center">
-                            <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditRole"
-                                    class="icon icon-entity-edit me-1 me-md-2"></span>
-                            </span>
-                            
-                            ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
-                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
-                            </span>`}
-                        </div>
-                        `
-                    }
-                }
-            ],
-            order: [[0, "asc"]],
-            lengthChange: false,  // Removed pagination
-            paging: false,  // Disable pagination
-            info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
-        }
-
-
-        $('#roles-listing-table').DataTable(tableOptions_1)
-
-
-        $(document).on('shown.bs.tab', function (e) {
-            const currentTab = $(e.target);
-            const tableKey = currentTab.data('table-key');
-            $(`#${tableKey}`).DataTable().columns.adjust();
-        });
-
-        $(document).on('shown.bs.modal', function () {
-            $('.user-data-table').DataTable().columns.adjust();
-        })
-
-
-        const tableAccessOption = {
-            ajax: {
-                url: "../data5.json",
-                dataSrc: 'group_entities_data',
-            },
-            createdRow: function (row, data, dataIndex) {
-                $(row).attr('data-id', data.id).addClass("parent");
-            },
-            drawCallback: function () {
-
-                const tbody = $(this.api().table().body());
-
-                // prevent duplicates
-                tbody.find('.group-row').remove();
-
-                // add custom row at top
-                tbody.prepend(`
-                    <tr class="group-row">
-                        <td>All Groups & Entities</td>
-                        <td><div class="d-flex align-item-center"><input data-column="permission" class="form-check-input green-checkbox allgroup-select row-select ms-4" type="checkbox" id=""></div></td>
-                    </tr>
-                `);
-
-                const realRows = tbody.find('tr');
-                realRows.removeClass('odd even');
-                realRows.each(function (index) {
-                    $(this).addClass(
-                        index % 2 === 0 ? 'odd' : 'even'
-                    );
-                });
-            },
-            columns: [
-                {
-                    data: "group_name", render: function (data, type, row) {
-                        return `
-                        <div class="d-flex align-items-center gap-2">
-                            <button type="button" class="dt-control ${!row?.entities?.length ? "no-control" : ""} m-0"></button>
-                            <div class="d-flex align-items-center gap-2" role="button">
-                                <span class="icon icon-folder-thin icon-md flex-shrink-0 m-0"></span>
-                                <span class="text-break mt-1">${data}</span>
-                            </div>
-                        </div>
-                        `
-                    }
-                },
-                {
-                    data: null, render: function () {
-                        return `<div class="d-flex align-item-center"><input data-column="permission" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id=""></div>`;
-                    }
-                }
-            ],
-            lengthChange: false,
-            info: false,
-            order: false,
-            scrollY: "450px",
-            scrollX: false,
-            paging: false,
-        }
-
-
-
-        $('#user-access-table').DataTable(tableAccessOption)
-        $('#user-access-table-1').DataTable(tableAccessOption)
-
-        multiSelectRow($('#user-access-table'))
-        multiSelectRow($('#user-access-table-1'))
-
-
-        $(".user-data-table tbody").on("click", "td .dt-control", function () {
-            const tr = $(this).closest("tr");
-
-            const table = tr.closest('table');
-            const td = $(this).closest('td')
-            const dataTable = table.DataTable();
-            const row = dataTable.row(tr);
-
-            const cacheCheckBox = table?.data('cacheCheckBox')
-
-            const rowId = row.data().id;
-
-            if (tr.hasClass("expanded-row")) {
-                table.find(`tr.expanded-content[data-parent="${rowId}"]`).remove();
-                tr.removeClass("expanded-row");
-            } else {
-                let expandedRows = formatExpandedRows(row.data(), "permission", rowId, tr.find('.row-select').is(":checked"), cacheCheckBox);
-                tr.after(expandedRows);
-                tr.addClass("expanded-row");
-            }
-        });
-
-        function formatExpandedRows(data, column, rowId, checkboxIsChecked, cache) {
-            return data.entities.map((value, index) => `
-                <tr class="expanded-content" data-parent="${rowId}">
-                    <td>
-                        <div class="ms-4 d-flex align-items-center gap-2">
-                            <span class="icon icon-entity-main icon-md flex-shrink-0 m-0"></span>
-                            <span class="text-break mt-1">${value}</span>
-                        </div>
-                    </td>
-                    <td data-value="${value}"> 
-                        <div class="d-flex align-item-center"><input data-column="${column}" class="form-check-input row-select light-green-checkbox ms-4" type="checkbox" ${checkboxIsChecked || cache.getChildValue(rowId, column, value) ? "checked" : ""} id=""></div>
-                    </td>
-                </tr>
-            `).join("");
-        }
-
-        function multiSelectRow(tableContainer) {
-
-            // row checkbox event handle
-            const cacheCheckBox = cacheChildCheckboxState();
-            tableContainer.data('cacheCheckBox', cacheCheckBox);
-
-            tableContainer.on('change', '.row-select', function () {
-                const checkbox = $(this);
-                const dataTable = tableContainer.DataTable()
-                const row = checkbox.closest('tr');
-                const td = checkbox.closest('td');
-                const columnValue = td.data('value');
-                const column = checkbox.data('column');
-                const isChecked = $(this).prop("checked");
-
-                const parentId = row.data('id') || row.data('parent');
-
-                if (row.hasClass('expanded-content')) {
-                    cacheCheckBox.setChildValue(parentId, column, columnValue, isChecked)
-                }
-
-                if (row.hasClass('expanded-row') || row.hasClass('parent')) {
-                    const rowData = dataTable.row(row).data();
-
-                    if (!row.find('.row-select').prop('indeterminate')) {
-                        rowData.entities.forEach((value) => {
-                            cacheCheckBox.setChildValue(parentId, column, value, isChecked)
-                        })
-                    }
-                }
-
-
-                if (row.hasClass('expanded-row')) {
-                    toggleChildren(isChecked, parentId, column);
-                }
-
-                if (row.hasClass('expanded-content')) {
-                    updateParent(parentId, column);
-                }
-                console.log(checkbox.hasClass('allgroup-select'))
-                updateAllState(checkbox, column, isChecked);
-            })
-
-            //update All State Checkbox
-
-            function updateAllState(checkbox, column, isChecked) {
-
-                const checkboxes = tableContainer.find(`tr:not(.group-row) td:not(.disabled-column) .row-select[data-column="${column}"]`);
-                if (checkbox.hasClass('allgroup-select')) {
-                    checkboxes.prop({
-                        checked: isChecked,
-                        indeterminate: false
-                    }).trigger('change');
-                    return;
-                }
-
-                const groupallcheckbox = tableContainer.find(`tr.group-row .allgroup-select[data-column="${column}"]`)
-
-                const totalCheckbox = checkboxes.length;
-                const checkedCheckbox = checkboxes.filter(':checked').length;
-
-                const hasIndeterminate = checkboxes.filter(function () { return $(this).prop('indeterminate'); }).length > 0;
-
-                if (checkedCheckbox === 0 && !hasIndeterminate) {
-                    groupallcheckbox.prop({
-                        checked: false,
-                        indeterminate: false
-                    });
-                } else if (checkedCheckbox === totalCheckbox && !hasIndeterminate) {
-                    groupallcheckbox.prop({
-                        checked: true,
-                        indeterminate: false
-                    });
-                } else {
-                    groupallcheckbox.prop({
-                        checked: false,
-                        indeterminate: true
-                    });
-                }
-
-
-            }
-
-            // update children checkbox
-            function toggleChildren(isChecked, parentId, column) {
-                if (!parentId) return;
-
-                const children = tableContainer.find(`tr.expanded-content[data-parent="${parentId}"]`);
-
-                if (!children.length) return;
-
-                const childValidCheckBox = children.find(
-                    `td:not(.disabled-column) .row-select[data-column="${column}"]`
-                );
-
-                childValidCheckBox.prop('checked', isChecked)
-            }
-
-
-
-            // update parent
-            function updateParent(parentId, column) {
-
-                if (!parentId) return;
-
-                const children = tableContainer.find(`tr[data-parent="${parentId}"]`);
-
-                if (!children.length) return;
-
-                const validCheckBox = children.find(
-                    `td:not(.disabled-column) .row-select[data-column="${column}"]`
-                );
-
-                if (!validCheckBox.length) return;
-
-                const totalCheckbox = validCheckBox.length;
-                const checkedCheckbox = validCheckBox.filter(':checked').length;
-
-                const parentCheckbox = tableContainer.find(
-                    `tr.expanded-row[data-id="${parentId}"] .row-select[data-column="${column}"]`
-                );
-
-                if (!parentCheckbox.length) return;
-
-                if (checkedCheckbox === 0) {
-                    parentCheckbox.prop({
-                        checked: false,
-                        indeterminate: false
-                    });
-
-                } else if (checkedCheckbox === totalCheckbox) {
-                    parentCheckbox.prop({
-                        checked: true,
-                        indeterminate: false
-                    });
-
-                } else {
-                    parentCheckbox.prop({
-                        checked: false,
-                        indeterminate: true
-                    });
-
-                }
-            }
-        }
-
-
-
-
-        //cache row child state
-
-        function cacheChildCheckboxState() {
-            const cache = new Map();
-
-            function getKey(parentId, column) {
-                return `${parentId}_${column}`;
-            }
-
-            function cached(parentId, column) {
-                const key = getKey(parentId, column);
-
-                if (!cache.has(key)) {
-                    cache.set(key, {
-                        childValue: {}
-                    })
-                }
-
-                return cache.get(key)
-            }
-
-            function setChildValue(parentId, column, childId, checkboxValue) {
-
-                const entry = cached(parentId, column);
-                entry.childValue[childId] = checkboxValue;
-            }
-
-            function getChildValue(parentId, column, childId) {
-
-                const entry = cached(parentId, column);
-                return entry.childValue[childId] ?? false;
-            }
-
-            function deleteKeyValue(parentId, column) {
-                const key = getKey(parentId, column);
-                if (cache.has(key)) {
-                    cache.delete(key)
-                }
-            }
-
-            return {
-                setChildValue,
-                getChildValue,
-                deleteKeyValue,
-                value: cache,
-            }
-        }
     </script>
 
     <script>
