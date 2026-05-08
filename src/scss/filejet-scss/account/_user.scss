@@ -57,6 +57,10 @@
         max-height: 400px !important;
         overflow: hidden;
         overflow-y: auto;
+
+        .dataTables_scrollBody {
+            padding: 0 !important;
+        }
     }
 
     .dataTable tr {
@@ -86,28 +90,53 @@
             }
         }
     }
+
+    &.rights-table {
+        .dataTables_wrapper {
+
+            th,
+            td {
+                &:first-child {
+                    max-width: 200px !important;
+                    width: 195px !important;
+                }
+            }
+        }
+    }
 }
 
 .user-step-group {
     justify-content: unset !important;
     gap: 100px;
 
-    .step{
+    .step {
         flex: 0 !important;
 
-        &::after{
+        &::after {
             left: 75% !important;
             width: 120% !important;
         }
     }
 }
 
-.notification-option{
-    .form-check label{
+.notification-option {
+    .form-check label {
         font-size: 14px !important;
     }
-    .info{
+
+    .info {
         font-size: 12px !important;
     }
 
+}
+
+.group-row.odd {
+
+    th {
+        background-color: #f3f5f8 !important;
+        font-weight: normal !important;
+        border-top-width: 0.8px !important;
+        border-top-style: solid !important;
+        border-top-color: inherit !important;
+    }
 }

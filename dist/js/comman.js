@@ -15,7 +15,10 @@ function multiSelectRowPermission(tableContainer) {
     // row checkbox event handle
     const cacheCheckBox = cacheChildCheckboxState();
     tableContainer.data('cacheCheckBox', cacheCheckBox);
-    tableContainer.on('change', '.row-select', function () {
+
+    // checkbox event
+    const table_wrapper = tableContainer.closest(".dataTables_wrapper")
+    table_wrapper.on('change', '.row-select', function () {
         const checkbox = $(this);
         const dataTable = tableContainer.DataTable()
         const row = checkbox.closest('tr');
@@ -48,7 +51,6 @@ function multiSelectRowPermission(tableContainer) {
         if (row.hasClass('expanded-content')) {
             updateParent(parentId, column);
         }
-        console.log(checkbox.hasClass('allgroup-select'))
         updateAllState(checkbox, column, isChecked);
     })
 
@@ -56,7 +58,7 @@ function multiSelectRowPermission(tableContainer) {
 
     function updateAllState(checkbox, column, isChecked) {
 
-        const checkboxes = tableContainer.find(`tr:not(.group-row) td:not(.disabled-column) .row-select[data-column="${column}"]`);
+        const checkboxes = table_wrapper.find(`tr:not(.group-row) td:not(.disabled-column) .row-select[data-column="${column}"]`);
         if (checkbox.hasClass('allgroup-select')) {
             checkboxes.prop({
                 checked: isChecked,
@@ -65,7 +67,7 @@ function multiSelectRowPermission(tableContainer) {
             return;
         }
 
-        const groupallcheckbox = tableContainer.find(`tr.group-row .allgroup-select[data-column="${column}"]`)
+        const groupallcheckbox = table_wrapper.find(`tr.group-row .allgroup-select[data-column="${column}"]`)
 
         const totalCheckbox = checkboxes.length;
         const checkedCheckbox = checkboxes.filter(':checked').length;
