@@ -44,9 +44,9 @@ $(document).ready(function () {
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
                             
-                            ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
-                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                            ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deactivateUser">
+                                <span data-toggle="tooltip" aria-label="DEACTIVATE" data-bs-original-title="DEACTIVATE" 
+                                    class="icon icon-deactivate me-1 me-md-2"></span> 
                             </span>`}
                         </div>
                         `
@@ -86,7 +86,7 @@ $(document).ready(function () {
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
                             
-                            ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#">
+                            ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deleteRole">
                                 <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
                                     class="icon icon-entity-delete me-1 me-md-2"></span> 
                             </span>`}
@@ -132,26 +132,26 @@ $(document).ready(function () {
             },
             drawCallback: function () {
                 const tbody = $(this.api().table().body());
-                const thead = $(this.api().table().header());
+                // const thead = $(this.api().table().header());
 
                 // prevent duplicates
-                thead.find('.group-row').remove();
+                // thead.find('.group-row').remove();
 
-                const columnNames = this.api().table().columns().header().toArray().slice(1).map(th => $(th).attr('column-id'));
+                // const columnNames = this.api().table().columns().header().toArray().slice(1).map(th => $(th).attr('column-id'));
 
-                // add custom row at top
-                thead.append(`
-                    <tr class="group-row odd">
-                        <th>All Groups & Entities</th>
-                        ${columnNames.map(column => `<th>
-                                <div class="d-flex align-item-center">
-                                    <input data-column="${column}" class="form-check-input green-checkbox allgroup-select row-select ${column === "permissions" ? "ms-4" : "ms-1"}" type="checkbox" id="">
-                                </div>
-                                </th>` ).join("")
-                    }
+                // // add custom row at top
+                // thead.append(`
+                //     <tr class="group-row odd">
+                //         <th>All Groups & Entities</th>
+                //         ${columnNames.map(column => `<th>
+                //                 <div class="d-flex align-item-center">
+                //                     <input data-column="${column}" class="form-check-input green-checkbox allgroup-select row-select ${column === "permissions" ? "ms-4" : "ms-1"}" type="checkbox" id="">
+                //                 </div>
+                //                 </th>` ).join("")
+                //     }
                         
-                    </tr>
-                `);
+                //     </tr>
+                // `);
 
                 const realRows = tbody.find('tr');
                 realRows.removeClass('odd even');
@@ -176,10 +176,10 @@ $(document).ready(function () {
                     }
                 },
                 ...(
-                    table === "role" ?
+                    table === "role" || table === "role_1" ?
                         [{
-                            data: null, render: function () {
-                                return `<div class="d-flex align-item-center"><input data-column="permissions" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id=""></div>`;
+                            data: null, render: function (data, type, row) {
+                                return `<div class="d-flex align-item-center"><input data-column="permissions" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id="" ${Math.floor(Math.random() * 5) > 3 && table === "role_1" ? "checked" : ""} ></div>`;
                             }
                         }] : table === "users" ? [
                             {
@@ -241,7 +241,7 @@ $(document).ready(function () {
     $('#user-access-table').DataTable(tableAccessOption("role"))
     multiSelectRowPermission($('#user-access-table'))
 
-    $('#user-access-table-1').DataTable(tableAccessOption("role"))
+    $('#user-access-table-1').DataTable(tableAccessOption("role_1"))
     multiSelectRowPermission($('#user-access-table-1'))
 
     $('#user-rights-table').DataTable(tableAccessOption("users"));
@@ -255,6 +255,7 @@ $(document).ready(function () {
         const td = $(this).closest('td')
         const dataTable = table.DataTable();
         const row = dataTable.row(tr);
+        const isCheckboxDisabled = tr.hasClass('check-disabled')
 
         const cacheCheckBox = table?.data('cacheCheckBox');
 
@@ -266,14 +267,14 @@ $(document).ready(function () {
             table.find(`tr.expanded-content[data-parent="${rowId}"]`).remove();
             tr.removeClass("expanded-row");
         } else {
-            let expandedRows = formatExpandedRows(row.data(), columnNames, rowId, tr, cacheCheckBox);
+            let expandedRows = formatExpandedRows(row.data(), columnNames, rowId, tr, cacheCheckBox, isCheckboxDisabled);
             tr.after(expandedRows);
             tr.addClass("expanded-row");
         }
         $('.user-data-table').DataTable().columns.adjust();
     });
 
-    function formatExpandedRows(data, columnNames, rowId, row, cache) {
+    function formatExpandedRows(data, columnNames, rowId, row, cache, isCheckboxDisabled) {
         return data.entities.map((value, index) => `
                 <tr class="expanded-content" data-parent="${rowId}">
                     <td>
@@ -283,7 +284,7 @@ $(document).ready(function () {
                         </div>
                     </td>
                     ${columnNames.map(column => `<td data-value="${value}"> 
-                        <div class="d-flex align-item-center"><input data-column="${column}" class="form-check-input row-select light-green-checkbox ${column === "permissions" ? "ms-4" : "ms-1"}" type="checkbox" ${row.find(`.row-select[data-column="${column}"]`).is(":checked") || cache.getChildValue(rowId, column, value) ? "checked" : ""} id=""></div>
+                        <div class="d-flex align-item-center"><input ${isCheckboxDisabled ? 'disabled' : ''} data-column="${column}" class="form-check-input row-select light-green-checkbox ${column === "permissions" ? "ms-4" : "ms-1"}" type="checkbox" ${row.find(`.row-select[data-column="${column}"]`).is(":checked") || cache.getChildValue(rowId, column, value) ? "checked" : ""} id=""></div>
                     </td>`).join("")
             }
                 </tr>
@@ -315,11 +316,11 @@ $(document).ready(function () {
         if (selectedValue === "Customer User") {
             $('.access-table-section').removeClass('d-none').hide().fadeIn(100);
             $('.access-table-section table input[type="checkbox"]').prop('disabled', false)
-            $('#user-rights-table').find('tr').remove('check-disabled')
+            $('#user-rights-table').find('tr').removeClass('check-disabled')
         } else {
             $('.access-table-section').removeClass('d-none').hide().fadeIn(100);
             $('.access-table-section table input[type="checkbox"]').prop('disabled', true)
-            $('#user-rights-table').find('tr').add('check-disabled')
+            $('#user-rights-table').find('tr').addClass('check-disabled')
         }
         $('#user-rights-table').DataTable().columns.adjust();
     });
