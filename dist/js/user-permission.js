@@ -183,38 +183,45 @@ $(document).ready(function () {
                             }
                         }] : table === "users" ? [
                             {
-                                data: null, render: function () {
-                                    return `<div class="d-flex align-item-center"><input data-column="view" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                                data: null, render: function (data, type, row) {
+                                    const { view: { checked, someChecked } } = row.rights;
+                                    return `<div class="d-flex align-item-center"><input data-column="view" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
                                 }
                             },
                             {
-                                data: null, render: function () {
-                                    return `<div class="d-flex align-item-center"><input data-column="edit" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                                data: null, render: function (data, type, row) {
+                                    const { edit: { checked, someChecked } } = row.rights;
+                                    return `<div class="d-flex align-item-center"><input data-column="edit" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
                                 }
                             },
                             {
-                                data: null, render: function () {
-                                    return `<div class="d-flex align-item-center"><input data-column="submit" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                                data: null, render: function (data, type, row) {
+                                    const { submit: { checked, someChecked } } = row.rights;
+                                    return `<div class="d-flex align-item-center"><input data-column="submit" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
                                 }
                             },
                             {
-                                data: null, render: function () {
-                                    return `<div class="d-flex align-item-center"><input data-column="upload" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                                data: null, render: function (data, type, row) {
+                                    const { upload: { checked, someChecked } } = row.rights;
+                                    return `<div class="d-flex align-item-center"><input data-column="upload" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
                                 }
                             },
                             {
-                                data: null, render: function () {
-                                    return `<div class="d-flex align-item-center"><input data-column="download" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                                data: null, render: function (data, type, row) {
+                                    const { download: { checked, someChecked } } = row.rights;
+                                    return `<div class="d-flex align-item-center"><input data-column="download" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
                                 }
                             },
                             {
-                                data: null, render: function () {
-                                    return `<div class="d-flex align-item-center"><input data-column="invoices" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                                data: null, render: function (data, type, row) {
+                                    const { invoices: { checked, someChecked } } = row.rights;
+                                    return `<div class="d-flex align-item-center"><input data-column="invoices" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
                                 }
                             },
                             {
-                                data: null, render: function () {
-                                    return `<div class="d-flex align-item-center"><input data-column="acknowledge" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                                data: null, render: function (data, type, row) {
+                                    const { acknowledge: { checked, someChecked } } = row.rights;
+                                    return `<div class="d-flex align-item-center"><input data-column="acknowledge" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
                                 }
                             }
                         ] : [])
@@ -295,6 +302,26 @@ $(document).ready(function () {
     $('.customSelect2').on('select2:open', function () {
         // Finds the search field within the opened dropdown and sets its placeholder
         $('.select2-search__field').attr('placeholder', 'Search...');
+    });
+
+    $('.customSelect2').on('select2:select', function () {
+        const selectedValue = $(this).val().trim();
+
+        if (selectedValue === "None") {
+            $('.access-table-section').fadeOut(100).addBack('d-none');
+            return;
+        }
+
+        if (selectedValue === "Customer User") {
+            $('.access-table-section').removeClass('d-none').hide().fadeIn(100);
+            $('.access-table-section table input[type="checkbox"]').prop('disabled', false)
+            $('#user-rights-table').find('tr').remove('check-disabled')
+        } else {
+            $('.access-table-section').removeClass('d-none').hide().fadeIn(100);
+            $('.access-table-section table input[type="checkbox"]').prop('disabled', true)
+            $('#user-rights-table').find('tr').add('check-disabled')
+        }
+        $('#user-rights-table').DataTable().columns.adjust();
     });
 
 

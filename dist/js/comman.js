@@ -15,12 +15,12 @@ function multiSelectRowPermission(tableContainer) {
     // row checkbox event handle
     const cacheCheckBox = cacheChildCheckboxState();
     tableContainer.data('cacheCheckBox', cacheCheckBox);
+    const dataTable = tableContainer.DataTable();
 
     // checkbox event
     const table_wrapper = tableContainer.closest(".dataTables_wrapper")
     table_wrapper.on('change', '.row-select', function () {
         const checkbox = $(this);
-        const dataTable = tableContainer.DataTable()
         const row = checkbox.closest('tr');
         const td = checkbox.closest('td');
         const columnValue = td.data('value');
@@ -51,15 +51,15 @@ function multiSelectRowPermission(tableContainer) {
         if (row.hasClass('expanded-content')) {
             updateParent(parentId, column);
         }
-        updateAllState(checkbox, column, isChecked);
+        updateAllState(column, checkbox, isChecked);
     })
 
     //update All State Checkbox
 
-    function updateAllState(checkbox, column, isChecked) {
+    function updateAllState(column, checkbox = '', isChecked = false) {
 
-        const checkboxes = table_wrapper.find(`tr:not(.group-row) td:not(.disabled-column) .row-select[data-column="${column}"]`);
-        if (checkbox.hasClass('allgroup-select')) {
+        const checkboxes = table_wrapper.find(`tr:not(.group-row):not(.check-disabled) td .row-select[data-column="${column}"]`);
+        if (checkbox && checkbox.hasClass('allgroup-select')) {
             checkboxes.prop({
                 checked: isChecked,
                 indeterminate: false
@@ -98,12 +98,12 @@ function multiSelectRowPermission(tableContainer) {
     function toggleChildren(isChecked, parentId, column) {
         if (!parentId) return;
 
-        const children = tableContainer.find(`tr.expanded-content[data-parent="${parentId}"]`);
+        const children = tableContainer.find(`tr.expanded-content[data-parent="${parentId}"]:not(.check-disabled)`);
 
         if (!children.length) return;
 
         const childValidCheckBox = children.find(
-            `td:not(.disabled-column) .row-select[data-column="${column}"]`
+            `td .row-select[data-column="${column}"]`
         );
 
         childValidCheckBox.prop('checked', isChecked)
@@ -116,12 +116,12 @@ function multiSelectRowPermission(tableContainer) {
 
         if (!parentId) return;
 
-        const children = tableContainer.find(`tr[data-parent="${parentId}"]`);
+        const children = tableContainer.find(`tr[data-parent="${parentId}"]:not(.check-disabled)`);
 
         if (!children.length) return;
 
         const validCheckBox = children.find(
-            `td:not(.disabled-column) .row-select[data-column="${column}"]`
+            `td .row-select[data-column="${column}"]`
         );
 
         if (!validCheckBox.length) return;
@@ -155,6 +155,27 @@ function multiSelectRowPermission(tableContainer) {
 
         }
     }
+
+
+    $(document).ready(function () {
+        dataTable.on('draw', function () {
+            const tbodyCheckbox = tableContainer.find('td');
+            const thCheckbox = tableContainer.find('.allgroup-select');
+
+            tableContainer.find('tr:not(.check-disabled) td .row-select').each(function () {
+                const checkbox = $(this);
+                const isIndeterminate = checkbox.data('someChecked');
+                if (isIndeterminate) {
+                    checkbox.prop('indeterminate', isIndeterminate)
+                }
+            });
+
+            const columnNames = thCheckbox.toArray().map(th => $(th).data('column'));
+            columnNames.forEach(column => updateAllState(column, '', false))
+        })
+    })
+
+
 }
 
 //cache row child state
