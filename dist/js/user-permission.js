@@ -115,7 +115,8 @@ $(document).on('shown.bs.tab', function (e) {
 });
 
 $(document).on('shown.bs.modal', function () {
-    $('.user-data-table').DataTable().columns.adjust();
+    $('#user-access-table').DataTable().columns.adjust();
+    $('#user-access-table-1').DataTable().columns.adjust();
 })
 
 
@@ -149,7 +150,7 @@ $(document).ready(function () {
                 //                 </div>
                 //                 </th>` ).join("")
                 //     }
-                        
+
                 //     </tr>
                 // `);
 
@@ -236,17 +237,22 @@ $(document).ready(function () {
         }
     }
 
+    const tablesId = [
+        {
+            id: "#user-access-table", tableContext: "role"
+        },
+        {
+            id: "#user-access-table-1", tableContext: "role_1"
+        },
+        {
+            id: "#user-rights-table", tableContext: "users"
+        }
+    ]
 
-
-    $('#user-access-table').DataTable(tableAccessOption("role"))
-    multiSelectRowPermission($('#user-access-table'))
-
-    $('#user-access-table-1').DataTable(tableAccessOption("role_1"))
-    multiSelectRowPermission($('#user-access-table-1'))
-
-    $('#user-rights-table').DataTable(tableAccessOption("users"));
-    multiSelectRowPermission($('#user-rights-table'))
-
+    tablesId.forEach(value => {
+        $(value.id).DataTable(tableAccessOption(value.tableContext))
+        multiSelectRowPermission($(value.id))
+    })
 
     $(".user-data-table tbody").on("click", "td .dt-control", function () {
         const tr = $(this).closest("tr");
@@ -271,7 +277,7 @@ $(document).ready(function () {
             tr.after(expandedRows);
             tr.addClass("expanded-row");
         }
-        $('.user-data-table').DataTable().columns.adjust();
+        dataTable.columns.adjust();
     });
 
     function formatExpandedRows(data, columnNames, rowId, row, cache, isCheckboxDisabled) {
@@ -293,11 +299,17 @@ $(document).ready(function () {
 
 
     $(`.customSelect2`).each(function () {
-        const parent = $(this).closest('.custom-dropdown')
-        $(this).select2({
-            dropdownParent: parent,
+        const modal = $(this).closest('.modal')
+        const options = {
             placeholder: $(this).find('option[value=""]').text().trim()
-        })
+        }
+
+        if (modal.length) {
+            options.dropdownParent = modal
+        } else {
+            options.dropdownParent = $('.custom-dropdown')
+        }
+        $(this).select2(options)
     });
 
     $('.customSelect2').on('select2:open', function () {
@@ -312,7 +324,7 @@ $(document).ready(function () {
             $('.access-table-section').fadeOut(100).addBack('d-none');
             return;
         }
-
+        
         if (selectedValue === "Customer User") {
             $('.access-table-section').removeClass('d-none').hide().fadeIn(100);
             $('.access-table-section table input[type="checkbox"]').prop('disabled', false)
