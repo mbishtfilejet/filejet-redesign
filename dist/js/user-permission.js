@@ -320,21 +320,31 @@ $(document).ready(function () {
     $('.customSelect2').on('select2:select', function () {
         const selectedValue = $(this).val().trim();
 
+        const accessSection = $(this).closest('.modal').find('.access-table-section');
+
+        if (!accessSection) return;
+
         if (selectedValue === "None") {
             $('.access-table-section').fadeOut(100).addBack('d-none');
             return;
         }
 
+        const userRightsTable = accessSection.find('#user-rights-table');
+
+        if (!userRightsTable) return;
+
+        const checkBoxtobeDisabled = userRightsTable.closest('.rights-table').find('input[type=checkbox]');
+
         if (selectedValue === "Customer User") {
-            $('.access-table-section').removeClass('d-none').hide().fadeIn(100);
-            $('.access-table-section table input[type="checkbox"]').prop('disabled', false)
-            $('#user-rights-table').find('tr').removeClass('check-disabled')
+            accessSection.removeClass('d-none').hide().fadeIn(100);
+            checkBoxtobeDisabled.prop('disabled', false)
+            userRightsTable.find('tr').removeClass('check-disabled')
         } else {
-            $('.access-table-section').removeClass('d-none').hide().fadeIn(100);
-            $('.access-table-section table input[type="checkbox"]').prop('disabled', true)
-            $('#user-rights-table').find('tr').addClass('check-disabled')
+            accessSection.removeClass('d-none').hide().fadeIn(100);
+            checkBoxtobeDisabled.prop('disabled', true)
+            userRightsTable.find('tr').addClass('check-disabled')
         }
-        $('#user-rights-table').DataTable().columns.adjust();
+        userRightsTable.DataTable().columns.adjust();
     });
 
 
