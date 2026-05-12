@@ -180,7 +180,7 @@ $(document).ready(function () {
                     table === "role" || table === "role_1" ?
                         [{
                             data: null, render: function (data, type, row) {
-                                return `<div class="d-flex align-item-center"><input data-column="permissions" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id="" ${Math.floor(Math.random() * 5) > 3 && table === "role_1" ? "checked" : ""} ></div>`;
+                                return `<div class="d-flex align-item-center"><input data-column="permissions" class="form-check-input green-checkbox row-select ms-4" type="checkbox" id="" ${[2, 4].includes(row.id) && table === "role_1" ? "checked" : ""} ></div>`;
                             }
                         }] : table === "users" ? [
                             {
@@ -324,7 +324,7 @@ $(document).ready(function () {
             $('.access-table-section').fadeOut(100).addBack('d-none');
             return;
         }
-        
+
         if (selectedValue === "Customer User") {
             $('.access-table-section').removeClass('d-none').hide().fadeIn(100);
             $('.access-table-section table input[type="checkbox"]').prop('disabled', false)
