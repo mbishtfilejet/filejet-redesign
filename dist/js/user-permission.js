@@ -335,7 +335,7 @@ $(document).ready(function () {
 
         const checkBoxtobeDisabled = userRightsTable.closest('.rights-table').find('input[type=checkbox]');
 
-        if (selectedValue === "Customer User") {
+        if (selectedValue === "Custom User") {
             accessSection.removeClass('d-none').hide().fadeIn(100);
             checkBoxtobeDisabled.prop('disabled', false)
             userRightsTable.find('tr').removeClass('check-disabled')
