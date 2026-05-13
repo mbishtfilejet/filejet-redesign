@@ -827,7 +827,7 @@ $(document).ready(function () {
       tr.addClass("expanded-row");
     }
     // table.columns.adjust();
-    applyTagOverflow();
+    applyTagOverflow(true);
     applyAlternateRowStyling("entitydetails-documents-table");
 
     const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
@@ -939,7 +939,7 @@ $(document).ready(function () {
   }
 
   table.on('column-sizing.dt', function () {
-    applyTagOverflow();
+    applyTagOverflow(true);
   })
 
 })
@@ -971,7 +971,7 @@ function renderTagsOnRow(tagdata, maxTag = 4) {
   return tagWrapper.outerHTML;
 }
 
-function applyTagOverflow() {
+function applyTagOverflow(isTableScrollable = false) {
 
   $('.d-tag-wrapper').each(function () {
     const wrapper = $(this);
@@ -982,9 +982,9 @@ function applyTagOverflow() {
 
     const colIndex = td[0].cellIndex;
 
-    const parent = td.closest('.dataTables_scroll');
+    const parent = isTableScrollable ? td.closest('.dataTables_scroll') : td.closest('.dataTable');
 
-    const th = parent.find('.dataTables_scrollHeadInner table thead th').eq(colIndex);
+    const th = isTableScrollable ? parent.find('.dataTables_scrollHeadInner table thead th').eq(colIndex) : parent.find('thead th').eq(colIndex);
 
     let usedWidth = 0;
     let hiddenCount = 0;

@@ -270,7 +270,7 @@ $(document).ready(function () {
             tr.addClass("expanded-row");
         }
         // table.columns.adjust();
-        applyTagOverflow();
+        applyTagOverflow(true);
         applyAlternateRowStyling("groupentity-documents-table");
 
         const parentPadding = parseInt($(tr).children('td.doc_indent').css('padding-left'), 10) || 0;
@@ -367,7 +367,7 @@ $(document).ready(function () {
     })
 
     table.on('column-sizing.dt', function () {
-        applyTagOverflow();
+        applyTagOverflow(true);
     })
 
     // logic for document tabs select checkbox to download doc or folders

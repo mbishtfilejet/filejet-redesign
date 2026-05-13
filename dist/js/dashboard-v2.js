@@ -448,7 +448,7 @@ function renderTagsOnRow(tagdata, maxTag = 4) {
   return tagWrapper.outerHTML;
 }
 
-function applyTagOverflow() {
+function applyTagOverflow(isTableScrollable = false) {
 
   $('.d-tag-wrapper').each(function () {
     const wrapper = $(this);
@@ -459,9 +459,9 @@ function applyTagOverflow() {
 
     const colIndex = td[0].cellIndex;
 
-    const parent = td.closest('.dataTable');
+    const parent = isTableScrollable ? td.closest('.dataTables_scroll') : td.closest('.dataTable');
 
-    const th = parent.find('thead th').eq(colIndex);
+    const th = isTableScrollable ? parent.find('.dataTables_scrollHeadInner table thead th').eq(colIndex) : parent.find('thead th').eq(colIndex);
 
     let usedWidth = 0;
     let hiddenCount = 0;
