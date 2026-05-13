@@ -7,23 +7,13 @@
    <title>File Jet: Dashboard</title>
    <!-- Styles -->
    <link rel="stylesheet" href="../src/scss/filejet-style.css">
-   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-   <!-- date picker -->
-   <link rel='stylesheet'
-      href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css'>
-   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css'>
-   <!-- end date -->
-
    <!-- Scripts -->
    <script src="../dist/js/jquery.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body class="main-dashboard-v2">
 
-   <div class="filejet-bg dashboard-page  min-vh-100">
+   <div class="filejet-bg dashboard-page min-vh-100">
       <div class="container-fluid p-0">
          <div class="sidebar-wrapper">
             <div class="sidebar sidebar-v2 min-vh-100 py-3 ps-3">
@@ -35,7 +25,6 @@
                </div>
                <div>
                   <ul class="menu-link p-0 m-0">
-                     <!-- Profile Settings -->
                      <li class="nav-link">
                         <a href="./settings.html" class="text-decoration-none ps-3 py-3 d-block">
                            <span>
@@ -91,13 +80,13 @@
                         </a>
                      </li>
                      <!-- Business Licenses -->
-                     <hr class="m-0 me-3">
+                     <hr class="m-0 me-3" />
                      <li class="nav-link">
-                        <span class="text-decoration-none ps-3 py-3 d-block font-weight-600" role="button">
+                        <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block font-weight-600">
                            <span class="text text-break position-relative">
                               Admin User
                            </span>
-                        </span>
+                        </a>
                      </li>
                      <li class="nav-link">
                         <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block">
@@ -139,17 +128,10 @@
                               </a>
                               <ul class="dropdown-menu" data-bs-popper="static">
                                  <li>
-                                    <span class="dropdown-item py-3 d-flex align-items-center border-bottom">
-                                       Account
-                                    </span>
-                                 </li>
-                                 <li>
                                     <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
-                                       href="../account/settings.html">
-                                       <span class="avatar avatar-sm me-4">
-                                          <img src="../dist/images/avatar.png" alt="">
-                                       </span>
-                                       View Profile
+                                       href="/account/account-settings.html">
+                                       <span class="icon icon-accountsettings me-4"></span>
+                                       Settings
                                     </a>
                                  </li>
                                  <li>
@@ -186,8 +168,8 @@
                                  <div class="col-lg-6">
                                     <fieldset class="mb-4">
                                        <label for="" class="form-label">Name</label>
-                                       <input type="text" class="form-control" id="" value="John Smith"
-                                          placeholder="Entity file number">
+                                       <input type="text" class="form-control" id="" value="Test_001"
+                                          placeholder="Name">
                                     </fieldset>
                                  </div>
 
@@ -195,7 +177,7 @@
                                     <div class="form-group mb-3">
                                        <label for="" class="form-label">EMAIL ADDRESS</label>
                                        <input type="text" class="form-control" placeholder="Email"
-                                          value="Keegan@filejet.com">
+                                          value="Test_001@filejet.com">
                                     </div>
                                  </div>
                                  <div class="col-lg-6">
@@ -330,7 +312,7 @@
                         </div>
                      </div>
 
-                     <div class="col-12 bg-white p-4 rounded-3 shadow-sm mb-3 account-setting-section">
+                     <!-- <div class="col-12 bg-white p-4 rounded-3 shadow-sm mb-3 account-setting-section">
                         <div class="d-flex align-items-center justify-content-between mb-3 payment-card-header">
                            <h5 class="font-weight-700 fs-5 m-0">Payment</h5>
                            <a href="#" data-bs-target="#addPaymentModal" data-bs-toggle="modal"
@@ -524,7 +506,7 @@
                               </span>
                            </div>
                         </div>
-                     </div>
+                     </div> -->
                   </div>
                </div>
             </div>
@@ -536,264 +518,6 @@
       </div>
    </div>
 
-   <!-- Add Payment  Starts -->
-   <div class="modal modal-right fade filter-slideout SOP-model" id="addPaymentModal" tabindex="-1"
-      aria-labelledby="addPaymentModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
-         <div class="modal-content border-0 rounded-0 min-vh-100">
-            <!-- Modal Header -->
-            <div class="modal-header flex-wrap">
-               <div class="d-flex flex-column w-100 mb-0">
-                  <div class="d-flex align-items-center">
-                     <span class="icon icon-new-group icon-md me-3"></span>
-                     <h4 class="fw-bold m-0">
-                        Add Payment Method</h3>
-                  </div>
-               </div>
-            </div>
-            <!-- Modal Header Ends -->
-            <!-- Modal Body Start-->
-            <div class="modal-body">
-               <form class="payment-section">
-                  <div class="mb-4 p-3 bg-white rounded-2">
-                     <fieldset>
-                        <label class="form-label">Payment Method<span class="mandatory">*</span></label>
-                        <div class="custom-dropdown">
-                           <select class="form-select pricing-method">
-                              <option value="">No Payment Method</option>
-                              <option value="account-default">Account Default (Visa 1111)</option>
-                              <option value="on-file">On File</option>
-                              <option value="add-new">Add New</option>
-                           </select>
-                        </div>
-                     </fieldset>
-                     <div class="on-file-content mt-4 border rounded-2" style="display: none;">
-                        <div>
-                           <div class="payment-card d-flex odd border-bottom">
-                              <div class="d-flex align-items-center">
-                                 <div class="ms-2 d-flex">
-                                    <div class="methodiv">Mastercard </div>
-                                    <div class="methodcard">Mastercard ...4444</div>
-                                 </div>
-                              </div>
-                              <div class="d-flex align-items-start defaultdiv">
-                                 <span class="btn btn-outline-success btn-sm">Default</span>
-                              </div>
-                           </div>
-                           <!-- Payment Method 2 -->
-                           <div class="container p-0 d-flex flex-column even border-bottom">
-                              <div class="payment-card">
-                                 <div class="d-flex align-items-center">
-                                    <div class="ms-2 d-flex">
-                                       <div class="methodiv text-disabled">ACH Payment</div>
-                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789
-                                       </div>
-                                    </div>
-                                 </div>
-
-                                 <div class="d-flex align-items-start defaultdiv" data-toggle="tooltip"
-                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
-                                    <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
-                                 </div>
-
-
-                              </div>
-                           </div>
-
-                           <!-- Payment Method 2 -->
-                           <div class="container p-0 d-flex flex-column odd border-bottom">
-                              <div class="payment-card">
-                                 <div class="d-flex align-items-center">
-                                    <div class="ms-2 d-flex">
-                                       <div class="methodiv">ACH Payment</div>
-                                       <div class="methodcard">Stripe Test Bank ...4786</div>
-                                    </div>
-                                 </div>
-                              </div>
-
-                           </div>
-
-                           <!-- Payment Method 3 -->
-                           <div class="payment-card d-flex even ">
-                              <div class="d-flex align-items-center">
-                                 <div class="ms-2 d-flex">
-                                    <div class="methodiv">Card 2</div>
-                                    <div class="methodcard">Mastercard ...1111</div>
-                                 </div>
-                              </div>
-                              <div class="d-flex align-items-start defaultdiv">
-                              </div>
-
-                           </div>
-
-
-
-                        </div>
-                     </div>
-                     <div class="add-new-content mt-4" style="display: none;">
-                        <div class="d-flex justify-content-between">
-                           <span class="fw-bold">SELECT METHOD</span>
-                           <div class="d-flex align-items-center">
-                              <div class="form-check me-4">
-                                 <input class="form-check-input ach-option" id="achCheck_payMethod" type="checkbox"
-                                    checked>
-                                 <label class="form-check-label rights-label" for="achCheck_payMethod">ACH</label>
-                              </div>
-                              <div class="form-check">
-                                 <input class="form-check-input credit-option" id="creditCheck_payMethod"
-                                    type="checkbox">
-                                 <label class="form-check-label rights-label" for="creditCheck_payMethod">Credit
-                                    Card</label>
-                              </div>
-                           </div>
-
-                        </div>
-
-                        <!-- ACH Form -->
-                        <div class="ach-form mt-4" style="display: none;">
-                           <fieldset class="mb-4">
-                              <label class="form-label">Account Holder Name</label>
-                              <input type="text" class="form-control" placeholder="Name">
-                           </fieldset>
-                           <div class="d-flex justify-content-between align-items-center upload-group w-100 mb-4">
-                              <span class="fw-bold text-uppercase">ACCOUNT TYPE</span>
-                              <div class="d-flex align-items-center flex-column">
-                                 <div class="d-flex">
-                                    <div class="form-check me-4 typecheckradio">
-                                       <input class="form-check-input no-checkbox" type="radio" id="ACtype_payMethod"
-                                          name="customArticles-2" checked="">
-                                       <label class="form-check-label rights-label "
-                                          for="ACtype_payMethod">Individual</label>
-                                    </div>
-                                    <div class="form-check typecheckradio">
-                                       <input class="form-check-input yes-checkbox" type="radio" id="ACompany_payMethod"
-                                          name="customArticles-2">
-                                       <label class="form-check-label rights-label " for="ACompany_payMethod">
-                                          Company</label>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <fieldset class="mb-4">
-                              <div class="d-flex justify-content-between">
-                                 <label class="form-label">Routing Number</label>
-                                 <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative">
-                                    <div class="text-start tooltipText tooltipRight"> Please note that the
-                                       Routing/Account numbers must have a minimum of 12 digits when
-                                       adding. Your
-                                       Routing/Account number is less than 12 digits, you may add zeros at
-                                       the beginning
-                                       of the Routing/Account number. (see example)</div>
-                                 </div>
-                              </div>
-                              <span>Also known as ABA Number</span>
-                              <input type="text" class="form-control" placeholder="EX. 11000000">
-                           </fieldset>
-                           <fieldset>
-                              <label class="form-label">Account Number</label>
-                              <input type="text" class="form-control" placeholder="EX. 000123455678">
-                           </fieldset>
-                           <div class="mt-4">
-                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
-                                 SAVE
-                              </button>
-                           </div>
-                        </div>
-
-                        <!-- Credit Card Form -->
-                        <div class="credit-card-form mt-4" style="display: none;">
-                           <fieldset class="mb-4">
-                              <label class="form-label">Card Holder Name</label>
-                              <input type="text" class="form-control" placeholder="Name">
-                           </fieldset>
-                           <fieldset class="mb-4">
-                              <label class="form-label">Card Details</label>
-                              <input type="text" class="form-control" placeholder="**** **** **** 1111">
-                           </fieldset>
-                           <div class="d-flex justify-content-between">
-                              <fieldset class="w-50 me-2">
-                                 <label class="form-label">Expiry Date</label>
-                                 <input type="text" class="form-control" placeholder="MM/YY">
-                              </fieldset>
-                              <fieldset class="w-50 ms-2">
-                                 <label class="form-label">CVV</label>
-                                 <input type="text" class="form-control" placeholder="CVV">
-                              </fieldset>
-                           </div>
-                           <div class="mt-4">
-                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
-                                 SAVE
-                              </button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </form>
-            </div>
-            <!-- Modal Body End -->
-            <div class="modal-footer">
-               <div class="d-flex justify-content-between align-items-center w-100 m-0">
-                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
-                     data-bs-dismiss="modal">
-                     CANCEL
-                  </button>
-                  <div class="d-flex align-items-center">
-                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn" data-bs-target="#"
-                        data-bs-toggle="modal" data-bs-dismiss="modal">
-                        Add
-                     </button>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- Add Payment  Starts -->
-
-   <!-- Delete Modal Start-->
-  <div class="modal modal-right fade" id="deletePayment" tabindex="-1" aria-labelledby="deletePaymentLabel">
-            <div class="modal-dialog modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
-                <div class="modal-content border-0 rounded-0 min-vh-100">
-                    <!-- Modal Header -->
-                    <div class="modal-header flex-wrap">
-                        <div class="d-flex align-items-center w-100 pb-2">
-                            <span class="red-bg p-3 rounded-2 me-4 d-inline-block">
-                                <span class="icon icon-md icon-delete-white m-0"></span>
-                            </span>
-                            <div>
-                                <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase">Remove</span>
-                                <h3 class="fs-3 m-0 mt-2 text-capitalize">Are you sure you want to remove permanently?
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal Header Ends -->
-
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <div class="">
-                        </div>
-                    </div>
-
-                    <!-- Modal Body Ends-->
-
-                    <div class="modal-footer">
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-link px-5 py-3"
-                                data-bs-dismiss="modal">DISCARD</button>
-                            <button type="button" class="btn btn-danger px-5 py-3"
-                                data-bs-target="#groupDeleteConfirmModal" data-bs-toggle="modal"
-                                data-bs-dismiss="modal">CONFIRM</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-   <!-- Delete Modal End -->
-
-
    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
@@ -801,7 +525,6 @@
    <!-- Scripts start-->
    <script src="../dist/js/plugins.min.js"></script>
    <script src="../dist/js/custom.min.js"></script>
-   <script src="../dist/js/service-order-process.js"></script>
    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
    <script
       src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
