@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Jet: Dashboard</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../src/scss/filejet-style.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- date picker -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" />
+    <!-- end date -->
+
+    <!-- Scripts -->
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body class="main-dashboard-v2 billing-dashboard">
+    <div class="filejet-bg dashboard-page min-vh-100">
+        <div class="container-fluid p-0">
+            <div class="sidebar-wrapper">
+                <div class="sidebar sidebar-v2 min-vh-100 py-3 ps-3">
+                    <div class="pb-4">
+                        <a href="../index.html"
+                            class="btn btn-info p-2 text-uppercase d-inline-flex align-items-center">
+                            <span class="icon icon-md icon-arrow-left m-0 me-md-2"></span>
+                            <span class="d-none d-lg-inline-block">Go back</span>
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="menu-link p-0 m-0">
+                            <!-- Profile Settings -->
+                            <li class="nav-link">
+                                <a href="./settings.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-profile normal-icon"></span>
+                                        <span class="icon icon-profile-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text">Profile Settings</span>
+                                </a>
+                            </li>
+                            <!-- Account Settings -->
+                            <li class="nav-link">
+                                <a href="./account-settings.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-accountsettings normal-icon"></span>
+                                        <span class="icon icon-accountsettings-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Account Settings
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Billing -->
+                            <li class="nav-link active">
+                                <a href="./billing-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-billing normal-icon"></span>
+                                        <span class="icon icon-billing-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Billing</span>
+                                </a>
+                            </li>
+                            <!-- Users -->
+                            <li class="nav-link">
+                                <a href="./users-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-users normal-icon"></span>
+                                        <span class="icon icon-users-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Users</span>
+                                </a>
+                            </li>
+                            <!-- Account Security -->
+                            <li class="nav-link">
+                                <a href="./account-security.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-security normal-icon"></span>
+                                        <span class="icon icon-security-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Account Security
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Business Licenses -->
+                            <hr class="m-0 me-3" />
+                            <li class="nav-link">
+                                <a href="javascript:void(0)"
+                                    class="text-decoration-none ps-3 py-3 d-block font-weight-600">
+                                    <span class="text text-break position-relative">
+                                        Admin User
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-document normal-icon"></span>
+                                        <span class="icon icon-document-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Policies
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-wrapper">
+                <div class="container-fluid container-lg">
+                    <div class="header mt-3">
+                        <div class="row align-items-center d2-search">
+                            <div class="col-3 col-xl-3 col-lg-3">
+                                <h2 class="m-0">
+                                    <strong> Billing </strong>
+                                </h2>
+                            </div>
+                            <div
+                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center gap-3 justify-content-between justify-content-md-end">
+                                <div class="profile-nav profile-nav-v2">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+                                        <a class="nav-link dropdown show" href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg m-0">
+                                                <img src="../dist/images/avatar.png" alt="" />
+                                            </span>
+                                            <!-- <span class="user-name">Roman Lorem ipsum</span> -->
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <span
+                                                    class="dropdown-item py-3 d-flex align-items-center border-bottom">
+                                                    Account
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="/account/account-settings.html">
+                                                    <span class="icon icon-accountsettings me-4"></span>
+                                                    Settings
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center"
+                                                    href="../../login.html">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="container-fluid container-lg">
+                    <div class="main-content pt-3">
+                        <!-- Entity Details Different TabList -->
+                        <div class="">
+                            <ul class="nav billingstablist" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a href="javascript:void(0)" id="en-subscriptions-tab" class="nav-link p-0 active"
+                                        data-bs-toggle="tab" data-bs-target="#en-subscriptions-tab-pane" role="tab"
+                                        data-table-key="subscription-table"
+                                        aria-controls="en-subscriptions-tab-pane" aria-selected="true">Subscriptions</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="javascript:void(0)" class="nav-link p-0" id="en-paymentMethod-tab"
+                                        data-bs-toggle="tab" data-table-key="payment-methods-table"
+                                        data-bs-target="#en-paymentMethod-tab-pane" role="tab"
+                                        aria-controls="en-paymentMethod-tab-pane" aria-selected="false">Payment Methods</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Invoices Different TabList End -->
+
+                        <!-- Invoices Tabs Content Start -->
+                        <div class="billingTabsContent flex-grow-1 pt-4">
+                            <div class="tab-content mb-3" id="myTabContent">
+
+                                <!-- Billing Subscriptions Start -->
+                                <div class="tab-pane fade show active" id="en-subscriptions-tab-pane" role="tabpanel"
+                                    aria-labelledby="en-subscriptions-tab" tabindex="0">
+                                    <div class="row g-2">
+                                        <div class="col-12 col-md-4 flex-grow-1 mb-2 search-table-col">
+                                            <div
+                                                class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                                <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                                <input type="text" class="custom-search-input border-0 p-0 w-100"
+                                                    placeholder="Search Entity Name">
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="filter2-dropdown col-12 col-md-auto flex-grow-1 invoice-table-col mb-2">
+                                            <div
+                                                class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1">
+                                                <input type="text" name="daterange"
+                                                    class="form-control history-datepicker w-100 border-0 p-0 my-auto"
+                                                    placeholder="Date Range" value="" />
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="filter2-dropdown col-12 col-md-3 flex-grow-1 status-table-col mb-2 dropdown">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                                id="statusContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                                tabindex="0">
+                                                <input type="text" class="search-input" id="statusSearch"
+                                                    placeholder="Status" autocomplete="off">
+                                            </div>
+                                            <ul class="dropdown-menu search-disabled" id="statusDropdown">
+                                                <li>
+                                                    <label class="dropdown-item">
+                                                        <input type="checkbox" id="statusSelectAll"
+                                                            class="form-check-input me-2 status-checkbox"
+                                                            data-value="All">All
+                                                    </label>
+                                                </li>
+                                                <li><label class="dropdown-item"><input type="checkbox"
+                                                            class="form-check-input status-checkbox me-2"
+                                                            data-value="Paid">
+                                                        Paid</label></li>
+                                                <li><label class="dropdown-item"><input type="checkbox"
+                                                            class="form-check-input status-checkbox me-2"
+                                                            data-value="Unpaid">
+                                                        Unpaid</label></li>
+                                                <li><label class="dropdown-item"><input type="checkbox"
+                                                            class="form-check-input status-checkbox me-2"
+                                                            data-value="Over due">
+                                                        Over due</label></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="col-12 col-md-auto px-1 mb-2">
+                                            <div
+                                                class="border border-1 rounded-2 shadow-sm export-csv-col px-2 h-100 bg-white">
+                                                <a href="#"
+                                                    class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
+                                                    <span
+                                                        class="icon m-0 my-1 icon-export-csv flex-shrink-0 icon-lg"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="billingTableCard mt-2 border rounded-2">
+                                        <div class="invoicesHistoryTable">
+                                            <table id="subscription-table"
+                                                class="table table-striped w-100 table-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-orderable="false">
+                                                            <input id="document-clear-all" class="d-flex form-check-input"
+                                                                type="checkbox" />
+                                                        </th>
+                                                        <th>Next Billing Period</th>
+                                                        <th>Group</th>
+                                                        <th>Entity</th>
+                                                        <th>Services</th>
+                                                        <th>Total</th>
+                                                        <th>Payment Method</th>
+                                                        <th data-orderable="false">Action</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-4 mt-3">
+                                        <button data-bs-toggle="modal" data-bs-target="#" aria-label="Add New Payment Method"
+                                            type="button"
+                                            class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Add New Payment Method
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Billing Subscriptions End -->
+
+                                <!-- Billing Payments Method Start -->
+                                <div class="tab-pane fade" id="en-paymentMethod-tab-pane" role="tabpanel"
+                                    aria-labelledby="en-paymentMethod-tab" tabindex="0">
+                                    <div class="row g-2">
+                                        <div class="col-12 col-md-8 mb-2 search-table-col">
+                                            <div
+                                                class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                                <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                                <input type="text" class="custom-search-input border-0 p-0 w-100"
+                                                    placeholder="Search">
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="filter2-dropdown col-12 col-md-3 flex-grow-1 payment-table-col mb-2 dropdown">
+                                            <div
+                                                class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1">
+                                                <input type="text" name="daterange"
+                                                    class="form-control history-datepicker w-100 border-0 p-0 my-auto"
+                                                    placeholder="Date Range" value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-auto px-1 mb-2">
+                                            <div
+                                                class="border border-1 rounded-2 shadow-sm export-csv-col px-2 h-100 bg-white">
+                                                <a href="#"
+                                                    class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
+                                                    <span
+                                                        class="icon m-0 my-1 icon-export-csv flex-shrink-0 icon-lg"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="billingTableCard mt-2 border rounded-2">
+                                        <div class="invoicesPayHistoryTable">
+                                            <table id="payment-methods-table"
+                                                class="table table-striped w-100 table-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-orderable="false">
+                                                            <input id="document-clear-all" class="d-flex form-check-input"
+                                                                type="checkbox" />
+                                                        </th>
+                                                        <th>Nickname</th>
+                                                        <th>Amount</th>
+                                                        <th>Status</th>
+                                                        <th>Available to</th>
+                                                        <th data-orderable="false">Action</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-4 mt-3">
+                                        <button data-bs-toggle="modal" data-bs-target="#" aria-label="Add New Payment Method"
+                                            type="button"
+                                            class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Add New Payment Method
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Billing Payments Method End-->
+                            </div>
+                        </div>
+                        <!-- Invoices Tabs Content End -->
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="main-content pt-3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Deactivate User Modal Start-->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="deactivateUser" tabindex="-1"
+        aria-labelledby="deactivateUser-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <span class="icon icon-profile-black icon-lg me-3"></span>
+                        <h4 class="fw-bold m-0">
+                            Deactivate User</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h6>Are you sure you want to deactivate user<b>Noah Davis</b>?</h6>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Deactivate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Deactivate User Modal End -->
+
+    <!-- Delete Modal Start-->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="deleteRole" tabindex="-1"
+        aria-labelledby="deleteRole-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <span class="icon icon-info-card icon-xxl me-3"></span>
+                        <h4 class="fw-bold m-0">
+                            Delete Role</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h6>Are you sure you want to remove <b>Role 1</b>?
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Modal End -->
+
+    <!-- Edit User Modal Start -->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="EditUser" tabindex="-1"
+        aria-labelledby="EditUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center">
+                            <span class="icon icon-profile-black icon-lg me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Edit User</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-3 fw-semibold">Profile Details</h4>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="First Name">
+                                </fieldset>
+                            </div>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Last Name">
+                                </fieldset>
+                            </div>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="" placeholder="Email Address">
+                                </fieldset>
+                            </div>
+                            <div>
+                                <fieldset>
+                                    <label for="" class="form-label">Phone Nunber</label>
+                                    <input type="text" class="form-control" id="" placeholder="Phone Nunber">
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <fieldset>
+                                <label for="" class="form-label">Role</label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select customSelect2" id="">
+                                        <option value="" disabled="" selected="" hidden="">Select Role</option>
+                                        <option value="Admin">Admin</label>
+                                        <option value="User Admin">User Admin</label>
+                                        <option value="Invoice Admin">Invoice Admin</label>
+                                        <option value="Customer User">Customer User</label>
+                                        <option value="Role 1">Role 1</label>
+                                        <option value="Role 2">Role 2</label>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-3 fw-semibold">Reset Password</h4>
+
+                            <p class="text-muted fw-normal">A password reset has been requested for this user. Please
+                                acknowledge and take action.</p>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="">
+                                <label class="fw-normal rights-label text-muted fs-6" for="">Reset Password</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-3 fw-semibold">Unlock Account</h4>
+
+                            <p class="text-muted fw-normal">A request has been submitted to unlock this user's account.
+                                Please acknowledge and take action.</p>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="">
+                                <label class="fw-normal rights-label text-muted fs-6" for="">Unlock Account</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit User Modal End -->
+
+    <!--New User step-1 Modal start-->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="AddUserDetails" tabindex="-1"
+        aria-labelledby="AddUserDetailsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="icon icon-profile-black icon-lg me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Add New User</h3>
+                        </div>
+                        <!-- stepper start -->
+                        <div class="service-step-group user-step-group">
+                            <div class="step" data-bs-toggle="modal" data-bs-target="#AddUserDetails"
+                                data-bs-dismiss="modal">
+                                <div class="circle active"></div>
+                                <span class="step-text">DETAILS</span>
+                            </div>
+                            <div class="step" data-bs-toggle="modal" data-bs-target="#AddUserRole"
+                                data-bs-dismiss="modal">
+                                <div class="circle"></div>
+                                <span class="step-text">ROLE</span>
+                            </div>
+                        </div>
+
+                        <!-- stepper end -->
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form class="" action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="First Name">
+                                </fieldset>
+                            </div>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Last Name">
+                                </fieldset>
+                            </div>
+                            <div class="mb-4">
+                                <fieldset>
+                                    <label for="" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="" placeholder="Email Address">
+                                </fieldset>
+                            </div>
+                            <div>
+                                <fieldset>
+                                    <label for="" class="form-label">Phone Nunber</label>
+                                    <input type="text" class="form-control" id="" placeholder="Phone Nunber">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Notifications</h4>
+
+                            <div class="notification-option d-flex flex-column gap-3">
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark fs-6" for="">Invoices
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for created
+                                            and
+                                            submitted
+                                            invoices will be sent to you.</span>
+                                    </label>
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Compliance
+                                        Reminders
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                            compliances
+                                            will be sent to
+                                            you.</span>
+                                    </label>
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Service of Process
+                                        Notifications
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for Service of
+                                            Process
+                                            will be
+                                            sent to you.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id=""
+                            data-bs-target="#AddUserRole" data-bs-toggle="modal" data-bs-dismiss="modal">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New User step-1 Modal End-->
+
+    <!--New User step-2 Modal start-->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="AddUserRole" tabindex="-1"
+        aria-labelledby="AddUserRoleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="icon icon-profile-black icon-lg me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Add New User</h3>
+                        </div>
+                        <!-- stepper start -->
+                        <div class="service-step-group user-step-group">
+                            <div class="step completed" data-bs-toggle="modal" data-bs-target="#AddUserDetails"
+                                data-bs-dismiss="modal">
+                                <div class="circle completed"></div>
+                                <span class="step-text">DETAILS</span>
+                            </div>
+                            <div class="step" data-bs-toggle="modal" data-bs-target="#AddUserRole"
+                                data-bs-dismiss="modal">
+                                <div class="circle active"></div>
+                                <span class="step-text">ROLE</span>
+                            </div>
+                        </div>
+
+                        <!-- stepper end -->
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form class="" action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <fieldset>
+                                <label for="" class="form-label">Role</label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select customSelect2" id="">
+                                        <option value="" disabled="" selected="" hidden="">Select Role</option>
+                                        <option value="Admin">Admin</label>
+                                        <option value="User Admin">User Admin</label>
+                                        <option value="Invoice Admin">Invoice Admin</label>
+                                        <option value="Customer User">Customer User</label>
+                                        <option value="Role 1">Role 1</label>
+                                        <option value="Role 2">Role 2</label>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="access-table-section mb-4 p-3 bg-white rounded-2 d-none">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Access</h4>
+                            <div class="bg-white rounded-2 position-relative mb-4">
+                                <span
+                                    class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                                <input type="text"
+                                    class="no-bg form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border border-1"
+                                    placeholder="Search">
+                            </div>
+                            <div class="userAccessTable rights-table border rounded-3 overflow-hidden">
+                                <table id="user-rights-table"
+                                    class="table table-striped w-100 table-nowrap user-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th data-orderable="false"></th>
+                                            <th data-orderable="false" column-id="view">
+                                                <div class="d-flex align-items-center" data-toggle="tooltip"
+                                                    aria-label="View" data-bs-original-title="View">
+                                                    <span class="icon icon-md icon-view m-0"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="edit">
+                                                <div class="d-flex align-items-center" data-toggle="tooltip"
+                                                    aria-label="Edit" data-bs-original-title="Edit">
+                                                    <span class="icon icon-edit-grey icon-md m-0"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="submit">
+                                                <div class="d-flex align-items-center" data-toggle="tooltip"
+                                                    aria-label="Submit" data-bs-original-title="Submit">
+                                                    <span class="icon icon-submit icon-md m-0"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="upload">
+                                                <div class="d-flex align-items-center" data-toggle="tooltip"
+                                                    aria-label="Upload" data-bs-original-title="Upload">
+                                                    <span class="icon icon-upload icon-md m-0"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="download">
+                                                <div class="d-flex align-items-center" data-toggle="tooltip"
+                                                    aria-label="Download" data-bs-original-title="Download">
+                                                    <span class="icon icon-download icon-md m-0"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="invoices">
+                                                <div class="d-flex align-items-center" data-toggle="tooltip"
+                                                    aria-label="Invoices" data-bs-original-title="Invoices">
+                                                    <span class="icon icon-invoices icon-md m-0"></span>
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="acknowledge">
+                                                <div class="d-flex align-items-center" data-toggle="tooltip"
+                                                    aria-label="Acknowledge" data-bs-original-title="Acknowledge">
+                                                    <span class="icon icon-acknowledge icon-md m-0"></span>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr class="group-row odd">
+                                            <th class="w-75" data-orderable="false">All Groups & Entities</th>
+                                            <th data-orderable="false" column-id="view">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="view"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-1"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="edit">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="edit"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-1"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="submit">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="submit"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-1"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="upload">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="upload"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-1"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="download">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="download"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-1"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="invoices">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="invoices"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-1"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                            <th data-orderable="false" column-id="acknowledge">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="acknowledge"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-1"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id=""
+                            data-bs-dismiss="modal">
+                            Add User
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New User step-2 Modal End-->
+
+    <!-- Edit Role Modal Start -->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="EditRole" tabindex="-1"
+        aria-labelledby="EditRoleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center">
+                            <span class="icon icon-info-card icon-xxl me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Edit Role</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <div>
+                                <fieldset>
+                                    <label for="entityType-model" class="form-label">Role Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Profile Name">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Rights</h4>
+                            <div class="border rounded-3 overflow-hidden">
+                                <table id="" class="table table-striped w-100 table-nowrap">
+                                    <thead>
+                                        <tr class="even">
+                                            <th class="w-75"></th>
+                                            <th>Rights</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-md icon-view"></span>View
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-edit-grey icon-md"></span>Edit
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id="" checked></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-submit icon-md"></span>Submit
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-upload icon-md"></span>Upload
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-download icon-md"></span>Download
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id="" checked></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-invoices icon-md"></span>Invoices
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-acknowledge icon-md"></span>Acknowledge
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id="" checked></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Access</h4>
+                            <div class="bg-white rounded-2 position-relative mb-4">
+                                <span
+                                    class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                                <input type="text"
+                                    class="no-bg form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border border-1"
+                                    placeholder="Search">
+                            </div>
+                            <div class="userAccessTable border rounded-3 overflow-hidden">
+                                <table id="user-access-table-1"
+                                    class="table table-striped w-100 table-nowrap user-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-75" data-orderable="false"></th>
+                                            <th data-orderable="false" column-id="permissions">Permissions</th>
+                                        </tr>
+                                        <tr class="group-row odd">
+                                            <th class="w-75" data-orderable="false">All Groups & Entities</th>
+                                            <th data-orderable="false" column-id="permissions">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="permissions"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-4"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Notifications</h4>
+
+                            <div class="notification-option d-flex flex-column gap-3">
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark fs-6" for="">Invoices
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for created
+                                            and
+                                            submitted
+                                            invoices will be sent to you.</span>
+                                    </label>
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Compliance
+                                        Reminders
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                            compliances
+                                            will be sent to
+                                            you.</span>
+                                    </label>
+
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Service of Process
+                                        Notifications
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for Service of
+                                            Process
+                                            will be
+                                            sent to you.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Role Modal End -->
+
+    <!-- Add New Role Modal Start -->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="AddNewRole" tabindex="-1"
+        aria-labelledby="AddNewRoleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex flex-column w-100 mb-0">
+                        <div class="d-flex align-items-center">
+                            <span class="icon icon-info-card icon-xxl me-3"></span>
+                            <h4 class="fw-bold m-0">
+                                Add New Role</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <div>
+                                <fieldset>
+                                    <label for="entityType-model" class="form-label">Role Name</label>
+                                    <input type="text" class="form-control" id="" placeholder="Profile Name">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Rights</h4>
+                            <div class="border rounded-3 overflow-hidden">
+                                <table id="" class="table table-striped w-100 table-nowrap">
+                                    <thead>
+                                        <tr class="even">
+                                            <th class="w-75"></th>
+                                            <th>Rights</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-md icon-view"></span>View
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-edit-grey icon-md"></span>Edit
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-submit icon-md"></span>Submit
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-upload icon-md"></span>Upload
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-download icon-md"></span>Download
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="even">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-invoices icon-md"></span>Invoices
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span class="icon icon-acknowledge icon-md"></span>Acknowledge
+                                                </div>
+                                            </td>
+                                            <td><input class="form-check-input green-checkbox ms-4" type="checkbox"
+                                                    id=""></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Access</h4>
+                            <div class="bg-white rounded-2 position-relative mb-4">
+                                <span
+                                    class="icon icon-search-grey opacity-25 position-absolute top-50 translate-middle ms-4"></span>
+                                <input type="text"
+                                    class="no-bg form-control search-input w-100 bg-transparent p-2 ps-5 m-0 rounded-2 border border-1"
+                                    placeholder="Search">
+                            </div>
+                            <div class="userAccessTable border rounded-3 overflow-hidden">
+                                <table id="user-access-table"
+                                    class="table table-striped w-100 table-nowrap user-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-75" data-orderable="false"></th>
+                                            <th data-orderable="false" column-id="permissions">Permissions</th>
+                                        </tr>
+                                        <tr class="group-row odd">
+                                            <th class="w-75" data-orderable="false">All Groups & Entities</th>
+                                            <th data-orderable="false" column-id="permissions">
+                                                <div class="d-flex align-item-center">
+                                                    <input data-column="permissions"
+                                                        class="form-check-input green-checkbox allgroup-select row-select ms-4"
+                                                        type="checkbox" id="">
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <h4 class="text-capitalize fs-5 mb-4 fw-semibold">Notifications</h4>
+
+                            <div class="notification-option d-flex flex-column gap-3">
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark fs-6" for="">Invoices
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for created
+                                            and
+                                            submitted
+                                            invoices will be sent to you.</span>
+                                    </label>
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Compliance
+                                        Reminders
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                            compliances
+                                            will be sent to
+                                            you.</span>
+                                    </label>
+
+                                </div>
+                                <div class="form-check align-items-start gap-2 p-0">
+                                    <input class="form-check-input m-0" type="checkbox" id="">
+                                    <label class="fw-normal rights-label text-dark" for="">Service of Process
+                                        Notifications
+                                        <span class="d-block text-muted fw-light info mt-1">Notifications for Service of
+                                            Process
+                                            will be
+                                            sent to you.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Body End -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">
+                                Create Role
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add New Role Modal End -->
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Scripts start-->
+    <script src="../dist/js/plugins.min.js"></script>
+    <script src="../dist/js/custom.min.js"></script>
+    <script src="/dist/js/comman.js"></script>
+    <script src="/dist/js/dashboard-v2_document.js"></script>
+    <script src="/dist/js/user-permission.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Scripts End-->
+    <script>
+        // Initialize all tooltips on the page
+        const tooltipTriggerList = [].slice.call(
+            document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+        );
+        tooltipTriggerList.map((el) => new bootstrap.Tooltip(el));
+    </script>
+
+    <script>
+        if (/Mobi/.test(navigator.userAgent)) {
+            // if mobile device, use native pickers
+            $(".time input").attr("type", "time");
+        } else {
+            // if desktop device, use DateTimePicker
+            $("#setuptimepicker").datetimepicker({
+                format: "LT",
+                icons: {
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                },
+            });
+        }
+    </script>
+</body>
+
+</html>
