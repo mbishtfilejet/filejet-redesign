@@ -88,7 +88,7 @@ $(document).ready(function () {
                             </span>
                             
                             ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deleteRole">
-                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
+                                <span data-toggle="tooltip" aria-label="REMOVE" data-bs-original-title="REMOVE" 
                                     class="icon icon-entity-delete me-1 me-md-2"></span> 
                             </span>`}
                         </div>
