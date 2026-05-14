@@ -10,7 +10,7 @@ function highlightTabs(tabparent) {
     })
 }
 
-function multiSelectRowPermission(tableContainer) {
+function multiSelectRowCheckbox(tableContainer) {
 
     // row checkbox event handle
     const cacheCheckBox = cacheChildCheckboxState();
@@ -26,6 +26,7 @@ function multiSelectRowPermission(tableContainer) {
         const columnValue = td.data('value');
         const column = checkbox.data('column');
         const isChecked = $(this).prop("checked");
+        console.log(column, row)
 
         const parentId = row.data('id') || row.data('parent');
 
@@ -223,4 +224,12 @@ function cacheChildCheckboxState() {
         getChildValue,
         deleteKeyValue
     }
+}
+
+
+function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
+    return new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: currency
+    }).format(amount)
 }

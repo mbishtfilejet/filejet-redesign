@@ -261,7 +261,7 @@ $(document).ready(function () {
 
     tablesId.forEach(value => {
         $(value.id).DataTable(tableAccessOption(value.tableContext))
-        multiSelectRowPermission($(value.id))
+        multiSelectRowCheckbox($(value.id))
     })
 
     $(".user-data-table tbody").on("click", "td .dt-control", function () {
@@ -366,4 +366,63 @@ $(document).on('shown.bs.modal', '.modal', function () {
         $(this).DataTable().columns.adjust();
     });
 });
+
+
+//for billing js
+
+$(function () {
+    const tableOptions = {
+        ajax: {
+            url: "../data5.json",
+            dataSrc: 'subscriptions_data',
+        },
+        scrollX: true,
+        scrollY: false,
+        columns: [
+            {
+                data: null, render: function (data, type, row) {
+                    return `<input data-column="subsCheck" class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}">`;
+                }
+            },
+            { data: "next_billing_period" },
+            { data: "group_name" },
+            { data: "entity_name" },
+            { data: "services" },
+            {
+                data: "total", render: function (data) {
+                    return formatCurrency(data)
+                }
+            },
+            { data: "payment_method" },
+            {
+                data: null, render: function (data, type, row) {
+                    return `
+                    <div class="d-flex align-items-center">
+                            <span role="button" tabindex="0"> 
+                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#"
+                                    class="icon icon-entity-edit me-1 me-md-2"></span>
+                            </span>
+                            <span role="button" tabindex="0"> 
+                                <span data-toggle="tooltip" aria-label="CHANGE" data-bs-original-title="CHANGE" data-bs-toggle="modal" data-bs-target="#"
+                                    class="icon icon-change me-1 me-md-2"></span>
+                            </span>
+                            <span role="button" tabindex="0">
+                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#"
+                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                            </span>
+                    </div>
+                    `
+                }
+            }
+        ],
+        order: [[1, "asc"]],
+        lengthChange: false,  // Removed pagination
+        paging: false,  // Disable pagination
+        info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+    }
+
+    $('#subscription-table').DataTable(tableOptions)
+
+    multiSelectRowCheckbox($('#subscription-table'))
+})
 
