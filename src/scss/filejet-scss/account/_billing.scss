@@ -1,16 +1,16 @@
 .subscription-body {
-    .table-parent::after{
+    .table-parent::after {
         content: "PREVIEW";
-        @extend .font-weight-700,.position-absolute,.top-50,.start-50,.translate-middle;
+        @extend .font-weight-700, .position-absolute, .top-50, .start-50, .translate-middle;
         font-size: 4em;
         opacity: .15;
-        letter-spacing:4px;
+        letter-spacing: 4px;
         rotate: -45deg;
         transform-origin: 0 0;
     }
 }
 
-.billing-dashboard{
+.billing-dashboard {
     @extend .entityDetails-dashboard;
 
     .sidebar .menu-link .nav-link.active {
@@ -21,15 +21,23 @@
         }
     }
 
-    .billingstablist{
+    .billingstablist {
         @extend .entitydetailstablist
     }
 
-    .billingTabsContent{
+    .billingTabsContent {
         @extend .entityTabsContent;
     }
 
-    .billingTableCard{
+    .billingTableCard {
         @extend .entityDetailTableCard;
+
+         .icon-change:hover {
+            background-image: url("../../../../dist/images/icons/change-icon-green.svg");
+        }
     }
+}
+
+.form-check-input[type=checkbox]:indeterminate{
+  background-color: #272727;
 }
