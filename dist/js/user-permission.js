@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    if(!$('.users_tablist').length) return;
     $(".users_tablist .nav-link").on("shown.bs.tab", function () {
         highlightTabs($(".users_tablist"));
     });
@@ -424,5 +425,54 @@ $(function () {
     $('#subscription-table').DataTable(tableOptions)
 
     multiSelectRowCheckbox($('#subscription-table'))
+
+
+    const tableOptions_1 = {
+        ajax: {
+            url: "../data5.json",
+            dataSrc: 'payment_method_data',
+        },
+        scrollX: true,
+        scrollY: false,
+        columns: [
+            {
+                data: null, render: function (data, type, row) {
+                    return `<input data-column="payMtdCheck" class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}">`;
+                }
+            },
+            { data: "nickname" },
+            { data: "something" },
+            {
+                data: "status", render: function (data, type, row) {
+                    return `<span class="badge badge-${row.status.label} badge-text-dark">${row.status.value}</span>`
+                }
+            },
+            { data: "available_to" },
+            {
+                data: null, render: function (data, type, row) {
+                    return `
+                    <div class="d-flex align-items-center">
+                            <span role="button" tabindex="0"> 
+                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#"
+                                    class="icon icon-entity-edit me-1 me-md-2"></span>
+                            </span>
+                            <span role="button" tabindex="0">
+                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#"
+                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                            </span>
+                    </div>
+                    `
+                }
+            }
+        ],
+        order: [[1, "asc"]],
+        lengthChange: false,  // Removed pagination
+        paging: false,  // Disable pagination
+        info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+    }
+
+    $('#payment-methods-table').DataTable(tableOptions_1)
+    multiSelectRowCheckbox($('#payment-methods-table'))
+
 })
 

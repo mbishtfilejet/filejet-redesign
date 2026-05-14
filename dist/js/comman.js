@@ -1,4 +1,5 @@
 function highlightTabs(tabparent) {
+    if(!tabparent) return;
     const activeTab = tabparent.find('.nav-link.active');
     const tabOffset = activeTab.position();
 
