@@ -25,7 +25,7 @@
     <div class="filejet-bg dashboard-page min-vh-100">
         <div class="container-fluid p-0">
             <div class="sidebar-wrapper">
-                <div class="sidebar sidebar-v2 min-vh-100 py-3 ps-3">
+                <div class="sidebar min-vh-100 ps-3 py-3 user-account-sidebar">
                     <div class="pb-4">
                         <a href="../index.html"
                             class="btn btn-info p-2 text-uppercase d-inline-flex align-items-center">
@@ -35,16 +35,16 @@
                     </div>
                     <div>
                         <ul class="menu-link p-0 m-0">
-                            <!-- Profile Settings -->
+                            <li class="nav-link pe-3">
+                                <h4 class="mb-0 border-bottom py-3 ">Settings</h4>
+                            </li>
                             <li class="nav-link">
-                                <a href="./settings.html" class="text-decoration-none ps-3 py-3 d-block">
-                                    <span>
-                                        <span class="icon icon-profile normal-icon"></span>
-                                        <span class="icon icon-profile-purple active-icon"></span>
+                                <span
+                                    class="text-purple text-uppercase no-background no-shadow ps-0 ps-lg-3 py-3 d-block font-weight-500">
+                                    <span class="text text-break position-relative">
+                                        Filejet
                                     </span>
-
-                                    <span class="text nav-text">Profile Settings</span>
-                                </a>
+                                </span>
                             </li>
                             <!-- Account Settings -->
                             <li class="nav-link">
@@ -80,7 +80,7 @@
                             </li>
                             <!-- Account Security -->
                             <li class="nav-link">
-                                <a href="./account-security.html" class="text-decoration-none ps-3 py-3 d-block">
+                                <a href="./account-security-v1.html" class="text-decoration-none ps-3 py-3 d-block">
                                     <span>
                                         <span class="icon icon-security normal-icon"></span>
                                         <span class="icon icon-security-purple active-icon"></span>
@@ -90,18 +90,37 @@
                                     </span>
                                 </a>
                             </li>
-                            <!-- Business Licenses -->
-                            <hr class="m-0 me-3" />
                             <li class="nav-link">
-                                <a href="javascript:void(0)"
-                                    class="text-decoration-none ps-3 py-3 d-block font-weight-600">
+                                <span
+                                    class="border-top me-3 text-purple text-uppercase no-background no-shadow ps-0 ps-lg-3 py-3 d-block font-weight-500">
                                     <span class="text text-break position-relative">
-                                        Admin User
+                                        ROMAN
                                     </span>
+                                </span>
+                            </li>
+                            <li class="nav-link">
+                                <a href="./my-settings-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-profile normal-icon"></span>
+                                        <span class="icon icon-profile-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text">My Profile</span>
                                 </a>
                             </li>
                             <li class="nav-link">
-                                <a href="javascript:void(0)" class="text-decoration-none ps-3 py-3 d-block">
+                                <a href="./notifications-v1.html"
+                                    class="text-decoration-none ps-3 py-3 d-block font-weight-500">
+
+                                    <span>
+                                        <span class="icon icon-bell normal-icon"></span>
+                                        <span class="icon icon-bell-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Notifications</span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="./policies-v1.html" class="text-decoration-none ps-3 py-3 d-block">
                                     <span>
                                         <span class="icon icon-document normal-icon"></span>
                                         <span class="icon icon-document-purple active-icon"></span>
@@ -117,12 +136,12 @@
             </div>
             <div class="main-content-wrapper">
                 <div class="container-fluid container-lg">
-                    <div class="header mt-3">
+                    <div class="header">
                         <div class="row align-items-center d2-search">
                             <div class="col-3 col-xl-3 col-lg-3">
-                                <h2 class="m-0">
+                                <h3 class="m-0">
                                     <strong> Billing </strong>
-                                </h2>
+                                </h3>
                             </div>
                             <div
                                 class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center gap-3 justify-content-between justify-content-md-end">
@@ -519,20 +538,23 @@
 
                         <div class="p-3 bg-white rounded-2">
                             <div class="d-flex justify-content-between align-items-center upload-group w-100">
-                              <span class="fw-bold text-uppercase">Set as Default Payment Method</span>
-                              <div class="d-flex align-items-center flex-column">
-                                 <div class="d-flex">
-                                    <div class="form-check me-4 typecheckradio">
-                                       <input class="form-check-input" type="radio" id="CL_YES" name="default_payment_method">
-                                       <label class="form-check-label rights-label inactive" for="CL_YES">Yes</label>
+                                <span class="fw-bold text-uppercase">Set as Default Payment Method</span>
+                                <div class="d-flex align-items-center flex-column">
+                                    <div class="d-flex">
+                                        <div class="form-check me-4 typecheckradio">
+                                            <input class="form-check-input" type="radio" id="CL_YES"
+                                                name="default_payment_method">
+                                            <label class="form-check-label rights-label inactive"
+                                                for="CL_YES">Yes</label>
+                                        </div>
+                                        <div class="form-check typecheckradio">
+                                            <input class="form-check-input" type="radio" id="CL_NO"
+                                                name="default_payment_method">
+                                            <label class="form-check-label rights-label inactive" for="CL_NO">No</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check typecheckradio">
-                                       <input class="form-check-input" type="radio" id="CL_NO" name="default_payment_method">
-                                       <label class="form-check-label rights-label inactive" for="CL_NO">No</label>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
