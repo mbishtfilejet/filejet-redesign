@@ -974,9 +974,11 @@ function renderTagsOnRow(tagdata, maxTag = 4) {
   return tagWrapper.outerHTML;
 }
 
-function applyTagOverflow(isTableScrollable = false) {
+function applyTagOverflow(isTableScrollable = false, row = '') {
 
-  $('.d-tag-wrapper').each(function () {
+  const tagWrappers = row ? $(row).find('td .d-tag-wrapper') : $('.d-tag-wrapper')
+
+  tagWrappers.each(function () {
     const wrapper = $(this);
     const td = wrapper.closest('td');
 
@@ -1675,6 +1677,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // add custom attributes
         tagSelectInput.append(newOption);
       }
+      const row = $('tr.rowSelect');
+      const selectedRowTagWrapper = row.find('td .d-tag-wrapper');
+
+      const span = document.createElement("span");
+      span.className = "badge d-tag";
+      span.style.backgroundColor = bgColor;
+      span.style.color = textColor;
+      span.innerText = tagValue;
+      selectedRowTagWrapper.children().eq(-2).after(span);
+      applyTagOverflow(true, row)
     }
     resetState(tagContainer);
   });
@@ -1740,12 +1752,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const badge = $(this).closest('.badge');
     const tagValue = badge.data('value');
 
+    // rowSelect is used here if the flyout is open where tag adding functionality is there if remove-tag
+    // it will be easier to remove from the row from where the flyout was open
+    const rowSelect = $('tr.rowSelect');
+
 
     if (tagContainer.find('.header-tags-list').length) {
       $(`.header-tags-list .badge[data-value="${tagValue}"]`).remove();
     } else {
       // Otherwise remove only this instance
       badge.remove();
+
+      //removing tag from row from which this document flyout is opened
+      if (rowSelect.length) {
+        const rowtagWrapper = rowSelect.find('.d-tag-wrapper');
+        if (!rowtagWrapper.length) return;
+        rowtagWrapper.find('.badge').filter(function () {
+          return $(this).text().trim() === tagValue;
+        }).remove();
+      }
     }
 
 

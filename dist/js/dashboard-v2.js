@@ -448,9 +448,10 @@ function renderTagsOnRow(tagdata, maxTag = 4) {
   return tagWrapper.outerHTML;
 }
 
-function applyTagOverflow(isTableScrollable = false) {
+function applyTagOverflow(isTableScrollable = false, row = '') {
+    const tagWrappers = row ? $(row).find('td .d-tag-wrapper') : $('.d-tag-wrapper')
 
-  $('.d-tag-wrapper').each(function () {
+    tagWrappers.each(function () {
     const wrapper = $(this);
     const td = wrapper.closest('td');
 
