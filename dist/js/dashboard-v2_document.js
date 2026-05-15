@@ -317,6 +317,8 @@ document.addEventListener("DOMContentLoaded", function () {
         case "groupUserRoleContainer": return "Filter by Role";
         case "usersAccessContainer":
         case "externalUserContainer": return "Filter by Access"
+        case "groupPaymentContainer":
+        case "groupContainer": return "Group"
         default: return "Status";
       }
     }
@@ -361,8 +363,9 @@ document.addEventListener("DOMContentLoaded", function () {
     ["paymentContainer", "paymentDropdown", "paymentSearch", "payment-checkbox"],
     ["groupUserRoleContainer", "groupUserRoleDropdown", "groupUserRoleSearch", "groupUserRole-checkbox"],
     ["usersAccessContainer", "usersAccessDropdown", "usersAccessSearch", "usersAccess-checkbox"],
-    ["externalUserContainer", "externalUserDropdown", "externalUserSearch", "externalUser-checkbox"]
-
+    ["externalUserContainer", "externalUserDropdown", "externalUserSearch", "externalUser-checkbox"],
+    ["groupPaymentContainer", "groupPaymentDropdown", "groupPaymentSearch", "groupPayment-checkbox", "groupPaymentSelectAll"],
+    ["groupContainer", "groupDropdown", "groupSearch", "group-checkbox", "groupSelectAll"]
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));

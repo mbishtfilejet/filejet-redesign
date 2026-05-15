@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    if(!$('.users_tablist').length) return;
+    if (!$('.users_tablist').length) return;
     $(".users_tablist .nav-link").on("shown.bs.tab", function () {
         highlightTabs($(".users_tablist"));
     });
@@ -328,7 +328,7 @@ $(document).ready(function () {
         $('.select2-search__field').attr('placeholder', 'Search...');
     });
 
-    $('.customSelect2').on('select2:select', function () {
+    $('.customSelect2.roles-select').on('select2:select', function () {
         const selectedValue = $(this).val().trim();
 
         const accessSection = $(this).closest('.modal').find('.access-table-section');
@@ -403,10 +403,6 @@ $(function () {
                                 <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#"
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
-                            <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" aria-label="CHANGE" data-bs-original-title="CHANGE" data-bs-toggle="modal" data-bs-target="#"
-                                    class="icon icon-change me-1 me-md-2"></span>
-                            </span>
                             <span role="button" tabindex="0">
                                 <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#"
                                     class="icon icon-entity-delete me-1 me-md-2"></span> 
@@ -441,23 +437,29 @@ $(function () {
                 }
             },
             { data: "nickname" },
-            { data: "something" },
+            { data: "account" },
             {
                 data: "status", render: function (data, type, row) {
                     return `<span class="badge badge-${row.status.label} badge-text-dark">${row.status.value}</span>`
                 }
             },
-            { data: "available_to" },
+            {
+                data: "available_to", render: function (data, type, row) {
+                    return data + `${row.isDefault ? " (Default)":''}`; 
+                }
+            },
             {
                 data: null, render: function (data, type, row) {
+                    if (row.account === "Terms") return '';
+
                     return `
                     <div class="d-flex align-items-center">
                             <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#"
+                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#editPaymentMethod"
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
                             <span role="button" tabindex="0">
-                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#"
+                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
                                     class="icon icon-entity-delete me-1 me-md-2"></span> 
                             </span>
                     </div>
