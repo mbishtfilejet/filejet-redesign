@@ -394,7 +394,16 @@ $(function () {
                     return formatCurrency(data)
                 }
             },
-            { data: "payment_method" },
+            {
+                data: "payment_method", render: function (data, type, row) {
+                    return `
+                    <div class="d-flex align-items-center">
+                        <span>${data}</span>
+                        ${row?.verified ? '' : '<span data-toggle="tooltip" aria-label="EXPIRED" data-bs-original-title="EXPIRED" class="icon icon-error icon-sm ms-1 m-0"></span>'}
+                    </div>                    
+                    `;
+                }
+            },
             {
                 data: null, render: function (data, type, row) {
                     return `
@@ -445,7 +454,7 @@ $(function () {
             },
             {
                 data: "available_to", render: function (data, type, row) {
-                    return data + `${row.isDefault ? " (Default)":''}`; 
+                    return data + `${row.isDefault ? " (Default)" : ''}`;
                 }
             },
             {

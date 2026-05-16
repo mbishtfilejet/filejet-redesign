@@ -147,7 +147,8 @@
                                 class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center gap-3 justify-content-between justify-content-md-end">
                                 <div class="profile-nav profile-nav-v2">
                                     <div class="dropdown white-bg p-0 rounded-5">
-                                        <a class="nav-link dropdown show" href="#" data-bs-toggle="dropdown"
+
+                                        <a class="nav-link dropdown show " href="#" data-bs-toggle="dropdown"
                                             aria-expanded="true">
                                             <span class="avatar avatar-lg m-0">
                                                 <img src="../dist/images/avatar.png" alt="" />
@@ -155,12 +156,6 @@
                                             <!-- <span class="user-name">Roman Lorem ipsum</span> -->
                                         </a>
                                         <ul class="dropdown-menu" data-bs-popper="static">
-                                            <li>
-                                                <span
-                                                    class="dropdown-item py-3 d-flex align-items-center border-bottom">
-                                                    Account
-                                                </span>
-                                            </li>
                                             <li>
                                                 <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
                                                     href="/account/account-settings.html">
@@ -334,7 +329,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center gap-4 mt-3">
-                                        <button data-bs-toggle="modal" data-bs-target="#AddPaymentMethod"
+                                        <button data-bs-toggle="modal" data-bs-target="#"
                                             aria-label="Add New Payment Method" type="button"
                                             class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Add
                                             New Payment Method
@@ -459,7 +454,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center gap-4 mt-3">
-                                        <button data-bs-toggle="modal" data-bs-target="#"
+                                        <button data-bs-toggle="modal" data-bs-target="#AddPaymentMethod"
                                             aria-label="Add New Payment Method" type="button"
                                             class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Add
                                             New Payment Method
@@ -480,15 +475,15 @@
     </div>
 
     <!--Change Payment Method Modal start-->
-    <div class="modal modal-right fade filter-slideout SOP-model" id="editPaymentMethod"
-        tabindex="-1" aria-labelledby="editPaymentMethodLabel" aria-hidden="true">
+    <div class="modal modal-right fade filter-slideout SOP-model" id="editPaymentMethod" tabindex="-1"
+        aria-labelledby="editPaymentMethodLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <!-- Modal Header -->
                 <div class="modal-header flex-wrap">
                     <div class="d-flex flex-column w-100 mb-0">
                         <div class="d-flex align-items-center">
-                            <span class="icon icon-entity-edit icon-md me-3"></span>
+                            <span class="icon icon-delete icon-md me-3"></span>
                             <h4 class="fw-bold m-0">
                                 Edit Payment Method</h3>
                         </div>
@@ -496,11 +491,27 @@
                 </div>
                 <!-- Modal Body Start-->
                 <div class="modal-body">
-                    <form class="payment-section" action="">
+                    <form class="" action="">
+                        <div class="mb-4 p-3 bg-white rounded-2">
+                            <fieldset>
+                                <label class="form-label">Payment Method<span class="mandatory">*</span></label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select pricing-method">
+                                        <option value="" disabled hidden>Select Payment Method</option>
+                                        <option value="American Express Amex 0005" selected>American Express Amex 0005</option>
+                                        <option value="Bank of America Mastercard 6789">Bank of America Mastercard 6789</option>
+                                        <option value="Discover Discover 1117">Discover Discover 1117</option>
+                                        <option value="Emmanuel Sims Visa 4242">Emmanuel Sims Visa 4242</option>
+                                        <option value="John Doe Visa 1214">John Doe Visa 1214</option>
+                                        <option value="Net 30 Terms">Net 30 Terms</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </div>
                         <div class="mb-4 p-3 bg-white rounded-2">
                             <fieldset class="">
                                 <label for="" class="form-label">Nickname</label>
-                                <input type="text" class="form-control " id="" placeholder="Nickname">
+                                <input type="text" class="form-control " id="" value="American Express Amex 0005" placeholder="Nickname">
                             </fieldset>
                         </div>
                         <div class="mb-4 p-3 bg-white rounded-2">
@@ -560,8 +571,7 @@
                                         <fieldset class="mb-4">
                                             <div class="d-flex justify-content-between">
                                                 <label class="form-label">Routing Number</label>
-                                                <div
-                                                    class="icon icon-outline-info customTooltip p-0 m-0">
+                                                <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative">
                                                     <div class="text-start tooltipText tooltipRight"> Please note
                                                         that the
                                                         Routing/Account numbers must have a minimum of 12 digits
@@ -572,11 +582,13 @@
                                                 </div>
                                             </div>
                                             <span>Also known as ABA Number</span>
-                                            <input type="text" class="form-control" value="110200012022" placeholder="EX. 11000000">
+                                            <input type="text" class="form-control" value="110200012022"
+                                                placeholder="EX. 11000000">
                                         </fieldset>
                                         <fieldset>
                                             <label class="form-label">Account Number</label>
-                                            <input type="text" class="form-control" value="473123131313" placeholder="EX. 000123455678">
+                                            <input type="text" class="form-control" value="473123131313"
+                                                placeholder="EX. 000123455678">
                                         </fieldset>
                                     </div>
 
@@ -609,7 +621,7 @@
                             <label class="form-label">Available To</label>
                             <div class="custom-dropdown">
                                 <select class="form-select">
-                                    <option value=""  disabled hidden>Group Name</option>
+                                    <option value="" disabled hidden>Group Name</option>
                                     <option value="All" selected>All</option>
                                     <option value="NovaTech Group">NovaTech Group</option>
                                     <option value="ApexCore Group">ApexCore Group</option>
@@ -676,7 +688,7 @@
                 </div>
                 <!-- Modal Body Start-->
                 <div class="modal-body">
-                    <form class="payment-section" action="">
+                    <form class="" action="">
                         <div class="mb-4 p-3 bg-white rounded-2">
                             <fieldset class="">
                                 <label for="" class="form-label">Nickname</label>
@@ -852,7 +864,8 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <h6>Are you sure you want to remove this payment method? Any groups assigned to this payment method will revert to the account default payment method.</h6>
+                    <h6>Are you sure you want to remove this payment method? Any groups assigned to this payment method
+                        will revert to the account default payment method.</h6>
                 </div>
                 <div class="modal-footer">
                     <div class="d-flex justify-content-between align-items-center w-100 m-0">
