@@ -1791,6 +1791,25 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 
+
+$(document).on("shown.bs.collapse", ".add-tag-container", function () {
+  const tagSelectElement = $(this).find('.tagselect');
+
+  if (!tagSelectElement.length || !tagSelectElement.data("select2")) return;
+
+  tagSelectElement.one("select2:open", function () {
+    const searchField = tagSelectElement
+      .data("select2")
+      .dropdown
+      .$search.get(0);
+
+    searchField?.focus();
+  });
+
+  tagSelectElement.select2('open');
+
+})
+
 // generate ai button click event to show ai summary on click
 
 $(document).ready(function () {
