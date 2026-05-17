@@ -399,7 +399,7 @@ $(function () {
                     return `
                     <div class="d-flex align-items-center">
                         <span>${data}</span>
-                        ${row?.verified ? '' : '<span data-toggle="tooltip" aria-label="EXPIRED" data-bs-original-title="EXPIRED" class="icon icon-error icon-sm ms-1 m-0"></span>'}
+                        ${row?.verified ? '' : '<span data-toggle="tooltip" aria-label="EXPIRED" data-bs-original-title="EXPIRED" class="icon icon-error icon-sm ms-1 m-0 flex-shrink-0"></span>'}
                     </div>                    
                     `;
                 }
