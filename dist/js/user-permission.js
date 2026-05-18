@@ -33,7 +33,16 @@ $(document).ready(function () {
                     return `<span class="d-inline-block p-2 rounded-2" style="background-color:${row.bgColor};color:${row.textColor};">${data}</span>`;
                 }
             },
-            { data: "status" },
+            {
+                data: "status", render: function (data, type, row) {
+                    return `
+                    <div class="d-flex align-items-center justify-content-center gap-1 p-1 rounded-pill badge-user-${data.toLowerCase()}">
+                        <span class="icon icon-user-${data.toLowerCase()} icon-sm m-0 p-0"></span>
+                        <span class="lh-0">${data}</span>
+                    </div>
+                    `;
+                }
+            },
             { data: "groups" },
             { data: "entities" },
             {
@@ -41,7 +50,7 @@ $(document).ready(function () {
                     return `
                         <div class="d-flex align-items-center">
                             <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#EditUser" aria-label="EDIT" data-bs-original-title="EDIT" 
+                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#EditUserDetails" aria-label="EDIT" data-bs-original-title="EDIT" 
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
                             
@@ -250,7 +259,10 @@ $(document).ready(function () {
 
     const tablesId = [
         {
-            id: "#user-rights-table", tableContext: "users"
+            id: "#rights-table_1", tableContext: "users"
+        },
+        {
+            id: "#rights-table_2", tableContext: "users"
         },
         {
             id: "#user-rights-table-1", tableContext: "role_1"
@@ -340,7 +352,7 @@ $(document).ready(function () {
             return;
         }
 
-        const userRightsTable = accessSection.find('#user-rights-table');
+        const userRightsTable = accessSection.find('.user-data-table');
 
         if (!userRightsTable) return;
 

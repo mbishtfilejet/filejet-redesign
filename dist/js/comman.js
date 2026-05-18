@@ -27,7 +27,6 @@ function multiSelectRowCheckbox(tableContainer) {
         const columnValue = td.data('value');
         const column = checkbox.data('column');
         const isChecked = $(this).prop("checked");
-        console.log(column, row)
 
         const parentId = row.data('id') || row.data('parent');
 
