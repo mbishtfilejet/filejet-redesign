@@ -108,15 +108,30 @@
 }
 
 .user-step-group {
-    justify-content: unset !important;
-    gap: 200px;
 
     .step {
         flex: 0 !important;
 
         &::after {
-            left: 75% !important;
-            width: 198% !important;
+            left: 80% !important;
+            width: calc(var(--bs-modal-width) - 150%) !important;
+        }
+
+        &.last-step {
+            left: 90px;
+            background-color: var(--bs-modal-bg) !important;
+            z-index: 2;
+            align-items: start;
+            padding-left: 20px !important;
+
+            .circle{
+                left: 2%;
+            }
+
+            .step-text {
+                justify-content: start;
+                text-align: start;
+            }
         }
     }
 }
@@ -166,4 +181,25 @@
 .SOP-model .green-checkbox[type=checkbox]:indeterminate:disabled,
 .SOP-model .light-green-checkbox[type=checkbox]:checked:disabled {
     background-color: #D8DDDF;
+}
+
+
+.badge-user-active{
+    background-color: #D0F4DC;
+}
+
+.badge-user-inactive{
+    background-color: #FDEFB6;
+}
+
+.badge-user-locked{
+    background-color: #F9B1AB;
+}
+
+.badge-user-invited{
+    background-color: #D2E3FE;
+}
+
+.lh-0{
+    line-height: 0 !important;
 }
