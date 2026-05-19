@@ -55,13 +55,13 @@ $(document).ready(function () {
                             </span>
                             
                             ${row.role.toLowerCase().includes("admin") ? "" :
-                            row.status === "Active" ? `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deactivateUser">
+                            row.status !== "Invited" ? `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deactivateUser">
                                     <span data-toggle="tooltip" aria-label="DEACTIVATE" data-bs-original-title="DEACTIVATE" 
-                                        class="icon icon-user-minus icon-md me-1 me-md-2"></span> 
+                                        class="icon icon-entity-delete me-1 me-md-2"></span> 
                                 </span>`:
                                 `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#activateUser">
-                                    <span data-toggle="tooltip" aria-label="ACTIVATE" data-bs-original-title="ACTIVATE" 
-                                    class="icon icon-user-plus icon-md me-1 me-md-2"></span> 
+                                    <span data-toggle="tooltip" aria-label="INVITE" data-bs-original-title="INVITE" 
+                                    class="icon icon-user-invited icon-md me-1 me-md-2"></span> 
                                 </span>`
                         }
                         </div>`;
