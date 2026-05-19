@@ -36,9 +36,8 @@ $(document).ready(function () {
             {
                 data: "status", render: function (data, type, row) {
                     return `
-                    <div class="d-flex align-items-center justify-content-center gap-1 p-1 rounded-pill badge-user-${data.toLowerCase()}">
-                        <span class="icon icon-user-${data.toLowerCase()} icon-sm m-0 p-0"></span>
-                        <span class="lh-0">${data}</span>
+                    <div class="d-flex align-items-center justify-content-center gap-1 p-1 px-2 rounded-pill badge-user-${data.toLowerCase()}">
+                        <span class="">${data}</span>
                     </div>
                     `;
                 }
@@ -60,7 +59,7 @@ $(document).ready(function () {
                                         class="icon icon-entity-delete me-1 me-md-2"></span> 
                                 </span>`:
                                 `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#activateUser">
-                                    <span data-toggle="tooltip" aria-label="INVITE" data-bs-original-title="INVITE" 
+                                    <span data-toggle="tooltip" aria-label="RESEND INVITE" data-bs-original-title="RESEND INVITE" 
                                     class="icon icon-user-invited icon-md me-1 me-md-2"></span> 
                                 </span>`
                         }
