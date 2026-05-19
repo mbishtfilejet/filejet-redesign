@@ -178,11 +178,11 @@ $(document).ready(function () {
                 {
                     data: "group_name", render: function (data, type, row) {
                         return `
-                        <div class="d-flex align-items-center gap-2">
+                        <div class="d-flex align-items-start gap-2">
                             <button type="button" class="dt-control ${!row?.entities?.length ? "no-control" : ""} m-0"></button>
-                            <div class="d-flex align-items-center gap-2" role="button">
+                            <div class="d-flex align-items-start gap-2" role="button">
                                 <span class="icon icon-folder-thin icon-md flex-shrink-0 m-0"></span>
-                                <span class="text-break mt-1">${data}</span>
+                                <span class="text-break">${data}</span>
                             </div>
                         </div>
                         `
@@ -312,9 +312,9 @@ $(document).ready(function () {
         return data.entities.map((value, index) => `
                 <tr class="expanded-content" data-parent="${rowId}">
                     <td>
-                        <div class="ms-4 d-flex align-items-center gap-2">
-                            <span class="icon icon-entity-main icon-md flex-shrink-0 m-0"></span>
-                            <span class="text-break mt-1">${value}</span>
+                        <div class="ms-4 d-flex align-items-start gap-2">
+                            <span class="icon icon-entity-main icon-smd flex-shrink-0 m-0 mt-1"></span>
+                            <span class="text-break">${value}</span>
                         </div>
                     </td>
                     ${columnNames.map(column => `<td data-value="${value}"> 
