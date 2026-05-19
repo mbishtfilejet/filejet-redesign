@@ -315,17 +315,17 @@ $(document).ready(function () {
                 ${row?.type !== "state"
                 ?
                 `<div class="d-flex align-items-center">
-                  <span role="button" tabindex="0" class="edit-content"> 
+                  <span role="button" tabindex="0" class="edit-content ${row?.type !== "file" ? row.isEditable == false ? "icon-disabled" : "" : ""}"> 
                     <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
-                    class="icon icon-entity-edit me-1 me-md-2 ${row?.type !== "file" ? row.isEditable == false ? "icon-disabled" : "" : ""}"></span>
+                    class="icon icon-entity-edit me-1 me-md-2"></span>
                   </span>
                   <span role="button" tabindex="0" class="save-content"> 
                     <span data-toggle="tooltip" aria-label="SAVE" data-bs-original-title="SAVE" 
                       class="icon icon-save me-1 me-md-2"></span>
                   </span>
-                  <span role="button" tabindex="0" class-"delete-btn" data-bs-toggle="modal" data-bs-target="#deletefolder-modal"> 
+                  <span role="button" tabindex="0" class="delete-btn ${row?.type !== "file" ? row.isDeleteable == false ? "icon-disabled" : "" : ""}" data-bs-toggle="modal" data-bs-target="#deletefolder-modal"> 
                     <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" 
-                      class="icon icon-entity-delete me-1 me-md-2 ${row?.type !== "file" ? row.isDeleteable == false ? "icon-disabled" : "" : ""}"></span>
+                      class="icon icon-entity-delete me-1 me-md-2"></span>
                   </span>
                 </div>`
                 :
