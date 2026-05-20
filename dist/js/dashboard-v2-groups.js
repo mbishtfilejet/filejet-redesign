@@ -459,7 +459,7 @@ $(document).ready(function () {
                             <span data-toggle="tooltip" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditUser" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
                                 <span class="icon icon-entity-edit m-0"></span>
                             </span>
-                            <span data-toggle="tooltip" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deactivateUser" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                            <span data-toggle="tooltip" data-bs-original-title="DEACTIVATE" data-bs-toggle="modal" data-bs-target="#deactivateUser" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
                                 <span class="icon icon-entity-delete m-0"></span>
                             </span>
                         </div>
