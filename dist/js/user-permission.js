@@ -336,7 +336,13 @@ $(document).ready(function () {
         } else {
             options.dropdownParent = $('.custom-dropdown')
         }
-        $(this).select2(options)
+        $(this).select2(options);
+
+        if ($(this).hasClass('roles-select')) {
+            setTimeout(() => {
+                toggleTable(this);
+            }, 0)
+        }
     });
 
     $('.customSelect2').on('select2:open', function () {
@@ -345,17 +351,24 @@ $(document).ready(function () {
     });
 
     $('.customSelect2.roles-select').on('select2:select', function () {
-        const selectedValue = $(this).val().trim();
+        toggleTable(this);
+    });
 
-        const accessSection = $(this).closest('.modal').find('.access-table-section');
+    function toggleTable(select) {
+        const selectedValue = $(select).val()?.trim();
+
+        if (!selectedValue) return;
+
+        const accessSection = $(select).closest('.modal').find('.access-table-section');
 
         if (!accessSection) return;
 
         if (selectedValue === "None") {
-            $('.access-table-section').fadeOut(100).addBack('d-none');
+            $('.access-table-section').fadeOut(100).addClass('d-none');
             return;
         }
 
+        accessSection.removeClass('d-none').hide().fadeIn(100);
         const userRightsTable = accessSection.find('.user-data-table');
 
         if (!userRightsTable) return;
@@ -363,16 +376,14 @@ $(document).ready(function () {
         const checkBoxtobeDisabled = userRightsTable.closest('.userAccessTable').find('input[type=checkbox]');
 
         if (selectedValue === "Custom User") {
-            accessSection.removeClass('d-none').hide().fadeIn(100);
             checkBoxtobeDisabled.prop('disabled', false)
             userRightsTable.find('tr').removeClass('check-disabled')
         } else {
-            accessSection.removeClass('d-none').hide().fadeIn(100);
             checkBoxtobeDisabled.prop('disabled', true)
             userRightsTable.find('tr').addClass('check-disabled')
         }
         userRightsTable.DataTable().columns.adjust();
-    });
+    }
 
 
 })
