@@ -15,6 +15,7 @@ $(document).ready(function () {
                     return `<a href="./group-details-v1.html">${data}</a>`;
                 }
             },
+            { data: "group_id" },
             { data: "primary_contact" },
             { data: "entities" },
             { data: "registrations" },
@@ -480,6 +481,12 @@ $(document).ready(function () {
             url: "data5.json",
             dataSrc: 'group_userExternal_data'
         },
+        createdRow: function (row, data, dataIndex) {
+
+            if (['inactive'].includes(data.status.toLowerCase())) {
+                $(row).find('td').not(':last-child').addClass('disabled-column');
+            }
+        },
         processing: true,
         scrollX: true,
         scrollY: false,
@@ -494,6 +501,13 @@ $(document).ready(function () {
                             <span data-toggle="tooltip" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditexternalUser" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
                                 <span class="icon icon-entity-edit m-0"></span>
                             </span>
+                            ${row.status !== "Inactive" ? `<span data-toggle="tooltip" data-bs-original-title="DEACTIVATE" data-bs-toggle="modal" data-bs-target="#deactivateExternalUser" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
+                                <span class="icon icon-circular icon-stop-line m-0"></span>
+                            </span>`: `
+                            <span data-toggle="tooltip" data-bs-original-title="REACTIVATE" data-bs-toggle="modal" data-bs-target="#" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
+                                <span class="icon icon-circular icon-tick-dark enable-tick-hover m-0"></span>
+                            </span>`}
+                            
                             <span data-toggle="tooltip" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
                                 <span class="icon icon-entity-delete m-0"></span>
                             </span>
