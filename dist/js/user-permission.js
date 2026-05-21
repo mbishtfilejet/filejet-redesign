@@ -36,9 +36,7 @@ $(document).ready(function () {
             {
                 data: "status", render: function (data, type, row) {
                     return `
-                    <div class="d-flex align-items-center justify-content-center gap-1 p-1 px-2 rounded-pill badge-user-${data.toLowerCase()}">
-                        <span class="">${data}</span>
-                    </div>
+                    <span class="d-inline-block p-1 px-2 rounded-pill badge-user-${data.toLowerCase()}">${data}</span>
                     `;
                 }
             },
@@ -334,7 +332,7 @@ $(document).ready(function () {
         if (modal.length) {
             options.dropdownParent = modal
         } else {
-            options.dropdownParent = $('.custom-dropdown')
+            options.dropdownParent = $(this).closest('.custom-dropdown')
         }
         $(this).select2(options);
 
