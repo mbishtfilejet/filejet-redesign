@@ -339,7 +339,7 @@ $(document).ready(function () {
         if ($(this).hasClass('roles-select')) {
             setTimeout(() => {
                 toggleTable(this);
-            }, 0)
+            }, 10)
         }
     });
 
