@@ -454,6 +454,13 @@ $(document).ready(function () {
             { data: "role" },
             { data: "access" },
             {
+                data: "status", render: function (data, type, row) {
+                    return `
+                    <span class="d-inline-block p-1 px-2 rounded-pill badge-user-${data.toLowerCase()}">${data}</span>
+                    `;
+                }
+            },
+            {
                 data: null, render: function (data, type, row) {
                     return `
                         <div class="d-flex align-items-center">
@@ -495,20 +502,27 @@ $(document).ready(function () {
             { data: "email" },
             { data: "access" },
             {
+                data: "status", render: function (data, type, row) {
+                    return `
+                    <span class="d-inline-block p-1 px-2 rounded-pill badge-user-${data.toLowerCase()}">${data}</span>
+                    `;
+                }
+            },
+            {
                 data: null, render: function (data, type, row) {
                     return `
                         <div class="d-flex align-items-center">
-                            <span data-toggle="tooltip" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditexternalUser" class="me-1 me-md-2 d-inline-block ${row.status === "Inactive" ? "icon-disabled":""}" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
+                            <span data-toggle="tooltip" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditexternalUser" class="me-1 me-md-2 d-inline-block ${row.status === "Inactive" ? "icon-disabled" : ""}" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
                                 <span class="icon icon-entity-edit m-0"></span>
                             </span>
                             ${row.status !== "Inactive" ? `<span data-toggle="tooltip" data-bs-original-title="DEACTIVATE" data-bs-toggle="modal" data-bs-target="#deactivateExternalUser" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
-                                <span class="icon icon-circular icon-stop-line m-0"></span>
+                                <span class="icon icon-circular icon-stop-line-dark m-0"></span>
                             </span>`: `
                             <span data-toggle="tooltip" data-bs-original-title="REACTIVATE" data-bs-toggle="modal" data-bs-target="#" class="me-1 me-md-2 d-inline-block" role="button" data-bs-toggle="modal" data-bs-target="#edit-owner-modal">
-                                <span class="icon icon-circular icon-tick-dark enable-tick-hover m-0"></span>
+                                <span class="icon icon-circular icon-inactive-red icon-smd m-0"></span>
                             </span>`}
                             
-                            <span data-toggle="tooltip" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#" class="me-1 me-md-2 d-inline-block ${row.status === "Inactive" ? "icon-disabled":""}" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                            <span data-toggle="tooltip" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#" class="me-1 me-md-2 d-inline-block ${row.status === "Inactive" ? "icon-disabled" : ""}" role="button" data-bs-toggle="modal" data-bs-target="#delete-modal">
                                 <span class="icon icon-entity-delete m-0"></span>
                             </span>
                         </div>
