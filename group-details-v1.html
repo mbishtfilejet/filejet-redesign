@@ -942,7 +942,7 @@
                                     id="usersAccessContainer" data-bs-toggle="dropdown" aria-expanded="false"
                                     tabindex="0">
                                  </div>
-                                 <ul class="dropdown-menu search-disabled" id="usersAccessDropdown">
+                                 <ul class="dropdown-menu" id="usersAccessDropdown">
                                     <li><label class="dropdown-item"><input type="checkbox"
                                              class="form-check-input usersAccess-checkbox me-2" data-value="Viewer">
                                           Viewer</label>
@@ -962,6 +962,11 @@
                                     <li><label class="dropdown-item"><input type="checkbox"
                                              class="form-check-input usersAccess-checkbox me-2" data-value="Download">
                                           Download</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input usersAccess-checkbox me-2"
+                                             data-value="Invoices">
+                                          Invoices</label>
                                     </li>
                                     <li><label class="dropdown-item"><input type="checkbox"
                                              class="form-check-input usersAccess-checkbox me-2"
@@ -1024,7 +1029,7 @@
                                     id="externalUserContainer" data-bs-toggle="dropdown" aria-expanded="false"
                                     tabindex="0">
                                  </div>
-                                 <ul class="dropdown-menu search-disabled" id="externalUserDropdown">
+                                 <ul class="dropdown-menu" id="externalUserDropdown">
                                     <li><label class="dropdown-item"><input type="checkbox"
                                              class="form-check-input externalUser-checkbox me-2" data-value="Viewer">
                                           Viewer</label>
@@ -1032,6 +1037,28 @@
                                     <li><label class="dropdown-item"><input type="checkbox"
                                              class="form-check-input externalUser-checkbox me-2" data-value="Editor">
                                           Editor</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input usersAccess-checkbox me-2" data-value="Submit">
+                                          Submit</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input usersAccess-checkbox me-2" data-value="Upload">
+                                          Upload</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input usersAccess-checkbox me-2" data-value="Download">
+                                          Download</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input usersAccess-checkbox me-2"
+                                             data-value="Invoices">
+                                          Invoices</label>
+                                    </li>
+                                    <li><label class="dropdown-item"><input type="checkbox"
+                                             class="form-check-input usersAccess-checkbox me-2"
+                                             data-value="Acknowledge">
+                                          Acknowledge</label>
                                     </li>
                                  </ul>
                               </div>
@@ -1106,10 +1133,45 @@
                         <input type="text" class="form-control" id="" placeholder="Username" value="Alex Brown">
                      </fieldset>
 
-                     <fieldset class="">
+                     <fieldset class="mb-4">
                         <label for="" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="" placeholder="Email Address" value="alex@email.com">
+                        <input type="email" class="form-control" id="" placeholder="Email Address"
+                           value="alex@email.com">
                      </fieldset>
+                     <h6 class="fw-semibold">Notifications</h6>
+                     <div class="notification-option d-flex flex-column gap-3">
+                        <div class="form-check align-items-start gap-2 p-0">
+                           <input class="form-check-input m-0" type="checkbox" id="">
+                           <label class="fw-normal rights-label text-dark fs-6" for="">Invoices
+                              <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                 created
+                                 and
+                                 submitted
+                                 invoices will be sent to you.</span>
+                           </label>
+                        </div>
+                        <div class="form-check align-items-start gap-2 p-0">
+                           <input class="form-check-input m-0" type="checkbox" checked id="">
+                           <label class="fw-normal rights-label text-dark" for="">Compliance
+                              Reminders
+                              <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                 compliances
+                                 will be sent to
+                                 you.</span>
+                           </label>
+                        </div>
+                        <div class="form-check align-items-start gap-2 p-0">
+                           <input class="form-check-input m-0" type="checkbox" checked id="">
+                           <label class="fw-normal rights-label text-dark" for="">Service of Process
+                              Notifications
+                              <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                 Service of
+                                 Process
+                                 will be
+                                 sent to you.</span>
+                           </label>
+                        </div>
+                     </div>
                   </div>
                </form>
             </div>
@@ -1444,60 +1506,38 @@
                                           placeholder="Email Address">
                                     </fieldset>
                                     <div class="view-options mt-3">
-                                       <div class="d-flex justify-content-between mb-4">
-                                          <span class="view-label">RIGHTS</span>
-                                          <div class="d-flex">
-                                             <div class="form-check me-4">
-                                                <input class="form-check-input" type="radio" name="rightsOptions"
-                                                   id="flexRadioDefault2" checked>
-                                                <label class="form-check-label rights-label" for="flexRadioDefault2">
-                                                   View
-                                                </label>
-                                             </div>
-                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="rightsOptions"
-                                                   id="flexRadioDefault1">
-                                                <label class="form-check-label rights-label" for="flexRadioDefault1">
-                                                   Edit
-                                                </label>
-                                             </div>
+                                       <h6 class="fw-semibold">Notifications</h6>
+                                       <div class="notification-option d-flex flex-column gap-3">
+                                          <div class="form-check align-items-start gap-2 p-0">
+                                             <input class="form-check-input m-0" type="checkbox" id="">
+                                             <label class="fw-normal rights-label text-dark fs-6" for="">Invoices
+                                                <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                                   created
+                                                   and
+                                                   submitted
+                                                   invoices will be sent to you.</span>
+                                             </label>
                                           </div>
-                                       </div>
-                                       <div class="d-flex justify-content-between mb-4">
-                                          <span class="view-label">Notifications</span>
-                                          <div class="d-flex">
-                                             <div class="form-check me-4">
-                                                <input class="form-check-input" type="radio" name="notificationsOptions"
-                                                   id="flexRadioDefault3" checked>
-                                                <label class="form-check-label rights-label" for="flexRadioDefault3">
-                                                   Yes
-                                                </label>
-                                             </div>
-                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="notificationsOptions"
-                                                   id="flexRadioDefault6">
-                                                <label class="form-check-label  rights-label" for="flexRadioDefault6">
-                                                   No
-                                                </label>
-                                             </div>
+                                          <div class="form-check align-items-start gap-2 p-0">
+                                             <input class="form-check-input m-0" type="checkbox" id="">
+                                             <label class="fw-normal rights-label text-dark" for="">Compliance
+                                                Reminders
+                                                <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                                   compliances
+                                                   will be sent to
+                                                   you.</span>
+                                             </label>
                                           </div>
-                                       </div>
-                                       <div class="d-flex justify-content-between">
-                                          <span class="view-label">Invoices</span>
-                                          <div class="d-flex">
-                                             <div class="form-check me-4">
-                                                <input class="form-check-input" type="radio" name="invoicesOptions"
-                                                   id="flexRadioDefault4" checked>
-                                                <label class="form-check-label rights-label" for="flexRadioDefault4">
-                                                   Yes
-                                                </label>
-                                             </div>
-                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="invoicesOptions"
-                                                   id="flexRadioDefault5">
-                                                <label class="form-check-label rights-label" for="flexRadioDefault5"> No
-                                                </label>
-                                             </div>
+                                          <div class="form-check align-items-start gap-2 p-0">
+                                             <input class="form-check-input m-0" type="checkbox" id="">
+                                             <label class="fw-normal rights-label text-dark" for="">Service of Process
+                                                Notifications
+                                                <span class="d-block text-muted fw-light info mt-1">Notifications for
+                                                   Service of
+                                                   Process
+                                                   will be
+                                                   sent to you.</span>
+                                             </label>
                                           </div>
                                        </div>
                                        <div class="mt-4">
