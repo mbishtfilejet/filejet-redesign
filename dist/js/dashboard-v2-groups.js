@@ -488,12 +488,6 @@ $(document).ready(function () {
             url: "data5.json",
             dataSrc: 'group_userExternal_data'
         },
-        createdRow: function (row, data, dataIndex) {
-
-            if (['inactive'].includes(data.status.toLowerCase())) {
-                $(row).find('td').not(':last-child').addClass('disabled-column');
-            }
-        },
         processing: true,
         scrollX: true,
         scrollY: false,

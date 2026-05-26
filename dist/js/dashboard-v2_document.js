@@ -1770,6 +1770,8 @@ document.addEventListener("DOMContentLoaded", function () {
         rowtagWrapper.find('.badge').filter(function () {
           return $(this).text().trim() === tagValue;
         }).remove();
+
+        applyTagOverflow(true)
       }
     }
 
