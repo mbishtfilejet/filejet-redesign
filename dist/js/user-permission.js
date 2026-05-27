@@ -465,11 +465,6 @@ $(function () {
         scrollX: true,
         scrollY: false,
         columns: [
-            {
-                data: null, render: function (data, type, row) {
-                    return `<input data-column="payMtdCheck" class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}">`;
-                }
-            },
             { data: "nickname" },
             { data: "account" },
             {
@@ -501,7 +496,7 @@ $(function () {
                 }
             }
         ],
-        order: [[1, "asc"]],
+        order: [[0, "asc"]],
         lengthChange: false,  // Removed pagination
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"

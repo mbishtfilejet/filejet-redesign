@@ -317,8 +317,8 @@ document.addEventListener("DOMContentLoaded", function () {
         case "groupUserRoleContainer": return "Filter by Role";
         case "usersAccessContainer":
         case "externalUserContainer": return "Filter by Access"
-        case "groupPaymentContainer":
-        case "groupContainer": return "Group"
+        case "groupPaymentContainer": 
+        case "groupContainer": return "Available To"
         default: return "Status";
       }
     }
