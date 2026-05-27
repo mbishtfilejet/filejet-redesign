@@ -454,7 +454,7 @@ $(function () {
 
     $('#subscription-table').DataTable(tableOptions)
 
-    multiSelectRowCheckbox($('#subscription-table'))
+    multiSelectRowCheckbox($('#subscription-table'), ".changePaymentMethod")
 
 
     const tableOptions_1 = {
@@ -503,7 +503,5 @@ $(function () {
     }
 
     $('#payment-methods-table').DataTable(tableOptions_1)
-    multiSelectRowCheckbox($('#payment-methods-table'))
-
 })
 

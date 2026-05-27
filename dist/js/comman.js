@@ -1,5 +1,5 @@
 function highlightTabs(tabparent) {
-    if(!tabparent) return;
+    if (!tabparent) return;
     const activeTab = tabparent.find('.nav-link.active');
     const tabOffset = activeTab.position();
 
@@ -11,7 +11,7 @@ function highlightTabs(tabparent) {
     })
 }
 
-function multiSelectRowCheckbox(tableContainer) {
+function multiSelectRowCheckbox(tableContainer, cta_class = "") {
 
     // row checkbox event handle
     const cacheCheckBox = cacheChildCheckboxState();
@@ -91,8 +91,10 @@ function multiSelectRowCheckbox(tableContainer) {
                 indeterminate: true
             });
         }
+        if (cta_class) {
 
-
+            hideShowCTA(cta_class, checkedCheckbox ?? 0);
+        }
     }
 
     // update children checkbox
@@ -175,6 +177,12 @@ function multiSelectRowCheckbox(tableContainer) {
             columnNames.forEach(column => updateAllState(column, '', false))
         })
     })
+
+    function hideShowCTA(cta_class, checkedCheckboxCount) {
+        const cta = tableContainer.closest(".tab-pane").find(cta_class);
+        const hasNoCheckedCheckbox = checkedCheckboxCount === 0;
+        cta.toggleClass("d-none", hasNoCheckedCheckbox)
+    }
 
 
 }
