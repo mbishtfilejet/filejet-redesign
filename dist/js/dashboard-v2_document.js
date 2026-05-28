@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "groupUserRoleContainer": return "Filter by Role";
         case "usersAccessContainer":
         case "externalUserContainer": return "Filter by Access"
-        case "groupPaymentContainer": 
+        case "groupPaymentContainer":
         case "groupContainer": return "Available To"
         default: return "Status";
       }
@@ -1588,10 +1588,9 @@ function initTagSelect(context) {
       dropdownParent: context,
       createTag: function (params) {
         const term = params.term.trim();
-        if (term.length < 3) return null;
 
         // Check if term already exists 
-        const exists = tagSelect.find('option').filter(function () {
+        const exists = tagSelect.find('option[value]:not([value=""]').filter(function () {
           return $(this).text().toLowerCase().includes(term.toLowerCase());
         }).length;
         if (exists) return null;

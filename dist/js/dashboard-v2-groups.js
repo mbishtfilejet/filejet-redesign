@@ -452,7 +452,19 @@ $(document).ready(function () {
             { data: "name" },
             { data: "email" },
             { data: "role" },
-            { data: "access" },
+            {
+                data: "access", render: function (data, type, row) {
+                    const accessCount = data.length;
+                    if (accessCount <= 2) {
+                        return `<div class="w-100">${data.join(", ")}</div>`;
+                    }
+
+                    return `<div class="access-wrapper w-100">
+                        <div class="w-100 text-truncate">${data.join(", ")}</div>
+                        <div class="access-tooltip">${data.join(", ")}</div>
+                    </div>`;
+                }
+            },
             {
                 data: "status", render: function (data, type, row) {
                     return `
@@ -494,7 +506,19 @@ $(document).ready(function () {
         columns: [
             { data: "name" },
             { data: "email" },
-            { data: "access" },
+            {
+                data: "access", render: function (data, type, row) {
+                    const accessCount = data.length;
+                    if (accessCount <= 2) {
+                        return `<div class="w-100">${data.join(", ")}</div>`;
+                    }
+
+                    return `<div class="access-wrapper w-100">
+                        <div class="w-100 text-truncate">${data.join(", ")}</div>
+                        <div class="access-tooltip">${data.join(", ")}</div>
+                    </div>`;
+                }
+            },
             {
                 data: "status", render: function (data, type, row) {
                     return `
