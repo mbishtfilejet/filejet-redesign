@@ -23646,6 +23646,45 @@ body *::-webkit-scrollbar-thumb {
   background-image: url("../../../../dist/images/icons/delete-red.svg");
 }
 
+.groupUsersAccessTable .dataTables_wrapper .dataTable th:nth-child(1), .groupUsersAccessTable .dataTables_wrapper .dataTable th:nth-child(2), .groupUsersAccessTable .dataTables_wrapper .dataTable th:nth-child(3),
+.groupUsersAccessTable .dataTables_wrapper .dataTable td:nth-child(1),
+.groupUsersAccessTable .dataTables_wrapper .dataTable td:nth-child(2),
+.groupUsersAccessTable .dataTables_wrapper .dataTable td:nth-child(3) {
+  min-width: 150px !important;
+  width: 150px;
+}
+.groupUsersAccessTable .dataTables_wrapper .dataTable th:nth-child(4),
+.groupUsersAccessTable .dataTables_wrapper .dataTable td:nth-child(4) {
+  min-width: 170px !important;
+  max-width: 170px !important;
+  width: 170px !important;
+}
+.groupUsersAccessTable .dataTables_wrapper .dataTable th:nth-child(5), .groupUsersAccessTable .dataTables_wrapper .dataTable th:nth-child(6),
+.groupUsersAccessTable .dataTables_wrapper .dataTable td:nth-child(5),
+.groupUsersAccessTable .dataTables_wrapper .dataTable td:nth-child(6) {
+  min-width: 60px !important;
+  width: 60px;
+}
+
+.groupExternalUserTable .dataTables_wrapper .dataTable th:nth-child(1), .groupExternalUserTable .dataTables_wrapper .dataTable th:nth-child(2),
+.groupExternalUserTable .dataTables_wrapper .dataTable td:nth-child(1),
+.groupExternalUserTable .dataTables_wrapper .dataTable td:nth-child(2) {
+  min-width: 150px !important;
+  width: 150px;
+}
+.groupExternalUserTable .dataTables_wrapper .dataTable th:nth-child(3),
+.groupExternalUserTable .dataTables_wrapper .dataTable td:nth-child(3) {
+  min-width: 170px !important;
+  max-width: 170px !important;
+  width: 170px !important;
+}
+.groupExternalUserTable .dataTables_wrapper .dataTable th:nth-child(4), .groupExternalUserTable .dataTables_wrapper .dataTable th:last-child,
+.groupExternalUserTable .dataTables_wrapper .dataTable td:nth-child(4),
+.groupExternalUserTable .dataTables_wrapper .dataTable td:last-child {
+  min-width: 60px !important;
+  width: 60px;
+}
+
 @media (min-width: 767.99px) {
   .groupdetails-content {
     max-height: 260px;
@@ -23656,6 +23695,40 @@ body *::-webkit-scrollbar-thumb {
   .groupsTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody,
   .usersTableCard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody {
     overflow: hidden !important;
+  }
+}
+.access-wrapper {
+  cursor: pointer;
+  position: relative;
+}
+.access-wrapper .access-tooltip {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  padding: 0.5rem 0.9rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-width: 250px;
+  width: max-content;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: display;
+  white-space: normal;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+.access-wrapper:hover .access-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 1600px) {
+  .access-tooltip {
+    max-width: 250px;
   }
 }
 .entityDetails-dashboard .SOP-model .form-check.typecheckradio label, .entityDetails-dashboard .setting-section .form-check.typecheckradio label, .invoices-dashboard .SOP-model .form-check.typecheckradio label, .invoices-dashboard .setting-section .form-check.typecheckradio label, .billing-dashboard .SOP-model .form-check.typecheckradio label, .billing-dashboard .setting-section .form-check.typecheckradio label {
