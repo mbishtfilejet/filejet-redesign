@@ -432,14 +432,19 @@ $(function () {
             {
                 data: null, render: function (data, type, row) {
                     return `
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center gap-1">
                             <span role="button" tabindex="0"> 
                                 <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#"
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
+                            <span role="button" tabindex="0"> 
+                                <span data-toggle="tooltip" aria-label="VIEW" data-bs-original-title="VIEW" data-bs-toggle="modal" data-bs-target="#billingSubscriptionViewModal"
+                                    class="icon icon-eye me-1 me-md-2"></span>
+                            </span>
+                            
                             <span role="button" tabindex="0">
-                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#"
-                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
+                                <span data-toggle="tooltip" aria-label="DOWNLOAD" data-bs-original-title="DOWNLOAD" data-bs-toggle="modal" data-bs-target="#"
+                                    class="icon icon-download-dark me-1 me-md-2"></span> 
                             </span>
                     </div>
                     `
@@ -487,10 +492,15 @@ $(function () {
                                 <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="${row.isVerified ? "#editPaymentMethod" : "#verifyBankAccount"}"
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
-                            <span role="button" tabindex="0">
-                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
-                                    class="icon icon-entity-delete me-1 me-md-2"></span> 
-                            </span>
+
+                            ${row.available_to 
+                                ? ''
+                                : 
+                                `<span role="button" tabindex="0">
+                                    <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
+                                        class="icon icon-entity-delete me-1 me-md-2"></span> 
+                                </span>`
+                            }
                     </div>
                     `
                 }

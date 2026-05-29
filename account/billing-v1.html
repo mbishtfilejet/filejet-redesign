@@ -423,7 +423,8 @@
                                     <div class="d-flex changePaymentMethod align-items-center gap-4 mt-3 d-none">
                                         <button data-bs-toggle="modal" data-bs-target="#"
                                             aria-label="Change Payment Method" type="button"
-                                            class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Change Payment Method
+                                            class="btn btn-secondary btn-add-owner rounded-3 text-white text-capitalize">Change
+                                            Payment Method
                                         </button>
                                     </div>
                                 </div>
@@ -439,6 +440,210 @@
             </div>
         </div>
     </div>
+
+    <!-- Subscription Invoice View Modal Start -->
+    <div class="modal modal-right fade filter-slideout" style="display: block;" id="billingSubscriptionViewModal"
+        tabindex="-1" aria-labelledby="billingViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg-plus modal-dialog-end modal-dialog-scrollable my-0 min-vh-100">
+            <div class="modal-content p-2 border-0 rounded-0 min-vh-100">
+                <!-- Modal Body -->
+                <div class="modal-body bg-dark pt-1 pb-1 py-0 px-1">
+                    <div class="bg-light px-4 position-relative">
+                        <!-- Modal Header -->
+                        <div class="modal-header flex-wrap px-0">
+                            <div
+                                class="d-flex align-items-center justify-content-between w-100 border-bottom border-danger border-3 pb-4">
+                                <div>
+
+                                    <a href="javascript:;" class="logo">
+                                        <img src="/dist/images/logo.png" alt="FileJet" class="d-lg-block">
+                                    </a>
+                                </div>
+                                <!-- <div class="me-5">
+                                    <h6 class="text-uppercase fw-bold text-light-blue">Invoice Details</h6>
+                                    <div class="mt-3">
+                                        <p class="mb-0 text-light-blue">Invoice ID:</p>
+                                        <p class="mb-0 text-light-blue">Invoice Date:</p>
+                                        <p class="mb-0 text-light-blue">Due By Date:</p>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- Modal Header Ends -->
+                        <div class="subscription-entites-body">
+                            <div class="subscription-body px-4">
+                                <p class="border-bottom-light-blue border-2 pb-2 text-light-blue fs-4 font-weight-600">
+                                    Subscription Renewal Quote</p>
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="customerDetails">
+                                        <h6 class="font-weight-700 fs-4">Customer Details</h6>
+                                        <address>
+                                            <ul class="list-unstyled font-weight-500 fs-5">
+                                                <li class="lh-sm">Jon Smith</li>
+                                                <li class="lh-sm">
+                                                    10440 pioneer Bivd <br>
+                                                    Suite B
+                                                </li>
+                                                <li class="lh-sm">
+                                                    Sanita Fe Springs, CA 90456 <br>
+                                                    United States <br>
+                                                </li>
+                                            </ul>
+                                        </address>
+                                    </div>
+                                    <div class="groupDetails">
+                                        <h6 class="font-weight-700 fs-4">Group</h6>
+                                        <address>
+                                            <ul class="list-unstyled font-weight-500 fs-5">
+                                                <li class="lh-sm">Apex Solutions Inc</li>
+                                                <li class="lh-sm">
+                                                    250 Corporate Plaza,<br>
+                                                    Suite 400, NewYork
+                                                </li>
+                                                <li class="lh-sm">
+                                                    NY 10456 <br>
+                                                    United States <br>
+
+                                                </li>
+                                            </ul>
+                                        </address>
+                                    </div>
+                                    <div class="renewalDateSection">
+                                        <h6 class="font-weight-700 fs-4">Renewal Date</h6>
+                                        <ul class="list-unstyled font-weight-500 fs-5">
+                                            <li class="lh-sm">01/13/2026</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                                <div class="pb-5">
+                                    <h6 class="border-bottom-light-blue pb-2 text-light-blue font-weight-600 fs-4">
+                                        Invoice Summary</h6>
+                                    <div class="table-parent pb-5">
+                                        <table class="table w-100 table-striped table-nowrap mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>S. No.</th>
+                                                    <th class="fixed-max-width">Entity</th>
+                                                    <th>Assigned Groups</th>
+                                                    <th>State</th>
+                                                    <th class="text-end">Subscription Fee</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd">
+                                                    <td class="">1.</td>
+                                                    <td class="fixed-max-width"><span class="text-break text-uppercase">
+                                                            Entity Example 3 Corp</span>
+
+                                                    </td>
+                                                    <td>Donald Duck</td>
+                                                    <td>
+                                                        <span class="cursor-pointer" data-toggle="tooltip"
+                                                            data-bs-original-title="Florida">FL</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-end">$0.00</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="even">
+                                                    <td class="">1. 1</td>
+                                                    <td class="fixed-max-width">
+                                                        <span class="text-break text-uppercase">Annual Report
+                                                            Subscription</span>
+                                                    </td>
+                                                    <td><span class="text-break">Donald Duck</span></td>
+                                                    <td>
+                                                        <span class="cursor-pointer" data-toggle="tooltip"
+                                                            data-bs-original-title="Florida">FL</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-end">$200.00</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="odd">
+                                                    <td class="">2.</td>
+                                                    <td class="fixed-max-width"><span class="text-break text-uppercase">
+                                                            Future Date Order</span>
+                                                    </td>
+                                                    <td>Aaarc Ventures fd</td>
+                                                    <td>
+                                                        <span class="cursor-pointer" data-toggle="tooltip"
+                                                            data-bs-original-title="California">CA</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-end">$95.50</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="even">
+                                                    <td class="">2. 1</td>
+                                                    <td class="fixed-max-width">
+                                                        <span class="text-break text-uppercase">Registered Agent</span>
+                                                    </td>
+                                                    <td><span class="text-break">Aaarc Ventures fd</span></td>
+                                                    <td>
+                                                        <span class="cursor-pointer" data-toggle="tooltip"
+                                                            data-bs-original-title="California">CA</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-end">$140.00</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="odd">
+                                                    <td class="">2. 2</td>
+                                                    <td class="fixed-max-width">
+                                                        <span class="text-break text-uppercase">Annual Report
+                                                            Subscription</span>
+                                                    </td>
+                                                    <td><span class="text-break">Aaarc Ventures fd</span></td>
+                                                    <td>
+                                                        <span class="cursor-pointer" data-toggle="tooltip"
+                                                            data-bs-original-title="California">CA</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-end">$200.00</div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="even">
+                                                    <td></td>
+                                                    <td class="fw-bold fs-5">Total</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="text-end fw-bold fs-5">$635.50</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="subscription-footer border-top border-danger border-2">
+                                <div class="d-flex justify-content-end py-4">
+                                    <div class="fs-6">
+                                        Website: filejet.com <br>
+                                        Phone: +1(949)259-5955 </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Body Ends-->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end w-100 gap-3">
+                        <button type="button" data-bs-dismiss="modal"
+                            class="btn btn-info text-decoration-none font-weight-600">
+                            CLOSE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subscription Invoice View Modal End -->
 
     <!-- verify bank account Starts -->
     <div class="modal modal-right fade filter-slideout SOP-model" id="verifyBankAccount" tabindex="-1"
@@ -463,8 +668,7 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <label for="" class="text-uppercase">Verification Method</label>
-                    <div class="nav nav-tabs d-flex align-items-center bg-white p-3 rounded mb-4" id=""
-                        role="tablist">
+                    <div class="nav nav-tabs d-flex align-items-center bg-white p-3 rounded mb-4" id="" role="tablist">
                         <div class="nav-item col-6 d-flex flex-wrap align-items-center">
                             <input class="form-check-input active" checked type="radio" name="verfication_method"
                                 value="Descriptor Code" id="verifyMethod_2" data-bs-toggle="tab"
@@ -510,7 +714,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade show active bg-white p-3 rounded-2" id="descriptor_code" role="tabpanel">
+                        <div class="tab-pane fade show active bg-white p-3 rounded-2" id="descriptor_code"
+                            role="tabpanel">
                             <div class="">
                                 <p>Stripe sent a small deposit to this bank account. To verify this
                                     account, please confirm the 6-digit code in the statement
@@ -521,8 +726,8 @@
                                 <div class="form-group">
                                     <label for="descriptorCode" class=" form-label text-uppercase">Descriptor
                                         code</label>
-                                    <input type="text" maxlength="6" id="descriptorCode" class="form-control shadow-none"
-                                        placeholder="SMXXXX">
+                                    <input type="text" maxlength="6" id="descriptorCode"
+                                        class="form-control shadow-none" placeholder="SMXXXX">
                                 </div>
                             </div>
                         </div>
@@ -557,7 +762,7 @@
                 <div class="modal-header flex-wrap">
                     <div class="d-flex flex-column w-100 mb-0">
                         <div class="d-flex align-items-center">
-                            <span class="icon icon-entity-edit icon-md me-3"></span>
+                            <span class="icon icon-new-group icon-md me-3"></span>
                             <h4 class="fw-bold m-0">
                                 Edit Payment Method</h3>
                         </div>
@@ -567,24 +772,6 @@
                 <div class="modal-body">
                     <form class="" action="">
                         <div class="mb-4 p-3 bg-white rounded-2">
-                            <fieldset>
-                                <label class="form-label">Payment Method<span class="mandatory">*</span></label>
-                                <div class="custom-dropdown">
-                                    <select class="form-select pricing-method">
-                                        <option value="" disabled hidden>Select Payment Method</option>
-                                        <option value="American Express Amex 0005" selected>American Express Amex 0005
-                                        </option>
-                                        <option value="Bank of America Mastercard 6789">Bank of America Mastercard 6789
-                                        </option>
-                                        <option value="Discover Discover 1117">Discover Discover 1117</option>
-                                        <option value="Emmanuel Sims Visa 4242">Emmanuel Sims Visa 4242</option>
-                                        <option value="John Doe Visa 1214">John Doe Visa 1214</option>
-                                        <option value="Net 30 Terms">Net 30 Terms</option>
-                                    </select>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="mb-4 p-3 bg-white rounded-2">
                             <fieldset class="">
                                 <label for="" class="form-label">Nickname</label>
                                 <input type="text" class="form-control " id="" value="American Express Amex 0005"
@@ -592,116 +779,16 @@
                             </fieldset>
                         </div>
                         <div class="mb-4 p-3 bg-white rounded-2">
-                            <div class="">
-                                <div class="d-flex justify-content-between">
-                                    <span class="fw-bold">SELECT METHOD</span>
-                                    <div class="d-flex align-items-center" role="tablist">
-
-                                        <div class="form-check me-4 typecheckradio" role="presentation">
-                                            <input class="form-check-input active" name="method" id="achCheck_EIN"
-                                                checked="" data-bs-toggle="tab" data-bs-target="#en-ach-option-tab-pane"
-                                                role="tab" aria-controls="en-ach-option-tab-pane" aria-selected="true"
-                                                type="radio">
-                                            <label class="form-check-label rights-label" for="achCheck_EIN">ACH</label>
-                                        </div>
-                                        <div class="form-check typecheckradio" role="presentation">
-                                            <input class="form-check-input" name="method" id="creditCheck_EIN"
-                                                type="radio" data-bs-toggle="tab"
-                                                data-bs-target="#en-credit-option-tab-pane" role="tab"
-                                                aria-controls="en-credit-option-tab-pane" aria-selected="false">
-                                            <label class="form-check-label rights-label" for="creditCheck_EIN">Credit
-                                                Card</label>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!-- ACH Form -->
-                                <div class="tab-content shadow-none mt-4">
-                                    <div class="tab-pane fade mt-4 active show" id="en-ach-option-tab-pane"
-                                        role="tabpanel" aria-labelledby="en-ach-option-tab">
-                                        <fieldset class="mb-4">
-                                            <label class="form-label">Account Holder Name</label>
-                                            <input type="text" class="form-control" placeholder="Name" value="John Doe">
-                                        </fieldset>
-                                        <div
-                                            class="d-flex justify-content-between align-items-center upload-group w-100 mb-4">
-                                            <span class="fw-bold text-uppercase">ACCOUNT TYPE</span>
-                                            <div class="d-flex align-items-center flex-column">
-                                                <div class="d-flex">
-                                                    <div class="form-check me-4 typecheckradio">
-                                                        <input class="form-check-input no-checkbox" type="radio"
-                                                            id="ACtype_EIN" name="customArticles-27" checked>
-                                                        <label class="form-check-label rights-label "
-                                                            for="ACtype_EIN">Individual</label>
-                                                    </div>
-                                                    <div class="form-check typecheckradio">
-                                                        <input class="form-check-input yes-checkbox" type="radio"
-                                                            id="ACompany_EIN" name="customArticles-27">
-                                                        <label class="form-check-label rights-label "
-                                                            for="ACompany_EIN">
-                                                            Company</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <fieldset class="mb-4">
-                                            <div class="d-flex justify-content-between">
-                                                <label class="form-label">Routing Number</label>
-                                                <div
-                                                    class="icon icon-outline-info customTooltip p-0 m-0 position-relative">
-                                                    <div class="text-start tooltipText tooltipRight"> Please note
-                                                        that the
-                                                        Routing/Account numbers must have a minimum of 12 digits
-                                                        when adding. Your
-                                                        Routing/Account number is less than 12 digits, you may add
-                                                        zeros at the beginning
-                                                        of the Routing/Account number. (see example)</div>
-                                                </div>
-                                            </div>
-                                            <span>Also known as ABA Number</span>
-                                            <input type="text" class="form-control" value="110200012022"
-                                                placeholder="EX. 11000000">
-                                        </fieldset>
-                                        <fieldset>
-                                            <label class="form-label">Account Number</label>
-                                            <input type="text" class="form-control" value="473123131313"
-                                                placeholder="EX. 000123455678">
-                                        </fieldset>
-                                    </div>
-
-                                    <!-- Credit Card Form -->
-                                    <div class="tab-pane fade mt-4" id="en-credit-option-tab-pane" role="tabpanel"
-                                        aria-labelledby="en-credit-option-tab">
-                                        <fieldset class="mb-4">
-                                            <label class="form-label">Card Holder Name</label>
-                                            <input type="text" class="form-control" placeholder="Name"
-                                                value="Tushar Kaundal">
-                                        </fieldset>
-                                        <fieldset class="mb-4">
-                                            <label class="form-label">Card Details</label>
-                                            <input type="text" class="form-control" placeholder="**** **** **** 1111"
-                                                value="4242 1234 5561 1111">
-                                        </fieldset>
-                                        <div class="d-flex justify-content-between">
-                                            <fieldset class="w-50 me-2">
-                                                <label class="form-label">Expiry Date</label>
-                                                <input type="text" class="form-control" placeholder="MM/YY"
-                                                    value="10/32">
-                                            </fieldset>
-                                            <fieldset class="w-50 ms-2">
-                                                <label class="form-label">CVV</label>
-                                                <input type="password" class="form-control" placeholder="CVV"
-                                                    value="421">
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <fieldset class="">
+                                <label for="" class="form-label">Account Details</label>
+                                <input type="text" disabled class="form-control " id="" value="Visa 2345"
+                                    placeholder="Account Detail">
+                            </fieldset>
                         </div>
                         <div class="mb-4 p-3 bg-white rounded-2">
                             <label class="form-label">Available To</label>
                             <div class="custom-dropdown">
-                                <select class="form-select">
+                                <select class="form-select customSelect2">
                                     <option value="" disabled hidden>Group Name</option>
                                     <option value="All" selected>All</option>
                                     <option value="NovaTech Group">NovaTech Group</option>
@@ -743,7 +830,7 @@
                         </button>
                         <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="" data-bs-target="#"
                             data-bs-toggle="modal" data-bs-dismiss="modal">
-                            ADD
+                            UPDATE
                         </button>
                     </div>
                 </div>
@@ -817,7 +904,7 @@
                                                 <div class="d-flex">
                                                     <div class="form-check me-4 typecheckradio">
                                                         <input class="form-check-input no-checkbox" type="radio"
-                                                            id="ACtype_EIN" name="customArticles-27" checked>
+                                                            id="ACtype_EIN" name="customArticles-27">
                                                         <label class="form-check-label rights-label "
                                                             for="ACtype_EIN">Individual</label>
                                                     </div>
@@ -882,9 +969,9 @@
                         <div class="mb-4 p-3 bg-white rounded-2">
                             <label class="form-label">Available To</label>
                             <div class="custom-dropdown">
-                                <select class="form-select">
-                                    <option value="" selected disabled hidden>Group Name</option>
-                                    <option value="All">All</option>
+                                <select class="form-select customSelect2">
+                                    <option value="" disabled hidden>Group Name</option>
+                                    <option value="All" selected>All</option>
                                     <option value="NovaTech Group">NovaTech Group</option>
                                     <option value="ApexCore Group">ApexCore Group</option>
                                     <option value="Vertex Holdings">Vertex Holdings</option>
@@ -946,8 +1033,7 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <h6>Are you sure you want to remove this payment method? Any groups assigned to this payment method
-                        will revert to the account default payment method.</h6>
+                    <h6>Are you sure you want to remove this payment method?</h6>
                 </div>
                 <div class="modal-footer">
                     <div class="d-flex justify-content-between align-items-center w-100 m-0">
