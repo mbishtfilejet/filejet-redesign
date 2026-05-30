@@ -176,7 +176,7 @@ $(document).ready(function () {
                     data: "group_name", render: function (data, type, row) {
                         return `
                         <div class="d-flex align-items-start gap-2">
-                            <button type="button" class="dt-control ${!row?.entities?.length ? "no-control" : ""} m-0"></button>
+                            <button type="button" class="dt-control ${!row?.expanded_rows?.length ? "no-control" : ""} m-0"></button>
                             <div class="d-flex align-items-start gap-2" role="button">
                                 <span class="icon icon-folder-thin icon-md flex-shrink-0 m-0"></span>
                                 <span class="text-break">${data}</span>
@@ -306,7 +306,7 @@ $(document).ready(function () {
     });
 
     function formatExpandedRows(data, columnNames, rowId, row, cache, isCheckboxDisabled) {
-        return data.entities.map((value, index) => `
+        return data.expanded_rows.map((value, index) => `
                 <tr class="expanded-content" data-parent="${rowId}">
                     <td>
                         <div class="ms-4 d-flex align-items-start gap-2">
@@ -402,6 +402,9 @@ $(function () {
             url: "../data5.json",
             dataSrc: 'subscriptions_data',
         },
+        createdRow: function (row, data, dataIndex) {
+            $(row).attr('data-id', data.id).addClass("parent");
+        },
         scrollX: true,
         scrollY: false,
         columns: [
@@ -410,9 +413,18 @@ $(function () {
                     return `<input data-column="subsCheck" class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}">`;
                 }
             },
-            { data: "next_billing_period" },
+            {
+                data: "next_billing_period", render: function (data, type, row) {
+                    return `
+                    <div class="d-flex align-items-center gap-3">
+                        <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
+                        <span class="input-item text-break">${data}</span>
+                    </div>
+                `;
+                }
+            },
             { data: "group_name" },
-            { data: "entity_name" },
+            { data: null, defaultContent: "" },
             { data: "services" },
             {
                 data: "total", render: function (data) {
@@ -424,7 +436,7 @@ $(function () {
                     return `
                     <div class="d-flex align-items-center">
                         <span>${data}</span>
-                        ${row?.verified ? '' : '<span data-toggle="tooltip" aria-label="EXPIRED" data-bs-original-title="EXPIRED" class="icon icon-error icon-sm ms-1 m-0 flex-shrink-0"></span>'}
+                        ${row?.isVerified ? '' : '<span data-toggle="tooltip" aria-label="EXPIRED" data-bs-original-title="EXPIRED" class="icon icon-error icon-sm ms-1 m-0 flex-shrink-0"></span>'}
                     </div>                    
                     `;
                 }
@@ -433,19 +445,18 @@ $(function () {
                 data: null, render: function (data, type, row) {
                     return `
                     <div class="d-flex align-items-center gap-1">
-                            <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#changePaymentMethod"
-                                    class="icon icon-entity-edit me-1 me-md-2"></span>
-                            </span>
-                            <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" aria-label="VIEW" data-bs-original-title="VIEW" data-bs-toggle="modal" data-bs-target="#billingSubscriptionViewModal"
-                                    class="icon icon-eye me-1 me-md-2"></span>
-                            </span>
-                            
-                            <span role="button" tabindex="0">
-                                <span data-toggle="tooltip" aria-label="DOWNLOAD" data-bs-original-title="DOWNLOAD"
-                                    class="icon icon-download-dark me-1 me-md-2"></span> 
-                            </span>
+                        <span role="button" tabindex="0"> 
+                            <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#changePaymentMethod"
+                                class="icon icon-entity-edit me-1 me-md-2"></span>
+                        </span>
+                        <span role="button" tabindex="0"> 
+                            <span data-toggle="tooltip" aria-label="VIEW" data-bs-original-title="VIEW" data-bs-toggle="modal" data-bs-target="#billingSubscriptionViewModal"
+                                class="icon icon-eye me-1 me-md-2"></span>
+                        </span>
+                        <span role="button" tabindex="0">
+                            <span data-toggle="tooltip" aria-label="DOWNLOAD" data-bs-original-title="DOWNLOAD"
+                                class="icon icon-download-dark me-1 me-md-2"></span> 
+                        </span>
                     </div>
                     `
                 }
@@ -457,9 +468,66 @@ $(function () {
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
     }
 
-    $('#subscription-table').DataTable(tableOptions)
+    const table1 = $('#subscription-table').DataTable(tableOptions)
 
-    multiSelectRowCheckbox($('#subscription-table'), ".changePaymentMethod")
+    multiSelectRowCheckbox($('#subscription-table'), true, "entity_name", ".changePaymentMethod");
+
+    $(".subsTable tbody").on("click", "td .dt-control", function () {
+        const tr = $(this).closest("tr");
+        const table = tr.closest('table');
+        const td = $(this).closest('td')
+        const dataTable = table.DataTable();
+        const row = dataTable.row(tr);
+
+        const cacheCheckBox = table?.data('cacheCheckBox');
+
+        const columnNames = dataTable.columns().header().toArray().slice(0, 1).map(th => $(th).attr('column-id'));
+
+        const rowId = row.data().id;
+
+        if (tr.hasClass("expanded-row")) {
+            table.find(`tr.expanded-content[data-parent="${rowId}"]`).remove();
+            tr.removeClass("expanded-row");
+        } else {
+            let expandedRows = formatExpandedRows(row.data(), columnNames, rowId, tr, cacheCheckBox);
+            tr.after(expandedRows);
+            tr.addClass("expanded-row");
+        }
+    });
+
+
+    function formatExpandedRows(data, columnNames, rowId, row, cache) {
+        return data.expanded_rows.map((data, index, arr) => `
+          <tr class="expanded-content ${index === arr.length - 1 ? 'last-expanded-content' : ''}" data-parent="${rowId}">
+              ${columnNames.map(column => `<td data-value="${data.entity_name}"> 
+                        <input data-column="${column}" class="form-check-input row-select" type="checkbox" ${row.find(`.row-select[data-column="${column}"]`).is(":checked") || cache.getChildValue(rowId, column, data.entity_name) ? "checked" : ""} id=""></div>
+                    </td>`).join("")
+            }
+              <td>${data.next_billing_period}</td>
+              <td>${data.group_name}</td>
+              <td>${data.entity_name}</td>
+              <td>${data.services}</td>
+              <td>${formatCurrency(data.total)}</td>
+              <td>${data.payment_method}</td>
+              <td>
+                <div class="d-flex align-items-center">                   
+                    <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#changePaymentMethod">
+                        <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" 
+                            class="icon icon-entity-edit me-1">
+                        </span> 
+                    </span>
+                </div>
+              </td>
+          </tr>
+      `).join("");
+    }
+
+    // Remove expand-row on sorting 
+    table1.on('order.dt draw.dt', function () {
+        $(this).find(".expanded-row").each((_, element) => {
+            element.classList.remove("expanded-row");
+        });
+    })
 
 
     const tableOptions_1 = {
@@ -493,14 +561,14 @@ $(function () {
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
 
-                            ${row.available_to 
-                                ? ''
-                                : 
-                                `<span role="button" tabindex="0">
+                            ${row.available_to
+                            ? ''
+                            :
+                            `<span role="button" tabindex="0">
                                     <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
                                         class="icon icon-entity-delete me-1 me-md-2"></span> 
                                 </span>`
-                            }
+                        }
                     </div>
                     `
                 }
