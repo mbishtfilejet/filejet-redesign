@@ -11,7 +11,7 @@ function highlightTabs(tabparent) {
     })
 }
 
-function multiSelectRowCheckbox(tableContainer, cta_class = "") {
+function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, key_selected = "", cta_class = "") {
 
     // row checkbox event handle
     const cacheCheckBox = cacheChildCheckboxState();
@@ -29,30 +29,33 @@ function multiSelectRowCheckbox(tableContainer, cta_class = "") {
         const isChecked = $(this).prop("checked");
 
         const parentId = row.data('id') || row.data('parent');
-
+        
         if (row.hasClass('expanded-content')) {
             cacheCheckBox.setChildValue(parentId, column, columnValue, isChecked)
         }
-
+        
         if (row.hasClass('expanded-row') || row.hasClass('parent')) {
             const rowData = dataTable.row(row).data();
-
+            
             if (!row.find('.row-select').prop('indeterminate')) {
-                rowData.entities.forEach((value) => {
-                    cacheCheckBox.setChildValue(parentId, column, value, isChecked)
+                console.log("saved")
+                rowData.expanded_rows.forEach((value) => {
+                    let correctValue = typeof (value) !== 'object' && value === null ? value : value[key_selected]
+                    cacheCheckBox.setChildValue(parentId, column, correctValue, isChecked)
                 })
             }
         }
-
-
+        
+        
         if (row.hasClass('expanded-row')) {
             toggleChildren(isChecked, parentId, column);
         }
-
+        
         if (row.hasClass('expanded-content')) {
             updateParent(parentId, column);
         }
         updateAllState(column, checkbox, isChecked);
+        console.log(cacheCheckBox.cache)
     })
 
     //update All State Checkbox
@@ -100,7 +103,6 @@ function multiSelectRowCheckbox(tableContainer, cta_class = "") {
     // update children checkbox
     function toggleChildren(isChecked, parentId, column) {
         if (!parentId) return;
-
         const children = tableContainer.find(`tr.expanded-content[data-parent="${parentId}"]:not(.check-disabled)`);
 
         if (!children.length) return;
@@ -141,19 +143,19 @@ function multiSelectRowCheckbox(tableContainer, cta_class = "") {
         if (checkedCheckbox === 0) {
             parentCheckbox.prop({
                 checked: false,
-                indeterminate: false
+                ...(no_indeterminate_phase ? {} : { indeterminate: false })
             });
 
         } else if (checkedCheckbox === totalCheckbox) {
             parentCheckbox.prop({
                 checked: true,
-                indeterminate: false
+                ...(no_indeterminate_phase ? {} : { indeterminate: false })
             });
 
         } else {
             parentCheckbox.prop({
                 checked: false,
-                indeterminate: true
+                ...(no_indeterminate_phase ? {} : { indeterminate: true })
             });
 
         }
@@ -230,7 +232,8 @@ function cacheChildCheckboxState() {
     return {
         setChildValue,
         getChildValue,
-        deleteKeyValue
+        deleteKeyValue,
+        cache
     }
 }
 
