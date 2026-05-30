@@ -1588,12 +1588,6 @@ function initTagSelect(context) {
       dropdownParent: context,
       createTag: function (params) {
         const term = params.term.trim();
-
-        // Check if term already exists 
-        const exists = tagSelect.find('option[value]:not([value=""]').filter(function () {
-          return $(this).text().toLowerCase().includes(term.toLowerCase());
-        }).length;
-        if (exists) return null;
         return { id: term, text: term, newTag: true };
       },
       templateResult: function (data) {
