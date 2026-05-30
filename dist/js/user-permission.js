@@ -416,9 +416,9 @@ $(function () {
             {
                 data: "next_billing_period", render: function (data, type, row) {
                     return `
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-1">
                         <button class="dt-control ${!row?.expanded_rows ? "no-control" : ""} m-0" role="button"></button>
-                        <span class="input-item text-break">${data}</span>
+                        <span class="input-item text-break lh-sm">${data}</span>
                     </div>
                 `;
                 }
@@ -503,7 +503,7 @@ $(function () {
                         <input data-column="${column}" class="form-check-input row-select" type="checkbox" ${row.find(`.row-select[data-column="${column}"]`).is(":checked") || cache.getChildValue(rowId, column, data.entity_name) ? "checked" : ""} id=""></div>
                     </td>`).join("")
             }
-              <td>${data.next_billing_period}</td>
+              <td><span class="d-inline-block text-break" style="margin-left:17px;">${data.next_billing_period}</span></td>
               <td>${data.group_name}</td>
               <td>${data.entity_name}</td>
               <td>${data.services}</td>
