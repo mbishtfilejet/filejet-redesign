@@ -37,6 +37,72 @@
         }
 
         .subsTable .dataTables_wrapper {
+            .dataTable tr {
+                min-height: 0;
+                transition: background-color 0.5s ease-in-out, padding 0.5s ease-in-out;
+
+                .dt-control {
+                    color: transparent;
+                    width: 1rem;
+                    height: 0.85rem;
+                    border: none;
+                    background-color: transparent;
+                    background-image: url("../../../../dist/images/icons/right-angle-table.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    transition: transform 0.2s ease-in-out;
+                    cursor: pointer;
+
+                    &.no-control {
+                        visibility: hidden;
+                        pointer-events: none;
+                        cursor: none;
+                    }
+                }
+
+                &.expanded-row {
+                    background-color: #5B5559 !important;
+                    box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
+                    transition: background-color 0.5s ease-in-out;
+
+                    td {
+                        color: white !important;
+
+                        a {
+                            color: white !important;
+                        }
+                    }
+
+                    .dt-control {
+                        filter: contrast(0) brightness(2);
+                        transform: rotate(90deg);
+                    }
+
+                    .icon-entity-edit,
+                    .icon-download-dark,
+                    .icon-eye {
+                        filter: contrast(0) brightness(2);
+                    }
+                }
+
+                &.expanded-content {
+                    td {
+                        &:first-child {
+                            border-left: 2px solid #5B5559;
+                        }
+
+                        &:last-child {
+                            border-right: 2px solid #5B5559;
+                        }
+                    }
+
+                    &.last-expanded-content {
+                        box-shadow: inset 0 -2px #5B5559;
+                    }
+                }
+            }
+
             tr {
 
                 th:first-child,
@@ -49,9 +115,13 @@
                 }
 
                 th:nth-child(3),
-                th:nth-child(4),
                 th:nth-child(7) {
                     min-width: 150px;
+                }
+
+
+                th:nth-child(4) {
+                    min-width: 250px;
                 }
 
                 th:nth-child(5),
@@ -59,7 +129,8 @@
                     min-width: 60px;
                 }
 
-                th:last-child,td:last-child {
+                th:last-child,
+                td:last-child {
                     min-width: 75px;
                     width: 75px !important;
                 }
@@ -75,7 +146,7 @@
                     min-width: 150px;
                 }
 
-                th:nth-child(3){
+                th:nth-child(3) {
                     min-width: 80px !important;
                     width: 80px !important;
                 }
