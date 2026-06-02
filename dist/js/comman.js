@@ -38,9 +38,8 @@ function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, 
             const rowData = dataTable.row(row).data();
             
             if (!row.find('.row-select').prop('indeterminate')) {
-                console.log("saved")
                 rowData.expanded_rows.forEach((value) => {
-                    let correctValue = typeof (value) !== 'object' && value === null ? value : value[key_selected]
+                    let correctValue = typeof (value) !== 'object' && value !== null ? value : value[key_selected]
                     cacheCheckBox.setChildValue(parentId, column, correctValue, isChecked)
                 })
             }
@@ -55,7 +54,6 @@ function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, 
             updateParent(parentId, column);
         }
         updateAllState(column, checkbox, isChecked);
-        console.log(cacheCheckBox.cache)
     })
 
     //update All State Checkbox
