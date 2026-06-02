@@ -268,9 +268,10 @@
                               </a>
                               <ul class="dropdown-menu" data-bs-popper="static">
                                  <li>
-                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom" href="/account/account-settings.html">
+                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                       href="/account/account-settings.html">
                                        <span class="icon icon-accountsettings me-4"></span>
-                                        Settings
+                                       Settings
                                     </a>
                                  </li>
                                  <li>
@@ -298,15 +299,89 @@
                   <!-- Card Start -->
                   <div class="row mt-4">
                      <div class="col-12 mt-2">
-                        <div class="row px-2 ">
-                           <div class="col-12 col-lg-11 flex-grow-1 px-1 mb-2 search-table-col">
+                        <div class="row g-2">
+                           <div class="col-12 col-md-7 flex-grow-1 mb-2 search-table-col">
                               <div
-                                 class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2">
+                                 class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
                                  <span class="icon icon-search-grey icon-sm opacity-25"></span>
-                                 <input type="text" placeholder="Search" class="text-placeholder-d2 border-0 p-0 w-100">
+                                 <input type="text" class="custom-search-input border-0 p-0 w-100" placeholder="Search">
                               </div>
                            </div>
-                           <div class="col-lg-auto export-table-col px-1 mb-2">
+
+                           <div class="filter2-dropdown col-12 col-md-3 flex-grow-1 tags-table-col mb-2 dropdown">
+                              <div
+                                 class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg "
+                                 id="tagContainer" data-bs-toggle="dropdown" aria-expanded="false" tabindex="0">
+                              </div>
+                              <ul class="dropdown-menu" id="tagDropdown">
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Annual report">
+                                       Annual report</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Dissolution">
+                                       Dissolution</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="SOP">
+                                       SOP</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2"
+                                          data-value="Beneficial Ownership Information Report">
+                                       Beneficial Ownership Information Report</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Good standing">
+                                       Good standing</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Amendments">
+                                       Amendments</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Business License">
+                                       Business License</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2"
+                                          data-value="DBA: Doing Business As">
+                                       DBA: Doing Business As</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Formations">
+                                       Formations</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="EIN">
+                                       EIN</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Restate">
+                                       Restate</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2"
+                                          data-value="Certificate of Cancellation">
+                                       Certificate of Cancellation</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="Merger">
+                                       Merger</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2" data-value="25102f">
+                                       25102f</label>
+                                 </li>
+                                 <li><label class="dropdown-item"><input type="checkbox"
+                                          class="form-check-input tag-checkbox me-2"
+                                          data-value="Certificate of Correction">
+                                       Certificate of Correction</label>
+                                 </li>
+                              </ul>
+                           </div>
+
+                           <div class="col-md-auto export-table-col px-1 mb-2">
                               <div class="border border-1 rounded-2 shadow-sm export-csv-col px-2 h-100 bg-white">
                                  <a href="#"
                                     class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
@@ -323,6 +398,7 @@
                                        <tr>
                                           <th>Group Name</th>
                                           <th>Group ID</th>
+                                          <th>Tags</th>
                                           <th>Primary Contact</th>
                                           <th>Entities</th>
                                           <th>Registration</th>
@@ -816,12 +892,6 @@
                         <input type="text" class="form-control " id="" placeholder="External Ref #">
                      </fieldset>
                   </div> -->
-                  <div class="p-3 bg-white rounded-2">
-                     <fieldset class="">
-                        <label for="" class="form-label">Confirmation Email</label>
-                        <input type="email" class="form-control " id="" placeholder="Confirmation Email">
-                     </fieldset>
-                  </div>
                </form>
             </div>
             <!-- Modal Body End -->
@@ -2417,6 +2487,7 @@
    <!-- Scripts start-->
    <script src="dist/js/plugins.min.js"></script>
    <script src="dist/js/custom.min.js"></script>
+   <script src="dist/js/dashboard-v2_document.js"></script>
    <script src="dist/js/service-order-process.js"></script>
    <script src="dist/js/dashboard-v2-groups.js"></script>
    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
