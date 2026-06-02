@@ -16,6 +16,11 @@ $(document).ready(function () {
                 }
             },
             { data: "group_id" },
+            {
+                data: "tags", render: function (data, type, row) {
+                    return renderTagsOnRow(data)
+                }
+            },
             { data: "primary_contact" },
             { data: "entities" },
             { data: "registrations" },
@@ -41,13 +46,21 @@ $(document).ready(function () {
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
     }
 
-    $("#group-listing-table").DataTable(tableOptions);
+    const groupListTable = $("#group-listing-table").DataTable(tableOptions);
 
     const groupTagwrapper = $('.group-tags-container')
 
     if (groupTagwrapper.length) {
         initTagSelect(groupTagwrapper)
     }
+
+    groupListTable.on('column-sizing.dt draw.dt', function () {
+        applyTagOverflow(true);
+    })
+
+    $(window).on('resize', function () {
+        groupListTable.columns.adjust().draw();
+    });
 })
 
 //group entities table initializtion code
@@ -367,7 +380,7 @@ $(document).ready(function () {
         });
     })
 
-    table.on('column-sizing.dt', function () {
+    table.on('column-sizing.dt draw.dt', function () {
         applyTagOverflow(true);
     })
 
