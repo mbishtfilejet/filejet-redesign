@@ -292,6 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "reqselectEntityContainer3": return "Select Entity";
         case "entityDetailOwnershipContainer": return "As of Today";
         case "entityDetailDirectorContainer": return "As of Today";
+        case "tagContainer": return "Filter By Tag";
         default: return "Status";
       }
     }
@@ -325,7 +326,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ["reqselectEntityContainer", "reqselectEntityDropdown", "reqselectEntitySearch", "reqselectEntity-checkbox"],
     ["reqselectEntityContainer2", "reqselectEntityDropdown2", "reqselectEntitySearch2", "reqselectEntity-checkbox2"],
     ["reqselectEntityContainer3", "reqselectEntityDropdown3", "reqselectEntitySearch3", "reqselectEntity-checkbox3"],
-    ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]]
+    ["statusContainer", "statusDropdown", "statusSearch", "status-checkbox", "statusSelectAll", ["Overdue", "Upcoming"]],
+    ["tagContainer", "tagDropdown", "tagSearch", "tag-checkbox"],
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));
