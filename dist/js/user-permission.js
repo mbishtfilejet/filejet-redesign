@@ -508,7 +508,12 @@ $(function () {
               <td>${data.entity_name}</td>
               <td>${data.services}</td>
               <td>${formatCurrency(data.total)}</td>
-              <td>${data.payment_method}</td>
+              <td>
+                <div class="d-flex align-items-center">
+                        <span>${data.payment_method}</span>
+                        ${data.isVerified ? '' : '<span data-toggle="tooltip" aria-label="EXPIRED" data-bs-original-title="EXPIRED" class="icon icon-error icon-sm ms-1 m-0 flex-shrink-0"></span>'}
+                    </div> 
+              </td>
               <td>
                 <div class="d-flex align-items-center">                   
                     <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#changePaymentMethod">
@@ -551,9 +556,8 @@ $(function () {
                 }
             },
             {
-                data: null, render: function (data, type, row) {
+                data: null, render: function (data, type, row, meta) {
                     if (row.account === "Terms") return '';
-
                     return `
                     <div class="d-flex align-items-center">
                             <span role="button" tabindex="0"> 
@@ -561,13 +565,13 @@ $(function () {
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
 
-                            ${row.available_to
-                            ? ''
-                            :
+                            ${meta.row === 4 // just for reference to show remove icon , actually functionlity will be based on  that payment method is not assign to any subscription**
+                            ?
                             `<span role="button" tabindex="0">
-                                    <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
-                                        class="icon icon-entity-delete me-1 me-md-2"></span> 
+                                <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
+                                class="icon icon-entity-delete me-1 me-md-2"></span> 
                                 </span>`
+                            : ''
                         }
                     </div>
                     `
