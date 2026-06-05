@@ -1789,6 +1789,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 $(document).on("shown.bs.collapse", ".add-tag-container", function () {
   const tagSelectElement = $(this).find('.tagselect');
+  // Close the already opened select2 dropdown
+  $('.select2-container--open').each(function () {
+    const selectId = $(this).prev('select').attr('id');
+    if (selectId) {
+      $('#' + selectId).select2('close');
+    }
+  });
 
   if (!tagSelectElement.length || !tagSelectElement.data("select2")) return;
 
