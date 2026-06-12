@@ -609,87 +609,33 @@
                   <div class="payment-section">
                      <div class="mb-4 p-3 bg-white rounded-2">
                         <fieldset>
-                           <label class="form-label">Default Payment Method<span class="mandatory">*</span></label>
+                           <label class="form-label">Payment Method<span class="mandatory">*</span></label>
                            <div class="custom-dropdown">
                               <select class="form-select pricing-method">
-                                 <option value="account-default" data-full-text="Pay Later">Pay Later</option>
-                                 <option value="group-default" selected>Group Default (Visa 1111)</option>
-                                 <option value="on-file">On File</option>
+                                 <option value="group-default" selected>American Express Amex 0005 Exp 05/30 (Default)
+                                 </option>
+                                 <option value="account-default">Bank of America Mastercard 6789 Exp 06/31 (Default)
+                                 </option>
+                                 <option value="Emmanuel Sims Visa 4242">Emmanuel Sims Visa 4242 Exp 10/29</option>
+                                 <option value="John Doe Visa 1214">John Doe Visa 1214 Exp 02/28</option>
+                                 <!-- <option value="bill-to-client">Bill To Client</option> -->
                                  <option value="add-new">Add New</option>
                               </select>
                            </div>
                         </fieldset>
-                        <div class="on-file-content mt-4 border rounded-2" style="display: none;">
-                           <div>
-                              <div class="payment-card d-flex odd border-bottom">
-                                 <div class="d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox">
-                                    <div class="ms-2 d-flex">
-                                       <div class="methodiv">Mastercard </div>
-                                       <div class="methodcard">Mastercard ...4444</div>
-                                    </div>
-                                 </div>
-                                 <div class="d-flex align-items-start  defaultdiv">
-                                    <span class="btn btn-outline-success btn-sm">Default</span>
-                                 </div>
-                              </div>
-                              <!-- Payment Method 2 -->
-                              <div class="container p-0 d-flex flex-column even border-bottom">
-                                 <div class="payment-card">
-                                    <div class="d-flex align-items-center">
-                                       <input class="form-check-input" type="checkbox" disabled="">
-                                       <div class="ms-2 d-flex">
-                                          <div class="methodiv text-disabled">ACH Payment</div>
-                                          <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
-                                       </div>
-                                    </div>
-
-                                    <div class="d-flex align-items-start defaultdiv" data-toggle="tooltip"
-                                       title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
-                                       <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
-                                    </div>
-                                 </div>
-                              </div>
-
-                              <!-- Payment Method 2 -->
-                              <div class="container p-0 d-flex flex-column odd border-bottom">
-                                 <div class="payment-card">
-                                    <div class="d-flex align-items-center">
-                                       <input class="form-check-input" type="checkbox">
-                                       <div class="ms-2 d-flex">
-                                          <div class="methodiv">ACH Payment</div>
-                                          <div class="methodcard">Stripe Test Bank ...4786</div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-
-                              <!-- Payment Method 3 -->
-                              <div class="payment-card d-flex even ">
-                                 <div class="d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox">
-                                    <div class="ms-2 d-flex">
-                                       <div class="methodiv">Card 2</div>
-                                       <div class="methodcard">Mastercard ...1111</div>
-                                    </div>
-                                 </div>
-                              </div>
-
-
-
-                           </div>
-                        </div>
                         <div class="add-new-content mt-4" style="display: none;">
                            <div class="d-flex justify-content-between">
                               <span class="fw-bold">SELECT METHOD</span>
                               <div class="d-flex align-items-center">
                                  <div class="form-check me-4">
-                                    <input class="form-check-input ach-option" id="achCheck" type="checkbox" checked>
-                                    <label class="form-check-label rights-label" for="achCheck">ACH</label>
+                                    <input class="form-check-input ach-option" id="achCheck_ENS" type="checkbox"
+                                       checked>
+                                    <label class="form-check-label rights-label" for="achCheck_ENS">ACH</label>
                                  </div>
                                  <div class="form-check">
-                                    <input class="form-check-input credit-option" id="creditCheck" type="checkbox">
-                                    <label class="form-check-label rights-label" for="creditCheck">Credit Card</label>
+                                    <input class="form-check-input credit-option" id="creditCheck_ENS" type="checkbox">
+                                    <label class="form-check-label rights-label" for="creditCheck_ENS">Credit
+                                       Card</label>
                                  </div>
                               </div>
 
@@ -732,11 +678,30 @@
                                  <span>Also known as ABA Number</span>
                                  <input type="text" class="form-control" placeholder="EX. 11000000">
                               </fieldset>
-                              <fieldset>
+                              <fieldset class="mb-4">
                                  <label class="form-label">Account Number</label>
                                  <input type="text" class="form-control" placeholder="EX. 000123455678">
                               </fieldset>
+                              <fieldset>
+                                 <label for="" class="form-label">Available To</label>
+                                 <div class="d-flex justify-content-between">
+                                    <span class="form-check">
+                                       <input type="radio" class="form-check-input" name="available_to" id="" checked>
+                                       <label for="" class="rights-label">All Groups</label>
+                                    </span>
+                                    <span class="form-check">
+                                       <input type="radio" class="form-check-input" name="available_to" id="">
+                                       <label for="" class="rights-label">This Group Only</label>
+                                    </span>
+                                    <span class="form-check hidden">
+                                    </span>
+                                 </div>
+                              </fieldset>
                               <div class="mt-4">
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">Nickname</label>
+                                    <input type="text" class="form-control " id="" placeholder="Nickname">
+                                 </fieldset>
                                  <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3"
                                     id="officeraddBtn">
                                     SAVE
@@ -754,7 +719,7 @@
                                  <label class="form-label">Card Details</label>
                                  <input type="text" class="form-control" placeholder="**** **** **** 1111">
                               </fieldset>
-                              <div class="d-flex justify-content-between">
+                              <div class="d-flex justify-content-between mb-4">
                                  <fieldset class="w-50 me-2">
                                     <label class="form-label">Expiry Date</label>
                                     <input type="text" class="form-control" placeholder="MM/YY">
@@ -764,11 +729,56 @@
                                     <input type="text" class="form-control" placeholder="CVV">
                                  </fieldset>
                               </div>
-                              <div class="mt-4">
+                              <fieldset>
+                                 <label for="">Available To</label>
+                                 <div class="d-flex justify-content-between">
+                                    <span class="form-check">
+                                       <input type="radio" class="form-check-input toggle-radio"
+                                          data-target="card-form-save" name="card_available_to" id="" checked>
+                                       <label for="" class="rights-label">All Groups</label>
+                                    </span>
+                                    <span class="form-check">
+                                       <input type="radio" class="form-check-input toggle-radio"
+                                          data-target="card-form-save" name="card_available_to" id="">
+                                       <label for="" class="rights-label">This Group Only</label>
+                                    </span>
+                                    <span class="form-check">
+                                       <input type="radio" class="form-check-input toggle-radio"
+                                          name="card_available_to" data-target="card-form-not-save" id="">
+                                       <label for="" class="rights-label">Don't Save</label>
+                                    </span>
+                                 </div>
+                              </fieldset>
+                              <div class="mt-4 toggle-form" id="card-form-save">
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">Nickname</label>
+                                    <input type="text" class="form-control " id="" placeholder="Nickname">
+                                 </fieldset>
                                  <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3"
                                     id="officeraddBtn">
                                     SAVE
                                  </button>
+                              </div>
+                              <div class="toggle-form" id="card-form-not-save">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="bill-to-client mt-4" style="display: none;">
+                           <div class="d-flex justify-content-between align-items-center upload-group w-100">
+                              <span class="fw-bold text-uppercase">CLIENT APPROVAL REQUIRED</span>
+                              <div class="d-flex align-items-center flex-column">
+                                 <div class="d-flex">
+                                    <div class="form-check me-4 typecheckradio">
+                                       <input class="form-check-input no-checkbox" type="radio" id="CL_YES"
+                                          name="customArticles_CL_2">
+                                       <label class="form-check-label rights-label " for="CL_YES">Yes</label>
+                                    </div>
+                                    <div class="form-check typecheckradio">
+                                       <input class="form-check-input yes-checkbox" type="radio" id="CL_NO"
+                                          name="customArticles_CL_2">
+                                       <label class="form-check-label rights-label " for="CL_NO">No</label>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
@@ -1288,89 +1298,31 @@
                <form class="payment-section">
                   <div class="mb-4 p-3 bg-white rounded-2">
                      <fieldset>
-                        <label class="form-label">Payment Method<span class="mandatory">*</span></label>
+                        <label class="form-label">Payment Method</label>
                         <div class="custom-dropdown">
                            <select class="form-select pricing-method">
-                              <option value="account-default">Account Default (Visa 1111)</option>
-                              <option value="on-file">On File</option>
+                              <option value="group-default" selected>American Express Amex 0005 Exp 05/30 (Default)
+                              </option>
+                              <option value="account-default">Bank of America Mastercard 6789 Exp 06/31 (Default)
+                              </option>
+                              <option value="Emmanuel Sims Visa 4242">Emmanuel Sims Visa 4242 Exp 10/29</option>
+                              <option value="John Doe Visa 1214">John Doe Visa 1214 Exp 02/28</option>
+                              <!-- <option value="bill-to-client">Bill To Client</option> -->
                               <option value="add-new">Add New</option>
-                              <option value="bill-to-client">Bill To Client</option>
                            </select>
                         </div>
                      </fieldset>
-                     <div class="on-file-content mt-4 border rounded-2" style="display: none;">
-                        <div>
-                           <div class="payment-card d-flex odd border-bottom">
-                              <div class="d-flex align-items-center">
-                                 <div class="ms-2 d-flex">
-                                    <div class="methodiv">Mastercard </div>
-                                    <div class="methodcard">Mastercard ...4444</div>
-                                 </div>
-                              </div>
-                              <div class="d-flex align-items-start defaultdiv">
-                                 <span class="btn btn-outline-success btn-sm">Default</span>
-                              </div>
-                           </div>
-                           <!-- Payment Method 2 -->
-                           <div class="container p-0 d-flex flex-column even border-bottom">
-                              <div class="payment-card">
-                                 <div class="d-flex align-items-center">
-                                    <div class="ms-2 d-flex">
-                                       <div class="methodiv text-disabled">ACH Payment</div>
-                                       <div class="methodcard  text-disabled">Stripe Test Bank ...6789</div>
-                                    </div>
-                                 </div>
-
-                                 <div class="d-flex align-items-start defaultdiv" data-toggle="tooltip"
-                                    title="In order to process this order you may be required to verify the ACH account from the accounts Billing section.">
-                                    <a class="btn btn-outline-primary btn-sm verifybtn">Unverified</a>
-                                 </div>
-
-
-                              </div>
-                           </div>
-
-                           <!-- Payment Method 2 -->
-                           <div class="container p-0 d-flex flex-column odd border-bottom">
-                              <div class="payment-card">
-                                 <div class="d-flex align-items-center">
-                                    <div class="ms-2 d-flex">
-                                       <div class="methodiv">ACH Payment</div>
-                                       <div class="methodcard">Stripe Test Bank ...4786</div>
-                                    </div>
-                                 </div>
-                              </div>
-
-                           </div>
-
-                           <!-- Payment Method 3 -->
-                           <div class="payment-card d-flex even ">
-                              <div class="d-flex align-items-center">
-                                 <div class="ms-2 d-flex">
-                                    <div class="methodiv">Card 2</div>
-                                    <div class="methodcard">Mastercard ...1111</div>
-                                 </div>
-                              </div>
-                              <div class="d-flex align-items-start defaultdiv">
-                              </div>
-
-                           </div>
-
-
-
-                        </div>
-                     </div>
                      <div class="add-new-content mt-4" style="display: none;">
                         <div class="d-flex justify-content-between">
                            <span class="fw-bold">SELECT METHOD</span>
                            <div class="d-flex align-items-center">
                               <div class="form-check me-4">
-                                 <input class="form-check-input ach-option" id="achCheck" type="checkbox" checked>
-                                 <label class="form-check-label rights-label" for="achCheck">ACH</label>
+                                 <input class="form-check-input ach-option" id="achCheck_ENS" type="checkbox" checked>
+                                 <label class="form-check-label rights-label" for="achCheck_ENS">ACH</label>
                               </div>
                               <div class="form-check">
-                                 <input class="form-check-input credit-option" id="creditCheck" type="checkbox">
-                                 <label class="form-check-label rights-label" for="creditCheck">Credit Card</label>
+                                 <input class="form-check-input credit-option" id="creditCheck_ENS" type="checkbox">
+                                 <label class="form-check-label rights-label" for="creditCheck_ENS">Credit Card</label>
                               </div>
                            </div>
 
@@ -1412,11 +1364,30 @@
                               <span>Also known as ABA Number</span>
                               <input type="text" class="form-control" placeholder="EX. 11000000">
                            </fieldset>
-                           <fieldset>
+                           <fieldset class="mb-4">
                               <label class="form-label">Account Number</label>
                               <input type="text" class="form-control" placeholder="EX. 000123455678">
                            </fieldset>
+                           <fieldset>
+                              <label for="" class="form-label">Available To</label>
+                              <div class="d-flex justify-content-between">
+                                 <span class="form-check">
+                                    <input type="radio" class="form-check-input" name="available_to_1" id="" checked>
+                                    <label for="" class="rights-label">All Groups</label>
+                                 </span>
+                                 <span class="form-check">
+                                    <input type="radio" class="form-check-input" name="available_to_1" id="">
+                                    <label for="" class="rights-label">This Group Only</label>
+                                 </span>
+                                 <span class="form-check hidden">
+                                 </span>
+                              </div>
+                           </fieldset>
                            <div class="mt-4">
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label">Nickname</label>
+                                 <input type="text" class="form-control " id="" placeholder="Nickname">
+                              </fieldset>
                               <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
                                  SAVE
                               </button>
@@ -1433,7 +1404,7 @@
                               <label class="form-label">Card Details</label>
                               <input type="text" class="form-control" placeholder="**** **** **** 1111">
                            </fieldset>
-                           <div class="d-flex justify-content-between">
+                           <div class="d-flex justify-content-between mb-4">
                               <fieldset class="w-50 me-2">
                                  <label class="form-label">Expiry Date</label>
                                  <input type="text" class="form-control" placeholder="MM/YY">
@@ -1443,14 +1414,39 @@
                                  <input type="text" class="form-control" placeholder="CVV">
                               </fieldset>
                            </div>
-                           <div class="mt-4">
+                           <fieldset>
+                              <label for="">Available To</label>
+                              <div class="d-flex justify-content-between">
+                                 <span class="form-check">
+                                    <input type="radio" class="form-check-input toggle-radio"
+                                       data-target="card-form-save_1" name="card_available_to_1" id="" checked>
+                                    <label for="" class="rights-label">All Groups</label>
+                                 </span>
+                                 <span class="form-check">
+                                    <input type="radio" class="form-check-input toggle-radio"
+                                       data-target="card-form-save_1" name="card_available_to_1" id="">
+                                    <label for="" class="rights-label">This Group Only</label>
+                                 </span>
+                                 <span class="form-check">
+                                    <input type="radio" class="form-check-input toggle-radio" name="card_available_to_1"
+                                       data-target="card-form-not-save_1" id="">
+                                    <label for="" class="rights-label">Don't Save</label>
+                                 </span>
+                              </div>
+                           </fieldset>
+                           <div class="mt-4 toggle-form" id="card-form-save_1">
+                              <fieldset class="mb-4">
+                                 <label for="" class="form-label">Nickname</label>
+                                 <input type="text" class="form-control " id="" placeholder="Nickname">
+                              </fieldset>
                               <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3" id="officeraddBtn">
                                  SAVE
                               </button>
                            </div>
+                           <div class="toggle-form" id="card-form-not-save_1">
+                           </div>
                         </div>
                      </div>
-
                      <div class="bill-to-client mt-4" style="display: none;">
                         <div class="d-flex justify-content-between align-items-center upload-group w-100">
                            <span class="fw-bold text-uppercase">CLIENT APPROVAL REQUIRED</span>
