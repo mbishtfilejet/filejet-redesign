@@ -403,6 +403,10 @@ $(document).ready(function () {
       ...(!isExternalDashboard ? [{ data: "dbas" }, { data: "business_licenses" }] : []),
       { data: "status", render: renderDotsTable1 }
     ],
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     createdRow: function (row, data) {
       const isInternational = (data.jurisdiction || '') === 'Denmark';
       if (isInternational) $(row).find('td').addClass('text-light-blue');
@@ -515,6 +519,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'registration_data'
     },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     processing: true,
     scrollX: true,
     scrollY: false,
@@ -553,6 +561,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'business_license_data'
     },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     scrollX: true,
     scrollY: false,
     columns: [
@@ -585,6 +597,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'dbas_data'
     },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     scrollX: true,
     scrollY: false,
     columns: [
@@ -616,6 +632,10 @@ $(document).ready(function () {
     ajax: {
       url: "data5.json",
       dataSrc: 'ownership_data'
+    },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
     },
     scrollX: true,
     scrollY: false,
@@ -651,6 +671,10 @@ $(document).ready(function () {
     ajax: {
       url: "data5.json",
       dataSrc: 'director_data'
+    },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
     },
     scrollX: true,
     scrollY: false,
@@ -689,6 +713,10 @@ $(document).ready(function () {
   $('#entitydetails-opentask-table').DataTable({
     scrollX: true,
     scrollY: false,
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     order: [[0, "asc"]],
     lengthChange: false,  // Removed pagination
     paging: false,  // Disable pagination
@@ -698,6 +726,10 @@ $(document).ready(function () {
   $('#entitydetails-orders-table').DataTable({
     scrollX: true,
     scrollY: false,
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     order: [[0, "asc"]],
     lengthChange: false,  // Removed pagination
     paging: false,  // Disable pagination
@@ -718,6 +750,10 @@ $(document).ready(function () {
     ajax: {
       url: "data5.json",
       dataSrc: 'documents_data',
+    },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
     },
     createdRow: function (row, data, dataIndex) {
       $(row).addClass('parent editable-parent');
@@ -1033,6 +1069,10 @@ $(document).ready(function () {
     ajax: {
       url: "data5.json",
       dataSrc: 'services_data'
+    },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
     },
     scrollX: true,
     scrollY: false,

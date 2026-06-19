@@ -9,6 +9,10 @@ $(document).ready(function () {
         processing: true,
         scrollX: true,
         scrollY: false,
+        language: {
+            processing: '<div  role="status"> </div>',
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
+        },
         columns: [
             {
                 data: "group_name", render: function (data, type, row) {
@@ -73,6 +77,10 @@ $(document).ready(function () {
         scrollY: false,
         createdRow: function (row, data) {
             $(row).find('td').toggleClass('text-light-blue', data.id == 17);
+        },
+        language: {
+            processing: '<div  role="status"> </div>',
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
         },
         columns: [
             {
@@ -176,6 +184,10 @@ $(document).ready(function () {
         ajax: {
             url: "data5.json",
             dataSrc: 'group_entity_documents_data',
+        },
+        language: {
+            processing: '<div  role="status"> </div>',
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
         },
         createdRow: function (row, data, dataIndex) {
             $(row).addClass('parent editable-parent');
@@ -461,6 +473,10 @@ $(document).ready(function () {
         processing: true,
         scrollX: true,
         scrollY: false,
+        language: {
+            processing: '<div  role="status"> </div>',
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
+        },
         columns: [
             { data: "name" },
             { data: "email" },
@@ -512,6 +528,10 @@ $(document).ready(function () {
         ajax: {
             url: "data5.json",
             dataSrc: 'group_userExternal_data'
+        },
+        language: {
+            processing: '<div  role="status"> </div>',
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
         },
         processing: true,
         scrollX: true,

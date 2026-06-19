@@ -12,6 +12,10 @@ $(function () {
             url: "data5.json",
             dataSrc: 'invoice_history_data'
         },
+        language: {
+            processing: '<div  role="status"> </div>',
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
+        },
         processing: true,
         scrollX: true,
         scrollY: false,
@@ -55,6 +59,10 @@ $(function () {
             url: "data5.json",
             dataSrc: 'invoice_history_data'
         },
+        language: {
+            processing: '<div  role="status"> </div>',
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
+        },
         processing: true,
         scrollX: true,
         scrollY: false,
@@ -79,7 +87,7 @@ $(function () {
             { data: "orderStatus" },
             {
                 data: null, render: function (data, type, row) {
-                    console.log(["pending", "in progress"].includes(row.status?.toLowerCase()), row.status?.toLowerCase() )
+                    console.log(["pending", "in progress"].includes(row.status?.toLowerCase()), row.status?.toLowerCase())
                     return `
                     <div class="d-flex align-items-center justify-content-end me-1">
                         ${["pending", "in progress"].includes(row.status?.toLowerCase()) ? '<span class="icon icon-money-red cursor-pointer" data-toggle="tooltip" title="Complete payment" data-bs-toggle="modal" data-bs-target="#payBill_modal"></span>' : ''}

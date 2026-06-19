@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
         span.innerHTML = `
           <span class="selected-option-text">${value}</span>
           <span class="remove-option">
-            <img src="dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img">
+            <img src="/dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img">
           </span>
         `;
         span.querySelector(".remove-option").addEventListener("click", function () {
@@ -343,6 +343,10 @@ $(document).ready(function () {
 
   let table1 = $("#ra-other-table").DataTable({
     ajax: "data4.json",
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     columns: [
       { className: "dt-control", orderable: false, data: null, defaultContent: "" },
       { data: "group" },
@@ -451,9 +455,9 @@ function renderTagsOnRow(tagdata, maxTag = 4) {
 }
 
 function applyTagOverflow(isTableScrollable = false, row = '') {
-    const tagWrappers = row ? $(row).find('td .d-tag-wrapper') : $('.d-tag-wrapper')
+  const tagWrappers = row ? $(row).find('td .d-tag-wrapper') : $('.d-tag-wrapper')
 
-    tagWrappers.each(function () {
+  tagWrappers.each(function () {
     const wrapper = $(this);
     const td = wrapper.closest('td');
 
@@ -564,6 +568,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'registration_data'
     },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     processing: true,
     scrollX: true,
     scrollY: false,
@@ -612,6 +620,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'business_license_data'
     },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     processing: true,
     scrollX: true,
     scrollY: false,
@@ -645,6 +657,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'dbas_data'
     },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     processing: true,
     scrollX: true,
     scrollY: false,
@@ -677,6 +693,10 @@ $(document).ready(function () {
     ajax: {
       url: "data5.json",
       dataSrc: 'ownership_data'
+    },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
     },
     processing: true,
     scrollX: true,
@@ -713,6 +733,10 @@ $(document).ready(function () {
     ajax: {
       url: "data5.json",
       dataSrc: 'director_data'
+    },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
     },
     processing: true,
     scrollX: true,
@@ -770,6 +794,10 @@ $(document).ready(function () {
     ajax: {
       url: "data5.json",
       dataSrc: 'documents_data',
+    },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
     },
     createdRow: function (row, data, dataIndex) {
       $(row).addClass('parent editable-parent');

@@ -31,6 +31,10 @@ $(document).ready(function () {
       url: "data5.json",
       dataSrc: 'sop_registered_agent_data'
     },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    },
     columns: [
       { data: "group" },
       { data: "entity_name" },
@@ -64,6 +68,10 @@ $(document).ready(function () {
     ajax: {
       url: "data5.json",
       dataSrc: 'sop_registered_agent_data'
+    },
+    language: {
+      processing: '<div  role="status"> </div>',
+      emptyTable: '<p class="emptytabledata">No Records Available</p>'
     },
     columns: [
       { data: "group" },

@@ -63,10 +63,11 @@ $(function () {
     "processing": true,
     "language": {
       "processing": '<div  role="status"> </div>',
+      "emptyTable": '<p class="emptytabledata">No Records Available</p>'
     },
     "responsive": true,
     "scrollX": true,
-    "scrollY": "50vh",
+    "scrollY": "50vh"
   })
   $('.data-table-listing-auto').DataTable({
     "lengthChange": false,
@@ -521,6 +522,7 @@ function reintializeDataTable() {
     "processing": true,
     "language": {
       "processing": '<div class="" role="status"> </div>',
+      "emptyTable": '<p class="emptytabledata">No Records Available</p>'
     },
     "retrieve": true
   });
