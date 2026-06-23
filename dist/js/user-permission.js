@@ -93,12 +93,12 @@ $(document).ready(function () {
                 data: null, render: function (data, type, row) {
                     return `
                         <div class="d-flex align-items-center">
+                            ${row.role.toLowerCase().includes("admin") ? "" : `
                             <span role="button" tabindex="0"> 
                                 <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditRole"
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
-                            </span>
-                            
-                            ${row.role.toLowerCase().includes("admin") ? "" : `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deleteRole">
+                            </span>    
+                            <span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deleteRole">
                                 <span data-toggle="tooltip" aria-label="REMOVE" data-bs-original-title="REMOVE" 
                                     class="icon icon-entity-delete me-1 me-md-2"></span> 
                             </span>`}
