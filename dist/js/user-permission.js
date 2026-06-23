@@ -335,12 +335,6 @@ $(document).ready(function () {
             options.dropdownParent = $(this).closest('.custom-dropdown')
         }
         $(this).select2(options);
-
-        if ($(this).hasClass('roles-select')) {
-            setTimeout(() => {
-                toggleTable(this);
-            }, 10)
-        }
     });
 
     $('.customSelect2').on('select2:open', function () {
@@ -351,46 +345,49 @@ $(document).ready(function () {
     $('.customSelect2.roles-select').on('select2:select', function () {
         toggleTable(this);
     });
+})
 
-    function toggleTable(select) {
-        const selectedValue = $(select).val()?.trim();
+function toggleTable(select) {
+    const selectedValue = $(select).val()?.trim();
 
-        if (!selectedValue) return;
+    if (!selectedValue) return;
 
-        const accessSection = $(select).closest('.modal').find('.access-table-section');
+    const accessSection = $(select).closest('.modal').find('.access-table-section');
 
-        if (!accessSection) return;
+    if (!accessSection) return;
 
-        if (selectedValue === "None") {
-            $('.access-table-section').fadeOut(100).addClass('d-none');
-            return;
-        }
-
-        accessSection.removeClass('d-none').hide().fadeIn(100);
-        const userRightsTable = accessSection.find('.user-data-table');
-
-        if (!userRightsTable) return;
-
-        const checkBoxtobeDisabled = userRightsTable.closest('.userAccessTable').find('input[type=checkbox]');
-
-        if (selectedValue === "Custom User") {
-            checkBoxtobeDisabled.prop('disabled', false)
-            userRightsTable.find('tr').removeClass('check-disabled')
-        } else {
-            checkBoxtobeDisabled.prop('disabled', true)
-            userRightsTable.find('tr').addClass('check-disabled')
-        }
-        userRightsTable.DataTable().columns.adjust();
+    if (selectedValue === "None") {
+        $('.access-table-section').fadeOut(100).addClass('d-none');
+        return;
     }
 
+    accessSection.removeClass('d-none').hide().fadeIn(100);
+    const userRightsTable = accessSection.find('.user-data-table');
 
-})
+    if (!userRightsTable) return;
+
+    const checkBoxtobeDisabled = userRightsTable.closest('.userAccessTable').find('input[type=checkbox]');
+
+    if (selectedValue === "Custom User") {
+        checkBoxtobeDisabled.prop('disabled', false)
+        userRightsTable.find('tr').removeClass('check-disabled')
+    } else {
+        checkBoxtobeDisabled.prop('disabled', true)
+        userRightsTable.find('tr').addClass('check-disabled')
+    }
+    userRightsTable.DataTable().columns.adjust();
+}
 
 
 $(document).on('shown.bs.modal', '.modal', function () {
     $(this).find('.user-data-table').each(function () {
         $(this).DataTable().columns.adjust();
     });
+
+    const modal = $(this);
+    if (modal.attr('id') === "EditUserRole") {
+        toggleTable(modal.find(".customSelect2.roles-select"))
+    }
 });
 
 
