@@ -209,38 +209,40 @@
                                 class="col col-md-6 col-xl-6 col-lg-6 d-flex align-items-center justify-content-end justify-content-md-end">
 
                                 <div class="profile-nav profile-nav-v2">
-                           <div class="dropdown white-bg p-0 rounded-5">
+                                    <div class="dropdown white-bg p-0 rounded-5">
 
-                              <a class="nav-link dropdown show " href="#" data-bs-toggle="dropdown"
-                                 aria-expanded="true">
-                                 <span class="avatar avatar-lg m-0">
-                                    <img src="../dist/images/avatar.png" alt="" />
-                                 </span>
-                                 <!-- <span class="user-name">Roman Lorem ipsum</span> -->
-                              </a>
-                              <ul class="dropdown-menu" data-bs-popper="static">
-                                 <li>
-                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
-                                       href="/account/account-settings.html">
-                                       <span class="icon icon-accountsettings me-4"></span>
-                                       Settings
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a class="dropdown-item py-3 d-flex align-items-center border-bottom" href="#">
-                                       <span class="icon icon-user me-4"></span>
-                                       Switch Account (Member)
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a class="dropdown-item py-3 d-flex align-items-center" href="../../login.html">
-                                       <span class="icon icon-logout me-4"></span>
-                                       Logout
-                                    </a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </div>
+                                        <a class="nav-link dropdown show " href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg m-0">
+                                                <img src="../dist/images/avatar.png" alt="" />
+                                            </span>
+                                            <!-- <span class="user-name">Roman Lorem ipsum</span> -->
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="/account/account-settings.html">
+                                                    <span class="icon icon-accountsettings me-4"></span>
+                                                    Settings
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center"
+                                                    href="../../login.html">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -384,7 +386,8 @@
                                                     class="icon icon-completed-dark icon-sm me-0 ms-3 col-1"></span></button>
                                         </div>
                                         <div class="col-lg-2">
-                                            <button type="button"
+                                            <button type="button" role="button" data-bs-toggle="modal"
+                                                data-bs-target="#addEntityDetails"
                                                 class="w-100 btn btn-light border-dark px-3 py-2 rounded-3 d-flex align-items-center justify-content-center">Add
                                                 New <span
                                                     class="icon icon-add-new-dark icon-sm me-0 ms-3"></span></button>
@@ -5558,6 +5561,334 @@
     </div>
     <!-- Service Modal Ends -->
 
+    <!-- addEntityDetails Modal start-->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="addEntityDetails" tabindex="-1"
+        aria-labelledby="addEntityDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+                <!-- Modal Header -->
+                <div class="modal-header flex-wrap">
+                    <div class="d-flex align-items-center w-100 mb-4 pb-2">
+                        <span class="bg-dark p-3 rounded-2 me-4 d-inline-block">
+                            <span class="icon icon-md icon-folder-white m-0"></span>
+                        </span>
+                        <div>
+                            <span class="d-block text-dark text-opacity-50 fs-9 text-uppercase entity-heading"></span>
+                            <h3 class="fs-3 m-0 font-weight-700 entity-title">Add Entity Details</h3>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="entity-modal-description">Please add the details of your new entity and jurisdiction
+                            below. This
+                            information will be used to auto-populate filings.</p>
+                    </div>
+                </div>
+                <!-- Modal Header Ends -->
+                <!-- Modal Body Start-->
+                <div class="modal-body">
+                    <div class="profile-container">
+
+                        <form method="post" id="profileForm">
+                            <div class="mb-4 p-3 bg-white rounded-2">
+                                <div class="mb-3">
+                                    <div class="col custom-dropdown">
+                                        <label for="" class="form-label text-uppercase text-danger">FORMATION
+                                            TYPE</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <select class="form-select detail-form-fields" id="formation-type"
+                                            name="formation_type">
+                                            <option value="domestic">Domestic</option>
+                                            <option value="foreign">Foreign</option>
+                                            <option value="international">International</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div>
+                                        <label for="" class="form-label text-uppercase text-danger">Name of
+                                            Entity</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <input type="text" class="form-control" id="entity-name" name="name" value=""
+                                            parsley-trigger="change" required="true">
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-3 international-fields d-none">
+                                    <div>
+                                        <label for="" class="form-label text-uppercase text-danger">Country</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <input type="text" class="form-control optional-fields" id="in-state-id"
+                                            name="country" value="" parsley-trigger="change" required="true">
+                                    </div>
+                                </div>
+                                <div class="mb-3 international-fields d-none">
+                                    <div>
+                                        <label for="" class="form-label text-uppercase text-danger">Entity Type</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <input type="text" class="form-control optional-fields" id="in-entity-type-id"
+                                            name="entity_type" value="" parsley-trigger="change" required="true">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 domestic-fields ">
+                                    <div class="col custom-dropdown">
+                                        <label for="" class="form-label text-uppercase text-danger">Entity State</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <select class="form-select detail-form-fields optional-fields">
+                                            <option value="" disabled hidden selected>Select Entity State</option>
+                                            <option value="1">Alabama</option>
+                                            <option value="2">Alaska</option>
+                                            <option value="3">Arizona</option>
+                                            <option value="4">Arkansas</option>
+                                            <option value="5">California</option>
+                                            <option value="6">Colorado</option>
+                                            <option value="7">Connecticut</option>
+                                            <option value="8">Delaware</option>
+                                            <option value="9">District of Columbia</option>
+                                            <option value="10">Florida</option>
+                                            <option value="11">Georgia</option>
+                                            <option value="12">Hawaii</option>
+                                            <option value="13">Idaho</option>
+                                            <option value="14">Illinois</option>
+                                            <option value="15">Indiana</option>
+                                            <option value="16">Iowa</option>
+                                            <option value="17">Kansas</option>
+                                            <option value="18">Kentucky</option>
+                                            <option value="19">Louisiana</option>
+                                            <option value="20">Maine</option>
+                                            <option value="21">Maryland</option>
+                                            <option value="22">Massachusetts</option>
+                                            <option value="23">Michigan</option>
+                                            <option value="24">Minnesota</option>
+                                            <option value="25">Mississippi</option>
+                                            <option value="26">Missouri</option>
+                                            <option value="27">Montana</option>
+                                            <option value="28">Nebraska</option>
+                                            <option value="29">Nevada</option>
+                                            <option value="30">New Hampshire</option>
+                                            <option value="31">New Jersey</option>
+                                            <option value="32">New Mexico</option>
+                                            <option value="33">New York</option>
+                                            <option value="34">North Carolina</option>
+                                            <option value="35">North Dakota</option>
+                                            <option value="36">Ohio</option>
+                                            <option value="37">Oklahoma</option>
+                                            <option value="38">Oregon</option>
+                                            <option value="39">Pennsylvania</option>
+                                            <option value="40">Rhode Island</option>
+                                            <option value="41">South Carolina</option>
+                                            <option value="42">South Dakota</option>
+                                            <option value="43">Tennessee</option>
+                                            <option value="44">Texas</option>
+                                            <option value="45">Utah</option>
+                                            <option value="46">Vermont</option>
+                                            <option value="47">Virginia</option>
+                                            <option value="48">Washington</option>
+                                            <option value="49">West Virginia</option>
+                                            <option value="50">Wisconsin</option>
+                                            <option value="51">Wyoming</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 domestic-fields custom-dropdown">
+                                    <div class="col">
+                                        <label for="" class="form-label text-uppercase text-danger">Entity Type</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <select class="form-select optional-fields  detail-form-fields"
+                                            id="entity-type-id">
+                                            <option value="" selected hidden disabled>Select Entity Type</option>
+                                            <option data-type-id="1" value="1" data-sub-type-id="">LLC</option>
+                                            <option data-type-id="2" value="8" data-sub-type-id="8">Profit Corporation -
+                                                General Stock</option>
+                                            <option data-type-id="2" value="9" data-sub-type-id="9">Profit Corporation -
+                                                Professional</option>
+                                            <option data-type-id="2" value="10" data-sub-type-id="10">Profit Corporation
+                                                -
+                                                Close</option>
+                                            <option data-type-id="3" value="11" data-sub-type-id="11">Non Profit
+                                                Corporation
+                                                - Religious</option>
+                                            <option data-type-id="3" value="12" data-sub-type-id="12">Non Profit
+                                                Corporation
+                                                - Mutual Benefit</option>
+                                            <option data-type-id="3" value="13" data-sub-type-id="13">Non Profit
+                                                Corporation
+                                                - Public Benefit</option>
+                                            <option data-type-id="3" value="14" data-sub-type-id="14">Non Profit
+                                                Corporation
+                                                - Common Interest Development</option>
+                                            <option data-type-id="3" value="16" data-sub-type-id="16">Non Profit
+                                                Corporation
+                                                - Exempt</option>
+                                            <option data-type-id="5" value="5" data-sub-type-id="">LLP</option>
+                                            <option data-type-id="6" value="6" data-sub-type-id="">LP</option>
+                                            <option data-type-id="7" value="7" data-sub-type-id="">GP</option>
+                                            <option data-type-id="15" value="15" data-sub-type-id="">Professional
+                                                Limited
+                                                Liability Company</option>
+                                            <option data-type-id="101" value="101" data-sub-type-id="">Trust</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3 home-entity-row d-none">
+                                    <div class="col">
+                                        <label for="" class="form-label">HOME ENTITY</label>
+                                        <div class="custom-dropdown">
+                                            <select name="home_entity" id="home_entity"
+                                                class="home-entity-field form-select customSelect2 entity-select"
+                                                name="state">
+                                                <option value="" hidden selected>Select Home Entity</option>
+                                                <option value="1">BE Entity LLC (CA)</option>
+                                                <option value="2">Entity with Group LLC (CA)</option>
+                                                <option value="3">Entity without Group LLC (CA)</option>
+                                                <option value="4">ABC Hotels INC (FL)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div>
+                                        <label for="" class="form-label text-uppercase text-danger">EIN Number</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <input type="text" class="form-control ein-number  optional-fields"
+                                            id="ein-number" name="ein_tax" value="" parsley-trigger="change"
+                                            required="true/" placeholder="__-_______" maxlength="10">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div>
+                                        <label for="" class="form-label text-uppercase text-danger">Formation
+                                            Date</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control formation-date  optional-fields"
+                                                value="" name="filed_date" id="" placeholder="MM / DD / YYYY"
+                                                parsley-trigger="change" required="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div>
+
+
+
+                                        <label for="" class="form-label text-uppercase text-danger">State File
+                                            Number</label>
+                                        <div class="float-end">
+                                            <span class="text-danger">Required <span>*</span></span>
+                                        </div>
+                                        <input type="text" class="form-control optional-fields" id="formation-number"
+                                            value="" name="file_number" parsley-trigger="change" required="true/">
+                                    </div>
+                                </div>
+                                <div class="additional-info">
+                                </div>
+
+
+                                <div class="mb-3 d-none">
+                                    <div>
+                                        <label for="" class="form-label">WebXT/Webfile number</label>
+                                        <input type="text" class="form-control " id="webfile-number"
+                                            name="webfile_number" value="" parsley-trigger="change" required="false/">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div class="bg-white p-3 rounded-2 mb-3">
+                                <div class="w-100"> <label for="" class="form-label">In Scope Services</label> </div>
+                                <div class="mt-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="services[]"
+                                            id="annual_filing" value="annual_filing" data-parsley-multiple="services">
+                                        <label class="text-capitalize" for="annual_filing">Annual Report Subscription
+                                            (AR)</label>
+                                    </div>
+                                    <div class="form-check py-2">
+                                        <input class="form-check-input" type="checkbox" name="services[]"
+                                            id="boi_annual_filing" value="boi_annual_filing"
+                                            data-parsley-multiple="services">
+                                        <label class="text-capitalize" for="boi_annual_filing">BOI Subscription
+                                            (CTA)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="services[]"
+                                            id="platform_ra" value="platform_ra" data-parsley-multiple="services">
+                                        <label class="text-capitalize" for="platform_ra">Registered Agent Subscription
+                                            (RA)</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 p-3 rounded-2 bg-white custom-dropdown">
+                                <label for="" class="form-label">Group</label>
+                                <select class="form-select" name="client_id">
+                                    <option selected="" disabled hidden value="">Groups</option>
+                                    <option value="">Awesome Group</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+
+                                <div class="bg-white p-3 rounded-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="is_externally_managed"
+                                            id="is_externally_managed" value="1"
+                                            data-parsley-multiple="is_externally_managed">
+                                        <label class="text-capitalize" for="is_externally_managed">Is Externally
+                                            Managed</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <!-- Modal Body End -->
+
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            data-bs-dismiss="modal">
+                            CANCEL
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">
+                                SAVE AND EXIT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- addEntityDetails Modal End-->
 
     <!-- updateEntityDetails Modal start-->
     <div class="modal modal-right fade filter-slideout SOP-model" id="updateEntityDetails" tabindex="-1"
@@ -5707,14 +6038,11 @@
                                                 class="text-red">*</sup></label>
                                     </div>
                                     <div class="col-6">
-                                        <div class="">
-                                            <div class="form-check align-items-start">
-                                                <input class="form-check-input" type="checkbox"
-                                                    id="flexSwitchCheckDefault">
-                                                <label class="form-check-label text-end fw-normal"
-                                                    for="business_license_mailing_address_diff">Mailing
-                                                    address different from business address?</label>
-                                            </div>
+                                        <div class="form-check gap-0 align-items-start justify-content-end">
+                                            <input class="form-check-input" type="checkbox" 
+                                                id="business_license_mailing_address_diff">
+                                            <label class="form-check-label text-end fw-normal" for="business_license_mailing_address_diff">Mailing
+                                                address different from business address?</label>
                                         </div>
                                     </div>
                                 </div>
@@ -6093,7 +6421,8 @@
                                 data-bs-toggle="modal" data-bs-dismiss="modal">
                                 SAVE AND EXIT
                             </button>
-                            <button type="button" class="completed-entity btn btn-info py-0 px-3 rounded-3 ms-3" data-bs-dismiss="modal">
+                            <button type="button" class="completed-entity btn btn-info py-0 px-3 rounded-3 ms-3"
+                                data-bs-dismiss="modal">
                                 Complete
                                 <span class="icon icon-check-circle-white icon-sm m-0 ms-1"></span>
                             </button>
