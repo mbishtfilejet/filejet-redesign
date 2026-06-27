@@ -77,7 +77,7 @@ $(document).ready(function () {
     const tableOptions_1 = {
         ajax: {
             url: "../data5.json",
-            dataSrc: 'account_users_data',
+            dataSrc: 'account_role_data',
         },
         scrollX: true,
         scrollY: false,
