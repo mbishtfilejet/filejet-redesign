@@ -29,14 +29,14 @@ function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, 
         const isChecked = $(this).prop("checked");
 
         const parentId = row.data('id') || row.data('parent');
-        
+
         if (row.hasClass('expanded-content')) {
             cacheCheckBox.setChildValue(parentId, column, columnValue, isChecked)
         }
-        
+
         if (row.hasClass('expanded-row') || row.hasClass('parent')) {
             const rowData = dataTable.row(row).data();
-            
+
             if (!row.find('.row-select').prop('indeterminate')) {
                 rowData.expanded_rows.forEach((value) => {
                     let correctValue = typeof (value) !== 'object' && value !== null ? value : value[key_selected]
@@ -44,12 +44,12 @@ function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, 
                 })
             }
         }
-        
-        
+
+
         if (row.hasClass('expanded-row')) {
             toggleChildren(isChecked, parentId, column);
         }
-        
+
         if (row.hasClass('expanded-content')) {
             updateParent(parentId, column);
         }
@@ -60,7 +60,7 @@ function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, 
 
     function updateAllState(column, checkbox = '', isChecked = false) {
 
-        const checkboxes = table_wrapper.find(`tr:not(.group-row):not(.check-disabled) td .row-select[data-column="${column}"]`);
+        const checkboxes = table_wrapper.find(`tr:not(.group-row):not(.row-disabled) td .row-select[data-column="${column}"]`);
         if (checkbox && checkbox.hasClass('allgroup-select')) {
             checkboxes.prop({
                 checked: isChecked,
@@ -101,7 +101,7 @@ function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, 
     // update children checkbox
     function toggleChildren(isChecked, parentId, column) {
         if (!parentId) return;
-        const children = tableContainer.find(`tr.expanded-content[data-parent="${parentId}"]:not(.check-disabled)`);
+        const children = tableContainer.find(`tr.expanded-content[data-parent="${parentId}"]:not(.row-disabled)`);
 
         if (!children.length) return;
 
@@ -119,7 +119,7 @@ function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, 
 
         if (!parentId) return;
 
-        const children = tableContainer.find(`tr[data-parent="${parentId}"]:not(.check-disabled)`);
+        const children = tableContainer.find(`tr[data-parent="${parentId}"]:not(.row-disabled)`);
 
         if (!children.length) return;
 
@@ -165,7 +165,7 @@ function multiSelectRowCheckbox(tableContainer, no_indeterminate_phase = false, 
             const tbodyCheckbox = tableContainer.find('td');
             const thCheckbox = tableContainer.find('.allgroup-select');
 
-            tableContainer.find('tr:not(.check-disabled) td .row-select').each(function () {
+            tableContainer.find('tr:not(.row-disabled) td .row-select').each(function () {
                 const checkbox = $(this);
                 const isIndeterminate = checkbox.data('someChecked');
                 if (isIndeterminate) {

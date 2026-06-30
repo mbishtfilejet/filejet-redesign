@@ -127,54 +127,50 @@ $(document).on('shown.bs.tab', function (e) {
 });
 
 
+const tableAccessOption = (table, dataSrc) => {
+    return {
+        ajax: {
+            url: "../data5.json",
+            dataSrc: dataSrc,
+        },
+        createdRow: function (row, data, dataIndex) {
+            $(row).attr('data-id', data.id).addClass("parent");
+        },
+        drawCallback: function () {
+            const tbody = $(this.api().table().body());
+            // const thead = $(this.api().table().header());
 
+            // prevent duplicates
+            // thead.find('.group-row').remove();
 
-$(document).ready(function () {
+            // const columnNames = this.api().table().columns().header().toArray().slice(1).map(th => $(th).attr('column-id'));
 
-    const tableAccessOption = (table) => {
-        return {
-            ajax: {
-                url: "../data5.json",
-                dataSrc: 'group_entities_data',
-            },
-            createdRow: function (row, data, dataIndex) {
-                $(row).attr('data-id', data.id).addClass("parent");
-            },
-            drawCallback: function () {
-                const tbody = $(this.api().table().body());
-                // const thead = $(this.api().table().header());
+            // // add custom row at top
+            // thead.append(`
+            //     <tr class="group-row odd">
+            //         <th>All Groups & Entities</th>
+            //         ${columnNames.map(column => `<th>
+            //                 <div class="d-flex align-item-center">
+            //                     <input data-column="${column}" class="form-check-input green-checkbox allgroup-select row-select ${column === "permissions" ? "ms-4" : "ms-1"}" type="checkbox" id="">
+            //                 </div>
+            //                 </th>` ).join("")
+            //     }
 
-                // prevent duplicates
-                // thead.find('.group-row').remove();
+            //     </tr>
+            // `);
 
-                // const columnNames = this.api().table().columns().header().toArray().slice(1).map(th => $(th).attr('column-id'));
-
-                // // add custom row at top
-                // thead.append(`
-                //     <tr class="group-row odd">
-                //         <th>All Groups & Entities</th>
-                //         ${columnNames.map(column => `<th>
-                //                 <div class="d-flex align-item-center">
-                //                     <input data-column="${column}" class="form-check-input green-checkbox allgroup-select row-select ${column === "permissions" ? "ms-4" : "ms-1"}" type="checkbox" id="">
-                //                 </div>
-                //                 </th>` ).join("")
-                //     }
-
-                //     </tr>
-                // `);
-
-                const realRows = tbody.find('tr');
-                realRows.removeClass('odd even');
-                realRows.each(function (index) {
-                    $(this).addClass(
-                        index % 2 === 0 ? 'even' : 'odd'
-                    );
-                });
-            },
-            columns: [
-                {
-                    data: "group_name", render: function (data, type, row) {
-                        return `
+            const realRows = tbody.find('tr');
+            realRows.removeClass('odd even');
+            realRows.each(function (index) {
+                $(this).addClass(
+                    index % 2 === 0 ? 'even' : 'odd'
+                );
+            });
+        },
+        columns: [
+            {
+                data: "group_name", render: function (data, type, row) {
+                    return `
                         <div class="d-flex align-items-start gap-2">
                             <button type="button" class="dt-control ${!row?.expanded_rows?.length ? "no-control" : ""} m-0"></button>
                             <div class="d-flex align-items-start gap-2" role="button">
@@ -183,103 +179,99 @@ $(document).ready(function () {
                             </div>
                         </div>
                         `
-                    }
-                },
-                {
-                    data: null, render: function (data, type, row) {
-                        if (table === "role_2") {
-                            return `<div class="d-flex align-item-center"><input data-column="view" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                        }
-                        const { view: { checked, someChecked } } = row.rights;
-                        return `<div class="d-flex align-item-center"><input data-column="view" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                    }
-                },
-                {
-                    data: null, render: function (data, type, row) {
-                        if (table === "role_2") {
-                            return `<div class="d-flex align-item-center"><input data-column="edit" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                        }
-                        const { edit: { checked, someChecked } } = row.rights;
-                        return `<div class="d-flex align-item-center"><input data-column="edit" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                    }
-                },
-                {
-                    data: null, render: function (data, type, row) {
-                        if (table === "role_2") {
-                            return `<div class="d-flex align-item-center"><input data-column="submit" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                        }
-                        const { submit: { checked, someChecked } } = row.rights;
-                        return `<div class="d-flex align-item-center"><input data-column="submit" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                    }
-                },
-                {
-                    data: null, render: function (data, type, row) {
-                        if (table === "role_2") {
-                            return `<div class="d-flex align-item-center"><input data-column="upload" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                        }
-                        const { upload: { checked, someChecked } } = row.rights;
-                        return `<div class="d-flex align-item-center"><input data-column="upload" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                    }
-                },
-                {
-                    data: null, render: function (data, type, row) {
-                        if (table === "role_2") {
-                            return `<div class="d-flex align-item-center"><input data-column="download" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                        }
-                        const { download: { checked, someChecked } } = row.rights;
-                        return `<div class="d-flex align-item-center"><input data-column="download" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                    }
-                },
-                {
-                    data: null, render: function (data, type, row) {
-                        if (table === "role_2") {
-                            return `<div class="d-flex align-item-center"><input data-column="invoices" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                        }
-                        const { invoices: { checked, someChecked } } = row.rights;
-                        return `<div class="d-flex align-item-center"><input data-column="invoices" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                    }
-                },
-                {
-                    data: null, render: function (data, type, row) {
-                        if (table === "role_2") {
-                            return `<div class="d-flex align-item-center"><input data-column="acknowledge" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                        }
-                        const { acknowledge: { checked, someChecked } } = row.rights;
-                        return `<div class="d-flex align-item-center"><input data-column="acknowledge" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
-                    }
                 }
-            ],
-            lengthChange: false,
-            info: false,
-            order: false,
-            scrollY: "400px",
-            scrollCollapse: true,
-            scrollX: false,
-            paging: false,
-        }
+            },
+            {
+                data: null, render: function (data, type, row) {
+                    if (table === "role_2") {
+                        return `<div class="d-flex align-item-center"><input data-column="view" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                    }
+                    const { view: { checked, someChecked } } = row.rights;
+                    return `<div class="d-flex align-item-center"><input data-column="view" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                }
+            },
+            {
+                data: null, render: function (data, type, row) {
+                    if (table === "role_2") {
+                        return `<div class="d-flex align-item-center"><input data-column="edit" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                    }
+                    const { edit: { checked, someChecked } } = row.rights;
+                    return `<div class="d-flex align-item-center"><input data-column="edit" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                }
+            },
+            {
+                data: null, render: function (data, type, row) {
+                    if (table === "role_2") {
+                        return `<div class="d-flex align-item-center"><input data-column="submit" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                    }
+                    const { submit: { checked, someChecked } } = row.rights;
+                    return `<div class="d-flex align-item-center"><input data-column="submit" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                }
+            },
+            {
+                data: null, render: function (data, type, row) {
+                    if (table === "role_2") {
+                        return `<div class="d-flex align-item-center"><input data-column="upload" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                    }
+                    const { upload: { checked, someChecked } } = row.rights;
+                    return `<div class="d-flex align-item-center"><input data-column="upload" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                }
+            },
+            {
+                data: null, render: function (data, type, row) {
+                    if (table === "role_2") {
+                        return `<div class="d-flex align-item-center"><input data-column="download" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                    }
+                    const { download: { checked, someChecked } } = row.rights;
+                    return `<div class="d-flex align-item-center"><input data-column="download" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                }
+            },
+            {
+                data: null, render: function (data, type, row) {
+                    if (table === "role_2") {
+                        return `<div class="d-flex align-item-center"><input data-column="invoices" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                    }
+                    const { invoices: { checked, someChecked } } = row.rights;
+                    return `<div class="d-flex align-item-center"><input data-column="invoices" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                }
+            },
+            {
+                data: null, render: function (data, type, row) {
+                    if (table === "role_2") {
+                        return `<div class="d-flex align-item-center"><input data-column="acknowledge" data-some-checked="false" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                    }
+                    const { acknowledge: { checked, someChecked } } = row.rights;
+                    return `<div class="d-flex align-item-center"><input data-column="acknowledge" ${checked ? "checked" : ""} data-some-checked="${someChecked}" class="form-check-input green-checkbox row-select ms-1" type="checkbox" id=""></div>`;
+                }
+            }
+        ],
+        lengthChange: false,
+        info: false,
+        order: false,
+        scrollY: "400px",
+        scrollCollapse: true,
+        scrollX: false,
+        paging: false,
     }
+}
+
+$(document).ready(function () {
 
     const tablesId = [
         {
-            id: "#rights-table_1", tableContext: "users"
+            id: "#user-rights-table-1", tableContext: "role_1", dataSrc: "group_entities_data"
         },
         {
-            id: "#rights-table_2", tableContext: "users"
-        },
-        {
-            id: "#user-rights-table-1", tableContext: "role_1"
-        },
-        {
-            id: "#user-rights-table-2", tableContext: "role_2"
+            id: "#user-rights-table-2", tableContext: "role_2", dataSrc: "group_entities_data"
         }
     ]
 
     tablesId.forEach(value => {
-        $(value.id).DataTable(tableAccessOption(value.tableContext))
+        $(value.id).DataTable(tableAccessOption(value.tableContext, value.dataSrc))
         multiSelectRowCheckbox($(value.id))
     })
 
-    $(".user-data-table tbody").on("click", "td .dt-control", function () {
+    $(document).on("click", ".user-data-table tbody td .dt-control", function () {
         const tr = $(this).closest("tr");
 
         const table = tr.closest('table');
@@ -348,6 +340,13 @@ $(document).ready(function () {
 })
 
 function toggleTable(select) {
+
+    const table_based_on_role = {
+        "Custom User": { tableContext: "users", dataSrc: "group_entities_data" },
+        "Admin": { tableContext: "users", dataSrc: "admin_role_data" },
+        "User Admin": { tableContext: "users", dataSrc: "useradmin_role_data" },
+        "Invoice Admin": { tableContext: "users", dataSrc: "invoiceadmin_role_data" },
+    }
     const selectedValue = $(select).val()?.trim();
 
     if (!selectedValue) return;
@@ -366,16 +365,42 @@ function toggleTable(select) {
 
     if (!userRightsTable) return;
 
-    const checkBoxtobeDisabled = userRightsTable.closest('.userAccessTable').find('input[type=checkbox]');
 
-    if (selectedValue === "Custom User") {
-        checkBoxtobeDisabled.prop('disabled', false)
-        userRightsTable.find('tr').removeClass('check-disabled')
-    } else {
-        checkBoxtobeDisabled.prop('disabled', true)
-        userRightsTable.find('tr').addClass('check-disabled')
+    let tableId = "";
+
+    userRightsTable.each(function () {
+        if (this.id) {
+            tableId = this.id
+        }
+    })
+
+    let tableData = table_based_on_role[selectedValue];
+
+    if (selectedValue === "Role 1" || selectedValue === "Role 2") {
+        tableData = table_based_on_role["Custom User"];
     }
-    userRightsTable.DataTable().columns.adjust();
+
+    const tableOption = tableAccessOption(tableData.tableContext, tableData.dataSrc);
+
+    if ($.fn.DataTable.isDataTable(`#${tableId}`)) {
+        $(`#${tableId}`).DataTable().destroy();
+    }
+
+    const role_based_table = $(`#${tableId}`).DataTable(tableOption);
+    
+    multiSelectRowCheckbox($(`#${tableId}`))
+    role_based_table.on('draw.dt', function () {
+        
+        const checkBoxtobeDisabled = $(`#${tableId}`).closest('.userAccessTable').find('input[type=checkbox]');
+        if (selectedValue === "Custom User") {
+            checkBoxtobeDisabled.prop('disabled', false)
+            userRightsTable.find('tr').removeClass('check-disabled')
+        } else {
+            checkBoxtobeDisabled.prop('disabled', true)
+            userRightsTable.find('tr').addClass('check-disabled')
+        }
+    })
+
 }
 
 
