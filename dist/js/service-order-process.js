@@ -610,6 +610,7 @@ document.addEventListener("DOMContentLoaded", function () {
             section.classList.add('show-addmore');
           });
         }
+        initializeDatePicker('.modaldatepicker');
       });
     }
 
