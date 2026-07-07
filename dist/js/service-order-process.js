@@ -19,7 +19,7 @@ $(document).ready(function () {
         section.find('.ach-option').prop('checked', true);
         section.find('.credit-option').prop('checked', false);
         section.find('.ach-form').show();
-      } else if(selected === "bill-to-client"){
+      } else if (selected === "bill-to-client") {
         section.find('.bill-to-client').show();
       }
     });
@@ -499,9 +499,15 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       individualAddBtn.addEventListener('click', function () {
+        const parent = $(this).closest('.modal');
         individualForm.style.display = 'none';
         corporateForm.style.display = 'none';
         section.classList.add('show-addmore');
+
+        parent.find(sectionSelector).find(individualFilledSelector).each(function(){
+          this.style.display = 'none'
+        })
+        
         individualFilledForm.style.display = 'block';
         individualAddBtn.style.display = 'none';
         individualUpdateBtn.classList.remove('d-none');
@@ -513,6 +519,9 @@ document.addEventListener("DOMContentLoaded", function () {
         individualForm.style.display = 'none';
         corporateForm.style.display = 'none';
         section.classList.add('show-addmore');
+        parent.find(sectionSelector).find(corporateFilledSelector).each(function(){
+          this.style.display = 'none'
+        })
         corporateFilledForm.style.display = 'block';
         corporateAddBtn.style.display = 'none';
         corporateUpdateBtn.classList.remove('d-none');
@@ -598,6 +607,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           cancelNewBtn.addEventListener('click', function () {
             newSection.remove();
+            section.classList.add('show-addmore');
           });
         }
       });
@@ -675,7 +685,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // submit annuall report stakeholder
 document.addEventListener('DOMContentLoaded', function () {
-  const modalIds = ['annualreportDetail', 'annualreportDetail2'];
+  const modalIds = ['annualreportDetail', 'annualreportDetail2', 'amendmentDetail'];
 
   modalIds.forEach(id => {
     const modal = document.getElementById(id);
