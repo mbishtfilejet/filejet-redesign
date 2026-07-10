@@ -97,36 +97,64 @@
         }
     }
 
-    .sopNotificationTable {
-        .dataTables_wrapper .dataTable {
-            thead {
+    .dataTables_wrapper .dataTable {
+        tr {
 
-                th:nth-child(n) {
-                    min-width: 85px !important;
+            th,
+            td {
+
+                &:first-child,
+                &:nth-child(2) {
+                    @extend .text-break;
+                    min-width: 150px !important;
                 }
 
-                th:first-child {
-                    min-width: 110px !important;
+                &:nth-child(3) {
+                    min-width: 95px !important;
                 }
 
-                th {
-
-                    &:nth-child(1),
-                    &:nth-child(2),
-                    &:nth-child(3) {
-                        max-width: 180px !important;
-                    }
+                &:nth-child(4) {
+                    min-width: 125px !important;
                 }
 
-                th:last-child {
-                    min-width: 100px !important;
+                &:last-child {
+                    min-width: 170px !important;
                 }
             }
+        }
+    }
 
-            tbody {
-                tr td:last-child div {
-                    width: 100% !important;
-                    max-width: 120px !important;
+    .sopNotificationTable {
+        .dataTables_wrapper .dataTable {
+
+            tr {
+
+                th,
+                td {
+
+                    &:first-child,
+                    &:nth-child(2) {
+                        min-width: 150px !important;
+                    }
+
+                    &:nth-child(3) {
+                        min-width: 75px !important;
+                    }
+
+                    &:nth-child(5),
+                    &:last-child {
+                        min-width: 130px !important;
+                    }
+
+                    &:nth-child(4),
+                    &:nth-child(6) {
+                        min-width: 95px !important;
+                    }
+
+                    &:nth-child(7),
+                    &:nth-child(8) {
+                        min-width: 105px !important;
+                    }
                 }
             }
         }
@@ -227,8 +255,8 @@
     }
 }
 
-.generate-ai-btn{
-    &:hover{
+.generate-ai-btn {
+    &:hover {
         background-color: #F0F0F0 !important;
     }
 }
