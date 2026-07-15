@@ -54,7 +54,7 @@ $(document).ready(function () {
                             ${row.role.toLowerCase().includes("admin") ? "" :
                             row.status !== "Invited" ? `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deactivateUser">
                                     <span data-toggle="tooltip" aria-label="DEACTIVATE" data-bs-original-title="DEACTIVATE" 
-                                        class="icon icon-entity-delete me-1 me-md-2"></span> 
+                                        class="icon icon-circular icon-smd icon-probhited-dark icon-probhited-hover"></span> 
                                 </span>`:
                                 `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#activateUser">
                                     <span data-toggle="tooltip" aria-label="RESEND INVITE" data-bs-original-title="RESEND INVITE" 

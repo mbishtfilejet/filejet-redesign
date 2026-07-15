@@ -1914,16 +1914,23 @@ async function renderSummary(container) {
 }
 
 $(function () {
-  const section = $('.entityTabsContent');
+  const section = $('.entityTabsContent, .billingTabsContent');
   const navLink = $('.nav-link.active');
+
+  let isDark = null;
 
   if (!section.length) return;
   function updateNavColor() {
     const tabsTop = section[0].getBoundingClientRect().top;
     const navBottom = navLink[0].getBoundingClientRect().bottom;
 
-    // Toggle dark class
-    navLink.toggleClass('dark', tabsTop <= navBottom);
+    const shouldBeDark = tabsTop <= navBottom ;
+
+    if (shouldBeDark !== isDark) {
+      isDark = shouldBeDark;
+      console.log("hi")
+      navLink.toggleClass('dark', shouldBeDark);
+    }
   }
 
   updateNavColor();
