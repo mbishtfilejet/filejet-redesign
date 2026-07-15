@@ -44,19 +44,19 @@ $(document).ready(function () {
             { data: "entities" },
             {
                 data: null, render: function (data, type, row) {
+                    const editModal = row.status === 'Invited' ? "#EditUserWithRemoveUserDetails" : "#EditUserDetails"
                     return `
                         <div class="d-flex align-items-center">
                             <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#EditUserDetails" aria-label="EDIT" data-bs-original-title="EDIT" 
+                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="${editModal}" aria-label="EDIT" data-bs-original-title="EDIT" 
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
                             
-                            ${row.role.toLowerCase().includes("admin") ? "" :
-                            row.status !== "Invited" ? `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deactivateUser">
+                            ${row.status !== "Invited" ? `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#deactivateUser">
                                     <span data-toggle="tooltip" aria-label="DEACTIVATE" data-bs-original-title="DEACTIVATE" 
                                         class="icon icon-circular icon-smd icon-probhited-dark icon-probhited-hover"></span> 
                                 </span>`:
-                                `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#activateUser">
+                            `<span role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#activateUser">
                                     <span data-toggle="tooltip" aria-label="RESEND INVITE" data-bs-original-title="RESEND INVITE" 
                                     class="icon icon-user-invited icon-md me-1 me-md-2"></span> 
                                 </span>`
@@ -387,10 +387,10 @@ function toggleTable(select) {
     }
 
     const role_based_table = $(`#${tableId}`).DataTable(tableOption);
-    
+
     multiSelectRowCheckbox($(`#${tableId}`))
     role_based_table.on('draw.dt', function () {
-        
+
         const checkBoxtobeDisabled = $(`#${tableId}`).closest('.userAccessTable').find('input[type=checkbox]');
         if (selectedValue === "Custom User") {
             checkBoxtobeDisabled.prop('disabled', false)
@@ -410,7 +410,7 @@ $(document).on('shown.bs.modal', '.modal', function () {
     });
 
     const modal = $(this);
-    if (modal.attr('id') === "EditUserRole") {
+    if (modal.attr('id') === "EditUserRole" || modal.attr('id') === "EditUserWithRemoveRole") {
         toggleTable(modal.find(".customSelect2.roles-select"))
     }
 });
