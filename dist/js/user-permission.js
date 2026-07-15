@@ -44,10 +44,11 @@ $(document).ready(function () {
             { data: "entities" },
             {
                 data: null, render: function (data, type, row) {
+                    const editModal = row.status === 'Invited' ? "#EditUserWithRemoveUserDetails" : "#EditUserDetails" 
                     return `
                         <div class="d-flex align-items-center">
                             <span role="button" tabindex="0"> 
-                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#EditUserDetails" aria-label="EDIT" data-bs-original-title="EDIT" 
+                                <span data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="${editModal}" aria-label="EDIT" data-bs-original-title="EDIT" 
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
                             
@@ -409,7 +410,7 @@ $(document).on('shown.bs.modal', '.modal', function () {
     });
 
     const modal = $(this);
-    if (modal.attr('id') === "EditUserRole") {
+    if (modal.attr('id') === "EditUserRole" || modal.attr('id') === "EditUserWithRemoveRole") {
         toggleTable(modal.find(".customSelect2.roles-select"))
     }
 });
