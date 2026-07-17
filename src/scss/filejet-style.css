@@ -14227,7 +14227,6 @@ label {
   vertical-align: top;
   position: sticky;
   top: 0;
-  z-index: 2;
 }
 
 .sidebar {
@@ -21104,7 +21103,7 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
   bottom: -10px !important;
   height: inherit !important;
   width: 10px !important;
-  right: -1.5px !important;
+  right: 0px !important;
   background-color: var(--bs-purple-filejet) !important;
   background-image: none !important;
   transform: none !important;
@@ -22415,7 +22414,6 @@ body *::-webkit-scrollbar-thumb {
 }
 .entityDetails-dashboard .dashboard-page > .container-fluid .main-content-wrapper, .invoices-dashboard .dashboard-page > .container-fluid .main-content-wrapper, .billing-dashboard .dashboard-page > .container-fluid .main-content-wrapper {
   display: flex;
-  z-index: 2;
   flex-direction: column;
   flex-grow: 1;
   padding: 0 !important;
@@ -22785,10 +22783,6 @@ body *::-webkit-scrollbar-thumb {
 .setting-section .modal-tags-container .tagfields input {
   background-color: white;
 }
-.SOP-model .modal-tags-container .custom-dropdown, .setting-section .modal-tags-container .custom-dropdown {
-  min-width: 0;
-  flex: 1 1 0;
-}
 .SOP-model .tag-color-picker, .setting-section .tag-color-picker {
   position: absolute;
   top: -5px;
@@ -22799,6 +22793,13 @@ body *::-webkit-scrollbar-thumb {
   pointer-events: none;
 }
 .SOP-model .icon-remove-tag, .setting-section .icon-remove-tag {
+  width: 1rem;
+  right: -4px;
+  top: -5px;
+  cursor: pointer;
+}
+
+.header-tags-container .icon-remove-tag {
   width: 1rem;
   right: -4px;
   top: -5px;
@@ -23054,35 +23055,30 @@ body *::-webkit-scrollbar-thumb {
 .entityDetailTableCard .entityDetailDocumentsTable, .billing-dashboard .billingTableCard .entityDetailDocumentsTable {
   position: relative;
 }
-.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr {
-  min-height: 0;
-  transition: background-color 0.25s ease-in-out, padding 0.5s ease-in-out;
+.entityDetailTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:first-child, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:first-child {
+  width: 260px;
+  min-width: 260px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-control, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr .dt-control {
-  color: transparent;
-  width: 1rem;
-  height: 1rem;
-  border: none;
-  background-color: transparent;
-  background-image: url("../../../../dist/images/icons/right-angle-table.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
+.entityDetailTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(2), .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(2) {
+  width: 320px;
+  min-width: 320px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-control.no-control, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr .dt-control.no-control {
-  visibility: hidden;
-  pointer-events: none;
-  cursor: none;
+.entityDetailTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(3), .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(3), .entityDetailTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(4), .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:nth-child(4) {
+  width: 120px;
+  min-width: 120px !important;
 }
-.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control {
-  transform: rotate(90deg);
+.entityDetailTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:last-child, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTables_wrapper .dataTable thead th:last-child {
+  width: 100px;
+  max-width: 100px !important;
 }
 .entityDetailTableCard .entityDetailDocumentsTable .dataTables_scrollBody, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTables_scrollBody {
   padding: 0px !important;
 }
 .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-content td.doc_indent, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr.expanded-content td.doc_indent {
-  padding-left: 40px !important;
+  padding-left: 35px !important;
+}
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.rowSelect, .billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr.rowSelect, .entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row.rowSelect {
+  background-color: #E8F1FE !important;
 }
 .entityDetailTableCard .entityDetailDocumentsTableV2, .entityDetailTableCard .groupEntityDocumentsTable, .billing-dashboard .billingTableCard .entityDetailDocumentsTableV2, .billing-dashboard .billingTableCard .groupEntityDocumentsTable {
   position: relative;
@@ -23117,6 +23113,8 @@ body *::-webkit-scrollbar-thumb {
   background-color: #E8F1FE !important;
 }
 .entityDetailTableCard .entityDetailServicesTable, .billing-dashboard .billingTableCard .entityDetailServicesTable,
+.entityDetailTableCard .entityDetailDocumentsTable,
+.billing-dashboard .billingTableCard .entityDetailDocumentsTable,
 .entityDetailTableCard .entityDetailDocumentsTableV2,
 .entityDetailTableCard .groupEntityDocumentsTable,
 .billing-dashboard .billingTableCard .entityDetailDocumentsTableV2,
@@ -23124,6 +23122,8 @@ body *::-webkit-scrollbar-thumb {
   position: relative;
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr, .billing-dashboard .billingTableCard .entityDetailServicesTable .dataTable tr,
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr,
+.billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr,
 .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr,
 .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr,
 .billing-dashboard .billingTableCard .entityDetailDocumentsTableV2 .dataTable tr,
@@ -23132,13 +23132,15 @@ body *::-webkit-scrollbar-thumb {
   transition: background-color 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr .dt-control, .billing-dashboard .billingTableCard .entityDetailServicesTable .dataTable tr .dt-control,
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-control,
+.billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr .dt-control,
 .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control,
 .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr .dt-control,
 .billing-dashboard .billingTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control,
 .billing-dashboard .billingTableCard .groupEntityDocumentsTable .dataTable tr .dt-control {
   color: transparent;
   width: 1rem;
-  height: 0.85rem;
+  height: 1rem;
   border: none;
   background-color: transparent;
   background-image: url("../../../../dist/images/icons/right-angle-table.svg");
@@ -23149,6 +23151,8 @@ body *::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr .dt-control.no-control, .billing-dashboard .billingTableCard .entityDetailServicesTable .dataTable tr .dt-control.no-control,
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr .dt-control.no-control,
+.billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr .dt-control.no-control,
 .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control.no-control,
 .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr .dt-control.no-control,
 .billing-dashboard .billingTableCard .entityDetailDocumentsTableV2 .dataTable tr .dt-control.no-control,
@@ -23158,6 +23162,8 @@ body *::-webkit-scrollbar-thumb {
   cursor: none;
 }
 .entityDetailTableCard .entityDetailServicesTable .dataTable tr.expanded-row .dt-control, .billing-dashboard .billingTableCard .entityDetailServicesTable .dataTable tr.expanded-row .dt-control,
+.entityDetailTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control,
+.billing-dashboard .billingTableCard .entityDetailDocumentsTable .dataTable tr.expanded-row .dt-control,
 .entityDetailTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .dt-control,
 .entityDetailTableCard .groupEntityDocumentsTable .dataTable tr.expanded-row .dt-control,
 .billing-dashboard .billingTableCard .entityDetailDocumentsTableV2 .dataTable tr.expanded-row .dt-control,
@@ -23293,13 +23299,6 @@ body *::-webkit-scrollbar-thumb {
 }
 .enitityDetails_servicecards .form-check .form-check-label {
   text-transform: capitalize !important;
-}
-
-.header-tags-container .icon-remove-tag {
-  width: 1rem;
-  right: -4px;
-  top: -5px;
-  cursor: pointer;
 }
 
 @media (min-width: 767.99px) {
