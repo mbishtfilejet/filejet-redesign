@@ -307,7 +307,7 @@
                            <div class="row g-0 flex-column reportSection">
                               <div class="col-12 row g-0 reportNav" id="reportTabs" role="tablist">
                                  <button class="card report-card text-decoration-none new-report"
-                                    data-target="#reportFilterCreation">
+                                    data-target="#report_creation">
                                     <span class="mx-auto mb-2 d-block icon icon-add-chart icon-lg"></span>
                                     <span class="card-title">New Report</span>
                                  </button>
@@ -454,27 +454,173 @@
                                  </div>
                               </div>
 
-                              <div id="reportFilterCreation"
-                                 class="col-12 card w-100 toggleSection p-1">
-                                 <div class="accordion">
-                                    <div class="accordion-item m-0 shadow-none border-0">
-                                       <h2 class="accordion-header" id="headingOne_reportFilterCreation border">
-                                          <button class="accordion-button fw-semibold text-dark fs-5" type="button"
-                                             data-bs-toggle="collapse"
-                                             data-bs-target="#collapseOne_reportFilterCreation" aria-expanded="true"
-                                             aria-controls="collapseOne_reportFilterCreation">
-                                             Filters
-                                          </button>
-                                       </h2>
-                                       <div id="collapseOne_reportFilterCreation"
-                                          class="accordion-collapse collapse show border-0"
-                                          aria-labelledby="headingOne_reportFilterCreation">
-                                          <div class="accordion-body pt-0">
-                                             <div class="filterSection d-flex flex-column gap-3">
-                                                <div class="filter-grid row g-0 gap-3">
+                              <div id="report_creation" class="row g-0 gap-4 toggleSection">
+                                 <div id="reportFilterCreation" class="col-12 card w-100 p-1">
+                                    <div class="accordion">
+                                       <div class="accordion-item m-0 shadow-none border-0">
+                                          <h2 class="accordion-header" id="headingOne_reportFilterCreation border">
+                                             <button class="accordion-button fw-semibold text-dark fs-5" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#collapseOne_reportFilterCreation" aria-expanded="true"
+                                                aria-controls="collapseOne_reportFilterCreation">
+                                                Filters
+                                             </button>
+                                          </h2>
+                                          <div id="collapseOne_reportFilterCreation"
+                                             class="accordion-collapse collapse show border-0"
+                                             aria-labelledby="headingOne_reportFilterCreation">
+                                             <div class="accordion-body pt-0">
+                                                <div class="filterSection d-flex flex-column gap-3">
+                                                   <div class="filter-grid row g-0 gap-3">
+                                                      <div class="row g-0 gap-2 col-11 flex-grow-1">
+                                                         <div
+                                                            class="filter2-dropdown col-md-3 flex-grow-1 dropdown report-filter property-filter">
+                                                            <div
+                                                               class="filter-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg fw-normal text-disabled"
+                                                               id="" data-bs-toggle="dropdown" aria-expanded="false"
+                                                               tabindex="0">
+                                                               Filter
+                                                            </div>
+                                                            <ul class="dropdown-menu w-100" id="">
+                                                               <li>
+                                                                  <input type="text" class="dropdown-search-input"
+                                                                     placeholder="Search..." autocomplete="off">
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="entity_name">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Entity
+                                                                        Name</span>
+                                                                     <small class="text-muted">Legal Entity Name</small>
+                                                                  </div>
+                                                                  <span class="icon icon-add-chart icon-sm m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="entity_type">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Entity
+                                                                        Type</span>
+                                                                     <small class="text-muted">LLC, Corp, LC
+                                                                        etc.</small>
+                                                                  </div>
+                                                                  <span class="icon icon-add-chart icon-sm m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="state">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">State</span>
+                                                                     <small class="text-muted">Domestic State</small>
+                                                                  </div>
+                                                                  <span class="icon icon-add-chart icon-sm m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="formation_date">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Formation
+                                                                        Date</span>
+                                                                     <small class="text-muted">Date of Formation</small>
+                                                                  </div>
+                                                                  <span class="icon icon-add-chart icon-sm m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="status">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Status</span>
+                                                                     <small class="text-muted">Active,
+                                                                        Dissolved...</small>
+                                                                  </div>
+                                                                  <span class="icon icon-add-chart icon-sm m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="tax_id_ein">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Tax ID /
+                                                                        EIN</span>
+                                                                     <small class="text-muted">Tax ID/ EIN
+                                                                        Number</small>
+                                                                  </div>
+                                                                  <span class="icon icon-add-chart icon-sm m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="authorized_share">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Authorized Share
+                                                                        Count</span>
+                                                                     <small class="text-muted">Authorized Share
+                                                                        Count</small>
+                                                                  </div>
+                                                                  <span class="icon icon-add-chart icon-sm m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="par_value">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Par Value per
+                                                                        Share</span>
+                                                                     <small class="text-muted">Par Value per
+                                                                        Share</small>
+                                                                  </div>
+                                                                  <span class="icon icon-add-chart icon-sm m-0"></span>
+                                                               </li>
+                                                            </ul>
+                                                         </div>
+                                                         <div
+                                                            class="filter2-dropdown col-md-3 flex-grow-1 dropdown report-filter operator-filter">
+                                                            <div
+                                                               class="filter-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg fw-normal text-disabled"
+                                                               id="" data-bs-toggle="dropdown" aria-expanded="false"
+                                                               tabindex="0">
+                                                               Operator
+                                                            </div>
+                                                            <ul class="dropdown-menu w-100" id="">
+                                                               <li class="dropdown-item" data-key="equals">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Equals</span>
+                                                                     <small class="text-muted">Exact Match,
+                                                                        Case-Insensitive</small>
+                                                                  </div>
+                                                                  <span class="icon m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="starts_with">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Starts
+                                                                        With</span>
+                                                                     <small class="text-muted">Matches From The
+                                                                        Beginning</small>
+                                                                  </div>
+                                                                  <span class="icon m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="is">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Is</span>
+                                                                     <small class="text-muted">Exact Match</small>
+                                                                  </div>
+                                                                  <span class="icon m-0"></span>
+                                                               </li>
+                                                               <li class="dropdown-item" data-key="between">
+                                                                  <div class="d-flex flex-column">
+                                                                     <span class="text-grey item-name">Between</span>
+                                                                     <small class="text-muted">Match values within a
+                                                                        range</small>
+                                                                  </div>
+                                                                  <span class="icon m-0"></span>
+                                                               </li>
+                                                            </ul>
+                                                         </div>
+                                                         <div class="col-md-3 flex-grow-1 report-filter-value">
+                                                            <div
+                                                               class="d-flex align-items-center border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                                               <input type="text" class="border-0 p-0 w-100"
+                                                                  placeholder="Value">
+                                                            </div>
+                                                         </div>
+                                                      </div>
+
+                                                      <div role="button"
+                                                         class="remove-filter col-auto fs-4 mx-auto d-flex align-items-center justify-content-center">
+                                                         <span class="icon icon-close-dark m-0"></span>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <button aria-label="Add Filter" type="button"
+                                                   class="btn btn-secondary mt-3 p-2 py-0 rounded-3 text-white text-capitalize align-self-start add-filter">
+                                                   Add new Filter
+                                                </button>
+                                                <div class="filter-grid row g-0 gap-3 d-none filter-template">
                                                    <div class="row g-0 gap-2 col-11 flex-grow-1">
                                                       <div
-                                                         class="filter2-dropdown col-md-3 flex-grow-1 dropdown report-filter">
+                                                         class="filter2-dropdown col-md-3 flex-grow-1 dropdown report-filter property-filter">
                                                          <div
                                                             class="filter-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg fw-normal text-disabled"
                                                             id="" data-bs-toggle="dropdown" aria-expanded="false"
@@ -486,28 +632,31 @@
                                                                <input type="text" class="dropdown-search-input"
                                                                   placeholder="Search..." autocomplete="off">
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="entity_name">
                                                                <div class="d-flex flex-column">
-                                                                  <span class="text-grey item-name">Entity Name</span>
+                                                                  <span class="text-grey item-name">Entity
+                                                                     Name</span>
                                                                   <small class="text-muted">Legal Entity Name</small>
                                                                </div>
                                                                <span class="icon icon-add-chart icon-sm m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="entity_type">
                                                                <div class="d-flex flex-column">
-                                                                  <span class="text-grey item-name">Entity Type</span>
-                                                                  <small class="text-muted">LLC, Corp, LC etc.</small>
+                                                                  <span class="text-grey item-name">Entity
+                                                                     Type</span>
+                                                                  <small class="text-muted">LLC, Corp, LC
+                                                                     etc.</small>
                                                                </div>
                                                                <span class="icon icon-add-chart icon-sm m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="state">
                                                                <div class="d-flex flex-column">
                                                                   <span class="text-grey item-name">State</span>
                                                                   <small class="text-muted">Domestic State</small>
                                                                </div>
                                                                <span class="icon icon-add-chart icon-sm m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="formation_date">
                                                                <div class="d-flex flex-column">
                                                                   <span class="text-grey item-name">Formation
                                                                      Date</span>
@@ -515,21 +664,24 @@
                                                                </div>
                                                                <span class="icon icon-add-chart icon-sm m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="status">
                                                                <div class="d-flex flex-column">
                                                                   <span class="text-grey item-name">Status</span>
-                                                                  <small class="text-muted">Active, Dissolved...</small>
+                                                                  <small class="text-muted">Active,
+                                                                     Dissolved...</small>
                                                                </div>
                                                                <span class="icon icon-add-chart icon-sm m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="tax_id_ein">
                                                                <div class="d-flex flex-column">
-                                                                  <span class="text-grey item-name">Tax ID / EIN</span>
-                                                                  <small class="text-muted">Tax ID/ EIN Number</small>
+                                                                  <span class="text-grey item-name">Tax ID /
+                                                                     EIN</span>
+                                                                  <small class="text-muted">Tax ID/ EIN
+                                                                     Number</small>
                                                                </div>
                                                                <span class="icon icon-add-chart icon-sm m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="authorized_share">
                                                                <div class="d-flex flex-column">
                                                                   <span class="text-grey item-name">Authorized Share
                                                                      Count</span>
@@ -538,11 +690,12 @@
                                                                </div>
                                                                <span class="icon icon-add-chart icon-sm m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="par_value">
                                                                <div class="d-flex flex-column">
                                                                   <span class="text-grey item-name">Par Value per
                                                                      Share</span>
-                                                                  <small class="text-muted">Par Value per Share</small>
+                                                                  <small class="text-muted">Par Value per
+                                                                     Share</small>
                                                                </div>
                                                                <span class="icon icon-add-chart icon-sm m-0"></span>
                                                             </li>
@@ -557,7 +710,7 @@
                                                             Operator
                                                          </div>
                                                          <ul class="dropdown-menu w-100" id="">
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="equals">
                                                                <div class="d-flex flex-column">
                                                                   <span class="text-grey item-name">Equals</span>
                                                                   <small class="text-muted">Exact Match,
@@ -565,22 +718,23 @@
                                                                </div>
                                                                <span class="icon m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="starts_with">
                                                                <div class="d-flex flex-column">
-                                                                  <span class="text-grey item-name">Starts With</span>
+                                                                  <span class="text-grey item-name">Starts
+                                                                     With</span>
                                                                   <small class="text-muted">Matches From The
                                                                      Beginning</small>
                                                                </div>
                                                                <span class="icon m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="is">
                                                                <div class="d-flex flex-column">
                                                                   <span class="text-grey item-name">Is</span>
                                                                   <small class="text-muted">Exact Match</small>
                                                                </div>
                                                                <span class="icon m-0"></span>
                                                             </li>
-                                                            <li class="dropdown-item">
+                                                            <li class="dropdown-item" data-key="between">
                                                                <div class="d-flex flex-column">
                                                                   <span class="text-grey item-name">Between</span>
                                                                   <small class="text-muted">Match values within a
@@ -605,140 +759,25 @@
                                                    </div>
                                                 </div>
                                              </div>
-                                             <button aria-label="Add Filter" type="button"
-                                                class="btn btn-secondary mt-3 p-2 py-0 rounded-3 text-white text-capitalize align-self-start add-filter">
-                                                Add new Filter
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div id="column_creation" class="col-12 card w-100 p-1">
+                                    <div class="accordion">
+                                       <div class="accordion-item m-0 shadow-none border-0">
+                                          <h2 class="accordion-header" id="headingOne_column_creation border">
+                                             <button class="accordion-button fw-semibold text-dark fs-5" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseOne_column_creation"
+                                                aria-expanded="true" aria-controls="collapseOne_column_creation">
+                                                Column
                                              </button>
-                                             <div class="filter-grid row g-0 gap-3 d-none filter-template">
-                                                <div class="row g-0 gap-2 col-11 flex-grow-1">
-                                                   <div
-                                                      class="filter2-dropdown col-md-3 flex-grow-1 dropdown report-filter">
-                                                      <div
-                                                         class="filter-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg fw-normal text-disabled"
-                                                         id="" data-bs-toggle="dropdown" aria-expanded="false"
-                                                         tabindex="0">
-                                                         Filter
-                                                      </div>
-                                                      <ul class="dropdown-menu w-100" id="">
-                                                         <li>
-                                                            <input type="text" class="dropdown-search-input"
-                                                               placeholder="Search..." autocomplete="off">
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Entity Name</span>
-                                                               <small class="text-muted">Legal Entity Name</small>
-                                                            </div>
-                                                            <span class="icon icon-add-chart icon-sm m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Entity Type</span>
-                                                               <small class="text-muted">LLC, Corp, LC etc.</small>
-                                                            </div>
-                                                            <span class="icon icon-add-chart icon-sm m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">State</span>
-                                                               <small class="text-muted">Domestic State</small>
-                                                            </div>
-                                                            <span class="icon icon-add-chart icon-sm m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Formation Date</span>
-                                                               <small class="text-muted">Date of Formation</small>
-                                                            </div>
-                                                            <span class="icon icon-add-chart icon-sm m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Status</span>
-                                                               <small class="text-muted">Active, Dissolved...</small>
-                                                            </div>
-                                                            <span class="icon icon-add-chart icon-sm m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Tax ID / EIN</span>
-                                                               <small class="text-muted">Tax ID/ EIN Number</small>
-                                                            </div>
-                                                            <span class="icon icon-add-chart icon-sm m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Authorized Share
-                                                                  Count</span>
-                                                               <small class="text-muted">Authorized Share Count</small>
-                                                            </div>
-                                                            <span class="icon icon-add-chart icon-sm m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Par Value per
-                                                                  Share</span>
-                                                               <small class="text-muted">Par Value per Share</small>
-                                                            </div>
-                                                            <span class="icon icon-add-chart icon-sm m-0"></span>
-                                                         </li>
-                                                      </ul>
-                                                   </div>
-                                                   <div
-                                                      class="filter2-dropdown col-md-3 flex-grow-1 dropdown report-filter operator-filter">
-                                                      <div
-                                                         class="filter-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg fw-normal text-disabled"
-                                                         id="" data-bs-toggle="dropdown" aria-expanded="false"
-                                                         tabindex="0">
-                                                         Operator
-                                                      </div>
-                                                      <ul class="dropdown-menu w-100" id="">
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Equals</span>
-                                                               <small class="text-muted">Exact Match,
-                                                                  Case-Insensitive</small>
-                                                            </div>
-                                                            <span class="icon m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Starts With</span>
-                                                               <small class="text-muted">Matches From The
-                                                                  Beginning</small>
-                                                            </div>
-                                                            <span class="icon m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Is</span>
-                                                               <small class="text-muted">Exact Match</small>
-                                                            </div>
-                                                            <span class="icon m-0"></span>
-                                                         </li>
-                                                         <li class="dropdown-item">
-                                                            <div class="d-flex flex-column">
-                                                               <span class="text-grey item-name">Between</span>
-                                                               <small class="text-muted">Match values within a
-                                                                  range</small>
-                                                            </div>
-                                                            <span class="icon m-0"></span>
-                                                         </li>
-                                                      </ul>
-                                                   </div>
-                                                   <div class="col-md-3 flex-grow-1 report-filter-value">
-                                                      <div
-                                                         class="d-flex align-items-center border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
-                                                         <input type="text" class="border-0 p-0 w-100"
-                                                            placeholder="Value">
-                                                      </div>
-                                                   </div>
-                                                </div>
-
-                                                <div role="button"
-                                                   class="remove-filter col-auto fs-4 mx-auto d-flex align-items-center justify-content-center">
-                                                   <span class="icon icon-close-dark m-0"></span>
-                                                </div>
+                                          </h2>
+                                          <div id="collapseOne_column_creation"
+                                             class="accordion-collapse collapse show border-0"
+                                             aria-labelledby="headingOne_column_creation">
+                                             <div class="accordion-body pt-0">
+                                                Hi
                                              </div>
                                           </div>
                                        </div>
