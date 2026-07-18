@@ -108,7 +108,6 @@ $color-lighter-gray: #F3F5F8;
 
       .main-content-wrapper {
         display: flex;
-        z-index: 2;
         flex-direction: column;
         flex-grow: 1;
         padding: 0 !important;
@@ -468,11 +467,6 @@ $color-lighter-gray: #F3F5F8;
         background-color: white;
       }
     }
-
-    .custom-dropdown {
-      min-width: 0;
-      flex: 1 1 0;
-    }
   }
 
   .tag-color-picker {
@@ -491,6 +485,14 @@ $color-lighter-gray: #F3F5F8;
     top: -5px;
     cursor: pointer;
   }
+
+}
+
+.header-tags-container .icon-remove-tag {
+  width: 1rem;
+  right: -4px;
+  top: -5px;
+  cursor: pointer;
 }
 
 .entitydetails-info-modal {
@@ -829,45 +831,133 @@ $color-lighter-gray: #F3F5F8;
     }
   }
 
+  // .entityDetailDocumentsTable {
+  //   position: relative;
+
+  //   .dataTable tr {
+  //     min-height: 0;
+  //     transition: background-color 0.25s ease-in-out, padding 0.5s ease-in-out;
+
+  //     .dt-control {
+  //       color: transparent;
+  //       width: 1rem;
+  //       height: 1rem;
+  //       border: none;
+  //       background-color: transparent;
+  //       background-image: url("../../../../dist/images/icons/right-angle-table.svg");
+  //       background-repeat: no-repeat;
+  //       background-position: center;
+  //       transition: transform 0.2s ease-in-out;
+  //       cursor: pointer;
+
+  //       &.no-control {
+  //         visibility: hidden;
+  //         pointer-events: none;
+  //         cursor: none;
+  //       }
+  //     }
+  //   }
+
+  //   .dataTable tr.expanded-row {
+
+  //     background-color: #D8DDDF !important;
+  //     box-shadow: inset 0 -1.5px 0 rgba(0, 0, 0, 0.3) !important;
+
+  //     .dt-control {
+  //       transform: rotate(90deg);
+  //     }
+  //   }
+
+  //   .dataTables_scrollBody {
+  //     padding: 0px !important;
+  //   }
+
+  //   .dataTable tr.expanded-content td.doc_indent {
+  //     padding-left: 40px !important;
+  //   }
+  //       .dataTables_wrapper .dataTable {
+  //     thead {
+  //       th {
+  //         // &:first-child {
+  //         //   width: 1rem !important;
+  //         //   max-width: 1rem !important;
+  //         // }
+
+  //         &:first-child {
+  //           width: 260px;
+  //           min-width: 260px !important;
+  //         }
+
+  //         &:nth-child(2) {
+  //           width: 300px;
+  //           background-color: red !important;
+  //           min-width: 300px !important;
+  //         }
+
+  //         &:nth-child(3) {
+  //           width: 100px;
+  //           min-width: 100px !important;
+  //         }
+
+  //         &:last-child {
+  //           width: 50px;
+  //           max-width: 50px !important;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
   .entityDetailDocumentsTable {
     position: relative;
 
-    .dataTable tr {
-      min-height: 0;
-      transition: background-color 0.25s ease-in-out, padding 0.5s ease-in-out;
+    .dataTables_wrapper .dataTable {
+      thead {
+        th {
+          // &:first-child {
+          //   width: 1rem !important;
+          //   max-width: 1rem !important;
+          // }
 
-      .dt-control {
-        color: transparent;
-        width: 1rem;
-        height: 1rem;
-        border: none;
-        background-color: transparent;
-        background-image: url("../../../../dist/images/icons/right-angle-table.svg");
-        background-repeat: no-repeat;
-        background-position: center;
-        transition: transform 0.2s ease-in-out;
-        cursor: pointer;
+          &:first-child {
+            width: 260px;
+            min-width: 260px !important;
+          }
 
-        &.no-control {
-          visibility: hidden;
-          pointer-events: none;
-          cursor: none;
+          &:nth-child(2) {
+            width: 320px;
+            min-width: 320px !important;
+          }
+
+          &:nth-child(3),
+          &:nth-child(4) {
+            width: 120px;
+            min-width: 120px !important;
+          }
+
+          &:last-child {
+            width: 100px;
+            max-width: 100px !important;
+          }
+
         }
       }
     }
 
-    .dataTable tr.expanded-row {
-      .dt-control {
-        transform: rotate(90deg);
-      }
-    }
 
     .dataTables_scrollBody {
       padding: 0px !important;
     }
 
-    .dataTable tr.expanded-content td.doc_indent {
-      padding-left: 40px !important;
+    .dataTable tr {
+      &.expanded-content td.doc_indent {
+        padding-left: 35px !important;
+      }
+
+      &.rowSelect,
+      &.expanded-row.rowSelect {
+        background-color: #E8F1FE !important;
+      }
     }
   }
 
@@ -924,6 +1014,7 @@ $color-lighter-gray: #F3F5F8;
   }
 
   .entityDetailServicesTable,
+  .entityDetailDocumentsTable,
   .entityDetailDocumentsTableV2 {
     position: relative;
 
@@ -934,7 +1025,7 @@ $color-lighter-gray: #F3F5F8;
       .dt-control {
         color: transparent;
         width: 1rem;
-        height: 0.85rem;
+        height: 1rem;
         border: none;
         background-color: transparent;
         background-image: url("../../../../dist/images/icons/right-angle-table.svg");
@@ -1124,13 +1215,6 @@ $color-lighter-gray: #F3F5F8;
   .form-check .form-check-label {
     text-transform: capitalize !important;
   }
-}
-
-.header-tags-container .icon-remove-tag {
-  width: 1rem;
-  right: -4px;
-  top: -5px;
-  cursor: pointer;
 }
 
 @media (min-width:767.99px) {
