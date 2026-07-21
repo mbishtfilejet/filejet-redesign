@@ -8,70 +8,87 @@ $(function () {
         "status": { operator: ["is"], type: "string" },
         "tax_id_ein": { operator: ["is"], type: "number" },
         "authorized_share": { operator: ["equals"], type: "number" },
-        "par_value": { operator: ["equals"], type: "number" },
+        "par_value": { operator: ["equals", "between"], type: "number" },
     }
 
     function initializeFilterDatePicker(selector) {
-        let $dateInput = $(selector);
-        $dateInput.datepicker({
-            format: 'mm/dd/yyyy',
-            autoclose: true
-        })
+        $(selector).datepicker()
     }
 
+
+    
 
     $(document).on('click', '.dropdown-item', function (e) {
         e.preventDefault();
 
         const item = $(this);
-        const value = item.find('.item-name').text().trim();
-        const selectItemkey = item.data("key");
+        const selectedText = item.find('.item-name').text().trim();
+        const selectkey = item.data("key");
+
         const dropdown = item.closest('.dropdown.report-filter');
         const parent = dropdown.closest(".filter-grid");
 
-        // Remove active class from this dropdown only
+        // Update selected item
         dropdown.find('.dropdown-item').removeClass('selected');
-
-        // Update the toggle button text
-        dropdown.find('.filter-select-container').text(value).attr('data-selected', selectItemkey).addClass('text-black');
-
-
-        // Mark clicked item as active
         item.addClass('selected');
 
+        // Update the toggle button text
+        dropdown.find('[data-bs-toggle="dropdown"]').text(selectedText).attr('data-selected', selectkey);
+
+
+        // Property Dropdown Selected
+
         if (dropdown.hasClass('property-filter')) {
-            let operatorDropdown = parent.find('.operator-filter');
-            operatorDropdown.find('[data-bs-toggle="dropdown"]').removeClass('text-black').data('selected', '').text("Operator")
-            let items = operatorDropdown.find('.dropdown-item');
+            const config = operatorByType[selectkey];
+            if (!config) return;
 
-            items.each(function () {
-                let itemKey = $(this).data('key');
-                $(this).removeClass('selected')
-                $(this).toggle(operatorByType[selectItemkey].operator.includes(itemKey));
-            })
+            const operatorDropdown = parent.find('.operator-filter');
+            const operatorToggleButton = operatorDropdown.find('[data-bs-toggle="dropdown"]');
+
+            // Reset operator dropdown
+            operatorToggleButton
+                .removeAttr('data-selected')
+                .text(operatorToggleButton.attr('placeholder'))
+
+            operatorDropdown.find('.dropdown-item')
+                .removeClass('selected')
+                .each(function () {
+                    const operatorKey = $(this).data('key');
+                    $(this).toggle(config.operator.includes(operatorKey));
+                })
+
+            // Reset value section
+            const valueSection = parent.find('.report-filter-value');
+            valueSection.children().addClass('d-none')
+            valueSection.find('.single-value').removeClass('d-none');
+            return;
         }
-        else if (dropdown.hasClass('operator-filter')) {
-            let operatorDropdown = parent.find('.operator-filter');
-            let propertySelected = parent.find('.property-filter [data-bs-toggle="dropdown"]').data('selected');
-            let valueInputSection = parent.find('.report-filter-value');
-            let propertySelectedType = operatorByType[propertySelected].type;
-            let inputElement = `<div 
-                                    class="d-flex align-items-center border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
-                                      <input type="text" class="border-0 p-0 w-100" placeholder="Value">
-                                </div>`
-            let dateElement = `<div class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1">
-                                    <input type="text" class="form-control w-100 border-0 p-0 my-auto" placeholder="Date" value="">
-                                 </div>`
-            if (propertySelectedType === "date") {
 
+        // Operator DropDown Selected
 
-            } else{
+        if (dropdown.hasClass('operator-filter')) {
+            const propertyKey = parent.find('.property-filter [data-bs-toggle="dropdown"]').attr('data-selected');
+            console.log(propertyKey)
+            if (!propertyKey || !operatorByType[propertyKey]) return;
 
+            let propertyType = operatorByType[propertyKey].type;
+            const isBetween = selectkey === 'between';
+
+            const valueSection = parent.find('.report-filter-value');
+
+            valueSection.children().addClass('d-none');
+
+            if (propertyType === "date") {
+                valueSection
+                    .find(isBetween ? '.date-range' : '.single-date')
+                    .removeClass('d-none');
+                initializeFilterDatePicker('.datepicker');
+            } else {
+                valueSection
+                    .find(isBetween ? '.value-range' : '.single-value')
+                    .removeClass('d-none');
             }
         }
-
-
-
     });
 
     $(document)
