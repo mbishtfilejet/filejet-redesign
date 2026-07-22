@@ -24450,4 +24450,55 @@ body *::-webkit-scrollbar-thumb {
   filter: contrast(0) brightness(2);
 }
 
+.drag-item {
+  display: flex;
+  height: 29px;
+  padding: 10px;
+  line-height: normal;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  gap: 10px;
+  border: 0.5px dashed #FF551A;
+  background-color: #FFF2ED;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+.drag-item .handle {
+  cursor: grab;
+  font-size: 1.5rem;
+}
+.drag-item.dragplacehoder {
+  color: #8690A0;
+  border: 0.5px dashed #3E484A;
+  background-color: #F2F3F5;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.drag-item span {
+  flex-grow: 1;
+}
+
+.drag_container .drag-item .icon-add-chart {
+  display: none;
+}
+.drag_container .drag-item.dragging {
+  border-style: solid;
+  background-color: #FF551A;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+  color: white;
+}
+.drag_container .drag-item.dragging .icon-close-dark {
+  filter: contrast(0) brightness(2);
+}
+
+.suggestion_column .drag-item {
+  color: #8690A0;
+  border: 0.5px dashed #3E484A;
+  background-color: #F2F3F5;
+}
+.suggestion_column .drag-item .handle,
+.suggestion_column .drag-item .icon-close-dark {
+  display: none;
+}
+
 /*# sourceMappingURL=filejet-style.css.map */

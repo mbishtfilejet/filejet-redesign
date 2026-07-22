@@ -242,3 +242,90 @@ function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
         currency: currency
     }).format(amount)
 }
+
+
+
+//drag drop
+
+
+$(function () {
+    let draggEl = null;
+
+    $('.drag_container').on('dragstart', '.handle', function (ev) {
+        draggEl = this;
+        $(this).closest('drag-item').addClass("dragging")
+    })
+
+    $('.drag_container').on('dragend', '.handle', function (ev) {
+        $(this).closest('drag-item').removeClass("dragging dragplacehoder");
+        draggEl = null;
+    })
+
+    $('.drag_container').on('dragover', '.handle', function (ev) {
+        ev.preventDefault();
+
+        if (this === draggEl) {
+            $(draggEl).closest('.drag-item').removeClass('dragging').addClass('dragplacehoder')
+            return;
+        };
+
+        let dragItem = $(this).closest('.drag-item');
+
+        let rect = dragItem[0].getBoundingClientRect();
+
+        let midX = rect.left + rect.width / 2;
+
+        let before = ev.originalEvent.clientX < midX;
+
+        let items = dragItem.parent().find('.drag-item');
+
+        let oldPosition = [];
+
+        items.each(function () {
+            oldPosition.push(this.getBoundingClientRect().left)
+        })
+
+        if (before) {
+            $(this).before(draggEl)
+        } else {
+            $(this).after(draggEl)
+        }
+
+        items.each(function (idx) {
+            let oldRectLeft = oldPosition[idx];
+            let newRectleft = this.getBoundingClientRect().left;
+
+            let dx = oldRectLeft - newRectleft;
+
+            if (dx) {
+                this.style.transition = 'none';
+                this.style.transform = `translateX(${dx}px)`;
+                this.offsetWidth;
+                this.style.transition = 'transform 0.2s ease';
+                this.style.transform = `translateX(0)`
+            }
+        })
+
+    })
+
+
+    $('.drag_container').on('dragover', function (ev) {
+        ev.preventDefault();
+    })
+})
+
+
+$(function () {
+    $(document).on('click', '.remove-column', function (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+
+        let dragItem = $(this).closest('.drag-item');
+        let suggestionSection = $(this).closest('.column_section').find('.suggestion_column');
+
+        dragItem.attr('draggable', true);
+
+        suggestionSection.prepend(dragItem)
+        
+    })
+})
