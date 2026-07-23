@@ -3737,9 +3737,9 @@
                   <p class="mb-0 text-secondary">California Limited Liability Company</p>
                   <p class="mb-0 text-secondary">123 Main St Anywhere, CA 99999</p>
                   <hr class="summarystroke">
-                  <div class="entitytable pricetable border rounded-3 mt-4 h-auto">
+                  <div class="entitytable border rounded-3 mt-4 h-auto">
                      <div class="fade show active rounded-3 overflow-hidden" id="all">
-                        <table class="table table-striped w-100 long-data-table-listing border-1">
+                        <table data-ordering="false" class="table table-striped long-data-table-listing w-100 border-1">
                            <thead>
                               <tr>
                                  <th data-orderable="false">Service</th>
@@ -3749,15 +3749,27 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <tr class="odd">
+                              <tr class="odd parent-row">
                                  <td>Statement of Information</td>
                                  <td>1</td>
                                  <td>$15</td>
                                  <td>$15</td>
                               </tr>
+                              <tr class="even child-row">
+                                 <td>Certified Copy</td>
+                                 <td>2</td>
+                                 <td>$7</td>
+                                 <td>$14</td>
+                              </tr>
+                              <tr class="even child-row">
+                                 <td>Rush Filing</td>
+                                 <td>1</td>
+                                 <td>$45</td>
+                                 <td>$45</td>
+                              </tr>
 
                            <tfoot>
-                              <tr class="even">
+                              <tr class="odd">
                                  <td class="fw-bold">Total</td>
                                  <td class="fw-bold">1</td>
                                  <td class="fw-bold">$15</td>
@@ -28209,8 +28221,8 @@
    <!-- Submit annual report step-2 Modal End-->
 
    <!--opt-3 Submit annual report step-3b Modal start-->
-   <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="stateSpecificDelaware" tabindex="-1"
-      aria-labelledby="searchModalLabel" aria-hidden="true">
+   <div class="modalsteper modal modal-right fade filter-slideout SOP-model show" style="display: block;"
+      id="stateSpecificDelaware" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <!-- Modal Header -->
@@ -28270,7 +28282,6 @@
                               Home
                            </button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                               type="button" role="tab">
@@ -28279,9 +28290,8 @@
                         </li>
 
                         <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-                              type="button" role="tab">
-                              Contact
+                           <button class="nav-btn" type="button">
+                              <span class="icon icon-sm m-0 icon-add-chart"></span>
                            </button>
                         </li>
                      </ul>
