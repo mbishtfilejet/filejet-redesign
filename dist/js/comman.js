@@ -242,3 +242,39 @@ function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
         currency: currency
     }).format(amount)
 }
+
+
+
+$(function () {
+
+    const liElement = `<li class="nav-item" role="presentation">
+                           <button class="nav-link" id="" data-bs-toggle="tab" data-bs-target=""
+                              type="button" role="tab">Jan 1, 2025 - Dec 31, 2025
+                           </button>
+                        </li>`;
+
+    $('.add-split').on('click', function () {
+        const split_share_section = $(this).closest('.split_tab_section');
+
+        if (!split_share_section.length) return;
+
+        const navTabs = split_share_section.find('.nav-tabs');
+        const rightBtn = split_share_section.find('.right-btn');
+        const leftBtn = split_share_section.find('.left-btn');
+        const addSplitBtn = $(this);
+        navTabs.append(liElement);
+
+        const navItem = navTabs.find('.nav-item');
+
+
+        if (navItem.length > 2) {
+            rightBtn.removeClass('d-none');
+            leftBtn.removeClass('d-none');
+            addSplitBtn.addClass('ms-auto')
+        } else {
+            rightBtn.addClass('d-none');
+            leftBtn.addClass('d-none');
+            addSplitBtn.removeClass('ms-auto')
+        }
+    })
+})

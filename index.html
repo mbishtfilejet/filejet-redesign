@@ -27209,7 +27209,7 @@
    <!--opt-3 Submit annual report step-1 Modal start-->
    <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="annualReportsbDelaware" tabindex="-1"
       aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <!-- Modal Header -->
             <div class="modal-header flex-wrap">
@@ -27330,7 +27330,7 @@
    <!--opt-3 Submit annual report step-2 Modal start-->
    <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="annualreportDetailDelaware"
       tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <!-- Modal Header -->
             <div class="modal-header flex-wrap">
@@ -28221,9 +28221,9 @@
    <!-- Submit annual report step-2 Modal End-->
 
    <!--opt-3 Submit annual report step-3b Modal start-->
-   <div class="modalsteper modal modal-right fade filter-slideout SOP-model"
+   <div class="modalsteper modal modal-right fade filter-slideout SOP-model show" style="display: block;"
       id="stateSpecificDelaware" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <!-- Modal Header -->
             <div class="modal-header flex-wrap">
@@ -28275,42 +28275,124 @@
                      share structure changed mid-year. When you split, all stock class fields — name, shares, and par
                      value — are copied from the previous period.</small>
                   <div class="split_tab_section mt-3">
-                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                           <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                              type="button" role="tab">
-                              Home
-                           </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                              type="button" role="tab">
-                              Profile
-                           </button>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                           <button class="nav-btn" type="button">
-                              <span class="icon icon-sm m-0 icon-add-chart"></span>
-                           </button>
-                        </li>
-                     </ul>
-
+                     <div class="nav-pagination">
+                        <button class="nav-btn left-btn d-none" type="button">
+                           <span class="icon icon-sm m-0 icon-arrow-left-black"></span>
+                        </button>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                           <li class="nav-item" role="presentation">
+                              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                                 type="button" role="tab">Jan 1, 2025 - Dec 31, 2025
+                              </button>
+                           </li>
+                        </ul>
+                        <button class="nav-btn right-btn d-none" type="button">
+                           <span class="icon icon-sm m-0 icon-arrow-right-black"></span>
+                        </button>
+                        <button class="nav-btn add-split" type="button">
+                           <span class="icon icon-sm m-0 icon-add-chart"></span>
+                        </button>
+                     </div>
                      <!-- Tab Content -->
                      <div class="tab-content border border-top-0 p-3 shadow-none" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel">
-                           <h4>Home</h4>
-                           <p>Welcome to the Home tab.</p>
+                           <fieldset class="mb-4">
+                              <label for="" class="form-label">Total Authorized Shares <span
+                                    class="mandatory">*</span></label>
+                              <input type="text" class="form-control" placeholder="Total number of shares">
+                           </fieldset>
+                           <div class="d-flex align-items-center gap-3 justify-content-between">
+                              <fieldset class="w-50">
+                                 <label for="firstDeposit" class="form-label">Total Gross Assets</label>
+                                 <input type="text" id="firstDeposit" class="form-control"
+                                    placeholder="Total Gross Assets">
+                              </fieldset>
+                              <fieldset class="w-50">
+                                 <label for="secondDeposit" class=" form-label">Total Issued Shares</label>
+                                 <input type="text" id="secondDeposit" class="form-control"
+                                    placeholder="Total Issued shares">
+                              </fieldset>
+                           </div>
+
+                           <hr>
+
+                           <div class="entitytable border rounded-3 my-3 h-auto">
+                              <div class="fade show active rounded-3 overflow-hidden" id="all">
+                                 <table data-ordering="false"
+                                    class="table table-striped long-data-table-listing w-100 border-1">
+                                    <thead>
+                                       <tr>
+                                          <th data-orderable="false">Stock Class</th>
+                                          <th data-orderable="false" class="">Number of Authorized Shares</th>
+                                          <th data-orderable="false" class="">Par Value</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr class="odd parent-row">
+                                          <td>Comman</td>
+                                          <td>1</td>
+                                          <td>$15</td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+
+                           <div class="w-100">
+                              <a href="#" class="d-flex align-items-center">
+                                 <span class="icon icon-add-circle-plus"></span> Add Row
+                              </a>
+                           </div>
                         </div>
 
-                        <div class="tab-pane fade" id="profile" role="tabpanel">
-                           <h4>Profile</h4>
-                           <p>This is the Profile tab.</p>
-                        </div>
+                        <div class="tab-pane fade d-none" role="tabpanel">
+                           <fieldset class="mb-4">
+                              <label for="" class="form-label">Total Authorized Shares <span
+                                    class="mandatory">*</span></label>
+                              <input type="text" class="form-control" placeholder="Total number of shares">
+                           </fieldset>
+                           <div class="d-flex align-items-center gap-3 justify-content-between">
+                              <fieldset class="w-50">
+                                 <label for="firstDeposit" class="form-label">Total Gross Assets</label>
+                                 <input type="text" id="firstDeposit" class="form-control"
+                                    placeholder="Total Gross Assets">
+                              </fieldset>
+                              <fieldset class="w-50">
+                                 <label for="secondDeposit" class=" form-label">Total Issued Shares</label>
+                                 <input type="text" id="secondDeposit" class="form-control"
+                                    placeholder="Total Issued shares">
+                              </fieldset>
+                           </div>
 
-                        <div class="tab-pane fade" id="contact" role="tabpanel">
-                           <h4>Contact</h4>
-                           <p>This is the Contact tab.</p>
+                           <hr>
+
+                           <div class="entitytable border rounded-3 my-3 h-auto">
+                              <div class="fade show active rounded-3 overflow-hidden" id="all">
+                                 <table data-ordering="false"
+                                    class="table table-striped long-data-table-listing w-100 border-1">
+                                    <thead>
+                                       <tr>
+                                          <th data-orderable="false">Stock Class</th>
+                                          <th data-orderable="false" class="">Number of Authorized Shares</th>
+                                          <th data-orderable="false" class="">Par Value</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr class="odd parent-row">
+                                          <td>Comman</td>
+                                          <td>1</td>
+                                          <td>$15</td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+
+                           <div class="w-100">
+                              <a href="#" class="d-flex align-items-center">
+                                 <span class="icon icon-add-circle-plus"></span> Add Row
+                              </a>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -28345,7 +28427,7 @@
    <!--opt-3 Submit annual report step-4 Modal start-->
    <div class=" modalsteper modal modal-right fade filter-slideout SOP-model" id="annualSummaryDelaware" tabindex="-1"
       aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+      <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <!-- Modal Header -->
             <div class="modal-header flex-wrap">
@@ -28388,7 +28470,8 @@
                <div class="mb-4 p-3 bg-white rounded-2">
                   <div>
                      <div class="d-flex justify-content-between">
-                        <h3 class="fw-bold mb-2">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY CORPORATION
+                        <h3 class="fw-bold mb-2">DEJONG'S QUANTUM TAX STRATEGIES, A PROFESSIONAL ACCOUNTANCY
+                           CORPORATION
                         </h3>
                      </div>
                      <p class="mb-0 text-secondary">California Limited Liability Company</p>
@@ -28496,7 +28579,8 @@
                                  <div class="icon icon-outline-info customTooltip p-0 m-0 position-relative">
                                     <div class="text-start tooltipText tooltipRight"> Please note that the
                                        Routing/Account numbers must have a minimum of 12 digits when adding. Your
-                                       Routing/Account number is less than 12 digits, you may add zeros at the beginning
+                                       Routing/Account number is less than 12 digits, you may add zeros at the
+                                       beginning
                                        of the Routing/Account number. (see example)</div>
                                  </div>
                               </div>
@@ -30864,6 +30948,7 @@
    <script src="dist/js/custom.min.js"></script>
    <script src="dist/js/dashboard-v2.js"></script>
    <script src="dist/js/service-order-process.js"></script>
+   <script src="dist/js/comman.js"></script>
    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
    <script
       src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
