@@ -247,34 +247,332 @@ function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
 
 $(function () {
 
-    const liElement = `<li class="nav-item" role="presentation">
-                           <button class="nav-link" id="" data-bs-toggle="tab" data-bs-target=""
-                              type="button" role="tab">Jan 1, 2025 - Dec 31, 2025
-                           </button>
-                        </li>`;
+    const navTabList = {};
+
+    const startIndexMap = {};
+
+    const createNavItem = ({ id, targetId, text }) => ` 
+    <li class="nav-item" role="presentation">
+        <button class="nav-link"
+            id="${id}" 
+            data-bs-toggle="tab" 
+            data-bs-target="#${targetId}"
+            aria-controls="${targetId}"
+            type="button" 
+            role="tab">
+            <span class="tab-text">${text}</span>
+            <span class="mandatory">*</span>
+        </button>
+    </li>`;
+
+    const getViewPerPage = () => window.innerWidth < 992 ? 2 : 3;
+
+    function getSectionData(element) {
+        const splitSection = $(element).closest(".split_tab_section");
+
+        if (!splitSection.length) {
+            return {};
+        }
+
+        return {
+            splitSection,
+            sectionId: splitSection.attr("id"),
+            navTabs: splitSection.find(".nav-tabs"),
+            tabContent: splitSection.find(".tab-content"),
+            leftBtn: splitSection.find(".left-btn"),
+            rightBtn: splitSection.find(".right-btn")
+        };
+    }
+
+    function renderTabs(sectionId, activeId) {
+
+        const splitSection = $(`#${sectionId}`);
+        if (!splitSection.length) return;
+
+        const navTabs = splitSection.find('.nav-tabs');
+
+        navTabs.empty();
+
+        splitSection.find('.tab-pane').removeClass('active show');
+
+        navTabList[sectionId]
+            .slice(startIndexMap[sectionId], startIndexMap[sectionId] + getViewPerPage())
+            .forEach((tab) => {
+                navTabs.append(createNavItem(tab));
+            });
+
+        showTab(navTabs, activeId, sectionId);
+    }
+
+    const generateId = () =>
+        `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
     $('.add-split').on('click', function () {
-        const split_share_section = $(this).closest('.split_tab_section');
+        let { splitSection, sectionId, navTabs, rightBtn, leftBtn, tabContent } = getSectionData(this);
 
-        if (!split_share_section.length) return;
-
-        const navTabs = split_share_section.find('.nav-tabs');
-        const rightBtn = split_share_section.find('.right-btn');
-        const leftBtn = split_share_section.find('.left-btn');
-        const addSplitBtn = $(this);
-        navTabs.append(liElement);
-
-        const navItem = navTabs.find('.nav-item');
+        if (!splitSection) return;
 
 
-        if (navItem.length > 2) {
-            rightBtn.removeClass('d-none');
-            leftBtn.removeClass('d-none');
-            addSplitBtn.addClass('ms-auto')
-        } else {
-            rightBtn.addClass('d-none');
-            leftBtn.addClass('d-none');
-            addSplitBtn.removeClass('ms-auto')
+        const VIEW_PER_PAGE = getViewPerPage();
+
+        if (!sectionId) {
+            sectionId = `split-section-${generateId()}`;
+            splitSection.attr('id', sectionId);
         }
-    })
+
+        const uniqueId = generateId();
+
+        const addSplitBtn = $(this);
+
+        const new_tabPane = splitSection
+            .find("[data-template]")
+            .clone()
+            .removeAttr("data-template")
+            .removeClass("d-none")
+            .attr("id", `tab-pane-${uniqueId}`);
+
+        if (!navTabList[sectionId]?.length) {
+            navTabList[sectionId] = navTabs
+                .find(".nav-link")
+                .map(function () {
+                    return {
+                        id: this.id,
+                        targetId: $(this).attr("data-bs-target").replace("#", ""),
+                        text: $(this).text().trim()
+                    }
+                }).get();
+
+            startIndexMap[sectionId] = 0;
+        }
+
+        const activeIndex = getActiveIndex(sectionId);
+
+        const tabList = navTabList[sectionId];
+
+        if (tabList.length === 1) {
+            new_tabPane.find('[data-temp-warning]').remove();
+        }
+
+        const currentTab = tabList[activeIndex];
+
+        const { firstRange, secondRange } = splitDateRange(currentTab.text);
+
+        if (!firstRange) {
+            return;
+        }
+
+        currentTab.text = firstRange
+
+        navTabs.find(`#${currentTab.id} .tab-text`).text(firstRange);
+
+        tabList.push({
+            id: `tab-${uniqueId}`,
+            targetId: `tab-pane-${uniqueId}`,
+            text: secondRange
+        });
+
+
+
+        new_tabPane.find('[data-temp-warning]').removeAttr("data-temp-warning");
+        new_tabPane.find('[data-temp-startdate]').removeAttr("data-temp-startdate").addClass('splitDatePicker');
+        new_tabPane.find('[data-temp-table]')
+            .removeAttr("data-temp-table")
+            .addClass('long-data-table-listing');
+
+        tabContent.append(new_tabPane);
+
+
+        if (tabList.length > VIEW_PER_PAGE) {
+            startIndexMap[sectionId] = tabList.length - VIEW_PER_PAGE;
+            renderTabs(sectionId, `tab-${uniqueId}`);
+        } else {
+            navTabs.append(createNavItem(tabList.at(-1)));
+            bootstrap.Tab
+                .getOrCreateInstance(navTabs.find(`#tab-${uniqueId}`)[0])
+                .show();
+        }
+
+        const totalTabs = tabList.length;
+
+        rightBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
+        leftBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
+        addSplitBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
+
+        initializeSplitDatePicker('.splitDatePicker', sectionId);
+
+    });
+
+    function getActiveIndex(sectionId) {
+        const activeId = $(`#${sectionId}`).find('.nav-link.active').attr('id');
+        return navTabList[sectionId]
+            .findIndex(tab => tab.id === activeId);
+    }
+
+    function showTab(navTabs, tabId, sectionId) {
+        bootstrap.Tab
+            .getOrCreateInstance(navTabs.find(`#${tabId}`)[0])
+            .show();
+
+        updateNavButtons(sectionId);
+    }
+
+    function updateNavButtons(sectionId) {
+
+        const splitSection = $(`#${sectionId}`);
+        const total = navTabList[sectionId].length;
+
+        let activeIndex = getActiveIndex(sectionId);
+
+        splitSection.find('.left-btn')
+            .prop('disabled', activeIndex <= 0);
+
+        splitSection.find('.right-btn')
+            .prop('disabled', activeIndex >= total - 1);
+    }
+
+
+    $('.right-btn').on('click', function () {
+
+        let { splitSection, sectionId, navTabs } = getSectionData(this);
+
+        if (!splitSection) return;
+
+        const viewPerPage = getViewPerPage();
+        const lastVisibleIndex = startIndexMap[sectionId] + viewPerPage - 1;
+
+        let activeIndex = getActiveIndex(sectionId);
+        activeIndex++;
+
+        const tabsList = navTabList[sectionId];
+
+        if (activeIndex >= tabsList.length) return;
+
+        let new_activeElementId = tabsList[activeIndex].id;
+
+        if (activeIndex > lastVisibleIndex) {
+            startIndexMap[sectionId]++;
+            renderTabs(sectionId, new_activeElementId)
+        } else {
+            showTab(navTabs, new_activeElementId, sectionId);
+        }
+    });
+
+    $('.left-btn').on('click', function () {
+        let { splitSection, sectionId, navTabs } = getSectionData(this);
+
+        if (!splitSection) return;
+
+        const viewPerPage = getViewPerPage();
+
+        let activeIndex = getActiveIndex(sectionId);
+        activeIndex--;
+
+        if (activeIndex < 0) return;
+
+        let new_activeElementId = navTabList[sectionId][activeIndex].id;
+
+        if (startIndexMap[sectionId] > activeIndex) {
+            startIndexMap[sectionId]--;
+            renderTabs(sectionId, new_activeElementId)
+        } else {
+            showTab(navTabs, new_activeElementId, sectionId);
+        }
+
+    });
+
+    function formatDate(date) {
+        return date.toLocaleDateString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric"
+        });
+    }
+
+
+    function splitDateRange(rangeText, prevTabRange = "", splitbyDate = "") {
+
+        const [startText, endText] = rangeText.split(" - ");
+
+        const startDate = new Date(startText);
+        const endDate = new Date(endText);
+
+        if (!splitbyDate) {
+            const totalMonths =
+                (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+                (endDate.getMonth() - startDate.getMonth()) + 1;
+
+            if (totalMonths === 1) {
+                return {};
+            }
+
+            const firstHalfMonths = Math.floor(totalMonths / 2);
+
+            // End of first range (last day of nth month)
+            const firstEnd = new Date(
+                startDate.getFullYear(),
+                startDate.getMonth() + firstHalfMonths,
+                0
+            );
+
+            // Start of second range (1st day of next month)
+            const secondStart = new Date(
+                firstEnd.getFullYear(),
+                firstEnd.getMonth() + 1,
+                1
+            );
+
+            return {
+                firstRange: `${formatDate(startDate)} - ${formatDate(firstEnd)}`,
+                secondRange: `${formatDate(secondStart)} - ${formatDate(endDate)}`
+            };
+        } else {
+            const [prevStartText, _] = prevTabRange.split(" - ");
+            const startDate = new Date(prevStartText);
+            const secondStart = new Date(splitbyDate);
+
+
+            const firstEnd = new Date(secondStart);
+            firstEnd.setDate(firstEnd.getDate() - 1);
+
+            return {
+                firstRange: `${formatDate(startDate)} - ${formatDate(firstEnd)}`,
+                secondRange: `${formatDate(secondStart)} - ${formatDate(endDate)}`
+            };
+
+        }
+    }
+
+    function initializeSplitDatePicker(selector, sectionId) {
+        $(selector).daterangepicker({
+            singleDatePicker: true,
+            autoUpdateInput: false,
+            autoApply: true,
+            parentEl: $(`#${sectionId}`).closest(".modal"),
+            drops: 'auto',
+            minYear: 1901,
+            maxYear: parseInt(moment().format('YYYY'), 10)
+        });
+
+
+
+        $(selector).on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY'));
+            const activeIndex = getActiveIndex(sectionId);
+
+            const activeTab = navTabList[sectionId][activeIndex];
+
+            const prevTab = navTabList[sectionId][activeIndex - 1];
+
+            const { firstRange, secondRange } = splitDateRange(activeTab.text, prevTab.text, picker.startDate);
+
+            prevTab.text = firstRange;
+            activeTab.text = secondRange;
+
+            $(`#${sectionId} #${prevTab.id} .tab-text`).text(firstRange);
+            $(`#${sectionId} #${activeTab.id} .tab-text`).text(secondRange);
+
+
+        });
+    }
+
 })

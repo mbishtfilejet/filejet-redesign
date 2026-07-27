@@ -28110,8 +28110,8 @@
    <!-- Submit annual report step-2 Modal End-->
 
    <!--opt-3 Submit annual report step-3b Modal start-->
-   <div class="modalsteper modal modal-right fade filter-slideout SOP-model" id="stateSpecificDelaware" tabindex="-1"
-      aria-labelledby="searchModalLabel" aria-hidden="true">
+   <div class="modalsteper modal modal-right fade filter-slideout SOP-model"
+      id="stateSpecificDelaware" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
          <div class="modal-content border-0 rounded-0 min-vh-100">
             <!-- Modal Header -->
@@ -28170,8 +28170,10 @@
                         </button>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                            <li class="nav-item" role="presentation">
-                              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                                 type="button" role="tab">Jan 1, 2025 - Dec 31, 2025
+                              <button class="nav-link active" id="tab-1" data-bs-toggle="tab"
+                                 data-bs-target="#tab-pane-1" type="button" aria-controls="tab-pane-1" role="tab">
+                                 <span class="tab-text">Jan 1, 2024 - Dec 31, 2024</span>
+                                 <span class="mandatory">*</span>
                               </button>
                            </li>
                         </ul>
@@ -28184,7 +28186,19 @@
                      </div>
                      <!-- Tab Content -->
                      <div class="tab-content border border-top-0 p-3 shadow-none" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel">
+                        <div class="tab-pane fade show active" id="tab-pane-1" role="tabpanel">
+                           <div class="alert alert-warning flex-column fw-normal py-3 mb-4 border-0 d-none"
+                              role="alert">
+                              <div class="d-flex align-items-start">
+                                 <span class="icon icon-alert-yellow icon-sm flex-shrink-0 mt-1"></span>
+                                 <small>Additional information is requred as there are more than 5,000 authorized shares
+                                    in the reporting period. </small>
+                              </div>
+                           </div>
+                           <fieldset class="calander-input mb-4 d-none">
+                              <label for="" class="form-label w-100">Start Date</label>
+                              <input class="form-control w-100 splitDatePicker" placeholder="Start Date" value="">
+                           </fieldset>
                            <fieldset class="mb-4">
                               <label for="" class="form-label">Total Authorized Shares <span
                                     class="mandatory">*</span></label>
@@ -28205,8 +28219,8 @@
 
                            <hr>
 
-                           <div class="entitytable border rounded-3 my-3 h-auto">
-                              <div class="fade show active rounded-3 overflow-hidden" id="all">
+                           <div class="entitytable split-shareTable border rounded-3 my-3 h-auto">
+                              <div class="rounded-3 overflow-hidden" id="all">
                                  <table data-ordering="false"
                                     class="table table-striped long-data-table-listing w-100 border-1">
                                     <thead>
@@ -28234,7 +28248,19 @@
                            </div>
                         </div>
 
-                        <div class="tab-pane fade d-none" role="tabpanel">
+                        <div data-template class="tab-pane fade d-none" id="" role="tabpanel">
+                           <div class="alert alert-warning flex-column fw-normal py-3 mb-4 border-0" data-temp-warning
+                              role="alert">
+                              <div class="d-flex align-items-start">
+                                 <span class="icon icon-alert-yellow icon-sm flex-shrink-0 mt-1"></span>
+                                 <small>Additional information is requred as there are more than 5,000 authorized shares
+                                    in the reporting period. </small>
+                              </div>
+                           </div>
+                           <fieldset class="calander-input mb-4">
+                              <label for="" class="form-label w-100">Start Date</label>
+                              <input class="form-control w-100" placeholder="Start Date" data-temp-startdate value="">
+                           </fieldset>
                            <fieldset class="mb-4">
                               <label for="" class="form-label">Total Authorized Shares <span
                                     class="mandatory">*</span></label>
@@ -28255,10 +28281,10 @@
 
                            <hr>
 
-                           <div class="entitytable border rounded-3 my-3 h-auto">
-                              <div class="fade show active rounded-3 overflow-hidden" id="all">
-                                 <table data-ordering="false"
-                                    class="table table-striped long-data-table-listing w-100 border-1">
+                           <div class="entitytable split-shareTable border rounded-3 my-3 h-auto">
+                              <div class="rounded-3 overflow-hidden" id="all">
+                                 <table data-ordering="false" class="table table-striped w-100 border-1"
+                                    data-temp-table>
                                     <thead>
                                        <tr>
                                           <th data-orderable="false">Stock Class</th>
