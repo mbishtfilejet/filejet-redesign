@@ -251,7 +251,7 @@ $(function () {
 
     const startIndexMap = {};
 
-    const createNavItem = ({ id, targetId, text }) => ` 
+    const createNavItem = ({ id, targetId, startDate, endDate }) => ` 
     <li class="nav-item" role="presentation">
         <button class="nav-link"
             id="${id}" 
@@ -260,7 +260,7 @@ $(function () {
             aria-controls="${targetId}"
             type="button" 
             role="tab">
-            <span class="tab-text">${text}</span>
+            <span class="tab-text">${startDate} - ${endDate}</span>
             <span class="mandatory">*</span>
         </button>
     </li>`;
@@ -335,10 +335,12 @@ $(function () {
             navTabList[sectionId] = navTabs
                 .find(".nav-link")
                 .map(function () {
+                    const [startDate, endDate] = $(this).find('.tab-text').text().trim().split(" - ")
                     return {
                         id: this.id,
                         targetId: $(this).attr("data-bs-target").replace("#", ""),
-                        text: $(this).text().trim()
+                        startDate,
+                        endDate
                     }
                 }).get();
 
@@ -355,20 +357,22 @@ $(function () {
 
         const currentTab = tabList[activeIndex];
 
-        const { firstRange, secondRange } = splitDateRange(currentTab.text);
+        const { firstRange, secondRange } = splitDateRange(currentTab);
 
         if (!firstRange) {
             return;
         }
 
-        currentTab.text = firstRange
+        currentTab.startDate = firstRange.startDate;
+        currentTab.endDate = firstRange.endDate;
 
-        navTabs.find(`#${currentTab.id} .tab-text`).text(firstRange);
+        navTabs.find(`#${currentTab.id} .tab-text`).text(`${currentTab.startDate} - ${currentTab.endDate}`);
 
         tabList.push({
             id: `tab-${uniqueId}`,
             targetId: `tab-pane-${uniqueId}`,
-            text: secondRange
+            startDate: secondRange.startDate,
+            endDate: secondRange.endDate
         });
 
 
@@ -398,7 +402,7 @@ $(function () {
         leftBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
         addSplitBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
 
-        initializeSplitDatePicker('.splitDatePicker', sectionId);
+        // initializeSplitDatePicker(new_tabPane.find('.splitDatePicker'), sectionId, firstRange, secondRange);
 
     });
 
@@ -489,12 +493,10 @@ $(function () {
     }
 
 
-    function splitDateRange(rangeText, prevTabRange = "", splitbyDate = "") {
+    function splitDateRange(activeTab, prevTab = "", splitbyDate = "") {
 
-        const [startText, endText] = rangeText.split(" - ");
-
-        const startDate = new Date(startText);
-        const endDate = new Date(endText);
+        const startDate = new Date(activeTab.startDate);
+        const endDate = new Date(activeTab.endDate);
 
         if (!splitbyDate) {
             const totalMonths =
@@ -522,12 +524,17 @@ $(function () {
             );
 
             return {
-                firstRange: `${formatDate(startDate)} - ${formatDate(firstEnd)}`,
-                secondRange: `${formatDate(secondStart)} - ${formatDate(endDate)}`
+                firstRange: {
+                    "startDate": formatDate(startDate),
+                    "endDate": formatDate(firstEnd)
+                },
+                secondRange: {
+                    "startDate": formatDate(secondStart),
+                    "endDate": formatDate(endDate)
+                },
             };
         } else {
-            const [prevStartText, _] = prevTabRange.split(" - ");
-            const startDate = new Date(prevStartText);
+            const startDate = new Date(prevTab.startDate);
             const secondStart = new Date(splitbyDate);
 
 
@@ -535,44 +542,130 @@ $(function () {
             firstEnd.setDate(firstEnd.getDate() - 1);
 
             return {
-                firstRange: `${formatDate(startDate)} - ${formatDate(firstEnd)}`,
-                secondRange: `${formatDate(secondStart)} - ${formatDate(endDate)}`
+                firstRange: {
+                    "startDate": formatDate(startDate),
+                    "endDate": formatDate(firstEnd)
+                },
+                secondRange: {
+                    "startDate": formatDate(secondStart),
+                    "endDate": formatDate(endDate)
+                },
             };
 
         }
     }
 
-    function initializeSplitDatePicker(selector, sectionId) {
-        $(selector).daterangepicker({
+    function initializeSplitDatePicker(element, sectionId, firstRange, secondRange) {
+
+        if (!element.length || !firstRange || !secondRange) {
+            return;
+        }
+
+        element.daterangepicker({
             singleDatePicker: true,
             autoUpdateInput: false,
             autoApply: true,
-            parentEl: $(`#${sectionId}`).closest(".modal"),
+            startDate: moment(secondRange.startDate),
+            minDate: moment(firstRange.startDate).add(1, 'day'),
+            maxDate: moment(secondRange.endDate),
+            parentEl: $(element).closest('.modal'),
             drops: 'auto',
             minYear: 1901,
             maxYear: parseInt(moment().format('YYYY'), 10)
         });
 
-
-
-        $(selector).on('apply.daterangepicker', function (ev, picker) {
+        element.on('apply.daterangepicker', function (ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY'));
+
             const activeIndex = getActiveIndex(sectionId);
 
             const activeTab = navTabList[sectionId][activeIndex];
 
             const prevTab = navTabList[sectionId][activeIndex - 1];
 
-            const { firstRange, secondRange } = splitDateRange(activeTab.text, prevTab.text, picker.startDate);
+            const { firstRange, secondRange } = splitDateRange(activeTab, prevTab, picker.startDate);
 
-            prevTab.text = firstRange;
-            activeTab.text = secondRange;
+            prevTab.startDate = firstRange.startDate;
+            prevTab.endDate = firstRange.endDate;
+            activeTab.startDate = secondRange.startDate;
+            activeTab.endDate = secondRange.endDate;
 
-            $(`#${sectionId} #${prevTab.id} .tab-text`).text(firstRange);
-            $(`#${sectionId} #${activeTab.id} .tab-text`).text(secondRange);
-
-
+            $(`#${sectionId} #${prevTab.id} .tab-text`).text(`${prevTab.startDate} - ${prevTab.endDate}`);
+            $(`#${sectionId} #${activeTab.id} .tab-text`).text(`${activeTab.startDate} - ${activeTab.endDate}`);
         });
+
+
+        // using datepicker code
+
+        // destroy previous instance
+
+        // element.datepicker("destroy");
+
+        // const viewDate = new Date(secondRange.startDate)
+
+        // element.datepicker({
+        //     format: "mm/dd/yyyy",
+        //     autoclose: true,
+        //     todayHighlight: true,
+        //     startDate: moment(firstRange.startDate).add(1, 'day')
+        //         .toDate(),
+        //     endDate: moment(secondRange.endDate).toDate(),
+        //     defaultViewDate: {
+        //         year: viewDate.getFullYear(),
+        //         month: viewDate.getMonth(),
+        //         day: viewDate.getDate()
+        //     },
+        // });
+
+        // element.off("changeDate");
+
+
+        // element.on("changeDate", function (e) {
+        //     const selectedDate = e.date;
+
+        //     const activeIndex = getActiveIndex(sectionId);
+
+        //     const activeTab = navTabList[sectionId][activeIndex];
+
+        //     const prevTab = navTabList[sectionId][activeIndex - 1];
+
+        //     const { firstRange, secondRange } = splitDateRange(activeTab, prevTab, selectedDate);
+
+        //     prevTab.startDate = firstRange.startDate;
+        //     prevTab.endDate = firstRange.endDate;
+        //     activeTab.startDate = secondRange.startDate;
+        //     activeTab.endDate = secondRange.endDate;
+
+        //     $(`#${sectionId} #${prevTab.id} .tab-text`).text(`${prevTab.startDate} - ${prevTab.endDate}`);
+        //     $(`#${sectionId} #${activeTab.id} .tab-text`).text(`${activeTab.startDate} - ${activeTab.endDate}`);
+
+        // })
     }
 
+
+    $(document).on('shown.bs.tab', '.nav-link', function (e) {
+        const targetId = $(this).attr('data-bs-target');
+        const tabPane = $(targetId);
+
+        const splitSection = tabPane.closest('.split_tab_section');
+
+        if (!splitSection.length) return;
+
+        const input = tabPane.find('.splitDatePicker');
+
+        if (!input.length) return;
+        const sectionId = splitSection.attr('id');
+
+        const activeIndex = getActiveIndex(sectionId);
+        const activeTab = navTabList[sectionId][activeIndex];
+
+        if (!activeTab) return;
+
+        const prevTab = navTabList[sectionId][activeIndex - 1];
+
+
+        initializeSplitDatePicker(input, sectionId, prevTab, activeTab)
+    });
+
 })
+
