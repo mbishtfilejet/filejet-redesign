@@ -249,27 +249,26 @@ function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
 $(function () {
     let draggEl = null;
 
-    $('.drag_container').on('dragstart', '.handle', function (ev) {
+    $('.drag_container').on('dragstart', '.drag-item', function (ev) {
         draggEl = this;
-        $(this).closest('drag-item').addClass("dragging")
+        $(this).addClass("dragging")
     })
 
-    $('.drag_container').on('dragend', '.handle', function (ev) {
-        $(this).closest('drag-item').removeClass("dragging dragplacehoder");
+    $('.drag_container').on('dragend', '.drag-item', function (ev) {
+        $(this).removeClass("dragging dragplacehoder");
         draggEl = null;
     })
 
-    $('.drag_container').on('dragover', '.handle', function (ev) {
+    $('.drag_container').on('dragover', '.drag-item', function (ev) {
         ev.preventDefault();
 
-        if (this === draggEl) {
-            $(draggEl).closest('.drag-item').removeClass('dragging').addClass('dragplacehoder')
-            return;
-        };
+        if (!draggEl ||this === draggEl)  return;
 
-        let dragItem = $(this).closest('.drag-item');
+        $(draggEl).closest('.drag-item').removeClass('dragging').addClass('dragplacehoder');
+        
+        let dragItem = $(this);
 
-        let rect = dragItem[0].getBoundingClientRect();
+        let rect = this.getBoundingClientRect();
 
         let midX = rect.left + rect.width / 2;
 
@@ -284,9 +283,9 @@ $(function () {
         })
 
         if (before) {
-            $(this).before(draggEl)
+            dragItem.before(draggEl)
         } else {
-            $(this).after(draggEl)
+            dragItem.after(draggEl)
         }
 
         items.each(function (idx) {
