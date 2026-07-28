@@ -28163,7 +28163,7 @@
                   <small class="text-disabled">Default date range is the full calendar year. Split into periods if your
                      share structure changed mid-year. When you split, all stock class fields — name, shares, and par
                      value — are copied from the previous period.</small>
-                  <div class="split_tab_section mt-3">
+                  <div class="split_tab_section mt-4">
                      <div class="nav-pagination">
                         <button class="nav-btn left-btn d-none" type="button">
                            <span class="icon icon-sm m-0 icon-arrow-left-black"></span>
@@ -28228,6 +28228,7 @@
                                           <th data-orderable="false">Stock Class</th>
                                           <th data-orderable="false" class="">Number of Authorized Shares</th>
                                           <th data-orderable="false" class="">Par Value</th>
+                                          <th data-orderable="false" class=""></th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -28235,6 +28236,11 @@
                                           <td>Comman</td>
                                           <td>1</td>
                                           <td>$15</td>
+                                          <td>
+                                             <span data-toggle="tooltip" aria-label="DELETE"
+                                                data-bs-original-title="DELETE"
+                                                class="icon icon-entity-delete icon-sm m-0"></span>
+                                          </td>
                                        </tr>
                                     </tbody>
                                  </table>
@@ -28290,6 +28296,7 @@
                                           <th data-orderable="false">Stock Class</th>
                                           <th data-orderable="false" class="">Number of Authorized Shares</th>
                                           <th data-orderable="false" class="">Par Value</th>
+                                          <th data-orderable="false" class=""></th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -28297,6 +28304,11 @@
                                           <td>Comman</td>
                                           <td>1</td>
                                           <td>$15</td>
+                                          <td>
+                                             <span data-toggle="tooltip" aria-label="DELETE"
+                                                data-bs-original-title="DELETE"
+                                                class="icon icon-entity-delete icon-sm m-0"></span>
+                                          </td>
                                        </tr>
                                     </tbody>
                                  </table>
@@ -28310,32 +28322,59 @@
                            </div>
                         </div>
                      </div>
+                     <div class="tax_section mt-4">
+                        <fieldset class="mb-4">
+                           <label for="" class="form-label">Estimated Franchise Tax <span
+                                 class="mandatory">*</span></label>
+                           <input type="text" class="form-control no-bg bg-filled" placeholder="$" disabled>
+                        </fieldset>
+   
+                        <button type="button" class="btn btn-small">
+                           SUBMIT
+                        </button>
+                     </div>
+                     <div class="calculate_tax_section mt-4 d-none">
+                        <label for="" class="form-label">Estimated Franchise Tax <span class="mandatory">*</span></label>
+                        <div class="d-flex align-items-center gap-3">
+                           <input type="text" class="form-control no-bg bg-filled" placeholder="$" disabled>
+                           <button type="button" class="btn btn-small">
+                              CALCULATE TAX
+                           </button>
+                        </div>
+                        <button type="button" class="btn btn-small d-none">
+                           SUBMIT
+                        </button>
+                     </div>
                   </div>
+
+
                </div>
 
-
             </div>
-            <!-- Modal Body End -->
-            <div class="modal-footer">
-               <div class="d-flex justify-content-between align-items-center w-100 m-0">
-                  <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
-                     data-bs-dismiss="modal">
-                     CANCEL
+
+
+         </div>
+         <!-- Modal Body End -->
+         <div class="modal-footer">
+            <div class="d-flex justify-content-between align-items-center w-100 m-0">
+               <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                  data-bs-dismiss="modal">
+                  CANCEL
+               </button>
+               <div class="d-flex align-items-center">
+                  <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn"
+                     data-bs-toggle="modal" data-bs-dismiss="modal">
+                     SAVE AND EXIT
                   </button>
-                  <div class="d-flex align-items-center">
-                     <button type="button" class="btn btn-link text-decoration-none font-weight-600" id="backBtn"
-                        data-bs-toggle="modal" data-bs-dismiss="modal">
-                        SAVE AND EXIT
-                     </button>
-                     <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
-                        data-bs-target="#annualSummaryDelaware" data-bs-toggle="modal" data-bs-dismiss="modal">
-                        Next
-                     </button>
-                  </div>
+                  <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="nextBtn"
+                     data-bs-target="#annualSummaryDelaware" data-bs-toggle="modal" data-bs-dismiss="modal">
+                     Next
+                  </button>
                </div>
             </div>
          </div>
       </div>
+   </div>
    </div>
    <!-- Submit annual report  step-3b Modal End-->
 

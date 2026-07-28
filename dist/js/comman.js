@@ -739,11 +739,20 @@ $(function () {
 
     $(document).on('shown.bs.tab', '.nav-link', function (e) {
         const targetId = $(this).attr('data-bs-target');
+        const tabId = $(this).attr('id').trim();
         const tabPane = $(targetId);
 
         const splitSection = tabPane.closest('.split_tab_section');
 
         if (!splitSection.length) return;
+
+        //start -just for reference to showcase it in UI,  will be changed based on logic
+        splitSection.find('.tax_section')
+            .toggleClass('d-none', tabId !== 'tab-1');
+
+        splitSection.find('.calculate_tax_section')
+            .toggleClass('d-none', tabId === 'tab-1');
+        // end
 
         const input = tabPane.find('.splitDatePicker');
 
@@ -758,8 +767,9 @@ $(function () {
         const prevTab = navTabList[sectionId][activeIndex - 1];
 
 
-        initializeSplitDatePicker(input, sectionId, prevTab, activeTab)
-        updateNavButtons(sectionId)
+        initializeSplitDatePicker(input, sectionId, prevTab, activeTab);
+        updateNavButtons(sectionId);
+
     });
 
 })
