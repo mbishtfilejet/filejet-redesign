@@ -316,9 +316,9 @@ document.addEventListener("DOMContentLoaded", function () {
         case "paymentContainer": return "Date Range";
         case "groupUserRoleContainer": return "Filter by Role";
         case "usersAccessContainer":
-        case "externalUserContainer": return "Filter by Access"
-        case "groupPaymentContainer":
-        case "groupContainer": return "Available To"
+        case "externalUserContainer": return "Filter by Access";
+        case "groupPaymentContainer": return "Available To";
+        case "groupContainer": return "Group";
         default: return "Status";
       }
     }

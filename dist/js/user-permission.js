@@ -433,7 +433,8 @@ $(function () {
             {
                 data: null, render: function (data, type, row) {
                     return `<input data-column="subsCheck" class="d-flex form-check-input row-select" type="checkbox" value="${row?.id}">`;
-                }
+                },
+                width: '1rem'
             },
             {
                 data: "next_billing_period", render: function (data, type, row) {
@@ -485,6 +486,7 @@ $(function () {
             }
         ],
         order: [[1, "asc"]],
+        autoWidth: false,
         lengthChange: false,  // Removed pagination
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"

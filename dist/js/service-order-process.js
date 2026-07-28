@@ -867,7 +867,6 @@ $(document).ready(function () {
 
   // Attach the same event handler to all modals
   modals.forEach(modalId => {
-    console.log($(modalId))
     $(modalId).on('show.bs.modal', function (e) {
       $('.home-entity-field').select2({
         dropdownParent: $(modalId),
