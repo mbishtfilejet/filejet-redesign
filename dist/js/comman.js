@@ -262,10 +262,10 @@ $(function () {
     $('.drag_container').on('dragover', '.drag-item', function (ev) {
         ev.preventDefault();
 
-        if (!draggEl ||this === draggEl)  return;
+        if (!draggEl || this === draggEl) return;
 
         $(draggEl).closest('.drag-item').removeClass('dragging').addClass('dragplacehoder');
-        
+
         let dragItem = $(this);
 
         let rect = this.getBoundingClientRect();
@@ -320,10 +320,23 @@ $(function () {
         let dragItem = $(this).closest('.drag-item');
         let suggestionSection = $(this).closest('.column_section').find('.suggestion_column');
 
-        dragItem.attr('draggable', true);
+        dragItem.prop('draggable', false);
 
         suggestionSection.prepend(dragItem)
-        
+
+    })
+
+    $(document).on('click', '.add-column', function (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+
+        let dragItem = $(this).closest('.drag-item');
+        let dragContainer = $(this).closest('.column_section').find('.drag_container');
+
+        dragItem.prop('draggable', true);
+
+        dragContainer.append(dragItem)
+
     })
 })
 $(function () {
