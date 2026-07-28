@@ -445,9 +445,11 @@ $(function () {
 
         const tabList = navTabList[sectionId];
 
+        // Hide/Show Alert input logic just for reference, logic will be based on backend
         if (tabList.length === 1) {
             new_tabPane.find('[data-temp-warning]').remove();
         }
+        // Hide/Show Alert input logic End
 
         const currentTab = tabList[activeIndex];
 
@@ -470,12 +472,12 @@ $(function () {
         });
 
 
-
         new_tabPane.find('[data-temp-warning]').removeAttr("data-temp-warning");
         new_tabPane.find('[data-temp-startdate]').removeAttr("data-temp-startdate").addClass('splitDatePicker');
         new_tabPane.find('[data-temp-table]')
             .removeAttr("data-temp-table")
             .addClass('long-data-table-listing');
+
 
         tabContent.append(new_tabPane);
 
@@ -495,8 +497,6 @@ $(function () {
         rightBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
         leftBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
         addSplitBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
-
-        // initializeSplitDatePicker(new_tabPane.find('.splitDatePicker'), sectionId, firstRange, secondRange);
 
     });
 
@@ -657,7 +657,6 @@ $(function () {
 
         element.daterangepicker({
             singleDatePicker: true,
-            autoUpdateInput: false,
             autoApply: true,
             startDate: moment(secondRange.startDate),
             minDate: moment(firstRange.startDate).add(1, 'day'),
@@ -739,25 +738,19 @@ $(function () {
 
     $(document).on('shown.bs.tab', '.nav-link', function (e) {
         const targetId = $(this).attr('data-bs-target');
-        const tabId = $(this).attr('id').trim();
         const tabPane = $(targetId);
 
         const splitSection = tabPane.closest('.split_tab_section');
 
         if (!splitSection.length) return;
 
-        //start -just for reference to showcase it in UI,  will be changed based on logic
-        splitSection.find('.tax_section')
-            .toggleClass('d-none', tabId !== 'tab-1');
+        const sectionId = splitSection.attr('id');
 
-        splitSection.find('.calculate_tax_section')
-            .toggleClass('d-none', tabId === 'tab-1');
-        // end
-
+        updateNavButtons(sectionId);
+        
         const input = tabPane.find('.splitDatePicker');
 
         if (!input.length) return;
-        const sectionId = splitSection.attr('id');
 
         const activeIndex = getActiveIndex(sectionId);
         const activeTab = navTabList[sectionId][activeIndex];
@@ -768,7 +761,6 @@ $(function () {
 
 
         initializeSplitDatePicker(input, sectionId, prevTab, activeTab);
-        updateNavButtons(sectionId);
 
     });
 
