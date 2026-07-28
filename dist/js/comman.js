@@ -665,6 +665,7 @@ $(function () {
 
 
         initializeSplitDatePicker(input, sectionId, prevTab, activeTab)
+        updateNavButtons(sectionId)
     });
 
 })
