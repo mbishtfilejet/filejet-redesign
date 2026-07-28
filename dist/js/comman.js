@@ -247,45 +247,55 @@ function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
 
 //drag drop
 $(function () {
-    let draggEl = null;
+    let draggedItem = null;
 
     $('.drag_container').on('dragstart', '.drag-item', function (ev) {
-        draggEl = this;
+        draggedItem = this;
         $(this).addClass("dragging")
     })
 
     $('.drag_container').on('dragend', '.drag-item', function (ev) {
-        $(this).removeClass("dragging dragplacehoder");
-        draggEl = null;
+        $(this)
+            .removeClass("dragging dragplacehoder")
+            .css({
+                transition: '',
+                transform: ''
+            });
+        draggedItem = null;
     })
 
+
+    //Reorder
     $('.drag_container').on('dragover', '.drag-item', function (ev) {
         ev.preventDefault();
 
-        if (!draggEl || this === draggEl) return;
+        if (!draggedItem || draggedItem === this) return;
 
-        $(draggEl).closest('.drag-item').removeClass('dragging').addClass('dragplacehoder');
+        const targetItem = this;
+        const targetEl = $(targetItem);
 
-        let dragItem = $(this);
-
-        let rect = this.getBoundingClientRect();
-
+        let rect = targetItem.getBoundingClientRect();
         let midX = rect.left + rect.width / 2;
-
         let before = ev.originalEvent.clientX < midX;
 
-        let items = dragItem.parent().find('.drag-item');
+        
+        if (before && draggedItem.nextElementSibling === targetItem) return;
+        if (!before && draggedItem.previousElementSibling === targetItem) return;
+        
+        $(draggedItem).removeClass('dragging').addClass('dragplacehoder');
 
-        let oldPosition = [];
+        const items = targetEl.parent().find('.drag-item');
+
+        const oldPosition = [];
 
         items.each(function () {
             oldPosition.push(this.getBoundingClientRect().left)
         })
 
         if (before) {
-            dragItem.before(draggEl)
+            targetEl.before(draggedItem)
         } else {
-            dragItem.after(draggEl)
+            targetEl.after(draggedItem)
         }
 
         items.each(function (idx) {
@@ -294,21 +304,33 @@ $(function () {
 
             let dx = oldRectLeft - newRectleft;
 
-            if (dx) {
-                this.style.transition = 'none';
-                this.style.transform = `translateX(${dx}px)`;
-                this.offsetWidth;
-                this.style.transition = 'transform 0.2s ease';
-                this.style.transform = `translateX(0)`
-            }
+            if (!dx) return;
+
+            this.style.transition = 'none';
+            this.style.transform = `translateX(${dx}px)`;
+
         })
 
-    })
+        requestAnimationFrame(() => {
+            items.each(function () {
+
+                this.style.transition = 'transform 0.2s ease';
+                this.style.transform = ``
+
+                this.addEventListener('transitionend', function handler() {
+                    this.style.transition = '';
+                    this.style.transform = '';
+                    this.removeEventListener('transitionend', handler);
+                });
+            });
+        });
+
+    });
 
 
-    $('.drag_container').on('dragover', function (ev) {
+    $('.drag_container').on('dragover drop', function (ev) {
         ev.preventDefault();
-    })
+    });
 })
 
 
@@ -747,7 +769,7 @@ $(function () {
         const sectionId = splitSection.attr('id');
 
         updateNavButtons(sectionId);
-        
+
         const input = tabPane.find('.splitDatePicker');
 
         if (!input.length) return;
