@@ -24453,13 +24453,13 @@ body *::-webkit-scrollbar-thumb {
 .reporting-dashboard .sidebar .menu-link .nav-link.active a::after {
   background-color: rgba(223, 223, 223, 0.6) !important;
 }
-.reporting-dashboard .report-card-wrapper {
+.reporting-dashboard .report-card-wrapper, .reporting-dashboard .new-report-wrapper {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 @media (max-width: 500px) {
-  .reporting-dashboard .report-card-wrapper {
+  .reporting-dashboard .report-card-wrapper, .reporting-dashboard .new-report-wrapper {
     grid-template-columns: 1fr;
   }
 }
@@ -24477,8 +24477,14 @@ body *::-webkit-scrollbar-thumb {
 .reporting-dashboard .report-card .card-subtitle {
   font-size: 0.875rem;
 }
+.reporting-dashboard .new-report-wrapper {
+  row-gap: 0;
+}
 .reporting-dashboard .new-report-wrapper::after, .reporting-dashboard .new-report-wrapper::before {
   content: "";
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
 }
 .reporting-dashboard .new-report-wrapper .new-report {
   order: -1;

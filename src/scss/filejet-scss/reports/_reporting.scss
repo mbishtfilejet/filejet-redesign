@@ -12,7 +12,7 @@
     .report-card-wrapper {
         display: grid;
         gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 
     @media (max-width:500px) {
@@ -42,10 +42,15 @@
     }
 
     .new-report-wrapper {
+        @extend .report-card-wrapper;
+        row-gap: 0;
 
         &::after,
         &::before {
             content: "";
+            visibility: hidden;
+            pointer-events: none;
+            user-select: none;
         }
 
         .new-report {
