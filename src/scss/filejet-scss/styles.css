@@ -24453,8 +24453,17 @@ body *::-webkit-scrollbar-thumb {
 .reporting-dashboard .sidebar .menu-link .nav-link.active a::after {
   background-color: rgba(223, 223, 223, 0.6) !important;
 }
+.reporting-dashboard .report-card-wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+@media (max-width: 500px) {
+  .reporting-dashboard .report-card-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
 .reporting-dashboard .report-card {
-  max-width: 350px;
   min-height: 200px;
   --bs-card-color: #3E484A;
 }
@@ -24467,6 +24476,12 @@ body *::-webkit-scrollbar-thumb {
 }
 .reporting-dashboard .report-card .card-subtitle {
   font-size: 0.875rem;
+}
+.reporting-dashboard .new-report-wrapper::after, .reporting-dashboard .new-report-wrapper::before {
+  content: "";
+}
+.reporting-dashboard .new-report-wrapper .new-report {
+  order: -1;
 }
 .reporting-dashboard .report-filter {
   cursor: pointer;
@@ -24498,11 +24513,6 @@ body *::-webkit-scrollbar-thumb {
 }
 .reportNav {
   gap: 1.5rem;
-}
-.reportNav > :first-child {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .badge-shared {
