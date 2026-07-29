@@ -369,12 +369,16 @@ $(function () {
 
         navTabs.find(`#${currentTab.id} .tab-text`).text(`${currentTab.startDate} - ${currentTab.endDate}`);
 
-        tabList.push({
+        const newTab = {
             id: `tab-${uniqueId}`,
             targetId: `tab-pane-${uniqueId}`,
             startDate: secondRange.startDate,
             endDate: secondRange.endDate
-        });
+        };
+
+
+        // Insert after currently active tab instead of pushing to end
+        tabList.splice(activeIndex + 1, 0, newTab);
 
 
         new_tabPane.find('[data-temp-warning]').removeAttr("data-temp-warning");
@@ -385,15 +389,22 @@ $(function () {
 
 
         tabContent.append(new_tabPane);
-
+        console.log(activeIndex)
 
         if (tabList.length > VIEW_PER_PAGE) {
-            startIndexMap[sectionId] = tabList.length - VIEW_PER_PAGE;
-            renderTabs(sectionId, `tab-${uniqueId}`);
+            const newTabIndex = activeIndex + 1;
+            startIndexMap[sectionId] = Math.min(
+                Math.max(
+                    newTabIndex - VIEW_PER_PAGE + 1, 0
+                ),
+                tabList.length - VIEW_PER_PAGE
+            );
+            console.log(startIndexMap[sectionId])
+            renderTabs(sectionId, `${newTab.id}`);
         } else {
-            navTabs.append(createNavItem(tabList.at(-1)));
+            navTabs.find('.nav-item').eq(activeIndex).after(createNavItem(newTab));
             bootstrap.Tab
-                .getOrCreateInstance(navTabs.find(`#tab-${uniqueId}`)[0])
+                .getOrCreateInstance(navTabs.find(`#${newTab.id}`)[0])
                 .show();
         }
 
