@@ -9,10 +9,35 @@
         }
     }
 
+    .reportSection .border {
+        border-color: var(--bs-border-color-translucent) !important;
+    }
+
+    .filter-option {
+        min-height: 38px;
+
+        .grid-list-view {
+
+            .nav-link {
+                border-radius: 0 !important;
+                opacity: 1 !important;
+
+                &.active {
+                    background-color: black !important;
+                    .icon {
+                        filter: brightness(0%) invert(100%) !important;
+                    }
+                }
+
+            }
+        }
+    }
+
     .report-card-wrapper {
         display: grid;
         gap: 1rem;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
     }
 
     @media (max-width:500px) {
@@ -91,6 +116,10 @@
         .datepicker {
             background-position-x: 100% !important;
         }
+    }
+
+    .reportView {
+        border-radius: 0.75rem;
     }
 }
 
