@@ -319,6 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
         case "externalUserContainer": return "Filter by Access";
         case "groupPaymentContainer": return "Available To";
         case "groupContainer": return "Group";
+        case "viewContainer": return "View";
         default: return "Status";
       }
     }
@@ -365,7 +366,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ["usersAccessContainer", "usersAccessDropdown", "usersAccessSearch", "usersAccess-checkbox"],
     ["externalUserContainer", "externalUserDropdown", "externalUserSearch", "externalUser-checkbox"],
     ["groupPaymentContainer", "groupPaymentDropdown", "groupPaymentSearch", "groupPayment-checkbox", "groupPaymentSelectAll"],
-    ["groupContainer", "groupDropdown", "groupSearch", "group-checkbox", "groupSelectAll"]
+    ["groupContainer", "groupDropdown", "groupSearch", "group-checkbox", "groupSelectAll"],
+    ["viewContainer", "viewDropdown", "viewSearch", "view-checkbox"]
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));
@@ -1924,11 +1926,10 @@ $(function () {
     const tabsTop = section[0].getBoundingClientRect().top;
     const navBottom = navLink[0].getBoundingClientRect().bottom;
 
-    const shouldBeDark = tabsTop <= navBottom ;
+    const shouldBeDark = tabsTop <= navBottom;
 
     if (shouldBeDark !== isDark) {
       isDark = shouldBeDark;
-      console.log("hi")
       navLink.toggleClass('dark', shouldBeDark);
     }
   }

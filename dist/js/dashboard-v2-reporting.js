@@ -19,7 +19,6 @@ $(function () {
     
 
     $(document).on('click', '.dropdown-item', function (e) {
-        e.preventDefault();
 
         const item = $(this);
         const selectedText = item.find('.item-name').text().trim();

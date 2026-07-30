@@ -307,7 +307,8 @@
                            <div class="row g-0 flex-column reportSection">
                               <div class="col-12 row g-0 reportNav" id="reportTabs" role="tablist">
                                  <div class="new-report-wrapper">
-                                    <button class="card report-card text-decoration-none new-report justify-content-center align-items-center"
+                                    <button
+                                       class="card report-card text-decoration-none new-report justify-content-center align-items-center"
                                        data-target="#report_creation">
                                        <span class="mx-auto mb-2 d-block icon icon-add-chart icon-lg"></span>
                                        <span class="card-title">New Report</span>
@@ -317,6 +318,56 @@
                                  <div
                                     class="py-4 border border-1 border-dark border-opacity-25 border-start-0 border-end-0">
                                     <h5 class="m-0 fw-normal">Previously Created Reports</h5>
+                                    <div class="row g-2 mt-2 mb-3">
+                                       <div class="col-12 col-md-7 flex-grow-1 filter-option">
+                                          <div
+                                             class="d-flex align-items-center border border-1 rounded-2 m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                             <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                             <input type="text" placeholder="Search"
+                                                class="text-placeholder-d2 border-0 p-0 w-100">
+                                          </div>
+                                       </div>
+
+                                       <div
+                                          class="filter2-dropdown col-12 col-md-3 entity-status-table-col dropdown filter-option">
+                                          <div
+                                             class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                                             id="viewContainer" data-bs-toggle="dropdown" aria-expanded="false"
+                                             tabindex="0">
+                                             <input type="text" class="search-input" id="viewSearch" placeholder="View"
+                                                autocomplete="off">
+                                          </div>
+                                          <ul class="dropdown-menu search-disabled" id="viewDropdown">
+                                             <li><label class="dropdown-item"><input type="checkbox"
+                                                      class="form-check-input view-checkbox status-checkbox me-2"
+                                                      data-value="View">View</label></li>
+                                             <li><label class="dropdown-item"><input type="checkbox"
+                                                      class="form-check-input view-checkbox status-checkbox me-2"
+                                                      data-value="Personal">Personal</label></li>
+                                             <li><label class="dropdown-item"><input type="checkbox"
+                                                      class="form-check-input view-checkbox status-checkbox me-2"
+                                                      data-value="Shared">Shared</label></li>
+                                          </ul>
+                                       </div>
+                                       <div class="filter-option col-12 col-md-auto">
+                                          <ul class="grid-list-view nav nav-tabs bg-white border border-1 rounded-2 d-flex h-100 overflow-hidden" id="myTab" role="tablist">
+                                             <li class="nav-item" role="presentation">
+                                                <button class="nav-link p-2 px-3 active" id="grid-1" data-bs-toggle="tab"
+                                                   data-bs-target="#" type="button" aria-controls=""
+                                                   role="tab">
+                                                   <span class="icon icon-grid-dark m-0"></span>
+                                                </button>
+                                             </li>
+                                             <li class="nav-item" role="presentation">
+                                                <button class="nav-link p-2 px-3" id="list-1" data-bs-toggle="tab"
+                                                   data-bs-target="#" type="button" aria-controls=""
+                                                   role="tab">
+                                                   <span class="icon icon-list-view m-0"></span>
+                                                </button>
+                                             </li>
+                                          </ul>
+                                       </div>
+                                    </div>
                                     <div class="report-card-wrapper">
                                        <div class="card report-card">
                                           <div
@@ -946,7 +997,36 @@
                                     View Report
                                  </button>
                               </div>
-                              <div id="reportViewSection" class="col-12 reportView toggleSection">Report</div>
+                              <div id="reportViewSection" class="col-12 reportView border border-1 bg-white p-3">
+                                 <small>42 results</small>
+                                 <div class="row g-2 mt-2 mb-3">
+                                    <div class="col-12 col-md-10 flex-grow-1 filter-option">
+                                       <div
+                                          class="d-flex align-items-center border border-1 rounded-2 m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                          <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                          <input type="text" placeholder="Search"
+                                             class="text-placeholder-d2 border-0 p-0 w-100">
+                                       </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-auto px-1 filter-option">
+                                       <div class="border border-1 rounded-2 export-csv-col px-2 bg-white h-100">
+                                          <a href="#"
+                                             class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
+                                             <span class="icon m-0 my-1 icon-export-csv flex-shrink-0 icon-lg"></span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div class="col-12 col-md-auto px-1 filter-option">
+                                       <div class="border border-1 rounded-2 export-pdf-col px-2 bg-white h-100">
+                                          <a href="#"
+                                             class="h-100 text-purple text-decoration-none d-flex justify-content-center align-items-center">
+                                             <span class="icon m-0 my-1 icon-export-pdf flex-shrink-0 icon-lg"></span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                         <!-- Reporting Registrations End-->
@@ -1803,9 +1883,10 @@
    <!-- Scripts start-->
    <script src="dist/js/plugins.min.js"></script>
    <script src="./src/js/lib/dropzone.min.js"></script>
+   <script src="dist/js/comman.js"></script>
    <script src="dist/js/custom.min.js"></script>
    <script src="dist/js/dashboard-v2-reporting.js"></script>
-   <script src="dist/js/comman.js"></script>
+   <script src="dist/js/dashboard-v2_document.js"></script>
    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
    <script
       src='https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js'></script>
