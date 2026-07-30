@@ -1915,7 +1915,7 @@ async function renderSummary(container) {
 
 $(function () {
   const section = $('.entityTabsContent, .billingTabsContent');
-  const navLink = $('.nav-link.active');
+  const navLink = $('.sidebar .nav-link.active');
 
   let isDark = null;
 
