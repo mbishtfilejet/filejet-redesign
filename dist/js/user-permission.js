@@ -603,6 +603,7 @@ $(function () {
             }
         ],
         order: [[0, "asc"]],
+        autoWidth: false,
         lengthChange: false,  // Removed pagination
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
