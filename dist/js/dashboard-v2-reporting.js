@@ -127,11 +127,14 @@ $(function () {
 
 
     $('.add-filter').on('click', function () {
-        const filterTemplate = $('.filter-template')
+
+        const parent = $(this).parent();
+        const filterSection = parent.find('.filterSection');
+        const filterTemplate = parent.find('.filter-template')
             .clone()
             .removeClass('d-none filter-template').hide();
 
-        $('.filterSection').append(filterTemplate);
+        filterSection.append(filterTemplate);
 
         filterTemplate.fadeIn(200);
     });
@@ -146,20 +149,6 @@ $(function () {
                 $(this).remove();
             });
         }
-    });
-
-    $('.toggleSection').css('display', 'none');
-
-    $(document).on("click", ".new-report, .view-report", function () {
-        const element = $(this);
-
-        const parent = element.closest(".reportNav");
-
-        const targetElement = element.data('target');
-
-        parent.fadeOut(50)
-
-        $(targetElement).fadeIn(300)
     });
 })
 
@@ -279,3 +268,236 @@ $(function () {
 
     })
 })
+
+
+$(function () {
+
+    $('.toggleSection').css('display', 'none');
+
+    $(document).on("click", ".new-report, .view-report, .generate-report", function () {
+        const element = $(this);
+
+        const parent = element.closest(".reportNav");
+
+        const targetElement = element.data('target');
+
+        parent.fadeOut(50)
+
+        $(targetElement).fadeIn().removeClass('toggleSection')
+
+        if (element.hasClass('view-report') || element.hasClass('generate-report')) {
+            renderCharts();
+        }
+    });
+
+    const chartDatas = {
+        entity_type: [
+            ['Entity Type', 'Count', { role: 'style' }],
+            ["LLC", 5, "#D85A30"],
+            ["LLP", 10, "#E47755"],
+            ["INC", 5, "#EE9478"],
+            ["CORP", 1, "#F5B29D"],
+            ["PLC", 4, "#FBD7CB"]
+        ],
+
+        state: [
+            ['State', 'Percentage', { role: 'style' }],
+            ['CA', 32, '#E73B18'],
+            ['TX', 24, '#FFB60C'],
+            ['NY', 18, '#00B2EB'],
+            ['FL', 12, '#00BA70'],
+            ['IL', 8, '#F9C6B8']
+        ]
+    };
+
+
+    google.charts.load("current", {
+        packages: ["corechart"]
+    });
+
+
+    function initChartBoxes() {
+        $(".chart-box").each(function () {
+            const box = $(this);
+            const activeBtn = box.find(".chart-btn.active");
+
+            box.data(
+                "chartType",
+                activeBtn.data("type") || "bar"
+            );
+        });
+    }
+
+
+    function getBaseOptions() {
+        return {
+            backgroundColor: "transparent",
+            tooltip: {
+                trigger: "none"
+            },
+            fontName: "Sora",
+            fontSize: "14",
+            legend: "none"
+        };
+    }
+
+
+    function drawChart(box, chartDatas) {
+
+        const type = box.data("chartType");
+        const selectedValue = box.find(".field-select").val() || "entity_type";
+
+        const chartData = chartDatas[selectedValue];
+
+        if (!chartData) return;
+
+
+        const data = google.visualization.arrayToDataTable(chartData);
+
+        const container = box.find(".chart-container .chart")[0];
+        const pieLegendBox = box.find(".pie-legend");
+
+        if (pieLegendBox.length) {
+            pieLegendBox.remove()
+        }
+
+        let options = getBaseOptions();
+        let chart;
+
+
+        switch (type) {
+
+            case "pie":
+
+                options = {
+                    ...options,
+                    colors: chartData.slice(1).map(row => row[2]),
+                    pieHole: 0.55,
+                    pieSliceText: "none",
+                    pieSliceBorderColor: "#fff",
+                    chartArea: {
+                        width: '80%',
+                        height: '80%'
+                    }
+                };
+
+                const pieLegendBox = $('<div class="pie-legend"></div>');
+
+                chartData.slice(1).forEach((item, index) => {
+
+                    const total = chartData
+                        .slice(1)
+                        .reduce((sum, row) => sum + row[1], 0);
+
+
+                    const percentage = Math.round((item[1] / total) * 100);
+
+                    pieLegendBox.append(`
+                        <div class="legend-item" data-index="${index}">
+                            <span 
+                                class="legend-color"
+                                style="background:${item[2]}"
+                            ></span>
+
+                            <span class="legend-label">
+                                ${item[0]}-${percentage}%
+                            </span>
+                        </div>
+                    `);
+
+                });
+
+                $(container).after(pieLegendBox);
+
+                chart = new google.visualization.PieChart(container);
+
+                google.visualization.events.removeAllListeners(chart);
+                break;
+
+
+            case "line":
+
+                chart = new google.visualization.LineChart(container);
+                break;
+
+
+            default:
+
+                options = {
+                    ...options,
+                    chartArea: {
+                        left: 120
+                    }
+                };
+
+                chart = new google.visualization.BarChart(container);
+        }
+
+
+        chart.draw(data, options);
+
+        google.visualization.events.addListener(chart, "select", function () {
+
+            let pieLegendBox = box.find('.pie-legend');
+
+            if (!pieLegendBox.length) return;
+
+            console.log(pieLegendBox)
+
+            pieLegendBox.find(".legend-item").removeClass("active");
+
+            const selection = chart.getSelection();
+
+            if (selection.length) {
+                pieLegendBox
+                    .find(`.legend-item[data-index="${selection[0].row}"]`)
+                    .addClass("active");
+            }
+
+        });
+    }
+
+
+    function renderCharts() {
+        $(".chart-box").each(function () {
+            drawChart($(this), chartDatas);
+        });
+    }
+
+
+    google.charts.setOnLoadCallback(() => {
+        initChartBoxes();
+        renderCharts();
+    });
+
+
+    $(".chart-btn").on("click", function () {
+
+        const btn = $(this);
+        const box = btn.closest(".chart-box");
+
+        box.find(".chart-btn").removeClass("active");
+        btn.addClass("active");
+
+        box.data(
+            "chartType",
+            btn.data("type")
+        );
+
+        drawChart(box, chartDatas);
+    });
+
+
+    $(".field-select").on("change", function () {
+
+        drawChart(
+            $(this).closest(".chart-box"), chartDatas
+        );
+
+    });
+
+
+    $(window).on("resize", function () {
+        renderCharts();
+    });
+});
