@@ -24,6 +24,7 @@
 
                 &.active {
                     background-color: black !important;
+
                     .icon {
                         filter: brightness(0%) invert(100%) !important;
                     }
@@ -120,6 +121,127 @@
 
     .reportView {
         border-radius: 0.75rem;
+    }
+
+    .report-list-content {
+        margin: 0 !important;
+    }
+}
+
+.charts_wrapper {
+
+    .chart-box {
+        position: relative;
+        width: 100%;
+    }
+
+    .chart-header {
+
+        .field-select {
+            width: 120px;
+        }
+    }
+
+
+    .chart-buttons {
+
+        width: max-content;
+
+
+        .chart-btn {
+            min-height: 38px;
+            border: none;
+            background-color: white;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.active {
+                background-color: black;
+
+                .icon {
+                    filter: brightness(0%) invert(100%);
+                }
+            }
+        }
+    }
+
+    .form-select.field-select {
+        min-height: 38px;
+        padding: 0px 10px;
+        padding-right: 15px;
+        font-size: 12px;
+        background-color: transparent;
+        border: 1px solid #d2d5da;
+        border-radius: 4.5px;
+        margin-bottom: 0px;
+        box-shadow: none !important;
+        color: var(--bs-filejet-medium-gray);
+        background-image: url(../../../dist/images/icons/icon-angle-bottom.svg);
+        background-size: 10px;
+        font-weight: normal;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+
+
+        option {
+            background-color: white;
+            color: var(--bs-filejet-medium-gray);
+        }
+
+        &:focus {
+            background-color: #ffe2d8;
+            color: #000;
+            border: 1.5px solid #FF551A;
+        }
+    }
+
+    .chart-container {
+        cursor: pointer;
+        font-size: 14px !important;
+        font-weight: normal !important;
+
+        &:has(.pie-legend) {
+
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .chart {
+                width: 40%;
+                height: 100%;
+            }
+        }
+
+        .pie-legend {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .legend-item {
+            display: flex;
+            max-height: 1rem;
+            align-items: center;
+            gap: 5px;
+            transition: .2s;
+        }
+
+        .legend-item.active {
+            font-weight: bold !important;
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
     }
 }
 

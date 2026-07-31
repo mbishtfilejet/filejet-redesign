@@ -14209,6 +14209,18 @@ input[type=radio] {
   background-image: url("../../../dist/images/icons/grid-view-dark.svg");
 }
 
+.icon-bar-chart {
+  background-image: url("../../../dist/images/icons/icon-bar-chart.svg");
+}
+
+.icon-line-chart {
+  background-image: url("../../../dist/images/icons/icon-lines-chart.svg");
+}
+
+.icon-donut-chart {
+  background-image: url("../../../dist/images/icons/icon-pie-chart.svg");
+}
+
 .login-page {
   background: url("../../../../dist/images/login-banner.jpg") no-repeat center center/cover;
 }
@@ -24541,6 +24553,100 @@ body *::-webkit-scrollbar-thumb {
 }
 .reporting-dashboard .reportView {
   border-radius: 0.75rem;
+}
+.reporting-dashboard .report-list-content {
+  margin: 0 !important;
+}
+
+.charts_wrapper .chart-box {
+  position: relative;
+  width: 100%;
+}
+.charts_wrapper .chart-header .field-select {
+  width: 120px;
+}
+.charts_wrapper .chart-buttons {
+  width: max-content;
+}
+.charts_wrapper .chart-buttons .chart-btn {
+  min-height: 38px;
+  border: none;
+  background-color: white;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.charts_wrapper .chart-buttons .chart-btn.active {
+  background-color: black;
+}
+.charts_wrapper .chart-buttons .chart-btn.active .icon, .charts_wrapper .chart-buttons .chart-btn.active .previewSlides .owl-carousel .owl-nav .owl-prev, .previewSlides .owl-carousel .owl-nav .charts_wrapper .chart-buttons .chart-btn.active .owl-prev, .charts_wrapper .chart-buttons .chart-btn.active .previewSlides .owl-carousel .owl-nav .owl-next, .previewSlides .owl-carousel .owl-nav .charts_wrapper .chart-buttons .chart-btn.active .owl-next, .charts_wrapper .chart-buttons .chart-btn.active .boc-light .boc-filter > div div::after, .boc-light .boc-filter > div .charts_wrapper .chart-buttons .chart-btn.active div::after, .charts_wrapper .chart-buttons .chart-btn.active .boc-light .boc-search .boc-form-field .boc-input::after, .boc-light .boc-search .boc-form-field .charts_wrapper .chart-buttons .chart-btn.active .boc-input::after, .charts_wrapper .chart-buttons .chart-btn.active .boc-light div[data-boc-input] label::after, .boc-light div[data-boc-input] .charts_wrapper .chart-buttons .chart-btn.active label::after {
+  filter: brightness(0%) invert(100%);
+}
+.charts_wrapper .form-select.field-select, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-size, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-size, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-layout, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-layout, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-scale, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-scale {
+  min-height: 38px;
+  padding: 0px 10px;
+  padding-right: 15px;
+  font-size: 12px;
+  background-color: transparent;
+  border: 1px solid #d2d5da;
+  border-radius: 4.5px;
+  margin-bottom: 0px;
+  box-shadow: none !important;
+  color: var(--bs-filejet-medium-gray);
+  background-image: url(../../../dist/images/icons/icon-angle-bottom.svg);
+  background-size: 10px;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.charts_wrapper .form-select.field-select option, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-size option, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-size option, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-layout option, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-layout option, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-scale option, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-scale option {
+  background-color: white;
+  color: var(--bs-filejet-medium-gray);
+}
+.charts_wrapper .form-select.field-select:focus, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-size:focus, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-size:focus, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-layout:focus, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-layout:focus, .charts_wrapper .boc-light #boc-ppdf-btns .field-select#boc-ppdf-scale:focus, .boc-light #boc-ppdf-btns .charts_wrapper .field-select#boc-ppdf-scale:focus {
+  background-color: #ffe2d8;
+  color: #000;
+  border: 1.5px solid #FF551A;
+}
+.charts_wrapper .chart-container {
+  cursor: pointer;
+  font-size: 14px !important;
+  font-weight: normal !important;
+}
+.charts_wrapper .chart-container:has(.pie-legend) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.charts_wrapper .chart-container:has(.pie-legend) .chart {
+  width: 40%;
+  height: 100%;
+}
+.charts_wrapper .chart-container .pie-legend {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.charts_wrapper .chart-container .legend-item {
+  display: flex;
+  max-height: 1rem;
+  align-items: center;
+  gap: 5px;
+  transition: 0.2s;
+}
+.charts_wrapper .chart-container .legend-item.active {
+  font-weight: bold !important;
+}
+.charts_wrapper .chart-container .legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
 .main-dashboard-v2 .filter2-dropdown .filter-select-container::after {
