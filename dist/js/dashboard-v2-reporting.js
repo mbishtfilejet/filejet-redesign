@@ -373,6 +373,22 @@ $(function () {
         return table.DataTable(tableOptions);
     }
 
+    const savedFilters = [
+        {
+            "property": "entity_name",
+            "operator": "equals",
+            "value": "AIC Capital VV Manager, Corp."
+        },
+        {
+            "property": "formation_date",
+            "operator": "between",
+            "value": {
+                "from": "10/12/2025",
+                "to": "04/29/2026"
+            }
+        }
+    ]
+
 
 
     $('.toggleSection').css('display', 'none');
@@ -393,6 +409,11 @@ $(function () {
         renderCharts();
 
         if (element.hasClass('view-report')) {
+
+            savedFilters.forEach((filter, index) => {
+                applySavedFilter(filter, $(targetElement).find('.filter-grid').not('.filter-template').eq(index));
+            });
+
             $(targetElement).find('.accordion-collapse').collapse('hide');
             $(targetElement).find('.accordion-button')
                 .addClass('collapsed')
