@@ -1,22 +1,19 @@
+const operatorByType = {
+    "entity_name": { operator: ["equals", "starts_with"], type: "string" },
+    "entity_type": { operator: ["equals", "starts_with", "is"], type: "string" },
+    "state": { operator: ["equals", "is"], type: "string" },
+    "formation_date": { operator: ["is", "between"], type: "date" },
+    "status": { operator: ["is"], type: "string" },
+    "tax_id_ein": { operator: ["is"], type: "number" },
+    "authorized_share": { operator: ["equals"], type: "number" },
+    "par_value": { operator: ["equals", "between"], type: "number" },
+}
+
+function initializeFilterDatePicker(selector) {
+    $(selector).datepicker()
+}
+
 $(function () {
-
-    const operatorByType = {
-        "entity_name": { operator: ["equals", "starts_with"], type: "string" },
-        "entity_type": { operator: ["equals", "starts_with", "is"], type: "string" },
-        "state": { operator: ["equals", "is"], type: "string" },
-        "formation_date": { operator: ["is", "between"], type: "date" },
-        "status": { operator: ["is"], type: "string" },
-        "tax_id_ein": { operator: ["is"], type: "number" },
-        "authorized_share": { operator: ["equals"], type: "number" },
-        "par_value": { operator: ["equals", "between"], type: "number" },
-    }
-
-    function initializeFilterDatePicker(selector) {
-        $(selector).datepicker()
-    }
-
-
-    
 
     $(document).on('click', '.dropdown-item', function (e) {
 
@@ -152,6 +149,60 @@ $(function () {
     });
 })
 
+
+function applySavedFilter(savedFilter, parent) {
+
+    const propertyDropdown = parent.find('.property-filter');
+    const operatorDropdown = parent.find('.operator-filter');
+
+    // Select property
+    const propertyItem = propertyDropdown
+        .find('.dropdown-item[data-key="' + savedFilter.property + '"]');
+
+    if (propertyItem.length) {
+        propertyItem.trigger('click');
+    }
+
+
+    // Select operator after property is loaded
+    const operatorItem = operatorDropdown
+        .find('.dropdown-item[data-key="' + savedFilter.operator + '"]');
+
+    if (operatorItem.length) {
+        operatorItem.trigger('click');
+    }
+
+
+    // Set value
+    const valueSection = parent.find('.report-filter-value');
+
+
+    // Range value
+    if (savedFilter.operator === "between") {
+
+        valueSection.find('.value-range .from-value')
+            .val(savedFilter.value.from);
+
+        valueSection.find('.value-range .to-value')
+            .val(savedFilter.value.to);
+
+        valueSection.find('.date-range .from-date')
+            .val(savedFilter.value.from);
+
+        valueSection.find('.date-range .to-date')
+            .val(savedFilter.value.to);
+
+        return;
+    }
+
+    // Single value
+    valueSection.find('.single-value input')
+        .val(savedFilter.value);
+
+    valueSection.find('.single-date input')
+        .val(savedFilter.value);
+}
+
 //drag drop
 $(function () {
     let draggedItem = null;
@@ -272,22 +323,92 @@ $(function () {
 
 $(function () {
 
+    function createDynamicTable(targetElement, tableclass, parentEl, selector) {
+        var columns = [];
+
+        const dragContainer = $(parentEl).find('.drag_container');
+
+        dragContainer.find(selector).each(function () {
+            columns.push({
+                title: $(this).text().replace(/\s+/g, ' ').trim(),
+                data: $(this).data("key"),
+                ...($(this).data("width") && { width: $(this).data("width") }),
+                ...($(this).data("key") === "status" && {
+                    render: function (data, type, row) {
+                        return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
+                    }
+                })
+            });
+        });
+
+        console.log(columns)
+
+        const tableOptions = {
+            ajax: {
+                url: "data5.json",
+                dataSrc: 'reporting_raw_data',
+            },
+            language: {
+                processing: '<div  role="status"> </div>',
+                emptyTable: '<p class="emptytabledata">No Records Available</p>'
+            },
+            scrollX: true,
+            scrollY: false,
+            columns: columns,
+            order: [],
+            autoWidth: false,
+            lengthChange: false,  // Removed pagination
+            paging: false,  // Disable pagination
+            info: false,
+        }
+
+        const table = $(targetElement).find(tableclass);
+
+        if ($.fn.DataTable.isDataTable(table)) {
+            table.DataTable().destroy();
+            table.empty();
+        }
+
+
+        return table.DataTable(tableOptions);
+    }
+
+
+
     $('.toggleSection').css('display', 'none');
 
     $(document).on("click", ".new-report, .view-report, .generate-report", function () {
         const element = $(this);
 
-        const parent = element.closest(".reportNav");
+        const reportNav = element.closest(".reportNav");
 
         const targetElement = element.data('target');
 
-        parent.fadeOut(50)
+        reportNav.fadeOut(50)
 
         $(targetElement).fadeIn().removeClass('toggleSection')
 
-        if (element.hasClass('view-report') || element.hasClass('generate-report')) {
-            renderCharts();
+        if (element.hasClass('new-report')) return;
+
+        renderCharts();
+
+        if (element.hasClass('view-report')) {
+            $(targetElement).find('.accordion-collapse').collapse('hide');
+            $(targetElement).find('.accordion-button')
+                .addClass('collapsed')
+                .attr('aria-expanded', 'false');
+            $('html, body').animate({ scrollTop: 0 }, 300);
+            const table = createDynamicTable(targetElement, '.reports_table', targetElement, '.columns_text');
+            table.columns.adjust().draw();
         }
+
+        if (element.hasClass('generate-report')) {
+            const table = createDynamicTable(targetElement, '.reports_table', element.parent(), '.columns_text');
+            table.columns.adjust().draw();
+
+            $('html, body').animate({ scrollTop: $(targetElement).offset().top }, 500);
+        }
+
     });
 
     const chartDatas = {
@@ -334,6 +455,11 @@ $(function () {
             backgroundColor: "transparent",
             tooltip: {
                 trigger: "none"
+            },
+            animation: {
+                startup: true,
+                duration: 1000,
+                easing: 'out'
             },
             fontName: "Sora",
             fontSize: "14",
