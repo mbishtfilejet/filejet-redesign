@@ -396,13 +396,13 @@ $(function () {
     $(document).on("click", ".new-report, .view-report, .generate-report", function () {
         const element = $(this);
 
-        const reportNav = element.closest(".reportNav");
+        const reportNav = element.closest(".reportCreationNav");
 
         const targetElement = element.data('target');
 
         reportNav.fadeOut(50)
 
-        $(targetElement).fadeIn().removeClass('toggleSection')
+        $(targetElement).fadeIn()
 
         if (element.hasClass('new-report')) return;
 
@@ -647,4 +647,15 @@ $(function () {
     $(window).on("resize", function () {
         renderCharts();
     });
+
+    $(document).on("hidden.bs.modal", function () {
+        const reportSection = $(this).find('.reportSection');
+
+        reportSection.find('.toggleSection').fadeOut();
+
+        reportSection.find('.reportCreationNav').fadeIn();
+
+        $('html, body').animate({ scrollTop: 0 }, 300);
+
+    })
 });
