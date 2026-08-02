@@ -24484,6 +24484,7 @@ body *::-webkit-scrollbar-thumb {
 .reporting-dashboard .filter-option .grid-list-view .nav-link {
   border-radius: 0 !important;
   opacity: 1 !important;
+  height: 100%;
 }
 .reporting-dashboard .filter-option .grid-list-view .nav-link.active {
   background-color: black !important;
@@ -24629,29 +24630,29 @@ body *::-webkit-scrollbar-thumb {
 .charts_wrapper .chart-container:has(.pie-legend) {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
 }
 .charts_wrapper .chart-container:has(.pie-legend) .chart {
-  width: 40%;
+  width: 50%;
   height: 100%;
+  flex: 0 0 auto;
 }
 .charts_wrapper .chart-container .pie-legend {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  row-gap: 1rem;
+  font-size: 0.8rem;
 }
 .charts_wrapper .chart-container .legend-item {
   display: flex;
-  max-height: 1rem;
   align-items: center;
   gap: 5px;
-  transition: 0.2s;
+  flex: 0 0 auto;
+  transition: all 0.2s ease-in;
 }
 .charts_wrapper .chart-container .legend-item.active {
-  font-weight: bold !important;
+  font-size: 0.81rem;
+  font-weight: bold;
 }
 .charts_wrapper .chart-container .legend-color {
   width: 10px;

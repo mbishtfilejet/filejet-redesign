@@ -21,6 +21,7 @@
             .nav-link {
                 border-radius: 0 !important;
                 opacity: 1 !important;
+                height: 100%;
 
                 &.active {
                     background-color: black !important;
@@ -227,33 +228,33 @@
 
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
 
             .chart {
-                width: 40%;
+                width: 50%;
                 height: 100%;
+                flex: 0 0 auto;
             }
         }
 
         .pie-legend {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 1.5rem;
+            row-gap: 1rem;
+            font-size: 0.8rem;
         }
 
         .legend-item {
             display: flex;
-            max-height: 1rem;
             align-items: center;
             gap: 5px;
-            transition: .2s;
+            flex: 0 0 auto;
+            transition: all 0.2s ease-in;
         }
 
         .legend-item.active {
-            font-weight: bold !important;
+            font-size: 0.81rem;
+            font-weight: bold;
         }
 
         .legend-color {
@@ -379,7 +380,7 @@
         row-gap: 10px;
         column-gap: 5px;
 
-        .form-label{
+        .form-label {
             margin-bottom: 0 !important;
         }
     }

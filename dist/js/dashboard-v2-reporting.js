@@ -138,7 +138,7 @@ $(function () {
 
     $(document).on('click', '.remove-filter', function () {
         const filter = $(this).closest('.filter-grid');
-        const filters = $('.filterSection .filter-grid');
+        const filters = $(this).closest('.filterSection').find('.filter-grid');
 
         // Keeping at least one filter
         if (filters.length > 1) {
@@ -341,8 +341,6 @@ $(function () {
             });
         });
 
-        console.log(columns)
-
         const tableOptions = {
             ajax: {
                 url: "data5.json",
@@ -408,6 +406,8 @@ $(function () {
 
         renderCharts();
 
+        let table = '';
+
         if (element.hasClass('view-report')) {
 
             savedFilters.forEach((filter, index) => {
@@ -419,17 +419,16 @@ $(function () {
                 .addClass('collapsed')
                 .attr('aria-expanded', 'false');
             $('html, body').animate({ scrollTop: 0 }, 300);
-            const table = createDynamicTable(targetElement, '.reports_table', targetElement, '.columns_text');
-            table.columns.adjust().draw();
+            table = createDynamicTable(targetElement, '.reports_table', targetElement, '.columns_text');
         }
 
         if (element.hasClass('generate-report')) {
-            const table = createDynamicTable(targetElement, '.reports_table', element.parent(), '.columns_text');
-            table.columns.adjust().draw();
+            table = createDynamicTable(targetElement, '.reports_table', element.parent(), '.columns_text');
 
             $('html, body').animate({ scrollTop: $(targetElement).offset().top }, 500);
         }
 
+        table.columns.adjust().draw();
     });
 
     const chartDatas = {
@@ -449,6 +448,13 @@ $(function () {
             ['NY', 18, '#00B2EB'],
             ['FL', 12, '#00BA70'],
             ['IL', 8, '#F9C6B8']
+        ],
+        status: [
+            ["Task", "Count", { role: 'style' }],
+            ["In Good Standing", 15, '#00BA70'],
+            ["Not Good Standing", 8, '#E73B18'],
+            ["Inactive", 3, '#8690A0'],
+            ["Unknown", 5, '#1a4d9e'],
         ]
     };
 
@@ -483,7 +489,7 @@ $(function () {
                 easing: 'out'
             },
             fontName: "Sora",
-            fontSize: "14",
+            fontSize: "11",
             legend: "none"
         };
     }
@@ -573,7 +579,7 @@ $(function () {
                 options = {
                     ...options,
                     chartArea: {
-                        left: 120
+                        left: 100
                     }
                 };
 
@@ -588,8 +594,6 @@ $(function () {
             let pieLegendBox = box.find('.pie-legend');
 
             if (!pieLegendBox.length) return;
-
-            console.log(pieLegendBox)
 
             pieLegendBox.find(".legend-item").removeClass("active");
 
