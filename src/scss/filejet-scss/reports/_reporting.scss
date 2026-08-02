@@ -342,15 +342,20 @@
 .drag_container {
 
     .drag-item {
+        transition: margin 0.2s ease-in-out;
         .icon-add-chart {
             display: none;
+        }
+
+        &:focus,
+        &:active {
+            outline-color: #FF551A;
         }
     }
 
     .drag-item.dragging {
         border-style: solid;
         background-color: #FF551A;
-        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.10);
         color: white;
 
         .icon-close-dark {

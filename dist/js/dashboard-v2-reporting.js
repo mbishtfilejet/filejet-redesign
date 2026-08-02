@@ -207,12 +207,12 @@ function applySavedFilter(savedFilter, parent) {
 $(function () {
     let draggedItem = null;
 
-    $('.drag_container').on('dragstart', '.drag-item', function (ev) {
+    $(document).on('dragstart', '.drag_container .drag-item', function (ev) {
         draggedItem = this;
         $(this).addClass("dragging")
     })
 
-    $('.drag_container').on('dragend', '.drag-item', function (ev) {
+    $(document).on('dragend', '.drag_container .drag-item', function (ev) {
         $(this)
             .removeClass("dragging dragplacehoder")
             .css({
@@ -224,7 +224,7 @@ $(function () {
 
 
     //Reorder
-    $('.drag_container').on('dragover', '.drag-item', function (ev) {
+    $(document).on('dragover', '.drag_container .drag-item', function (ev) {
         ev.preventDefault();
 
         if (!draggedItem || draggedItem === this) return;
@@ -242,59 +242,112 @@ $(function () {
 
         $(draggedItem).removeClass('dragging').addClass('dragplacehoder');
 
-        const items = targetEl.parent().find('.drag-item');
+        animateMove($(draggedItem), targetEl, before);
+    });
 
-        const oldPosition = [];
+
+    $(document).on('dragover drop', '.drag_container', function (ev) {
+        ev.preventDefault();
+    });
+
+    // $(document).on('focusin', '.drag_container .drag-item', function () {
+    //     $(this).addClass('dragging');
+    // });
+
+    // $(document).on('focusout', '.drag_container .drag-item', function () {
+    //     $(this)
+    //         .removeClass('dragging')
+    //         .css({
+    //             transition: '',
+    //             transform: ''
+    //         });
+    // });
+    // $(document).on('keydown', '.drag_container .drag-item', function (ev) {
+
+    //     let current = $(this);
+
+    //     if (ev.key === "ArrowLeft") {
+
+    //         ev.preventDefault();
+
+    //         let prev = current.prev(".drag-item");
+
+    //         if (!prev.length) return;
+
+    //         animateMove(current, prev, true);
+
+    //         current.focus();
+    //     }
+
+    //     if (ev.key === "ArrowRight") {
+
+    //         ev.preventDefault();
+
+    //         let next = current.next(".drag-item");
+
+    //         if (!next.length) return;
+
+    //         animateMove(current, next, false);
+
+    //         current.focus();
+    //     }
+
+    // });
+
+    function animateMove($dragged, $target, before) {
+
+        const items = $dragged.parent().find(".drag-item");
+
+        const oldPos = [];
 
         items.each(function () {
-            oldPosition.push(this.getBoundingClientRect().left)
-        })
+            oldPos.push(this.getBoundingClientRect().left);
+        });
 
         if (before) {
-            targetEl.before(draggedItem)
+            $target.before($dragged);
         } else {
-            targetEl.after(draggedItem)
+            $target.after($dragged);
         }
 
-        items.each(function (idx) {
-            let oldRectLeft = oldPosition[idx];
-            let newRectleft = this.getBoundingClientRect().left;
+        items.each(function (i) {
 
-            let dx = oldRectLeft - newRectleft;
+            const dx = oldPos[i] - this.getBoundingClientRect().left;
 
             if (!dx) return;
 
-            this.style.transition = 'none';
+            this.style.transition = "none";
             this.style.transform = `translateX(${dx}px)`;
-
-        })
-
-        requestAnimationFrame(() => {
-            items.each(function () {
-
-                this.style.transition = 'transform 0.2s ease';
-                this.style.transform = ``
-
-                this.addEventListener('transitionend', function handler() {
-                    this.style.transition = '';
-                    this.style.transform = '';
-                    this.removeEventListener('transitionend', handler);
-                });
-            });
         });
 
-    });
+        requestAnimationFrame(() => {
 
+            items.each(function () {
 
-    $('.drag_container').on('dragover drop', function (ev) {
-        ev.preventDefault();
-    });
+                this.style.transition = "transform .2s ease";
+                this.style.transform = "";
+
+                this.addEventListener("transitionend", function handler() {
+                    this.style.transition = "";
+                    this.style.transform = "";
+                    this.removeEventListener("transitionend", handler);
+                });
+
+            });
+
+        });
+
+    }
 })
 
 
 $(function () {
-    $(document).on('click', '.remove-column', function (ev) {
-        ev.stopPropagation();
+    $(document).on('click keydown', '.remove-column', function (ev) {
+
+        if (ev.type === "keydown" && ev.key !== " " && ev.key !== "Enter") {
+            return;
+        }
+
         ev.preventDefault();
 
         let dragItem = $(this).closest('.drag-item');
@@ -306,8 +359,11 @@ $(function () {
 
     })
 
-    $(document).on('click', '.add-column', function (ev) {
-        ev.stopPropagation();
+    $(document).on('click keydown', '.add-column', function (ev) {
+
+        if (ev.type === "keydown" && ev.key !== " " && ev.key !== "Enter") {
+            return;
+        }
         ev.preventDefault();
 
         let dragItem = $(this).closest('.drag-item');
