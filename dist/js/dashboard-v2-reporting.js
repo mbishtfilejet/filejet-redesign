@@ -64,7 +64,7 @@ $(function () {
 
         if (dropdown.hasClass('operator-filter')) {
             const propertyKey = parent.find('.property-filter [data-bs-toggle="dropdown"]').attr('data-selected');
-            console.log(propertyKey)
+
             if (!propertyKey || !operatorByType[propertyKey]) return;
 
             let propertyType = operatorByType[propertyKey].type;
@@ -456,11 +456,21 @@ $(function () {
 
         reportNav.fadeOut(50)
 
+
+        const tooltip = bootstrap.Tooltip.getInstance(element);
+        if (tooltip) {
+            tooltip.dispose();
+        }
         $(targetElement).fadeIn()
 
         if (element.hasClass('new-report')) return;
 
-        renderCharts();
+        const charts_wrapper = $(targetElement).find('.charts_wrapper:visible');
+
+        if (charts_wrapper.length) {
+            renderCharts(charts_wrapper);
+        }
+
 
         let table = '';
 
@@ -517,6 +527,13 @@ $(function () {
 
     google.charts.load("current", {
         packages: ["corechart"]
+    });
+
+    let isChartsReady = false;
+
+    google.charts.setOnLoadCallback(() => {
+        initChartBoxes();
+        isChartsReady = true;
     });
 
 
@@ -665,16 +682,28 @@ $(function () {
     }
 
 
-    function renderCharts() {
-        $(".chart-box").each(function () {
+    function renderCharts(section) {
+        if (!isChartsReady) return;
+
+        section.find(".chart-box").each(function () {
             drawChart($(this), chartDatas);
         });
     }
 
+    $(document).on('shown.bs.collapse', '.accordion-collapse', function () {
+        const wrapper = $(this).find('.charts_wrapper');
 
-    google.charts.setOnLoadCallback(() => {
-        initChartBoxes();
-        renderCharts();
+        // This accordion doesn't contain charts
+        if (!wrapper.length) {
+            return;
+        }
+
+        if (wrapper.data('rendered')) {
+            return;
+        }
+
+        renderCharts(wrapper);
+        wrapper.data('rendered', true);
     });
 
 
@@ -705,11 +734,15 @@ $(function () {
 
 
     $(window).on("resize", function () {
-        renderCharts();
+        const charts_wrapper = $(".charts_wrapper:visible");
+
+        if (!charts_wrapper.length) return;
+        renderCharts(charts_wrapper);
     });
 
-    $(document).on("hidden.bs.modal", function () {
-        const reportSection = $(this).find('.reportSection');
+    $(document).on("click", '.save-report-btn', function (ev) {
+        const modeltriggerBtn = $(this).closest('.modal').attr('id');
+        const reportSection = $(`[data-bs-target="#${modeltriggerBtn}"]`).closest('.reportSection');
 
         reportSection.find('.toggleSection').fadeOut();
 
