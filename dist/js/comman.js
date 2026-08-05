@@ -683,3 +683,175 @@ $(function () {
     });
 
 })
+
+
+function setupMultiSelect(containerId, dropdownId, searchInputId, checkboxClass, selectAllId, defaultSelected = [], maxSelection = 2) {
+    const dropdown = document.getElementById(dropdownId);
+    const multiSelectContainer = document.getElementById(containerId);
+    const selectAllCheckbox = document.getElementById(selectAllId);
+
+    // ✅ Skip setup if container or dropdown not present
+    if (!dropdown || !multiSelectContainer) return;
+
+    const checkboxes = dropdown.querySelectorAll(`.${checkboxClass}`);
+
+    function getMaxSelection() {
+        // added-code-start this need to be added to actual code of setupMultiSelect
+        if (window.innerWidth <= 1600 && ["sopStatusContainer", "sopCheckContainer", "SOPjurisdictionContainer", "RAjurisdictionContainer"].includes(containerId)) return 1;
+        // added-code-end
+
+        if (window.innerWidth < 1300) {
+            if ([
+                "addjurisdictionContainer", "roleContainer1", "roleContainer2", "roleContainer4",
+                "memberroleContainer", "annualroleContainer", "reqselectEntityContainer2",
+                "reqselectEntityContainer3", "selectEntityContainer", "exaddjurisdictionContainer"
+            ].includes(containerId)) {
+                return 3;
+            }
+            return 1;
+        }
+        return maxSelection;
+    }
+
+    // Insert search box
+    const searchInput = document.createElement("input");
+    searchInput.type = "text";
+    searchInput.classList.add("dropdown-search-input");
+    searchInput.placeholder = "Search...";
+    searchInput.autocomplete = "off";
+
+    // add search field only when search is allowed
+    if (!dropdown.classList.contains('search-disabled')) {
+        dropdown.prepend(searchInput);
+    }
+
+    // Set default checkboxes
+    checkboxes.forEach(cb => {
+        if (defaultSelected.includes(cb.getAttribute("data-value"))) {
+            cb.checked = true;
+        }
+    });
+
+    updateSelectedOptions(false);
+
+    // Search filter
+    searchInput.addEventListener("input", function () {
+        const filter = searchInput.value.toLowerCase();
+        const items = dropdown.querySelectorAll(".dropdown-item");
+        items.forEach(item => {
+            const text = item.innerText.toLowerCase();
+            item.style.display = text.includes(filter) ? "" : "none";
+        });
+    });
+
+    dropdown.addEventListener("change", function (event) {
+        if (event.target.classList.contains(checkboxClass)) {
+            updateSelectedOptions(true);
+        }
+    });
+
+    if (selectAllCheckbox) {
+        selectAllCheckbox.addEventListener("change", function () {
+            checkboxes.forEach(cb => {
+                cb.checked = selectAllCheckbox.checked;
+            });
+            updateSelectedOptions(true);
+        });
+    }
+
+    function updateSelectedOptions(shouldFocus = true) {
+        const selectedCheckboxes = dropdown.querySelectorAll(`.${checkboxClass}:checked`);
+        const selectedValues = Array.from(selectedCheckboxes).map(cb => cb.getAttribute("data-value"));
+
+        // Clear container
+        multiSelectContainer.innerHTML = "";
+
+        // Add selected options
+        selectedValues.slice(0, getMaxSelection()).forEach(value => {
+            const span = document.createElement("span");
+            span.classList.add("selected-option");
+            span.innerHTML = `
+          <span class="selected-option-text">${value}</span>
+          <span class="remove-option">
+            <img src="/dist/images/icons/filter-close.svg" alt="Remove" class="remove-icon-img">
+          </span>
+        `;
+            span.querySelector(".remove-option").addEventListener("click", function () {
+                const checkbox = [...dropdown.querySelectorAll(`.${checkboxClass}`)].find(cb => cb.getAttribute("data-value") === value);
+                if (checkbox) {
+                    if (checkbox.getAttribute("data-value") === "All") {
+                        checkboxes.forEach(cb => {
+                            cb.checked = false;
+                        });
+                    }
+                    checkbox.checked = false;
+                };
+                updateSelectedOptions(true);
+            });
+            multiSelectContainer.appendChild(span);
+        });
+
+        if (selectedValues.length > getMaxSelection()) {
+            const summarySpan = document.createElement("span");
+            summarySpan.classList.add("selected-option");
+            summarySpan.innerHTML = `+${selectedValues.length - getMaxSelection()}`;
+            multiSelectContainer.appendChild(summarySpan);
+        }
+
+        const input = document.createElement("input");
+        input.type = "button";
+        input.classList.add("search-input");
+        input.id = searchInputId;
+        input.value = selectedValues.length === 0 ? getPlaceholder(containerId) : "";
+        input.autocomplete = "off";
+        multiSelectContainer.appendChild(input);
+
+        if (shouldFocus) input.focus();
+    }
+
+    function getPlaceholder(containerId) {
+        switch (containerId) {
+            case "jurisdictionContainer":
+            case "entityJurisdictionContainer":
+            case "orderJurisdictionContainer":
+            case "RAjurisdictionContainer":
+            case "SOPjurisdictionContainer":
+                return "Jurisdictions";
+            case "taskContainer": return "Tasks";
+            case "tagContainer": return "Filter By Tag";
+            case "orderTaskContainer": return "Service";
+            case "addjurisdictionContainer":
+            case "exaddjurisdictionContainer": return "Select States";
+            case "entityStatusContainer": return "Entity Status";
+            case "roleContainer1":
+            case "roleContainer2":
+            case "roleContainer4":
+            case "memberroleContainer": return "Role";
+            case "roleContainer5":
+            case "roleContainer6": return "Select Role";
+            case "selectEntityContainer":
+            case "selectEntityContainer2":
+            case "reqselectEntityContainer":
+            case "reqselectEntityContainer2":
+            case "reqselectEntityContainer3": return "Select Entity";
+            case "entityDetailOwnershipContainer": return "As of Today";
+            case "entityDetailDirectorContainer": return "As of Today";
+            case "registeredAgentContainer": return "Filejet and Others";
+            case "sopCheckContainer": return "Has Check";
+            case "invoiceContainer":
+            case "paymentContainer": return "Date Range";
+            case "groupUserRoleContainer": return "Filter by Role";
+            case "usersAccessContainer":
+            case "externalUserContainer": return "Filter by Access";
+            case "groupPaymentContainer": return "Available To";
+            case "groupContainer": return "Group";
+            default: {
+                var label = $(`#${containerId}`).data('label');
+                return label != null ? label : "Status";
+            }
+        }
+    }
+
+    // Recalculate on resize
+    window.addEventListener("resize", updateSelectedOptions);
+}

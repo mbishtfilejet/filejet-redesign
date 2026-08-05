@@ -13,7 +13,56 @@ function initializeFilterDatePicker(selector) {
     $(selector).datepicker()
 }
 
+function getDynamicValueField(valuefield) {
+    switch (valuefield) {
+        case "single-value":
+            return `<div class="single-value d-flex align-items-center 
+                            border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
+                                <input type="text" class="border-0 p-0 w-100"
+                                    placeholder="Value" value="">
+                        </div>`;
+        case "single-date":
+            return `<div class="single-date calendar-wrapper d-flex align-items-center
+                             flex-grow-1 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                <input type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
+                                     placeholder="Date" value="">
+                                </div>`;
+        case "date-range":
+            return `<div class="d-flex align-items-center date-range">
+                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center
+                                border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                <input type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                                    placeholder="Date" value="">
+                            </div>
+                            <span class="mx-2">to</span>
+                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center 
+                                border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                    <input type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
+                                        placeholder="Date" value="">
+                            </div>
+                        </div>`;
+        case "value-range":
+            return `<div class="d-flex align-items-center value-range">
+                            <div class="d-flex align-items-center flex-grow-1 
+                                border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
+                                <input type="text" class="from-value border-0 p-0 w-100"
+                                    placeholder="Value">
+                            </div>
+                            <span class="mx-2">to</span>
+                            <div class="d-flex align-items-center flex-grow-1 
+                                border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
+                                <input type="text" class="to-value border-0 p-0 w-100"
+                                   placeholder="Value">
+                            </div>
+                    </div>`;
+        default:
+            return;
+    }
+}
+
 $(function () {
+
+    setupMultiSelect("viewContainer", "viewDropdown", "viewSearch", "view-checkbox");
 
     $(document).on('click', '.dropdown-item', function (e) {
 
@@ -31,32 +80,31 @@ $(function () {
         // Update the toggle button text
         dropdown.find('[data-bs-toggle="dropdown"]').text(selectedText).attr('data-selected', selectkey);
 
-
+        const valueSection = parent.find('.report-filter-value');
+        
         // Property Dropdown Selected
-
+        
         if (dropdown.hasClass('property-filter')) {
             const config = operatorByType[selectkey];
             if (!config) return;
-
+            
             const operatorDropdown = parent.find('.operator-filter');
             const operatorToggleButton = operatorDropdown.find('[data-bs-toggle="dropdown"]');
-
+            
             // Reset operator dropdown
             operatorToggleButton
-                .removeAttr('data-selected')
-                .text(operatorToggleButton.attr('placeholder'))
-
+            .removeAttr('data-selected')
+            .text(operatorToggleButton.attr('placeholder'))
+            
             operatorDropdown.find('.dropdown-item')
-                .removeClass('selected')
-                .each(function () {
-                    const operatorKey = $(this).data('key');
-                    $(this).toggle(config.operator.includes(operatorKey));
-                })
-
+            .removeClass('selected')
+            .each(function () {
+                const operatorKey = $(this).data('key');
+                $(this).toggle(config.operator.includes(operatorKey));
+            })
             // Reset value section
-            const valueSection = parent.find('.report-filter-value');
-            valueSection.children().addClass('d-none')
-            valueSection.find('.single-value').removeClass('d-none');
+            valueSection.empty();
+            valueSection.append(getDynamicValueField('single-value'));
             return;
         }
 
@@ -66,23 +114,16 @@ $(function () {
             const propertyKey = parent.find('.property-filter [data-bs-toggle="dropdown"]').attr('data-selected');
 
             if (!propertyKey || !operatorByType[propertyKey]) return;
+            valueSection.empty();
 
             let propertyType = operatorByType[propertyKey].type;
             const isBetween = selectkey === 'between';
 
-            const valueSection = parent.find('.report-filter-value');
-
-            valueSection.children().addClass('d-none');
-
             if (propertyType === "date") {
-                valueSection
-                    .find(isBetween ? '.date-range' : '.single-date')
-                    .removeClass('d-none');
-                initializeFilterDatePicker('.datepicker');
+                valueSection.html(getDynamicValueField(isBetween ? 'date-range' : 'single-date'));
+                initializeFilterDatePicker(valueSection.find('.datepicker'));
             } else {
-                valueSection
-                    .find(isBetween ? '.value-range' : '.single-value')
-                    .removeClass('d-none');
+                valueSection.html(getDynamicValueField(isBetween ? 'value-range' : 'single-value'));
             }
         }
     });
