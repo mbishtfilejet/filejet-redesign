@@ -3,72 +3,100 @@ const operatorByType = {
     "entity_type": { operator: ["equals", "starts_with", "is"], type: "string" },
     "state": { operator: ["equals", "is"], type: "string" },
     "formation_date": { operator: ["is", "between"], type: "date" },
-    "status": { operator: ["is"], type: "string" },
+    "status": { operator: ["is", "one_of"], type: { "is": "string", "one_of": "list" } },
     "tax_id_ein": { operator: ["is"], type: "number" },
     "authorized_share": { operator: ["equals"], type: "number" },
     "par_value": { operator: ["equals", "between"], type: "number" },
+}
+
+
+const dataByField = {
+    "status": {
+        "one_of": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown", "In Process", "Draft", "Overdue"]
+    }
 }
 
 function initializeFilterDatePicker(selector) {
     $(selector).datepicker()
 }
 
-function getDynamicValueField(valuefield) {
-    switch (valuefield) {
-        case "single-value":
-            return `<div class="single-value d-flex align-items-center 
-                            border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
-                                <input type="text" class="border-0 p-0 w-100"
-                                    placeholder="Value" value="">
-                        </div>`;
+function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
+
+    let isSearchDisabled = multSelectList.length <= 5;
+
+    switch (selectedCased) {
         case "single-date":
             return `<div class="single-date calendar-wrapper d-flex align-items-center
                              flex-grow-1 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
+                                <input id="single-date-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
                                      placeholder="Date" value="">
                                 </div>`;
         case "date-range":
             return `<div class="d-flex align-items-center date-range">
                             <div class="calendar-wrapper d-flex flex-grow-1 align-items-center
                                 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                                <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
                                     placeholder="Date" value="">
                             </div>
                             <span class="mx-2">to</span>
                             <div class="calendar-wrapper d-flex flex-grow-1 align-items-center 
                                 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                    <input type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                                        placeholder="Date" value="">
+                                <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
+                                    placeholder="Date" value="">
                             </div>
                         </div>`;
         case "value-range":
             return `<div class="d-flex align-items-center value-range">
                             <div class="d-flex align-items-center flex-grow-1 
                                 border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
-                                <input type="text" class="from-value border-0 p-0 w-100"
+                                <input id="value-range-${uniqueId}F" type="text" class="from-value border-0 p-0 w-100"
                                     placeholder="Value">
                             </div>
                             <span class="mx-2">to</span>
                             <div class="d-flex align-items-center flex-grow-1 
                                 border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
-                                <input type="text" class="to-value border-0 p-0 w-100"
+                                <input id="value-range-${uniqueId}T" type="text" class="to-value border-0 p-0 w-100"
                                    placeholder="Value">
                             </div>
                     </div>`;
+        case "mutli-select":
+            return `
+            <div class="filter2-dropdown w-100 h-100 dropdown filter-option">
+                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                    id="mutli-selectContainer-${uniqueId}" data-label="Value" data-bs-toggle="dropdown"
+                    aria-expanded="false" tabindex="0">
+                        <input type="text" class="search-input" id="mutli-selectSearch-${uniqueId}" placeholder="Value"
+                        autocomplete="off">
+                </div>
+                <ul class="dropdown-menu ${isSearchDisabled ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
+                ${multSelectList.map(val => `<li>
+                        <label class="dropdown-item">
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-${uniqueId} me-2"
+                                data-value="${val}">${val}
+                        </label>
+                    </li>` ).join('')}
+                </ul>
+            </div>`;
         default:
-            return;
+            return `<div class="single-value d-flex align-items-center 
+                        border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
+                        <input id="single-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                            placeholder="Value" value="">
+                    </div>`;
     }
 }
 
 $(function () {
 
     setupMultiSelect("viewContainer", "viewDropdown", "viewSearch", "view-checkbox");
+    setupMultiSelect("viewContainer-entity", "viewDropdown-entity", "viewSearch-entity", "view-checkbox-entity");
 
     $(document).on('click', '.dropdown-item', function (e) {
 
         const item = $(this);
         const selectedText = item.find('.item-name').text().trim();
         const selectkey = item.data("key");
+        const uniqueId = generateId();
 
         const dropdown = item.closest('.dropdown.report-filter');
         const parent = dropdown.closest(".filter-grid");
@@ -81,30 +109,30 @@ $(function () {
         dropdown.find('[data-bs-toggle="dropdown"]').text(selectedText).attr('data-selected', selectkey);
 
         const valueSection = parent.find('.report-filter-value');
-        
+
         // Property Dropdown Selected
-        
+
         if (dropdown.hasClass('property-filter')) {
             const config = operatorByType[selectkey];
             if (!config) return;
-            
+
             const operatorDropdown = parent.find('.operator-filter');
             const operatorToggleButton = operatorDropdown.find('[data-bs-toggle="dropdown"]');
-            
+
             // Reset operator dropdown
             operatorToggleButton
-            .removeAttr('data-selected')
-            .text(operatorToggleButton.attr('placeholder'))
-            
+                .removeAttr('data-selected')
+                .text(operatorToggleButton.attr('placeholder'))
+
             operatorDropdown.find('.dropdown-item')
-            .removeClass('selected')
-            .each(function () {
-                const operatorKey = $(this).data('key');
-                $(this).toggle(config.operator.includes(operatorKey));
-            })
+                .removeClass('selected')
+                .each(function () {
+                    const operatorKey = $(this).data('key');
+                    $(this).toggle(config.operator.includes(operatorKey));
+                })
             // Reset value section
             valueSection.empty();
-            valueSection.append(getDynamicValueField('single-value'));
+            valueSection.append(getDynamicValueField('single-value', uniqueId));
             return;
         }
 
@@ -117,13 +145,21 @@ $(function () {
             valueSection.empty();
 
             let propertyType = operatorByType[propertyKey].type;
-            const isBetween = selectkey === 'between';
+
+            if (typeof (propertyType) === "object") {
+                propertyType = operatorByType[propertyKey].type[selectkey];
+            }
 
             if (propertyType === "date") {
-                valueSection.html(getDynamicValueField(isBetween ? 'date-range' : 'single-date'));
+                valueSection.html(getDynamicValueField(selectkey === 'between' ? 'date-range' : 'single-date', uniqueId));
                 initializeFilterDatePicker(valueSection.find('.datepicker'));
+            }
+            else if (propertyType === 'list') {
+                const multiSelectList = dataByField[propertyKey][selectkey];
+                valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList));
+                setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", multiSelectList.slice(0, 3));
             } else {
-                valueSection.html(getDynamicValueField(isBetween ? 'value-range' : 'single-value'));
+                valueSection.html(getDynamicValueField(selectkey === 'between' ? 'value-range' : 'single-value', uniqueId));
             }
         }
     });
@@ -781,17 +817,20 @@ $(function () {
         renderCharts(charts_wrapper);
     });
 
-    $(document).on("click", '.save-report-btn', function (ev) {
+    $(document).on("click", '.save-report-btn, .report-back-btn', function (ev) {
 
-        // just for reference not actual code
-        const modeltriggerBtn = $(this).closest('.modal').attr('id');
-        const reportSection = $(`[data-bs-target="#${modeltriggerBtn}"]`).filter(':visible').closest('.reportSection');
+        let reportSection = $('.reportSection:visible');
+
+        if ($(this).hasClass('report-back-btn')) {
+            reportSection = $(this).closest('.reportSection')
+        } else {
+            $('html, body').animate({ scrollTop: 0 }, 300);
+        }
 
         reportSection.find('.toggleSection').fadeOut();
 
         reportSection.find('.reportCreationNav').fadeIn();
 
-        $('html, body').animate({ scrollTop: 0 }, 300);
 
     })
 });

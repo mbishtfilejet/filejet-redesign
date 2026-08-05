@@ -243,6 +243,9 @@ function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
     }).format(amount)
 }
 
+const generateId = () =>
+        `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
 
 $(function () {
 
@@ -302,9 +305,6 @@ $(function () {
 
         showTab(navTabs, activeId, sectionId);
     }
-
-    const generateId = () =>
-        `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
     $('.add-split').on('click', function () {
         let { splitSection, sectionId, navTabs, rightBtn, leftBtn, tabContent } = getSectionData(this);
