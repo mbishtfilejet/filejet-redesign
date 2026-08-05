@@ -741,8 +741,10 @@ $(function () {
     });
 
     $(document).on("click", '.save-report-btn', function (ev) {
+
+        // just for reference not actual code
         const modeltriggerBtn = $(this).closest('.modal').attr('id');
-        const reportSection = $(`[data-bs-target="#${modeltriggerBtn}"]`).closest('.reportSection');
+        const reportSection = $(`[data-bs-target="#${modeltriggerBtn}"]`).filter(':visible').closest('.reportSection');
 
         reportSection.find('.toggleSection').fadeOut();
 
