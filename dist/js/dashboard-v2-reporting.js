@@ -3,7 +3,7 @@ const operatorByType = {
     "entity_type": { operator: ["equals", "starts_with", "is"], type: "string" },
     "state": { operator: ["equals", "is"], type: "string" },
     "formation_date": { operator: ["is", "between"], type: "date" },
-    "status": { operator: ["is", "one_of"], type: { "is": "string", "one_of": "list" } },
+    "status": { operator: ["one_of"], type: "list" },
     "tax_id_ein": { operator: ["is"], type: "number" },
     "authorized_share": { operator: ["equals"], type: "number" },
     "par_value": { operator: ["equals", "between"], type: "number" },
@@ -145,10 +145,6 @@ $(function () {
             valueSection.empty();
 
             let propertyType = operatorByType[propertyKey].type;
-
-            if (typeof (propertyType) === "object") {
-                propertyType = operatorByType[propertyKey].type[selectkey];
-            }
 
             if (propertyType === "date") {
                 valueSection.html(getDynamicValueField(selectkey === 'between' ? 'date-range' : 'single-date', uniqueId));
@@ -524,7 +520,7 @@ $(function () {
 
     $('.toggleSection').css('display', 'none');
 
-    $(document).on("click", ".new-report, .view-report, .generate-report", function () {
+    $(document).on("click", ".new-report, .view-report, .edit-report,.copy-report,.generate-report", function () {
         const element = $(this);
 
         const reportNav = element.closest(".reportCreationNav");
@@ -565,10 +561,13 @@ $(function () {
             table = createDynamicTable(targetElement, '.reports_table', targetElement, '.columns_text');
         }
 
-        if (element.hasClass('generate-report')) {
+        else if (element.hasClass('generate-report')) {
             table = createDynamicTable(targetElement, '.reports_table', element.parent(), '.columns_text');
 
             $('html, body').animate({ scrollTop: $(targetElement).offset().top }, 500);
+        } else {
+            $('html, body').animate({ scrollTop: 0 }, 300);
+            $(targetElement).find('.accordion-collapse').collapse('show');
         }
 
         table.columns.adjust().draw();
