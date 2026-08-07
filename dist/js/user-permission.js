@@ -597,7 +597,7 @@ $(function () {
                                 </span>`
                             : `
                             <span role="button" tabindex="0">
-                                <span data-toggle="tooltip" aria-label="Payment Method cannot be removed because it is assigned to a subscription." data-bs-original-title="Payment Method cannot be removed because it is assigned to a subscription." data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
+                                <span data-toggle="tooltip" aria-label="Payment Method cannot be removed because it is assigned to a subscription." data-bs-original-title="Payment Method cannot be removed because it is assigned to a subscription."
                                 class="icon icon-entity-delete me-1 me-md-2"></span> 
                             </span>`
 							
