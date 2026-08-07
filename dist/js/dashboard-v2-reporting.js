@@ -2,11 +2,16 @@ const operatorByType = {
     "entity_name": { operator: ["equals", "starts_with"], type: "string" },
     "entity_type": { operator: ["equals", "starts_with", "is"], type: "string" },
     "state": { operator: ["equals", "is"], type: "string" },
-    "formation_date": { operator: ["is", "between"], type: "date" },
+    "formation_date": { operator: ["is", "between", "less_than", "greater_than"], type: "date" },
     "status": { operator: ["one_of"], type: "list" },
     "tax_id_ein": { operator: ["is"], type: "number" },
-    "authorized_share": { operator: ["equals"], type: "number" },
-    "par_value": { operator: ["equals", "between"], type: "number" },
+    "authorized_share": { operator: ["equals", "less_than", "greater_than"], type: "number" },
+    "par_value": { operator: ["equals", "between", "less_than", "greater_than"], type: "number" },
+    "group": { operator: ["equals", "starts_with"], type: "string" },
+    "business_licenses": { operator: ["equals", "starts_with"], type: "string" },
+    "dba": { operator: ["equals", "starts_with"], type: "string" },
+    "director": { operator: ["equals", "starts_with"], type: "string" },
+    "ownership": { operator: ["equals", "starts_with"], type: "string" },
 }
 
 
@@ -500,21 +505,48 @@ $(function () {
         return table.DataTable(tableOptions);
     }
 
-    const savedFilters = [
-        {
-            "property": "entity_name",
-            "operator": "equals",
-            "value": "AIC Capital VV Manager, Corp."
-        },
-        {
-            "property": "formation_date",
-            "operator": "between",
-            "value": {
-                "from": "10/12/2025",
-                "to": "04/29/2026"
+    const savedFilters = {
+
+        "registration": [
+            {
+                "property": "entity_name",
+                "operator": "equals",
+                "value": "AIC Capital VV Manager, Corp."
+            },
+            {
+                "property": "formation_date",
+                "operator": "between",
+                "value": {
+                    "from": "10/12/2025",
+                    "to": "04/29/2026"
+                }
             }
-        }
-    ]
+        ],
+        "entity": [
+            {
+                "property": "entity_name",
+                "operator": "equals",
+                "value": "AIC Capital VV Manager, Corp."
+            },
+            {
+                "property": "state",
+                "operator": "equals",
+                "value": "Alabama"
+            }
+        ],
+        "order": [
+            {
+                "property": "entity_name",
+                "operator": "equals",
+                "value": "AIC Capital VV Manager, Corp."
+            },
+            {
+                "property": "group",
+                "operator": "quals",
+                "value": "Legal IT Group"
+            }
+        ],
+    }
 
 
 
@@ -544,12 +576,14 @@ $(function () {
             renderCharts(charts_wrapper);
         }
 
+        let filterKey = $(targetElement).data('filter');
+
 
         let table = '';
 
         if (element.hasClass('view-report')) {
 
-            savedFilters.forEach((filter, index) => {
+            savedFilters[filterKey].forEach((filter, index) => {
                 applySavedFilter(filter, $(targetElement).find('.filter-grid').not('.filter-template').eq(index));
             });
 
