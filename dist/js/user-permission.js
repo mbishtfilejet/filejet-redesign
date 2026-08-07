@@ -589,13 +589,18 @@ $(function () {
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
                             </span>
 
-                            ${meta.row === 4 // just for reference to show remove icon , actually functionlity will be based on  that payment method is not assign to any subscription**
+                            ${meta.row === 4 // just for reference to show remove icon , actually functionlity will be based on that payment method is not assign to any subscription**
                             ?
                             `<span role="button" tabindex="0">
                                 <span data-toggle="tooltip" aria-label="DELETE" data-bs-original-title="DELETE" data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
                                 class="icon icon-entity-delete me-1 me-md-2"></span> 
                                 </span>`
-                            : ''
+                            : `
+                            <span role="button" tabindex="0">
+                                <span data-toggle="tooltip" aria-label="Payment Method cannot be removed because it is assigned to a subscription." data-bs-original-title="Payment Method cannot be removed because it is assigned to a subscription." data-bs-toggle="modal" data-bs-target="#deletePaymentMethod"
+                                class="icon icon-entity-delete me-1 me-md-2"></span> 
+                            </span>`
+							
                         }
                     </div>
                     `
