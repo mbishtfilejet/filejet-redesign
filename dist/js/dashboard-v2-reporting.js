@@ -95,6 +95,7 @@ $(function () {
 
     setupMultiSelect("viewContainer", "viewDropdown", "viewSearch", "view-checkbox");
     setupMultiSelect("viewContainer-entity", "viewDropdown-entity", "viewSearch-entity", "view-checkbox-entity");
+    setupMultiSelect("viewContainer-order", "viewDropdown-order", "viewSearch-order", "view-checkbox-order");
 
     $(document).on('click', '.dropdown-item', function (e) {
 
@@ -552,12 +553,14 @@ $(function () {
 
     $('.toggleSection').css('display', 'none');
 
-    $(document).on("click", ".new-report, .view-report, .edit-report,.copy-report,.generate-report", function () {
+    $(document).on("click", ".new-report, .view-report, .edit-report, .copy-report, .generate-report", function () {
         const element = $(this);
 
         const reportNav = element.closest(".reportCreationNav");
 
         const targetElement = element.data('target');
+
+        const target = $(targetElement);
 
         reportNav.fadeOut(50)
 
@@ -566,42 +569,46 @@ $(function () {
         if (tooltip) {
             tooltip.dispose();
         }
-        $(targetElement).fadeIn()
+        target.fadeIn()
 
         if (element.hasClass('new-report')) return;
 
-        const charts_wrapper = $(targetElement).find('.charts_wrapper:visible');
+        const charts_wrapper = target.find('.charts_wrapper:visible');
 
         if (charts_wrapper.length) {
             renderCharts(charts_wrapper);
         }
 
-        let filterKey = $(targetElement).data('filter');
+        let filterKey = target.data('filter');
 
 
         let table = '';
 
-        if (element.hasClass('view-report')) {
+
+        if (element.hasClass('generate-report')) {
+            table = createDynamicTable(targetElement, '.reports_table', element.parent(), '.columns_text');
+
+            $('html, body').animate({ scrollTop: $(targetElement).offset().top }, 500);
+        } else {
 
             savedFilters[filterKey].forEach((filter, index) => {
                 applySavedFilter(filter, $(targetElement).find('.filter-grid').not('.filter-template').eq(index));
             });
 
-            $(targetElement).find('.accordion-collapse').collapse('hide');
-            $(targetElement).find('.accordion-button')
-                .addClass('collapsed')
-                .attr('aria-expanded', 'false');
+            if (element.hasClass('view-report')) {
+
+                target.find('.accordion-collapse').each(function () {
+                    if ($(this).find('.charts_wrapper').length === 0) {
+                        $(this).collapse('hide');
+                    }
+                });
+            } else {
+
+                target.find('.accordion-collapse').collapse('show');
+            }
+            
             $('html, body').animate({ scrollTop: 0 }, 300);
             table = createDynamicTable(targetElement, '.reports_table', targetElement, '.columns_text');
-        }
-
-        else if (element.hasClass('generate-report')) {
-            table = createDynamicTable(targetElement, '.reports_table', element.parent(), '.columns_text');
-
-            $('html, body').animate({ scrollTop: $(targetElement).offset().top }, 500);
-        } else {
-            $('html, body').animate({ scrollTop: 0 }, 300);
-            $(targetElement).find('.accordion-collapse').collapse('show');
         }
 
         table.columns.adjust().draw();
@@ -800,21 +807,21 @@ $(function () {
         });
     }
 
-    $(document).on('shown.bs.collapse', '.accordion-collapse', function () {
-        const wrapper = $(this).find('.charts_wrapper');
+    // $(document).on('shown.bs.collapse', '.accordion-collapse', function () {
+    //     const wrapper = $(this).find('.charts_wrapper');
 
-        // This accordion doesn't contain charts
-        if (!wrapper.length) {
-            return;
-        }
+    //     // This accordion doesn't contain charts
+    //     if (!wrapper.length) {
+    //         return;
+    //     }
 
-        if (wrapper.data('rendered')) {
-            return;
-        }
+    //     if (wrapper.data('rendered')) {
+    //         return;
+    //     }
 
-        renderCharts(wrapper);
-        wrapper.data('rendered', true);
-    });
+    //     renderCharts(wrapper);
+    //     wrapper.data('rendered', true);
+    // });
 
 
     $(".chart-btn").on("click", function () {
