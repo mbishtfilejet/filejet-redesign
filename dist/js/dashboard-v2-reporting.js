@@ -11,14 +11,13 @@ const operatorByType = {
     "business_licenses": { operator: ["equals", "starts_with"], type: "string" },
     "dba": { operator: ["equals", "starts_with"], type: "string" },
     "director": { operator: ["equals"], type: "complex" },
-    "ownership": { operator: ["equals", "starts_with"], type: "string" },
+    "ownership": { operator: ["equals"], type: "complex" },
 }
 
 
 const dataByField = {
-    "status": {
-        "one_of": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown", "In Process", "Draft", "Overdue"]
-    }
+    "status": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown", "In Process", "Draft", "Overdue"],
+    "director": { "role": ['CEO', "President", 'CTO', 'VC', 'Others'] },
 }
 
 function initializeFilterDatePicker(selector) {
@@ -77,16 +76,39 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
                     </li>` ).join('')}
                 </ul>
             </div>`;
-        case "complex":
+        case "complex-ownership":
+            return `
+            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                    placeholder="Name" value="">
+            </div>
+            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                    placeholder="%" value="">
+            </div>
+            `;
+        case "complex-director":
             return `
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                         <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
                             placeholder="Name" value="">
                     </div>
-            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
-                        <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                            placeholder="Role" value="">
-                    </div>
+            <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                    id="mutli-selectContainer-${uniqueId}" data-label="Role" data-bs-toggle="dropdown"
+                    aria-expanded="false" tabindex="0">
+                        <input type="text" class="search-input" id="mutli-selectSearch-${uniqueId}" placeholder="Role"
+                        autocomplete="off">
+                </div>
+                <ul class="dropdown-menu ${isSearchDisabled ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
+                ${multSelectList.map(val => `<li>
+                        <label class="dropdown-item">
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-${uniqueId} me-2"
+                                data-value="${val}">${val}
+                        </label>
+                    </li>` ).join('')}
+                </ul>
+            </div>
             <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
                                      placeholder="Start Date" value="">
@@ -172,14 +194,17 @@ $(function () {
                 initializeFilterDatePicker(valueSection.find('.datepicker'));
             }
             else if (propertyType === 'list') {
-                const multiSelectList = dataByField[propertyKey][selectkey];
+                const multiSelectList = dataByField[propertyKey];
+                const multiSelectKey = [...propertyKey];
                 valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList));
                 setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", multiSelectList.slice(0, 3));
             }
-            else if(propertyType === 'complex') {
+            else if (propertyType === 'complex') {
                 valueSection.addClass('row g-0 gap-2');
-                valueSection.html(getDynamicValueField('complex', uniqueId));
+                const multiSelectList = dataByField[propertyKey]?.role || [];
+                valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList));
                 initializeFilterDatePicker(valueSection.find('.datepicker'));
+                setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "");
             } else {
                 valueSection.html(getDynamicValueField(selectkey === 'between' ? 'value-range' : 'single-value', uniqueId));
             }
@@ -626,7 +651,7 @@ $(function () {
 
                 target.find('.accordion-collapse').collapse('show');
             }
-            
+
             $('html, body').animate({ scrollTop: 0 }, 300);
             table = createDynamicTable(targetElement, '.reports_table', targetElement, '.columns_text');
         }
