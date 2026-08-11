@@ -1593,3 +1593,44 @@ table .btn, table .boc-light #boc-ppdf-btns #boc-prev-cancel, .boc-light #boc-pp
 }
 
 
+.SOP-model {
+    .detail_grid {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+        row-gap: 10px;
+        column-gap: 5px;
+
+        .form-label {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .addmoreshare {
+        transition: all 0.1s ease;
+
+
+        &[aria-expanded=false] {
+            color: var(--bs-filejet-purple-indigo) !important;
+            font-weight: 400 !important;
+            text-transform: capitalize !important;
+        }
+
+        &[aria-expanded=true] {
+            display: none !important;
+        }
+    }
+
+    .shareInputs {
+        .priceInput::before {
+            opacity: 0;
+        }
+
+        &.show {
+            .priceInput::before {
+                opacity: 1;
+            }
+        }
+    }
+}
+

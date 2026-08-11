@@ -388,7 +388,7 @@ $(function () {
             .addClass('long-data-table-listing');
         new_tabPane.find('[data-temp-shareInput]').removeAttr('data-temp-shareInput').attr('id', `split-shares-inputs-${uniqueId}`)
         new_tabPane.find('[data-temp-addShare]').removeAttr('data-temp-addShare').attr('data-bs-target', `#split-shares-inputs-${uniqueId}`)
-
+        new_tabPane.find('[data-temp-addRowInput]').removeAttr('data-temp-addRowInput').attr('data-bs-target', `#split-shares-inputs-${uniqueId}`)
 
         tabContent.append(new_tabPane);
         console.log(activeIndex)
