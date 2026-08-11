@@ -162,20 +162,28 @@ $(function () {
             const operatorDropdown = parent.find('.operator-filter');
             const operatorToggleButton = operatorDropdown.find('[data-bs-toggle="dropdown"]');
 
-            // Reset operator dropdown
-            operatorToggleButton
-                .removeAttr('data-selected')
-                .text(operatorToggleButton.attr('placeholder'))
-
-            operatorDropdown.find('.dropdown-item')
+            // default select operator dropdown
+            const operatorDropDownItem = operatorDropdown.find('.dropdown-item');
+            let defaultItemSelected = ""
+            operatorDropDownItem
                 .removeClass('selected')
-                .each(function () {
+                .each(function (idx) {
                     const operatorKey = $(this).data('key');
-                    $(this).toggle(config.operator.includes(operatorKey));
+                    const isMatch = config.operator.includes(operatorKey)
+
+                    $(this)
+                        .toggle(isMatch);
+                    if (isMatch && !defaultItemSelected) {
+                        defaultItemSelected = this
+                    }
                 })
-            // Reset value section
-            valueSection.empty();
-            valueSection.append(getDynamicValueField('single-value', uniqueId));
+                
+            if (defaultItemSelected) {
+                $(defaultItemSelected)
+                    .addClass('selected')
+                    .trigger('click');
+            }
+
             return;
         }
 
@@ -195,7 +203,6 @@ $(function () {
             }
             else if (propertyType === 'list') {
                 const multiSelectList = dataByField[propertyKey];
-                const multiSelectKey = [...propertyKey];
                 valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList));
                 setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", multiSelectList.slice(0, 3));
             }
@@ -516,7 +523,15 @@ $(function () {
                 ...($(this).data("key") === "status" && {
                     render: function (data, type, row) {
                         return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
-                    }
+                    },
+                }),
+                ...($(this).data("key") === "director" && {
+                    render: function (data, type, row) {
+                        return `<div class="d-flex flex-column">
+                            ${data.length > 0 ? data.map(item => `<span>${item}</span>`).join("")
+                                : ""}
+                        </div>`;
+                    },
                 })
             });
         });
@@ -631,7 +646,7 @@ $(function () {
 
 
         if (element.hasClass('generate-report')) {
-            table = createDynamicTable(targetElement, '.reports_table', element.parent(), '.columns_text');
+            table = createDynamicTable(targetElement, '.reports_table', element.closest('.reportCreateSection'), '.columns_text');
 
             $('html, body').animate({ scrollTop: $(targetElement).offset().top }, 500);
         } else {
