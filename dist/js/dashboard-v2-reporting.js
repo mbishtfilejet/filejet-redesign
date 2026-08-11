@@ -10,7 +10,7 @@ const operatorByType = {
     "group": { operator: ["equals", "starts_with"], type: "string" },
     "business_licenses": { operator: ["equals", "starts_with"], type: "string" },
     "dba": { operator: ["equals", "starts_with"], type: "string" },
-    "director": { operator: ["equals", "starts_with"], type: "string" },
+    "director": { operator: ["equals"], type: "complex" },
     "ownership": { operator: ["equals", "starts_with"], type: "string" },
 }
 
@@ -31,35 +31,30 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
 
     switch (selectedCased) {
         case "single-date":
-            return `<div class="single-date calendar-wrapper d-flex align-items-center
-                             flex-grow-1 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input id="single-date-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
-                                     placeholder="Date" value="">
-                                </div>`;
+            return `<div class="single-date calendar-wrapper d-flex align-items-center flex-grow-1 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                        <input id="single-date-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
+                             placeholder="Date" value="">
+                    </div>`;
         case "date-range":
             return `<div class="d-flex align-items-center date-range">
-                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center
-                                border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
                                     placeholder="Date" value="">
                             </div>
                             <span class="mx-2">to</span>
-                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center 
-                                border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
                                     placeholder="Date" value="">
                             </div>
                         </div>`;
         case "value-range":
             return `<div class="d-flex align-items-center value-range">
-                            <div class="d-flex align-items-center flex-grow-1 
-                                border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
+                            <div class="d-flex align-items-center flex-grow-1 border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
                                 <input id="value-range-${uniqueId}F" type="text" class="from-value border-0 p-0 w-100"
                                     placeholder="Value">
                             </div>
                             <span class="mx-2">to</span>
-                            <div class="d-flex align-items-center flex-grow-1 
-                                border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
+                            <div class="d-flex align-items-center flex-grow-1 border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
                                 <input id="value-range-${uniqueId}T" type="text" class="to-value border-0 p-0 w-100"
                                    placeholder="Value">
                             </div>
@@ -82,6 +77,25 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
                     </li>` ).join('')}
                 </ul>
             </div>`;
+        case "complex":
+            return `
+            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                        <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                            placeholder="Name" value="">
+                    </div>
+            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                        <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                            placeholder="Role" value="">
+                    </div>
+            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                                     placeholder="Start Date" value="">
+                                </div>
+            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
+                                     placeholder="End Date" value="">
+                                </div>
+            `;
         default:
             return `<div class="single-value d-flex align-items-center 
                         border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
@@ -115,6 +129,7 @@ $(function () {
         dropdown.find('[data-bs-toggle="dropdown"]').text(selectedText).attr('data-selected', selectkey);
 
         const valueSection = parent.find('.report-filter-value');
+        valueSection.removeClass('row g-0 gap-2');
 
         // Property Dropdown Selected
 
@@ -160,6 +175,11 @@ $(function () {
                 const multiSelectList = dataByField[propertyKey][selectkey];
                 valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList));
                 setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", multiSelectList.slice(0, 3));
+            }
+            else if(propertyType === 'complex') {
+                valueSection.addClass('row g-0 gap-2');
+                valueSection.html(getDynamicValueField('complex', uniqueId));
+                initializeFilterDatePicker(valueSection.find('.datepicker'));
             } else {
                 valueSection.html(getDynamicValueField(selectkey === 'between' ? 'value-range' : 'single-value', uniqueId));
             }
