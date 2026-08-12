@@ -482,11 +482,11 @@ $(function () {
         ev.preventDefault();
 
         let dragItem = $(this).closest('.drag-item');
-        let suggestionSection = $(this).closest('.column_section').find('.suggestion_column');
+        let drag_container = $(this).closest('.column_section').find('.drag_container');
 
         dragItem.prop('draggable', false);
 
-        suggestionSection.prepend(dragItem)
+        drag_container.after(dragItem)
 
     })
 

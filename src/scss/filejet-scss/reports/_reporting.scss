@@ -146,7 +146,7 @@
         top: 2px;
     }
 
-    .complex-value{
+    .complex-value {
         min-height: 38px;
     }
 }
@@ -320,8 +320,6 @@
     align-items: center;
     border-radius: 8px;
     gap: 10px;
-    border: 0.5px dashed #FF551A;
-    background-color: #FFF2ED;
     user-select: none;
     transition: transform 0.2s ease;
 
@@ -342,33 +340,8 @@
     }
 }
 
-.drag_container {
+.column_section {
 
-    .drag-item {
-        transition: margin 0.2s ease-in-out;
-
-        .icon-add-chart {
-            display: none;
-        }
-
-        &:focus,
-        &:active {
-            outline-color: #FF551A;
-        }
-    }
-
-    .drag-item.dragging {
-        border-style: solid;
-        background-color: #FF551A;
-        color: white;
-
-        .icon-close-dark {
-            filter: contrast(0) brightness(2);
-        }
-    }
-}
-
-.suggestion_column {
     .drag-item {
         color: #8690A0;
         border: 0.5px dashed #3E484A;
@@ -379,5 +352,38 @@
             display: none;
         }
     }
-}
 
+    .drag_container {
+
+        .drag-item {
+            border: 0.5px dashed #FF551A;
+            background-color: #FFF2ED;
+            color: initial;
+            transition: margin 0.2s ease-in-out;
+
+            .icon-add-chart {
+                display: none;
+            }
+
+            &:focus,
+            &:active {
+                outline-color: #FF551A;
+            }
+
+            .handle,
+            .icon-close-dark {
+                display: initial;
+            }
+        }
+
+        .drag-item.dragging {
+            border-style: solid;
+            background-color: #FF551A;
+            color: white;
+
+            .icon-close-dark {
+                filter: contrast(0) brightness(2);
+            }
+        }
+    }
+}
