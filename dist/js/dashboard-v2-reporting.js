@@ -345,7 +345,7 @@ $(function () {
 
     $(document).on('dragend', '.drag_container .drag-item', function (ev) {
         $(this)
-            .removeClass("dragging dragplacehoder")
+            .removeClass("dragging dragplaceholder")
             .css({
                 transition: '',
                 transform: ''
@@ -371,7 +371,7 @@ $(function () {
         if (before && draggedItem.nextElementSibling === targetItem) return;
         if (!before && draggedItem.previousElementSibling === targetItem) return;
 
-        $(draggedItem).removeClass('dragging').addClass('dragplacehoder');
+        $(draggedItem).removeClass('dragging').addClass('dragplaceholder');
 
         animateMove($(draggedItem), targetEl, before);
     });

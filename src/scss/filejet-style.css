@@ -24748,45 +24748,55 @@ body *::-webkit-scrollbar-thumb {
 }
 
 .drag-item {
+  --drag-bg-color: ;
+  --drag-border-color: ;
+  --drag-border-style: solid;
+  --drag-text-color: black;
   display: flex;
   height: 29px;
+  width: max-content;
   padding: 10px;
+  overflow: hidden;
   line-height: normal;
   justify-content: center;
   align-items: center;
+  border: 0.5px var(--drag-border-style) var(--drag-border-color);
+  background-color: var(--drag-bg-color);
   border-radius: 8px;
+  color: var(--drag-text-color);
   gap: 10px;
   user-select: none;
+  transition: margin 0.2s ease-in-out;
   transition: transform 0.2s ease;
 }
 .drag-item .handle {
   cursor: grab;
   font-size: 1.5rem;
 }
-.drag-item.dragplacehoder {
-  color: #8690A0;
-  border: 0.5px dashed #3E484A;
-  background-color: #F2F3F5;
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
-}
 .drag-item span {
   flex-grow: 1;
 }
 
 .column_section .drag-item {
-  color: #8690A0;
-  border: 0.5px dashed #3E484A;
-  background-color: #F2F3F5;
+  --drag-bg-color: #F2F3F5;
+  --drag-border-color: #3E484A;
+  --drag-text-color: #8690A0;
+  --drag-border-style: dashed;
 }
 .column_section .drag-item .handle,
 .column_section .drag-item .icon-close-dark {
   display: none;
 }
 .column_section .drag_container .drag-item {
-  border: 0.5px dashed #FF551A;
-  background-color: #FFF2ED;
-  color: initial;
-  transition: margin 0.2s ease-in-out;
+  --drag-bg-color: #FFF2ED;
+  --drag-border-color: #FF551A;
+  --drag-text-color: black;
+}
+.column_section .drag_container .drag-item.dragplaceholder {
+  --drag-bg-color: #F2F3F5;
+  --drag-border-color: #3E484A;
+  --drag-text-color: #8690A0;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
 }
 .column_section .drag_container .drag-item .icon-add-chart {
   display: none;
@@ -24799,9 +24809,10 @@ body *::-webkit-scrollbar-thumb {
   display: initial;
 }
 .column_section .drag_container .drag-item.dragging {
-  border-style: solid;
-  background-color: #FF551A;
-  color: white;
+  --drag-bg-color: #FF551A;
+  --drag-text-color: white;
+  --drag-border-style: solid;
+  --drag-border-style: black;
 }
 .column_section .drag_container .drag-item.dragging .icon-close-dark {
   filter: contrast(0) brightness(2);
