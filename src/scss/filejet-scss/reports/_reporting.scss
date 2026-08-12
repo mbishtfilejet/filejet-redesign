@@ -151,6 +151,39 @@
     }
 }
 
+.custom-form-select {
+    --custom-font-size: 1rem;
+    --bs-filejet-medium-gray-opacity-50: var(--bs-gray-600);
+    min-height: 38px;
+    padding: 0.5rem 1rem;
+    font-size: var(--custom-font-size);
+    background-color: transparent;
+    border: 1px solid #d2d5da;
+    border-radius: 4.5px;
+    margin-bottom: 0px;
+    box-shadow: none !important;
+    color: var(--bs-filejet-medium-gray);
+    background-image: url(../../../dist/images/icons/icon-angle-bottom.svg);
+    background-size: 10px;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+
+
+    option {
+        background-color: white;
+        color: var(--bs-filejet-medium-gray);
+    }
+
+    &:focus {
+        background-color: #ffe2d8;
+        color: #000;
+        border: 1.5px solid #FF551A;
+    }
+}
+
 .charts_wrapper {
 
     .chart-box {
@@ -191,35 +224,8 @@
     }
 
     .form-select.field-select {
-        min-height: 38px;
-        padding: 0px 10px;
-        padding-right: 15px;
-        font-size: 12px;
-        background-color: transparent;
-        border: 1px solid #d2d5da;
-        border-radius: 4.5px;
-        margin-bottom: 0px;
-        box-shadow: none !important;
-        color: var(--bs-filejet-medium-gray);
-        background-image: url(../../../dist/images/icons/icon-angle-bottom.svg);
-        background-size: 10px;
-        font-weight: normal;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        cursor: pointer;
-
-
-        option {
-            background-color: white;
-            color: var(--bs-filejet-medium-gray);
-        }
-
-        &:focus {
-            background-color: #ffe2d8;
-            color: #000;
-            border: 1.5px solid #FF551A;
-        }
+        --custom-font-size: 12px;
+        @extend .custom-form-select;
     }
 
     .chart-container {

@@ -12,12 +12,14 @@ const operatorByType = {
     "dba": { operator: ["equals", "starts_with"], type: "string" },
     "director": { operator: ["equals"], type: "complex" },
     "ownership": { operator: ["equals"], type: "complex" },
+    "registrations": { operator: ["equals"], type: "complex" },
 }
 
 
 const dataByField = {
     "status": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown", "In Process", "Draft", "Overdue"],
-    "director": { "role": ['CEO', "President", 'CTO', 'VC', 'Others'] },
+    "director": ['CEO', "President", 'CTO', 'VC', 'Others'],
+    "registrations": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown"],
 }
 
 function initializeFilterDatePicker(selector) {
@@ -27,6 +29,7 @@ function initializeFilterDatePicker(selector) {
 function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
 
     let isSearchDisabled = multSelectList.length <= 5;
+    console.log(multSelectList)
 
     switch (selectedCased) {
         case "single-date":
@@ -85,6 +88,88 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                 <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
                     placeholder="%" value="">
+            </div>
+            `;
+        case "complex-registrations":
+            return `
+            <div class="col-5 flex-grow-1 complex-value">
+                <select class="form-select custom-form-select" name="">
+                    <option value="" disabled="" selected="" hidden="" data-full-text="State">State</option>
+                    <option value="1" data-full-text="Alabama">Alabama</option>
+                    <option value="2" data-full-text="Alaska">Alaska</option>
+                    <option value="3" data-full-text="Arizona">Arizona</option>
+                    <option value="4" data-full-text="Arkansas">Arkansas</option>
+                    <option value="5" data-full-text="California">California</option>
+                    <option value="6" data-full-text="Colorado">Colorado</option>
+                    <option value="7" data-full-text="Connecticut">Connecticut</option>
+                    <option value="8" data-full-text="Delaware">Delaware</option>
+                    <option value="9" data-full-text="District of Columbia">District of Columbia</option>
+                    <option value="10" data-full-text="Florida">Florida</option>
+                    <option value="11" data-full-text="Georgia">Georgia</option>
+                    <option value="12" data-full-text="Hawaii">Hawaii</option>
+                    <option value="13" data-full-text="Idaho">Idaho</option>
+                    <option value="14" data-full-text="Illinois">Illinois</option>
+                    <option value="15" data-full-text="Indiana">Indiana</option>
+                    <option value="16" data-full-text="Iowa">Iowa</option>
+                    <option value="17" data-full-text="Kansas">Kansas</option>
+                    <option value="18" data-full-text="Kentucky">Kentucky</option>
+                    <option value="19" data-full-text="Louisiana">Louisiana</option>
+                    <option value="20" data-full-text="Maine">Maine</option>
+                    <option value="21" data-full-text="Maryland">Maryland</option>
+                    <option value="22" data-full-text="Massachusetts">Massachusetts</option>
+                    <option value="23" data-full-text="Michigan">Michigan</option>
+                    <option value="24" data-full-text="Minnesota">Minnesota</option>
+                    <option value="25" data-full-text="Mississippi">Mississippi</option>
+                    <option value="26" data-full-text="Missouri">Missouri</option>
+                    <option value="27" data-full-text="Montana">Montana</option>
+                    <option value="28" data-full-text="Nebraska">Nebraska</option>
+                    <option value="29" data-full-text="Nevada">Nevada</option>
+                    <option value="30" data-full-text="New Hampshire">New Hampshire</option>
+                    <option value="31" data-full-text="New Jersey">New Jersey</option>
+                    <option value="32" data-full-text="New Mexico">New Mexico</option>
+                    <option value="33" data-full-text="New York">New York</option>
+                    <option value="34" data-full-text="North Carolina">North Carolina</option>
+                    <option value="35" data-full-text="North Dakota">North Dakota</option>
+                    <option value="36" data-full-text="Ohio">Ohio</option>
+                    <option value="37" data-full-text="Oklahoma">Oklahoma</option>
+                    <option value="38" data-full-text="Oregon">Oregon</option>
+                    <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
+                    <option value="40" data-full-text="Rhode Island">Rhode Island</option>
+                    <option value="41" data-full-text="South Carolina">South Carolina</option>
+                    <option value="42" data-full-text="South Dakota">South Dakota</option>
+                    <option value="43" data-full-text="Tennessee">Tennessee</option>
+                    <option value="44" data-full-text="Texas">Texas</option>
+                    <option value="45" data-full-text="Utah">Utah</option>
+                    <option value="46" data-full-text="Vermont">Vermont</option>
+                    <option value="47" data-full-text="Virginia">Virginia</option>
+                    <option value="48" data-full-text="Washington">Washington</option>
+                    <option value="49" data-full-text="West Virginia">West Virginia</option>
+                    <option value="50" data-full-text="Wisconsin">Wisconsin</option>
+                    <option value="51" data-full-text="Wyoming">Wyoming</option>
+                </select>
+            </div>
+            <div class="col-5 flex-grow-1 complex-value">
+                <select class="form-select custom-form-select" name="">
+                    <option value="" disabled="" hidden="" data-full-text="Formation Type">Formation Type</option>
+                    <option value="1" selected="" data-full-text="Home">Home</option>
+                    <option value="1" data-full-text="Foreign">Foreign</option>
+                </select>
+            </div>
+            <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                    id="mutli-selectContainer-${uniqueId}" data-label="Status" data-bs-toggle="dropdown"
+                    aria-expanded="false" tabindex="0">
+                        <input type="text" class="search-input" id="mutli-selectSearch-${uniqueId}" placeholder="Status"
+                        autocomplete="off">
+                </div>
+                <ul class="dropdown-menu ${isSearchDisabled ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
+                ${multSelectList.map(val => `<li>
+                        <label class="dropdown-item">
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-${uniqueId} me-2"
+                                data-value="${val}">${val}
+                        </label>
+                    </li>` ).join('')}
+                </ul>
             </div>
             `;
         case "complex-director":
@@ -202,13 +287,13 @@ $(function () {
                 initializeFilterDatePicker(valueSection.find('.datepicker'));
             }
             else if (propertyType === 'list') {
-                const multiSelectList = dataByField[propertyKey];
+                const multiSelectList = dataByField[propertyKey] || [];
                 valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList));
                 setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", multiSelectList.slice(0, 3));
             }
             else if (propertyType === 'complex') {
                 valueSection.addClass('row g-0 gap-2');
-                const multiSelectList = dataByField[propertyKey]?.role || [];
+                const multiSelectList = dataByField[propertyKey] || [];
                 valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList));
                 initializeFilterDatePicker(valueSection.find('.datepicker'));
                 setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "");
