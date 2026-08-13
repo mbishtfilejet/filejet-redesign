@@ -1002,20 +1002,19 @@ $(function () {
         renderCharts(charts_wrapper);
     });
 
-    $(document).on("click", '.save-report-btn, .report-back-btn', function (ev) {
+    $(document).on("click", '.save-report-btn, .report-back-btn', function () {
 
         let reportSection = $('.reportSection:visible');
 
         if ($(this).hasClass('report-back-btn')) {
-            reportSection = $(this).closest('.reportSection')
-        } else {
-            $('html, body').animate({ scrollTop: 0 }, 300);
-        }
-
+            reportSection = $(this).closest('.reportSection');
+        } 
+        
         reportSection.find('.toggleSection').fadeOut();
-
+        
         reportSection.find('.reportCreationNav').fadeIn();
+        
+        $('html, body').animate({ scrollTop: 0 }, 300);
 
-
-    })
+    });
 });
