@@ -357,17 +357,15 @@
 .access-wrapper {
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 
     .access-tooltip {
         position: absolute;
-        top: -8px;
         left: 0;
         padding: 0.5rem 0.9rem;
         background: #fff;
         border: 1px solid #ddd;
         border-radius: 6px;
-        min-width: 250px;
-        width: max-content;
 
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
@@ -375,20 +373,24 @@
 
         opacity: 0;
         visibility: hidden;
-        transform: translateY(8px);
-        transition: display;
+        transform: translateX(-10%);
         white-space: normal;
 
         transition: opacity 0.2s ease,
-            transform 0.2s ease,
+            transform 0.3s ease,
             visibility 0.2s ease;
     }
 
     &:hover {
+        .text-truncate {
+            display: none;
+        }
+
         .access-tooltip {
+            position: relative;
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateX(0);
         }
     }
 }

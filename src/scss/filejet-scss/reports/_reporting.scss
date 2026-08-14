@@ -149,6 +149,52 @@
     .complex-value {
         min-height: 38px;
     }
+
+    .access-wrapper {
+        .access-truncate::after {
+            content: '...';
+        }
+
+        .access-tooltip {
+            overflow: hidden;
+            overflow-y: auto;
+            max-height: 200px;
+            font-size: 0.81rem;
+            padding: 5px;
+
+            &::-webkit-scrollbar {
+                width: 7px !important;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: transparent !important;
+                /* Color of the track */
+                border-radius: 7px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #888888 !important;
+                /* Color of the draggable handle */
+                border-radius: 5px;
+                /* Creates padding effect around thumb */
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: #555555 !important;
+                /* Color on hover */
+            }
+
+            // Firefox
+            scrollbar-width: thin;
+            scrollbar-color: #888888 transparent;
+        }
+
+        &:hover {
+            .access-truncate {
+                display: none !important;
+            }
+        }
+    }
 }
 
 .custom-form-select {

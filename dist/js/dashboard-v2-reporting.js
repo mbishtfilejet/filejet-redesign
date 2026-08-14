@@ -262,7 +262,7 @@ $(function () {
                         defaultItemSelected = this
                     }
                 })
-                
+
             if (defaultItemSelected) {
                 $(defaultItemSelected)
                     .addClass('selected')
@@ -612,10 +612,19 @@ $(function () {
                 }),
                 ...($(this).data("key") === "director" && {
                     render: function (data, type, row) {
-                        return `<div class="d-flex flex-column">
-                            ${data.length > 0 ? data.map(item => `<span>${item}</span>`).join("")
-                                : ""}
-                        </div>`;
+                        return data.length < 5 ?
+                            `<div class="d-flex flex-column">
+                                ${data.map(item => `<span>${item}</span>`).join("")}
+                            </div>`
+                            :
+                            `<div class="access-wrapper w-100">
+                                <div class="d-flex flex-column access-truncate">
+                                    ${data.slice(0, 5).map(item => `<span>${item}</span>`).join("")}
+                                </div>
+                                <div class="access-tooltip d-flex flex-column">
+                                    ${data.map(item => `<span>${item}</span>`).join("")}
+                                </div>
+                            </div>`;
                     },
                 })
             });
@@ -1008,12 +1017,12 @@ $(function () {
 
         if ($(this).hasClass('report-back-btn')) {
             reportSection = $(this).closest('.reportSection');
-        } 
-        
+        }
+
         reportSection.find('.toggleSection').fadeOut();
-        
+
         reportSection.find('.reportCreationNav').fadeIn();
-        
+
         $('html, body').animate({ scrollTop: 0 }, 300);
 
     });
