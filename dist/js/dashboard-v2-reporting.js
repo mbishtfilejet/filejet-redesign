@@ -16,7 +16,7 @@ const operatorByType = {
 }
 
 
-const dataByField = {
+const optionsByField = {
     "status": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown", "In Process", "Draft", "Overdue"],
     "director": ['CEO', "President", 'CTO', 'VC', 'Others'],
     "registrations": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown"],
@@ -26,39 +26,40 @@ function initializeFilterDatePicker(selector) {
     $(selector).datepicker()
 }
 
-function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
+function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], value = null) {
+
+    console.log(selectedCased, value)
 
     let isSearchDisabled = multSelectList.length <= 5;
-    console.log(multSelectList)
 
     switch (selectedCased) {
         case "single-date":
             return `<div class="single-date calendar-wrapper d-flex align-items-center flex-grow-1 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                         <input id="single-date-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
-                             placeholder="Date" value="">
+                             placeholder="Date" value="${value || ""}">
                     </div>`;
         case "date-range":
             return `<div class="d-flex align-items-center date-range">
                             <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                                    placeholder="Date" value="">
+                                    placeholder="Date" value="${value?.from || ""}">
                             </div>
                             <span class="mx-2">to</span>
                             <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                                    placeholder="Date" value="">
+                                    placeholder="Date" value="${value?.to || ""}">
                             </div>
                         </div>`;
         case "value-range":
             return `<div class="d-flex align-items-center value-range">
                             <div class="d-flex align-items-center flex-grow-1 border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
                                 <input id="value-range-${uniqueId}F" type="text" class="from-value border-0 p-0 w-100"
-                                    placeholder="Value">
+                                    placeholder="Value" value="${value?.from || ""}">
                             </div>
                             <span class="mx-2">to</span>
                             <div class="d-flex align-items-center flex-grow-1 border border-1 rounded shadow-sm  m-0 white-bg px-3 py-2 h-100">
                                 <input id="value-range-${uniqueId}T" type="text" class="to-value border-0 p-0 w-100"
-                                   placeholder="Value">
+                                   placeholder="Value" value="${value?.to || ""}">
                             </div>
                     </div>`;
         case "mutli-select":
@@ -83,76 +84,76 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
             return `
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                 <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                    placeholder="Name" value="">
+                    placeholder="Name" value="${value?.name || ""}">
             </div>
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                 <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                    placeholder="%" value="">
+                    placeholder="%" value="${value?.percentage || ""}">
             </div>
             `;
         case "complex-registrations":
             return `
             <div class="col-5 flex-grow-1 complex-value">
                 <select class="form-select custom-form-select" name="">
-                    <option value="" disabled="" selected="" hidden="" data-full-text="State">State</option>
-                    <option value="1" data-full-text="Alabama">Alabama</option>
-                    <option value="2" data-full-text="Alaska">Alaska</option>
-                    <option value="3" data-full-text="Arizona">Arizona</option>
-                    <option value="4" data-full-text="Arkansas">Arkansas</option>
-                    <option value="5" data-full-text="California">California</option>
-                    <option value="6" data-full-text="Colorado">Colorado</option>
-                    <option value="7" data-full-text="Connecticut">Connecticut</option>
-                    <option value="8" data-full-text="Delaware">Delaware</option>
-                    <option value="9" data-full-text="District of Columbia">District of Columbia</option>
-                    <option value="10" data-full-text="Florida">Florida</option>
-                    <option value="11" data-full-text="Georgia">Georgia</option>
-                    <option value="12" data-full-text="Hawaii">Hawaii</option>
-                    <option value="13" data-full-text="Idaho">Idaho</option>
-                    <option value="14" data-full-text="Illinois">Illinois</option>
-                    <option value="15" data-full-text="Indiana">Indiana</option>
-                    <option value="16" data-full-text="Iowa">Iowa</option>
-                    <option value="17" data-full-text="Kansas">Kansas</option>
-                    <option value="18" data-full-text="Kentucky">Kentucky</option>
-                    <option value="19" data-full-text="Louisiana">Louisiana</option>
-                    <option value="20" data-full-text="Maine">Maine</option>
-                    <option value="21" data-full-text="Maryland">Maryland</option>
-                    <option value="22" data-full-text="Massachusetts">Massachusetts</option>
-                    <option value="23" data-full-text="Michigan">Michigan</option>
-                    <option value="24" data-full-text="Minnesota">Minnesota</option>
-                    <option value="25" data-full-text="Mississippi">Mississippi</option>
-                    <option value="26" data-full-text="Missouri">Missouri</option>
-                    <option value="27" data-full-text="Montana">Montana</option>
-                    <option value="28" data-full-text="Nebraska">Nebraska</option>
-                    <option value="29" data-full-text="Nevada">Nevada</option>
-                    <option value="30" data-full-text="New Hampshire">New Hampshire</option>
-                    <option value="31" data-full-text="New Jersey">New Jersey</option>
-                    <option value="32" data-full-text="New Mexico">New Mexico</option>
-                    <option value="33" data-full-text="New York">New York</option>
-                    <option value="34" data-full-text="North Carolina">North Carolina</option>
-                    <option value="35" data-full-text="North Dakota">North Dakota</option>
-                    <option value="36" data-full-text="Ohio">Ohio</option>
-                    <option value="37" data-full-text="Oklahoma">Oklahoma</option>
-                    <option value="38" data-full-text="Oregon">Oregon</option>
-                    <option value="39" data-full-text="Pennsylvania">Pennsylvania</option>
-                    <option value="40" data-full-text="Rhode Island">Rhode Island</option>
-                    <option value="41" data-full-text="South Carolina">South Carolina</option>
-                    <option value="42" data-full-text="South Dakota">South Dakota</option>
-                    <option value="43" data-full-text="Tennessee">Tennessee</option>
-                    <option value="44" data-full-text="Texas">Texas</option>
-                    <option value="45" data-full-text="Utah">Utah</option>
-                    <option value="46" data-full-text="Vermont">Vermont</option>
-                    <option value="47" data-full-text="Virginia">Virginia</option>
-                    <option value="48" data-full-text="Washington">Washington</option>
-                    <option value="49" data-full-text="West Virginia">West Virginia</option>
-                    <option value="50" data-full-text="Wisconsin">Wisconsin</option>
-                    <option value="51" data-full-text="Wyoming">Wyoming</option>
+                    <option value="" disabled="" ${!value ? "selected" : ""} hidden="" data-full-text="State">State</option>
+                    <option value="1" ${value?.state === "Alabama" ? "selected" : ""} data-full-text="Alabama">Alabama</option>
+                    <option value="2" ${value?.state === "Alaska" ? "selected" : ""} data-full-text="Alaska">Alaska</option>
+                    <option value="3" ${value?.state === "Arizona" ? "selected" : ""} data-full-text="Arizona">Arizona</option>
+                    <option value="4" ${value?.state === "Arkansas" ? "selected" : ""} data-full-text="Arkansas">Arkansas</option>
+                    <option value="5" ${value?.state === "California" ? "selected" : ""} data-full-text="California">California</option>
+                    <option value="6" ${value?.state === "Colorado" ? "selected" : ""} data-full-text="Colorado">Colorado</option>
+                    <option value="7" ${value?.state === "Connecticut" ? "selected" : ""} data-full-text="Connecticut">Connecticut</option>
+                    <option value="8" ${value?.state === "Delaware" ? "selected" : ""} data-full-text="Delaware">Delaware</option>
+                    <option value="9" ${value?.state === "District of Columbia" ? "selected" : ""} data-full-text="District of Columbia">District of Columbia</option>
+                    <option value="10" ${value?.state === "Florida" ? "selected" : ""} data-full-text="Florida">Florida</option>
+                    <option value="11" ${value?.state === "Georgia" ? "selected" : ""} data-full-text="Georgia">Georgia</option>
+                    <option value="12" ${value?.state === "Hawaii" ? "selected" : ""} data-full-text="Hawaii">Hawaii</option>
+                    <option value="13" ${value?.state === "Idaho" ? "selected" : ""} data-full-text="Idaho">Idaho</option>
+                    <option value="14" ${value?.state === "Illinois" ? "selected" : ""} data-full-text="Illinois">Illinois</option>
+                    <option value="15" ${value?.state === "Indiana" ? "selected" : ""} data-full-text="Indiana">Indiana</option>
+                    <option value="16" ${value?.state === "Iowa" ? "selected" : ""} data-full-text="Iowa">Iowa</option>
+                    <option value="17" ${value?.state === "Kansas" ? "selected" : ""} data-full-text="Kansas">Kansas</option>
+                    <option value="18" ${value?.state === "Kentucky" ? "selected" : ""} data-full-text="Kentucky">Kentucky</option>
+                    <option value="19" ${value?.state === "Louisiana" ? "selected" : ""} data-full-text="Louisiana">Louisiana</option>
+                    <option value="20" ${value?.state === "Maine" ? "selected" : ""} data-full-text="Maine">Maine</option>
+                    <option value="21" ${value?.state === "Maryland" ? "selected" : ""} data-full-text="Maryland">Maryland</option>
+                    <option value="22" ${value?.state === "Massachusetts" ? "selected" : ""} data-full-text="Massachusetts">Massachusetts</option>
+                    <option value="23" ${value?.state === "Michigan" ? "selected" : ""} data-full-text="Michigan">Michigan</option>
+                    <option value="24" ${value?.state === "Minnesota" ? "selected" : ""} data-full-text="Minnesota">Minnesota</option>
+                    <option value="25" ${value?.state === "Mississippi" ? "selected" : ""} data-full-text="Mississippi">Mississippi</option>
+                    <option value="26" ${value?.state === "Missouri" ? "selected" : ""} data-full-text="Missouri">Missouri</option>
+                    <option value="27" ${value?.state === "Montana" ? "selected" : ""} data-full-text="Montana">Montana</option>
+                    <option value="28" ${value?.state === "Nebraska" ? "selected" : ""} data-full-text="Nebraska">Nebraska</option>
+                    <option value="29" ${value?.state === "Nevada" ? "selected" : ""} data-full-text="Nevada">Nevada</option>
+                    <option value="30" ${value?.state === "New Hampshire" ? "selected" : ""} data-full-text="New Hampshire">New Hampshire</option>
+                    <option value="31" ${value?.state === "New Jersey" ? "selected" : ""} data-full-text="New Jersey">New Jersey</option>
+                    <option value="32" ${value?.state === "New Mexico" ? "selected" : ""} data-full-text="New Mexico">New Mexico</option>
+                    <option value="33" ${value?.state === "New York" ? "selected" : ""} data-full-text="New York">New York</option>
+                    <option value="34" ${value?.state === "North Carolina" ? "selected" : ""} data-full-text="North Carolina">North Carolina</option>
+                    <option value="35" ${value?.state === "North Dakota" ? "selected" : ""} data-full-text="North Dakota">North Dakota</option>
+                    <option value="36" ${value?.state === "Ohio" ? "selected" : ""} data-full-text="Ohio">Ohio</option>
+                    <option value="37" ${value?.state === "Oklahoma" ? "selected" : ""} data-full-text="Oklahoma">Oklahoma</option>
+                    <option value="38" ${value?.state === "Oregon" ? "selected" : ""} data-full-text="Oregon">Oregon</option>
+                    <option value="39" ${value?.state === "Pennsylvania" ? "selected" : ""} data-full-text="Pennsylvania">Pennsylvania</option>
+                    <option value="40" ${value?.state === "Rhode Island" ? "selected" : ""} data-full-text="Rhode Island">Rhode Island</option>
+                    <option value="41" ${value?.state === "South Carolina" ? "selected" : ""} data-full-text="South Carolina">South Carolina</option>
+                    <option value="42" ${value?.state === "South Dakota" ? "selected" : ""} data-full-text="South Dakota">South Dakota</option>
+                    <option value="43" ${value?.state === "Tennessee" ? "selected" : ""} data-full-text="Tennessee">Tennessee</option>
+                    <option value="44" ${value?.state === "Texas" ? "selected" : ""} data-full-text="Texas">Texas</option>
+                    <option value="45" ${value?.state === "Utah" ? "selected" : ""} data-full-text="Utah">Utah</option>
+                    <option value="46" ${value?.state === "Vermont" ? "selected" : ""} data-full-text="Vermont">Vermont</option>
+                    <option value="47" ${value?.state === "Virginia" ? "selected" : ""} data-full-text="Virginia">Virginia</option>
+                    <option value="48" ${value?.state === "Washington" ? "selected" : ""} data-full-text="Washington">Washington</option>
+                    <option value="49" ${value?.state === "West Virginia" ? "selected" : ""} data-full-text="West Virginia">West Virginia</option>
+                    <option value="50" ${value?.state === "Wisconsin" ? "selected" : ""} data-full-text="Wisconsin">Wisconsin</option>
+                    <option value="51" ${value?.state === "Wyoming" ? "selected" : ""} data-full-text="Wyoming">Wyoming</option>
                 </select>
             </div>
             <div class="col-5 flex-grow-1 complex-value">
                 <select class="form-select custom-form-select" name="">
-                    <option value="" disabled="" hidden="" data-full-text="Formation Type">Formation Type</option>
-                    <option value="1" selected="" data-full-text="Home">Home</option>
-                    <option value="1" data-full-text="Foreign">Foreign</option>
+                    <option value="" disabled="" ${!value ? "selected" : ""} hidden="" data-full-text="Formation Type">Formation Type</option>
+                    <option value="1" ${value?.formation_type === "Home" ? 'selected' : ''} data-full-text="Home">Home</option>
+                    <option value="2" ${value?.formation_type === 'Foreign' ? 'selected' : ''} data-full-text="Foreign">Foreign</option>
                 </select>
             </div>
             <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
@@ -176,7 +177,7 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
             return `
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                         <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                            placeholder="Name" value="">
+                            placeholder="Name" value="${value?.name || ""}">
                     </div>
             <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
                 <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
@@ -196,18 +197,18 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = []) {
             </div>
             <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                                     placeholder="Start Date" value="">
+                                     placeholder="Start Date" value="${value?.start || ""}">
                                 </div>
             <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                                     placeholder="End Date" value="">
+                                     placeholder="End Date" value="${value?.end || ""}">
                                 </div>
             `;
         default:
             return `<div class="single-value d-flex align-items-center 
                         border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
                         <input id="single-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                            placeholder="Value" value="">
+                            placeholder="Value" value="${value || ""}">
                     </div>`;
     }
 }
@@ -218,88 +219,39 @@ $(function () {
     setupMultiSelect("viewContainer-entity", "viewDropdown-entity", "viewSearch-entity", "view-checkbox-entity");
     setupMultiSelect("viewContainer-order", "viewDropdown-order", "viewSearch-order", "view-checkbox-order");
 
+
     $(document).on('click', '.dropdown-item', function (e) {
 
         const item = $(this);
         const selectedText = item.find('.item-name').text().trim();
-        const selectkey = item.data("key");
-        const uniqueId = generateId();
+        const selectedkey = item.data("key");
 
         const dropdown = item.closest('.dropdown.report-filter');
         const parent = dropdown.closest(".filter-grid");
 
-        // Update selected item
-        dropdown.find('.dropdown-item').removeClass('selected');
-        item.addClass('selected');
-
-        // Update the toggle button text
-        dropdown.find('[data-bs-toggle="dropdown"]').text(selectedText).attr('data-selected', selectkey);
-
-        const valueSection = parent.find('.report-filter-value');
-        valueSection.removeClass('row g-0 gap-2');
+        selectDropdownItem(dropdown, selectedkey)
 
         // Property Dropdown Selected
 
         if (dropdown.hasClass('property-filter')) {
-            const config = operatorByType[selectkey];
-            if (!config) return;
 
-            const operatorDropdown = parent.find('.operator-filter');
-            const operatorToggleButton = operatorDropdown.find('[data-bs-toggle="dropdown"]');
-
-            // default select operator dropdown
-            const operatorDropDownItem = operatorDropdown.find('.dropdown-item');
-            let defaultItemSelected = ""
-            operatorDropDownItem
-                .removeClass('selected')
-                .each(function (idx) {
-                    const operatorKey = $(this).data('key');
-                    const isMatch = config.operator.includes(operatorKey)
-
-                    $(this)
-                        .toggle(isMatch);
-                    if (isMatch && !defaultItemSelected) {
-                        defaultItemSelected = this
-                    }
-                })
-
-            if (defaultItemSelected) {
-                $(defaultItemSelected)
-                    .addClass('selected')
-                    .trigger('click');
-            }
-
-            return;
+            configureOperators(parent, selectedkey, operatorByType, optionsByField)
         }
 
         // Operator DropDown Selected
 
         if (dropdown.hasClass('operator-filter')) {
-            const propertyKey = parent.find('.property-filter [data-bs-toggle="dropdown"]').attr('data-selected');
+            const propertyKey = parent
+                .find(
+                    '.property-filter [data-bs-toggle="dropdown"]'
+                )
+                .attr('data-selected');
 
-            if (!propertyKey || !operatorByType[propertyKey]) return;
-            valueSection.empty();
+            if (!propertyKey) {
+                return;
+            }
 
-            let propertyType = operatorByType[propertyKey].type;
-
-            if (propertyType === "date") {
-                valueSection.html(getDynamicValueField(selectkey === 'between' ? 'date-range' : 'single-date', uniqueId));
-                initializeFilterDatePicker(valueSection.find('.datepicker'));
-            }
-            else if (propertyType === 'list') {
-                const multiSelectList = dataByField[propertyKey] || [];
-                valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList));
-                setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", multiSelectList.slice(0, 3));
-            }
-            else if (propertyType === 'complex') {
-                valueSection.addClass('row g-0 gap-2');
-                const multiSelectList = dataByField[propertyKey] || [];
-                valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList));
-                initializeFilterDatePicker(valueSection.find('.datepicker'));
-                setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "");
-            } else {
-                valueSection.html(getDynamicValueField(selectkey === 'between' ? 'value-range' : 'single-value', uniqueId));
-            }
+            renderFilterValueUI(parent, selectedkey, propertyKey, operatorByType, optionsByField)
         }
     });
 
@@ -365,58 +317,131 @@ $(function () {
     });
 })
 
+function selectDropdownItem(dropdown, key) {
+    const item = dropdown.find(
+        `.dropdown-item[data-key="${key}"]`
+    );
 
-function applySavedFilter(savedFilter, parent) {
+    if (!item.length) {
+        return null;
+    }
 
-    const propertyDropdown = parent.find('.property-filter');
+    const selectedText = item
+        .find('.item-name')
+        .text()
+        .trim();
+
+    dropdown
+        .find('.dropdown-item')
+        .removeClass('selected');
+
+    item.addClass('selected');
+
+    dropdown
+        .find('[data-bs-toggle="dropdown"]')
+        .text(selectedText)
+        .attr('data-selected', key);
+
+    return item;
+}
+
+
+function configureOperators(parent, propertyKey, operatorByType, optionsByField = null, selectedOperatorKey = null, value = null) {
+    const config = operatorByType[propertyKey];
+    if (!config) return;
+
     const operatorDropdown = parent.find('.operator-filter');
+    // default select operator dropdown
+    const operatorDropDownItem = operatorDropdown.find('.dropdown-item');
 
-    // Select property
-    const propertyItem = propertyDropdown
-        .find('.dropdown-item[data-key="' + savedFilter.property + '"]');
+    let defaultOperatorKey = selectedOperatorKey;
 
-    if (propertyItem.length) {
-        propertyItem.trigger('click');
+    operatorDropDownItem
+        .removeClass('selected')
+        .each(function (idx) {
+            const operatorKey = $(this).data('key');
+            const isMatch = config.operator.includes(operatorKey)
+
+            $(this)
+                .toggle(isMatch);
+        });
+
+    if (
+        !defaultOperatorKey ||
+        !config.operator.includes(defaultOperatorKey)
+    ) {
+        defaultOperatorKey = config.operator[0];
     }
 
-
-    // Select operator after property is loaded
-    const operatorItem = operatorDropdown
-        .find('.dropdown-item[data-key="' + savedFilter.operator + '"]');
-
-    if (operatorItem.length) {
-        operatorItem.trigger('click');
+    if (!defaultOperatorKey) {
+        return null;
     }
 
+    const selectedItem = selectDropdownItem(
+        operatorDropdown,
+        defaultOperatorKey
+    );
 
-    // Set value
-    const valueSection = parent.find('.report-filter-value');
-
-
-    // Range value
-    if (savedFilter.operator === "between") {
-
-        valueSection.find('.value-range .from-value')
-            .val(savedFilter.value.from);
-
-        valueSection.find('.value-range .to-value')
-            .val(savedFilter.value.to);
-
-        valueSection.find('.date-range .from-date')
-            .val(savedFilter.value.from);
-
-        valueSection.find('.date-range .to-date')
-            .val(savedFilter.value.to);
-
+    if (!selectedItem) {
         return;
     }
 
-    // Single value
-    valueSection.find('.single-value input')
-        .val(savedFilter.value);
+    // IMPORTANT:
+    // This replaces the old .trigger('click')
+    renderFilterValueUI(
+        parent,
+        defaultOperatorKey,
+        propertyKey,
+        operatorByType,
+        optionsByField,
+        value
+    );
+}
 
-    valueSection.find('.single-date input')
-        .val(savedFilter.value);
+function renderFilterValueUI(parent, operatorKey, propertyKey, operatorByType, optionsByField, value = null) {
+
+    const uniqueId = generateId();
+    const valueSection = parent.find('.report-filter-value');
+
+    valueSection
+        .removeClass('row g-0 gap-2')
+        .empty();
+
+    const propertyType = operatorByType[propertyKey]?.type;
+
+    if (!propertyType) {
+        return;
+    }
+
+    if (propertyType === "date") {
+        valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'date-range' : 'single-date', uniqueId, [], value));
+        initializeFilterDatePicker(valueSection.find('.datepicker'));
+    }
+    else if (propertyType === 'list') {
+        const multiSelectList = optionsByField[propertyKey] || [];
+        valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList));
+        setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", value || multiSelectList.slice(0, 3));
+    }
+    else if (propertyType === 'complex') {
+        valueSection.addClass('row g-0 gap-2');
+        const multiSelectList = optionsByField[propertyKey] || [];
+        valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList, value));
+        initializeFilterDatePicker(valueSection.find('.datepicker'));
+        setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", value?.data || []);
+    } else {
+        valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'value-range' : 'single-value', uniqueId, [], value));
+    }
+}
+
+function applyPreSelectFilter(parent, propertyKey, operatorKey, value = null, operatorByType = [], optionsByField = []) {
+
+    selectDropdownItem(
+        parent.find('.property-filter'),
+        propertyKey
+    );
+
+    // Configure operator + render value
+    configureOperators(parent, propertyKey, operatorByType, optionsByField, operatorKey, value)
 }
 
 //drag drop
@@ -665,11 +690,13 @@ $(function () {
         "registration": [
             {
                 "property": "entity_name",
+                "type": "string",
                 "operator": "equals",
                 "value": "AIC Capital VV Manager, Corp."
             },
             {
                 "property": "formation_date",
+                "type": "date",
                 "operator": "between",
                 "value": {
                     "from": "10/12/2025",
@@ -679,25 +706,38 @@ $(function () {
         ],
         "entity": [
             {
-                "property": "entity_name",
+                "property": "registrations",
                 "operator": "equals",
-                "value": "AIC Capital VV Manager, Corp."
+                "type": "string",
+                "value": {
+                    "state": "Arizona",
+                    "formation_type": "Foreign",
+                    "data": ["In Good Standing"]
+                }
             },
             {
-                "property": "state",
+                "property": "director",
                 "operator": "equals",
-                "value": "Alabama"
+                "type": "string",
+                "value": {
+                    "name": "Chrish Seib",
+                    "start": "07/01/2024",
+                    "end": "",
+                    "data": ["CTO"]
+                }
             }
         ],
         "order": [
             {
                 "property": "entity_name",
                 "operator": "equals",
+                "type": "string",
                 "value": "AIC Capital VV Manager, Corp."
             },
             {
                 "property": "group",
                 "operator": "quals",
+                "type": "string",
                 "value": "Legal IT Group"
             }
         ],
@@ -746,7 +786,8 @@ $(function () {
         } else {
 
             savedFilters[filterKey].forEach((filter, index) => {
-                applySavedFilter(filter, $(targetElement).find('.filter-grid').not('.filter-template').eq(index));
+                let parent = $(targetElement).find('.filter-grid').not('.filter-template').eq(index);
+                applyPreSelectFilter(parent, filter.property, filter.operator, filter.value, operatorByType, optionsByField);
             });
 
             if (element.hasClass('view-report')) {
