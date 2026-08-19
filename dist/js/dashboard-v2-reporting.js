@@ -131,6 +131,10 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
     let isSearchDisabled = multSelectList.length <= 5;
 
     switch (selectedCased) {
+        case "address":
+            return `<div class="address-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
+                        <textarea id="address-value-${uniqueId}" name="" class="border-0 p-0 w-100" placeholder="Address" id=""></textarea>
+                    </div>`;
         case "single-date":
             return `<div class="single-date calendar-wrapper d-flex align-items-center flex-grow-1 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                         <input id="single-date-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
@@ -182,17 +186,25 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
             return `
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                 <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                    placeholder="Name" value="${value?.name || ""}">
+                    placeholder="Owner Name" value="${value?.name || ""}">
             </div>
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
-                <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                    placeholder="%" value="${value?.percentage || ""}">
+                <input id="complex-value-${uniqueId}1" type="text" class="border-0 p-0 w-100"
+                    placeholder="Percentage" value="${value?.percentage || ""}">
             </div>
+            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                                     placeholder="Start Date" value="${value?.start || ""}">
+                                </div>
+            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
+                                     placeholder="End Date" value="${value?.end || ""}">
+                                </div>
             `;
         case "complex-registrations":
             return `
             <div class="col-5 flex-grow-1 complex-value">
-                <select class="form-select custom-form-select" name="">
+                <select id="complex-state-${uniqueId}" class="form-select custom-form-select" name="">
                     <option value="" disabled="" ${!value ? "selected" : ""} hidden="" data-full-text="State">State</option>
                     <option value="1" ${value?.state === "Alabama" ? "selected" : ""} data-full-text="Alabama">Alabama</option>
                     <option value="2" ${value?.state === "Alaska" ? "selected" : ""} data-full-text="Alaska">Alaska</option>
@@ -248,7 +260,7 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                 </select>
             </div>
             <div class="col-5 flex-grow-1 complex-value">
-                <select class="form-select custom-form-select" name="">
+                <select id="formation-type-${uniqueId}" class="form-select custom-form-select" name="">
                     <option value="" disabled="" ${!value ? "selected" : ""} hidden="" data-full-text="Formation Type">Formation Type</option>
                     <option value="1" ${value?.formation_type === "Home" ? 'selected' : ''} data-full-text="Home">Home</option>
                     <option value="2" ${value?.formation_type === 'Foreign' ? 'selected' : ''} data-full-text="Foreign">Foreign</option>
@@ -293,6 +305,10 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                     </li>` ).join('')}
                 </ul>
             </div>
+            <div class="col-12 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                        <input id="complex-email-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                            placeholder="Email" value="${value?.email || ""}">
+                    </div>
             <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
                                      placeholder="Start Date" value="${value?.start || ""}">
@@ -516,7 +532,10 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
         return;
     }
 
-    if (propertyType === "date") {
+    if (propertyType === "address") {
+        valueSection.html(getDynamicValueField("address", uniqueId, [], value));
+    }
+    else if (propertyType === "date") {
         valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'date-range' : 'single-date', uniqueId, [], value));
         initializeFilterDatePicker(valueSection.find('.datepicker'));
     }
@@ -822,6 +841,7 @@ $(function () {
                 "type": "complex",
                 "value": {
                     "name": "Chrish Seib",
+                    "email":"chris@xyz.com",
                     "start": "07/01/2024",
                     "end": "",
                     "data": ["CTO"]
