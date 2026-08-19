@@ -1,18 +1,45 @@
-const operatorByType = {
-    "entity_name": { operator: ["equals", "starts_with"], type: "string" },
-    "entity_type": { operator: ["equals", "starts_with", "is"], type: "string" },
-    "state": { operator: ["equals", "is"], type: "string" },
-    "formation_date": { operator: ["is", "between", "less_than", "greater_than"], type: "date" },
-    "status": { operator: ["one_of"], type: "list" },
-    "tax_id_ein": { operator: ["is"], type: "number" },
-    "authorized_share": { operator: ["equals", "less_than", "greater_than"], type: "number" },
-    "par_value": { operator: ["equals", "between", "less_than", "greater_than"], type: "number" },
-    "group": { operator: ["equals", "starts_with"], type: "string" },
-    "business_licenses": { operator: ["equals", "starts_with"], type: "string" },
-    "dba": { operator: ["equals", "starts_with"], type: "string" },
-    "director": { operator: ["equals"], type: "complex" },
-    "ownership": { operator: ["equals"], type: "complex" },
-    "registrations": { operator: ["equals"], type: "complex" },
+
+const typeBasedOnField = {
+    "entity_name": "text",
+    "entity_type": "dropdown",
+    "home_state": "dropdown",
+    "state": "dropdown",
+    "formation_date": "date",
+    "formation_type": "dropdown",
+    "physical_address": "address",
+    "mailing_address": "address",
+    "store_number": "text",
+    "status": "dropdown",
+    "ein": "text",
+    "description": "longtext",
+    "authorized_signer": "text",
+    "par_value": "text",
+    "group": "dropdown",
+    "business_licenses": "complex",
+    "dba": "complex",
+    "director": "complex",
+    "ownership": "complex",
+    "registrations": "complex",
+    "order_number": "text",
+    "order_date": "date",
+    "services": "dropdown",
+    "payment_status": "dropdown",
+    "payment_date": "date",
+    "order_status": "dropdown",
+    "external_ref_number": "text",
+    "entity_dba": "text",
+    "file_number": "text",
+    "par_value": "number"
+}
+
+const operatorsBasedOnType = {
+    "text": ["equals", "starts_with"],
+    "dropdown": ["one_of"],
+    "number": ["equals", "less_than", "greater_than"],
+    "date": ["between"],
+    "address": ["equals"],
+    "longtext": ['contains'],
+    "complex": ["includes"]
 }
 
 
@@ -20,6 +47,79 @@ const optionsByField = {
     "status": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown", "In Process", "Draft", "Overdue"],
     "director": ['CEO', "President", 'CTO', 'VC', 'Others'],
     "registrations": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown"],
+    "entity_type": [
+        "LLC",
+        "Profit Corporation - General",
+        "Profit Corporation - Professional",
+        "Profit Corporation - Close",
+        "Non-Profit - Religious",
+        "Non-Profit - Mutual Benefit",
+        "Non-Profit - Public Benefit",
+        "Non-Profit - Common Interest Development",
+        "Non-Profit - Exempt",
+        "LLP",
+        "LP",
+        "GP",
+        "Professional Limited Liability Company",
+        "Trust"
+    ],
+    "state": [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "District of Columbia",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming"
+    ],
+    "group": ["Technology Partners", "Commercial Services"],
+    "order_status": ["In Process", "Sent to State", "Recently Completed"],
+    "services": ["Annual Report", "CTA BOI", "SOP"],
+    "payment_status": ["In Progress", "Paid"]
 }
 
 function initializeFilterDatePicker(selector) {
@@ -27,8 +127,6 @@ function initializeFilterDatePicker(selector) {
 }
 
 function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], value = null) {
-
-    console.log(selectedCased, value)
 
     let isSearchDisabled = multSelectList.length <= 5;
 
@@ -235,7 +333,7 @@ $(function () {
 
         if (dropdown.hasClass('property-filter')) {
 
-            configureOperators(parent, selectedkey, operatorByType, optionsByField)
+            configureOperators(parent, selectedkey, typeBasedOnField, operatorsBasedOnType, optionsByField)
         }
 
         // Operator DropDown Selected
@@ -251,7 +349,7 @@ $(function () {
                 return;
             }
 
-            renderFilterValueUI(parent, selectedkey, propertyKey, operatorByType, optionsByField)
+            renderFilterValueUI(parent, selectedkey, propertyKey, typeBasedOnField, operatorsBasedOnType, optionsByField)
         }
     });
 
@@ -346,8 +444,10 @@ function selectDropdownItem(dropdown, key) {
 }
 
 
-function configureOperators(parent, propertyKey, operatorByType, optionsByField = null, selectedOperatorKey = null, value = null) {
-    const config = operatorByType[propertyKey];
+function configureOperators(parent, propertyKey, typeBasedOnField, operatorsBasedOnType, optionsByField = null, selectedOperatorKey = null, value = null) {
+    const fieldType = typeBasedOnField[propertyKey]
+    const config = operatorsBasedOnType[fieldType];
+    console.log(config, fieldType)
     if (!config) return;
 
     const operatorDropdown = parent.find('.operator-filter');
@@ -360,7 +460,7 @@ function configureOperators(parent, propertyKey, operatorByType, optionsByField 
         .removeClass('selected')
         .each(function (idx) {
             const operatorKey = $(this).data('key');
-            const isMatch = config.operator.includes(operatorKey)
+            const isMatch = config.includes(operatorKey)
 
             $(this)
                 .toggle(isMatch);
@@ -368,9 +468,9 @@ function configureOperators(parent, propertyKey, operatorByType, optionsByField 
 
     if (
         !defaultOperatorKey ||
-        !config.operator.includes(defaultOperatorKey)
+        !config.includes(defaultOperatorKey)
     ) {
-        defaultOperatorKey = config.operator[0];
+        defaultOperatorKey = config[0];
     }
 
     if (!defaultOperatorKey) {
@@ -382,6 +482,7 @@ function configureOperators(parent, propertyKey, operatorByType, optionsByField 
         defaultOperatorKey
     );
 
+    console.log(selectedItem, defaultOperatorKey)
     if (!selectedItem) {
         return;
     }
@@ -392,13 +493,14 @@ function configureOperators(parent, propertyKey, operatorByType, optionsByField 
         parent,
         defaultOperatorKey,
         propertyKey,
-        operatorByType,
+        typeBasedOnField,
+        operatorsBasedOnType,
         optionsByField,
         value
     );
 }
 
-function renderFilterValueUI(parent, operatorKey, propertyKey, operatorByType, optionsByField, value = null) {
+function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField, operatorsBasedOnType, optionsByField, value = null) {
 
     const uniqueId = generateId();
     const valueSection = parent.find('.report-filter-value');
@@ -407,7 +509,8 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, operatorByType, o
         .removeClass('row g-0 gap-2')
         .empty();
 
-    const propertyType = operatorByType[propertyKey]?.type;
+    let propertyType = typeBasedOnField[propertyKey];
+    console.log(propertyType, propertyKey)
 
     if (!propertyType) {
         return;
@@ -417,9 +520,10 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, operatorByType, o
         valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'date-range' : 'single-date', uniqueId, [], value));
         initializeFilterDatePicker(valueSection.find('.datepicker'));
     }
-    else if (propertyType === 'list') {
+    else if (propertyType === 'dropdown') {
+        let field = propertyKey.toLowerCase().includes("state") ? "state" : propertyKey;
         const multiSelectList = optionsByField[propertyKey] || [];
-        valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList));
+        valueSection.html(getDynamicValueField('mutli-select', uniqueId, multiSelectList, value));
         setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", value || multiSelectList.slice(0, 3));
     }
     else if (propertyType === 'complex') {
@@ -433,7 +537,7 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, operatorByType, o
     }
 }
 
-function applyPreSelectFilter(parent, propertyKey, operatorKey, value = null, operatorByType = [], optionsByField = []) {
+function applyPreSelectFilter(parent, propertyKey, operatorKey, value = null, typeBasedOnField = [], operatorsBasedOnType = [], optionsByField = []) {
 
     selectDropdownItem(
         parent.find('.property-filter'),
@@ -441,7 +545,7 @@ function applyPreSelectFilter(parent, propertyKey, operatorKey, value = null, op
     );
 
     // Configure operator + render value
-    configureOperators(parent, propertyKey, operatorByType, optionsByField, operatorKey, value)
+    configureOperators(parent, propertyKey, typeBasedOnField, operatorsBasedOnType, optionsByField, operatorKey, value)
 }
 
 //drag drop
@@ -690,25 +794,22 @@ $(function () {
         "registration": [
             {
                 "property": "entity_name",
-                "type": "string",
+                "type": "text",
                 "operator": "equals",
                 "value": "AIC Capital VV Manager, Corp."
             },
             {
-                "property": "formation_date",
-                "type": "date",
-                "operator": "between",
-                "value": {
-                    "from": "10/12/2025",
-                    "to": "04/29/2026"
-                }
+                "property": "state",
+                "type": "dropdown",
+                "operator": "one_of",
+                "value": ["Massachusetts", "Arizona", "Alabama"]
             }
         ],
         "entity": [
             {
                 "property": "registrations",
-                "operator": "equals",
-                "type": "string",
+                "operator": "includes",
+                "type": "complex",
                 "value": {
                     "state": "Arizona",
                     "formation_type": "Foreign",
@@ -717,8 +818,8 @@ $(function () {
             },
             {
                 "property": "director",
-                "operator": "equals",
-                "type": "string",
+                "operator": "includes",
+                "type": "complex",
                 "value": {
                     "name": "Chrish Seib",
                     "start": "07/01/2024",
@@ -731,14 +832,14 @@ $(function () {
             {
                 "property": "entity_name",
                 "operator": "equals",
-                "type": "string",
+                "type": "text",
                 "value": "AIC Capital VV Manager, Corp."
             },
             {
                 "property": "group",
-                "operator": "quals",
-                "type": "string",
-                "value": "Legal IT Group"
+                "operator": "one_of",
+                "type": "dropdown",
+                "value": ["Technology Partners"]
             }
         ],
     }
@@ -787,7 +888,7 @@ $(function () {
 
             savedFilters[filterKey].forEach((filter, index) => {
                 let parent = $(targetElement).find('.filter-grid').not('.filter-template').eq(index);
-                applyPreSelectFilter(parent, filter.property, filter.operator, filter.value, operatorByType, optionsByField);
+                applyPreSelectFilter(parent, filter.property, filter.operator, filter.value, typeBasedOnField, operatorsBasedOnType, optionsByField);
             });
 
             if (element.hasClass('view-report')) {
