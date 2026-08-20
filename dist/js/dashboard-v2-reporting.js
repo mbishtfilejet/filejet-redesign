@@ -1181,12 +1181,32 @@ $(function () {
             ['IL', 8, '#F9C6B8']
         ],
         status: [
-            ["Task", "Count", { role: 'style' }],
+            ["Status", "Count", { role: 'style' }],
             ["In Good Standing", 15, '#00BA70'],
             ["Not Good Standing", 8, '#E73B18'],
             ["Inactive", 3, '#8690A0'],
             ["Unknown", 5, '#1a4d9e'],
-        ]
+        ],
+        "order_status": [
+            ["Status", "Count", { role: 'style' }],
+            ["In Process", 5, '#4744D1'],
+            ["Sent To State", 4, '#00B2EB'],
+            ["Recently Completed", 5, "#00BA70"],
+        ],
+        "payment_status": [
+            ["Status", "Count", { role: 'style' }],
+            ["In Process", 5, '#ff7a47'],
+            ["Paid", 4, '#ffa600'],
+        ],
+        "group": [
+            ["Group", "Count", { role: 'style' }, { role: 'tooltip' }],
+            ["Adept HR", 1, '#FF1744', "Adept HR"],
+            ["Burkhalt...", 1, '#00E676', "Burkhalter Kessler Clement & George LLP"],
+            ["Christop...", 1, '#FFD600', "Christopher Law Group, Inc."],
+            ["SAN JOA...", 1, '#651FFF', "SAN JOAQUIN ACCOUNTING"],
+            ["Convey H...", 1, '#00B8D4', "Convey Health Solutions"],
+        ],
+
     };
 
 
@@ -1215,12 +1235,13 @@ $(function () {
     }
 
 
-    function getBaseOptions() {
+    function getBaseOptions(data) {
         return {
             backgroundColor: "transparent",
             tooltip: {
                 trigger: "none"
             },
+            height: Math.max(200, data.getNumberOfRows() * 50),
             animation: {
                 startup: true,
                 duration: 1000,
@@ -1252,7 +1273,7 @@ $(function () {
             pieLegendBox.remove()
         }
 
-        let options = getBaseOptions();
+        let options = getBaseOptions(data);
         let chart;
 
 
@@ -1313,12 +1334,21 @@ $(function () {
 
 
             default:
+                const hasTooltip = Array.from(
+                    { length: data.getNumberOfColumns() },
+                    (_, index) => data.getColumnRole(index)
+                ).includes('tooltip');
 
                 options = {
                     ...options,
                     chartArea: {
                         left: 100
-                    }
+                    },
+                    ...(hasTooltip && {
+                        tooltip: {
+                            trigger: 'focus'
+                        }
+                    })
                 };
 
                 chart = new google.visualization.BarChart(container);
