@@ -975,6 +975,77 @@ $(function () {
 
 $(function () {
 
+    //function to render tags
+    function renderTagsOnRow(tagdata, maxTag = 4) {
+        const tagWrapper = document.createElement("div");
+        tagWrapper.className = "d-flex gap-1 align-items-center d-tag-wrapper";
+        tagWrapper.style.whiteSpace = "nowrap";
+        tagWrapper.style.overflow = "hidden";
+
+        tagdata.forEach((value, index) => {
+            const span = document.createElement("span");
+            span.className = "badge d-tag";
+            span.style.backgroundColor = value.tagColor;
+            span.style.color = value.textColor;
+            span.innerText = value.tagName;
+            tagWrapper.appendChild(span);
+        })
+
+        // +N placeholder (keeping empty for now will alter while table draws)
+
+        const span = document.createElement("span");
+        span.innerHTML = `
+        <span class="badge text-black d-tag-more d-none" style="background-color:#E6E8EC;"></span>
+      `;
+        tagWrapper.appendChild(span);
+
+        return tagWrapper.outerHTML;
+    }
+
+    function applyTagOverflow(isTableScrollable = false, row = '') {
+
+        const tagWrappers = row ? $(row).find('td .d-tag-wrapper') : $('.d-tag-wrapper')
+
+        tagWrappers.each(function () {
+            const wrapper = $(this);
+            const td = wrapper.closest('td');
+
+            const tags = wrapper.find('.d-tag');
+            const moreBadge = wrapper.find('.d-tag-more');
+
+            const colIndex = td[0].cellIndex;
+
+            const parent = isTableScrollable ? td.closest('.dataTables_scroll') : td.closest('.dataTable');
+
+            const th = isTableScrollable ? parent.find('.dataTables_scrollHeadInner table thead th').eq(colIndex) : parent.find('thead th').eq(colIndex);
+
+            let usedWidth = 0;
+            let hiddenCount = 0;
+
+            tags.css('display', 'inline-block');
+            moreBadge.addClass('d-none').text("");
+
+            const colWidth = th.width() - 50;
+
+            tags.each(function () {
+                let tag = $(this);
+
+                let tagWidth = tag.outerWidth(true);
+
+                if (usedWidth + tagWidth > colWidth) {
+                    tag.css('display', 'none');
+                    hiddenCount++;
+                } else {
+                    usedWidth += tagWidth;
+                }
+            });
+
+            if (hiddenCount > 0) {
+                moreBadge.text('+' + hiddenCount).removeClass('d-none')
+            }
+        })
+    }
+
     function createDynamicTable(targetElement, tableclass, parentEl, selector) {
         var columns = [];
 
@@ -989,6 +1060,11 @@ $(function () {
                     render: function (data, type, row) {
                         return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
                     },
+                }),
+                ...($(this).data('key') === "tags" && {
+                    render: function (data, type, row) {
+                        return renderTagsOnRow(data)
+                    }
                 }),
                 ...($(this).data("key") === "director" && {
                     render: function (data, type, row) {
@@ -1035,7 +1111,6 @@ $(function () {
             table.DataTable().destroy();
             table.empty();
         }
-
 
         return table.DataTable(tableOptions);
     }
@@ -1159,7 +1234,16 @@ $(function () {
             table = createDynamicTable(targetElement, '.reports_table', targetElement, '.columns_text');
         }
 
-        table.columns.adjust().draw();
+        table.off('draw.dt.tagOverflow').on('draw.dt.tagOverflow', function () {
+            applyTagOverflow(true);
+        });
+
+        $(window)
+            .off('resize.dataTableAdjust')
+            .on('resize.dataTableAdjust', function () {
+                table.columns.adjust().draw();
+            });
+
     });
 
     const chartDatas = {
@@ -1201,10 +1285,10 @@ $(function () {
         "group": [
             ["Group", "Count", { role: 'style' }, { role: 'tooltip' }],
             ["Adept HR", 1, '#FF1744', "Adept HR"],
-            ["Burkhalt...", 1, '#00E676', "Burkhalter Kessler Clement & George LLP"],
-            ["Christop...", 1, '#FFD600', "Christopher Law Group, Inc."],
-            ["SAN JOA...", 1, '#651FFF', "SAN JOAQUIN ACCOUNTING"],
-            ["Convey H...", 1, '#00B8D4', "Convey Health Solutions"],
+            ["Burkhalter Kessler Clement & George LLP", 1, '#00E676', "Burkhalter Kessler Clement & George LLP"],
+            ["Christopher Law Group, Inc.", 1, '#FFD600', "Christopher Law Group, Inc."],
+            ["SAN JOAQUIN ACCOUNTING", 1, '#651FFF', "SAN JOAQUIN ACCOUNTING"],
+            ["Convey Health Solutions", 1, '#00B8D4', "Convey Health Solutions"],
         ],
 
     };
@@ -1276,6 +1360,11 @@ $(function () {
         let options = getBaseOptions(data);
         let chart;
 
+        let hasTooltip = Array.from(
+            { length: data.getNumberOfColumns() },
+            (_, index) => data.getColumnRole(index)
+        ).includes('tooltip');
+
 
         switch (type) {
 
@@ -1328,16 +1417,19 @@ $(function () {
 
 
             case "line":
-
+                options = {
+                    ...options,
+                    ...(hasTooltip && {
+                        tooltip: {
+                            trigger: 'focus'
+                        }
+                    })
+                };
                 chart = new google.visualization.LineChart(container);
                 break;
 
 
             default:
-                const hasTooltip = Array.from(
-                    { length: data.getNumberOfColumns() },
-                    (_, index) => data.getColumnRole(index)
-                ).includes('tooltip');
 
                 options = {
                     ...options,
