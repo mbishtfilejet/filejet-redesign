@@ -138,6 +138,10 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
             return `<div class="address-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
                         <textarea id="address-value-${uniqueId}" name="" class="border-0 p-0 w-100" placeholder="Address" id=""></textarea>
                     </div>`;
+        case "description":
+            return `<div class="address-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
+                        <textarea id="description-value-${uniqueId}" name="" class="border-0 p-0 w-100" placeholder="Description" id=""></textarea>
+                    </div>`;
         case "single-date":
             return `<div class="single-date calendar-wrapper d-flex align-items-center flex-grow-1 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                         <input id="single-date-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
@@ -695,7 +699,6 @@ function selectDropdownItem(dropdown, key) {
 function configureOperators(parent, propertyKey, typeBasedOnField, operatorsBasedOnType, optionsByField = null, selectedOperatorKey = null, value = null) {
     const fieldType = typeBasedOnField[propertyKey]
     const config = operatorsBasedOnType[fieldType];
-    console.log(config, fieldType)
     if (!config) return;
 
     const operatorDropdown = parent.find('.operator-filter');
@@ -730,7 +733,6 @@ function configureOperators(parent, propertyKey, typeBasedOnField, operatorsBase
         defaultOperatorKey
     );
 
-    console.log(selectedItem, defaultOperatorKey)
     if (!selectedItem) {
         return;
     }
@@ -758,7 +760,6 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
         .empty();
 
     let propertyType = typeBasedOnField[propertyKey];
-    console.log(propertyType, propertyKey)
 
     if (!propertyType) {
         return;
@@ -766,6 +767,10 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
 
     if (propertyType === "address") {
         valueSection.html(getDynamicValueField("address", uniqueId, [], value));
+    }
+    else if (propertyType === "longtext") {
+        console.log(getDynamicValueField("description", uniqueId, [], value))
+        valueSection.html(getDynamicValueField("description", uniqueId, [], value));
     }
     else if (propertyType === "date") {
         valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'date-range' : 'single-date', uniqueId, [], value));
