@@ -823,7 +823,7 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
     }
 
     if (propertyType === "address") {
-         valueSection.addClass('row g-0 gap-2');
+        valueSection.addClass('row g-0 gap-2');
         valueSection.html(getDynamicValueField("address", uniqueId, [], value));
     }
     else if (propertyType === "longtext") {
@@ -1400,6 +1400,24 @@ $(function () {
         };
     }
 
+    function truncateData(data) {
+        var newData = data.clone();
+
+        for (var i = 0; i < newData.getNumberOfRows(); i++) {
+            var name = newData.getValue(i, 0);
+
+            if (name && name.length > 20) {
+                newData.setValue(
+                    i,
+                    0,
+                    name.substring(0, 20) + '...'
+                );
+            }
+        }
+
+        return newData;
+    }
+
 
     function drawChart(box, chartDatas) {
 
@@ -1411,7 +1429,7 @@ $(function () {
         if (!chartData) return;
 
 
-        const data = google.visualization.arrayToDataTable(chartData);
+        let data = google.visualization.arrayToDataTable(chartData);
 
         const container = box.find(".chart-container .chart")[0];
         const pieLegendBox = box.find(".pie-legend");
@@ -1486,7 +1504,7 @@ $(function () {
                         tooltip: {
                             trigger: 'focus'
                         }
-                    })
+                    }),
                 };
                 chart = new google.visualization.LineChart(container);
                 break;
@@ -1505,6 +1523,8 @@ $(function () {
                         }
                     })
                 };
+
+                data = truncateData(data);
 
                 chart = new google.visualization.BarChart(container);
         }
