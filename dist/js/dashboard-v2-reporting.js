@@ -1122,7 +1122,7 @@ $(function () {
                 ...($(this).data("width") && { width: $(this).data("width") }),
                 ...($(this).data("key") === "status" && {
                     render: function (data, type, row) {
-                        return `<span class="badge badge-${row.status.class}">${row.status.label}</span>`
+                        return `<span class="badge badge-${data.class}">${data.label}</span>`
                     },
                 }),
                 ...($(this).data('key') === "tags" && {
@@ -1146,7 +1146,15 @@ $(function () {
                                 </div>
                             </div>`;
                     },
-                })
+                }),
+                ...($(this).data("key") === "order_status" && {
+                    render: function (data, type, row) {
+                        return `<span class="badge p-1 ${data.class}">
+                                    <span class="icon ${data.icon} icon-md m-0 me-1"></span>
+                                    <span class="text-light mb-0 me-1">${data.label}</span>
+                                </span>`;
+                    },
+                }),
             });
         });
 
