@@ -7,6 +7,7 @@ const typeBasedOnField = {
     "formation_date": "date",
     "formation_type": "dropdown",
     "physical_address": "address",
+    "principal_address": "address",
     "mailing_address": "address",
     "store_number": "text",
     "status": "dropdown",
