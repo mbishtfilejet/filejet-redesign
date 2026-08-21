@@ -1241,31 +1241,54 @@ $(function () {
                 "value": ["Technology Partners"]
             }
         ],
+        "system-order": [
+            {
+                "property": "order_date",
+                "operator": "equals",
+                "type": "date",
+                "value": {
+                    "from": "01/01/2025",
+                    "to": ""
+                }
+            }
+        ]
     }
 
 
 
     $('.toggleSection').css('display', 'none');
 
-    $(document).on("click", ".new-report, .view-report, .edit-report, .copy-report, .generate-report", function () {
+    $(document).on("click", ".new-report, .view-report, .edit-report, .copy-report, .generate-report, .view-system-report, .edit-system-report, .copy-system-report", function () {
         const element = $(this);
-
         const reportNav = element.closest(".reportCreationNav");
-
         const targetElement = element.data('target');
-
         const target = $(targetElement);
 
+        const isNewReport = element.hasClass('new-report');
+        const isGenerateReport = element.hasClass('generate-report');
+
+        const isSystemReport =
+            element.hasClass('view-system-report') ||
+            element.hasClass('copy-system-report') ||
+            element.hasClass('edit-system-report');
+
+        const isViewReport =
+            element.hasClass('view-report') ||
+            element.hasClass('view-system-report')
+
+        // Hide Navigation
         reportNav.fadeOut(50)
 
-
+        // Remove tooltip instance
         const tooltip = bootstrap.Tooltip.getInstance(element);
         if (tooltip) {
             tooltip.dispose();
         }
+
+        //Show target
         target.fadeIn()
 
-        if (element.hasClass('new-report')) return;
+        if (isNewReport) return;
 
         const charts_wrapper = target.find('.charts_wrapper:visible');
 
@@ -1273,24 +1296,37 @@ $(function () {
             renderCharts(charts_wrapper);
         }
 
-        let filterKey = target.data('filter');
-
-
         let table = '';
 
 
-        if (element.hasClass('generate-report')) {
+        if (isGenerateReport) {
             table = createDynamicTable(targetElement, '.reports_table', element.closest('.reportCreateSection'), '.columns_text');
-
             $('html, body').animate({ scrollTop: $(targetElement).offset().top }, 500);
         } else {
 
-            savedFilters[filterKey].forEach((filter, index) => {
-                let parent = $(targetElement).find('.filter-grid').not('.filter-template').eq(index);
-                applyPreSelectFilter(parent, filter.property, filter.operator, filter.value, typeBasedOnField, operatorsBasedOnType, optionsByField);
-            });
+            const filterKey = target.data('filter');
 
-            if (element.hasClass('view-report')) {
+            if (isSystemReport) {
+                if (filterKey === "order") {
+                    const filters = savedFilters[`system-${filterKey}`] || [];
+
+                    filters.forEach((filter, index) => {
+                        let filterGridEl = $(targetElement).find('.filter-grid').not('.filter-template').eq(index);
+                        applyPreSelectFilter(filterGridEl, filter.property, filter.operator, filter.value, typeBasedOnField, operatorsBasedOnType, optionsByField);
+                    });
+                }
+            } else {
+
+                const filters = savedFilters[filterKey] || [];
+
+                filters.forEach((filter, index) => {
+                    let filterGridEl = $(targetElement).find('.filter-grid').not('.filter-template').eq(index);
+                    applyPreSelectFilter(filterGridEl, filter.property, filter.operator, filter.value, typeBasedOnField, operatorsBasedOnType, optionsByField);
+                });
+            }
+
+            // View mode: hide accordions
+            if (isViewReport) {
 
                 target.find('.accordion-collapse').each(function () {
                     if ($(this).find('.charts_wrapper').length === 0) {
@@ -1306,15 +1342,12 @@ $(function () {
             table = createDynamicTable(targetElement, '.reports_table', targetElement, '.columns_text');
         }
 
-        table.off('draw.dt.tagOverflow').on('draw.dt.tagOverflow', function () {
-            applyTagOverflow(true);
-        });
+        if (table) {
 
-        $(window)
-            .off('resize.dataTableAdjust')
-            .on('resize.dataTableAdjust', function () {
-                table.columns.adjust().draw();
+            table.off('draw.dt.tagOverflow').on('draw.dt.tagOverflow', function () {
+                applyTagOverflow(true);
             });
+        }
 
     });
 
@@ -1619,7 +1652,7 @@ $(function () {
         renderCharts(charts_wrapper);
     });
 
-    $(document).on("click", '.save-report-btn, .report-back-btn', function () {
+    $(document).on("click", '.save-report-btn, .delete-report, .report-back-btn', function () {
 
         let reportSection = $('.reportSection:visible');
 
