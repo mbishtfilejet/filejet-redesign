@@ -1258,13 +1258,19 @@ $(function () {
 
 
 
-    $('.toggleSection').css('display', 'none');
+    $('.toggleSection, .toggleForm').css('display', 'none');
 
-    $(document).on("click", ".new-report, .view-report, .edit-report, .copy-report, .generate-report, .view-system-report, .edit-system-report, .copy-system-report", function () {
+    $(document).on("click", ".show-section, .new-report, .view-report, .edit-report, .copy-report, .generate-report, .view-system-report, .edit-system-report, .copy-system-report", function () {
         const element = $(this);
-        const reportNav = element.closest(".reportCreationNav");
         const targetElement = element.data('target');
         const target = $(targetElement);
+
+        if(element.hasClass('show-section')){
+            target.fadeOut().fadeIn();
+            return;
+        }
+
+        const reportNav = element.closest(".reportCreationNav");
 
         const isNewReport = element.hasClass('new-report');
         const isGenerateReport = element.hasClass('generate-report');
