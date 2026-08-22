@@ -56,6 +56,8 @@ const optionsByField = {
     "director": ['CEO', "President", 'CTO', 'VC', 'Others'],
     "registrations": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown"],
     "formation_type": ["Home", "Foreign"],
+    "business_licenses": ["Active", "Inactive", "In Progress"],
+    "dba": ["Active", "Inactive", "In Progress"],
     "tags": ["Amendments", "Business License", "Merger", "25102f", "Certificate of Cancellation", "Beneficial Ownership Information Report", "Annual Report", "Restate", "EIN", "Certificate of Correction", "Formations", "DBA: Doing Business As"],
     "entity_type": [
         "LLC",
