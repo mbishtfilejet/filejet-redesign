@@ -676,10 +676,10 @@ $(function () {
             search
                 .val('')
                 .on('input.dropdownSearch', function () {
-                    const term = $(this).val().trim().toLowerCase();
+                    const term = $(this).val().trim().toLowerCase().replace(/\s+/g, ' ').trim();
 
                     items.each(function () {
-                        const text = $(this).find('.item-name').text().trim().toLowerCase();
+                        const text = $(this).find('.item-name').text().toLowerCase().replace(/\s+/g, ' ').trim();
 
                         $(this).toggle(text.includes(term));
                     });
