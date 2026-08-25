@@ -747,9 +747,11 @@ function selectDropdownItem(dropdown, key) {
 
     item.addClass('selected');
 
+    let span = `<span class="dropdown-text">${selectedText}</span>`
+
     dropdown
         .find('[data-bs-toggle="dropdown"]')
-        .text(selectedText)
+        .html(span)
         .attr('data-selected', key);
 
     return item;
