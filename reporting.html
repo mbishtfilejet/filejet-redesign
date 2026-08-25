@@ -377,10 +377,10 @@
                                                       data-target="#view_generated_report-entity">
                                                       <span class="icon icon-copy m-0"></span>
                                                    </span>
-                                                   <span data-toggle="tooltip" title="AUTO DELIVER"
+                                                   <!-- <span data-toggle="tooltip" title="AUTO DELIVER"
                                                       class="ms-1 btn btn-outline-secondary p-1 px-2 btn-icon-white">
                                                       <span class="icon icon-auto-deliver m-0"></span>
-                                                   </span>
+                                                   </span> -->
                                                 </div>
                                              </div>
                                           </div>
@@ -3839,10 +3839,10 @@
                                                       data-target="#view_generated_report">
                                                       <span class="icon icon-copy m-0"></span>
                                                    </span>
-                                                   <span data-toggle="tooltip" title="AUTO DELIVER"
+                                                   <!-- <span data-toggle="tooltip" title="AUTO DELIVER"
                                                       class="ms-1 btn btn-outline-secondary p-1 px-2 btn-icon-white">
                                                       <span class="icon icon-auto-deliver m-0"></span>
-                                                   </span>
+                                                   </span> -->
                                                 </div>
                                              </div>
                                           </div>
@@ -6336,10 +6336,10 @@
                                                       data-target="#view_generated_report-order">
                                                       <span class="icon icon-copy m-0"></span>
                                                    </span>
-                                                   <span data-toggle="tooltip" title="AUTO DELIVER"
+                                                   <!-- <span data-toggle="tooltip" title="AUTO DELIVER"
                                                       class="ms-1 btn btn-outline-secondary p-1 px-2 btn-icon-white">
                                                       <span class="icon icon-auto-deliver m-0"></span>
-                                                   </span>
+                                                   </span> -->
                                                 </div>
                                              </div>
                                           </div>
@@ -9074,7 +9074,8 @@
                      </div>
                   </fieldset>
                </div>
-               <div class="p-3 bg-white rounded-2">
+               <!-- Auto Deliver for Future Reference -->
+               <!-- <div class="p-3 bg-white rounded-2">
                   <fieldset class="mb-4">
                      <label for="" class="form-label">Share With</label>
                      <div class="d-flex gap-2">
@@ -9131,7 +9132,7 @@
                         </select>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
             <div class="modal-footer">
                <div class="d-flex justify-content-between align-items-center w-100 m-0">
@@ -9257,44 +9258,8 @@
                      </div>
                   </fieldset>
                </div>
-               <div class="p-3 bg-white rounded-2">
-                  <fieldset class="mb-4">
-                     <label for="" class="form-label">Share With</label>
-                     <div class="d-flex gap-2">
-                        <input type="text" class="form-control" id="" placeholder="Add comma separated emails to share">
-                        <button class="btn btn-secondary p-1 px-3 show-section" data-target="#email-list">Share</button>
-                     </div>
-                     <div id="email-list" class="toggleForm">
-                        <div class="email-share-list mt-4 d-flex justify-content-between flex-column">
-                           <div class="d-flex justify-content-between">
-                              <div>
-                                 adamsmith@xyz.com
-                              </div>
-                              <div class="d-flex align-items-center">
-                                 <span class="icon icon-new-edit me-3 editUser" data-toggle="tooltip" aria-label="EDIT"
-                                    data-bs-original-title="EDIT"></span>
-                                 <span class="icon icon-new-delete m-0 " data-toggle="tooltip" aria-label="DELETE"
-                                    title="DELETE"></span>
-                              </div>
-                           </div>
-                           <div class="d-flex flex-column justify-content-between">
-                              <hr>
-                              <div class="d-flex justify-content-between">
-                                 <div>
-                                    jamesthornton@xyz.com
-                                 </div>
-                                 <div class="d-flex align-items-center">
-                                    <span class="icon icon-new-edit me-3 editUser" data-toggle="tooltip"
-                                       aria-label="EDIT" data-bs-original-title="EDIT"></span>
-                                    <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal"
-                                       data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE"
-                                       title="DELETE"></span>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </fieldset>
+               <!-- Auto Deliver for future Reference -->
+               <!-- <div class="p-3 bg-white rounded-2">
                   <div class="d-flex justify-content-between align-items-center w-100">
                      <span class="fw-bold text-uppercase">Auto Deliver Report</span>
                      <input class="form-check-input collapsed" type="checkbox" id="" data-bs-toggle="collapse"
@@ -9303,7 +9268,7 @@
                   </div>
                   <div class="collapse mt-3" id="auto_deliver_report_1">
                      <div class="custom-dropdown">
-                        <select class="form-select " id="">
+                        <select class="form-select show-section"  data-target="#email-list-wrapper" id="">
                            <option value="" disabled="" selected="" hidden=""
                               data-full-text="Select Delivery Frequency">
                               Select Delivery Frequency</option>
@@ -9312,9 +9277,48 @@
                            <option value="annually" data-full-text="Annually">Annually</option>
                         </select>
                      </div>
+                     <fieldset id="email-list-wrapper" class="mt-3 toggleForm">
+                        <label for="" class="form-label">Share With</label>
+                        <div class="d-flex gap-2">
+                           <input type="text" class="form-control" id=""
+                              placeholder="Add comma separated emails to share">
+                           <button class="btn btn-secondary p-1 px-3 show-section"
+                              data-target="#email-list">Add</button>
+                        </div>
+                        <div id="email-list" class="toggleForm">
+                           <div class="email-share-list mt-4 d-flex justify-content-between flex-column">
+                              <div class="d-flex justify-content-between">
+                                 <div>
+                                    adamsmith@xyz.com
+                                 </div>
+                                 <div class="d-flex align-items-center">
+                                    <span class="icon icon-new-edit me-3 editUser" data-toggle="tooltip"
+                                       aria-label="EDIT" data-bs-original-title="EDIT"></span>
+                                    <span class="icon icon-new-delete m-0 " data-toggle="tooltip" aria-label="DELETE"
+                                       title="DELETE"></span>
+                                 </div>
+                              </div>
+                              <div class="d-flex flex-column justify-content-between">
+                                 <hr>
+                                 <div class="d-flex justify-content-between">
+                                    <div>
+                                       jamesthornton@xyz.com
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                       <span class="icon icon-new-edit me-3 editUser" data-toggle="tooltip"
+                                          aria-label="EDIT" data-bs-original-title="EDIT"></span>
+                                       <span class="icon icon-new-delete m-0 deleteUser" data-bs-toggle="modal"
+                                          data-bs-target="#userDelete" data-toggle="tooltip" aria-label="DELETE"
+                                          title="DELETE"></span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </fieldset>
                   </div>
 
-               </div>
+               </div> -->
             </div>
             <div class="modal-footer">
                <div class="d-flex justify-content-between align-items-center w-100 m-0">
