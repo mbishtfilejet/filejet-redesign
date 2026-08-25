@@ -20,21 +20,23 @@ $(function () {
         scrollX: true,
         scrollY: false,
         columns: [
-            { data: "group_name" },
-            { data: "entity_name" },
-            { data: "store_no" },
-            { data: "orderId" },
-            { data: "external_reference_no" },
-            { data: "date" },
+            { data: "group_name", width: "180px" },
+            { data: "entity_name", width: "180px" },
+            { data: "store_no", className: "min-width-90" },
+            { data: "orderId", width: "80px" },
+            { data: "external_reference_no", className: "min-width-100" },
+            { data: "date", width: "80px" },
             {
                 data: "amount", render: function (data) {
                     return formatCurrency(data)
-                }
+                },
+                className: "min-width-70"
             },
             {
                 data: "due", render: function (data) {
                     return formatCurrency(data)
-                }
+                },
+                className: "min-width-70"
             },
             {
                 data: null, render: function (data, type, row) {
@@ -44,7 +46,8 @@ $(function () {
                         <span class="icon icon-pdf-black me-0 cursor-pointer" data-toggle="tooltip" title="VIEW INVOICE" data-bs-toggle="modal" data-bs-target="#invoiceModal"></span>
                     </div>
                 `
-                }
+                },
+                width: "55px"
             }
         ],
         order: [[0, "asc"]],
@@ -67,24 +70,26 @@ $(function () {
         scrollX: true,
         scrollY: false,
         columns: [
-            { data: "orderId" },
-            { data: "external_reference_no" },
-            { data: "entity_name" },
-            { data: "store_no" },
-            { data: "state" },
+            { data: "orderId", width: "70px" },
+            { data: "external_reference_no", className: "min-width-90" },
+            { data: "entity_name", width: "180px" },
+            { data: "store_no", className: "min-width-90" },
+            { data: "state", width: "50px" },
             {
                 data: "total_amount", render: function (data) {
                     return formatCurrency(data)
-                }
+                },
+                class: "min-width-70"
             },
             {
                 data: "status", render: function (data) {
                     return `<span class="${data?.toLowerCase() === "pending" ? "text-danger" : ""}">${data}</span>`
-                }
+                },
+                width: "80px"
             },
-            { data: "orderDate" },
-            { data: "datePaid" },
-            { data: "orderStatus" },
+            { data: "orderDate", width: "80px" },
+            { data: "datePaid", width: "80px" },
+            { data: "orderStatus", width: "90px" },
             {
                 data: null, render: function (data, type, row) {
                     return `
@@ -93,7 +98,8 @@ $(function () {
                         <span class="icon icon-pdf-black me-0 cursor-pointer" data-toggle="tooltip" title="VIEW INVOICE" data-bs-toggle="modal" data-bs-target="#invoiceModal"></span>
                     </div>
                 `
-                }
+                },
+                width: "55px"
             }
         ],
         order: [[0, "asc"]],
