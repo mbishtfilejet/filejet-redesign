@@ -26,6 +26,7 @@ $(function () {
             { data: "orderId", width: "80px" },
             { data: "external_reference_no", className: "min-width-100" },
             { data: "date", width: "80px" },
+            { data: "age", width: "40px" },
             {
                 data: "amount", render: function (data) {
                     return formatCurrency(data)
