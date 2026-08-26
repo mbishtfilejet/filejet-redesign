@@ -109,6 +109,52 @@ $(function () {
     }
 
     $('#invoices-payhistory-table').DataTable(options)
+
+
+    const anotheroptions = {
+        ajax: {
+            url: "data5.json",
+            dataSrc: 'payment_history_data'
+        },
+        language: {
+            processing: '<div  role="status"> </div>',
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
+        },
+        processing: true,
+        scrollX: true,
+        scrollY: false,
+        columns: [
+            { data: "orderId", width: "70px" },
+            { data: "external_reference_no", className: "min-width-90" },
+            { data: "entity_name", width: "180px" },
+            { data: "location_#", className: "min-width-90" },
+            { data: "payment_date", width: "90px" },
+            { data: "payment_type", width: "90px" },
+            { data: "payment_method", width: "160px" },
+            {
+                data: "paid_amount", render: function (data) {
+                    return formatCurrency(data)
+                },
+                class: "min-width-70"
+            },
+            {
+                data: null, render: function (data, type, row) {
+                    return `
+                    <div class="d-flex align-items-center">
+                        <span class="icon icon-pdf-black me-0 cursor-pointer" data-toggle="tooltip" title="VIEW INVOICE" data-bs-toggle="modal" data-bs-target="#invoiceModal"></span>
+                    </div>
+                `
+                },
+                width: "55px"
+            }
+        ],
+        order: [[0, "asc"]],
+        lengthChange: false,  // Removed pagination
+        paging: false,  // Disable pagination
+        info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+    }
+
+    $('#invoices-payhistory-table_1').DataTable(anotheroptions)
 })
 
 
