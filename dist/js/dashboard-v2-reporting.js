@@ -134,8 +134,72 @@ const optionsByField = {
     "payment_status": ["In Progress", "Paid"]
 }
 
+function formatAsOfDate(date) {
+    if (!date) return '';
+    const today = moment().startOf('day');
+    const picked = moment(date).startOf('day');
+    if (picked.isSame(today, 'day')) {
+        return 'As of Today';
+    }
+    return 'As of ' + picked.format('MM/DD/YYYY');
+}
+
 function initializeFilterDatePicker(selector) {
-    $(selector).datepicker()
+    let dateInput = $(selector);
+    
+    if (!dateInput.length || dateInput.closest('.date-range').length) return;
+    
+    console.log(dateInput , dateInput.closest('.date-range'))
+
+    dateInput.datepicker({
+        format: 'mm/dd/yyyy',
+        todayHighlight: true,
+        autoclose: true
+    })
+    dateInput.on('hide', function () {
+        const date = $(this).datepicker('getDate');
+        $(this).val(formatAsOfDate(date));
+    });
+}
+
+
+function initializeFilterDateRangePicker(selector) {
+    let container = $(selector);
+
+    if (!container.length) return;
+
+    const fromDate = container.find('.from-date');
+    const toDate = container.find('.to-date');
+
+    fromDate.datepicker({
+        format: 'mm/dd/yyyy',
+        todayHighlight: true,
+        autoclose: true
+    })
+
+    toDate.datepicker({
+        format: 'mm/dd/yyyy',
+        todayHighlight: true,
+        autoclose: true
+    })
+
+    fromDate.on('changeDate', function (e) {
+        toDate.datepicker('setStartDate', moment(e.date).add(1, 'day').toDate())
+    })
+
+    toDate.on('changeDate', function (e) {
+        fromDate.datepicker('setEndDate', moment(e.date).subtract(1, 'day').toDate())
+    })
+
+    fromDate.on('hide', function () {
+        const date = $(this).datepicker('getDate');
+        $(this).val(formatAsOfDate(date));
+    });
+
+    toDate.on('hide', function () {
+        const date = $(this).datepicker('getDate');
+        $(this).val(formatAsOfDate(date));
+    });
 }
 
 function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], value = null) {
@@ -221,18 +285,18 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
         case "single-date":
             return `<div class="single-date calendar-wrapper d-flex align-items-center flex-grow-1 border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                         <input id="single-date-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
-                             placeholder="Date" value="${value || ""}">
+                             placeholder="Date" value="${formatAsOfDate(value) || ""}">
                     </div>`;
         case "date-range":
             return `<div class="d-flex align-items-center date-range">
                             <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                                    placeholder="Date" value="${value?.from || ""}">
+                                    placeholder="Date" value="${formatAsOfDate(value?.from) || ""}">
                             </div>
                             <span class="mx-2">to</span>
                             <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                                 <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                                    placeholder="Date" value="${value?.to || ""}">
+                                    placeholder="Date" value="${formatAsOfDate(value?.to) || ""}">
                             </div>
                         </div>`;
         case "value-range":
@@ -275,14 +339,16 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                 <input id="complex-value-${uniqueId}1" type="text" class="border-0 p-0 w-100"
                     placeholder="Percentage" value="${value?.percentage || ""}">
             </div>
-            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                                     placeholder="Start Date" value="${value?.start || ""}">
-                                </div>
-            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                                     placeholder="End Date" value="${value?.end || ""}">
-                                </div>
+            <div class="col-12 d-flex align-items-center date-range gap-2"> 
+                <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                        placeholder="Start Date" value="${formatAsOfDate(value?.start) || ""}">
+                </div>
+                <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
+                        placeholder="End Date" value="${formatAsOfDate(value?.end) || ""}">
+                </div>
+            </div>
             `;
         case "complex-registrations":
             return `
@@ -393,8 +459,8 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                 </ul>
             </div>
             <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                <input id="single-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                    placeholder="Next Report Date" value="${value?.next_report_date || ""}">
+                <input id="single-range-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
+                    placeholder="Next Report Date" value="${formatAsOfDate(value?.next_report_date) || ""}">
             </div>
             `;
         case "complex-director":
@@ -423,14 +489,16 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                         <input id="complex-email-${uniqueId}" type="text" class="border-0 p-0 w-100"
                             placeholder="Email" value="${value?.email || ""}">
                     </div>
-            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                                     placeholder="Start Date" value="${value?.start || ""}">
-                                </div>
-            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                                     placeholder="End Date" value="${value?.end || ""}">
-                                </div>
+            <div class="col-12 d-flex align-items-center date-range gap-2">
+                <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                        placeholder="Start Date" value="${formatAsOfDate(value?.start) || ""}">
+                </div>
+                <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
+                        placeholder="End Date" value="${formatAsOfDate(value?.end) || ""}">
+                </div>
+            </div>
             `;
         case "complex-dba":
             return `
@@ -837,6 +905,10 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
     }
     else if (propertyType === "date") {
         valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'date-range' : 'single-date', uniqueId, [], value));
+        if (operatorKey === 'between') {
+            initializeFilterDateRangePicker(valueSection.find('.date-range'));
+            return;
+        }
         initializeFilterDatePicker(valueSection.find('.datepicker'));
     }
     else if (propertyType === 'dropdown') {
@@ -850,6 +922,7 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
         const multiSelectList = optionsByField[propertyKey] || [];
         valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList, value));
         initializeFilterDatePicker(valueSection.find('.datepicker'));
+        initializeFilterDateRangePicker(valueSection.find('.date-range'));
         setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", value?.data || []);
     } else {
         valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'value-range' : 'single-value', uniqueId, [], value));
@@ -1267,7 +1340,7 @@ $(function () {
         const targetElement = element.data('target');
         const target = $(targetElement);
 
-        if(element.hasClass('show-section')){
+        if (element.hasClass('show-section')) {
             target.fadeOut().fadeIn();
             return;
         }
