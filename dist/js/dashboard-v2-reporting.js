@@ -1090,23 +1090,22 @@ $(function () {
         let dragItem = $(this).closest('.drag-item');
         let drag_container = $(this).closest('.column_section').find('.drag_container');
 
-        dragItem.prop('draggable', false);
+        dragItem.removeAttr('draggable').addClass('add-column');
 
         drag_container.after(dragItem)
 
     })
 
-    $(document).on('click keydown', '.add-column', function (ev) {
+    $(document).on('click keydown', '.drag-item.add-column', function (ev) {
 
         if (ev.type === "keydown" && ev.key !== " " && ev.key !== "Enter") {
             return;
         }
-        ev.preventDefault();
 
-        let dragItem = $(this).closest('.drag-item');
+        let dragItem = $(this);
         let dragContainer = $(this).closest('.column_section').find('.drag_container');
 
-        dragItem.prop('draggable', true);
+        dragItem.prop('draggable', true).removeClass('add-column');
 
         dragContainer.append(dragItem)
 
