@@ -20,8 +20,8 @@ $(function () {
         scrollX: true,
         scrollY: false,
         columns: [
-            { data: "group_name", width: "180px" },
-            { data: "entity_name", width: "180px" },
+            { data: "group_name", width: "160px" },
+            { data: "entity_name", width: "160px" },
             { data: "store_no", className: "min-width-90" },
             { data: "orderId", width: "80px" },
             { data: "external_reference_no", className: "min-width-100" },
@@ -125,13 +125,13 @@ $(function () {
         scrollX: true,
         scrollY: false,
         columns: [
-            { data: "orderId", width: "70px" },
-            { data: "external_reference_no", className: "min-width-90" },
-            { data: "entity_name", width: "180px" },
-            { data: "location_#", className: "min-width-90" },
             { data: "payment_date", width: "90px" },
             { data: "payment_type", width: "90px" },
             { data: "payment_method", width: "160px" },
+            { data: "orderId", width: "70px" },
+            { data: "external_reference_no", className: "min-width-100" },
+            { data: "entity_name", width: "160px" },
+            { data: "location_#", className: "min-width-90" },
             {
                 data: "paid_amount", render: function (data) {
                     return formatCurrency(data)
