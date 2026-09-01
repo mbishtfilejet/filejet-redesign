@@ -58,61 +58,61 @@ $(function () {
     }
     $('#invoices-history-table').DataTable(tableOptions)
 
-    const options = {
-        ajax: {
-            url: "data5.json",
-            dataSrc: 'invoice_history_data'
-        },
-        language: {
-            processing: '<div  role="status"> </div>',
-            emptyTable: '<p class="emptytabledata">No Records Available</p>'
-        },
-        processing: true,
-        scrollX: true,
-        scrollY: false,
-        columns: [
-            { data: "orderId", width: "70px" },
-            { data: "external_reference_no", className: "min-width-90" },
-            { data: "entity_name", width: "180px" },
-            { data: "store_no", className: "min-width-90" },
-            { data: "state", width: "50px" },
-            {
-                data: "total_amount", render: function (data) {
-                    return formatCurrency(data)
-                },
-                class: "min-width-70"
-            },
-            {
-                data: "status", render: function (data) {
-                    return `<span class="${data?.toLowerCase() === "pending" ? "text-danger" : ""}">${data}</span>`
-                },
-                width: "80px"
-            },
-            { data: "orderDate", width: "80px" },
-            { data: "datePaid", width: "80px" },
-            { data: "orderStatus", width: "90px" },
-            {
-                data: null, render: function (data, type, row) {
-                    return `
-                    <div class="d-flex align-items-center justify-content-end me-1">
-                        ${["pending", "in progress"].includes(row.status?.toLowerCase()) ? '<span class="icon icon-money-red cursor-pointer" data-toggle="tooltip" title="Complete payment" data-bs-toggle="modal" data-bs-target="#payBill_modal"></span>' : ''}
-                        <span class="icon icon-pdf-black me-0 cursor-pointer" data-toggle="tooltip" title="VIEW INVOICE" data-bs-toggle="modal" data-bs-target="#invoiceModal"></span>
-                    </div>
-                `
-                },
-                width: "55px"
-            }
-        ],
-        order: [[0, "asc"]],
-        lengthChange: false,  // Removed pagination
-        paging: false,  // Disable pagination
-        info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
-    }
+    // const options = {
+    //     ajax: {
+    //         url: "data5.json",
+    //         dataSrc: 'invoice_history_data'
+    //     },
+    //     language: {
+    //         processing: '<div  role="status"> </div>',
+    //         emptyTable: '<p class="emptytabledata">No Records Available</p>'
+    //     },
+    //     processing: true,
+    //     scrollX: true,
+    //     scrollY: false,
+    //     columns: [
+    //         { data: "orderId", width: "70px" },
+    //         { data: "external_reference_no", className: "min-width-90" },
+    //         { data: "entity_name", width: "180px" },
+    //         { data: "store_no", className: "min-width-90" },
+    //         { data: "state", width: "50px" },
+    //         {
+    //             data: "total_amount", render: function (data) {
+    //                 return formatCurrency(data)
+    //             },
+    //             class: "min-width-70"
+    //         },
+    //         {
+    //             data: "status", render: function (data) {
+    //                 return `<span class="${data?.toLowerCase() === "pending" ? "text-danger" : ""}">${data}</span>`
+    //             },
+    //             width: "80px"
+    //         },
+    //         { data: "orderDate", width: "80px" },
+    //         { data: "datePaid", width: "80px" },
+    //         { data: "orderStatus", width: "90px" },
+    //         {
+    //             data: null, render: function (data, type, row) {
+    //                 return `
+    //                 <div class="d-flex align-items-center justify-content-end me-1">
+    //                     ${["pending", "in progress"].includes(row.status?.toLowerCase()) ? '<span class="icon icon-money-red cursor-pointer" data-toggle="tooltip" title="Complete payment" data-bs-toggle="modal" data-bs-target="#payBill_modal"></span>' : ''}
+    //                     <span class="icon icon-pdf-black me-0 cursor-pointer" data-toggle="tooltip" title="VIEW INVOICE" data-bs-toggle="modal" data-bs-target="#invoiceModal"></span>
+    //                 </div>
+    //             `
+    //             },
+    //             width: "55px"
+    //         }
+    //     ],
+    //     order: [[0, "asc"]],
+    //     lengthChange: false,  // Removed pagination
+    //     paging: false,  // Disable pagination
+    //     info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
+    // }
 
-    $('#invoices-payhistory-table').DataTable(options)
+    // $('#invoices-payhistory-table').DataTable(options)
 
 
-    const anotheroptions = {
+    const pay_his_options = {
         ajax: {
             url: "data5.json",
             dataSrc: 'payment_history_data'
@@ -155,7 +155,7 @@ $(function () {
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
     }
 
-    $('#invoices-payhistory-table_1').DataTable(anotheroptions)
+    $('#invoices-payhistory-table').DataTable(pay_his_options)
 })
 
 
