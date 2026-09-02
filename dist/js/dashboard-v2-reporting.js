@@ -344,7 +344,7 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
             </div> 
                 <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                     <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                        placeholder="Start Date" value="${formatAsOfDate(value?.start) || ""}">
+                        placeholder="Select Date" value="${formatAsOfDate(value?.start) || ""}">
                 </div>
         
             `;
@@ -489,7 +489,7 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
             </div>
             <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                     <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                        placeholder="Start Date" value="${formatAsOfDate(value?.start) || ""}">
+                        placeholder="Select Date" value="${formatAsOfDate(value?.start) || ""}">
             </div>
             `;
         case "complex-dba":
