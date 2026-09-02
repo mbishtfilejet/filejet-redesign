@@ -341,17 +341,12 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                 <input id="complex-value-${uniqueId}1" type="text" class="border-0 p-0 w-100"
                     placeholder="Percentage" value="${value?.percentage || ""}">
-            </div>
-            <div class="col-12 d-flex align-items-center date-range gap-2"> 
+            </div> 
                 <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                     <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                        placeholder="Start Date" value="${formatAsOfDate(value?.start) || ""}">
+                        placeholder="Select Date" value="${formatAsOfDate(value?.start) || ""}">
                 </div>
-                <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                    <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                        placeholder="End Date" value="${formatAsOfDate(value?.end) || ""}">
-                </div>
-            </div>
+        
             `;
         case "complex-registrations":
             return `
@@ -488,19 +483,13 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                     </li>` ).join('')}
                 </ul>
             </div>
-            <div class="col-12 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                         <input id="complex-email-${uniqueId}" type="text" class="border-0 p-0 w-100"
                             placeholder="Email" value="${value?.email || ""}">
-                    </div>
-            <div class="col-12 d-flex align-items-center date-range gap-2">
-                <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+            </div>
+            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
                     <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                        placeholder="Start Date" value="${formatAsOfDate(value?.start) || ""}">
-                </div>
-                <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                    <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                        placeholder="End Date" value="${formatAsOfDate(value?.end) || ""}">
-                </div>
+                        placeholder="Select Date" value="${formatAsOfDate(value?.start) || ""}">
             </div>
             `;
         case "complex-dba":
@@ -924,7 +913,6 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
         const multiSelectList = optionsByField[propertyKey] || [];
         valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList, value));
         initializeFilterDatePicker(valueSection.find('.datepicker'), propertyKey === "director" || propertyKey === "ownership" );
-        initializeFilterDateRangePicker(valueSection.find('.date-range'), propertyKey === "director" || propertyKey === "ownership");
         setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", value?.data || []);
     } else {
         valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'value-range' : 'single-value', uniqueId, [], value));
