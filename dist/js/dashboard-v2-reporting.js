@@ -148,7 +148,7 @@ function initializeFilterDatePicker(selector, isAsofDate = false) {
     let dateInput = $(selector);
 
     if (!dateInput.length || dateInput.closest('.date-range').length) return;
- 
+
     dateInput.datepicker({
         format: 'mm/dd/yyyy',
         todayHighlight: true,
@@ -912,7 +912,7 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
         valueSection.addClass('row g-0 gap-2');
         const multiSelectList = optionsByField[propertyKey] || [];
         valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList, value));
-        initializeFilterDatePicker(valueSection.find('.datepicker'), propertyKey === "director" || propertyKey === "ownership" );
+        initializeFilterDatePicker(valueSection.find('.datepicker'), propertyKey === "director" || propertyKey === "ownership");
         setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", value?.data || []);
     } else {
         valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'value-range' : 'single-value', uniqueId, [], value));
@@ -1082,7 +1082,16 @@ $(function () {
 
         dragItem.removeAttr('draggable').addClass('add-column');
 
-        drag_container.after(dragItem)
+        drag_container.after(dragItem);
+
+        if (drag_container.children().length === 0) {
+            drag_container.addClass('d-none');
+            
+            let generateReportBtn = drag_container.closest('.reportCreateSection').find('.generate-report');
+            let generateReportContainer = generateReportBtn.closest('.generate-report-container')
+            generateReportBtn.addClass('disabled').prop('disabled', true);
+            generateReportContainer.attr('data-toggle', "tooltip").attr('data-bs-original-title', 'Select atleast one column to view report')
+        }
 
     })
 
@@ -1093,11 +1102,19 @@ $(function () {
         }
 
         let dragItem = $(this);
-        let dragContainer = $(this).closest('.column_section').find('.drag_container');
+        let drag_container = $(this).closest('.column_section').find('.drag_container');
 
         dragItem.prop('draggable', true).removeClass('add-column');
 
-        dragContainer.append(dragItem)
+        if (drag_container.children().length === 0) {
+            drag_container.removeClass('d-none');
+            let generateReportBtn = drag_container.closest('.reportCreateSection').find('.generate-report');
+            let generateReportContainer = generateReportBtn.closest('.generate-report-container')
+            generateReportBtn.removeClass('disabled').removeAttr('disabled');
+            generateReportContainer.removeAttr('data-bs-original-title data-toggle')
+        }
+
+        drag_container.append(dragItem)
 
     })
 })
