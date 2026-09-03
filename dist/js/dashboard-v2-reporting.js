@@ -1086,7 +1086,7 @@ $(function () {
 
         if (drag_container.children().length === 0) {
             drag_container.addClass('d-none');
-            
+
             let generateReportBtn = drag_container.closest('.reportCreateSection').find('.generate-report');
             let generateReportContainer = generateReportBtn.closest('.generate-report-container')
             generateReportBtn.addClass('disabled').prop('disabled', true);
@@ -1704,7 +1704,7 @@ $(function () {
                     ...options,
                     pieHole: 0.55,
                     pieSliceText: "none",
-                    legend: { alignment: "center", bold: true },
+                    legend: { alignment: 'center', textStyle: { italic: true } },
                     pieSliceBorderColor: "transparent",
                     chartArea: {
                         height: '80%',
