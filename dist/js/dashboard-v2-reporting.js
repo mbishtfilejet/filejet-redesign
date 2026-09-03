@@ -1330,9 +1330,25 @@ $(function () {
                 "operator": "equals",
                 "type": "date",
                 "value": {
-                    "from": "01/01/2025",
-                    "to": ""
+                    "from": "09/03/2025",
+                    "to": "09/03/2026"
                 }
+            }
+        ],
+        "system-registration-notgood":[
+            {
+                "property": "status",
+                "type": "dropdown",
+                "operator": "one_of",
+                "value": ["Not Good Standing"]
+            }
+        ],
+        "system-registration-next90":[
+            {
+                "property": "status",
+                "type": "dropdown",
+                "operator": "one_of",
+                "value": ["Not Good Standing"]
             }
         ]
     }
@@ -1396,14 +1412,14 @@ $(function () {
             const filterKey = target.data('filter');
 
             if (isSystemReport) {
-                if (filterKey === "order") {
+                
                     const filters = savedFilters[`system-${filterKey}`] || [];
 
                     filters.forEach((filter, index) => {
                         let filterGridEl = $(targetElement).find('.filter-grid').not('.filter-template').eq(index);
                         applyPreSelectFilter(filterGridEl, filter.property, filter.operator, filter.value, typeBasedOnField, operatorsBasedOnType, optionsByField);
                     });
-                }
+                
             } else {
 
                 const filters = savedFilters[filterKey] || [];
