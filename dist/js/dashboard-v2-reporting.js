@@ -1330,8 +1330,8 @@ $(function () {
                 "operator": "equals",
                 "type": "date",
                 "value": {
-                    "from": "09/03/2025",
-                    "to": "09/03/2026"
+                    "from": moment().subtract(12, 'months').format("MM/DD/YYYY"),
+                    "to": moment().format("MM/DD/YYYY")
                 }
             }
         ],
