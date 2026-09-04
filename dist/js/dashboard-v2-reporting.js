@@ -1086,7 +1086,7 @@ $(function () {
 
         if (drag_container.children().length === 0) {
             drag_container.addClass('d-none');
-            
+
             let generateReportBtn = drag_container.closest('.reportCreateSection').find('.generate-report');
             let generateReportContainer = generateReportBtn.closest('.generate-report-container')
             generateReportBtn.addClass('disabled').prop('disabled', true);
@@ -1335,7 +1335,7 @@ $(function () {
                 }
             }
         ],
-        "system-registration-notgood":[
+        "system-registration-notgood": [
             {
                 "property": "status",
                 "type": "dropdown",
@@ -1343,7 +1343,7 @@ $(function () {
                 "value": ["Not Good Standing"]
             }
         ],
-        "system-registration-next90":[
+        "system-registration-next90": [
             {
                 "property": "status",
                 "type": "dropdown",
@@ -1412,14 +1412,14 @@ $(function () {
             const filterKey = target.data('filter');
 
             if (isSystemReport) {
-                
-                    const filters = savedFilters[`system-${filterKey}`] || [];
 
-                    filters.forEach((filter, index) => {
-                        let filterGridEl = $(targetElement).find('.filter-grid').not('.filter-template').eq(index);
-                        applyPreSelectFilter(filterGridEl, filter.property, filter.operator, filter.value, typeBasedOnField, operatorsBasedOnType, optionsByField);
-                    });
-                
+                const filters = savedFilters[`system-${filterKey}`] || [];
+
+                filters.forEach((filter, index) => {
+                    let filterGridEl = $(targetElement).find('.filter-grid').not('.filter-template').eq(index);
+                    applyPreSelectFilter(filterGridEl, filter.property, filter.operator, filter.value, typeBasedOnField, operatorsBasedOnType, optionsByField);
+                });
+
             } else {
 
                 const filters = savedFilters[filterKey] || [];
@@ -1456,52 +1456,11 @@ $(function () {
 
     });
 
-    const chartDatas = {
-        entity_type: [
-            ['Entity Type', 'Count', { role: 'style' }],
-            ["LLC", 5, "#D85A30"],
-            ["LLP", 10, "#E47755"],
-            ["INC", 5, "#EE9478"],
-            ["CORP", 1, "#F5B29D"],
-            ["PLC", 4, "#FBD7CB"]
-        ],
+    let chartDatas = ""
 
-        state: [
-            ['State', 'Percentage', { role: 'style' }],
-            ['CA', 32, '#E73B18'],
-            ['TX', 24, '#FFB60C'],
-            ['NY', 18, '#00B2EB'],
-            ['FL', 12, '#00BA70'],
-            ['IL', 8, '#F9C6B8']
-        ],
-        status: [
-            ["Status", "Count", { role: 'style' }],
-            ["In Good Standing", 15, '#00BA70'],
-            ["Not Good Standing", 8, '#E73B18'],
-            ["Inactive", 3, '#8690A0'],
-            ["Unknown", 5, '#1a4d9e'],
-        ],
-        "order_status": [
-            ["Status", "Count", { role: 'style' }],
-            ["In Process", 5, '#4744D1'],
-            ["Sent To State", 4, '#00B2EB'],
-            ["Recently Completed", 5, "#00BA70"],
-        ],
-        "payment_status": [
-            ["Status", "Count", { role: 'style' }],
-            ["In Process", 5, '#ff7a47'],
-            ["Paid", 4, '#ffa600'],
-        ],
-        "group": [
-            ["Group", "Count", { role: 'style' }, { role: 'tooltip' }],
-            ["Adept HR", 1, '#FF1744', "Adept HR"],
-            ["Burkhalter Kessler Clement & George LLP", 1, '#00E676', "Burkhalter Kessler Clement & George LLP"],
-            ["Christopher Law Group, Inc.", 1, '#FFD600', "Christopher Law Group, Inc."],
-            ["SAN JOAQUIN ACCOUNTING", 1, '#651FFF', "SAN JOAQUIN ACCOUNTING"],
-            ["Convey Health Solutions", 1, '#00B8D4', "Convey Health Solutions"],
-        ],
-
-    };
+    fetch('./data5.json').then(res => res.json()).then(data => {
+        chartDatas = data.charts_Data
+    })
 
 
     google.charts.load("current", {
@@ -1574,6 +1533,17 @@ $(function () {
         const chartData = chartDatas[selectedValue];
 
         if (!chartData) return;
+
+        const isEmpty =
+            chartData.length <= 1 ||
+            chartData.slice(1).every(row =>
+                !row || row.length === 0 || Number(row[1] || 0) === 0
+            );
+
+        if (isEmpty) {
+            drawEmptyChart(box, type);
+            return;
+        }
 
 
         let data = google.visualization.arrayToDataTable(chartData);
@@ -1697,6 +1667,95 @@ $(function () {
 
         });
     }
+
+    function drawEmptyChart(box, type) {
+
+        const container = box.find(".chart-container .chart")[0];
+
+        box.find(".pie-legend").remove();
+
+        let options = {
+            backgroundColor: "transparent",
+            tooltip: {
+                trigger: "none"
+            },
+            animation: {
+                startup: true,
+                duration: 1000,
+                easing: 'out'
+            },
+            fontName: "Sora",
+            fontSize: "11",
+            colors: ["#E5E7EB"],
+        };
+        let chart;
+        let data = google.visualization.arrayToDataTable([
+            ["", "Count"],
+            ["", 0]
+        ]);
+
+        switch (type) {
+            case "pie":
+                data = google.visualization.arrayToDataTable([
+                    ["", "Count"],
+                    ["No Data Available", 1]
+                ]);
+                options = {
+                    ...options,
+                    pieHole: 0.55,
+                    pieSliceText: "none",
+                    legend: { alignment: 'center', textStyle: { italic: true } },
+                    pieSliceBorderColor: "transparent",
+                    chartArea: {
+                        height: '80%',
+                        width: '90%',
+                    }
+                };
+
+                chart = new google.visualization.PieChart(container);
+                break;
+
+
+            case "line":
+
+
+                options = {
+                    ...options,
+                    legend: "none",
+                    vAxis: {
+                        minValue: 0,
+                        maxValue: 2,
+                    },
+                    hAxis: {
+                        title: "No Data Available"
+                    }
+                };
+
+                chart = new google.visualization.LineChart(container);
+                break;
+
+
+            default: // bar
+
+                options = {
+                    ...options,
+                    legend: "none",
+                    hAxis: {
+                        minValue: 0,
+                        maxValue: 2,
+                        title: "No Data Available",
+                    },
+                    vAxis: {
+                        textPosition: "none"
+                    }
+                };
+
+                chart = new google.visualization.BarChart(container);
+        }
+
+        chart.draw(data, options);
+    }
+
 
 
     function renderCharts(section) {
