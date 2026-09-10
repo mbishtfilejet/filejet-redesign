@@ -1,6 +1,16 @@
 $(function () {
 
     function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
+
+
+        if (amount < 0) {
+            const formatted = new Intl.NumberFormat(locale, {
+                style: 'currency',
+                currency
+            }).format(Math.abs(amount));
+            return `$(${formatted.replace('$', '')})`;
+        }
+
         return new Intl.NumberFormat(locale, {
             style: 'currency',
             currency: currency
