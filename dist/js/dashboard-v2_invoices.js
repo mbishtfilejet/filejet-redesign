@@ -143,8 +143,18 @@ $(function () {
             { data: "entity_name", width: "160px" },
             { data: "location_#", className: "min-width-90" },
             {
-                data: "paid_amount", render: function (data) {
+                data: "paid_amount",
+                render: function (data, type, row) {
                     return formatCurrency(data)
+                },
+
+                createdCell: function (td, cellData, rowData) {
+
+                    if (rowData.payment_type.toLowerCase() === 'refund') {
+
+                        $(td).addClass('text-danger')
+                    }
+
                 },
                 class: "min-width-70"
             },
