@@ -27942,82 +27942,84 @@
                               <label for="" class="form-label w-100">Start Date</label>
                               <input class="form-control w-100" placeholder="Start Date" value="">
                            </fieldset>
-                           <fieldset class="mb-4">
+                           <fieldset class="">
                               <label for="" class="form-label">Total Authorized Shares <span
                                     class="mandatory">*</span></label>
-                              <input type="text" class="form-control" placeholder="Total number of shares">
+                              <input type="text" class="form-control total-share-input" placeholder="Total number of shares">
                            </fieldset>
-                           <div class="d-flex align-items-center gap-3 justify-content-between">
-                              <fieldset class="w-50">
-                                 <label for="firstDeposit" class="form-label">Total Gross Assets</label>
-                                 <input type="text" id="firstDeposit" class="form-control"
-                                    placeholder="Total Gross Assets">
-                              </fieldset>
-                              <fieldset class="w-50">
-                                 <label for="secondDeposit" class=" form-label">Total Issued Shares</label>
-                                 <input type="text" id="secondDeposit" class="form-control"
-                                    placeholder="Total Issued shares">
-                              </fieldset>
-                           </div>
-
-                           <hr>
-
-                           <div class="entitytable split-shareTable border rounded-3 my-3 h-auto">
-                              <div class="rounded-3 overflow-hidden" id="all">
-                                 <table data-ordering="false"
-                                    class="table table-striped long-data-table-listing w-100 border-1">
-                                    <thead>
-                                       <tr>
-                                          <th data-orderable="false">Stock Class</th>
-                                          <th data-orderable="false" class="">Number of Authorized Shares</th>
-                                          <th data-orderable="false" class="">Par Value</th>
-                                          <th data-orderable="false" class=""></th>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr class="odd parent-row">
-                                          <td>Comman</td>
-                                          <td>1</td>
-                                          <td>$15</td>
-                                          <td>
-                                             <span data-toggle="tooltip" aria-label="DELETE"
-                                                data-bs-original-title="DELETE"
-                                                class="icon icon-entity-delete icon-sm m-0"></span>
-                                          </td>
-                                       </tr>
-                                    </tbody>
-                                 </table>
+                           <div class="more-share-form mt-4 d-none">
+                              <div class="d-flex align-items-center gap-3 justify-content-between">
+                                 <fieldset class="w-50">
+                                    <label for="firstDeposit" class="form-label">Total Gross Assets</label>
+                                    <input type="text" id="firstDeposit" class="form-control"
+                                       placeholder="Total Gross Assets">
+                                 </fieldset>
+                                 <fieldset class="w-50">
+                                    <label for="secondDeposit" class=" form-label">Total Issued Shares</label>
+                                    <input type="text" id="secondDeposit" class="form-control"
+                                       placeholder="Total Issued shares">
+                                 </fieldset>
                               </div>
-                           </div>
 
-                           <div class="shareInputs collapse mt-4" id="split-shares-inputs-1">
-                              <fieldset class="mb-4">
-                                 <label for="" class="form-label">Class</label>
-                                 <input type="text" class="form-control" id="" placeholder="Class">
-                              </fieldset>
-                              <fieldset class="mb-4">
-                                 <label for="" class="form-label">Number of Authorized Shares</label>
-                                 <input type="text" class="form-control" id=""
-                                    placeholder="Number of Authorized Shares">
-                              </fieldset>
-                              <fieldset class="mb-4">
-                                 <label for="" class="form-label ">PAR VALUE</label>
-                                 <div class="priceInput">
-                                    <input type="text" class="form-control " id="" placeholder="Par value">
+                              <hr>
+
+                              <div class="entitytable split-shareTable border rounded-3 my-3 h-auto">
+                                 <div class="rounded-3 overflow-hidden" id="all">
+                                    <table data-ordering="false"
+                                       class="table table-striped long-data-table-listing w-100 border-1">
+                                       <thead>
+                                          <tr>
+                                             <th data-orderable="false">Stock Class</th>
+                                             <th data-orderable="false" class="">Number of Authorized Shares</th>
+                                             <th data-orderable="false" class="">Par Value</th>
+                                             <th data-orderable="false" class=""></th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr class="odd parent-row">
+                                             <td>Comman</td>
+                                             <td>1</td>
+                                             <td>$15</td>
+                                             <td>
+                                                <span data-toggle="tooltip" aria-label="DELETE"
+                                                   data-bs-original-title="DELETE"
+                                                   class="icon icon-entity-delete icon-sm m-0"></span>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
                                  </div>
-                              </fieldset>
-                              <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3"
-                                 data-bs-toggle="collapse" data-bs-target="#split-shares-inputs-1" aria-expanded="false"
+                              </div>
+
+                              <div class="shareInputs collapse mt-4" id="split-shares-inputs-1">
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">Class</label>
+                                    <input type="text" class="form-control" id="" placeholder="Class">
+                                 </fieldset>
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label">Number of Authorized Shares</label>
+                                    <input type="text" class="form-control" id=""
+                                       placeholder="Number of Authorized Shares">
+                                 </fieldset>
+                                 <fieldset class="mb-4">
+                                    <label for="" class="form-label ">PAR VALUE</label>
+                                    <div class="priceInput">
+                                       <input type="text" class="form-control " id="" placeholder="Par value">
+                                    </div>
+                                 </fieldset>
+                                 <button type="button" class="btn btn-small py-0 px-5 rounded-3 ms-3"
+                                    data-bs-toggle="collapse" data-bs-target="#split-shares-inputs-1"
+                                    aria-expanded="false" aria-controls="split-sharesTable-inputs">
+                                    ADD
+                                 </button>
+                              </div>
+                              <button type="button" class="btn p-0 addmoreshare" id="" data-bs-toggle="collapse"
+                                 data-bs-target="#split-shares-inputs-1" aria-expanded="false"
                                  aria-controls="split-sharesTable-inputs">
-                                 ADD
+                                 <span class="icon icon-add-circle-plus m-0 mb-1 me-1"></span>
+                                 Add
                               </button>
                            </div>
-                           <button type="button" class="btn p-0 addmoreshare" id=""
-                              data-bs-toggle="collapse" data-bs-target="#split-shares-inputs-1" aria-expanded="false"
-                              aria-controls="split-sharesTable-inputs">
-                              <span class="icon icon-add-circle-plus m-0 mb-1 me-1"></span>
-                              Add
-                           </button>
                         </div>
 
                         <div data-template class="tab-pane fade d-none" id="" role="tabpanel">
@@ -28033,12 +28035,13 @@
                               <label for="" class="form-label w-100">Start Date</label>
                               <input class="form-control w-100" placeholder="Start Date" data-temp-startdate value="">
                            </fieldset>
-                           <fieldset class="mb-4">
+                           <fieldset class="">
                               <label for="" class="form-label">Total Authorized Shares <span
                                     class="mandatory">*</span></label>
-                              <input type="text" class="form-control" placeholder="Total number of shares">
+                              <input type="text" class="form-control total-share-input" placeholder="Total number of shares">
                            </fieldset>
-                           <div class="d-flex align-items-center gap-3 justify-content-between">
+                           <div class="more-share-form mt-4">
+                              <div class="d-flex align-items-center gap-3 justify-content-between">
                               <fieldset class="w-50">
                                  <label for="firstDeposit" class="form-label">Total Gross Assets</label>
                                  <input type="text" id="firstDeposit" class="form-control"
@@ -28103,12 +28106,13 @@
                                  ADD
                               </button>
                            </div>
-                           <button type="button" data-temp-addShare
-                              class="btn p-0 addmoreshare" id="" data-bs-toggle="collapse"
-                              data-bs-target="" aria-expanded="false" aria-controls="split-sharesTable-inputs">
+                           <button type="button" data-temp-addShare class="btn p-0 addmoreshare" id=""
+                              data-bs-toggle="collapse" data-bs-target="" aria-expanded="false"
+                              aria-controls="split-sharesTable-inputs">
                               <span class="icon icon-add-circle-plus m-0 mb-1 me-1"></span>
                               Add
                            </button>
+                           </div>
                         </div>
                      </div>
                      <div class="tax_section mt-4">
