@@ -4,11 +4,11 @@ $(document).ready(function () {
     const section = $(this);
 
     // Initial setup
-    section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form, .bill-to-client').hide();
+    section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form, .bill-to-client, .on-terms-delaware-alert').hide();
 
     section.find('.pricing-method').on('change', function () {
       const selected = $(this).val();
-      section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form, .bill-to-client').hide();
+      section.find('.on-file-content, .add-new-content, .ach-form, .credit-card-form, .bill-to-client, .on-terms-delaware-alert').hide();
 
       if (selected === 'account-default') {
         // No additional section shown
@@ -21,6 +21,8 @@ $(document).ready(function () {
         section.find('.ach-form').show();
       } else if (selected === "bill-to-client") {
         section.find('.bill-to-client').show();
+      } else if (selected === "on-terms-delaware") {
+        section.find('.on-terms-delaware-alert').show();
       }
     });
 
@@ -504,10 +506,10 @@ document.addEventListener("DOMContentLoaded", function () {
         corporateForm.style.display = 'none';
         section.classList.add('show-addmore');
 
-        parent.find(sectionSelector).find(individualFilledSelector).each(function(){
+        parent.find(sectionSelector).find(individualFilledSelector).each(function () {
           this.style.display = 'none'
         })
-        
+
         individualFilledForm.style.display = 'block';
         individualAddBtn.style.display = 'none';
         individualUpdateBtn.classList.remove('d-none');
@@ -519,7 +521,7 @@ document.addEventListener("DOMContentLoaded", function () {
         individualForm.style.display = 'none';
         corporateForm.style.display = 'none';
         section.classList.add('show-addmore');
-        parent.find(sectionSelector).find(corporateFilledSelector).each(function(){
+        parent.find(sectionSelector).find(corporateFilledSelector).each(function () {
           this.style.display = 'none'
         })
         corporateFilledForm.style.display = 'block';
