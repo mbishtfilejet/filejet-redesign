@@ -131,7 +131,7 @@ const optionsByField = {
     "group": ["Technology Partners", "Commercial Services"],
     "order_status": ["In Process", "Sent to State", "Recently Completed"],
     "services": ["Annual Report", "CTA BOI", "SOP"],
-    "payment_status": ["In Progress", "Paid"]
+    "payment_status": ["Paid", "Partially Paid", "Failed", "Pending"]
 }
 
 function formatAsOfDate(date) {
