@@ -244,7 +244,7 @@ function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
 }
 
 const generateId = () =>
-        `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
 
 $(function () {
@@ -681,6 +681,30 @@ $(function () {
         initializeSplitDatePicker(input, sectionId, prevTab, activeTab);
 
     });
+
+
+    $(document).on('input', '.total-share-input', function () {
+
+        const input = $(this);
+        const parent = input.closest(".tab-pane");
+        const target = parent.find(".more-share-form");
+
+        const value = Number(input.val())
+        console.log(value)
+
+        if (value > 5000) {
+            target
+                .removeClass('d-none')
+                .hide()
+                .fadeIn(300);
+            parent.find('.long-data-table-listing').DataTable().columns.adjust();
+        } else {
+            target.fadeOut(300, function () {
+                $(this).addClass('d-none');
+            });
+        }
+    });
+
 
 })
 
