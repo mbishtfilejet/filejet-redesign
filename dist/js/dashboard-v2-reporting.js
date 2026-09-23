@@ -131,7 +131,7 @@ const optionsByField = {
     "group": ["Technology Partners", "Commercial Services"],
     "order_status": ["In Process", "Sent to State", "Recently Completed"],
     "services": ["Annual Report", "CTA BOI", "SOP"],
-    "payment_status": ["Paid", "Partially Paid", "Failed", "Pending"]
+    "payment_status": ["Paid", "Partially Paid", "Payment Failed", "Pending"]
 }
 
 function formatAsOfDate(date) {
@@ -1204,6 +1204,11 @@ $(function () {
                 data: $(this).data("key"),
                 ...($(this).data("width") && { width: $(this).data("width") }),
                 ...($(this).data("key") === "status" && {
+                    render: function (data, type, row) {
+                        return `<span class="badge badge-${data.class}">${data.label}</span>`
+                    },
+                }),
+                ...($(this).data("key") === "payment_status" && {
                     render: function (data, type, row) {
                         return `<span class="badge badge-${data.class}">${data.label}</span>`
                     },
