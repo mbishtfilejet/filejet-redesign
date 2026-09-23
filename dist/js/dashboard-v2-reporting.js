@@ -1492,7 +1492,7 @@ $(function () {
         return {
             backgroundColor: "transparent",
             tooltip: {
-                trigger: "none"
+                trigger: "none",
             },
             height: Math.max(200, data.getNumberOfRows() * 50),
             animation: {
@@ -1558,12 +1558,6 @@ $(function () {
         let options = getBaseOptions(data);
         let chart;
 
-        let hasTooltip = Array.from(
-            { length: data.getNumberOfColumns() },
-            (_, index) => data.getColumnRole(index)
-        ).includes('tooltip');
-
-
         switch (type) {
 
             case "pie":
@@ -1577,7 +1571,11 @@ $(function () {
                     chartArea: {
                         width: '80%',
                         height: '80%'
-                    }
+                    },
+                    tooltip: {
+                        trigger: "focus",
+                        isHtml: true
+                    },
                 };
 
                 const pieLegendBox = $('<div class="pie-legend"></div>');
@@ -1589,7 +1587,7 @@ $(function () {
                         .reduce((sum, row) => sum + row[1], 0);
 
 
-                    const percentage = Math.round((item[1] / total) * 100);
+                    const percentage = (item[1] / total) * 100;
 
                     pieLegendBox.append(`
                         <div class="legend-item" data-index="${index}">
@@ -1599,7 +1597,7 @@ $(function () {
                             ></span>
 
                             <span class="legend-label">
-                                ${item[0]}-${percentage}%
+                                ${item[0]}-${item[1]}(${percentage.toFixed(1)}%)
                             </span>
                         </div>
                     `);
@@ -1617,11 +1615,10 @@ $(function () {
             case "line":
                 options = {
                     ...options,
-                    ...(hasTooltip && {
-                        tooltip: {
-                            trigger: 'focus'
-                        }
-                    }),
+                    tooltip: {
+                        trigger: "focus",
+                        isHtml: true,
+                    },
                 };
                 chart = new google.visualization.LineChart(container);
                 break;
@@ -1634,11 +1631,10 @@ $(function () {
                     chartArea: {
                         left: 100
                     },
-                    ...(hasTooltip && {
-                        tooltip: {
-                            trigger: 'focus'
-                        }
-                    })
+                    tooltip: {
+                        trigger: "focus",
+                        isHtml: true,
+                    },
                 };
 
                 data = truncateData(data);
