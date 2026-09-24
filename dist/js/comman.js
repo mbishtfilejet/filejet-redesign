@@ -690,16 +690,18 @@ $(function () {
         const target = parent.find(".more-share-form");
 
         const value = Number(input.val())
-        console.log(value)
+
+        target.stop(true, true)
 
         if (value > 5000) {
             target
                 .removeClass('d-none')
                 .hide()
-                .fadeIn(300);
-            parent.find('.long-data-table-listing').DataTable().columns.adjust();
+                .fadeIn(100, function () {
+                    parent.find('.long-data-table-listing').DataTable().columns.adjust();
+                });
         } else {
-            target.fadeOut(300, function () {
+            target.fadeOut(30, function () {
                 $(this).addClass('d-none');
             });
         }

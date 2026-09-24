@@ -131,7 +131,7 @@ const optionsByField = {
     "group": ["Technology Partners", "Commercial Services"],
     "order_status": ["In Process", "Sent to State", "Recently Completed"],
     "services": ["Annual Report", "CTA BOI", "SOP"],
-    "payment_status": ["Paid", "Partially Paid", "Failed", "Pending"]
+    "payment_status": ["Paid", "Partially Paid", "Payment Failed", "Pending"]
 }
 
 function formatAsOfDate(date) {
@@ -1208,6 +1208,11 @@ $(function () {
                         return `<span class="badge badge-${data.class}">${data.label}</span>`
                     },
                 }),
+                ...($(this).data("key") === "payment_status" && {
+                    render: function (data, type, row) {
+                        return `<span class="badge badge-${data.class}">${data.label}</span>`
+                    },
+                }),
                 ...($(this).data('key') === "tags" && {
                     render: function (data, type, row) {
                         return renderTagsOnRow(data)
@@ -1492,7 +1497,7 @@ $(function () {
         return {
             backgroundColor: "transparent",
             tooltip: {
-                trigger: "none"
+                trigger: "focus",
             },
             height: Math.max(200, data.getNumberOfRows() * 50),
             animation: {
@@ -1506,23 +1511,23 @@ $(function () {
         };
     }
 
-    function truncateData(data) {
-        var newData = data.clone();
+    // function truncateData(data) {
+    //     var newData = data.clone();
 
-        for (var i = 0; i < newData.getNumberOfRows(); i++) {
-            var name = newData.getValue(i, 0);
+    //     for (var i = 0; i < newData.getNumberOfRows(); i++) {
+    //         var name = newData.getValue(i, 0);
 
-            if (name && name.length > 20) {
-                newData.setValue(
-                    i,
-                    0,
-                    name.substring(0, 20) + '...'
-                );
-            }
-        }
+    //         if (name && name.length > 20) {
+    //             newData.setValue(
+    //                 i,
+    //                 0,
+    //                 name.substring(0, 20) + '...'
+    //             );
+    //         }
+    //     }
 
-        return newData;
-    }
+    //     return newData;
+    // }
 
 
     function drawChart(box, chartDatas) {
@@ -1558,12 +1563,6 @@ $(function () {
         let options = getBaseOptions(data);
         let chart;
 
-        let hasTooltip = Array.from(
-            { length: data.getNumberOfColumns() },
-            (_, index) => data.getColumnRole(index)
-        ).includes('tooltip');
-
-
         switch (type) {
 
             case "pie":
@@ -1577,7 +1576,10 @@ $(function () {
                     chartArea: {
                         width: '80%',
                         height: '80%'
-                    }
+                    },
+                    // tooltip: {
+                    //     trigger: "none",
+                    // },
                 };
 
                 const pieLegendBox = $('<div class="pie-legend"></div>');
@@ -1589,7 +1591,7 @@ $(function () {
                         .reduce((sum, row) => sum + row[1], 0);
 
 
-                    const percentage = Math.round((item[1] / total) * 100);
+                    const percentage = (item[1] / total) * 100;
 
                     pieLegendBox.append(`
                         <div class="legend-item" data-index="${index}">
@@ -1599,7 +1601,7 @@ $(function () {
                             ></span>
 
                             <span class="legend-label">
-                                ${item[0]}-${percentage}%
+                                ${item[1]} ${item[0]}
                             </span>
                         </div>
                     `);
@@ -1617,11 +1619,6 @@ $(function () {
             case "line":
                 options = {
                     ...options,
-                    ...(hasTooltip && {
-                        tooltip: {
-                            trigger: 'focus'
-                        }
-                    }),
                 };
                 chart = new google.visualization.LineChart(container);
                 break;
@@ -1634,14 +1631,12 @@ $(function () {
                     chartArea: {
                         left: 100
                     },
-                    ...(hasTooltip && {
-                        tooltip: {
-                            trigger: 'focus'
-                        }
-                    })
+                    vAxis: {
+                        maxTextLines: 2,     // Forces the text to stay on one line
+                    }
                 };
 
-                data = truncateData(data);
+                // data = truncateData(data);
 
                 chart = new google.visualization.BarChart(container);
         }
