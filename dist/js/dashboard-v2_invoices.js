@@ -28,7 +28,8 @@ $(function () {
         },
         processing: true,
         scrollX: true,
-        scrollY: false,
+        scrollY: "79vh",
+        scrollCollapse: true,
         columns: [
             { data: "group_name", width: "160px" },
             { data: "entity_name", width: "160px" },
