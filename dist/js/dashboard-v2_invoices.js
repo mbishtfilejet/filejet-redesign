@@ -35,7 +35,7 @@ $(function () {
             { data: "store_no", className: "min-width-90" },
             { data: "orderId" },
             { data: "external_reference_no", className: "min-width-100" },
-            { data: "date", className: "min-width-90" },
+            { data: "date", className: "min-width-100" },
             { data: "age" },
             {
                 data: "amount", render: function (data) {
