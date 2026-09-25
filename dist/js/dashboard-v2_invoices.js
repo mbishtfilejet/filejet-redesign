@@ -28,27 +28,26 @@ $(function () {
         },
         processing: true,
         scrollX: true,
-        scrollY: "79vh",
-        scrollCollapse: true,
+        scrollY: false,
         columns: [
-            { data: "group_name", width: "160px" },
-            { data: "entity_name", width: "160px" },
+            { data: "group_name", className: "min-width-100" },
+            { data: "entity_name", className: "min-width-100" },
             { data: "store_no", className: "min-width-90" },
-            { data: "orderId", width: "80px" },
+            { data: "orderId" },
             { data: "external_reference_no", className: "min-width-100" },
-            { data: "date", width: "80px" },
-            { data: "age", width: "40px" },
+            { data: "date", className: "min-width-90" },
+            { data: "age" },
             {
                 data: "amount", render: function (data) {
                     return formatCurrency(data)
                 },
-                className: "min-width-70"
+                className: "min-width-90"
             },
             {
                 data: "due", render: function (data) {
                     return formatCurrency(data)
                 },
-                className: "min-width-70"
+                className: "min-width-90"
             },
             {
                 data: null, render: function (data, type, row) {
@@ -63,6 +62,7 @@ $(function () {
             }
         ],
         order: [[0, "asc"]],
+        autoWidth: false,
         lengthChange: false,  // Removed pagination
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
@@ -171,6 +171,7 @@ $(function () {
             }
         ],
         order: [[0, "asc"]],
+        autoWidth: false,
         lengthChange: false,  // Removed pagination
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
