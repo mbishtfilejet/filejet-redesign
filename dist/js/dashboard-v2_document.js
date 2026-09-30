@@ -174,6 +174,24 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window.innerWidth <= 1600 && ["sopStatusContainer", "sopCheckContainer", "SOPjurisdictionContainer", "RAjurisdictionContainer"].includes(containerId)) return 1;
       // added-code-end
 
+      if (dropdown.closest('.report-filter-value')) {
+            if (window.innerWidth <= 798) {
+                return 2;
+            }
+            if (window.innerWidth <= 990) {
+                return 4;
+            }
+            else if (window.innerWidth <= 1200) {
+                return 2;
+            }
+            else if (window.innerWidth <= 1400) {
+                return 3;
+            }
+            else {
+                return 4;
+            }
+        }
+
       if (window.innerWidth < 1300) {
         if ([
           "addjurisdictionContainer", "roleContainer1", "roleContainer2", "roleContainer4",
