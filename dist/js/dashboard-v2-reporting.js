@@ -53,11 +53,14 @@ const operatorsBasedOnType = {
 
 const optionsByField = {
     "status": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown", "In Process", "Draft", "Overdue"],
-    "director": ['CEO', "President", 'CTO', 'VC', 'Others'],
-    "registrations": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown"],
+    "director": ['role'],
+    "registrations": ['entity_type', 'state', 'formation_type', 'registrations_status'],
+    "registrations_status": ['In Good Standing', "Not Good Standing", "Inactive", "Unknown"],
     "formation_type": ["Home", "Foreign"],
-    "business_licenses": ["Active", "Inactive", "In Progress"],
-    "dba": ["Active", "Inactive", "In Progress"],
+    "business_licenses": ["state", "business_licenses_status"],
+    "business_licenses_status": ["Active", "Inactive", "In Progress"],
+    "dba": ['state', 'dba_status'],
+    "dba_status": ["Active", "Inactive", "In Progress"],
     "tags": ["Amendments", "Business License", "Merger", "25102f", "Certificate of Cancellation", "Beneficial Ownership Information Report", "Annual Report", "Restate", "EIN", "Certificate of Correction", "Formations", "DBA: Doing Business As"],
     "entity_type": [
         "LLC",
@@ -128,6 +131,7 @@ const optionsByField = {
         "Wisconsin",
         "Wyoming"
     ],
+    "role": ['CEO', "President", 'CTO', 'VC', 'Others'],
     "group": ["Technology Partners", "Commercial Services"],
     "order_status": ["In Process", "Sent to State", "Recently Completed"],
     "services": ["Annual Report", "CTA BOI", "SOP"],
@@ -206,8 +210,6 @@ function initializeFilterDateRangePicker(selector, isAsofDate = false) {
 }
 
 function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], value = null) {
-
-    let isSearchDisabled = multSelectList.length <= 5;
 
     switch (selectedCased) {
         case "address":
@@ -323,7 +325,7 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                         <input type="text" class="search-input" id="mutli-selectSearch-${uniqueId}" placeholder="Value"
                         autocomplete="off">
                 </div>
-                <ul class="dropdown-menu ${isSearchDisabled ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
+                <ul class="dropdown-menu ${multSelectList.length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
                 ${multSelectList.map(val => `<li>
                         <label class="dropdown-item">
                             <input type="checkbox" class="form-check-input mutli-select-checkbox-${uniqueId} me-2"
@@ -348,93 +350,66 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                 </div>
         
             `;
-        case "complex-registrations":
+        case "complex-registrations": {
+
+            const complexmultiselectList = {}
+
+            multSelectList.forEach(val => {
+                complexmultiselectList[val] = optionsByField[val];
+            });
+
             return `
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                 <input id="complex-name-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
                     placeholder="Name" value="${value?.name || ""}">
             </div>
-            <div class="col-5 flex-grow-1 complex-value">
-                <select id=complex-entityType-${uniqueId}" class="form-select custom-form-select" name="">
-                    <option value="" disabled="" ${!value ? "selected" : ""}  hidden="" data-full-text="Select Entity Type">Entity Type</option>
-                    <option value="1" ${value?.entity_type === "LLC" ? "selected" : ""} data-full-text="LLC">LLC</option>
-                    <option value="2" ${value?.entity_type === "Profit Corporation - General" ? "selected" : ""} data-full-text="Profit Corporation - General">Profit Corporation - General </option>
-                    <option value="3" ${value?.entity_type === "Profit Corporation - Professional" ? "selected" : ""} data-full-text="Profit Corporation - Professional">Profit Corporation - Professional </option>
-                    <option value="4" ${value?.entity_type === "Profit Corporation - Close" ? "selected" : ""} data-full-text="Profit Corporation - Close">Profit Corporation - Close </option>
-                    <option value="5" ${value?.entity_type === "Non-Profit - Religious" ? "selected" : ""} data-full-text="Non-Profit - Religious">Non-Profit - Religious</option>
-                    <option value="6" ${value?.entity_type === "Non-Profit - Mutual Benefit" ? "selected" : ""} data-full-text="Non-Profit - Mutual Benefit">Non-Profit - Mutual Benefit</option>
-                    <option value="7" ${value?.entity_type === "Non-Profit - Public Benefit" ? "selected" : ""} data-full-text="Non-Profit - Public Benefit">Non-Profit - Public Benefit</option>
-                    <option value="8" ${value?.entity_type === "Non-Profit - Common Interest Development" ? "selected" : ""} data-full-text="Non-Profit - Common Interest Development">Non-Profit - Common Interest Development</option>
-                    <option value="9" ${value?.entity_type === "Non-Profit - Exempt" ? "selected" : ""} data-full-text="Non-Profit - Exempt">Non-Profit - Exempt</option>
-                    <option value="10" ${value?.entity_type === "LLP" ? "selected" : ""} data-full-text="LLP">LLP</option>
-                    <option value="11" ${value?.entity_type === "LP" ? "selected" : ""} data-full-text="LP">LP</option>
-                    <option value="12" ${value?.entity_type === "GP" ? "selected" : ""} data-full-text="GP">GP</option>
-                    <option value="13" ${value?.entity_type === "Professional Limited Liability Company" ? "selected" : ""} data-full-text="Professional Limited Liability Company">Professional Limited Liability Company</option>
-                    <option value="14" ${value?.entity_type === "Trust" ? "selected" : ""} data-full-text="Trust">Trust</option>
-                </select>
+            <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                    id="mutli-selectContainer-entity_type-${uniqueId}" data-label="Entity Type" data-bs-toggle="dropdown"
+                    aria-expanded="false" tabindex="0">
+                        <input type="text" class="search-input" id="mutli-selectSearch-entity_type-${uniqueId}" placeholder="Entity Type"
+                        autocomplete="off">
+                </div>
+                <ul class="dropdown-menu ${complexmultiselectList["entity_type"].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-entity_type-${uniqueId}">
+                ${complexmultiselectList["entity_type"].map(val => `<li>
+                        <label class="dropdown-item">
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-entity_type-${uniqueId} me-2"
+                                data-value="${val}">${val}
+                        </label>
+                    </li>` ).join('')}
+                </ul>
             </div>
-            <div class="col-5 flex-grow-1 complex-value">
-                <select id="complex-state-${uniqueId}" class="form-select custom-form-select" name="">
-                    <option value="" disabled="" ${!value ? "selected" : ""} hidden="" data-full-text="State">State</option>
-                    <option value="1" ${value?.state === "Alabama" ? "selected" : ""} data-full-text="Alabama">Alabama</option>
-                    <option value="2" ${value?.state === "Alaska" ? "selected" : ""} data-full-text="Alaska">Alaska</option>
-                    <option value="3" ${value?.state === "Arizona" ? "selected" : ""} data-full-text="Arizona">Arizona</option>
-                    <option value="4" ${value?.state === "Arkansas" ? "selected" : ""} data-full-text="Arkansas">Arkansas</option>
-                    <option value="5" ${value?.state === "California" ? "selected" : ""} data-full-text="California">California</option>
-                    <option value="6" ${value?.state === "Colorado" ? "selected" : ""} data-full-text="Colorado">Colorado</option>
-                    <option value="7" ${value?.state === "Connecticut" ? "selected" : ""} data-full-text="Connecticut">Connecticut</option>
-                    <option value="8" ${value?.state === "Delaware" ? "selected" : ""} data-full-text="Delaware">Delaware</option>
-                    <option value="9" ${value?.state === "District of Columbia" ? "selected" : ""} data-full-text="District of Columbia">District of Columbia</option>
-                    <option value="10" ${value?.state === "Florida" ? "selected" : ""} data-full-text="Florida">Florida</option>
-                    <option value="11" ${value?.state === "Georgia" ? "selected" : ""} data-full-text="Georgia">Georgia</option>
-                    <option value="12" ${value?.state === "Hawaii" ? "selected" : ""} data-full-text="Hawaii">Hawaii</option>
-                    <option value="13" ${value?.state === "Idaho" ? "selected" : ""} data-full-text="Idaho">Idaho</option>
-                    <option value="14" ${value?.state === "Illinois" ? "selected" : ""} data-full-text="Illinois">Illinois</option>
-                    <option value="15" ${value?.state === "Indiana" ? "selected" : ""} data-full-text="Indiana">Indiana</option>
-                    <option value="16" ${value?.state === "Iowa" ? "selected" : ""} data-full-text="Iowa">Iowa</option>
-                    <option value="17" ${value?.state === "Kansas" ? "selected" : ""} data-full-text="Kansas">Kansas</option>
-                    <option value="18" ${value?.state === "Kentucky" ? "selected" : ""} data-full-text="Kentucky">Kentucky</option>
-                    <option value="19" ${value?.state === "Louisiana" ? "selected" : ""} data-full-text="Louisiana">Louisiana</option>
-                    <option value="20" ${value?.state === "Maine" ? "selected" : ""} data-full-text="Maine">Maine</option>
-                    <option value="21" ${value?.state === "Maryland" ? "selected" : ""} data-full-text="Maryland">Maryland</option>
-                    <option value="22" ${value?.state === "Massachusetts" ? "selected" : ""} data-full-text="Massachusetts">Massachusetts</option>
-                    <option value="23" ${value?.state === "Michigan" ? "selected" : ""} data-full-text="Michigan">Michigan</option>
-                    <option value="24" ${value?.state === "Minnesota" ? "selected" : ""} data-full-text="Minnesota">Minnesota</option>
-                    <option value="25" ${value?.state === "Mississippi" ? "selected" : ""} data-full-text="Mississippi">Mississippi</option>
-                    <option value="26" ${value?.state === "Missouri" ? "selected" : ""} data-full-text="Missouri">Missouri</option>
-                    <option value="27" ${value?.state === "Montana" ? "selected" : ""} data-full-text="Montana">Montana</option>
-                    <option value="28" ${value?.state === "Nebraska" ? "selected" : ""} data-full-text="Nebraska">Nebraska</option>
-                    <option value="29" ${value?.state === "Nevada" ? "selected" : ""} data-full-text="Nevada">Nevada</option>
-                    <option value="30" ${value?.state === "New Hampshire" ? "selected" : ""} data-full-text="New Hampshire">New Hampshire</option>
-                    <option value="31" ${value?.state === "New Jersey" ? "selected" : ""} data-full-text="New Jersey">New Jersey</option>
-                    <option value="32" ${value?.state === "New Mexico" ? "selected" : ""} data-full-text="New Mexico">New Mexico</option>
-                    <option value="33" ${value?.state === "New York" ? "selected" : ""} data-full-text="New York">New York</option>
-                    <option value="34" ${value?.state === "North Carolina" ? "selected" : ""} data-full-text="North Carolina">North Carolina</option>
-                    <option value="35" ${value?.state === "North Dakota" ? "selected" : ""} data-full-text="North Dakota">North Dakota</option>
-                    <option value="36" ${value?.state === "Ohio" ? "selected" : ""} data-full-text="Ohio">Ohio</option>
-                    <option value="37" ${value?.state === "Oklahoma" ? "selected" : ""} data-full-text="Oklahoma">Oklahoma</option>
-                    <option value="38" ${value?.state === "Oregon" ? "selected" : ""} data-full-text="Oregon">Oregon</option>
-                    <option value="39" ${value?.state === "Pennsylvania" ? "selected" : ""} data-full-text="Pennsylvania">Pennsylvania</option>
-                    <option value="40" ${value?.state === "Rhode Island" ? "selected" : ""} data-full-text="Rhode Island">Rhode Island</option>
-                    <option value="41" ${value?.state === "South Carolina" ? "selected" : ""} data-full-text="South Carolina">South Carolina</option>
-                    <option value="42" ${value?.state === "South Dakota" ? "selected" : ""} data-full-text="South Dakota">South Dakota</option>
-                    <option value="43" ${value?.state === "Tennessee" ? "selected" : ""} data-full-text="Tennessee">Tennessee</option>
-                    <option value="44" ${value?.state === "Texas" ? "selected" : ""} data-full-text="Texas">Texas</option>
-                    <option value="45" ${value?.state === "Utah" ? "selected" : ""} data-full-text="Utah">Utah</option>
-                    <option value="46" ${value?.state === "Vermont" ? "selected" : ""} data-full-text="Vermont">Vermont</option>
-                    <option value="47" ${value?.state === "Virginia" ? "selected" : ""} data-full-text="Virginia">Virginia</option>
-                    <option value="48" ${value?.state === "Washington" ? "selected" : ""} data-full-text="Washington">Washington</option>
-                    <option value="49" ${value?.state === "West Virginia" ? "selected" : ""} data-full-text="West Virginia">West Virginia</option>
-                    <option value="50" ${value?.state === "Wisconsin" ? "selected" : ""} data-full-text="Wisconsin">Wisconsin</option>
-                    <option value="51" ${value?.state === "Wyoming" ? "selected" : ""} data-full-text="Wyoming">Wyoming</option>
-                </select>
+            <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                    id="mutli-selectContainer-state-${uniqueId}" data-label="State" data-bs-toggle="dropdown"
+                    aria-expanded="false" tabindex="0">
+                        <input type="text" class="search-input" id="mutli-selectSearch-state-${uniqueId}" placeholder="State"
+                        autocomplete="off">
+                </div>
+                <ul class="dropdown-menu ${complexmultiselectList["state"].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-state-${uniqueId}">
+                ${complexmultiselectList["state"].map(val => `<li>
+                        <label class="dropdown-item">
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-state-${uniqueId} me-2"
+                                data-value="${val}">${val}
+                        </label>
+                    </li>` ).join('')}
+                </ul>
             </div>
-            <div class="col-5 flex-grow-1 complex-value">
-                <select id="formation-type-${uniqueId}" class="form-select custom-form-select" name="">
-                    <option value="" disabled="" ${!value ? "selected" : ""} hidden="" data-full-text="Formation Type">Formation Type</option>
-                    <option value="1" ${value?.formation_type === "Home" ? 'selected' : ''} data-full-text="Home">Home</option>
-                    <option value="2" ${value?.formation_type === 'Foreign' ? 'selected' : ''} data-full-text="Foreign">Foreign</option>
-                </select>
+            <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                    id="mutli-selectContainer-formation_type-${uniqueId}" data-label="Formation Type" data-bs-toggle="dropdown"
+                    aria-expanded="false" tabindex="0">
+                        <input type="text" class="search-input" id="mutli-selectSearch-formation_type-${uniqueId}" placeholder="Formation Type"
+                        autocomplete="off">
+                </div>
+                <ul class="dropdown-menu ${complexmultiselectList["formation_type"].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-formation_type-${uniqueId}">
+                ${complexmultiselectList["formation_type"].map(val => `<li>
+                        <label class="dropdown-item">
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-formation_type-${uniqueId} me-2"
+                                data-value="${val}">${val}
+                        </label>
+                    </li>` ).join('')}
+                </ul>
             </div>
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                 <input id="complex-fileNum-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
@@ -442,15 +417,15 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
             </div>
             <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
                 <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
-                    id="mutli-selectContainer-${uniqueId}" data-label="Status" data-bs-toggle="dropdown"
+                    id="mutli-selectContainer-registrations_status-${uniqueId}" data-label="Status" data-bs-toggle="dropdown"
                     aria-expanded="false" tabindex="0">
-                        <input type="text" class="search-input" id="mutli-selectSearch-${uniqueId}" placeholder="Status"
+                        <input type="text" class="search-input" id="mutli-selectSearch-registrations_status-${uniqueId}" placeholder="Status"
                         autocomplete="off">
                 </div>
-                <ul class="dropdown-menu ${isSearchDisabled ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
-                ${multSelectList.map(val => `<li>
+                <ul class="dropdown-menu ${complexmultiselectList['registrations_status'].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-registrations_status-${uniqueId}">
+                ${complexmultiselectList['registrations_status'].map(val => `<li>
                         <label class="dropdown-item">
-                            <input type="checkbox" class="form-check-input mutli-select-checkbox-${uniqueId} me-2"
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-registrations_status-${uniqueId} me-2"
                                 data-value="${val}">${val}
                         </label>
                     </li>` ).join('')}
@@ -461,38 +436,53 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                     placeholder="Next Report Date" value="${value?.next_report_date || ""}">
             </div>
             `;
+        }
         case "complex-director":
-            return `
-            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
-                        <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                            placeholder="Name" value="${value?.name || ""}">
+            {
+                const complexmultiselectList = {}
+
+                multSelectList.forEach(val => {
+                    complexmultiselectList[val] = optionsByField[val];
+                });
+
+                return `
+                <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                            <input id="complex-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                                placeholder="Name" value="${value?.name || ""}">
+                        </div>
+                <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                    <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                        id="mutli-selectContainer-role-${uniqueId}" data-label="Role" data-bs-toggle="dropdown"
+                        aria-expanded="false" tabindex="0">
+                            <input type="text" class="search-input" id="mutli-selectSearch-role-${uniqueId}" placeholder="Role"
+                            autocomplete="off">
                     </div>
-            <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
-                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
-                    id="mutli-selectContainer-${uniqueId}" data-label="Role" data-bs-toggle="dropdown"
-                    aria-expanded="false" tabindex="0">
-                        <input type="text" class="search-input" id="mutli-selectSearch-${uniqueId}" placeholder="Role"
-                        autocomplete="off">
+                    <ul class="dropdown-menu ${complexmultiselectList['role'].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-role-${uniqueId}">
+                    ${complexmultiselectList['role'].map(val => `<li>
+                            <label class="dropdown-item">
+                                <input type="checkbox" class="form-check-input mutli-select-checkbox-role-${uniqueId} me-2"
+                                    data-value="${val}">${val}
+                            </label>
+                        </li>` ).join('')}
+                    </ul>
                 </div>
-                <ul class="dropdown-menu ${isSearchDisabled ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
-                ${multSelectList.map(val => `<li>
-                        <label class="dropdown-item">
-                            <input type="checkbox" class="form-check-input mutli-select-checkbox-${uniqueId} me-2"
-                                data-value="${val}">${val}
-                        </label>
-                    </li>` ).join('')}
-                </ul>
-            </div>
-            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
-                        <input id="complex-email-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                            placeholder="Email" value="${value?.email || ""}">
-            </div>
-            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                    <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                        placeholder="Select Date" value="${formatAsOfDate(value?.start) || ""}">
-            </div>
-            `;
-        case "complex-dba":
+                <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                            <input id="complex-email-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                                placeholder="Email" value="${value?.email || ""}">
+                </div>
+                <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                        <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                            placeholder="Select Date" value="${formatAsOfDate(value?.start) || ""}">
+                </div>
+                `;
+            }
+        case "complex-dba": {
+            const complexmultiselectList = {}
+
+            multSelectList.forEach(val => {
+                complexmultiselectList[val] = optionsByField[val];
+            });
+
             return `
             <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
                 <input id="complex-tradename-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
@@ -510,170 +500,99 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                 <input id="complex-county-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
                     placeholder="County" value="${value?.county || ""}">
             </div>
-            <div class="col-5 flex-grow-1 complex-value">
-                <select id="complex-state-${uniqueId}" class="form-select custom-form-select" name="">
-                    <option value="" disabled="" ${!value ? "selected" : ""} hidden="" data-full-text="State">State</option>
-                    <option value="1" ${value?.state === "Alabama" ? "selected" : ""} data-full-text="Alabama">Alabama</option>
-                    <option value="2" ${value?.state === "Alaska" ? "selected" : ""} data-full-text="Alaska">Alaska</option>
-                    <option value="3" ${value?.state === "Arizona" ? "selected" : ""} data-full-text="Arizona">Arizona</option>
-                    <option value="4" ${value?.state === "Arkansas" ? "selected" : ""} data-full-text="Arkansas">Arkansas</option>
-                    <option value="5" ${value?.state === "California" ? "selected" : ""} data-full-text="California">California</option>
-                    <option value="6" ${value?.state === "Colorado" ? "selected" : ""} data-full-text="Colorado">Colorado</option>
-                    <option value="7" ${value?.state === "Connecticut" ? "selected" : ""} data-full-text="Connecticut">Connecticut</option>
-                    <option value="8" ${value?.state === "Delaware" ? "selected" : ""} data-full-text="Delaware">Delaware</option>
-                    <option value="9" ${value?.state === "District of Columbia" ? "selected" : ""} data-full-text="District of Columbia">District of Columbia</option>
-                    <option value="10" ${value?.state === "Florida" ? "selected" : ""} data-full-text="Florida">Florida</option>
-                    <option value="11" ${value?.state === "Georgia" ? "selected" : ""} data-full-text="Georgia">Georgia</option>
-                    <option value="12" ${value?.state === "Hawaii" ? "selected" : ""} data-full-text="Hawaii">Hawaii</option>
-                    <option value="13" ${value?.state === "Idaho" ? "selected" : ""} data-full-text="Idaho">Idaho</option>
-                    <option value="14" ${value?.state === "Illinois" ? "selected" : ""} data-full-text="Illinois">Illinois</option>
-                    <option value="15" ${value?.state === "Indiana" ? "selected" : ""} data-full-text="Indiana">Indiana</option>
-                    <option value="16" ${value?.state === "Iowa" ? "selected" : ""} data-full-text="Iowa">Iowa</option>
-                    <option value="17" ${value?.state === "Kansas" ? "selected" : ""} data-full-text="Kansas">Kansas</option>
-                    <option value="18" ${value?.state === "Kentucky" ? "selected" : ""} data-full-text="Kentucky">Kentucky</option>
-                    <option value="19" ${value?.state === "Louisiana" ? "selected" : ""} data-full-text="Louisiana">Louisiana</option>
-                    <option value="20" ${value?.state === "Maine" ? "selected" : ""} data-full-text="Maine">Maine</option>
-                    <option value="21" ${value?.state === "Maryland" ? "selected" : ""} data-full-text="Maryland">Maryland</option>
-                    <option value="22" ${value?.state === "Massachusetts" ? "selected" : ""} data-full-text="Massachusetts">Massachusetts</option>
-                    <option value="23" ${value?.state === "Michigan" ? "selected" : ""} data-full-text="Michigan">Michigan</option>
-                    <option value="24" ${value?.state === "Minnesota" ? "selected" : ""} data-full-text="Minnesota">Minnesota</option>
-                    <option value="25" ${value?.state === "Mississippi" ? "selected" : ""} data-full-text="Mississippi">Mississippi</option>
-                    <option value="26" ${value?.state === "Missouri" ? "selected" : ""} data-full-text="Missouri">Missouri</option>
-                    <option value="27" ${value?.state === "Montana" ? "selected" : ""} data-full-text="Montana">Montana</option>
-                    <option value="28" ${value?.state === "Nebraska" ? "selected" : ""} data-full-text="Nebraska">Nebraska</option>
-                    <option value="29" ${value?.state === "Nevada" ? "selected" : ""} data-full-text="Nevada">Nevada</option>
-                    <option value="30" ${value?.state === "New Hampshire" ? "selected" : ""} data-full-text="New Hampshire">New Hampshire</option>
-                    <option value="31" ${value?.state === "New Jersey" ? "selected" : ""} data-full-text="New Jersey">New Jersey</option>
-                    <option value="32" ${value?.state === "New Mexico" ? "selected" : ""} data-full-text="New Mexico">New Mexico</option>
-                    <option value="33" ${value?.state === "New York" ? "selected" : ""} data-full-text="New York">New York</option>
-                    <option value="34" ${value?.state === "North Carolina" ? "selected" : ""} data-full-text="North Carolina">North Carolina</option>
-                    <option value="35" ${value?.state === "North Dakota" ? "selected" : ""} data-full-text="North Dakota">North Dakota</option>
-                    <option value="36" ${value?.state === "Ohio" ? "selected" : ""} data-full-text="Ohio">Ohio</option>
-                    <option value="37" ${value?.state === "Oklahoma" ? "selected" : ""} data-full-text="Oklahoma">Oklahoma</option>
-                    <option value="38" ${value?.state === "Oregon" ? "selected" : ""} data-full-text="Oregon">Oregon</option>
-                    <option value="39" ${value?.state === "Pennsylvania" ? "selected" : ""} data-full-text="Pennsylvania">Pennsylvania</option>
-                    <option value="40" ${value?.state === "Rhode Island" ? "selected" : ""} data-full-text="Rhode Island">Rhode Island</option>
-                    <option value="41" ${value?.state === "South Carolina" ? "selected" : ""} data-full-text="South Carolina">South Carolina</option>
-                    <option value="42" ${value?.state === "South Dakota" ? "selected" : ""} data-full-text="South Dakota">South Dakota</option>
-                    <option value="43" ${value?.state === "Tennessee" ? "selected" : ""} data-full-text="Tennessee">Tennessee</option>
-                    <option value="44" ${value?.state === "Texas" ? "selected" : ""} data-full-text="Texas">Texas</option>
-                    <option value="45" ${value?.state === "Utah" ? "selected" : ""} data-full-text="Utah">Utah</option>
-                    <option value="46" ${value?.state === "Vermont" ? "selected" : ""} data-full-text="Vermont">Vermont</option>
-                    <option value="47" ${value?.state === "Virginia" ? "selected" : ""} data-full-text="Virginia">Virginia</option>
-                    <option value="48" ${value?.state === "Washington" ? "selected" : ""} data-full-text="Washington">Washington</option>
-                    <option value="49" ${value?.state === "West Virginia" ? "selected" : ""} data-full-text="West Virginia">West Virginia</option>
-                    <option value="50" ${value?.state === "Wisconsin" ? "selected" : ""} data-full-text="Wisconsin">Wisconsin</option>
-                    <option value="51" ${value?.state === "Wyoming" ? "selected" : ""} data-full-text="Wyoming">Wyoming</option>
-                </select>
+            <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                    id="mutli-selectContainer-state-${uniqueId}" data-label="State" data-bs-toggle="dropdown"
+                    aria-expanded="false" tabindex="0">
+                        <input type="text" class="search-input" id="mutli-selectSearch-state-${uniqueId}" placeholder="State"
+                        autocomplete="off">
+                </div>
+                <ul class="dropdown-menu ${complexmultiselectList['state'].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-state-${uniqueId}">
+                ${complexmultiselectList['state'].map(val => `<li>
+                        <label class="dropdown-item">
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-state-${uniqueId} me-2"
+                                data-value="${val}">${val}
+                        </label>
+                    </li>` ).join('')}
+                </ul>
             </div>
             <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
                 <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
-                    id="mutli-selectContainer-${uniqueId}" data-label="Status" data-bs-toggle="dropdown"
+                    id="mutli-selectContainer-dba_status-${uniqueId}" data-label="Status" data-bs-toggle="dropdown"
                     aria-expanded="false" tabindex="0">
-                        <input type="text" class="search-input" id="mutli-selectSearch-${uniqueId}" placeholder="Status"
+                        <input type="text" class="search-input" id="mutli-selectSearch-dba_status-${uniqueId}" placeholder="Status"
                         autocomplete="off">
                 </div>
-                <ul class="dropdown-menu ${isSearchDisabled ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
-                ${multSelectList.map(val => `<li>
+                <ul class="dropdown-menu ${complexmultiselectList['dba_status'].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-dba_status-${uniqueId}">
+                ${complexmultiselectList['dba_status'].map(val => `<li>
                         <label class="dropdown-item">
-                            <input type="checkbox" class="form-check-input mutli-select-checkbox-${uniqueId} me-2"
+                            <input type="checkbox" class="form-check-input mutli-select-checkbox-dba_status-${uniqueId} me-2"
                                 data-value="${val}">${val}
                         </label>
                     </li>` ).join('')}
                 </ul>
             </div>
             `;
+        }
         case "complex-business_licenses":
-            return `
-            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
-                <input id="complex-licenseName-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                    placeholder="License Name" value="${value?.license_name || ""}">
-            </div>
-            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
-                <input id="complex-city_or_county-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                    placeholder="City/County" value="${value?.city_or_county || ""}">
-            </div>
-            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
-                <input id="complex-license_num-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                    placeholder="License Number" value="${value?.License_number || ""}">
-            </div>
-            <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
-                <input id="complex-entityName-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
-                    placeholder="Entity Name" value="${value?.entity_name || ""}">
-            </div>
-            <div class="col-5 flex-grow-1 complex-value">
-                <select id="complex-state-${uniqueId}" class="form-select custom-form-select" name="">
-                    <option value="" disabled="" ${!value ? "selected" : ""} hidden="" data-full-text="State">State</option>
-                    <option value="1" ${value?.state === "Alabama" ? "selected" : ""} data-full-text="Alabama">Alabama</option>
-                    <option value="2" ${value?.state === "Alaska" ? "selected" : ""} data-full-text="Alaska">Alaska</option>
-                    <option value="3" ${value?.state === "Arizona" ? "selected" : ""} data-full-text="Arizona">Arizona</option>
-                    <option value="4" ${value?.state === "Arkansas" ? "selected" : ""} data-full-text="Arkansas">Arkansas</option>
-                    <option value="5" ${value?.state === "California" ? "selected" : ""} data-full-text="California">California</option>
-                    <option value="6" ${value?.state === "Colorado" ? "selected" : ""} data-full-text="Colorado">Colorado</option>
-                    <option value="7" ${value?.state === "Connecticut" ? "selected" : ""} data-full-text="Connecticut">Connecticut</option>
-                    <option value="8" ${value?.state === "Delaware" ? "selected" : ""} data-full-text="Delaware">Delaware</option>
-                    <option value="9" ${value?.state === "District of Columbia" ? "selected" : ""} data-full-text="District of Columbia">District of Columbia</option>
-                    <option value="10" ${value?.state === "Florida" ? "selected" : ""} data-full-text="Florida">Florida</option>
-                    <option value="11" ${value?.state === "Georgia" ? "selected" : ""} data-full-text="Georgia">Georgia</option>
-                    <option value="12" ${value?.state === "Hawaii" ? "selected" : ""} data-full-text="Hawaii">Hawaii</option>
-                    <option value="13" ${value?.state === "Idaho" ? "selected" : ""} data-full-text="Idaho">Idaho</option>
-                    <option value="14" ${value?.state === "Illinois" ? "selected" : ""} data-full-text="Illinois">Illinois</option>
-                    <option value="15" ${value?.state === "Indiana" ? "selected" : ""} data-full-text="Indiana">Indiana</option>
-                    <option value="16" ${value?.state === "Iowa" ? "selected" : ""} data-full-text="Iowa">Iowa</option>
-                    <option value="17" ${value?.state === "Kansas" ? "selected" : ""} data-full-text="Kansas">Kansas</option>
-                    <option value="18" ${value?.state === "Kentucky" ? "selected" : ""} data-full-text="Kentucky">Kentucky</option>
-                    <option value="19" ${value?.state === "Louisiana" ? "selected" : ""} data-full-text="Louisiana">Louisiana</option>
-                    <option value="20" ${value?.state === "Maine" ? "selected" : ""} data-full-text="Maine">Maine</option>
-                    <option value="21" ${value?.state === "Maryland" ? "selected" : ""} data-full-text="Maryland">Maryland</option>
-                    <option value="22" ${value?.state === "Massachusetts" ? "selected" : ""} data-full-text="Massachusetts">Massachusetts</option>
-                    <option value="23" ${value?.state === "Michigan" ? "selected" : ""} data-full-text="Michigan">Michigan</option>
-                    <option value="24" ${value?.state === "Minnesota" ? "selected" : ""} data-full-text="Minnesota">Minnesota</option>
-                    <option value="25" ${value?.state === "Mississippi" ? "selected" : ""} data-full-text="Mississippi">Mississippi</option>
-                    <option value="26" ${value?.state === "Missouri" ? "selected" : ""} data-full-text="Missouri">Missouri</option>
-                    <option value="27" ${value?.state === "Montana" ? "selected" : ""} data-full-text="Montana">Montana</option>
-                    <option value="28" ${value?.state === "Nebraska" ? "selected" : ""} data-full-text="Nebraska">Nebraska</option>
-                    <option value="29" ${value?.state === "Nevada" ? "selected" : ""} data-full-text="Nevada">Nevada</option>
-                    <option value="30" ${value?.state === "New Hampshire" ? "selected" : ""} data-full-text="New Hampshire">New Hampshire</option>
-                    <option value="31" ${value?.state === "New Jersey" ? "selected" : ""} data-full-text="New Jersey">New Jersey</option>
-                    <option value="32" ${value?.state === "New Mexico" ? "selected" : ""} data-full-text="New Mexico">New Mexico</option>
-                    <option value="33" ${value?.state === "New York" ? "selected" : ""} data-full-text="New York">New York</option>
-                    <option value="34" ${value?.state === "North Carolina" ? "selected" : ""} data-full-text="North Carolina">North Carolina</option>
-                    <option value="35" ${value?.state === "North Dakota" ? "selected" : ""} data-full-text="North Dakota">North Dakota</option>
-                    <option value="36" ${value?.state === "Ohio" ? "selected" : ""} data-full-text="Ohio">Ohio</option>
-                    <option value="37" ${value?.state === "Oklahoma" ? "selected" : ""} data-full-text="Oklahoma">Oklahoma</option>
-                    <option value="38" ${value?.state === "Oregon" ? "selected" : ""} data-full-text="Oregon">Oregon</option>
-                    <option value="39" ${value?.state === "Pennsylvania" ? "selected" : ""} data-full-text="Pennsylvania">Pennsylvania</option>
-                    <option value="40" ${value?.state === "Rhode Island" ? "selected" : ""} data-full-text="Rhode Island">Rhode Island</option>
-                    <option value="41" ${value?.state === "South Carolina" ? "selected" : ""} data-full-text="South Carolina">South Carolina</option>
-                    <option value="42" ${value?.state === "South Dakota" ? "selected" : ""} data-full-text="South Dakota">South Dakota</option>
-                    <option value="43" ${value?.state === "Tennessee" ? "selected" : ""} data-full-text="Tennessee">Tennessee</option>
-                    <option value="44" ${value?.state === "Texas" ? "selected" : ""} data-full-text="Texas">Texas</option>
-                    <option value="45" ${value?.state === "Utah" ? "selected" : ""} data-full-text="Utah">Utah</option>
-                    <option value="46" ${value?.state === "Vermont" ? "selected" : ""} data-full-text="Vermont">Vermont</option>
-                    <option value="47" ${value?.state === "Virginia" ? "selected" : ""} data-full-text="Virginia">Virginia</option>
-                    <option value="48" ${value?.state === "Washington" ? "selected" : ""} data-full-text="Washington">Washington</option>
-                    <option value="49" ${value?.state === "West Virginia" ? "selected" : ""} data-full-text="West Virginia">West Virginia</option>
-                    <option value="50" ${value?.state === "Wisconsin" ? "selected" : ""} data-full-text="Wisconsin">Wisconsin</option>
-                    <option value="51" ${value?.state === "Wyoming" ? "selected" : ""} data-full-text="Wyoming">Wyoming</option>
-                </select>
-            </div>
-            <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
-                <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
-                    id="mutli-selectContainer-${uniqueId}" data-label="Status" data-bs-toggle="dropdown"
-                    aria-expanded="false" tabindex="0">
-                        <input type="text" class="search-input" id="mutli-selectSearch-${uniqueId}" placeholder="Status"
-                        autocomplete="off">
+            {
+                const complexmultiselectList = {}
+
+                multSelectList.forEach(val => {
+                    complexmultiselectList[val] = optionsByField[val];
+                });
+
+                return `
+                <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="complex-licenseName-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                        placeholder="License Name" value="${value?.license_name || ""}">
                 </div>
-                <ul class="dropdown-menu ${isSearchDisabled ? "search-disabled" : ''}" id="mutli-selectDropdown-${uniqueId}">
-                ${multSelectList.map(val => `<li>
-                        <label class="dropdown-item">
-                            <input type="checkbox" class="form-check-input mutli-select-checkbox-${uniqueId} me-2"
-                                data-value="${val}">${val}
-                        </label>
-                    </li>` ).join('')}
-                </ul>
-            </div>
-            `;
+                <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="complex-city_or_county-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                        placeholder="City/County" value="${value?.city_or_county || ""}">
+                </div>
+                <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="complex-license_num-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                        placeholder="License Number" value="${value?.License_number || ""}">
+                </div>
+                <div class="col-5 flex-grow-1 complex-value d-flex align-items-center border border-1 rounded shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="complex-entityName-value-${uniqueId}" type="text" class="border-0 p-0 w-100"
+                        placeholder="Entity Name" value="${value?.entity_name || ""}">
+                </div>
+                <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                    <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                        id="mutli-selectContainer-state-${uniqueId}" data-label="State" data-bs-toggle="dropdown"
+                        aria-expanded="false" tabindex="0">
+                            <input type="text" class="search-input" id="mutli-selectSearch-state-${uniqueId}" placeholder="Status"
+                            autocomplete="off">
+                    </div>
+                    <ul class="dropdown-menu ${complexmultiselectList['state'].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-state-${uniqueId}">
+                    ${complexmultiselectList['state'].map(val => `<li>
+                            <label class="dropdown-item">
+                                <input type="checkbox" class="form-check-input mutli-select-checkbox-state-${uniqueId} me-2"
+                                    data-value="${val}">${val}
+                            </label>
+                        </li>` ).join('')}
+                    </ul>
+                </div>
+                <div class="filter2-dropdown col-5 flex-grow-1 complex-value dropdown filter-option">
+                    <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 m-0 white-bg h-100"
+                        id="mutli-selectContainer-business_licenses_status-${uniqueId}" data-label="Status" data-bs-toggle="dropdown"
+                        aria-expanded="false" tabindex="0">
+                            <input type="text" class="search-input" id="mutli-selectSearch-business_licenses_status-${uniqueId}" placeholder="Status"
+                            autocomplete="off">
+                    </div>
+                    <ul class="dropdown-menu ${complexmultiselectList['business_licenses_status'].length < 5 ? "search-disabled" : ''}" id="mutli-selectDropdown-business_licenses_status-${uniqueId}">
+                    ${complexmultiselectList['business_licenses_status'].map(val => `<li>
+                            <label class="dropdown-item">
+                                <input type="checkbox" class="form-check-input mutli-select-checkbox-business_licenses_status-${uniqueId} me-2"
+                                    data-value="${val}">${val}
+                            </label>
+                        </li>` ).join('')}
+                    </ul>
+                </div>
+                `;
+            }
         default:
             return `<div class="single-value d-flex align-items-center 
                         border border-1 rounded shadow-sm m-0 white-bg px-3 py-2 h-100">
@@ -913,7 +832,9 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
         const multiSelectList = optionsByField[propertyKey] || [];
         valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList, value));
         initializeFilterDatePicker(valueSection.find('.datepicker'), propertyKey === "director" || propertyKey === "ownership");
-        setupMultiSelect(`mutli-selectContainer-${uniqueId}`, `mutli-selectDropdown-${uniqueId}`, `mutli-selectSearch-${uniqueId}`, `mutli-select-checkbox-${uniqueId}`, "", value?.data || []);
+        multiSelectList.forEach(val => {
+            setupMultiSelect(`mutli-selectContainer-${val}-${uniqueId}`, `mutli-selectDropdown-${val}-${uniqueId}`, `mutli-selectSearch-${val}-${uniqueId}`, `mutli-select-checkbox-${val}-${uniqueId}`, "", value?.[val] || []);
+        })
     } else {
         valueSection.html(getDynamicValueField(operatorKey === 'between' ? 'value-range' : 'single-value', uniqueId, [], value));
     }
@@ -1297,9 +1218,9 @@ $(function () {
                 "operator": "includes",
                 "type": "complex",
                 "value": {
-                    "state": "Arizona",
-                    "formation_type": "Foreign",
-                    "data": ["In Good Standing"]
+                    "state": ["Arizona"],
+                    "formation_type": ["Foreign"],
+                    "registrations_status": ["In Good Standing"]
                 }
             },
             {
@@ -1311,7 +1232,7 @@ $(function () {
                     "email": "chris@xyz.com",
                     "start": "07/01/2024",
                     "end": "",
-                    "data": ["CTO"]
+                    "role": ["CTO"]
                 }
             }
         ],

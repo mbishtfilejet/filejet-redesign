@@ -727,22 +727,32 @@ function setupMultiSelect(containerId, dropdownId, searchInputId, checkboxClass,
         // added-code-end
 
 
-        if (dropdown.closest('.report-filter-value')) {
-            if (window.innerWidth <= 798) {
-                return 2;
-            }
-            if (window.innerWidth <= 990) {
+        const filterValueContainer = dropdown.closest('.report-filter-value');
+        const dropdownFilterContainer = dropdown.closest('.dropdown.filter-option');
+
+        if (filterValueContainer) {
+            const children = [...filterValueContainer.children];
+            const dropdownIndex = children.indexOf(dropdownFilterContainer);
+            const width = window.innerWidth;
+
+            const isLastOdd =
+                dropdownIndex === children.length - 1 &&
+                dropdownIndex % 2 === 0;
+
+            if (isLastOdd) {
+                if (width <= 798) return 2;
+                if (width <= 990) return 4;
+                if (width <= 1200) return 2;
+                if (width <= 1400) return 3;
                 return 4;
             }
-            else if (window.innerWidth <= 1200) {
-                return 2;
-            }
-            else if (window.innerWidth <= 1400) {
-                return 3;
-            }
-            else {
-                return 4;
-            }
+
+            if (width <= 798) return 1;
+            if (width <= 990) return 2;
+            if (width <= 1550) return 1;
+            if (width <= 1700) return 2;
+
+            return 2;
         }
 
         if (window.innerWidth < 1300) {
