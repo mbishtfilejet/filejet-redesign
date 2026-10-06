@@ -431,10 +431,17 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                     </li>` ).join('')}
                 </ul>
             </div>
-            <div class="col-5 flex-grow-1 complex-value calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                <input id="single-range-${uniqueId}" type="text" class="form-control w-100 border-0 p-0 datepicker h-100"
-                    placeholder="Next Report Date" value="${value?.next_report_date || ""}">
-            </div>
+            <div class="d-flex align-items-center complex-value date-range">
+                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                                    placeholder="Registration Start Date" value="${value?.reg_start_date || ""}">
+                            </div>
+                            <span class="mx-1">to</span>
+                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                                <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
+                                    placeholder="Registration End Date" value="${value?.reg_end_date || ""}">
+                            </div>
+                        </div>
             `;
         }
         case "complex-director":
@@ -832,6 +839,7 @@ function renderFilterValueUI(parent, operatorKey, propertyKey, typeBasedOnField,
         const multiSelectList = optionsByField[propertyKey] || [];
         valueSection.html(getDynamicValueField(`complex-${propertyKey}`, uniqueId, multiSelectList, value));
         initializeFilterDatePicker(valueSection.find('.datepicker'), propertyKey === "director" || propertyKey === "ownership");
+        initializeFilterDateRangePicker(valueSection.find('.complex-value.date-range'));
         multiSelectList.forEach(val => {
             setupMultiSelect(`mutli-selectContainer-${val}-${uniqueId}`, `mutli-selectDropdown-${val}-${uniqueId}`, `mutli-selectSearch-${val}-${uniqueId}`, `mutli-select-checkbox-${val}-${uniqueId}`, "", value?.[val] || []);
         })
@@ -1220,7 +1228,9 @@ $(function () {
                 "value": {
                     "state": ["Arizona"],
                     "formation_type": ["Foreign"],
-                    "registrations_status": ["In Good Standing"]
+                    "registrations_status": ["In Good Standing"],
+                    "reg_start_date": "10/06/2026",
+                    "reg_end_date": "",
                 }
             },
             {
