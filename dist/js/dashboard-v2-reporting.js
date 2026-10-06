@@ -432,16 +432,16 @@ function getDynamicValueField(selectedCased, uniqueId, multSelectList = [], valu
                 </ul>
             </div>
             <div class="d-flex align-items-center complex-value date-range">
-                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
-                                    placeholder="Registration Start Date" value="${value?.reg_start_date || ""}">
-                            </div>
-                            <span class="mx-1">to</span>
-                            <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
-                                <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
-                                    placeholder="Registration End Date" value="${value?.reg_end_date || ""}">
-                            </div>
-                        </div>
+                <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="date-range-${uniqueId}F" type="text" class="from-date form-control w-100 border-0 p-0 datepicker h-100"
+                        placeholder="Next Report Start" value="${value?.reg_start_date || ""}">
+                </div>
+                <span class="mx-1">to</span>
+                <div class="calendar-wrapper d-flex flex-grow-1 align-items-center border rounded-2 shadow-sm m-0 white-bg px-3 py-2">
+                    <input id="date-range-${uniqueId}T" type="text" class="to-date form-control w-100 border-0 p-0 datepicker h-100"
+                        placeholder="Next Report End" value="${value?.reg_end_date || ""}">
+                </div>
+            </div>
             `;
         }
         case "complex-director":
