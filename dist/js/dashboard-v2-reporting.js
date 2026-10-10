@@ -1196,6 +1196,11 @@ $(function () {
 
         const table = $(targetElement).find(tableclass);
 
+        if(table.closest('.scrollHeight').length){
+            tableOptions.scrollY = '70vh';
+            tableOptions.scrollCollapse = "true"
+        }
+
         if ($.fn.DataTable.isDataTable(table)) {
             table.DataTable().destroy();
             table.empty();
