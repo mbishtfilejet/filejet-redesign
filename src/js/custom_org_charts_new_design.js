@@ -84,6 +84,8 @@ function taxShapeTemplate(node, data) {
     }
 }
 
+OrgChart.RENDER_LINKS_BEFORE_NODES = true;
+
 OrgChart.toolbarUI.expandAllIcon = expandAllIcon;
 OrgChart.toolbarUI.fitIcon = fitIcon;
 OrgChart.toolbarUI.zoomInIcon = zoomInIcon;
@@ -132,14 +134,7 @@ OrgChart.templates.entityCard.tax_shape = function (node, data, template, config
 }
 
 
-OrgChart.templates.entityCard.entityName = `
-<text
-style="font-weight: 700;"
-fill="#0f172a"
-x="${CARD.strip + 20}"
-y="30"
->{val}</text>
-`;
+OrgChart.templates.entityCard.entityName = `<text style="font-weight: 700;" fill="#0f172a" x="${CARD.strip + 20}" y="30">{val}</text>`;
 
 OrgChart.templates.entityCard.entityStatus = function (node, data, template, config) {
     let { label, value } = data.entityStatus;
@@ -161,7 +156,7 @@ OrgChart.templates.externalEntityNode = Object.assign({}, OrgChart.templates.ana
 OrgChart.templates.externalEntityNode.size = [CARD.w, CARD.h];
 
 OrgChart.templates.externalEntityNode.node = function (node, data, template, config) {
-    return `<rect x="0" y="0" height="${node.h}" width="${node.w}" fill="#ffffff" stroke-width="1" stroke="#C9CDD2" rx="6" ry="6">
+    return `<rect class="node-card" x="0" y="0" height="${node.h}" width="${node.w}" fill="#ffffff" stroke-width="1" stroke="#C9CDD2" rx="6" ry="6">
     </rect>
     <path d="M6,0 H${CARD.strip} V${node.h} H6 A6,6 0 0 1 0,${node.h - 6} V6 A6,6 0 0 1 6,0 Z" fill="#FF551A" stroke="#C9CDD2"></path>
     `;
@@ -200,7 +195,7 @@ OrgChart.templates.additionalOwners = Object.assign({}, OrgChart.templates.ana);
 OrgChart.templates.additionalOwners.size = [SLIM.w, SLIM.h];
 
 OrgChart.templates.additionalOwners.node = function (node, data, template, config) {
-    return `<rect x="0" y="0" height="${node.h}" width="${node.w}" fill="#F1F9F4" stroke-width="1" stroke="#14AE5C59" rx="3" ry="3">
+    return `<rect class="node-card" x="0" y="0" height="${node.h}" width="${node.w}" fill="#F1F9F4" stroke-width="1" stroke="#14AE5C59" rx="3" ry="3">
     </rect>
     <path d="M6,0 H4 V${node.h} H4 A3,3 0 0 1 0,${node.h - 3} V3 A3,3 0 0 1 3,0 Z" fill="#14AE5C"></path>
     <text style="font-weight: 700;" fill="#5F6368" x="20" y="20">ADDITIONAL OWNERS</text>
@@ -217,7 +212,7 @@ OrgChart.templates.foreignRegistrations = Object.assign({}, OrgChart.templates.a
 OrgChart.templates.foreignRegistrations.size = [SLIM.w, SLIM.h];
 
 OrgChart.templates.foreignRegistrations.node = function (node, data, template, config) {
-    return `<rect x="0" y="0" height="${node.h}" width="${node.w}" fill="#F4F4F5" stroke-width="1" stroke="#92939459" rx="3" ry="3">
+    return `<rect class="node-card" x="0" y="0" height="${node.h}" width="${node.w}" fill="#F4F4F5" stroke-width="1" stroke="#92939459" rx="3" ry="3">
     </rect>
     <path d="M6,0 H4 V${node.h} H4 A3,3 0 0 1 0,${node.h - 3} V3 A3,3 0 0 1 3,0 Z" fill="#5F6368"></path>
     <text style="font-weight: 700;" fill="#5F6368" x="20" y="20">FOREIGN REGISTRATIONS</text>

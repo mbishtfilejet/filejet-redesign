@@ -1,7 +1,7 @@
 .orgchart-dashboard {
 
     [data-n-id] .node-card {
-        transition: stroke 0.14s ease, filter 0.14s ease;
+        transition: filter 0.14s ease;
     }
 
     [data-n-id]:hover .node-card {
@@ -40,7 +40,11 @@
 
     .link.boc-hover .boc-hoverable {
         stroke-width: 5px;
-        stroke: #a1a7aa !important;
+        stroke: #a1a7aa;
+    }
+
+    .boc-light {
+        background-color: transparent;
     }
 
     .path1 {
@@ -68,5 +72,53 @@
             }
 
         }
+    }
+
+    .orgchart-action-section {
+
+        div,
+        button {
+            min-height: 38px;
+        }
+    }
+
+    .orgchart_dropdown .form-select {
+        padding: 0px 10px !important;
+        padding-right: 15px !important;
+        font-size: 12px !important;
+        background-color: transparent;
+        margin-bottom: 0px !important;
+        box-shadow: none !important;
+        background-image: url("../../../dist/images/icons/icon-angle-bottom.svg") !important;
+        background-size: 10px !important;
+        font-weight: bold !important;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        width: 100%;
+        cursor: pointer !important;
+
+        &:focus-within {
+            border: 2px solid var(--bs-filejet-purple-indigo) !important;
+            background-color: #f2f2ff;
+        }
+    }
+
+    .orgchart_dropdown select:focus {
+        box-shadow: none;
+        border: 2px solid var(--bs-filejet-purple-indigo);
+        background-color: #f2f2ff;
+        color: var(--bs-filejet-medium-gray);
+    }
+
+    .orgchart_dropdown option {
+        box-shadow: none;
+        background-color: white;
+        color: var(--bs-filejet-medium-gray);
+    }
+
+
+    .boc-menu {
+        font-family: inherit;
     }
 }
