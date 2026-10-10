@@ -24893,4 +24893,52 @@ body *::-webkit-scrollbar-thumb {
   filter: contrast(0) brightness(2);
 }
 
+.orgchart-dashboard [data-n-id] .node-card {
+  transition: stroke 0.14s ease, filter 0.14s ease;
+}
+.orgchart-dashboard [data-n-id]:hover .node-card {
+  filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.12));
+}
+.orgchart-dashboard [data-n-id] .card-menu {
+  opacity: 0;
+  transition: opacity 0.14s ease;
+}
+.orgchart-dashboard [data-n-id]:hover .card-menu {
+  opacity: 1;
+}
+.orgchart-dashboard [data-n-id] rect {
+  filter: initial;
+  stroke-opacity: initial;
+}
+@media (hover: none) {
+  .orgchart-dashboard [data-n-id] .card-menu {
+    opacity: 1;
+  }
+}
+.orgchart-dashboard [data-boc-right] {
+  position: initial;
+}
+.orgchart-dashboard .link.boc-hover .boc-hoverable {
+  stroke-width: 5px;
+  stroke: greenyellow !important;
+}
+.orgchart-dashboard .path1 {
+  animation: dash 5s linear infinite;
+}
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 100;
+  }
+}
+.orgchart-dashboard #custom-boc-menu {
+  transform: translateX(calc(-105% + 34px));
+  min-width: 195px !important;
+}
+.orgchart-dashboard #custom-boc-menu .boc-menu-item svg {
+  fill: #231F20;
+}
+
 /*# sourceMappingURL=styles.css.map */

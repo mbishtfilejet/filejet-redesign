@@ -14,10 +14,14 @@
     <script src="dist/js/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <style>
+        
+    </style>
+
 
 </head>
 
-<body class="main-dashboard-v2">
+<body class="main-dashboard-v2 orgchart-dashboard">
 
     <div class="filejet-bg dashboard-page  min-vh-100">
         <div class="container-fluid p-0">
@@ -274,9 +278,197 @@
         </div>
     </div>
 
+
+    <!-- Org Chart Filters Modal Start -->
+    <div class="modal modal-right fade filter-slideout SOP-model" id="orgChartFilters" tabindex="-1"
+        aria-labelledby="orgChartFilters-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
+            <div class="modal-content border-0 rounded-0 min-vh-100">
+
+                <!-- Header -->
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <span class="icon icon-filter icon-md me-3"></span>
+                        <h4 class="fw-bold m-0" id="orgChartFilters-modalLabel">Filters</h4>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body">
+
+                    <!-- Filters -->
+                    <div class="mb-4 p-3 bg-white rounded-2">
+                        <div class="row g-3 orgchart-filter">
+                            <fieldset class="col-12 col-md-6">
+                                <label for="filterGroupName" class="form-label">Group Name</label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select" id="filterGroupName">
+                                        <option value="" selected disabled hidden>Select Group Name</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <fieldset class="col-12 col-md-6">
+                                <label for="filterEntityName" class="form-label">Entity Name</label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select" id="filterEntityName">
+                                        <option value="" selected disabled hidden>Select Entity Name</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <fieldset class="col-12 col-md-6">
+                                <label for="filterEntityType" class="form-label">Entity Type</label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select" id="filterEntityType">
+                                        <option value="" selected disabled hidden>Select Entity Type</option>
+                                        <option value="corporation">Corporation</option>
+                                        <option value="llc">LLC</option>
+                                        <option value="partnership">Partnership</option>
+                                        <option value="trust">Trust</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <fieldset class="col-12 col-md-6">
+                                <label for="filterJurisdiction" class="form-label">Jurisdiction</label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select" id="filterJurisdiction">
+                                        <option value="" disabled hidden>Select Jurisdiction</option>
+                                        <option value="delaware" selected>Delaware</option>
+                                        <option value="california">California</option>
+                                        <option value="florida">Florida</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <fieldset class="col-12 col-md-6">
+                                <label for="filterEntityStatus" class="form-label">Entity Status</label>
+                                <div class="custom-dropdown">
+                                    <select class="form-select" id="filterEntityStatus">
+                                        <option value="" selected disabled hidden>Select Entity Status</option>
+                                        <option value="good">In Good Standing</option>
+                                        <option value="not-good">Not in Good Standing</option>
+                                        <option value="dissolved">Dissolved</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <!-- Display Options -->
+                    <div class="accordion mb-4" id="accordionDisplayOptions">
+                        <div class="accordion-item m-0">
+                            <h2 class="accordion-header" id="displayOptionsHeader">
+                                <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseDisplayOptions" aria-expanded="true"
+                                    aria-controls="collapseDisplayOptions">
+                                    Display Options
+                                </button>
+                            </h2>
+                            <div id="collapseDisplayOptions" class="accordion-collapse border-0 collapse show"
+                                aria-labelledby="displayOptionsHeader">
+                                <div class="accordion-body pt-0 d-flex flex-column gap-3">
+                                    <div
+                                        class="form-check form-switch form-check-reverse d-flex justify-content-between align-items-center m-0 p-0">
+                                        <label class="form-check-label" for="showForeignRegistrations">Show foreign
+                                            registrations</label>
+                                        <input class="form-check-input m-0" type="checkbox" role="switch"
+                                            id="showForeignRegistrations" checked>
+                                    </div>
+                                    <div
+                                        class="form-check form-switch form-check-reverse d-flex justify-content-between align-items-center m-0 p-0">
+                                        <label class="form-check-label" for="showAdditionalOwners">Show additional
+                                            owners</label>
+                                        <input class="form-check-input m-0" type="checkbox" role="switch"
+                                            id="showAdditionalOwners" checked>
+                                    </div>
+                                    <div
+                                        class="form-check form-switch form-check-reverse d-flex justify-content-between align-items-center m-0 p-0">
+                                        <label class="form-check-label" for="showTaxShape">Show tax shape</label>
+                                        <input class="form-check-input m-0" type="checkbox" role="switch"
+                                            id="showTaxShape" checked>
+                                    </div>
+                                    <div
+                                        class="form-check form-switch form-check-reverse d-flex justify-content-between align-items-center m-0 p-0">
+                                        <label class="form-check-label" for="showEntityStatus">Show entity
+                                            status</label>
+                                        <input class="form-check-input m-0" type="checkbox" role="switch"
+                                            id="showEntityStatus" checked>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orientation & Layout -->
+                    <div class="accordion mb-4" id="accordionOrientationLayout">
+                        <div class="accordion-item m-0">
+                            <h2 class="accordion-header" id="orientationLayoutHeader">
+                                <button class="accordion-button mb-0" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOrientationLayout" aria-expanded="true"
+                                    aria-controls="collapseOrientationLayout">
+                                    Orientation &amp; Layout
+                                </button>
+                            </h2>
+                            <div id="collapseOrientationLayout" class="accordion-collapse border-0 collapse show"
+                                aria-labelledby="orientationLayoutHeader">
+                                <div class="accordion-body pt-0">
+                                    <div class="row g-3">
+                                        <fieldset class="col-12 col-md-6">
+                                            <label for="chartOrientation" class="form-label">Orientation</label>
+                                            <div class="custom-dropdown">
+                                                <select class="form-select" id="chartOrientation">
+                                                    <option value="top" selected>Top to bottom</option>
+                                                    <option value="bottom">Bottom to top</option>
+                                                    <option value="left">Left to right</option>
+                                                    <option value="right">Right to left</option>
+                                                </select>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="col-12 col-md-6">
+                                            <label for="chartLayout" class="form-label">Layout</label>
+                                            <div class="custom-dropdown">
+                                                <select class="form-select" id="chartLayout">
+                                                    <option value="normal" selected>Wide</option>
+                                                    <option value="mixed">Compact</option>
+                                                    <option value="tree">Tree</option>
+                                                </select>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100 m-0">
+                        <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
+                            id="resetOrgFilters">
+                            RESET
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-info py-0 bg-transparent px-4 rounded-3 ms-3"
+                                id="saveOrgView">
+                                SAVE VIEW
+                            </button>
+                            <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3" id="applyOrgFilters"
+                                data-bs-dismiss="modal">
+                                APPLY
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Org Chart Filters Modal End -->
+
+
     <!-- Edit Form Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model" id="editForm"
-        tabindex="-1" aria-labelledby="editForm-modalLabel" aria-hidden="true">
+    <div class="modal modal-right fade filter-slideout SOP-model" id="editForm" tabindex="-1"
+        aria-labelledby="editForm-modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <div class="modal-header">
@@ -1042,12 +1234,12 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.balkan.app/orgchart.js"></script>
 
-    
-    
+
+
     <!-- Scripts start-->
     <script src="dist/js/plugins.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
-    
+
     <script src="src/js/custom_org_charts_new_design.js"></script>
     <script>
 

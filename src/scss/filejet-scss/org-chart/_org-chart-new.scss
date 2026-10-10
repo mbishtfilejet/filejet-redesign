@@ -1,0 +1,67 @@
+.orgchart-dashboard {
+
+    [data-n-id] .node-card {
+        transition: stroke 0.14s ease, filter 0.14s ease;
+    }
+
+    [data-n-id]:hover .node-card {
+        filter: drop-shadow(0 4px 10px rgba(15, 23, 42, .12));
+    }
+
+    [data-n-id] .card-menu {
+        opacity: 0;
+        transition: opacity 0.14s ease;
+    }
+
+    [data-n-id]:hover .card-menu {
+        opacity: 1;
+    }
+
+    [data-n-id] rect {
+        filter: initial;
+        stroke-opacity: initial;
+    }
+
+    @media (hover: none) {
+        [data-n-id] .card-menu {
+            opacity: 1;
+        }
+    }
+
+
+    [data-boc-right] {
+        position: initial;
+    }
+
+    .link.boc-hover .boc-hoverable {
+        stroke-width: 5px;
+        stroke: greenyellow !important;
+    }
+
+    .path1 {
+        animation: dash 5s linear infinite;
+    }
+
+    @keyframes dash {
+        from {
+            stroke-dashoffset: 0;
+        }
+
+        to {
+            stroke-dashoffset: 100;
+        }
+    }
+
+    #custom-boc-menu {
+        transform: translateX(calc(-105% + 34px));
+        min-width: 195px !important;
+
+        .boc-menu-item {
+
+            svg {
+                fill: #231F20;
+            }
+
+        }
+    }
+}
