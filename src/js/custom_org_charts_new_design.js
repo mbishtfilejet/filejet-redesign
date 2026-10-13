@@ -136,6 +136,17 @@ OrgChart.templates.entityCard.tax_shape = function (node, data, template, config
 
 OrgChart.templates.entityCard.entityName = `<text style="font-weight: 700;" fill="#0f172a" x="${CARD.strip + 20}" y="30">{val}</text>`;
 
+OrgChart.templates.entityCard.state = function (node, data, template, config, value) {
+
+    return `<text
+        style="font-weight: 700;"
+        fill="#0f172a"
+        x="${CARD.strip + 20}"
+        y="30"
+    >{val}</text>
+`;
+}
+
 OrgChart.templates.entityCard.entityStatus = function (node, data, template, config) {
     let { label, value } = data.entityStatus;
     return `<foreignobject width="270" height="30" x="${CARD.strip + 20}"" y="${node.h - 45}">
