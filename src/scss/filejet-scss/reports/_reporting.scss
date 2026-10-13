@@ -42,15 +42,20 @@
 
         .card-title {
             margin: 0;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
-        .card-text {
-            font-size: rem(12);
-        }
-
+        .card-text,
         .card-subtitle {
             font-size: rem(14);
+            font-weight: 400;
+        }
+
+        &.new-report {
+            .card-title {
+                font-weight: normal;
+            }
         }
     }
 
@@ -479,5 +484,24 @@
                 filter: contrast(0) brightness(2);
             }
         }
+    }
+}
+
+.export-loader {
+    display: block;
+    aspect-ratio: 1;
+    margin-inline: auto;
+    border-radius: 50%;
+    background:
+        radial-gradient(farthest-side, #75abe2 94%, #0000) top/8px 8px no-repeat,
+        conic-gradient(#0000 30%, #75abe2);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+    animation: rotateAnimation 1s infinite linear;
+}
+
+@keyframes rotateAnimation {
+    100% {
+        transform: rotate(1turn)
     }
 }

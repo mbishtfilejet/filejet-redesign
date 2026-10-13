@@ -24549,13 +24549,16 @@ body *::-webkit-scrollbar-thumb {
 }
 .reporting-dashboard .report-card .card-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
-.reporting-dashboard .report-card .card-text {
-  font-size: 0.75rem;
-}
+.reporting-dashboard .report-card .card-text,
 .reporting-dashboard .report-card .card-subtitle {
   font-size: 0.875rem;
+  font-weight: 400;
+}
+.reporting-dashboard .report-card.new-report .card-title {
+  font-weight: normal;
 }
 .reporting-dashboard .report-filter {
   cursor: pointer;
@@ -24869,6 +24872,23 @@ body *::-webkit-scrollbar-thumb {
 }
 .column_section .drag_container .drag-item.dragging .icon-close-dark {
   filter: contrast(0) brightness(2);
+}
+
+.export-loader {
+  display: block;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #75abe2 94%, rgba(0, 0, 0, 0)) top/8px 8px no-repeat, conic-gradient(rgba(0, 0, 0, 0) 30%, #75abe2);
+  -webkit-mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 8px), #000 0);
+  mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 8px), #000 0);
+  animation: rotateAnimation 1s infinite linear;
+}
+
+@keyframes rotateAnimation {
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
