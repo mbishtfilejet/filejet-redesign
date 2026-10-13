@@ -28,7 +28,6 @@ $(function () {
         },
         processing: true,
         scrollX: true,
-        scrollY: false,
         columns: [
             { data: "group_name", className: "min-width-100" },
             { data: "entity_name", className: "min-width-100" },
@@ -63,15 +62,13 @@ $(function () {
         ],
         order: [[0, "asc"]],
         autoWidth: false,
+        scrollY: "58vh",
+        scrollCollapse: true,
         lengthChange: false,  // Removed pagination
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
     }
 
-    if ($('#invoices-history-table').closest('.scrollHeight').length) {
-        tableOptions.scrollY = "58vh";
-        tableOptions.scrollCollapse = true;
-    }
     $('#invoices-history-table').DataTable(tableOptions)
 
     // const options = {
@@ -177,14 +174,11 @@ $(function () {
         ],
         order: [[0, "asc"]],
         autoWidth: false,
+        scrollY: "60vh",
+        scrollCollapse: true,
         lengthChange: false,  // Removed pagination
         paging: false,  // Disable pagination
         info: false,    // Hide table info (e.g., "Showing 1 to 10 of 50 entries"
-    }
-
-    if ($('#invoices-payhistory-table').closest('.scrollHeight').length) {
-        pay_his_options.scrollY = "90vh";
-        pay_his_options.scrollCollapse = true;
     }
 
     $('#invoices-payhistory-table').DataTable(pay_his_options)
