@@ -323,14 +323,14 @@ var chart = new OrgChart(document.getElementById("tree"), {
     orderBy: "order",
     lazyLoading: true,
     enableSearch: false,
-    miniMap: true,
+    miniMap: false,
     layout: OrgChart.layout.normal,
     filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'Entity_Name', 'Entity_Type'],
     toolbar: {
         layout: false,
-        zoom: true,
-        fit: true,
-        expandAll: true,
+        zoom: false,
+        fit: false,
+        expandAll: false,
     },
     tags: {
         "externalEntityNode": {
@@ -420,3 +420,9 @@ fetch('data-reboot-redesign.json')
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
     });
+
+$(document).on('click', '[data-single] .icon-btn', function () {
+    $(this)
+        .attr('aria-pressed', 'true')
+        .siblings('.icon-btn').attr('aria-pressed', 'false');
+});
