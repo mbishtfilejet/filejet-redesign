@@ -90,7 +90,7 @@ OrgChart.toolbarUI.expandAllIcon = expandAllIcon;
 OrgChart.toolbarUI.fitIcon = fitIcon;
 OrgChart.toolbarUI.zoomInIcon = zoomInIcon;
 OrgChart.toolbarUI.zoomOutIcon = zoomOutIcon;
-OrgChart.miniMap.width = 156;
+OrgChart.miniMap.width = 162;
 OrgChart.miniMap.height = 110;
 OrgChart.miniMap.padding = 5;
 OrgChart.miniMap.position = {
@@ -137,13 +137,14 @@ OrgChart.templates.entityCard.tax_shape = function (node, data, template, config
 OrgChart.templates.entityCard.entityName = `<text style="font-weight: 700;" fill="#0f172a" x="${CARD.strip + 20}" y="30">{val}</text>`;
 
 OrgChart.templates.entityCard.state = function (node, data, template, config, value) {
+    // console.log(this)
 
     return `<text
-        style="font-weight: 700;"
+        style=""
         fill="#0f172a"
         x="${CARD.strip + 20}"
-        y="30"
-    >{val}</text>
+        y="50"
+    >${value}</text>
 `;
 }
 
@@ -301,8 +302,6 @@ editForm.prototype.hide = function () {
 };
 
 
-
-
 OrgChart.scroll.smooth = 12;
 OrgChart.scroll.speed = 120;
 
@@ -319,18 +318,15 @@ var chart = new OrgChart(document.getElementById("tree"), {
     movable: OrgChart.movable.tree,
     enableDragDrop: true,
     highlightOnHover: "parents",
-    searchDisplayField: 'entityName',
-    orderBy: "order",
     lazyLoading: true,
     enableSearch: false,
-    miniMap: false,
+    miniMap: true,
     layout: OrgChart.layout.normal,
-    filterBy: ['DBA', 'Business_License', 'Group_Name', 'Compliance', 'Jurisdiction', 'Status', 'Entity_Name', 'Entity_Type'],
     toolbar: {
         layout: false,
-        zoom: false,
-        fit: false,
-        expandAll: false,
+        zoom: true,
+        fit: true,
+        expandAll: true,
     },
     tags: {
         "externalEntityNode": {
@@ -396,7 +392,13 @@ var chart = new OrgChart(document.getElementById("tree"), {
         link_field_0: "createdAt"
     },
     editUI: new editForm(),
-
+    filterBy: {
+        "groupName": {},
+        "Entity_Name": {},
+        "Entity_Type": {},
+        "state": {},
+        "entityStatus": {}
+    }
 });
 
 
@@ -422,7 +424,164 @@ fetch('data-reboot-redesign.json')
     });
 
 $(document).on('click', '[data-single] .icon-btn', function () {
-    $(this)
-        .attr('aria-pressed', 'true')
-        .siblings('.icon-btn').attr('aria-pressed', 'false');
+    var $btn = $(this);
+    var $others = $btn.siblings('.icon-btn');
+
+    $btn.attr('aria-pressed', 'true').find('.icon').addClass('active_option');
+    $others.attr('aria-pressed', 'false').find('.icon').removeClass('active_option');
 });
+
+
+$(function () {
+
+    $('.orgchart-view-select').each(function () {
+        $(this).select2({
+            placeholder: $(this).find('option[value=""]').first().text().trim(),
+            width: '100%',
+            dropdownParent: $(this).closest('.orgchart_dropdown')
+        });
+    }).on('select2:open', function () {
+        $(this).closest('.orgchart_dropdown')
+            .find('.select2-search__field')
+            .attr('placeholder', 'Search...');
+    });
+});
+
+
+$(function () {
+    // multiselect filters logic
+
+    var Utils = $.fn.select2.amd.require('select2/utils');
+    var Dropdown = $.fn.select2.amd.require('select2/dropdown');
+    var DropdownSearch = $.fn.select2.amd.require('select2/dropdown/search');
+    var AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody');
+    var MultipleSelection = $.fn.select2.amd.require('select2/selection/multiple');
+    var EventRelay = $.fn.select2.amd.require('select2/selection/eventRelay');
+    var MAX_CHIPS = 1;
+    var MAX_CHARS = 7;
+
+    function ChipSummarySelection() { }
+
+    ChipSummarySelection.prototype.bind = function (decorated, container, $container) {
+        decorated.call(this, container, $container);
+        var $select = this.$element;
+
+        // × removes that option without opening the dropdown
+        this.$selection.on('mousedown click', '.orgchart-chip__remove', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            if (e.type !== 'click') return;
+
+            var id = String($(this).closest('.orgchart-chip').data('id'));
+            if (id === 'all_default') {
+                $select.find('option').prop('selected', false);
+            } else {
+                $select.find('option').filter(function () { return this.value === id; }).prop('selected', false);
+                $select.find('option[value="all_default"]').prop('selected', false);
+            }
+            $select.trigger('change');
+        });
+    };
+
+    ChipSummarySelection.prototype.update = function (decorated, data) {
+        var $rendered = this.$selection.find('.select2-selection__rendered').empty();
+        var isAll = data.some(function (d) { return d.id === 'all_default'; });
+        var selected = data.filter(function (d) { return d.id && d.id !== 'all_default'; });
+
+        if (!selected.length) {
+            $rendered.append($('<span class="select2-selection__summary is-placeholder"></span>').text(this.options.get('placeholder')));
+            return;
+        }
+
+        function chip(id, text) {
+            var label = text.length > MAX_CHARS ? text.slice(0, MAX_CHARS) + '…' : text;
+            return $('<span class="orgchart-chip"></span>').attr({ 'data-id': id, title: text })
+                .append($('<span class="orgchart-chip__text"></span>').text(label))
+                .append('<button type="button" class="orgchart-chip__remove" aria-label="Remove">&times;</button>');
+        }
+
+        if (isAll) {
+            $rendered.append(chip('all_default', 'All'));
+            return;
+        }
+
+        selected.slice(0, MAX_CHIPS).forEach(function (d) {
+            $rendered.append(chip(d.id, d.text.trim()));
+        });
+
+        if (selected.length > MAX_CHIPS) {
+            $rendered.append($('<span class="orgchart-chip orgchart-chip--more"></span>').text('+' + (selected.length - MAX_CHIPS)));
+        }
+    };
+
+    var selectionAdapter = Utils.Decorate(Utils.Decorate(MultipleSelection, ChipSummarySelection), EventRelay);
+    var dropdownAdapter = Utils.Decorate(Utils.Decorate(Dropdown, DropdownSearch), AttachBody);
+
+    var $filters = $('.orgchart-filter-section .form-select');
+
+    $filters.each(function () {
+        var $select = $(this);
+
+        $select.select2({
+            placeholder: $select.data('placeholder'),
+            width: '100%',
+            closeOnSelect: false,
+            selectionAdapter: selectionAdapter,
+            dropdownAdapter: dropdownAdapter,
+            dropdownParent: $select.closest('.orgchart_dropdown')
+        });
+        $select.data('select2').$dropdown.find('.select2-search__field').attr('placeholder', 'Search...');
+    });
+
+    // "All" ticks / unticks every option; unticking any option unticks "All"
+    $filters.on('select2:select select2:unselect', function (e) {
+        var $select = $(this);
+        var isAll = e.params.data.id === 'all_default';
+        var checked = e.type === 'select2:select';
+
+        var $others = $select.find('option').not('[value="all_default"]');
+        if (isAll) $others.prop('selected', checked);
+        $select.find('option[value="all_default"]').prop('selected', $others.length === $others.filter(':selected').length);
+        $select.trigger('change');
+
+        var s2 = $select.data('select2');
+        if (s2.isOpen()) s2.trigger('query', { term: s2.$dropdown.find('.select2-search__field').val() || '' });
+    });
+
+
+    // Make sure filterBy[field] has an entry for every value in the node data
+    function getFilterValues(field) {
+        var ui = chart.filterUI;
+        if (!ui.filterBy) ui.filterBy = {};
+
+        var values = ui.filterBy[field] || (ui.filterBy[field] = {});
+        chart.config.nodes.forEach(function (node) {
+            var v = node[field];
+            if (v != null && v !== '' && !values[v]) {
+                values[v] = { checked: true, text: v };
+            }
+        });
+        return values;
+    }
+
+    $filters.on('change', function () {
+        var field = $(this).data('filter-item');
+        var values = getFilterValues(field);
+
+        var selected = [].concat($(this).val() || [])
+            .filter(function (v) { return v && v !== 'all_default'; });
+
+        for (var value in values) {
+            values[value].checked = !selected.length || selected.includes(value);
+        }
+
+        chart.draw();
+    });
+
+
+
+    $('#clearOrgChartFilters').on('click', function () {
+        $filters.val([]).trigger('change');
+    });
+
+})
