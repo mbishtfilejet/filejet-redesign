@@ -143,7 +143,7 @@ $(function () {
             { data: "payment_method", width: "160px" },
             { data: "orderId", width: "70px" },
             { data: "external_reference_no", className: "id-col" },
-            { data: "entity_name", className: "min-width-100", width: "160px" },
+            { data: "entity_name", className: "min-width-160", width: "160px" },
             { data: "location_#", className: "id-col" },
             {
                 data: "paid_amount",
