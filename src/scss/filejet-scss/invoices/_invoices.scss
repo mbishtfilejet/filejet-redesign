@@ -3,6 +3,38 @@ $color-gray-opacity: #DFDFDF99;
 .invoices-dashboard {
     @extend .entityDetails-dashboard;
 
+
+    .invoicesTableCard {
+        background-color: white;
+        position: relative;
+
+        .table {
+            margin-bottom: 0rem !important;
+        }
+
+        .dataTables_wrapper tbody td {
+            font-weight: 400 !important;
+            color: var(--bs-black-primary) !important;
+            font-size: 12px !important;
+            padding: 0.5rem 0.9rem !important;
+            line-height: 1.25rem !important;
+        }
+
+
+        .dataTables_wrapper .row:last-child:has(.dataTables_info) {
+            display: none !important;
+        }
+
+        .dataTables_wrapper .dataTable thead th:last-child {
+
+            &::after,
+            &::before {
+                right: 7px !important;
+            }
+        }
+    }
+
+
     .invoicesHistoryTable,
     .invoicesPayHistoryTable {
         .dataTables_wrapper .dataTable {
@@ -26,17 +58,20 @@ $color-gray-opacity: #DFDFDF99;
                 }
 
                 &:last-child {
-                    max-width: 60px !important;
+                    max-width: 75px !important;
+                }
+
+                &.id-col {
+                    white-space: nowrap;
+                    overflow-wrap: normal;
+                    word-break: normal;
+                    font-variant-numeric: tabular-nums;
                 }
             }
 
             td.text-danger {
                 @extend .text-danger;
             }
-        }
-
-        .dataTables_wrapper .dataTables_scrollBody {
-            overflow-y: auto !important;
         }
     }
 
