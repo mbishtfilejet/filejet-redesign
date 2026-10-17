@@ -31,9 +31,9 @@ $(function () {
         columns: [
             { data: "group_name", className: "min-width-100" },
             { data: "entity_name", className: "min-width-100" },
-            { data: "store_no", className: "min-width-90" },
+            { data: "store_no", className: "id-col" },
             { data: "orderId" },
-            { data: "external_reference_no", className: "min-width-100" },
+            { data: "external_reference_no", className: "id-col" },
             { data: "date", className: "min-width-100" },
             { data: "age" },
             {
@@ -57,7 +57,7 @@ $(function () {
                     </div>
                 `
                 },
-                width: "55px"
+                width: "min-width-70"
             }
         ],
         order: [[0, "asc"]],
@@ -138,13 +138,13 @@ $(function () {
         scrollX: true,
         scrollY: false,
         columns: [
-            { data: "payment_date", width: "90px" },
-            { data: "payment_type", width: "90px" },
+            { data: "payment_date", className: "min-width-90" },
+            { data: "payment_type", className: "min-width-90" },
             { data: "payment_method", width: "160px" },
             { data: "orderId", width: "70px" },
-            { data: "external_reference_no", className: "min-width-100" },
-            { data: "entity_name", width: "160px" },
-            { data: "location_#", className: "min-width-90" },
+            { data: "external_reference_no", className: "id-col" },
+            { data: "entity_name", className: "min-width-100", width: "160px" },
+            { data: "location_#", className: "id-col" },
             {
                 data: "paid_amount",
                 render: function (data, type, row) {
@@ -159,7 +159,7 @@ $(function () {
                     }
 
                 },
-                class: "min-width-70"
+                class: "min-width-90"
             },
             {
                 data: null, render: function (data, type, row) {
@@ -169,7 +169,7 @@ $(function () {
                     </div>
                 `
                 },
-                width: "55px"
+                width: "60px"
             }
         ],
         order: [[0, "asc"]],
