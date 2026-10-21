@@ -236,6 +236,22 @@ OrgChart.templates.foreignRegistrations.link = `<path class="path1 boc-hoverable
 OrgChart.templates.foreignRegistrations.nodeMenuButton = nodeMenuTab(CARD.w);
 
 
+OrgChart.templates.hidden = Object.assign({}, OrgChart.templates.polina);
+OrgChart.templates.hidden.node = "";
+OrgChart.templates.hidden.link = "";
+OrgChart.templates.hidden.size = [0, 0];
+OrgChart.templates.hidden.entityName = "";
+OrgChart.templates.hidden.entityDescription = "";
+OrgChart.templates.hidden.nodeMenuButton = "";
+OrgChart.templates.hidden.state = "";
+OrgChart.templates.hidden.entityType = "";
+OrgChart.templates.hidden.entityData = "";
+OrgChart.templates.hidden.additionalEntityData = "";
+OrgChart.templates.hidden.icons_0 = "";
+OrgChart.slinkTemplates.hiddenSlinks = Object.assign({}, OrgChart.slinkTemplates.orange);
+OrgChart.slinkTemplates.hiddenSlinks.link = '';
+OrgChart.templates.hidden.html = "";
+
 
 
 var editForm = function () {
@@ -356,6 +372,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
                 },
             },
         },
+        "hidden": {
+            template: "hidden"
+        },
         "subLevels0": {
             subLevels: 0
         },
@@ -466,7 +485,6 @@ $(function () {
         decorated.call(this, container, $container);
         var $select = this.$element;
 
-        // × removes that option without opening the dropdown
         this.$selection.on('mousedown click', '.orgchart-chip__remove', function (e) {
             e.preventDefault();
             e.stopImmediatePropagation();
@@ -584,4 +602,24 @@ $(function () {
         $filters.val([]).trigger('change');
     });
 
+})
+
+
+
+$(function () {
+    let originalTemplates = {};
+    Object.keys(chart.config.tags).forEach(function (tag) {
+        originalTemplates[tag] = chart.config.tags[tag].template;
+    });
+
+    $(document).on('change', '[data-hide-tag]', function () {
+        var tag = $(this).data('hide-tag');
+        if (!chart.config.tags[tag]) return;
+
+        chart.config.tags[tag].template = this.checked
+            ? originalTemplates[tag]   // checked: show with its own template
+            : 'hidden';        // unchecked: hide
+
+        chart.draw();
+    });
 })
