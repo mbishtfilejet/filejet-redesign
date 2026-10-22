@@ -371,15 +371,19 @@ var chart = new OrgChart(document.getElementById("tree"), {
     columns: 6,
     siblingSeparation: 70,
     levelSeparation: 70,
-    sticky: false,
-    mouseScroll: OrgChart.action.scroll,
+    // collapse: {
+    //     level: 2,           
+    //     allChildren: true  
+    // },
+    // showYScroll: OrgChart.scroll.visible,
+    // showXScroll: OrgChart.scroll.visible,
+    mouseScrool: OrgChart.action.scroll, 
     align: OrgChart.align.center,
     movable: OrgChart.movable.node,
     movable: OrgChart.movable.tree,
     enableDragDrop: true,
     highlightOnHover: "parents",
     lazyLoading: true,
-    showXScroll: OrgChart.scroll.visible,
     layout: OrgChart.layout.normal,
     enableSearch: false,
     miniMap: true,
@@ -473,7 +477,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
     }
 });
 
-
+// fetch('data-reboot-redesign_stress_test.json')
 fetch('data-reboot-redesign.json')
     .then(response => {
         // Check if the request was successful
@@ -487,8 +491,6 @@ fetch('data-reboot-redesign.json')
         // Load the JSON data into the chart after a delay of 100 milliseconds
         setTimeout(function () {
             chart.load(data);
-            $("#partnerBtn").trigger('click');
-            $("#slinkBtn").trigger('click');
         }, 100);
     })
     .catch(error => {
@@ -715,11 +717,6 @@ $(function () {
 })
 
 
-function redrawAndFit() {
-    chart.draw(OrgChart.action.update, null, function () {
-        chart.fit();
-    });
-}
 
 
 
@@ -739,8 +736,8 @@ $(function () {
     }
 
     $(document).on('change', '[data-hide-tag]', function () {
-        applyHideTag(this)
-        redrawAndFit()
+        applyHideTag(this);
+        chart.draw()
 
     });
 
