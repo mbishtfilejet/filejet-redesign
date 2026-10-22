@@ -376,8 +376,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
     //     allChildren: true  
     // },
     // showYScroll: OrgChart.scroll.visible,
-    // showXScroll: OrgChart.scroll.visible,
-    mouseScrool: OrgChart.action.scroll, 
+    showXScroll: OrgChart.scroll.visible,
+    mouseScrool: OrgChart.action.scroll,
     align: OrgChart.align.center,
     movable: OrgChart.movable.node,
     movable: OrgChart.movable.tree,
@@ -498,11 +498,21 @@ fetch('data-reboot-redesign.json')
     });
 
 $(document).on('click', '[data-single] .orientation-btn', function () {
-    var $btn = $(this);
-    var $others = $btn.siblings('.orientation-btn');
+    let $btn = $(this);
+    let $others = $btn.siblings('.orientation-btn');
 
     $btn.attr('aria-pressed', 'true').find('.icon').addClass('active_option');
     $others.attr('aria-pressed', 'false').find('.icon').removeClass('active_option');
+
+    let orientation_value = $btn.data('orientation');
+    let layout_value = $btn.data('layout');
+    if (orientation_value >= 0) {
+        chart.setOrientation(parseInt(orientation_value));
+    }
+
+    if (layout_value >= 0) {
+        chart.setLayout(parseInt(layout_value));
+    }
 });
 
 
