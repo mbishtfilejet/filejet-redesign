@@ -279,7 +279,7 @@
                                         <select class="form-select orgchart-view-select border rounded flex-grow-1"
                                             id="">
                                             <option value="" disabled="" hidden="">Saved Views</option>
-                                            <option value="all_default" selected="">All entities (default)</option>
+                                            <option value="default" selected="">All entities (default)</option>
                                             <optgroup label="MY VIEWS">
                                                 <option value="2">Alaska</option>
                                                 <option value="3">Arizona</option>
@@ -297,7 +297,7 @@
                                     <button data-bs-toggle="collapse" data-bs-target="#filters_option"
                                         class="btn chart-action-btn col-auto d-flex align-items-center gap-2 flex-shrink-0">
                                         <span class="icon icon-sm icon-filter-purple m-0"></span>Filters
-                                        <span class="filter-count">2</span>
+                                        <span class="filter-count"></span>
                                         <span class="icon icon-xs icon-purple-angle-bottom m-0"></span>
                                     </button>
                                     <button data-bs-toggle="collapse" data-bs-target="#display_option"
@@ -331,10 +331,10 @@
                                     class="row orgchart-filter-section bg-white p-3 border border-1 rounded-3 align-items-center g-0 gap-3">
                                     <h5 class="col-auto m-0 lh-1 fs-6">Filters</h5>
                                     <div class="col-xl-1 orgchart_dropdown orgchart_filters d-flex flex-grow-1">
-                                        <select class="form-select border rounded flex-grow-1" id="filterGroupName"
+                                        <select class="form-select border rounded flex-grow-1" id="dropdownGroupName"
                                             data-filter-item="groupName" data-placeholder="Group Name" multiple>
                                             <option value="" disabled="" hidden="">Group Name</option>
-                                            <option value="all_default">All</option>
+                                            <option value="all_default" selected>All</option>
                                             <option value="AIC Holdings">AIC Holdings</option>
                                             <option value="Bluebird Ventures">Bluebird Ventures</option>
                                             <option value="Cap Investment Group">Cap Investment Group</option>
@@ -343,10 +343,10 @@
                                         </select>
                                     </div>
                                     <div class="col-xl-1 orgchart_dropdown orgchart_filters d-flex flex-grow-1">
-                                        <select class="form-select border rounded flex-grow-1" id="filterEntityName"
+                                        <select class="form-select border rounded flex-grow-1" id="dropdownEntityName"
                                             data-filter-item="Entity_Name" data-placeholder="Entity Name" multiple>
                                             <option value="" disabled="" hidden="">Entity Name</option>
-                                            <option value="all_default">All</option>
+                                            <option value="all_default" selected>All</option>
                                             <option value="AIC Capital LLC (DE), LLC">AIC Capital LLC (DE), LLC</option>
                                             <option value="AIC Capital Multifamily Investment LLC (DE), LLC">AIC Capital
                                                 Multifamily Investment LLC (DE), LLC</option>
@@ -378,10 +378,10 @@
                                         </select>
                                     </div>
                                     <div class="col-xl-1 orgchart_dropdown orgchart_filters d-flex flex-grow-1">
-                                        <select class="form-select border rounded flex-grow-1" id="filterEntityType"
+                                        <select class="form-select border rounded flex-grow-1" id="dropdownEntityType"
                                             data-filter-item="Entity_Type" data-placeholder="Entity Type" multiple>
                                             <option value="" disabled="" hidden="">Entity Type</option>
-                                            <option value="all_default">All</option>
+                                            <option value="all_default" selected>All</option>
                                             <option value="Corporation">Corporation</option>
                                             <option value="GP">GP</option>
                                             <option value="LLC">LLC</option>
@@ -393,10 +393,10 @@
                                         </select>
                                     </div>
                                     <div class="col-xl-1 orgchart_dropdown orgchart_filters d-flex flex-grow-1">
-                                        <select class="form-select border rounded flex-grow-1" id="filterState"
+                                        <select class="form-select border rounded flex-grow-1" id="dropdownState"
                                             data-filter-item="state" data-placeholder="State" multiple>
                                             <option value="" disabled="" hidden="">State</option>
-                                            <option value="all_default">All</option>
+                                            <option value="all_default" selected>All</option>
                                             <option value="Alabama">Alabama</option>
                                             <option value="Alaska">Alaska</option>
                                             <option value="Arkansas">Arkansas</option>
@@ -409,17 +409,17 @@
                                         </select>
                                     </div>
                                     <div class="col-xl-1 orgchart_dropdown orgchart_filters d-flex flex-grow-1">
-                                        <select class="form-select border rounded flex-grow-1" id="filterEntityStatus"
+                                        <select class="form-select border rounded flex-grow-1" id="dropdownEntityStatus"
                                             data-filter-item="entityStatus" data-placeholder="Entity Status" multiple>
                                             <option value="" disabled="" hidden="">Entity Status</option>
-                                            <option value="all_default">All</option>
-                                            <option value="good">In Good Standing</option>
-                                            <option value="inactive">Inactive</option>
-                                            <option value="not-good">Not in Good Standing</option>
+                                            <option value="all_default" selected>All</option>
+                                            <option value="In Good Standing">In Good Standing</option>
+                                            <option value="Inactive">Inactive</option>
+                                            <option value="Not in Good Standing">Not in Good Standing</option>
                                         </select>
                                     </div>
 
-                                    <button type="button"
+                                    <button type="button" id="clearOrgChartFilters"
                                         class="ms-auto col-auto bg-transparent border-0 font-weight-600 p-0 fs-9 text-secondary">
                                         CLEAR ALL
                                     </button>
@@ -433,44 +433,44 @@
                                     <div class="col-md-auto flex-shrink-0">
                                         <p class="fs-9 font-weight-600 text-uppercase mb-2">
                                             Orientation</p>
-                                        <div class="btn-group border overflow-hidden w-100 d-inline-flex"
+                                        <div class="orgchart-orientation-item btn-group border overflow-hidden w-100 d-inline-flex"
                                             aria-label="Orientation" data-single="">
-                                            <button class="icon-btn flex-grow-1 border-0 border-end" aria-pressed="true"
-                                                aria-pressed="false" title="Top to bottom">
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end" aria-pressed="true"
+                                                aria-pressed="false" data-position="top">
                                                 <span class="m-0 icon icon-lg icon-orientaion-top active_option"></span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
-                                                title="Bottom to top">
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
+                                                data-position="bottom">
                                                 <span class="m-0 icon icon-lg icon-orientaion-bottom"></span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
-                                                aria-pressed="false" title="Right to left">
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
+                                                aria-pressed="false" data-position="right">
                                                 <span class="m-0 icon icon-lg icon-orientaion-right">
                                                 </span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
-                                                aria-pressed="false" title="Left to right">
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
+                                                aria-pressed="false" data-position="left">
                                                 <span class="m-0 icon icon-lg icon-orientaion-left">
                                                 </span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
-                                                aria-pressed="false" title="Indented left">
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
+                                                aria-pressed="false" data-position="right_top">
                                                 <span class="m-0 icon icon-lg icon-orientaion-right-top">
                                                 </span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
-                                                aria-pressed="false" title="Indented right">
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
+                                                aria-pressed="false" data-position="left_top">
                                                 <span class="m-0 icon icon-lg icon-orientaion-left-top">
                                                 </span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
-                                                aria-pressed="false" title="Indented right">
-                                                <span class="m-0 icon icon-lg icon-orientaion-left-top">
-                                                </span>
-                                            </button>
-                                            <button class="icon-btn flex-grow-1 border-0" aria-pressed="false"
-                                                title="Compact">
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
+                                                aria-pressed="false" data-position="bottom_right">
                                                 <span class="m-0 icon icon-lg icon-orientaion-bottom-right">
+                                                </span>
+                                            </button>
+                                            <button class="orientation-btn flex-grow-1 border-0" aria-pressed="false"
+                                                data-position="bottom_left">
+                                                <span class="m-0 icon icon-lg icon-orientaion-bottom-left">
                                                 </span>
                                             </button>
                                         </div>
@@ -480,27 +480,27 @@
                                         <p class="fs-9 font-weight-600 text-uppercase mb-2">Layout</p>
                                         <div class="btn-group border overflow-hidden w-100 d-inline-flex"
                                             aria-label="Layout" data-single="">
-                                            <button class="icon-btn flex-grow-1 border-0 border-end" aria-pressed="true"
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end" aria-pressed="true"
                                                 aria-pressed="false" title="Top to bottom">
                                                 <span class="m-0 icon icon-lg icon-align-normal active_option">
                                                 </span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
                                                 title="Bottom to top">
                                                 <span class="m-0 icon icon-lg icon-align-mixed">
                                                 </span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
                                                 aria-pressed="false" title="Right to left">
                                                 <span class="m-0 icon icon-lg icon-align-tree">
                                                 </span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0 border-end"
+                                            <button class="orientation-btn flex-grow-1 border-0 border-end"
                                                 aria-pressed="false" title="Left to right">
                                                 <span class="m-0 icon icon-lg icon-align-left">
                                                 </span>
                                             </button>
-                                            <button class="icon-btn flex-grow-1 border-0" aria-pressed="false"
+                                            <button class="orientation-btn flex-grow-1 border-0" aria-pressed="false"
                                                 title="Compact">
                                                 <span class="m-0 icon icon-lg icon-align-right">
                                                 </span>
@@ -513,23 +513,25 @@
                                         <div class="show-group d-flex w-100 flex-nowrap gap-3">
                                             <div class="form-check gap-2 flex-shrink-0">
                                                 <input class="form-check-input" data-hide-tag="partnerNode"
-                                                    type="checkbox" id="" checked="">
+                                                    type="checkbox" checked="" id="">
                                                 <label class="label fw-normal text-capitalize" for="">Foreign
                                                     Registrations</label>
                                             </div>
                                             <div class="form-check gap-2 flex-shrink-0">
                                                 <input class="form-check-input" data-hide-tag="additionalOwners"
-                                                    type="checkbox" id="" checked="">
+                                                    type="checkbox" checked="" id="">
                                                 <label class="label fw-normal" for="">Additional
                                                     Owners</label>
                                             </div>
                                             <div class="form-check gap-2 flex-shrink-0">
-                                                <input class="form-check-input" type="checkbox" id="" checked="">
+                                                <input class="form-check-input" data-display="tax" type="checkbox" id=""
+                                                    checked="">
                                                 <label class="label fw-normal" for="">Tax
                                                     Classification</label>
                                             </div>
                                             <div class="form-check gap-2 flex-shrink-0">
-                                                <input class="form-check-input" type="checkbox" id="" checked="">
+                                                <input class="form-check-input" data-display="status" type="checkbox"
+                                                    id="" checked="">
                                                 <label class="label fw-normal" for="">Entity Status</label>
                                             </div>
                                         </div>

@@ -61,27 +61,26 @@ const nodeMenuTab = (x) => `
 
 
 function taxShapeTemplate(node, data) {
-
     let cx = CARD.strip / 2;
     let cy = node.h / 2;
-
-    let shape = SHAPE[data.taxShape]
-
+    let shape = SHAPE[data.taxShape];
+    let svg;
 
     switch (shape) {
         case "diamond":
-            return `<path d="M${cx - 15},${cy} L${cx},${cy + 20} L${cx + 15},${cy} L${cx},${cy - 20} Z" fill="#ffffff" />`;
-
+            svg = `<path d="M${cx - 15},${cy} L${cx},${cy + 20} L${cx + 15},${cy} L${cx},${cy - 20} Z" fill="#ffffff" />`;
+            break;
         case "triangle":
-            return `<polygon points="${cx},${cy - 15} ${cx + 15},${cy + 10} ${cx - 15},${cy + 10}" fill="#ffffff" />`;
-
+            svg = `<polygon points="${cx},${cy - 15} ${cx + 15},${cy + 10} ${cx - 15},${cy + 10}" fill="#ffffff" />`;
+            break;
         case "rectangle":
-            return `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />`
-
+            svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />`;
+            break;
         default:
-            return `<ellipse rx="17" ry="11" cx="${cx}" cy="${cy}" fill="#ffffff" />`
-
+            svg = `<ellipse rx="17" ry="11" cx="${cx}" cy="${cy}" fill="#ffffff" />`;
     }
+
+    return `<g class="tax-shape">${svg}</g>`;
 }
 
 OrgChart.RENDER_LINKS_BEFORE_NODES = true;
@@ -136,8 +135,7 @@ OrgChart.templates.entityCard.tax_shape = function (node, data, template, config
 
 OrgChart.templates.entityCard.entityName = `<text style="font-weight: 700;" fill="#0f172a" x="${CARD.strip + 20}" y="30">{val}</text>`;
 
-OrgChart.templates.entityCard.state = function (node, data, template, config, value) {
-    // console.log(this)
+OrgChart.templates.entityCard.entityType = function (node, data, template, config, value) {
 
     return `<text
         style=""
@@ -148,11 +146,22 @@ OrgChart.templates.entityCard.state = function (node, data, template, config, va
 `;
 }
 
+OrgChart.templates.entityCard.state = function (node, data, template, config, value) {
+
+    return `<text
+        style=""
+        fill="#0f172a"
+        x="${CARD.strip + 20}"
+        y="70"
+    >${value}</text>
+`;
+}
+
+
 OrgChart.templates.entityCard.entityStatus = function (node, data, template, config) {
-    let { label, value } = data.entityStatus;
-    return `<foreignobject width="270" height="30" x="${CARD.strip + 20}"" y="${node.h - 45}">
-            <div class="badge badge-${label}">
-                ${value}
+    return `<foreignobject class="entity-status" width="270" height="30" x="${CARD.strip + 20}" y="${node.h - 45}">
+            <div class="badge badge-${data.entityStatus_label}">
+                ${data.entityStatus}
             </div>
     </foreignobject>`
 }
@@ -188,11 +197,34 @@ OrgChart.templates.externalEntityNode.entityName = `
     >{val}</text>
 `;
 
+
+
+OrgChart.templates.externalEntityNode.entityType = function (node, data, template, config, value) {
+
+    return `<text
+        style=""
+        fill="#0f172a"
+        x="${CARD.strip + 20}"
+        y="50"
+        >${value}</text>
+        `;
+}
+
+OrgChart.templates.externalEntityNode.state = function (node, data, template, config, value) {
+
+    return `<text
+            style=""
+            fill="#0f172a"
+            x="${CARD.strip + 20}"
+            y="70"
+        >${value}</text>
+    `;
+}
+
 OrgChart.templates.externalEntityNode.entityStatus = function (node, data, template, config) {
-    let { label, value } = data.entityStatus;
-    return `<foreignobject width="270" height="30" x="${CARD.strip + 20}"" y="${node.h - 45}">
-            <div class="badge badge-${label}">
-                ${value}
+    return `<foreignobject class="entity-status" width="270" height="30" x="${CARD.strip + 20}" y="${node.h - 45}">
+            <div class="badge badge-${data.entityStatus_label}">
+                ${data.entityStatus}
             </div>
     </foreignobject>`
 }
@@ -282,6 +314,17 @@ editForm.prototype.init = function (obj) {
         that.hide();
     });
 
+    const ENTITY_TYPE_TO_TAX_SHAPE = {
+        'Trust': 'Trust',
+        'Corporation': 'Corporation',
+        'Non Profit': 'Corporation',
+        'GP': 'Partnership',
+        'LP': 'Partnership',
+        'LLP': 'Partnership',
+        'LLC': 'Others',
+        'PLLC': 'Others'
+    };
+
     this.saveButton.on("click", function () {
 
         var node = orgchart.get(that.nodeId);
@@ -289,8 +332,7 @@ editForm.prototype.init = function (obj) {
         node.Entity_Name = that.entityName.val();
         node.Entity_Type = that.entityType.val();
         node.state = that.entityJurisdiction.val();
-
-        console.log(node);
+        node.taxShape = ENTITY_TYPE_TO_TAX_SHAPE[node.Entity_Type] || 'Others';
 
         orgchart.updateNode(node);
 
@@ -318,8 +360,10 @@ editForm.prototype.hide = function () {
 };
 
 
-OrgChart.scroll.smooth = 12;
+OrgChart.scroll.smooth = 4;
 OrgChart.scroll.speed = 120;
+
+if (OrgChart.anim) OrgChart.anim.duration = 0;
 
 
 var chart = new OrgChart(document.getElementById("tree"), {
@@ -335,15 +379,24 @@ var chart = new OrgChart(document.getElementById("tree"), {
     enableDragDrop: true,
     highlightOnHover: "parents",
     lazyLoading: true,
+    showXScroll: OrgChart.scroll.visible,
+    layout: OrgChart.layout.normal,
     enableSearch: false,
     miniMap: true,
-    layout: OrgChart.layout.normal,
-    toolbar: {
-        layout: false,
-        zoom: true,
-        fit: true,
-        expandAll: true,
+    controls: {
+        zoom_out: { title: 'Zoom out', icon: zoomOutIcon },
+        zoom_level: {
+            title: 'Zoom level',
+            onClick: function () { },   // clicking the input does nothing by itself
+            icon: '<label class="orgchart-zoom__field">' +
+                '<input type="number" class="orgchart-zoom__input" min="10" max="500" step="10" aria-label="Zoom level">%' +
+                '</label>'
+        },
+        zoom_in: { title: 'Zoom in', icon: zoomInIcon },
+        fit: { title: 'Fit', icon: fitIcon },
+        expand_all: { title: 'Expand all', icon: expandAllIcon },
     },
+
     tags: {
         "externalEntityNode": {
             template: "externalEntityNode"
@@ -442,9 +495,9 @@ fetch('data-reboot-redesign.json')
         console.error('There has been a problem with your fetch operation:', error);
     });
 
-$(document).on('click', '[data-single] .icon-btn', function () {
+$(document).on('click', '[data-single] .orientation-btn', function () {
     var $btn = $(this);
-    var $others = $btn.siblings('.icon-btn');
+    var $others = $btn.siblings('.orientation-btn');
 
     $btn.attr('aria-pressed', 'true').find('.icon').addClass('active_option');
     $others.attr('aria-pressed', 'false').find('.icon').removeClass('active_option');
@@ -532,7 +585,36 @@ $(function () {
         }
     };
 
-    var selectionAdapter = Utils.Decorate(Utils.Decorate(MultipleSelection, ChipSummarySelection), EventRelay);
+
+    function PlaceholderOnlySelection() { }
+
+    PlaceholderOnlySelection.prototype.update = function (decorated, data) {
+        this.$selection.find('.select2-selection__rendered').empty().append(
+            $('<span class="select2-selection__summary is-placeholder"></span>')
+                .text(this.options.get('placeholder'))
+        );
+    };
+
+    function TextSummarySelection() { }
+
+    TextSummarySelection.prototype.update = function (decorated, data) {
+        var placeholder = this.options.get('placeholder');
+        var isAll = data.some(function (d) { return d.id === 'all_default'; });
+        var selected = data.filter(function (d) { return d.id && d.id !== 'all_default'; });
+
+        var text = isAll ? placeholder + ' (All)'
+            : !selected.length ? placeholder
+                : selected.length === 1 ? selected[0].text.trim()
+                    : placeholder + ' (' + selected.length + ')';
+
+        this.$selection.find('.select2-selection__rendered').empty().append(
+            $('<span class="select2-selection__summary"></span>')
+                .text(text)
+                .toggleClass('is-placeholder', !isAll && !selected.length)
+        );
+    };
+
+    var selectionAdapter = Utils.Decorate(Utils.Decorate(MultipleSelection, TextSummarySelection), EventRelay);
     var dropdownAdapter = Utils.Decorate(Utils.Decorate(Dropdown, DropdownSearch), AttachBody);
 
     var $filters = $('.orgchart-filter-section .form-select');
@@ -593,16 +675,51 @@ $(function () {
             values[value].checked = !selected.length || selected.includes(value);
         }
 
+        updateFilterCount();
+
         chart.draw();
     });
 
+
+
+    // Filter count logic
+    function updateFilterCount() {
+        var active = $filters.filter(function () {
+            var values = [].concat($(this).val() || []);
+
+            // if (values.includes('all_default')) return false;      // "All" = no filter
+
+            return values.some(function (v) { return v && v !== 'all_default'; });
+        }).length;
+
+        $('.filter-count')
+            .text(active)
+            .toggleClass('d-none', active === 0);
+    }
+
+    updateFilterCount();
 
 
     $('#clearOrgChartFilters').on('click', function () {
         $filters.val([]).trigger('change');
     });
 
+    // "All" set as default selected
+    $filters.each(function () {
+        var $select = $(this);
+        if ($select.find('option[value="all_default"]').is(':selected')) {
+            $select.find('option').prop('selected', true);
+            $select.trigger('change');
+        }
+    });
 })
+
+
+function redrawAndFit() {
+    chart.draw(OrgChart.action.update, null, function () {
+        chart.fit();
+    });
+}
 
 
 
@@ -612,14 +729,68 @@ $(function () {
         originalTemplates[tag] = chart.config.tags[tag].template;
     });
 
-    $(document).on('change', '[data-hide-tag]', function () {
-        var tag = $(this).data('hide-tag');
+    function applyHideTag(checkbox) {
+        let tag = $(checkbox).data('hide-tag');
         if (!chart.config.tags[tag]) return;
 
-        chart.config.tags[tag].template = this.checked
-            ? originalTemplates[tag]   // checked: show with its own template
+        chart.config.tags[tag].template = checkbox.checked
+            ? originalTemplates[tag]   // checked: show
             : 'hidden';        // unchecked: hide
+    }
 
-        chart.draw();
+    $(document).on('change', '[data-hide-tag]', function () {
+        applyHideTag(this)
+        redrawAndFit()
+
+    });
+
+    $('[data-hide-tag]').trigger('change');
+
+
+
+    // tax shape & entity status show/hide
+    $(document).on('change', '[data-display]', function () {
+        $('#tree').toggleClass('hide-' + $(this).data('display'), !this.checked);
+    });
+
+    // apply the starting state on page load
+    $('[data-display]').trigger('change');
+
+})
+
+
+$(function () {
+
+    function currentZoomPercent() {
+        return Math.round(chart.getScale() * 100);
+    }
+
+    function setZoomPercent(percent) {
+        var min = chart.config.scaleMin * 100;
+        var max = chart.config.scaleMax * 100;
+        percent = Math.min(max, Math.max(min, Number(percent) || 100));
+
+        var factor = percent / (chart.getScale() * 100);
+        if (Math.abs(factor - 1) > 0.001) {
+            chart.zoom(factor, [50, 50], false);
+        }
+        $(chart.element).find('.orgchart-zoom__input').val(currentZoomPercent());
+    }
+
+    $(chart.element)
+        .on('change', '.orgchart-zoom__input', function () {
+            setZoomPercent(this.value);
+        })
+        .on('keydown', '.orgchart-zoom__input', function (e) {
+            if (e.key === 'Enter') { setZoomPercent(this.value); this.blur(); }
+        });
+
+    // keep the % in sync after + / −, mouse wheel, fit, drag
+    chart.on('redraw', function () {
+        var input = chart.element.querySelector('.orgchart-zoom__input');
+        if (input && document.activeElement !== input) {
+            input.value = currentZoomPercent();
+        }
     });
 })
+
