@@ -246,7 +246,7 @@ OrgChart.templates.additionalOwners.node = function (node, data, template, confi
     `;
 }
 
-OrgChart.templates.additionalOwners.link = `<path class="path1 boc-hoverable" stroke="#9AA0A6" stroke-width="2px" stroke-dasharray="6,4" fill="none" d="{rounded}" />`;
+OrgChart.templates.additionalOwners.link = `<path class="boc-hoverable" stroke="#9AA0A6" stroke-width="2px" stroke-dasharray="6,4" fill="none" d="{rounded}" />`;
 
 OrgChart.templates.additionalOwners.nodeMenuButton = nodeMenuTab(CARD.w);
 
@@ -263,7 +263,7 @@ OrgChart.templates.foreignRegistrations.node = function (node, data, template, c
     `;
 }
 
-OrgChart.templates.foreignRegistrations.link = `<path class="path1 boc-hoverable" stroke="#9AA0A6" stroke-width="2px" stroke-dasharray="6,4" fill="none" d="{rounded}" />`;
+OrgChart.templates.foreignRegistrations.link = `<path class="boc-hoverable" stroke="#9AA0A6" stroke-width="2px" stroke-dasharray="6,4" fill="none" d="{rounded}" />`;
 
 OrgChart.templates.foreignRegistrations.nodeMenuButton = nodeMenuTab(CARD.w);
 
@@ -443,6 +443,9 @@ var chart = new OrgChart(document.getElementById("tree"), {
         },
         "subLevels3": {
             subLevels: 3
+        },
+        filter: {
+            template: 'dot'
         }
     },
     nodeMenu: { details: { text: "Details" }, edit: { text: "Edit entity" } },
