@@ -493,6 +493,41 @@
             }
         }
 
+
+        div[style*="overflow-x: scroll"] {
+            scrollbar-color: #C9CDD2 transparent;
+
+            &::-webkit-scrollbar {
+                height: 10px; // Chrome / Edge / Safari
+            }
+        }
+
+        // vertical chart scrollbar
+        div[style*="overflow-y: scroll"] {
+            scrollbar-color: #C9CDD2 transparent;
+
+            &::-webkit-scrollbar {
+                width: 10px;
+            }
+        }
+
+        div[style*="overflow-x: scroll"],
+        div[style*="overflow-y: scroll"] {
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #C9CDD2;
+                border-radius: 8px;
+
+                &:hover {
+                    background: #9AA0A6;
+                }
+            }
+        }
+
+
     }
 
 }
