@@ -282,7 +282,8 @@ $(function () {
             navTabs: splitSection.find(".nav-tabs"),
             tabContent: splitSection.find(".tab-content"),
             leftBtn: splitSection.find(".left-btn"),
-            rightBtn: splitSection.find(".right-btn")
+            rightBtn: splitSection.find(".right-btn"),
+            deleteBtn: splitSection.find(".delete-split")
         };
     }
 
@@ -307,7 +308,7 @@ $(function () {
     }
 
     $('.add-split').on('click', function () {
-        let { splitSection, sectionId, navTabs, rightBtn, leftBtn, tabContent } = getSectionData(this);
+        let { splitSection, sectionId, navTabs, rightBtn, leftBtn, deleteBtn, tabContent } = getSectionData(this);
 
         if (!splitSection) return;
 
@@ -320,8 +321,6 @@ $(function () {
         }
 
         const uniqueId = generateId();
-
-        const addSplitBtn = $(this);
 
         const new_tabPane = splitSection
             .find("[data-template]")
@@ -391,7 +390,6 @@ $(function () {
         new_tabPane.find('[data-temp-addRowInput]').removeAttr('data-temp-addRowInput').attr('data-bs-target', `#split-shares-inputs-${uniqueId}`)
 
         tabContent.append(new_tabPane);
-        console.log(activeIndex)
 
         if (tabList.length > VIEW_PER_PAGE) {
             const newTabIndex = activeIndex + 1;
@@ -414,8 +412,91 @@ $(function () {
 
         rightBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
         leftBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
-        addSplitBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
+        deleteBtn.toggleClass('d-none', totalTabs <= 1);
+        deleteBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
 
+    });
+
+
+    $('.delete-split').on('click', function () {
+        const { splitSection, sectionId, rightBtn, leftBtn, deleteBtn } = getSectionData(this);
+
+        if (!splitSection || !navTabList[sectionId]) return;
+
+        const tabList = navTabList[sectionId];
+
+        if (tabList.length <= 1) return;
+
+        const activeIndex = getActiveIndex(sectionId);
+
+        if (activeIndex < 0) return;
+
+        const activeTab = tabList[activeIndex];
+        const isFirst = activeIndex === 0;
+
+        // First tab -> merge into next tab, otherwise (between / last) -> merge into previous tab
+        const neighborTab = isFirst ? tabList[1] : tabList[activeIndex - 1];
+
+        if (isFirst) {
+            neighborTab.startDate = activeTab.startDate;
+        } else {
+            neighborTab.endDate = activeTab.endDate;
+        }
+
+        // Clean up plugins on the deleted pane before removing it
+        const pane = $(`#${activeTab.targetId}`);
+
+        pane.find('.splitDatePicker').each(function () {
+            $(this).data('daterangepicker')?.remove();
+        });
+
+        pane.find('.long-data-table-listing').each(function () {
+            if ($.fn.dataTable.isDataTable(this)) {
+                $(this).DataTable().destroy();
+            }
+        });
+
+        pane.remove();
+
+        tabList.splice(activeIndex, 1);
+
+        // Neighbor becomes the first tab, so it has no previous range to split against
+        if (isFirst) {
+            const firstInput = $(`#${neighborTab.targetId}`).find('.splitDatePicker');
+
+            firstInput.each(function () {
+                $(this).data('daterangepicker')?.remove();
+            });
+
+            firstInput.removeClass('splitDatePicker').val('').prop('disabled', true);
+        }
+
+        // Index of the neighbor after splice
+        const newActiveIndex = isFirst ? 0 : activeIndex - 1;
+
+        // Keep the window valid and the new active tab visible
+        const VIEW_PER_PAGE = getViewPerPage();
+        let start = startIndexMap[sectionId] || 0;
+
+        start = Math.min(start, Math.max(tabList.length - VIEW_PER_PAGE, 0));
+
+        if (newActiveIndex < start) {
+            start = newActiveIndex;
+        } else if (newActiveIndex >= start + VIEW_PER_PAGE) {
+            start = newActiveIndex - VIEW_PER_PAGE + 1;
+        }
+
+        startIndexMap[sectionId] = start;
+
+        // Rebuilds nav from navTabList (so merged dates show) and fires shown.bs.tab -> picker re-init
+        renderTabs(sectionId, neighborTab.id);
+
+        const totalTabs = tabList.length;
+
+        rightBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
+        leftBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
+        deleteBtn.toggleClass('d-none', totalTabs <= 1);
+        deleteBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
     });
 
     function getActiveIndex(sectionId) {
