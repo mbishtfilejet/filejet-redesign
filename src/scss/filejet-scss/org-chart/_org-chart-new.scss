@@ -60,7 +60,7 @@
     .orgchart-filter-section,
     .orgchart-display-section {
 
-        div,
+        &>div,
         button {
             min-height: 38px;
         }
@@ -81,6 +81,10 @@
         overflow: hidden !important;
         white-space: nowrap !important;
         cursor: pointer !important;
+
+        &.show_top_select {
+            width: 75px;
+        }
 
         &:focus,
         &:focus-within {
@@ -439,6 +443,7 @@
             align-items: center;
             gap: 4px;
             padding: 4px;
+            border: 1px solid #dee2e6;
             background: #fff;
             border-radius: var(--bs-border-radius);
             box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
@@ -530,4 +535,60 @@
 
     }
 
+
+    .tree-legends {
+        position: fixed;
+        left: 340px;
+        bottom: 50px;
+        width: inherit;
+        right: 270px;
+        z-index: 10;
+        max-width: none;
+        padding: 4px 10px;
+        background: #fff;
+        border-radius: var(--bs-border-radius);
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
+
+        .node-color-identification {
+            min-height: 35px;
+            font-size: 11px;
+
+            .bg-entity-node,
+            .bg-external-node,
+            .bg-foreign-node,
+            .bg-additional-node {
+                width: 16px;
+                height: 16px;
+            }
+
+            .bg-foreign-node,
+            .bg-additional-node {
+                width: 5px;
+            }
+        }
+    }
+
+
+    @media (min-width: 992px) and (max-width: 1600px) {
+        .tree-legends {
+            left: 280px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .tree-legends {
+            left: 108px;
+        }
+    }
+
+    @media (min-width: 1301px) and (max-width: 1600px) {
+        .tree-legends {
+            left: 320px;
+        }
+    }
+
+    .orgchart-orientation-item {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

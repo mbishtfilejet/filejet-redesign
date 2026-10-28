@@ -25045,11 +25045,11 @@ body *::-webkit-scrollbar-thumb {
 .orgchart-dashboard .boc-menu {
   font-family: inherit;
 }
-.orgchart-dashboard .orgchart-action-section div,
+.orgchart-dashboard .orgchart-action-section > div,
 .orgchart-dashboard .orgchart-action-section button,
-.orgchart-dashboard .orgchart-filter-section div,
+.orgchart-dashboard .orgchart-filter-section > div,
 .orgchart-dashboard .orgchart-filter-section button,
-.orgchart-dashboard .orgchart-display-section div,
+.orgchart-dashboard .orgchart-display-section > div,
 .orgchart-dashboard .orgchart-display-section button {
   min-height: 38px;
 }
@@ -25068,6 +25068,9 @@ body *::-webkit-scrollbar-thumb {
   overflow: hidden !important;
   white-space: nowrap !important;
   cursor: pointer !important;
+}
+.orgchart-dashboard .orgchart_dropdown .form-select.show_top_select, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns .show_top_select#boc-ppdf-size, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown .show_top_select#boc-ppdf-size, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns .show_top_select#boc-ppdf-layout, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown .show_top_select#boc-ppdf-layout, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns .show_top_select#boc-ppdf-scale, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown .show_top_select#boc-ppdf-scale {
+  width: 75px;
 }
 .orgchart-dashboard .orgchart_dropdown .form-select:focus, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns #boc-ppdf-size:focus, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown #boc-ppdf-size:focus, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns #boc-ppdf-layout:focus, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown #boc-ppdf-layout:focus, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns #boc-ppdf-scale:focus, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown #boc-ppdf-scale:focus, .orgchart-dashboard .orgchart_dropdown .form-select:focus-within, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns #boc-ppdf-size:focus-within, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown #boc-ppdf-size:focus-within, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns #boc-ppdf-layout:focus-within, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown #boc-ppdf-layout:focus-within, .orgchart-dashboard .orgchart_dropdown .boc-light #boc-ppdf-btns #boc-ppdf-scale:focus-within, .boc-light #boc-ppdf-btns .orgchart-dashboard .orgchart_dropdown #boc-ppdf-scale:focus-within {
   border: 2px solid var(--bs-filejet-purple-indigo) !important;
@@ -25347,6 +25350,7 @@ body *::-webkit-scrollbar-thumb {
   align-items: center;
   gap: 4px;
   padding: 4px;
+  border: 1px solid #dee2e6;
   background: #fff;
   border-radius: var(--bs-border-radius);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -25418,6 +25422,53 @@ body *::-webkit-scrollbar-thumb {
 .orgchart-dashboard #tree div[style*="overflow-x: scroll"]::-webkit-scrollbar-thumb:hover,
 .orgchart-dashboard #tree div[style*="overflow-y: scroll"]::-webkit-scrollbar-thumb:hover {
   background: #9AA0A6;
+}
+.orgchart-dashboard .tree-legends {
+  position: fixed;
+  left: 340px;
+  bottom: 50px;
+  width: inherit;
+  right: 270px;
+  z-index: 10;
+  max-width: none;
+  padding: 4px 10px;
+  background: #fff;
+  border-radius: var(--bs-border-radius);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
+}
+.orgchart-dashboard .tree-legends .node-color-identification {
+  min-height: 35px;
+  font-size: 11px;
+}
+.orgchart-dashboard .tree-legends .node-color-identification .bg-entity-node,
+.orgchart-dashboard .tree-legends .node-color-identification .bg-external-node,
+.orgchart-dashboard .tree-legends .node-color-identification .bg-foreign-node,
+.orgchart-dashboard .tree-legends .node-color-identification .bg-additional-node {
+  width: 16px;
+  height: 16px;
+}
+.orgchart-dashboard .tree-legends .node-color-identification .bg-foreign-node,
+.orgchart-dashboard .tree-legends .node-color-identification .bg-additional-node {
+  width: 5px;
+}
+@media (min-width: 992px) and (max-width: 1600px) {
+  .orgchart-dashboard .tree-legends {
+    left: 280px;
+  }
+}
+@media (max-width: 992px) {
+  .orgchart-dashboard .tree-legends {
+    left: 108px;
+  }
+}
+@media (min-width: 1301px) and (max-width: 1600px) {
+  .orgchart-dashboard .tree-legends {
+    left: 320px;
+  }
+}
+.orgchart-dashboard .orgchart-orientation-item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /*# sourceMappingURL=filejet-style.css.map */

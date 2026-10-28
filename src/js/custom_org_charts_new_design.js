@@ -315,6 +315,9 @@
 
     OrgChart.templates.additionalOwners.nodeMenuButton = nodeMenuTab(CARD.w);
 
+    // Top 5 / Top 10 / All, from #dropdownAdditonalOwners and #dropdownForeign_reg
+    const LIST_LIMIT = { owners: 'all_default', registrations: 'all_default' };
+
     const OWNER_LIST = {
         top: 30,
         left: 20,
@@ -328,7 +331,25 @@
         bulletGap: 8,      // space from the dot to the name
         bulletColor: '#5F6368'
     };
+
     const dynamicRowCache = {};
+
+    // Top N owners by percentage + one "Others" row with the rest added up
+    function getVisibleOwners(owners) {
+        const limit = Number(LIST_LIMIT.owners);   // 'all_default' -> NaN -> show all
+        if (!limit) return owners;
+
+        const sorted = owners.slice().sort(function (a, b) {
+            return Number(b.percent) - Number(a.percent);
+        });
+        if (sorted.length <= limit) return sorted;
+
+        const othersPct = sorted.slice(limit).reduce(function (sum, o) {
+            return sum + Number(o.percent || 0);
+        }, 0);
+
+        return sorted.slice(0, limit).concat({ name: 'Others', percent: Math.round(othersPct * 100) / 100 });
+    }
 
     // Wrap every owner name once per list (cached)
     function getOwnerRows(owners, nodeW) {
@@ -359,7 +380,7 @@
 
     // Draw the list
     OrgChart.templates.additionalOwners.ownerList = function (node, data) {
-        const owners = data.owners || [];
+        const owners = getVisibleOwners(data.owners || []);
         if (!owners.length) return '';
 
         const L = OWNER_LIST;
@@ -405,8 +426,17 @@
         "bullet-good": '#3AB564',
         "bullet-not-good": '#E73B18',
         "bullet-inactive": '#8690A0',
+        "bullet-others": 'none',
     };
     const regGridCache = {};
+
+    // First N registrations + one "Others (count)" cell
+    function getVisibleRegistrations(items) {
+        const limit = Number(LIST_LIMIT.registrations);
+        if (!limit || items.length <= limit) return items;
+
+        return items.slice(0, limit).concat({ name: 'Others (' + (items.length - limit) + ')', status: 'others' });
+    }
 
     // Place every state in a 2-column grid (cached per list)
     function getRegistrationGrid(items, nodeW) {
@@ -448,7 +478,7 @@
 
     // Draw the grid
     OrgChart.templates.foreignRegistrations.registrationList = function (node, data) {
-        const items = data.registrations || [];
+        const items = getVisibleRegistrations(data.registrations || []);
         if (!items.length) return '';
 
         const L = FOREIGN_REG_LIST;
@@ -482,13 +512,13 @@
         const node = args.node;
 
         if (node.templateName == 'additionalOwners') {
-            const owners = (sender.get(node.id) || {}).owners || [];
+            const owners = getVisibleOwners((sender.get(node.id) || {}).owners || []);
             if (!owners.length) return;
             node.h = Math.max(SLIM.h, OWNER_LIST.top + getOwnerRows(owners, node.w).height + OWNER_LIST.bottom);
         }
 
         if (node.templateName == 'foreignRegistrations') {
-            const items = (sender.get(node.id) || {}).registrations || [];
+            const items = getVisibleRegistrations((sender.get(node.id) || {}).registrations || []);
             if (!items.length) return;
             node.h = Math.max(SLIM.h, FOREIGN_REG_LIST.top + getRegistrationGrid(items, node.w).height + FOREIGN_REG_LIST.bottom);
         }
@@ -508,9 +538,7 @@
     // ==========================================================================
     let ALL_NODES = [];
 
-    let applyFilters = function () {
-        chart.load(ALL_NODES);
-    };
+    let applyFilters;
 
 
 
@@ -613,12 +641,10 @@
         //     level: 2,
         //     allChildren: true
         // },
-        // showYScroll: OrgChart.scroll.visible,
+        showYScroll: OrgChart.scroll.visible,
         showXScroll: OrgChart.scroll.visible,
         mouseScrool: OrgChart.action.scroll,   // 9.1.61 spells the option "mouseScrool"
-        mouseScroll: OrgChart.action.scroll,   // newer versions
         align: OrgChart.align.center,
-        // movable: OrgChart.movable.node,     // was listed twice; the second line below is the one that applied
         movable: OrgChart.movable.tree,
         enableDragDrop: true,
         // highlightOnHover: "parents",        // not in 9.1.61 (ignored); turn back on after upgrading
@@ -636,7 +662,7 @@
                     '</label>'
             },
             zoom_in: { title: 'Zoom in', icon: zoomInIcon },
-            fit: { title: 'Fit', icon: fitIcon },
+            fit: { title: 'Fit', icon: fitIcon, onClick: function () { chart.fit(keepNodesInView) } },
             expand_all: { title: 'Expand all', icon: expandAllIcon },
         },
 
@@ -724,14 +750,6 @@
         // }
     });
 
-
-    // chart.onInit(args => {
-    //     chart.config.anim.duration = 0;
-    //     chart.fit(function () {
-    //         chart.config.anim.duration = 0;
-    //     });
-    // });
-
     // Wait for the font (the canvas measures text with it) and the JSON together,
     // then load once with the current filter selection.
     // fetch('data-reboot-redesign_stress_test.json')
@@ -774,6 +792,22 @@
     });
 
 
+    function keepNodesInView() {
+        let vb = chart.getViewBox();
+        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+        Object.values(chart.nodes).forEach(function (n) {
+            if (!n.w) return;
+            minX = Math.min(minX, n.x); maxX = Math.max(maxX, n.x + n.w);
+            minY = Math.min(minY, n.y); maxY = Math.max(maxY, n.y + n.h);
+        });
+        if (minX < vb[0] || maxX > vb[0] + vb[2] || minY < vb[1] || maxY > vb[1] + vb[3]) {
+            vb[0] = (minX + maxX) / 2 - vb[2] / 2;
+            vb[1] = (minY + maxY) / 2 - vb[3] / 2;
+            chart.setViewBox(vb);
+        }
+    }
+
+
     $(function () {
 
         $('.orgchart-view-select').each(function () {
@@ -799,71 +833,6 @@
         let AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody');
         let MultipleSelection = $.fn.select2.amd.require('select2/selection/multiple');
         let EventRelay = $.fn.select2.amd.require('select2/selection/eventRelay');
-        let MAX_CHIPS = 1;
-        let MAX_CHARS = 7;
-
-        function ChipSummarySelection() { }
-
-        ChipSummarySelection.prototype.bind = function (decorated, container, $container) {
-            decorated.call(this, container, $container);
-            let $select = this.$element;
-
-            this.$selection.on('mousedown click', '.orgchart-chip__remove', function (e) {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                if (e.type !== 'click') return;
-
-                let id = String($(this).closest('.orgchart-chip').data('id'));
-                if (id === 'all_default') {
-                    $select.find('option').prop('selected', false);
-                } else {
-                    $select.find('option').filter(function () { return this.value === id; }).prop('selected', false);
-                    $select.find('option[value="all_default"]').prop('selected', false);
-                }
-                $select.trigger('change');
-            });
-        };
-
-        ChipSummarySelection.prototype.update = function (decorated, data) {
-            let $rendered = this.$selection.find('.select2-selection__rendered').empty();
-            let isAll = data.some(function (d) { return d.id === 'all_default'; });
-            let selected = data.filter(function (d) { return d.id && d.id !== 'all_default'; });
-
-            if (!selected.length) {
-                $rendered.append($('<span class="select2-selection__summary is-placeholder"></span>').text(this.options.get('placeholder')));
-                return;
-            }
-
-            function chip(id, text) {
-                let label = text.length > MAX_CHARS ? text.slice(0, MAX_CHARS) + '…' : text;
-                return $('<span class="orgchart-chip"></span>').attr({ 'data-id': id, title: text })
-                    .append($('<span class="orgchart-chip__text"></span>').text(label))
-                    .append('<button type="button" class="orgchart-chip__remove" aria-label="Remove">&times;</button>');
-            }
-
-            if (isAll) {
-                $rendered.append(chip('all_default', 'All'));
-                return;
-            }
-
-            selected.slice(0, MAX_CHIPS).forEach(function (d) {
-                $rendered.append(chip(d.id, d.text.trim()));
-            });
-
-            if (selected.length > MAX_CHIPS) {
-                $rendered.append($('<span class="orgchart-chip orgchart-chip--more"></span>').text('+' + (selected.length - MAX_CHIPS)));
-            }
-        };
-
-
-        function PlaceholderOnlySelection() { }
-
-        PlaceholderOnlySelection.prototype.update = function (decorated, data) {
-            this.$selection.find('.select2-selection__rendered').empty().append(
-                $('<span class="select2-selection__summary is-placeholder"></span>')
-                    .text(this.options.get('placeholder'))
-            );
-        };
 
         function TextSummarySelection() { }
 
@@ -1051,7 +1020,7 @@
             clearTimeout(filterTimer);
             filterTimer = setTimeout(function () {
                 chart.load(buildVisibleNodes(getActiveFilters()), function () {
-                    chart.fit();
+                    chart.fit(keepNodesInView);
                 });
             }, 0);
         };
@@ -1106,12 +1075,22 @@
         });
 
         function applyHideTag(checkbox) {
-            let tag = $(checkbox).data('hide-tag');
+            let $checkbox = $(checkbox)
+            let tag = $checkbox.data('hide-tag');
             if (!chart.config.tags[tag]) return;
+
+            let parent = $checkbox.closest('.form-check');
+
 
             chart.config.tags[tag].template = checkbox.checked
                 ? originalTemplates[tag]   // checked: show
                 : 'hidden';        // unchecked: hide
+
+            let dropdown = parent.find('.form-select');
+
+            if (dropdown) {
+                dropdown.attr('disabled', !checkbox.checked)
+            }
         }
 
         $(document).on('change', '[data-hide-tag]', function () {
@@ -1121,6 +1100,14 @@
         });
 
         $('[data-hide-tag]').trigger('change');
+
+
+        // Top 5 / Top 10 / All for the owners and registrations lists
+        $('#dropdownAdditonalOwners, #dropdownForeign_reg').on('change', function () {
+            LIST_LIMIT.owners = $('#dropdownAdditonalOwners').val();
+            LIST_LIMIT.registrations = $('#dropdownForeign_reg').val();
+            chart.draw();
+        });
 
 
 
