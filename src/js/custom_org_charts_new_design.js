@@ -1110,4 +1110,37 @@
         });
     })
 
+
+        // Display Options "RESET": back to the options set in the HTML
+    $(function () {
+        let $panel = $('.orgchart-display-section');
+        let defaultOrientation = $panel.find('.orientation-btn[data-orientation][aria-pressed="true"]').data('orientation');
+        let defaultLayout = $panel.find('.orientation-btn[data-layout][aria-pressed="true"]').data('layout');
+
+        $('#reset_display_option').on('click', function () {
+            // show/hide checkboxes: their own change handlers redraw and re-enable the Top selects
+            $panel.find('[data-hide-tag], [data-display]').each(function () {
+                if (this.checked !== this.defaultChecked) {
+                    $(this).prop('checked', this.defaultChecked).trigger('change');
+                }
+            });
+
+            // Top 5 / Top 10 / All
+            let limitsChanged = false;
+            $panel.find('#dropdownAdditonalOwners, #dropdownForeign_reg').each(function () {
+                let $default = $(this).find('option').filter(function () { return this.defaultSelected; });
+                let value = ($default.length ? $default : $(this).find('option').first()).val();
+                if ($(this).val() !== value) {
+                    $(this).val(value);
+                    limitsChanged = true;
+                }
+            });
+            if (limitsChanged) $('#dropdownAdditonalOwners').trigger('change');   // one handler reads both
+
+            // only click what isn't already pressed
+            $panel.find('.orientation-btn[data-orientation="' + defaultOrientation + '"][aria-pressed="false"]').trigger('click');
+            $panel.find('.orientation-btn[data-layout="' + defaultLayout + '"][aria-pressed="false"]').trigger('click');
+        });
+    });
+
 })(jQuery, OrgChart)
