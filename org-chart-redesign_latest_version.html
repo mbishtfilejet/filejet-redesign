@@ -264,20 +264,28 @@
                         <div class="row g-0 gap-3">
                             <div class="col-12">
 
-                                <div class="row g-0 justify-content-between gap-3">
-                                    <div class="col-md-3 orgchart_dropdown d-flex">
-                                        <select class="form-select orgchart-view-select border rounded flex-grow-1"
-                                            id="">
-                                            <option value="" disabled="" hidden="">Saved Views</option>
-                                            <option value="default" selected="">All entities (default)</option>
-                                            <optgroup label="MY VIEWS">
-                                                <option value="2">Alaska</option>
-                                                <option value="3">Arizona</option>
-                                            </optgroup>
-                                            <optgroup label="SHARED WITH ME">
-                                                <option value="4">Arkansas</option>
-                                            </optgroup>
-                                        </select>
+                                <div class="row g-0 justify-content-between gap-3 align-items-start">
+                                    <div class="col-12 col-md-6 d-flex gap-2 align-items-center flex-wrap">
+                                        <div class="orgchart_dropdown d-flex flex-grow-1">
+                                            <select class="form-select orgchart-view-select border rounded flex-grow-1"
+                                                id="">
+                                                <option value="" disabled="" hidden="">Saved Views</option>
+                                                <option value="default" selected="">All entities (default)</option>
+                                                <optgroup label="MY VIEWS">
+                                                    <option value="2">Alaska</option>
+                                                    <option value="3">Arizona</option>
+                                                </optgroup>
+                                                <optgroup label="SHARED WITH ME">
+                                                    <option value="4">Arkansas</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <span class="icon icon-save-grey m-0 flex-shrink-0 cursor-pointer"></span>
+                                        <span
+                                            class="icon icon-delete-grey m-0 mb-1 flex-shrink-0 cursor-pointer"></span>
+                                        <span class="badge view-notSaved p-1 px-2 ">Not Saved</span>
+                                        <span class="badge view-unsaved p-1 px-2">Unsaved Changes</span>
+                                        <span class="fs-9 text-indigo">REVERT</span>
                                     </div>
 
                                     <div class="col-auto d-flex flex-wrap gap-3">
@@ -317,8 +325,8 @@
                             <div class="col-12">
                                 <div
                                     class="row orgchart-action-section bg-white p-3 border border-1 rounded-3 align-items-center g-0 gap-3">
-                                    <h5 class="fw-bold m-0 col-auto">Meridian - Delaware entities</h5>
-                                    <span class="col-auto badge view-shared p-1 px-2">Shared</span>
+                                    <h5 class="fw-bold m-0 col-auto">All entities</h5>
+                                    <span class="col-auto badge view-shared p-1 px-2 d-none">Shared</span>
                                     <span class="col-auto flex-grow-1 flex-shrink-1"></span>
 
                                     <button data-bs-toggle="collapse" data-bs-target="#filters_option"
@@ -518,11 +526,11 @@
 
                                     <!-- Reset moved here, before Show -->
                                     <button type="button"
-                                        class="col-auto ms-auto order-last order-sm-0 order-xl-last min-height-auto align-self-start align-self-md-center bg-transparent border-0 font-weight-600 fs-9 text-secondary">
+                                        class="col-auto ms-auto order-last order-sm-0 order-md-last min-height-auto align-self-start align-self-md-center bg-transparent border-0 font-weight-600 fs-9 text-secondary">
                                         RESET
                                     </button>
 
-                                    <div class="col-12 col-md-7">
+                                    <div class="col-12 col-md-6 col-xl-7">
                                         <p class="fs-9 font-weight-600 text-uppercase mb-2">Show</p>
                                         <div class="show-group d-flex flex-wrap gap-3">
                                             <div class="form-check d-flex align-items-center gap-2 m-0 p-0">
@@ -548,8 +556,8 @@
                                                 <label class="label fw-normal mb-0" for="showAddOwners">Additional
                                                     Owners</label>
                                                 <span class="col-auto orgchart_dropdown">
-                                                    <select class="form-select border rounded my-auto show_top_select" disabled
-                                                        id="dropdownAdditonalOwners">
+                                                    <select class="form-select border rounded my-auto show_top_select"
+                                                        disabled id="dropdownAdditonalOwners">
                                                         <option value="5">Top 5</option>
                                                         <option value="10">Top 10</option>
                                                         <option value="all_default" selected>All</option>
@@ -576,10 +584,10 @@
                             <div class="col-12" id="tree">
 
                             </div>
-                            <div class="tree-legends border d-flex">
+                            <div class="tree-legends border d-flex gap-1">
 
                                 <ul
-                                    class="node-color-identification list-group list-group-horizontal align-items-center justify-content-between shadow-none gap-2 flex-wrap">
+                                    class="legends-color-identification list-group list-group-horizontal align-items-center shadow-none gap-2 flex-wrap">
                                     <li
                                         class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent">
                                         <div class="bg-entity-node rounded p-2"></div>
@@ -592,13 +600,51 @@
                                     </li>
                                     <li
                                         class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent">
-                                        <div class="bg-additional-node rounded"></div>
+                                        <div class="bg-additional-node"></div>
                                         <div class="lh-1">Additional Owners</div>
                                     </li>
                                     <li
                                         class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent">
-                                        <div class="bg-foreign-node rounded"></div>
+                                        <div class="bg-foreign-node"></div>
                                         <div class="lh-1">Foreign Jurisdictions</div>
+                                    </li>
+
+                                    <span class="py-3 border border-1 tax-shape"></span>
+                                    <li
+                                        class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent tax-shape">
+                                        <span class="icon m-0 icon-tax-corporation"></span>
+                                        <div class="lh-1">Corporation</div>
+                                    </li>
+                                    <li
+                                        class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent tax-shape">
+                                        <span class="icon m-0 icon-tax-partnership"></span>
+                                        <div class="lh-1">Partnership</div>
+                                    </li>
+                                    <li
+                                        class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent tax-shape">
+                                        <span class="icon m-0 icon-tax-trust"></span>
+                                        <div class="lh-1">Trust</div>
+                                    </li>
+                                    <li
+                                        class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent tax-shape">
+                                        <span class="icon m-0 icon-tax-disregarded"></span>
+                                        <div class="lh-1">Disregarded Entity</div>
+                                    </li>
+                                    <span class="py-3 border border-1 entity-status"></span>
+                                    <li
+                                        class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent entity-status">
+                                        <div class="status-dot status-good"></div>
+                                        <div class="lh-1">In Good Standing</div>
+                                    </li>
+                                    <li
+                                        class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent entity-status">
+                                        <div class="status-dot status-not-good"></div>
+                                        <div class="lh-1">Not In Good Standing</div>
+                                    </li>
+                                    <li
+                                        class="p-0 list-group-item d-flex gap-2 border-0 align-items-center bg-transparent entity-status">
+                                        <div class="status-dot status-inactive"></div>
+                                        <div class="lh-1">Inactive</div>
                                     </li>
                                 </ul>
                             </div>

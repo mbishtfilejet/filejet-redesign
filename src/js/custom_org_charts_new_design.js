@@ -426,7 +426,7 @@
         "bullet-good": '#3AB564',
         "bullet-not-good": '#E73B18',
         "bullet-inactive": '#8690A0',
-        "bullet-others": 'none',
+        "bullet-others": '#000000',
     };
     const regGridCache = {};
 
@@ -435,7 +435,7 @@
         const limit = Number(LIST_LIMIT.registrations);
         if (!limit || items.length <= limit) return items;
 
-        return items.slice(0, limit).concat({ name: 'Others (' + (items.length - limit) + ')', status: 'others' });
+        return items.slice(0, limit).concat({ name: (items.length - limit) + ' - Others', status: 'others' });
     }
 
     // Place every state in a 2-column grid (cached per list)
@@ -630,6 +630,22 @@
     OrgChart.scroll.smooth = 4;
     OrgChart.scroll.speed = 120;
 
+    // scroll bar hides in right or right top orientation. Size it the normal (top) way;.
+    let libXScrollSetPosition = OrgChart.xScrollUI.prototype.setPosition;
+    OrgChart.xScrollUI.prototype.setPosition = function () {
+        let orientation = this.config.orientation;
+        if (orientation !== OrgChart.orientation.right && orientation !== OrgChart.orientation.right_top) {
+            return libXScrollSetPosition.apply(this, arguments);
+        }
+
+        this.config.orientation = OrgChart.orientation.top;
+        try {
+            return libXScrollSetPosition.apply(this, arguments);
+        } finally {
+            this.config.orientation = orientation;
+        }
+    };
+
 
 
     let chart = new OrgChart(document.getElementById("tree"), {
@@ -647,7 +663,7 @@
         align: OrgChart.align.center,
         movable: OrgChart.movable.tree,
         enableDragDrop: true,
-        // highlightOnHover: "parents",        // not in 9.1.61 (ignored); turn back on after upgrading
+        // highlightOnHover: "parents",        // not in 9.1.61 (ignored); will turn back on after upgrading
         lazyLoading: true,
         layout: OrgChart.layout.normal,
         enableSearch: false,
@@ -709,10 +725,6 @@
             "subLevels3": {
                 subLevels: 3
             },
-            // OLD FILTER (Balkan filter tag): filtered nodes are no longer loaded, so this isn't needed
-            // filter: {
-            //     template: 'dot'
-            // }
         },
         nodeMenu: { details: { text: "Details" }, edit: { text: "Edit entity" } },
         nodeBinding: {
@@ -739,20 +751,8 @@
             link_field_0: "createdAt"
         },
         editUI: new editForm(),
-
-        // OLD FILTER (Balkan filterBy): replaced by loading only the matching nodes (applyFilters)
-        // filterBy: {
-        //     "groupName": {},
-        //     "Entity_Name": {},
-        //     "Entity_Type": {},
-        //     "state": {},
-        //     "entityStatus": {}
-        // }
     });
 
-    // Wait for the font (the canvas measures text with it) and the JSON together,
-    // then load once with the current filter selection.
-    // fetch('data-reboot-redesign_stress_test.json')
     Promise.all([
         document.fonts ? document.fonts.ready : Promise.resolve(),
         fetch('data-reboot-redesign.json')
@@ -886,54 +886,6 @@
             let s2 = $select.data('select2');
             if (s2.isOpen()) s2.trigger('query', { term: s2.$dropdown.find('.select2-search__field').val() || '' });
         });
-
-
-        // ======================================================================
-        // OLD FILTER: Balkan filterBy + chart.draw()
-        // Filtered nodes stayed in the layout (gap, link and child count stayed).
-        // Replaced by the "hide filtered nodes" code below.
-        // ======================================================================
-
-        // // Make sure filterBy[field] has an entry for every value in the node data
-        // function getFilterValues(field) {
-        //     let ui = chart.filterUI;
-        //     if (!ui.filterBy) ui.filterBy = {};
-        //
-        //     let values = ui.filterBy[field] || (ui.filterBy[field] = {});
-        //     chart.config.nodes.forEach(function (node) {
-        //         let v = node[field];
-        //         if (v != null && v !== '' && !values[v]) {
-        //             values[v] = { checked: true, text: v };
-        //         }
-        //     });
-        //     return values;
-        // }
-        //
-        // $filters.on('change', function () {
-        //     let field = $(this).data('filter-item');
-        //     let values = getFilterValues(field);
-        //
-        //     let selected = [].concat($(this).val() || [])
-        //         .filter(function (v) { return v && v !== 'all_default'; });
-        //
-        //     for (let value in values) {
-        //         values[value].checked = !selected.length || selected.includes(value);
-        //     }
-        //
-        //     updateFilterCount();
-        //
-        //     chart.draw();
-        // });
-
-
-        // ======================================================================
-        // NEW FILTER: load only the matching nodes
-        //   - non-matching nodes are not loaded: no card, no link, no gap,
-        //     and they don't count in any expand/collapse number
-        //   - a matching node whose parent is filtered out moves up to its
-        //     nearest visible ancestor (or becomes a top-level node)
-        //   - Foreign Registrations / Additional Owners follow their entity
-        // ======================================================================
 
         let SIDE_TAGS = ['partnerNode', 'additionalOwners'];   // shown only with their entity
 
@@ -1114,6 +1066,7 @@
         // tax shape & entity status show/hide
         $(document).on('change', '[data-display]', function () {
             $('#tree').toggleClass('hide-' + $(this).data('display'), !this.checked);
+            $('.tree-legends').toggleClass('hide-' + $(this).data('display'), !this.checked);
         });
 
         // apply the starting state on page load

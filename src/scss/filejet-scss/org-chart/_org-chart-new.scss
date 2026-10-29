@@ -314,6 +314,10 @@
         background-color: var(--bs-filejet-purple-indigo);
     }
 
+    .text-indigo {
+        color: var(--bs-filejet-purple-indigo);
+    }
+
     .bg-light-indigo {
         background-color: #f2f2ff;
     }
@@ -390,10 +394,17 @@
         color: #B4412B;
     }
 
-    .view-unsaved {
+    .view-unsaved,
+    .view-notSaved {
         border: 1px solid #F0B43C;
         background-color: #FFF4D6;
         color: #8A5A00;
+    }
+
+    .icon-delete-grey,
+    .icon-save-grey {
+        width: 20px;
+        height: 18px;
     }
 
     [data-n-id].filter {
@@ -535,6 +546,11 @@
 
     }
 
+    .icon-grey {
+        filter: grayscale(100%) brightness(150%);
+        background-blend-mode: luminosity;
+    }
+
 
     .tree-legends {
         position: fixed;
@@ -549,9 +565,24 @@
         border-radius: var(--bs-border-radius);
         box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
 
-        .node-color-identification {
+        &.hide-tax .tax-shape {
+            display: none !important;
+        }
+
+        &.hide-status .entity-status {
+            display: none !important;
+        }
+
+        .legends-color-identification {
             min-height: 35px;
             font-size: 11px;
+
+            .status-dot {
+                width: 8px;
+                height: 8px;
+                flex-shrink: 0;
+            }
+
 
             .bg-entity-node,
             .bg-external-node,

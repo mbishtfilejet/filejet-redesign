@@ -14304,6 +14304,34 @@ input[type=radio] {
   background-image: url("../../../dist/images/icons/filter-purple.svg");
 }
 
+.icon-edit-save {
+  background-image: url("../../../dist/images/icons/save-dark.svg");
+}
+
+.icon-delete-grey {
+  background-image: url("../../../dist/images/icons/new-delete-grey.svg");
+}
+
+.icon-save-grey {
+  background-image: url("../../../dist/images/icons/save-grey.svg");
+}
+
+.icon-tax-corporation {
+  background-image: url("../../../dist/images/icons/icon-rectangle.svg");
+}
+
+.icon-tax-partnership {
+  background-image: url("../../../dist/images/icons/icon-triangle.svg");
+}
+
+.icon-tax-trust {
+  background-image: url("../../../dist/images/icons/icon-diamond.svg");
+}
+
+.icon-tax-disregarded {
+  background-image: url("../../../dist/images/icons/icon-ellipse.svg");
+}
+
 .login-page {
   background: url("../../../../dist/images/login-banner.jpg") no-repeat center center/cover;
 }
@@ -25252,6 +25280,9 @@ body *::-webkit-scrollbar-thumb {
 .orgchart-dashboard .bg-indigo {
   background-color: var(--bs-filejet-purple-indigo);
 }
+.orgchart-dashboard .text-indigo {
+  color: var(--bs-filejet-purple-indigo);
+}
 .orgchart-dashboard .bg-light-indigo {
   background-color: #f2f2ff;
 }
@@ -25310,10 +25341,16 @@ body *::-webkit-scrollbar-thumb {
   background-color: #FDE8E4;
   color: #B4412B;
 }
-.orgchart-dashboard .view-unsaved {
+.orgchart-dashboard .view-unsaved,
+.orgchart-dashboard .view-notSaved {
   border: 1px solid #F0B43C;
   background-color: #FFF4D6;
   color: #8A5A00;
+}
+.orgchart-dashboard .icon-delete-grey,
+.orgchart-dashboard .icon-save-grey {
+  width: 20px;
+  height: 18px;
 }
 .orgchart-dashboard [data-n-id].filter {
   filter: blur(5px) !important;
@@ -25423,6 +25460,10 @@ body *::-webkit-scrollbar-thumb {
 .orgchart-dashboard #tree div[style*="overflow-y: scroll"]::-webkit-scrollbar-thumb:hover {
   background: #9AA0A6;
 }
+.orgchart-dashboard .icon-grey {
+  filter: grayscale(100%) brightness(150%);
+  background-blend-mode: luminosity;
+}
 .orgchart-dashboard .tree-legends {
   position: fixed;
   left: 340px;
@@ -25436,19 +25477,30 @@ body *::-webkit-scrollbar-thumb {
   border-radius: var(--bs-border-radius);
   box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 8px;
 }
-.orgchart-dashboard .tree-legends .node-color-identification {
+.orgchart-dashboard .tree-legends.hide-tax .tax-shape {
+  display: none !important;
+}
+.orgchart-dashboard .tree-legends.hide-status .entity-status {
+  display: none !important;
+}
+.orgchart-dashboard .tree-legends .legends-color-identification {
   min-height: 35px;
   font-size: 11px;
 }
-.orgchart-dashboard .tree-legends .node-color-identification .bg-entity-node,
-.orgchart-dashboard .tree-legends .node-color-identification .bg-external-node,
-.orgchart-dashboard .tree-legends .node-color-identification .bg-foreign-node,
-.orgchart-dashboard .tree-legends .node-color-identification .bg-additional-node {
+.orgchart-dashboard .tree-legends .legends-color-identification .status-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+.orgchart-dashboard .tree-legends .legends-color-identification .bg-entity-node,
+.orgchart-dashboard .tree-legends .legends-color-identification .bg-external-node,
+.orgchart-dashboard .tree-legends .legends-color-identification .bg-foreign-node,
+.orgchart-dashboard .tree-legends .legends-color-identification .bg-additional-node {
   width: 16px;
   height: 16px;
 }
-.orgchart-dashboard .tree-legends .node-color-identification .bg-foreign-node,
-.orgchart-dashboard .tree-legends .node-color-identification .bg-additional-node {
+.orgchart-dashboard .tree-legends .legends-color-identification .bg-foreign-node,
+.orgchart-dashboard .tree-legends .legends-color-identification .bg-additional-node {
   width: 5px;
 }
 @media (min-width: 992px) and (max-width: 1600px) {
