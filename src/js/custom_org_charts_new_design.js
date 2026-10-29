@@ -1041,7 +1041,7 @@
             let dropdown = parent.find('.form-select');
 
             if (dropdown) {
-                dropdown.attr('disabled', !checkbox.checked)
+                dropdown.prop('disabled', !checkbox.checked)
             }
         }
 
