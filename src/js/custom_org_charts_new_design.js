@@ -187,6 +187,13 @@
    <line x1="7" y1="13" x2="19" y2="13" stroke="#aeaeae" stroke-width="1.5"></line>`;
 
 
+   OrgChart.templates.ana.link_field_0 =
+    '<g transform="translate({x},{y})">' +
+        '<rect x="-40" y="-10" width="80" height="20" rx="10" fill="#FAFAFA" stroke="#E0E0E0"></rect>' +
+        '<text text-anchor="middle" y="4" font-size="11" fill="#5F6368">{val}</text>' +
+    '</g>';
+
+
     const ENTITY_NAME = {
         x: CARD.strip + 20,   // same x as now (68)
         y: 30,                // first line baseline (same as now)
@@ -1061,6 +1068,8 @@
             chart.draw();
         });
 
+        $('#dropdownAdditonalOwners').trigger('change');
+
 
 
         // tax shape & entity status show/hide
@@ -1111,7 +1120,7 @@
     })
 
 
-        // Display Options "RESET": back to the options set in the HTML
+    // Display Options "RESET": back to the options set in the HTML
     $(function () {
         let $panel = $('.orgchart-display-section');
         let defaultOrientation = $panel.find('.orientation-btn[data-orientation][aria-pressed="true"]').data('orientation');
