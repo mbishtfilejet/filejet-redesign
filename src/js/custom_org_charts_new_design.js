@@ -442,7 +442,7 @@
         const limit = Number(LIST_LIMIT.registrations);
         if (!limit || items.length <= limit) return items;
 
-        return items.slice(0, limit).concat({ name: (items.length - limit) + ' - Others', status: 'others' });
+        return items.slice(0, limit).concat({ name: (items.length - limit) + ' Others', status: 'others' });
     }
 
     // Place every state in a 2-column grid (cached per list)
