@@ -4,9 +4,6 @@
     const CARD = { w: 260, h: 124, strip: 48 };
     const SLIM = { w: 260, h: 76 };
 
-    const SHAPE = { Trust: 'diamond', Corporation: 'rectangle', Partnership: 'triangle', Others: 'oval' };
-
-
     let expandAllIcon = '<span class="icon me-0 icon-expand-all"></span>';
 
     let fitIcon = '<span class="icon me-0 icon-fit"></span>';
@@ -66,10 +63,9 @@
     function taxShapeTemplate(node, data) {
         let cx = CARD.strip / 2;
         let cy = node.h / 2;
-        let shape = SHAPE[data.taxShape];
         let svg;
 
-        switch (shape) {
+        switch (data.taxShape) {
             case "diamond":
                 svg = `<path d="M${cx - 20},${cy} L${cx},${cy + 10} L${cx + 20},${cy} L${cx},${cy - 10} Z" fill="#ffffff" />`;
                 break;
@@ -78,6 +74,26 @@
                 break;
             case "rectangle":
                 svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />`;
+                break;
+            case "triangle-in-rectangle":
+                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}"  fill="#ffffff" />
+                <polygon points="${cx},${cy - 10} ${cx + 15},${cy + 9.65} ${cx - 15},${cy + 10}" stroke="#000000" fill="#ffffff" />`;
+                break;
+            case "inverted-triangle-in-rectangle":
+                svg = `<g transform="rotate(180 ${cx} ${cy})">
+                <rect width="30" height="20" x="${cx - 15}" y="${cy - 10}"  fill="#ffffff" />
+                <polygon points="${cx},${cy - 10} ${cx + 15},${cy + 10} ${cx - 15},${cy + 10}" stroke="#000000" fill="#ffffff" />
+                </g>`;
+                break;
+            case "circle-in-rectangle":
+                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />
+                <ellipse rx="12" ry="8" cx="${cx}" cy="${cy}" stroke="#000000" fill="#ffffff" />`;
+                break;
+             case "hexagon":
+                svg = `<polygon points="${cx + 14},${cy} ${cx + 7},${cy + 12.1} ${cx - 7},${cy + 12.1} ${cx - 14},${cy} ${cx - 7},${cy - 12.1} ${cx + 7},${cy - 12.1}" fill="#ffffff" />`;
+                break;
+            case "pentagon":
+                svg = `<polygon points="${cx},${cy - 14} ${cx + 13.3},${cy - 4.3} ${cx + 8.2},${cy + 11.3} ${cx - 8.2},${cy + 11.3} ${cx - 13.3},${cy - 4.3}" fill="#ffffff" />`;
                 break;
             default:
                 svg = `<ellipse rx="17" ry="11" cx="${cx}" cy="${cy}" fill="#ffffff" />`;
@@ -187,11 +203,11 @@
    <line x1="7" y1="13" x2="19" y2="13" stroke="#aeaeae" stroke-width="1.5"></line>`;
 
 
-   OrgChart.templates.ana.link_field_0 =
-    '<g transform="translate({x},{y})">' +
+    OrgChart.templates.ana.link_field_0 =
+        '<g transform="translate({x},{y})">' +
         '<rect x="-40" y="-10" width="80" height="20" rx="10" fill="#FAFAFA" stroke="#E0E0E0"></rect>' +
         '<text text-anchor="middle" y="4" font-size="11" fill="#5F6368">{val}</text>' +
-    '</g>';
+        '</g>';
 
 
     const ENTITY_NAME = {
@@ -241,6 +257,14 @@
         return taxShapeTemplate(node, data);
     }
 
+    OrgChart.templates.entityCard.taxshape_label = function (node, data, template, config, value) {
+        if (!value) return '';
+        let size = String(value).length === 5 ? 8 : 9;   // 5 letters: a bit smaller so they stay inside the 48px strip
+
+        return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
+            style="font-size: ${size}px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
+    }
+
 
     OrgChart.templates.entityCard.entityName = function (node, data, template, config, value) {
         return getEntityName(value).text;
@@ -283,6 +307,14 @@
         return taxShapeTemplate(node, data);
     }
 
+    OrgChart.templates.externalEntityNode.taxshape_label = function (node, data, template, config, value) {
+        if (!value) return '';
+        let size = text.length === 5 ? 8 : 9;   // 5 letters: a bit smaller so they stay inside the 48px strip
+
+        return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
+            style="font-size: ${size}px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
+    }
+
     OrgChart.templates.externalEntityNode.entityName = function (node, data, template, config, value) {
         return getEntityName(value).text;
     }
@@ -320,9 +352,9 @@
 
     OrgChart.templates.additionalOwners.link = `<path class="boc-hoverable" stroke="#9AA0A6" stroke-width="2px" stroke-dasharray="6,4" fill="none" d="{rounded}" />`;
 
-    OrgChart.templates.additionalOwners.nodeMenuButton = nodeMenuTab(CARD.w);
+    OrgChart.templates.additionalOwners.nodeMenuButton = "";
 
-    // Top 5 / Top 10 / All, from #dropdownAdditonalOwners and #dropdownForeign_reg
+    // Top 5 / Top 10 / All, from #dropdownAdditionalOwners and #dropdownForeign_reg
     const LIST_LIMIT = { owners: 'all_default', registrations: 'all_default' };
 
     const OWNER_LIST = {
@@ -416,7 +448,7 @@
 
     OrgChart.templates.foreignRegistrations.link = `<path class="boc-hoverable" stroke="#9AA0A6" stroke-width="2px" stroke-dasharray="6,4" fill="none" d="{rounded}" />`;
 
-    OrgChart.templates.foreignRegistrations.nodeMenuButton = nodeMenuTab(CARD.w);
+    OrgChart.templates.foreignRegistrations.nodeMenuButton = "";
 
     const FOREIGN_REG_LIST = {
         top: 30,
@@ -548,7 +580,6 @@
     let applyFilters;
 
 
-
     let editForm = function () {
         this.nodeId = null;
     };
@@ -566,6 +597,8 @@
         this.entityName = this.editForm.find('#editForm_entity_Name');
         this.entityType = this.editForm.find('#editForm_entity_type');
         this.entityJurisdiction = this.editForm.find('#editForm_entity_jurs');
+        this.entityTaxShape = this.editForm.find('#editForm_taxShape');
+        this.entityTaxDescriptor = this.editForm.find('#editForm_taxShapeDescriptor');
 
         this.cancelButton = this.editForm.find('#cancel_editForm');
         this.saveButton = this.editForm.find('#save_editForm');
@@ -578,14 +611,14 @@
         });
 
         const ENTITY_TYPE_TO_TAX_SHAPE = {
-            'Trust': 'Trust',
-            'Corporation': 'Corporation',
-            'Non Profit': 'Corporation',
-            'GP': 'Partnership',
-            'LP': 'Partnership',
-            'LLP': 'Partnership',
-            'LLC': 'Others',
-            'PLLC': 'Others'
+            'Trust': 'diamond',
+            'Corporation': 'rectangle',
+            'Non Profit': 'rectangle',
+            'GP': 'triangle',
+            'LP': 'triangle',
+            'LLP': 'triangle',
+            'LLC': 'oval',
+            'PLLC': 'oval'
         };
 
         this.saveButton.on("click", function () {
@@ -595,7 +628,8 @@
             node.Entity_Name = that.entityName.val();
             node.Entity_Type = that.entityType.val();
             node.state = that.entityJurisdiction.val();
-            node.taxShape = ENTITY_TYPE_TO_TAX_SHAPE[node.Entity_Type] || 'Others';
+            node.taxShape = that.entityTaxShape.val() || 'oval';
+            node.taxDescriptor = that.entityTaxDescriptor.val() || '';
 
             orgchart.updateNode(node);
 
@@ -606,7 +640,8 @@
                     Entity_Name: node.Entity_Name,
                     Entity_Type: node.Entity_Type,
                     state: node.state,
-                    taxShape: node.taxShape
+                    taxShape: node.taxShape,
+                    taxDescriptor: node.taxDescriptor
                 });
             }
 
@@ -752,7 +787,8 @@
             individualType: "individualType",
             ownershipPercentage: "ownershipPercentage",
             ownerList: "owners",
-            registrationList: "registrations"
+            registrationList: "registrations",
+            taxshape_label:"taxDescriptor"
         },
         linkBinding: {
             link_field_0: "createdAt"
@@ -1062,13 +1098,13 @@
 
 
         // Top 5 / Top 10 / All for the owners and registrations lists
-        $('#dropdownAdditonalOwners, #dropdownForeign_reg').on('change', function () {
-            LIST_LIMIT.owners = $('#dropdownAdditonalOwners').val();
+        $('#dropdownAdditionalOwners, #dropdownForeign_reg').on('change', function () {
+            LIST_LIMIT.owners = $('#dropdownAdditionalOwners').val();
             LIST_LIMIT.registrations = $('#dropdownForeign_reg').val();
             chart.draw();
         });
 
-        $('#dropdownAdditonalOwners').trigger('change');
+        $('#dropdownAdditionalOwners').trigger('change');
 
 
 
@@ -1136,7 +1172,7 @@
 
             // Top 5 / Top 10 / All
             let limitsChanged = false;
-            $panel.find('#dropdownAdditonalOwners, #dropdownForeign_reg').each(function () {
+            $panel.find('#dropdownAdditionalOwners, #dropdownForeign_reg').each(function () {
                 let $default = $(this).find('option').filter(function () { return this.defaultSelected; });
                 let value = ($default.length ? $default : $(this).find('option').first()).val();
                 if ($(this).val() !== value) {
@@ -1144,12 +1180,32 @@
                     limitsChanged = true;
                 }
             });
-            if (limitsChanged) $('#dropdownAdditonalOwners').trigger('change');   // one handler reads both
+            if (limitsChanged) $('#dropdownAdditionalOwners').trigger('change');   // one handler reads both
 
             // only click what isn't already pressed
             $panel.find('.orientation-btn[data-orientation="' + defaultOrientation + '"][aria-pressed="false"]').trigger('click');
             $panel.find('.orientation-btn[data-layout="' + defaultLayout + '"][aria-pressed="false"]').trigger('click');
         });
     });
+
+
+
+    // Additional Owners and Foreign Registrations cards don't open the edit form on click
+    chart.onNodeClick(function (args) {
+        let tags = args.node.tags || [];
+        if (tags.indexOf('additionalOwners') !== -1 || tags.indexOf('partnerNode') !== -1) {
+            return false;
+        }
+    });
+
+    $(".tax-shape-select").each(function () {
+        let selectEl = $(this);
+        selectEl.select2({
+            dropdownParent: selectEl.closest('.modal'),
+        }).on('select2:open', function () {
+            $(this).closest('.modal').find('.select2-search__field')
+                .attr('placeholder', 'Search...');
+        })
+    })
 
 })(jQuery, OrgChart)
