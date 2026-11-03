@@ -76,18 +76,18 @@
                 svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />`;
                 break;
             case "triangle-in-rectangle":
-                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}"  fill="#ffffff" />
-                <polygon points="${cx},${cy - 10} ${cx + 15},${cy + 9.65} ${cx - 15},${cy + 10}" stroke="#000000" fill="#ffffff" />`;
+                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />
+                <polygon points="${cx},${cy - 9.5} ${cx + 14.8},${cy + 10} ${cx - 14.8},${cy + 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />`;
                 break;
             case "inverted-triangle-in-rectangle":
                 svg = `<g transform="rotate(180 ${cx} ${cy})">
-                <rect width="30" height="20" x="${cx - 15}" y="${cy - 10}"  fill="#ffffff" />
-                <polygon points="${cx},${cy - 10} ${cx + 15},${cy + 10} ${cx - 15},${cy + 10}" stroke="#000000" fill="#ffffff" />
+                <rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />
+                <polygon points="${cx},${cy - 9.5} ${cx + 14.8},${cy + 10} ${cx - 14.8},${cy + 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />
                 </g>`;
                 break;
             case "circle-in-rectangle":
-                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />
-                <ellipse rx="12" ry="8" cx="${cx}" cy="${cy}" stroke="#000000" fill="#ffffff" />`;
+                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />
+                <ellipse rx="12" ry="8" cx="${cx}" cy="${cy}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />`;
                 break;
             case "hexagon":
                 svg = `<polygon points="${cx + 14},${cy} ${cx + 7},${cy + 12.1} ${cx - 7},${cy + 12.1} ${cx - 14},${cy} ${cx - 7},${cy - 12.1} ${cx + 7},${cy - 12.1}" fill="#ffffff" />`;
@@ -575,11 +575,6 @@
 
 
 
-    // ==========================================================================
-    // Full data + filter hook (used by the filters further down)
-    //   ALL_NODES:    every node from the JSON, kept even when filtered out
-    //   applyFilters: replaced by the real version inside the filters $(function)
-    // ==========================================================================
     let ALL_NODES = [];
 
     let applyFilters = function () { };
