@@ -268,7 +268,7 @@
         if (!value) return '';
 
         return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
-            style="font-size: 8px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
+            style="font-size: 9px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
     }
 
 
@@ -317,7 +317,7 @@
         if (!value) return '';
 
         return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
-            style="font-size: 8px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
+            style="font-size: 9px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
     }
 
     OrgChart.templates.externalEntityNode.entityName = function (node, data, template, config, value) {
@@ -582,12 +582,80 @@
     // ==========================================================================
     let ALL_NODES = [];
 
-    let applyFilters;
+    let applyFilters = function () { };
 
+    // make taxshape dropdown to work like select
+    function initTaxShapePicker(picker) {
+        let input = picker.find('input[type="hidden"]');
+        let toggle = picker.find('.tax-shape-toggle');
+        let items = picker.find('.dropdown-item[data-value]');
+        let placeholder = toggle.attr('data-placeholder') || 'Select tax shape';
+
+
+        items.attr({ tabindex: '-1', role: 'option' });
+
+        function setValue(value, silent) {
+            let item = items.filter(function () {
+                return $(this).attr('data-value') === String(value);
+            });
+            value = item.length ? item.attr('data-value') : '';
+
+            items.removeClass('active').attr('aria-selected', 'false');
+
+            if (item.length) {
+                item.addClass('active').attr('aria-selected', 'true');
+                toggle.empty().append(item.children().clone());
+            } else {
+                toggle.empty().append($('<span class="tax-shape-placeholder"></span>').text(placeholder));
+            }
+
+            let changed = input.val() !== value;
+            input.val(value);
+            if (changed && !silent) input.trigger('change');
+        }
+
+        picker.on('click', '.dropdown-item[data-value]', function () {
+            setValue($(this).attr('data-value'));
+            bootstrap.Dropdown.getOrCreateInstance(toggle[0]).hide();
+            toggle.trigger('focus');
+        });
+
+        picker.on('keydown', '.dropdown-item[data-value]', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                $(this).trigger('click');
+            }
+        });
+
+        picker.on('show.bs.dropdown', function () {
+            let active = items.filter('.active')[0];
+            if (active) {
+                setTimeout(function () {
+                    active.scrollIntoView({ block: 'nearest' });
+                    active.focus();
+                }, 0);
+            }
+        });
+
+        setValue(input.val(), true);
+        return setValue;
+    }
+
+    const ENTITY_TYPE_TO_TAX_SHAPE = {
+        'Trust': 'diamond',
+        'Corporation': 'rectangle',
+        'Non Profit': 'rectangle',
+        'GP': 'triangle',
+        'LP': 'triangle',
+        'LLP': 'triangle',
+        'LLC': 'oval',
+        'PLLC': 'oval'
+    };
 
     let editForm = function () {
         this.nodeId = null;
     };
+
 
     editForm.prototype.init = function (obj) {
 
@@ -605,8 +673,16 @@
         this.entityTaxShape = this.editForm.find('#editForm_taxShape');
         this.entityTaxDescriptor = this.editForm.find('#editForm_taxShapeDescriptor');
 
+        this.setTaxShape = initTaxShapePicker(this.editForm.find('#editForm_taxShapePicker'));
+
         this.cancelButton = this.editForm.find('#cancel_editForm');
         this.saveButton = this.editForm.find('#save_editForm');
+
+
+        this.entityType.on('input change', function () {
+            that.setTaxShape(ENTITY_TYPE_TO_TAX_SHAPE[this.value], true);
+        });
+
 
         // Bootstrap 5 modal
         this.modal = new bootstrap.Modal(this.editForm);
@@ -615,20 +691,10 @@
             that.hide();
         });
 
-        const ENTITY_TYPE_TO_TAX_SHAPE = {
-            'Trust': 'diamond',
-            'Corporation': 'rectangle',
-            'Non Profit': 'rectangle',
-            'GP': 'triangle',
-            'LP': 'triangle',
-            'LLP': 'triangle',
-            'LLC': 'oval',
-            'PLLC': 'oval'
-        };
-
         this.saveButton.on("click", function () {
 
             let node = orgchart.get(that.nodeId);
+            if (!node) return that.hide();
 
             node.Entity_Name = that.entityName.val();
             node.Entity_Type = that.entityType.val();
@@ -664,6 +730,9 @@
         this.entityName.val(node.Entity_Name || "");
         this.entityType.val(node.Entity_Type || "");
         this.entityJurisdiction.val(node.state || "");
+
+        this.setTaxShape(node.taxShape || ENTITY_TYPE_TO_TAX_SHAPE[node.Entity_Type] || 'oval', true);
+        this.entityTaxDescriptor.val(node.taxDescriptor || '');
 
         this.modal.show();
     };
@@ -1193,15 +1262,5 @@
             return false;
         }
     });
-
-    $(".tax-shape-select").each(function () {
-        let selectEl = $(this);
-        selectEl.select2({
-            dropdownParent: selectEl.closest('.modal'),
-        }).on('select2:open', function () {
-            $(this).closest('.modal').find('.select2-search__field')
-                .attr('placeholder', 'Search...');
-        })
-    })
 
 })(jQuery, OrgChart)
