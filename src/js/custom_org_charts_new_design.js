@@ -366,7 +366,7 @@
         top: 30,
         left: 20,
         right: 12,
-        pctWidth: 40,
+        pctWidth: 60,
         lineH: 13.2,
         gap: 6,
         bottom: 8,
