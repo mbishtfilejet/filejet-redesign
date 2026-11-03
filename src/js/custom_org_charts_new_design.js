@@ -259,10 +259,9 @@
 
     OrgChart.templates.entityCard.taxshape_label = function (node, data, template, config, value) {
         if (!value) return '';
-        let size = String(value).length === 5 ? 8 : 9;   // 5 letters: a bit smaller so they stay inside the 48px strip
-
+       
         return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
-            style="font-size: ${size}px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
+            style="font-size: 8px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
     }
 
 
@@ -309,10 +308,9 @@
 
     OrgChart.templates.externalEntityNode.taxshape_label = function (node, data, template, config, value) {
         if (!value) return '';
-        let size = text.length === 5 ? 8 : 9;   // 5 letters: a bit smaller so they stay inside the 48px strip
 
         return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
-            style="font-size: ${size}px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
+            style="font-size: 8px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
     }
 
     OrgChart.templates.externalEntityNode.entityName = function (node, data, template, config, value) {
