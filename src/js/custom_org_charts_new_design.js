@@ -627,16 +627,6 @@
             }
         });
 
-        picker.on('show.bs.dropdown', function () {
-            let active = items.filter('.active')[0];
-            if (active) {
-                setTimeout(function () {
-                    active.scrollIntoView({ block: 'nearest' });
-                    active.focus();
-                }, 0);
-            }
-        });
-
         setValue(input.val(), true);
         return setValue;
     }
@@ -677,12 +667,6 @@
 
         this.cancelButton = this.editForm.find('#cancel_editForm');
         this.saveButton = this.editForm.find('#save_editForm');
-
-
-        this.entityType.on('input change', function () {
-            that.setTaxShape(ENTITY_TYPE_TO_TAX_SHAPE[this.value], true);
-        });
-
 
         // Bootstrap 5 modal
         this.modal = new bootstrap.Modal(this.editForm);
