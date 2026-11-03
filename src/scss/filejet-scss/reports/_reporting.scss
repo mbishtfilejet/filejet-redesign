@@ -178,9 +178,14 @@
         .access-tooltip {
             overflow: hidden;
             overflow-y: auto;
-            max-height: 200px;
             font-size: 0.81rem;
             padding: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            max-height: 100%;
+
 
 
             &::-webkit-scrollbar-thumb:hover {
@@ -195,7 +200,8 @@
 
         &:hover {
             .access-truncate {
-                display: none !important;
+                display: flex !important;
+                visibility: hidden;
             }
         }
     }
@@ -504,10 +510,10 @@
         conic-gradient(#0000 30%, #75abe2);
     -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
     mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
-    animation: l13 1s infinite linear;
+    animation: rotateAnimation 1s infinite linear;
 }
 
-@keyframes l13 {
+@keyframes rotateAnimation {
     100% {
         transform: rotate(1turn)
     }

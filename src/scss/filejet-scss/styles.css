@@ -24801,9 +24801,13 @@ body *::-webkit-scrollbar-thumb {
 .reporting-dashboard .access-wrapper .access-tooltip {
   overflow: hidden;
   overflow-y: auto;
-  max-height: 200px;
   font-size: 0.81rem;
   padding: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-height: 100%;
   scrollbar-width: thin;
   scrollbar-color: #888888 transparent;
 }
@@ -24812,7 +24816,8 @@ body *::-webkit-scrollbar-thumb {
   /* Color on hover */
 }
 .reporting-dashboard .access-wrapper:hover .access-truncate {
-  display: none !important;
+  display: flex !important;
+  visibility: hidden;
 }
 .reporting-dashboard .modal-footer .delete-report-btn {
   height: 38px;
@@ -25045,10 +25050,10 @@ body *::-webkit-scrollbar-thumb {
   background: radial-gradient(farthest-side, #75abe2 94%, rgba(0, 0, 0, 0)) top/8px 8px no-repeat, conic-gradient(rgba(0, 0, 0, 0) 30%, #75abe2);
   -webkit-mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 8px), #000 0);
   mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 8px), #000 0);
-  animation: l13 1s infinite linear;
+  animation: rotateAnimation 1s infinite linear;
 }
 
-@keyframes l13 {
+@keyframes rotateAnimation {
   100% {
     transform: rotate(1turn);
   }
