@@ -763,8 +763,8 @@
 
 
     <!-- Edit Form Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model" id="editForm" tabindex="-1"
-        aria-labelledby="editForm-modalLabel" aria-hidden="true">
+    <div class="modal modal-right fade filter-slideout SOP-model show" style="display: block;" id="editForm"
+        tabindex="-1" aria-labelledby="editForm-modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
                 <div class="modal-header">
@@ -809,8 +809,117 @@
                                     <div class="accordion-body pt-0">
                                         <fieldset class="mb-4">
                                             <label for="" class="form-label">Tax Shape</label>
+
+                                            <div class="dropdown tax-shape-picker" id="editForm_taxShapePicker">
+                                                <input type="hidden" id="editForm_taxShape" name="taxShape"
+                                                    value="rectangle">
+                                                <button type="button"
+                                                    class="form-select text-start d-flex align-items-center gap-2 tax-shape-toggle"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span class="icon icon-tax-rectangle m-0"></span>
+                                                    <span class="d-flex flex-column">
+                                                        <span class="tax-shape-name">Rectangle</span>
+                                                        <span class="tax-shape-desc">Corporation</span>
+                                                    </span>
+                                                </button>
+                                                <ul class="dropdown-menu w-100 tax-shape-menu">
+                                                    <li>
+                                                        <h6 class="dropdown-header">Default shapes</h6>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="rectangle">
+                                                        <span class="icon icon-tax-rectangle m-0"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Rectangle</span>
+                                                            <span class="tax-shape-desc">Corporation</span>
+                                                        </span>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="triangle">
+                                                        <span class="icon icon-tax-triangle m-0"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Triangle</span>
+                                                            <span class="tax-shape-desc">Partnership</span>
+                                                        </span>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="diamond">
+                                                        <span class="icon icon-tax-diamond m-0"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Diamond</span>
+                                                            <span class="tax-shape-desc">Trust</span>
+                                                        </span>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="oval">
+                                                        <span class="icon icon-tax-oval m-0"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Oval</span>
+                                                            <span class="tax-shape-desc">Branch, disregarded entity
+                                                                or
+                                                                individual</span>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <hr class="dropdown-divider my-1 mt-0">
+                                                    </li>
+                                                    <li>
+                                                        <h6 class="dropdown-header">More shapes</h6>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="triangle-in-rectangle">
+                                                        <span class="icon icon-tax-triangle-in-rectangle m-0"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Triangle in
+                                                                rectangle</span>
+                                                            <span class="tax-shape-desc">Hybrid
+                                                                partnership (US partnership, foreign
+                                                                corporation)</span>
+                                                        </span>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="inverted-triangle-in-rectangle">
+                                                        <span
+                                                            class="icon icon-tax-inverted-triangle-in-rectangle m-0"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Upside-down triangle in
+                                                                rectangle</span>
+                                                            <span class="tax-shape-desc">Reverse
+                                                                hybrid corporation (US corporation, foreign
+                                                                pass-through)</span>
+                                                        </span>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="circle-in-rectangle">
+                                                        <span class="icon icon-tax-circle-in-rectangle m-0"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Circle in
+                                                                rectangle</span>
+                                                            <span class="tax-shape-desc">Hybrid
+                                                                branch or disregarded entity</span>
+                                                        </span>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="hexagon">
+                                                        <span class="icon icon-tax-hexagon"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Hexagon</span>
+                                                            <span class="tax-shape-desc">An asset</span>
+                                                        </span>
+                                                    </li>
+                                                    <li class="dropdown-item d-flex align-items-center gap-2"
+                                                        data-value="pentagon">
+                                                        <span class="icon icon-tax-pentagon"></span>
+                                                        <span class="d-flex flex-column">
+                                                            <span class="tax-shape-name">Pentagon</span>
+                                                            <span class="tax-shape-desc">Bank</span>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <div class="custom-dropdown">
-                                                <select id="editForm_taxShape" name="taxShape" class="form-select tax-shape-select" data-placeholder="Tax Shape" >
+                                                <select id="editForm_taxShape" name="taxShape"
+                                                    class="form-select tax-shape-select" data-placeholder="Tax Shape">
                                                     <optgroup label="Default shapes">
                                                         <option value="rectangle" data-desc="Corporation" selected>
                                                             Rectangle</option>
@@ -840,7 +949,8 @@
 
                                         <fieldset class="mb-4">
                                             <label for="" class="form-label">Tax Shape Descriptor</label>
-                                            <input type="text" class="form-control mb-3 text-uppercase" id="editForm_taxShapeDescriptor" placeholder="Descriptor" maxlength="5" >
+                                            <input type="text" class="form-control mb-3 text-uppercase"
+                                                id="editForm_taxShapeDescriptor" placeholder="Descriptor" maxlength="5">
 
                                             <small class="text-muted lh-1">Optional · up to 5 characters, e.g. DE, USP,
                                                 CFC, RH. Shows under the shape.</small>

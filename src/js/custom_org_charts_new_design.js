@@ -89,7 +89,7 @@
                 svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />
                 <ellipse rx="12" ry="8" cx="${cx}" cy="${cy}" stroke="#000000" fill="#ffffff" />`;
                 break;
-             case "hexagon":
+            case "hexagon":
                 svg = `<polygon points="${cx + 14},${cy} ${cx + 7},${cy + 12.1} ${cx - 7},${cy + 12.1} ${cx - 14},${cy} ${cx - 7},${cy - 12.1} ${cx + 7},${cy - 12.1}" fill="#ffffff" />`;
                 break;
             case "pentagon":
@@ -186,6 +186,13 @@
         bottom: 'padding',
     }
 
+    OrgChart.LAZY_LOADING_FACTOR = 300;
+    OrgChart.TEXT_THRESHOLD = 1000;
+    OrgChart.IMAGES_THRESHOLD = 1000;
+    OrgChart.LINKS_THRESHOLD = 5000;
+    OrgChart.BUTTONS_THRESHOLD = 200;
+    OrgChart.ANIM_THRESHOLD = 200;
+
 
     // Increased from 20 to 26 to accommodate the larger circle
     OrgChart.templates.ana.expandCollapseSize = 26;
@@ -259,7 +266,7 @@
 
     OrgChart.templates.entityCard.taxshape_label = function (node, data, template, config, value) {
         if (!value) return '';
-       
+
         return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
             style="font-size: 8px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
     }
@@ -690,20 +697,11 @@
 
     let chart = new OrgChart(document.getElementById("tree"), {
         template: 'entityCard',
-        columns: 6,
-        siblingSeparation: 70,
-        levelSeparation: 70,
-        // collapse: {               // turn on for big charts: fewer cards laid out and drawn on load
-        //     level: 2,
-        //     allChildren: true
-        // },
-        showYScroll: OrgChart.scroll.visible,
         showXScroll: OrgChart.scroll.visible,
         mouseScrool: OrgChart.action.scroll,   // 9.1.61 spells the option "mouseScrool"
         align: OrgChart.align.center,
         movable: OrgChart.movable.tree,
         enableDragDrop: true,
-        // highlightOnHover: "parents",        // not in 9.1.61 (ignored); will turn back on after upgrading
         lazyLoading: true,
         layout: OrgChart.layout.normal,
         enableSearch: false,
@@ -786,7 +784,7 @@
             ownershipPercentage: "ownershipPercentage",
             ownerList: "owners",
             registrationList: "registrations",
-            taxshape_label:"taxDescriptor"
+            taxshape_label: "taxDescriptor"
         },
         linkBinding: {
             link_field_0: "createdAt"
@@ -1013,7 +1011,7 @@
             clearTimeout(filterTimer);
             filterTimer = setTimeout(function () {
                 chart.load(buildVisibleNodes(getActiveFilters()), function () {
-                    chart.fit(keepNodesInView);
+                    chart.fit();
                 });
             }, 0);
         };
