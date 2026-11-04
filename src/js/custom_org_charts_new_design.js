@@ -76,18 +76,18 @@
                 svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />`;
                 break;
             case "triangle-in-rectangle":
-                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />
-                <polygon points="${cx},${cy - 9.5} ${cx + 14},${cy + 10} ${cx - 14},${cy + 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />`;
+                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="1.5" fill="none" style="fill: transparent !important;" />
+                <polygon points="${cx},${cy - 9.5} ${cx + 14},${cy + 10} ${cx - 14},${cy + 10}" stroke="#ffffff" stroke-width="1.5" fill="none" style="fill: transparent !important;" />`;
                 break;
             case "inverted-triangle-in-rectangle":
                 svg = `<g transform="rotate(180 ${cx} ${cy})">
-                <rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />
-                <polygon points="${cx},${cy - 9.5} ${cx + 14},${cy + 10} ${cx - 14},${cy + 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />
+                <rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="1.5" fill="none" style="fill: transparent !important;" />
+                <polygon points="${cx},${cy - 9.5} ${cx + 14},${cy + 10} ${cx - 14},${cy + 10}" stroke="#ffffff" stroke-width="1.5" fill="none" style="fill: transparent !important;" />
                 </g>`;
                 break;
             case "circle-in-rectangle":
-                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />
-                <ellipse rx="12" ry="8" cx="${cx}" cy="${cy}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />`;
+                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="1.5" fill="none" style="fill: transparent !important;" />
+                <ellipse rx="12" ry="8" cx="${cx}" cy="${cy}" stroke="#ffffff" stroke-width="1.5" fill="none" style="fill: transparent !important;" />`;
                 break;
             case "hexagon":
                 svg = `<polygon points="${cx + 14},${cy} ${cx + 7},${cy + 12.1} ${cx - 7},${cy + 12.1} ${cx - 14},${cy} ${cx - 7},${cy - 12.1} ${cx + 7},${cy - 12.1}" fill="#ffffff" />`;
