@@ -76,18 +76,18 @@
                 svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" fill="#ffffff" />`;
                 break;
             case "triangle-in-rectangle":
-                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />
-                <polygon points="${cx},${cy - 9.5} ${cx + 14.8},${cy + 10} ${cx - 14.8},${cy + 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />`;
+                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />
+                <polygon points="${cx},${cy - 9.5} ${cx + 14},${cy + 10} ${cx - 14},${cy + 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />`;
                 break;
             case "inverted-triangle-in-rectangle":
                 svg = `<g transform="rotate(180 ${cx} ${cy})">
-                <rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />
-                <polygon points="${cx},${cy - 9.5} ${cx + 14.8},${cy + 10} ${cx - 14.8},${cy + 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />
+                <rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />
+                <polygon points="${cx},${cy - 9.5} ${cx + 14},${cy + 10} ${cx - 14},${cy + 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />
                 </g>`;
                 break;
             case "circle-in-rectangle":
-                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />
-                <ellipse rx="12" ry="8" cx="${cx}" cy="${cy}" stroke="#000000" stroke-width="0.5" fill="none" style="fill: transparent !important;" />`;
+                svg = `<rect width="30" height="20" x="${cx - 15}" y="${cy - 10}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />
+                <ellipse rx="12" ry="8" cx="${cx}" cy="${cy}" stroke="#ffffff" stroke-width="2" fill="none" style="fill: transparent !important;" />`;
                 break;
             case "hexagon":
                 svg = `<polygon points="${cx + 14},${cy} ${cx + 7},${cy + 12.1} ${cx - 7},${cy + 12.1} ${cx - 14},${cy} ${cx - 7},${cy - 12.1} ${cx + 7},${cy - 12.1}" fill="#ffffff" />`;
@@ -579,6 +579,8 @@
 
     let applyFilters = function () { };
 
+    let populateFilterOptions = function () { };
+
     // make taxshape dropdown to work like select
     function initTaxShapePicker(picker) {
         let input = picker.find('input[type="hidden"]');
@@ -855,6 +857,10 @@
         .then(results => {
             ALL_NODES = results[1];   // keep the full list for the filters
             applyFilters();           // loads the chart with the current filter selection
+
+            setTimeout(function () {
+                populateFilterOptions(ALL_NODES);   // then the dropdowns, after the chart has drawn
+            }, 0);
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
@@ -1064,6 +1070,42 @@
             }, 0);
         };
 
+
+        populateFilterOptions = function (nodes) {
+            let values = {};
+            $filters.each(function () {
+                values[$(this).data('filter-item')] = new Set();
+            });
+
+            nodes.forEach(function (n) {
+                if (isSideNode(n)) return;
+                Object.keys(values).forEach(function (field) {
+                    let v = n[field] == null ? '' : String(n[field]).trim();
+                    if (v) values[field].add(v);
+                });
+            });
+
+            $filters.each(function () {
+                let select = this;
+                let sorted = Array.from(values[$(select).data('filter-item')]).sort(function (a, b) {
+                    return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+                });
+
+                let frag = document.createDocumentFragment();
+                if (!$(select).find('option[value="all_default"]').length) {
+                    frag.appendChild(new Option('All', 'all_default', false, true));
+                }
+                sorted.forEach(function (v) {
+                    frag.appendChild(new Option(v, v, false, true));   // start with everything ticked, like "All"
+                });
+                select.appendChild(frag);
+
+                $(select).trigger('change.select2');   // refresh the Select2 summary without reloading the chart
+            });
+
+            updateFilterCount()
+        };
+
         $filters.on('change', function () {
             updateFilterCount();
             applyFilters();
@@ -1085,8 +1127,6 @@
                 .text(active)
                 .toggleClass('d-none', active === 0);
         }
-
-        updateFilterCount();
 
 
         $('#clearOrgChartFilters').on('click', function () {
