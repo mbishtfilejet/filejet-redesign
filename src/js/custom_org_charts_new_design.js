@@ -786,7 +786,7 @@
                 icon: summaryEntity
             },
             edit_ownership: {
-                text: "Edit Owner",
+                text: "Edit Ownership",
                 icon: updateEntity,
                 onClick: function (nodeId) {
 
@@ -797,10 +797,10 @@
                 }
             },
             entity_profile: {
-                text: "View Entity",
+                text: "Go to Entity Profile",
                 icon: openEntity,
                 onClick: function () {
-                    window.open('http://localhost:3000/entities-details-v2.html', '_blank', 'noopener');
+                    window.open('https://filejet-redesign.vercel.app/entities-details-v2.html', '_self', 'noopener');
                 }
             }
         },
