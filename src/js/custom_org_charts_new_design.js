@@ -1306,5 +1306,21 @@ $(function () {
             .find('.select2-search__field')
             .attr('placeholder', 'Search...');
     })
+
+    $('.modaldatepicker').each(function () {
+        let element = $(this)
+        element.daterangepicker({
+            singleDatePicker: true,
+            parentEl: $(element).closest('.modal'),
+            drops: 'auto',
+            autoUpdateInput: false,
+            autoApply: true,
+            minYear: 1901,
+            maxYear: parseInt(moment().format('YYYY'), 10)
+        })
+        element.on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('MM/DD/YYYY'));
+        })
+    });
 })
 
