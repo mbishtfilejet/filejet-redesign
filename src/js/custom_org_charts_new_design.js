@@ -1059,7 +1059,9 @@
 
         clearTimeout(filterTimer);
         filterTimer = setTimeout(function () {
-            chart.load(buildVisibleNodes(getActiveFilters()));
+            chart.load(buildVisibleNodes(getActiveFilters()), function(){
+                chart.fit()
+            });
         }, 0);
     };
 
