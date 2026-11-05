@@ -168,14 +168,10 @@
                 style="fill:${BADGE.textColor} !important; font:${BADGE.font}; letter-spacing:${BADGE.letterSpacing}px;">${text}</text>
         </g>`;
     }
-
-
+    
+    
     OrgChart.RENDER_LINKS_BEFORE_NODES = true;
 
-    // OrgChart.toolbarUI.expandAllIcon = expandAllIcon;
-    // OrgChart.toolbarUI.fitIcon = fitIcon;
-    // OrgChart.toolbarUI.zoomInIcon = zoomInIcon;
-    // OrgChart.toolbarUI.zoomOutIcon = zoomOutIcon;
     OrgChart.miniMap.width = 200;
     OrgChart.miniMap.height = 110;
     OrgChart.miniMap.padding = 5;
@@ -209,12 +205,9 @@
         `<circle cx="13" cy="13" r="13" fill="#ffffff" stroke="#aeaeae" stroke-width="1"></circle>
    <line x1="7" y1="13" x2="19" y2="13" stroke="#aeaeae" stroke-width="1.5"></line>`;
 
-
     OrgChart.templates.ana.link_field_0 =
-        '<g transform="translate({x},{y})">' +
-        '<rect x="-40" y="-10" width="80" height="20" rx="10" fill="#FAFAFA" stroke="#E0E0E0"></rect>' +
-        '<text text-anchor="middle" y="4" font-size="11" fill="#5F6368">{val}</text>' +
-        '</g>';
+        `<rect x="-35" y="-10" width="70" height="20" rx="10" fill="#FAFAFA" stroke="#E0E0E0"></rect> 
+        <text text-anchor="middle" y="4" font-size="11" fill="#5F6368">{val}</text>`;
 
 
     const ENTITY_NAME = {
@@ -747,9 +740,10 @@
 
     let chart = new OrgChart(document.getElementById("tree"), {
         template: 'entityCard',
+        columns: 6,
         showXScroll: OrgChart.scroll.visible,
         mouseScrool: OrgChart.action.scroll,   // 9.1.61 spells the option "mouseScrool"
-        align: OrgChart.align.center,
+        align: OrgChart.align.orientation,
         movable: OrgChart.movable.tree,
         enableDragDrop: true,
         lazyLoading: true,
@@ -1280,6 +1274,12 @@
         if (tags.indexOf('additionalOwners') !== -1 || tags.indexOf('partnerNode') !== -1) {
             return false;
         }
+    });
+
+    // label fix not aligning with links when dragged for some cases
+    chart.on('label', function (sender, args) {
+        args.p.x = args.cnode.x + args.cnode.w / 2;                
+        args.p.y = args.cnode.y - 19 - (args.cnode.movey || 0);   
     });
 
 })(jQuery, OrgChart)
