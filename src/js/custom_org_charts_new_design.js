@@ -12,16 +12,6 @@
 
     let zoomOutIcon = '<span class="icon me-0 icon-zoom-out"></span>';
 
-    let actionIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">' +
-        '<path d="M2.56367 12.2571L7.56524 3.25712C7.73988 2.94286 8.16874 2.91667 8.38575 3.17856L8.43933 3.25712L13.4409 12.2571C13.6119 12.5648 13.4197 12.9374 13.0892 12.993L13.0039 13H3.00072C2.64878 13 2.41637 12.651 2.52837 12.3352L2.56367 12.2571L7.56524 3.25712L2.56367 12.2571ZM8.00229 9.87694C7.58783 9.87694 7.25185 10.2129 7.25185 10.6274C7.25185 11.0418 7.58783 11.3778 8.00229 11.3778C8.41674 11.3778 8.75273 11.0418 8.75273 10.6274C8.75273 10.2129 8.41674 9.87694 8.00229 9.87694ZM8.002 6.87757C7.6882 6.87733 7.42824 7.10838 7.38337 7.40973L7.37652 7.50209L7.37576 8.49952L7.38247 8.59188C7.42688 8.8933 7.68648 9.12476 8.00028 9.125C8.31408 9.12524 8.57404 8.89418 8.61891 8.59283L8.62576 8.50048L8.62652 7.50304L8.61982 7.41068C8.57541 7.10926 8.3158 6.87781 8.002 6.87757Z"/>' +
-        '<defs>' +
-        '<linearGradient id="paint0_linear_7756_5925" x1="14.6921" y1="3" x2="4.42803" y2="14.6925" gradientUnits="userSpaceOnUse">' +
-        '<stop stop-color="#000"/>' +
-        '<stop offset="1" stop-color="#000"/>' +
-        '</linearGradient>' +
-        '</defs>' +
-        '</svg>';
-
     let openEntity = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
         '<path d="M8 2.75C8 2.33579 8.33579 2 8.75 2H13.25C13.6642 2 14 2.33579 14 2.75V7.25C14 7.66421 13.6642 8 13.25 8C12.8358 8 12.5 7.66421 12.5 7.25V4.56077L8.28044 8.78033C7.98755 9.07322 7.51268 9.07322 7.21978 8.78033C6.92689 8.48744 6.92689 8.01256 7.21978 7.71967L11.4395 3.5H8.75C8.33579 3.5 8 3.16421 8 2.75ZM2 6.25C2 4.45507 3.45507 3 5.25 3H6.25C6.66421 3 7 3.33579 7 3.75C7 4.16421 6.66421 4.5 6.25 4.5H5.25C4.2835 4.5 3.5 5.2835 3.5 6.25V10.75C3.5 11.7165 4.2835 12.5 5.25 12.5H9.75C10.7165 12.5 11.5 11.7165 11.5 10.75V9.75C11.5 9.33579 11.8358 9 12.25 9C12.6642 9 13 9.33579 13 9.75V10.75C13 12.5449 11.5449 14 9.75 14H5.25C3.45507 14 2 12.5449 2 10.75V6.25Z"/>' +
         '</svg>';
@@ -168,8 +158,8 @@
                 style="fill:${BADGE.textColor} !important; font:${BADGE.font}; letter-spacing:${BADGE.letterSpacing}px;">${text}</text>
         </g>`;
     }
-    
-    
+
+
     OrgChart.RENDER_LINKS_BEFORE_NODES = true;
 
     OrgChart.miniMap.width = 200;
@@ -670,9 +660,9 @@
             let node = orgchart.get(that.nodeId);
             if (!node) return that.hide();
 
-            node.Entity_Name = that.entityName.val();
-            node.Entity_Type = that.entityType.val();
-            node.state = that.entityJurisdiction.val();
+            // node.Entity_Name = that.entityName.val();
+            // node.Entity_Type = that.entityType.val();
+            // node.state = that.entityJurisdiction.val();
             node.taxShape = that.entityTaxShape.val() || 'oval';
             node.taxDescriptor = that.entityTaxDescriptor.val() || '';
 
@@ -682,9 +672,9 @@
             let index = ALL_NODES.findIndex(function (n) { return String(n.id) === String(node.id); });
             if (index > -1) {
                 ALL_NODES[index] = Object.assign({}, ALL_NODES[index], {
-                    Entity_Name: node.Entity_Name,
-                    Entity_Type: node.Entity_Type,
-                    state: node.state,
+                    // Entity_Name: node.Entity_Name,
+                    // Entity_Type: node.Entity_Type,
+                    // state: node.state,
                     taxShape: node.taxShape,
                     taxDescriptor: node.taxDescriptor
                 });
@@ -745,7 +735,7 @@
         mouseScrool: OrgChart.action.scroll,   // 9.1.61 spells the option "mouseScrool"
         align: OrgChart.align.orientation,
         movable: OrgChart.movable.tree,
-        enableDragDrop: true,
+        // enableDragDrop: true,
         lazyLoading: true,
         layout: OrgChart.layout.normal,
         enableSearch: false,
@@ -773,24 +763,6 @@
             },
             "partnerNode": {
                 template: "foreignRegistrations",
-                nodeMenu: {
-                    details: {
-                        text: "Entity Summary",
-                        icon: summaryEntity,
-                    },
-                    action: {
-                        text: "Take Action",
-                        icon: actionIcon
-                    },
-                    open_entity: {
-                        text: "Open Entity",
-                        icon: openEntity,
-                    },
-                    edit: {
-                        text: "Update Entity",
-                        icon: updateEntity,
-                    },
-                },
             },
             "hidden": {
                 template: "hidden"
@@ -808,7 +780,30 @@
                 subLevels: 3
             },
         },
-        nodeMenu: { details: { text: "Details" }, edit: { text: "Edit entity" } },
+        nodeMenu: {
+            details: {
+                text: "Open",
+                icon: summaryEntity
+            },
+            edit_ownership: {
+                text: "Edit Owner",
+                icon: updateEntity,
+                onClick: function (nodeId) {
+
+                    let nodeData = chart.get(nodeId); // just an reference on how to get nodedata
+                    // Open the Bootstrap modal
+                    $('#edit-owner-modal').modal('show');
+
+                }
+            },
+            entity_profile: {
+                text: "View Entity",
+                icon: openEntity,
+                onClick: function () {
+                    window.open('http://localhost:3000/entities-details-v2.html', '_blank', 'noopener');
+                }
+            }
+        },
         nodeBinding: {
             additionalEntityName: "Entity_Name",
             entityName: "Entity_Name",
@@ -880,6 +875,13 @@
 
 
     function keepNodesInView() {
+        let orientation = this.config.orientation
+
+
+        if (orientation != 2 && orientation != 6) {
+            return;
+        }
+
         let vb = chart.getViewBox();
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
         Object.values(chart.nodes).forEach(function (n) {
@@ -895,377 +897,366 @@
     }
 
 
-    $(function () {
 
-        $('.orgchart-view-select').each(function () {
-            $(this).select2({
-                placeholder: $(this).find('option[value=""]').first().text().trim(),
-                width: '100%',
-                dropdownParent: $(this).closest('.orgchart_dropdown')
-            });
-        }).on('select2:open', function () {
-            $(this).closest('.orgchart_dropdown')
-                .find('.select2-search__field')
-                .attr('placeholder', 'Search...');
+    $('.orgchart-view-select').each(function () {
+        $(this).select2({
+            placeholder: $(this).find('option[value=""]').first().text().trim(),
+            width: '100%',
+            dropdownParent: $(this).closest('.orgchart_dropdown')
         });
+    }).on('select2:open', function () {
+        $(this).closest('.orgchart_dropdown')
+            .find('.select2-search__field')
+            .attr('placeholder', 'Search...');
     });
 
 
-    $(function () {
-        // multiselect filters logic
 
-        let Utils = $.fn.select2.amd.require('select2/utils');
-        let Dropdown = $.fn.select2.amd.require('select2/dropdown');
-        let DropdownSearch = $.fn.select2.amd.require('select2/dropdown/search');
-        let AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody');
-        let MultipleSelection = $.fn.select2.amd.require('select2/selection/multiple');
-        let EventRelay = $.fn.select2.amd.require('select2/selection/eventRelay');
 
-        function TextSummarySelection() { }
+    // multiselect filters logic
 
-        TextSummarySelection.prototype.update = function (decorated, data) {
-            let placeholder = this.options.get('placeholder');
-            let isAll = data.some(function (d) { return d.id === 'all_default'; });
-            let selected = data.filter(function (d) { return d.id && d.id !== 'all_default'; });
+    let Utils = $.fn.select2.amd.require('select2/utils');
+    let Dropdown = $.fn.select2.amd.require('select2/dropdown');
+    let DropdownSearch = $.fn.select2.amd.require('select2/dropdown/search');
+    let AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody');
+    let MultipleSelection = $.fn.select2.amd.require('select2/selection/multiple');
+    let EventRelay = $.fn.select2.amd.require('select2/selection/eventRelay');
 
-            let text = isAll ? placeholder + ' (All)'
-                : !selected.length ? placeholder
-                    : selected.length === 1 ? selected[0].text.trim()
-                        : placeholder + ' (' + selected.length + ')';
+    function TextSummarySelection() { }
 
-            this.$selection.find('.select2-selection__rendered').empty().append(
-                $('<span class="select2-selection__summary"></span>')
-                    .text(text)
-                    .toggleClass('is-placeholder', !isAll && !selected.length)
-            );
-        };
+    TextSummarySelection.prototype.update = function (decorated, data) {
+        let placeholder = this.options.get('placeholder');
+        let isAll = data.some(function (d) { return d.id === 'all_default'; });
+        let selected = data.filter(function (d) { return d.id && d.id !== 'all_default'; });
 
-        let selectionAdapter = Utils.Decorate(Utils.Decorate(MultipleSelection, TextSummarySelection), EventRelay);
-        let dropdownAdapter = Utils.Decorate(Utils.Decorate(Dropdown, DropdownSearch), AttachBody);
+        let text = isAll ? placeholder + ' (All)'
+            : !selected.length ? placeholder
+                : selected.length === 1 ? selected[0].text.trim()
+                    : placeholder + ' (' + selected.length + ')';
 
-        let $filters = $('.orgchart-filter-section .form-select');
+        this.$selection.find('.select2-selection__rendered').empty().append(
+            $('<span class="select2-selection__summary"></span>')
+                .text(text)
+                .toggleClass('is-placeholder', !isAll && !selected.length)
+        );
+    };
+
+    let selectionAdapter = Utils.Decorate(Utils.Decorate(MultipleSelection, TextSummarySelection), EventRelay);
+    let dropdownAdapter = Utils.Decorate(Utils.Decorate(Dropdown, DropdownSearch), AttachBody);
+
+    let $filters = $('.orgchart-filter-section .form-select');
+
+    $filters.each(function () {
+        let $select = $(this);
+
+        $select.select2({
+            placeholder: $select.data('placeholder'),
+            width: '100%',
+            closeOnSelect: false,
+            selectionAdapter: selectionAdapter,
+            dropdownAdapter: dropdownAdapter,
+            dropdownParent: $select.closest('.orgchart_dropdown')
+        });
+        $select.data('select2').$dropdown.find('.select2-search__field').attr('placeholder', 'Search...');
+    });
+
+    // "All" ticks / unticks every option; unticking any option unticks "All"
+    $filters.on('select2:select select2:unselect', function (e) {
+        let $select = $(this);
+        let isAll = e.params.data.id === 'all_default';
+        let checked = e.type === 'select2:select';
+
+        let $others = $select.find('option').not('[value="all_default"]');
+        if (isAll) $others.prop('selected', checked);
+        $select.find('option[value="all_default"]').prop('selected', $others.length === $others.filter(':selected').length);
+        $select.trigger('change');
+
+        let s2 = $select.data('select2');
+        if (s2.isOpen()) s2.trigger('query', { term: s2.$dropdown.find('.select2-search__field').val() || '' });
+    });
+
+    let SIDE_TAGS = ['partnerNode', 'additionalOwners'];   // shown only with their entity
+
+    // Read the dropdowns: { groupName: ['AIC Holdings'], state: ['Delaware'] }
+    function getActiveFilters() {
+        let filters = {};
 
         $filters.each(function () {
-            let $select = $(this);
+            let values = [].concat($(this).val() || []);
+            if (values.includes('all_default')) return;   // "All" = no filter for this field
 
-            $select.select2({
-                placeholder: $select.data('placeholder'),
-                width: '100%',
-                closeOnSelect: false,
-                selectionAdapter: selectionAdapter,
-                dropdownAdapter: dropdownAdapter,
-                dropdownParent: $select.closest('.orgchart_dropdown')
-            });
-            $select.data('select2').$dropdown.find('.select2-search__field').attr('placeholder', 'Search...');
+            values = values.filter(function (v) { return v; });
+            if (values.length) filters[$(this).data('filter-item')] = values;
         });
 
-        // "All" ticks / unticks every option; unticking any option unticks "All"
-        $filters.on('select2:select select2:unselect', function (e) {
-            let $select = $(this);
-            let isAll = e.params.data.id === 'all_default';
-            let checked = e.type === 'select2:select';
+        return filters;
+    }
 
-            let $others = $select.find('option').not('[value="all_default"]');
-            if (isAll) $others.prop('selected', checked);
-            $select.find('option[value="all_default"]').prop('selected', $others.length === $others.filter(':selected').length);
+    function isSideNode(node) {
+        return (node.tags || []).some(function (tag) { return SIDE_TAGS.indexOf(tag) > -1; });
+    }
+
+    // Work out which nodes stay, and re-attach them to visible parents
+    function buildVisibleNodes(filters) {
+        let fields = Object.keys(filters);
+        if (!fields.length) {
+            return ALL_NODES.map(function (n) { return Object.assign({}, n); });
+        }
+
+        // Sets make each "is this value selected?" check instant, even with many options
+        let filterSets = {};
+        fields.forEach(function (field) { filterSets[field] = new Set(filters[field]); });
+
+        let byId = {};
+        ALL_NODES.forEach(function (n) { byId[String(n.id)] = n; });
+
+        // main entities: every active dropdown must match (any ticked value inside one dropdown)
+        let visible = {};
+        ALL_NODES.forEach(function (n) {
+            if (isSideNode(n)) return;
+            let matches = fields.every(function (field) {
+                return filterSets[field].has(String(n[field]));
+            });
+            if (matches) visible[String(n.id)] = true;
+        });
+
+        // Foreign Registrations / Additional Owners: only with their entity
+        ALL_NODES.forEach(function (n) {
+            if (isSideNode(n) && n.pid != null && visible[String(n.pid)]) {
+                visible[String(n.id)] = true;
+            }
+        });
+
+        function nearestVisibleAncestor(n) {
+            let pid = n.pid;
+            let seen = {};
+            while (pid != null && byId[String(pid)] && !seen[pid]) {
+                seen[pid] = true;                      // guard against parent loops in bad data
+                if (visible[String(pid)]) return pid;
+                pid = byId[String(pid)].pid;
+            }
+            return null;
+        }
+
+        return ALL_NODES
+            .filter(function (n) { return visible[String(n.id)]; })
+            .map(function (n) {
+                let copy = Object.assign({}, n);
+                let pid = nearestVisibleAncestor(n);
+                if (pid == null) delete copy.pid;
+                else copy.pid = pid;
+                return copy;
+            });
+    }
+
+    // One click fires "change" more than once (Select2 + the "All" toggle),
+    // and page load fires it once per dropdown. Collect them into one reload.
+    let filterTimer = null;
+
+    // Replaces the placeholder applyFilters defined above the edit form
+    applyFilters = function () {
+        if (!ALL_NODES.length) return;   // data not loaded yet: the loader calls this again
+
+        clearTimeout(filterTimer);
+        filterTimer = setTimeout(function () {
+            chart.load(buildVisibleNodes(getActiveFilters()));
+        }, 0);
+    };
+
+
+    populateFilterOptions = function (nodes) {
+        let values = {};
+        $filters.each(function () {
+            values[$(this).data('filter-item')] = new Set();
+        });
+
+        nodes.forEach(function (n) {
+            if (isSideNode(n)) return;
+            Object.keys(values).forEach(function (field) {
+                let v = n[field] == null ? '' : String(n[field]).trim();
+                if (v) values[field].add(v);
+            });
+        });
+
+        $filters.each(function () {
+            let select = this;
+            let sorted = Array.from(values[$(select).data('filter-item')]).sort(function (a, b) {
+                return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+            });
+
+            let frag = document.createDocumentFragment();
+            if (!$(select).find('option[value="all_default"]').length) {
+                frag.appendChild(new Option('All', 'all_default', false, true));
+            }
+            sorted.forEach(function (v) {
+                frag.appendChild(new Option(v, v, false, true));   // start with everything ticked, like "All"
+            });
+            select.appendChild(frag);
+
+            $(select).trigger('change.select2');   // refresh the Select2 summary without reloading the chart
+        });
+
+        updateFilterCount()
+    };
+
+    $filters.on('change', function () {
+        updateFilterCount();
+        applyFilters();
+    });
+
+
+    // Filter count logic
+    function updateFilterCount() {
+        let active = $filters.filter(function () {
+            let values = [].concat($(this).val() || []);
+
+            // if (values.includes('all_default')) return false;      // "All" = no filter
+
+            return values.some(function (v) { return v && v !== 'all_default'; });
+        }).length;
+
+        $('.filter-count')
+            .text(active)
+            .toggleClass('d-none', active === 0);
+    }
+
+
+    $('#clearOrgChartFilters').on('click', function () {
+        $filters.val([]).trigger('change');
+    });
+
+    // "All" set as default selected
+    $filters.each(function () {
+        let $select = $(this);
+        if ($select.find('option[value="all_default"]').is(':selected')) {
+            $select.find('option').prop('selected', true);
             $select.trigger('change');
-
-            let s2 = $select.data('select2');
-            if (s2.isOpen()) s2.trigger('query', { term: s2.$dropdown.find('.select2-search__field').val() || '' });
-        });
-
-        let SIDE_TAGS = ['partnerNode', 'additionalOwners'];   // shown only with their entity
-
-        // Read the dropdowns: { groupName: ['AIC Holdings'], state: ['Delaware'] }
-        function getActiveFilters() {
-            let filters = {};
-
-            $filters.each(function () {
-                let values = [].concat($(this).val() || []);
-                if (values.includes('all_default')) return;   // "All" = no filter for this field
-
-                values = values.filter(function (v) { return v; });
-                if (values.length) filters[$(this).data('filter-item')] = values;
-            });
-
-            return filters;
         }
+    });
 
-        function isSideNode(node) {
-            return (node.tags || []).some(function (tag) { return SIDE_TAGS.indexOf(tag) > -1; });
+
+
+
+
+
+    let originalTemplates = {};
+    Object.keys(chart.config.tags).forEach(function (tag) {
+        originalTemplates[tag] = chart.config.tags[tag].template;
+    });
+
+    function applyHideTag(checkbox) {
+        let $checkbox = $(checkbox)
+        let tag = $checkbox.data('hide-tag');
+        if (!chart.config.tags[tag]) return;
+
+        let parent = $checkbox.closest('.form-check');
+
+
+        chart.config.tags[tag].template = checkbox.checked
+            ? originalTemplates[tag]   // checked: show
+            : 'hidden';        // unchecked: hide
+
+        let dropdown = parent.find('.form-select');
+
+        if (dropdown) {
+            dropdown.prop('disabled', !checkbox.checked)
         }
+    }
 
-        // Work out which nodes stay, and re-attach them to visible parents
-        function buildVisibleNodes(filters) {
-            let fields = Object.keys(filters);
-            if (!fields.length) {
-                return ALL_NODES.map(function (n) { return Object.assign({}, n); });
-            }
+    $(document).on('change', '[data-hide-tag]', function () {
+        applyHideTag(this);
+        chart.draw()
 
-            // Sets make each "is this value selected?" check instant, even with many options
-            let filterSets = {};
-            fields.forEach(function (field) { filterSets[field] = new Set(filters[field]); });
+    });
 
-            let byId = {};
-            ALL_NODES.forEach(function (n) { byId[String(n.id)] = n; });
+    $('[data-hide-tag]').trigger('change');
 
-            // main entities: every active dropdown must match (any ticked value inside one dropdown)
-            let visible = {};
-            ALL_NODES.forEach(function (n) {
-                if (isSideNode(n)) return;
-                let matches = fields.every(function (field) {
-                    return filterSets[field].has(String(n[field]));
-                });
-                if (matches) visible[String(n.id)] = true;
-            });
 
-            // Foreign Registrations / Additional Owners: only with their entity
-            ALL_NODES.forEach(function (n) {
-                if (isSideNode(n) && n.pid != null && visible[String(n.pid)]) {
-                    visible[String(n.id)] = true;
-                }
-            });
+    // Top 5 / Top 10 / All for the owners and registrations lists
+    $('#dropdownAdditionalOwners, #dropdownForeign_reg').on('change', function () {
+        LIST_LIMIT.owners = $('#dropdownAdditionalOwners').val();
+        LIST_LIMIT.registrations = $('#dropdownForeign_reg').val();
+        chart.draw();
+    });
 
-            function nearestVisibleAncestor(n) {
-                let pid = n.pid;
-                let seen = {};
-                while (pid != null && byId[String(pid)] && !seen[pid]) {
-                    seen[pid] = true;                      // guard against parent loops in bad data
-                    if (visible[String(pid)]) return pid;
-                    pid = byId[String(pid)].pid;
-                }
-                return null;
-            }
+    $('#dropdownAdditionalOwners').trigger('change');
 
-            return ALL_NODES
-                .filter(function (n) { return visible[String(n.id)]; })
-                .map(function (n) {
-                    let copy = Object.assign({}, n);
-                    let pid = nearestVisibleAncestor(n);
-                    if (pid == null) delete copy.pid;
-                    else copy.pid = pid;
-                    return copy;
-                });
+
+
+    // tax shape & entity status show/hide
+    $(document).on('change', '[data-display]', function () {
+        $('#tree').toggleClass('hide-' + $(this).data('display'), !this.checked);
+        $('.tree-legends').toggleClass('hide-' + $(this).data('display'), !this.checked);
+    });
+
+    // apply the starting state on page load
+    $('[data-display]').trigger('change');
+
+
+
+    function currentZoomPercent() {
+        return Math.round(chart.getScale() * 100);
+    }
+
+    function setZoomPercent(percent) {
+        let min = chart.config.scaleMin * 100;
+        let max = chart.config.scaleMax * 100;
+        percent = Math.min(max, Math.max(min, Number(percent) || 100));
+
+        let factor = percent / (chart.getScale() * 100);
+        if (Math.abs(factor - 1) > 0.001) {
+            chart.zoom(factor, [50, 50], false);
         }
+        $(chart.element).find('.orgchart-zoom__input').val(currentZoomPercent());
+    }
 
-        // One click fires "change" more than once (Select2 + the "All" toggle),
-        // and page load fires it once per dropdown. Collect them into one reload.
-        let filterTimer = null;
-
-        // Replaces the placeholder applyFilters defined above the edit form
-        applyFilters = function () {
-            if (!ALL_NODES.length) return;   // data not loaded yet: the loader calls this again
-
-            clearTimeout(filterTimer);
-            filterTimer = setTimeout(function () {
-                chart.load(buildVisibleNodes(getActiveFilters()), function () {
-                    chart.fit();
-                });
-            }, 0);
-        };
-
-
-        populateFilterOptions = function (nodes) {
-            let values = {};
-            $filters.each(function () {
-                values[$(this).data('filter-item')] = new Set();
-            });
-
-            nodes.forEach(function (n) {
-                if (isSideNode(n)) return;
-                Object.keys(values).forEach(function (field) {
-                    let v = n[field] == null ? '' : String(n[field]).trim();
-                    if (v) values[field].add(v);
-                });
-            });
-
-            $filters.each(function () {
-                let select = this;
-                let sorted = Array.from(values[$(select).data('filter-item')]).sort(function (a, b) {
-                    return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
-                });
-
-                let frag = document.createDocumentFragment();
-                if (!$(select).find('option[value="all_default"]').length) {
-                    frag.appendChild(new Option('All', 'all_default', false, true));
-                }
-                sorted.forEach(function (v) {
-                    frag.appendChild(new Option(v, v, false, true));   // start with everything ticked, like "All"
-                });
-                select.appendChild(frag);
-
-                $(select).trigger('change.select2');   // refresh the Select2 summary without reloading the chart
-            });
-
-            updateFilterCount()
-        };
-
-        $filters.on('change', function () {
-            updateFilterCount();
-            applyFilters();
+    $(chart.element)
+        .on('change', '.orgchart-zoom__input', function () {
+            setZoomPercent(this.value);
+        })
+        .on('keydown', '.orgchart-zoom__input', function (e) {
+            if (e.key === 'Enter') { setZoomPercent(this.value); this.blur(); }
         });
 
-
-
-        // Filter count logic
-        function updateFilterCount() {
-            let active = $filters.filter(function () {
-                let values = [].concat($(this).val() || []);
-
-                // if (values.includes('all_default')) return false;      // "All" = no filter
-
-                return values.some(function (v) { return v && v !== 'all_default'; });
-            }).length;
-
-            $('.filter-count')
-                .text(active)
-                .toggleClass('d-none', active === 0);
+    // keep the % in sync after + / −, mouse wheel, fit, drag
+    chart.on('redraw', function () {
+        let input = chart.element.querySelector('.orgchart-zoom__input');
+        if (input && document.activeElement !== input) {
+            input.value = currentZoomPercent();
         }
+    });
 
-
-        $('#clearOrgChartFilters').on('click', function () {
-            $filters.val([]).trigger('change');
-        });
-
-        // "All" set as default selected
-        $filters.each(function () {
-            let $select = $(this);
-            if ($select.find('option[value="all_default"]').is(':selected')) {
-                $select.find('option').prop('selected', true);
-                $select.trigger('change');
-            }
-        });
-    })
-
-
-
-
-
-    $(function () {
-        let originalTemplates = {};
-        Object.keys(chart.config.tags).forEach(function (tag) {
-            originalTemplates[tag] = chart.config.tags[tag].template;
-        });
-
-        function applyHideTag(checkbox) {
-            let $checkbox = $(checkbox)
-            let tag = $checkbox.data('hide-tag');
-            if (!chart.config.tags[tag]) return;
-
-            let parent = $checkbox.closest('.form-check');
-
-
-            chart.config.tags[tag].template = checkbox.checked
-                ? originalTemplates[tag]   // checked: show
-                : 'hidden';        // unchecked: hide
-
-            let dropdown = parent.find('.form-select');
-
-            if (dropdown) {
-                dropdown.prop('disabled', !checkbox.checked)
-            }
-        }
-
-        $(document).on('change', '[data-hide-tag]', function () {
-            applyHideTag(this);
-            chart.draw()
-
-        });
-
-        $('[data-hide-tag]').trigger('change');
-
-
-        // Top 5 / Top 10 / All for the owners and registrations lists
-        $('#dropdownAdditionalOwners, #dropdownForeign_reg').on('change', function () {
-            LIST_LIMIT.owners = $('#dropdownAdditionalOwners').val();
-            LIST_LIMIT.registrations = $('#dropdownForeign_reg').val();
-            chart.draw();
-        });
-
-        $('#dropdownAdditionalOwners').trigger('change');
-
-
-
-        // tax shape & entity status show/hide
-        $(document).on('change', '[data-display]', function () {
-            $('#tree').toggleClass('hide-' + $(this).data('display'), !this.checked);
-            $('.tree-legends').toggleClass('hide-' + $(this).data('display'), !this.checked);
-        });
-
-        // apply the starting state on page load
-        $('[data-display]').trigger('change');
-
-    })
-
-
-    $(function () {
-
-        function currentZoomPercent() {
-            return Math.round(chart.getScale() * 100);
-        }
-
-        function setZoomPercent(percent) {
-            let min = chart.config.scaleMin * 100;
-            let max = chart.config.scaleMax * 100;
-            percent = Math.min(max, Math.max(min, Number(percent) || 100));
-
-            let factor = percent / (chart.getScale() * 100);
-            if (Math.abs(factor - 1) > 0.001) {
-                chart.zoom(factor, [50, 50], false);
-            }
-            $(chart.element).find('.orgchart-zoom__input').val(currentZoomPercent());
-        }
-
-        $(chart.element)
-            .on('change', '.orgchart-zoom__input', function () {
-                setZoomPercent(this.value);
-            })
-            .on('keydown', '.orgchart-zoom__input', function (e) {
-                if (e.key === 'Enter') { setZoomPercent(this.value); this.blur(); }
-            });
-
-        // keep the % in sync after + / −, mouse wheel, fit, drag
-        chart.on('redraw', function () {
-            let input = chart.element.querySelector('.orgchart-zoom__input');
-            if (input && document.activeElement !== input) {
-                input.value = currentZoomPercent();
-            }
-        });
-    })
 
 
     // Display Options "RESET": back to the options set in the HTML
-    $(function () {
-        let $panel = $('.orgchart-display-section');
-        let defaultOrientation = $panel.find('.orientation-btn[data-orientation][aria-pressed="true"]').data('orientation');
-        let defaultLayout = $panel.find('.orientation-btn[data-layout][aria-pressed="true"]').data('layout');
+    let $panel = $('.orgchart-display-section');
+    let defaultOrientation = $panel.find('.orientation-btn[data-orientation][aria-pressed="true"]').data('orientation');
+    let defaultLayout = $panel.find('.orientation-btn[data-layout][aria-pressed="true"]').data('layout');
 
-        $('#reset_display_option').on('click', function () {
-            // show/hide checkboxes: their own change handlers redraw and re-enable the Top selects
-            $panel.find('[data-hide-tag], [data-display]').each(function () {
-                if (this.checked !== this.defaultChecked) {
-                    $(this).prop('checked', this.defaultChecked).trigger('change');
-                }
-            });
-
-            // Top 5 / Top 10 / All
-            let limitsChanged = false;
-            $panel.find('#dropdownAdditionalOwners, #dropdownForeign_reg').each(function () {
-                let $default = $(this).find('option').filter(function () { return this.defaultSelected; });
-                let value = ($default.length ? $default : $(this).find('option').first()).val();
-                if ($(this).val() !== value) {
-                    $(this).val(value);
-                    limitsChanged = true;
-                }
-            });
-            if (limitsChanged) $('#dropdownAdditionalOwners').trigger('change');   // one handler reads both
-
-            // only click what isn't already pressed
-            $panel.find('.orientation-btn[data-orientation="' + defaultOrientation + '"][aria-pressed="false"]').trigger('click');
-            $panel.find('.orientation-btn[data-layout="' + defaultLayout + '"][aria-pressed="false"]').trigger('click');
+    $('#reset_display_option').on('click', function () {
+        // show/hide checkboxes: their own change handlers redraw and re-enable the Top selects
+        $panel.find('[data-hide-tag], [data-display]').each(function () {
+            if (this.checked !== this.defaultChecked) {
+                $(this).prop('checked', this.defaultChecked).trigger('change');
+            }
         });
-    });
 
+        // Top 5 / Top 10 / All
+        let limitsChanged = false;
+        $panel.find('#dropdownAdditionalOwners, #dropdownForeign_reg').each(function () {
+            let $default = $(this).find('option').filter(function () { return this.defaultSelected; });
+            let value = ($default.length ? $default : $(this).find('option').first()).val();
+            if ($(this).val() !== value) {
+                $(this).val(value);
+                limitsChanged = true;
+            }
+        });
+        if (limitsChanged) $('#dropdownAdditionalOwners').trigger('change');   // one handler reads both
+
+        // only click what isn't already pressed
+        $panel.find('.orientation-btn[data-orientation="' + defaultOrientation + '"][aria-pressed="false"]').trigger('click');
+        $panel.find('.orientation-btn[data-layout="' + defaultLayout + '"][aria-pressed="false"]').trigger('click');
+    });
 
 
     // Additional Owners and Foreign Registrations cards don't open the edit form on click
@@ -1277,9 +1268,43 @@
     });
 
     // label fix not aligning with links when dragged for some cases
-    chart.on('label', function (sender, args) {
-        args.p.x = args.cnode.x + args.cnode.w / 2;                
-        args.p.y = args.cnode.y - 19 - (args.cnode.movey || 0);   
+    // chart.on('label', function (sender, args) {
+    //     args.p.x = args.cnode.x + args.cnode.w / 2;
+    //     args.p.y = args.cnode.y - 19 - (args.cnode.movey || 0);
+    // });
+})(jQuery, OrgChart)
+
+
+$(function () {
+    $('.data-table-listing-scroll').DataTable({
+        lengthChange: false,
+        info: false,
+        paging: false,
+        searching: false,
+        ordering: false,
+        scrollX: false,
+        scrollY: false,
+        language: {
+            emptyTable: '<p class="emptytabledata">No Records Available</p>'
+        }
     });
 
-})(jQuery, OrgChart)
+    $(document).on('shown.bs.tab shown.bs.collapse shown.bs.modal', function () {
+        $('.data-table-listing-scroll.dataTable:visible').DataTable().columns.adjust();
+    });
+
+
+    $('.modal .form-select.select2').each(function () {
+        const parent = $(this).closest('.modal');
+        const placeholder = $(this).data('placeholder')
+        $(this).select2({
+            dropdownParent: parent,
+            placeholder: placeholder
+        });
+    }).on('select2:open', function () {
+        $(this).closest('.modal')
+            .find('.select2-search__field')
+            .attr('placeholder', 'Search...');
+    })
+})
+

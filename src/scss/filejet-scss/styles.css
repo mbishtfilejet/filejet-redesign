@@ -25620,5 +25620,31 @@ body *::-webkit-scrollbar-thumb {
   line-height: 1.3;
   color: #6c757d;
 }
+.orgchart-dashboard input[disabled],
+.orgchart-dashboard select[disabled],
+.orgchart-dashboard .form-disabled {
+  background-image: none !important;
+  background-color: #eee !important;
+  color: var(--bs-filejet-medium-gray) !important;
+  pointer-events: none;
+}
+.orgchart-dashboard input[disabled] + .select2-container--default .select2-selection--single,
+.orgchart-dashboard select[disabled] + .select2-container--default .select2-selection--single,
+.orgchart-dashboard .form-disabled + .select2-container--default .select2-selection--single {
+  background-color: #eee !important;
+  color: var(--bs-filejet-medium-gray) !important;
+  pointer-events: none !important;
+}
+.orgchart-dashboard input[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.orgchart-dashboard select[disabled] + .select2-container--default .select2-selection--single .select2-selection__arrow,
+.orgchart-dashboard .form-disabled + .select2-container--default .select2-selection--single .select2-selection__arrow {
+  background-image: none !important;
+}
+.orgchart-dashboard .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody:has(> table.data-table-listing-scroll) {
+  height: auto !important;
+  max-height: 40vh !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
 
 /*# sourceMappingURL=styles.css.map */

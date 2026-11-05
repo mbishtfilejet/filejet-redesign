@@ -715,4 +715,33 @@
             color: #6c757d;
         }
     }
+
+    input[disabled],
+    select[disabled],
+    .form-disabled {
+        background-image: none !important;
+        background-color: #eee !important;
+        color: var(--bs-filejet-medium-gray) !important;
+        pointer-events: none;
+
+        &+.select2-container--default {
+
+            .select2-selection--single {
+                background-color: #eee !important;
+                color: var(--bs-filejet-medium-gray) !important;
+                pointer-events: none !important;
+
+                .select2-selection__arrow {
+                    background-image: none !important;
+                }
+            }
+        }
+    }
+
+    .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody:has(> table.data-table-listing-scroll) {
+        height: auto !important;
+        max-height: 40vh !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
 }
