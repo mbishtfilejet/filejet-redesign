@@ -741,15 +741,23 @@
         enableSearch: false,
         miniMap: true,
         controls: {
-            zoom_out: { title: 'Zoom out', icon: zoomOutIcon },
+            zoom_out: {
+                title: 'Zoom out', icon: zoomOutIcon, onClick: function () {
+                    zoomTo(targetPercent / OrgChart.SCALE_FACTOR);
+                }
+            },
             zoom_level: {
                 title: 'Zoom level',
                 onClick: function () { },   // clicking the input does nothing by itself
                 icon: '<label class="orgchart-zoom__field">' +
-                    '<input type="number" class="orgchart-zoom__input" min="10" max="500" step="10" aria-label="Zoom level">%' +
+                    '<input type="number" class="orgchart-zoom__input" min="0" step="5" aria-label="Zoom level">%' +
                     '</label>'
             },
-            zoom_in: { title: 'Zoom in', icon: zoomInIcon },
+            zoom_in: {
+                title: 'Zoom in', icon: zoomInIcon, onClick: function () {
+                    zoomTo(targetPercent * OrgChart.SCALE_FACTOR);
+                }
+            },
             fit: { title: 'Fit', icon: fitIcon, onClick: function () { chart.fit(keepNodesInView) } },
             expand_all: { title: 'Expand all', icon: expandAllIcon },
         },
@@ -1197,39 +1205,54 @@
 
 
 
-    function currentZoomPercent() {
-        return Math.round(chart.getScale() * 100);
-    }
+    let targetPercent = 100;
 
-    function setZoomPercent(percent) {
-        let min = chart.config.scaleMin * 100;
-        let max = chart.config.scaleMax * 100;
+    function zoomTo(percent) {
+        let min = chart.config.scaleMin * 100 + 0.1;
+        let max = chart.config.scaleMax * 100 - 0.1;
         percent = Math.min(max, Math.max(min, Number(percent) || 100));
 
         let factor = percent / (chart.getScale() * 100);
         if (Math.abs(factor - 1) > 0.001) {
-            chart.zoom(factor, [50, 50], false);
+            chart.zoom(factor, [50, 50], true);
         }
-        $(chart.element).find('.orgchart-zoom__input').val(currentZoomPercent());
+        targetPercent = percent;
+        chart.element.querySelector('.orgchart-zoom__input').value = Math.round(percent);
     }
 
+    // Zoom while the user types or uses the arrows in the % box
+    let zoomInputTimer;
+
     $(chart.element)
+        .on('input', '.orgchart-zoom__input', function () {
+            let value = Number(this.value);
+            clearTimeout(zoomInputTimer);
+
+            // only zoom once the number is inside the chart's limits (typing "1" on the way to "150" waits)
+            if (value >= chart.config.scaleMin * 100 && value <= chart.config.scaleMax * 100) {
+                zoomInputTimer = setTimeout(function () {
+                    zoomTo(value);
+                }, 300);
+            }
+        })
         .on('change', '.orgchart-zoom__input', function () {
-            setZoomPercent(this.value);
+            // leaving the box: apply whatever is there, out-of-range values get clamped
+            clearTimeout(zoomInputTimer);
+            zoomTo(this.value);
         })
         .on('keydown', '.orgchart-zoom__input', function (e) {
-            if (e.key === 'Enter') { setZoomPercent(this.value); this.blur(); }
+            if (e.key === 'Enter') {
+                this.blur();   // blur fires 'change'
+            }
         });
 
-    // keep the % in sync after + / −, mouse wheel, fit, drag
     chart.on('redraw', function () {
         let input = chart.element.querySelector('.orgchart-zoom__input');
         if (input && document.activeElement !== input) {
-            input.value = currentZoomPercent();
+            targetPercent = chart.getScale() * 100;
+            input.value = Math.round(targetPercent);
         }
     });
-
-
 
     // Display Options "RESET": back to the options set in the HTML
     let $panel = $('.orgchart-display-section');
