@@ -733,7 +733,7 @@
         columns: 6,
         showXScroll: OrgChart.scroll.visible,
         mouseScrool: OrgChart.action.scroll,   // 9.1.61 spells the option "mouseScrool"
-        align: OrgChart.align.orientation,
+        align: OrgChart.ORIENTATION,
         movable: OrgChart.movable.tree,
         // enableDragDrop: true,
         lazyLoading: true,
@@ -833,6 +833,7 @@
 
     Promise.all([
         document.fonts ? document.fonts.ready : Promise.resolve(),
+        // fetch('data-reboot-redesign_stress_test.json')
         fetch('data-reboot-redesign.json')
             .then(response => {
                 // Check if the request was successful
@@ -1059,7 +1060,7 @@
 
         clearTimeout(filterTimer);
         filterTimer = setTimeout(function () {
-            chart.load(buildVisibleNodes(getActiveFilters()), function(){
+            chart.load(buildVisibleNodes(getActiveFilters()), function () {
                 chart.fit()
             });
         }, 0);
