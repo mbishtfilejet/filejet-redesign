@@ -733,7 +733,7 @@
         columns: 6,
         showXScroll: OrgChart.scroll.visible,
         mouseScrool: OrgChart.action.scroll,   // 9.1.61 spells the option "mouseScrool"
-        align: OrgChart.align.center,
+        align: OrgChart.ORIENTATION,
         movable: OrgChart.movable.tree,
         // enableDragDrop: true,
         lazyLoading: true,
