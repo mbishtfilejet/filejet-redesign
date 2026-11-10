@@ -714,7 +714,7 @@
     let libXScrollSetPosition = OrgChart.xScrollUI.prototype.setPosition;
     OrgChart.xScrollUI.prototype.setPosition = function () {
         let orientation = this.config.orientation;
-        if (orientation !== OrgChart.orientation.right && orientation !== OrgChart.orientation.right_top) {
+        if (orientation !== 2 && orientation !== 6) {
             return libXScrollSetPosition.apply(this, arguments);
         }
 
@@ -733,7 +733,7 @@
         columns: 6,
         showXScroll: OrgChart.scroll.visible,
         mouseScrool: OrgChart.action.scroll,   // 9.1.61 spells the option "mouseScrool"
-        align: OrgChart.ORIENTATION,
+        align: OrgChart.align.center,
         movable: OrgChart.movable.tree,
         // enableDragDrop: true,
         lazyLoading: true,
@@ -839,21 +839,19 @@
         editUI: new editForm(),
     });
 
-    Promise.all([
-        document.fonts ? document.fonts.ready : Promise.resolve(),
-        // fetch('data-reboot-redesign_stress_test.json')
-        fetch('data-reboot-redesign.json')
-            .then(response => {
-                // Check if the request was successful
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                // Parse the JSON response
-                return response.json();
-            })
-    ])
+
+    // fetch('data-reboot-redesign_stress_test.json')
+    fetch('data-reboot-redesign.json')
+        .then(response => {
+            // Check if the request was successful
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // Parse the JSON response
+            return response.json();
+        })
         .then(results => {
-            ALL_NODES = results[1];   // keep the full list for the filters
+            ALL_NODES = results;   // keep the full list for the filters
             applyFilters();           // loads the chart with the current filter selection
 
             setTimeout(function () {
@@ -884,10 +882,10 @@
 
 
     function keepNodesInView() {
-        let orientation = this.config.orientation
+        let orientation = this.config.orientation;
 
 
-        if (orientation != 2 && orientation != 6) {
+        if (orientation !== 2 && orientation !== 6) {
             return;
         }
 
@@ -1068,9 +1066,7 @@
 
         clearTimeout(filterTimer);
         filterTimer = setTimeout(function () {
-            chart.load(buildVisibleNodes(getActiveFilters()), function () {
-                chart.fit()
-            });
+            chart.load(buildVisibleNodes(getActiveFilters()));
         }, 0);
     };
 
@@ -1292,12 +1288,6 @@
             return false;
         }
     });
-
-    // label fix not aligning with links when dragged for some cases
-    // chart.on('label', function (sender, args) {
-    //     args.p.x = args.cnode.x + args.cnode.w / 2;
-    //     args.p.y = args.cnode.y - 19 - (args.cnode.movey || 0);
-    // });
 })(jQuery, OrgChart)
 
 
