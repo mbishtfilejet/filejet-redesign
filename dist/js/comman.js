@@ -283,7 +283,8 @@ $(function () {
             tabContent: splitSection.find(".tab-content"),
             leftBtn: splitSection.find(".left-btn"),
             rightBtn: splitSection.find(".right-btn"),
-            deleteBtn: splitSection.find(".delete-split")
+            deleteBtn: splitSection.find(".delete-split"),
+            addSplitBtn: splitSection.find(".add-split")
         };
     }
 
@@ -322,6 +323,8 @@ $(function () {
 
         const uniqueId = generateId();
 
+        const addSplitBtn = $(this)
+
         const new_tabPane = splitSection
             .find("[data-template]")
             .clone()
@@ -350,9 +353,9 @@ $(function () {
         const tabList = navTabList[sectionId];
 
         // Hide/Show Alert input logic just for reference, logic will be based on backend
-        if (tabList.length === 1) {
-            new_tabPane.find('[data-temp-warning]').remove();
-        }
+        // if (tabList.length === 1) {
+        //     new_tabPane.find('[data-temp-warning]').remove();
+        // }
         // Hide/Show Alert input logic End
 
         const currentTab = tabList[activeIndex];
@@ -413,13 +416,13 @@ $(function () {
         rightBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
         leftBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
         deleteBtn.toggleClass('d-none', totalTabs <= 1);
-        deleteBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
+        addSplitBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
 
     });
 
 
     $('.delete-split').on('click', function () {
-        const { splitSection, sectionId, rightBtn, leftBtn, deleteBtn } = getSectionData(this);
+        const { splitSection, sectionId, rightBtn, leftBtn, deleteBtn , addSplitBtn } = getSectionData(this);
 
         if (!splitSection || !navTabList[sectionId]) return;
 
@@ -468,7 +471,7 @@ $(function () {
                 $(this).data('daterangepicker')?.remove();
             });
 
-            firstInput.removeClass('splitDatePicker').val('').prop('disabled', true);
+            firstInput.closest('.calander-input').remove();
         }
 
         // Index of the neighbor after splice
@@ -496,7 +499,7 @@ $(function () {
         rightBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
         leftBtn.toggleClass('d-none', totalTabs <= VIEW_PER_PAGE);
         deleteBtn.toggleClass('d-none', totalTabs <= 1);
-        deleteBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
+        addSplitBtn.toggleClass('ms-auto', totalTabs > VIEW_PER_PAGE);
     });
 
     function getActiveIndex(sectionId) {
