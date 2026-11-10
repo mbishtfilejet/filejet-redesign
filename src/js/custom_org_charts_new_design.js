@@ -250,7 +250,7 @@
     OrgChart.templates.entityCard.taxshape_label = function (node, data, template, config, value) {
         if (!value) return '';
 
-        return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
+        return `<text class="tax-shape" fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
             style="font-size: 9px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
     }
 
@@ -299,7 +299,7 @@
     OrgChart.templates.externalEntityNode.taxshape_label = function (node, data, template, config, value) {
         if (!value) return '';
 
-        return `<text fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
+        return `<text class="tax-shape" fill="#ffffff" x="${CARD.strip / 2}" y="${node.h / 2 + 26}" text-anchor="middle"
             style="font-size: 9px; font-weight: 700; letter-spacing: 0.4px;">${value}</text>`;
     }
 
@@ -758,7 +758,13 @@
                     zoomTo(targetPercent * OrgChart.SCALE_FACTOR);
                 }
             },
-            fit: { title: 'Fit', icon: fitIcon, onClick: function () { chart.fit(keepNodesInView) } },
+            fit: {
+                title: 'Fit', icon: fitIcon, onClick: function () {
+                    withoutAnimation(function () {
+                        chart.fit(keepNodesInView);
+                    });
+                }
+            },
             expand_all: { title: 'Expand all', icon: expandAllIcon },
         },
 
@@ -840,8 +846,25 @@
     });
 
 
+    const NO_ANIMATION_FROM = 500;
+    const ANIM_DURATION = chart.config.anim.duration;
+
+    function withoutAnimation(run, nodeCount) {
+        if (nodeCount == null) nodeCount = chart.config.nodes.length;
+
+        if (nodeCount > NO_ANIMATION_FROM) {
+            chart.config.anim.duration = 0;
+        }
+        run();
+    }
+
+    chart.on('redraw', function () {
+        chart.config.anim.duration = ANIM_DURATION;
+    });
+
+
     // fetch('data-reboot-redesign_stress_test.json')
-    fetch('data-reboot-redesign.json')
+        fetch('data-reboot-redesign.json')
         .then(response => {
             // Check if the request was successful
             if (!response.ok) {
@@ -1066,7 +1089,8 @@
 
         clearTimeout(filterTimer);
         filterTimer = setTimeout(function () {
-            chart.load(buildVisibleNodes(getActiveFilters()));
+            let nodes = buildVisibleNodes(getActiveFilters());
+            withoutAnimation(function () { chart.load(nodes); }, nodes.length);
         }, 0);
     };
 
