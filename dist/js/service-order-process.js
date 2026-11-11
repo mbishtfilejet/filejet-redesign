@@ -348,6 +348,38 @@ $(function () {
 });
 
 
+// Date of Inactivity - add more / delete
+function toggleInactivityDelete(list) {
+  const rows = list.find('.inactivity-date-row');
+  rows.find('.inactivity-date-delete').toggleClass('d-none', rows.length < 2);
+}
+
+$(document).on('click', '.add-inactivity-date', function (e) {
+  e.preventDefault();
+  const list = $(this).closest('.inactivity-dates').find('.inactivity-date-list');
+  const firstRow = list.find('.inactivity-date-row').first();
+  const newRow = $(firstRow.prop('outerHTML'));
+
+  newRow.find('input').val('');
+  list.append(newRow);
+  initializeDatePicker(newRow.find('.modaldatepicker'));
+  toggleInactivityDelete(list);
+});
+
+$(document).on('click', '.remove-inactivity-date', function (e) {
+  e.preventDefault();
+  const list = $(this).closest('.inactivity-date-list');
+  if (list.find('.inactivity-date-row').length < 2) return;
+
+  const row = $(this).closest('.inactivity-date-row');
+  row.find('.modaldatepicker').each(function () {
+    $(this).data('daterangepicker')?.remove();
+  });
+  row.remove();
+  toggleInactivityDelete(list);
+});
+
+
 // Entity type professional corporatio
 document.addEventListener('DOMContentLoaded', function () {
   const containers = document.querySelectorAll('.entity-container');
