@@ -732,9 +732,10 @@
         template: 'entityCard',
         columns: 6,
         showXScroll: OrgChart.scroll.visible,
-        mouseScrool: OrgChart.action.scroll,   // 9.1.61 spells the option "mouseScrool"
+        mouseScroll: OrgChart.action.scroll,
         align: OrgChart.ORIENTATION,
         movable: OrgChart.movable.tree,
+        highlightOnHover: "parents",
         // enableDragDrop: true,
         lazyLoading: true,
         layout: OrgChart.layout.normal,
@@ -864,7 +865,7 @@
 
 
     // fetch('data-reboot-redesign_stress_test.json')
-        fetch('data-reboot-redesign.json')
+    fetch('data-reboot-redesign.json')
         .then(response => {
             // Check if the request was successful
             if (!response.ok) {
@@ -1089,8 +1090,7 @@
 
         clearTimeout(filterTimer);
         filterTimer = setTimeout(function () {
-            let nodes = buildVisibleNodes(getActiveFilters());
-            withoutAnimation(function () { chart.load(nodes); }, nodes.length);
+            chart.load(buildVisibleNodes(getActiveFilters()));
         }, 0);
     };
 
