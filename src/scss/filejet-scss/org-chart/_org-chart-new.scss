@@ -451,7 +451,7 @@
 
     #tree {
         height: 68vh;
-        font-family: var(--bs-body-font-family);
+        font-family: var(--bs-body-font-family) !important;
 
         &.hide-tax .tax-shape {
             display: none;
@@ -557,7 +557,78 @@
             }
         }
 
+        // PDF preview panel: above the legends (.tree-legends is z-index 10)
+        [data-boc-left] {
+            position: relative;
+            z-index: 11;
+            width: 460px;
+        }
 
+        .boc-export-form {
+            width: 100%;
+            background-color: #F3F5F8;
+            color: var(--bs-filejet-medium-gray);
+            border-right: 1px solid var(--bs-border-color);
+            box-shadow: rgba(0, 0, 0, .08) 2px 0 8px;
+
+            .boc-export-btns-inner {
+                gap: 6px;
+                align-items: center;
+            }
+
+            .boc-export-left,
+            .boc-export-right {
+                display: flex;
+                gap: 6px;
+                align-items: center;
+            }
+
+            button {
+                height: 32px;
+                margin: 0;
+                padding: 0 10px;
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                white-space: nowrap;
+                color: var(--bs-filejet-purple-indigo);
+                background-color: #fff;
+                border: 1px solid var(--bs-filejet-purple-indigo);
+                border-radius: 2px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #f2f2ff;
+                }
+            }
+
+            [data-boc-export-export],
+            [data-boc-export-export]:hover {
+                color: #fff;
+                background-color: var(--bs-filejet-purple-indigo);
+            }
+
+            .pdf-format-select {
+                width: auto;
+                padding-right: 24px;
+                background-position: right 8px center;
+                background-size: 10px;
+            }
+
+            .boc-export-page {
+                background-color: #fff;
+                border-color: var(--bs-border-color);
+
+                .boc-export-remove-buttons button {
+                    height: 26px;
+                    font-size: 10px;
+                }
+            }
+
+            .boc-export-selected {
+                border-color: var(--bs-filejet-purple-indigo);
+            }
+        }
     }
 
     .icon-grey {

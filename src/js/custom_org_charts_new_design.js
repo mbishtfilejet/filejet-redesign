@@ -736,6 +736,7 @@
         align: OrgChart.ORIENTATION,
         movable: OrgChart.movable.tree,
         highlightOnHover: "parents",
+        scaleInitial: OrgChart.match.boundaryIfOutside,
         // enableDragDrop: true,
         lazyLoading: true,
         layout: OrgChart.layout.normal,
@@ -865,7 +866,7 @@
 
 
     // fetch('data-reboot-redesign_stress_test.json')
-    fetch('data-reboot-redesign.json')
+        fetch('data-reboot-redesign.json')
         .then(response => {
             // Check if the request was successful
             if (!response.ok) {
@@ -1312,6 +1313,35 @@
             return false;
         }
     });
+
+    chart.pdfPreviewUI.buttons.printProfileOrTree = false;
+
+    function pdfPreview(nodeId) {
+        chart.pdfPreviewUI.show({
+            format: "Legal",
+            landscape: true,
+            header: '<text>My Header</text>',
+            footer: '<text>My Footer. Page {current-page} of {total-pages}</text>'
+        });
+    }
+    
+    function png(nodeId) {
+        chart.exportToPNG({
+            header: '<text style="font-size:36px;">My Header</text>',
+            footer: '<text style="font-size:24px;">My Footer. Page {current-page} of {total-pages}</text>',
+        });
+    }
+
+    $('.icon-export-pdf').on('click', function () {
+        pdfPreview();
+    })
+
+    $('.icon-export-jpeg').on('click', function () {
+        png();
+    })
+
+
+
 })(jQuery, OrgChart)
 
 
