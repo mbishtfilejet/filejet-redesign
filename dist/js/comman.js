@@ -388,10 +388,17 @@ $(function () {
         new_tabPane.find('[data-temp-table]')
             .removeAttr("data-temp-table")
             .addClass('long-data-table-listing');
-        new_tabPane.find('[data-temp-shareInput]').removeAttr('data-temp-shareInput').attr('id', `split-shares-inputs-${uniqueId}`)
-        new_tabPane.find('[data-temp-addShare]').removeAttr('data-temp-addShare').attr('data-bs-target', `#split-shares-inputs-${uniqueId}`)
-        new_tabPane.find('[data-temp-addRowInput]').removeAttr('data-temp-addRowInput').attr('data-bs-target', `#split-shares-inputs-${uniqueId}`)
+        // new_tabPane.find('[data-temp-shareInput]').removeAttr('data-temp-shareInput').attr('id', `split-shares-inputs-${uniqueId}`)
+        // new_tabPane.find('[data-temp-addShare]').removeAttr('data-temp-addShare').attr('data-bs-target', `#split-shares-inputs-${uniqueId}`)
+        // new_tabPane.find('[data-temp-addRowInput]').removeAttr('data-temp-addRowInput').attr('data-bs-target', `#split-shares-inputs-${uniqueId}`)
 
+        new_tabPane.find('[data-temp-id]').each(function () {
+            const tempId = $(this).attr('data-temp-id');
+            const id = `${tempId}-${uniqueId}`;
+
+            new_tabPane.find(`[data-temp-for="${tempId}"]`).removeAttr('data-temp-for').attr('for', id);
+            $(this).removeAttr('data-temp-id').attr('id', id);
+        });
         tabContent.append(new_tabPane);
 
         if (tabList.length > VIEW_PER_PAGE) {
@@ -422,7 +429,7 @@ $(function () {
 
 
     $('.delete-split').on('click', function () {
-        const { splitSection, sectionId, rightBtn, leftBtn, deleteBtn , addSplitBtn } = getSectionData(this);
+        const { splitSection, sectionId, rightBtn, leftBtn, deleteBtn, addSplitBtn } = getSectionData(this);
 
         if (!splitSection || !navTabList[sectionId]) return;
 
