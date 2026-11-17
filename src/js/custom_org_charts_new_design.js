@@ -1214,11 +1214,18 @@
     $('#dropdownAdditionalOwners').trigger('change');
 
 
+    // tax shape & entity status show/hide (also in PDF / PNG / SVG exports)
+    let display = { tax: true, status: true };
 
-    // tax shape & entity status show/hide
+    chart.on('field', function (sender, args) {
+        if (!display.tax && (args.field === 'tax_shape' || args.field === 'taxshape_label')) return false;
+        if (!display.status && args.field === 'entityStatus') return false;
+    });
+
     $(document).on('change', '[data-display]', function () {
-        $('#tree').toggleClass('hide-' + $(this).data('display'), !this.checked);
+        display[$(this).data('display')] = this.checked;
         $('.tree-legends').toggleClass('hide-' + $(this).data('display'), !this.checked);
+        chart.draw();
     });
 
     // apply the starting state on page load
@@ -1318,17 +1325,15 @@
 
     function pdfPreview(nodeId) {
         chart.pdfPreviewUI.show({
-            format: "Legal",
-            landscape: true,
             header: '<text>My Header</text>',
-            footer: '<text>My Footer. Page {current-page} of {total-pages}</text>'
+            footer: '<text>Page {current-page} of {total-pages}</text>'
         });
     }
-    
+
     function png(nodeId) {
         chart.exportToPNG({
             header: '<text style="font-size:36px;">My Header</text>',
-            footer: '<text style="font-size:24px;">My Footer. Page {current-page} of {total-pages}</text>',
+            footer: '<text style="font-size:24px;">Page {current-page} of {total-pages}</text>',
         });
     }
 
