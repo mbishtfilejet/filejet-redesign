@@ -38,7 +38,7 @@
     .boc-light {
         background-color: transparent;
     }
-
+    
     .boc-light div[data-id=mini-map]{
         z-index: 10;
     }
@@ -699,10 +699,52 @@
         }
     }
 
-    .orgchart-orientation-item {
+    @mixin orgchart-btn-grid($cols) {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat($cols, 1fr);
+
+        .orientation-btn {
+            border: var(--bs-border-width) solid var(--bs-border-color);
+            border-left-width: 0;
+
+            // first button of each row gets the left border
+            &:nth-child(#{$cols}n+1) {
+                border-left-width: var(--bs-border-width);
+            }
+
+            // second row and below share the line above
+            &:nth-child(n+#{$cols + 1}) {
+                border-top-width: 0;
+            }
+
+            // rounded outer corners only
+            &:nth-child(1) {
+                border-top-left-radius: var(--bs-border-radius);
+            }
+
+            &:nth-child(#{$cols}) {
+                border-top-right-radius: var(--bs-border-radius);
+            }
+
+            &:nth-child(#{$cols}n+1):nth-last-child(-n+#{$cols}) {
+                border-bottom-left-radius: var(--bs-border-radius);
+            }
+
+            &:nth-child(#{$cols}n):nth-last-child(-n+#{$cols}),
+            &:last-child {
+                border-bottom-right-radius: var(--bs-border-radius);
+            }
+        }
     }
+
+    .orgchart-layout-item {
+        @include orgchart-btn-grid(3);
+    }
+
+    .orgchart-orientation-item {
+        @include orgchart-btn-grid(4);
+    }
+
 
     .tax-shape-picker {
         .bg-grey {
