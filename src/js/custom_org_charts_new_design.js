@@ -24,13 +24,13 @@
         '<path d="M5.08535 2C5.29127 1.4174 5.84689 1 6.5 1H9.5C10.1531 1 10.7087 1.4174 10.9146 2H11.5C12.3284 2 13 2.67157 13 3.5V13.5C13 14.3284 12.3284 15 11.5 15H4.5C3.67157 15 3 14.3284 3 13.5V3.5C3 2.67157 3.67157 2 4.5 2H5.08535ZM6.5 2C6.22386 2 6 2.22386 6 2.5C6 2.77614 6.22386 3 6.5 3H9.5C9.77614 3 10 2.77614 10 2.5C10 2.22386 9.77614 2 9.5 2H6.5ZM5.08535 3H4.5C4.22386 3 4 3.22386 4 3.5V13.5C4 13.7761 4.22386 14 4.5 14H11.5C11.7761 14 12 13.7761 12 13.5V3.5C12 3.22386 11.7761 3 11.5 3H10.9146C10.7087 3.5826 10.1531 4 9.5 4H6.5C5.84689 4 5.29127 3.5826 5.08535 3Z"/>' +
         '</svg>';
 
-    let addEntity = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M7.91012 3.00806L8 3C8.24546 3 8.44961 3.17688 8.49194 3.41012L8.5 3.5V7.5H12.5C12.7455 7.5 12.9496 7.67688 12.9919 7.91012L13 8C13 8.24546 12.8231 8.44961 12.5899 8.49194L12.5 8.5H8.5V12.5C8.5 12.7455 8.32312 12.9496 8.08988 12.9919L8 13C7.75454 13 7.55039 12.8231 7.50806 12.5899L7.5 12.5V8.5H3.5C3.25454 8.5 3.05039 8.32312 3.00806 8.08988L3 8C3 7.75454 3.17688 7.55039 3.41012 7.50806L3.5 7.5H7.5V3.5C7.5 3.25454 7.67688 3.05039 7.91012 3.00806L8 3L7.91012 3.00806Z"/>' +
-        '</svg>';
-    let deleteIcon = '<span class="icon icon-sm icon-delete m-0"></span>'
-    let downloadTempMenu = '<span class="icon me-0 icon-md icon-download-template-menu"></span>';
-    let exportCSV = '<span class="icon icon-md me-0 icon-export-csv"></span>';
-    let exportJPG = '<span class="icon icon-md me-0 icon-export-jpg"></span>';
+    // let addEntity = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    //     '<path d="M7.91012 3.00806L8 3C8.24546 3 8.44961 3.17688 8.49194 3.41012L8.5 3.5V7.5H12.5C12.7455 7.5 12.9496 7.67688 12.9919 7.91012L13 8C13 8.24546 12.8231 8.44961 12.5899 8.49194L12.5 8.5H8.5V12.5C8.5 12.7455 8.32312 12.9496 8.08988 12.9919L8 13C7.75454 13 7.55039 12.8231 7.50806 12.5899L7.5 12.5V8.5H3.5C3.25454 8.5 3.05039 8.32312 3.00806 8.08988L3 8C3 7.75454 3.17688 7.55039 3.41012 7.50806L3.5 7.5H7.5V3.5C7.5 3.25454 7.67688 3.05039 7.91012 3.00806L8 3L7.91012 3.00806Z"/>' +
+    //     '</svg>';
+    // let deleteIcon = '<span class="icon icon-sm icon-delete m-0"></span>'
+    // let downloadTempMenu = '<span class="icon me-0 icon-md icon-download-template-menu"></span>';
+    // let exportCSV = '<span class="icon icon-md me-0 icon-export-csv"></span>';
+    // let exportJPG = '<span class="icon icon-md me-0 icon-export-jpg"></span>';
 
 
     const nodeMenuTab = (x) => `
@@ -730,7 +730,7 @@
 
     let chart = new OrgChart(document.getElementById("tree"), {
         template: 'entityCard',
-        columns: 6,
+        columns: 3,
         showXScroll: OrgChart.scroll.visible,
         mouseScroll: OrgChart.action.scroll,
         align: OrgChart.ORIENTATION,
@@ -1343,6 +1343,14 @@
 
     $('.icon-export-jpeg').on('click', function () {
         png();
+    })
+
+    function csv() {
+        chart.exportToCSV({ filename: 'OrgChart_CSV.csv' });
+    }
+
+    $('.icon-export-csv').on('click', function () {
+        csv();
     })
 
 
