@@ -1,0 +1,64 @@
+.integration-dashboard {
+    @extend .billing-dashboard;
+
+    .integrationstablist {
+        @extend .billingstablist;
+    }
+
+    .integrationTabsContent {
+        @extend .billingTabsContent;
+    }
+
+    .integration-list {
+        .integration-item:last-child {
+            padding-bottom: 0 !important;
+        }
+    }
+
+    .integration-icon {
+        width: 40px;
+        height: 40px;
+        @extend .d-flex, .align-items-center, .justify-content-center, .flex-shrink-0;
+        background-color: var(--bs-gray-light);
+    }
+
+    .integration-meta {
+        color: #9CA3AF;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    .integration-dot {
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background-color: currentColor;
+        vertical-align: middle;
+        margin: 0 4px;
+    }
+
+    .integration-error {
+        color: #f03e2f;
+    }
+
+    .integration-badge {
+        @extend .d-inline-flex, .align-items-center, .gap-1;
+        border: 1px solid transparent;
+
+        &.integration-badge-active {
+            border-color: #3ab564;
+            background-color: #D0F4DC;
+        }
+
+        &.integration-badge-error {
+            border-color: #f03e2f;
+            background-color: #fdebea;
+        }
+    }
+
+    .integration-badge-add {
+        border-color: var(--bs-filejet-medium-gray);
+        background-color: #f5f5f5;
+    }
+}

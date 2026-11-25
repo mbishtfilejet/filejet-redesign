@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Jet: Dashboard</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../src/scss/filejet-style.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- date picker -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" />
+    <!-- end date -->
+
+    <!-- Scripts -->
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body class="main-dashboard-v2 integration-dashboard">
+    <div class="filejet-bg dashboard-page min-vh-100">
+        <div class="container-fluid p-0">
+            <div class="sidebar-wrapper">
+                <div class="sidebar min-vh-100 ps-3 py-3 user-account-sidebar">
+                    <div class="pb-4">
+                        <a href="../index.html"
+                            class="btn btn-info p-2 text-uppercase d-inline-flex align-items-center">
+                            <span class="icon icon-md icon-arrow-left m-0 me-md-2"></span>
+                            <span class="d-none d-lg-inline-block">Go back</span>
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="menu-link p-0 m-0">
+                            <li class="nav-link">
+                                <a href="./my-settings-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-profile normal-icon"></span>
+                                        <span class="icon icon-profile-purple active-icon"></span>
+                                    </span>
+
+                                    <span class="text nav-text">My Profile</span>
+                                </a>
+                            </li>
+                            <hr class="me-3 my-3" />
+                            <!-- Account Settings -->
+                            <li class="nav-link">
+                                <a href="./account-settings.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-accountsettings normal-icon"></span>
+                                        <span class="icon icon-accountsettings-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Account Settings
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- Billing -->
+                            <li class="nav-link">
+                                <a href="./billing-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-billing normal-icon"></span>
+                                        <span class="icon icon-billing-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Billing</span>
+                                </a>
+                            </li>
+                            <!-- Integrations -->
+                            <li class="nav-link active dark">
+                                <a href="./integrations-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-integrations normal-icon"></span>
+                                        <span class="icon icon-integrations-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Integrations</span>
+                                </a>
+                            </li>
+                            <!-- Users -->
+                            <li class="nav-link">
+                                <a href="./users-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-users normal-icon"></span>
+                                        <span class="icon icon-users-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text">Users</span>
+                                </a>
+                            </li>
+                            <!-- Account Security -->
+                            <li class="nav-link">
+                                <a href="./account-security-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-security normal-icon"></span>
+                                        <span class="icon icon-security-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Account Security
+                                    </span>
+                                </a>
+                            </li>
+                            <hr class="me-3 my-3" />
+                            <li class="nav-link">
+                                <a href="./policies-v1.html" class="text-decoration-none ps-3 py-3 d-block">
+                                    <span>
+                                        <span class="icon icon-document normal-icon"></span>
+                                        <span class="icon icon-document-purple active-icon"></span>
+                                    </span>
+                                    <span class="text nav-text position-relative">
+                                        Policies
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-wrapper">
+                <div class="container-fluid container-lg">
+                    <div class="header">
+                        <div class="row align-items-center d2-search">
+                            <div class="col-3 col-xl-3 col-lg-3">
+                                <h3 class="m-0">
+                                    <strong> Integrations</strong>
+                                </h3>
+                            </div>
+                            <div
+                                class="col col-md-9 col-xl-9 col-lg-9 d-flex align-items-center gap-3 justify-content-between justify-content-md-end">
+                                <div class="profile-nav profile-nav-v2">
+                                    <div class="dropdown white-bg p-0 rounded-5">
+
+                                        <a class="nav-link dropdown show " href="#" data-bs-toggle="dropdown"
+                                            aria-expanded="true">
+                                            <span class="avatar avatar-lg m-0">
+                                                <img src="../dist/images/avatar.png" alt="" />
+                                            </span>
+                                            <!-- <span class="user-name">Roman Lorem ipsum</span> -->
+                                        </a>
+                                        <ul class="dropdown-menu" data-bs-popper="static">
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="/account/account-settings.html">
+                                                    <span class="icon icon-accountsettings me-4"></span>
+                                                    Settings
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center border-bottom"
+                                                    href="#">
+                                                    <span class="icon icon-user me-4"></span>
+                                                    Switch Account (Member)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item py-3 d-flex align-items-center"
+                                                    href="../../login.html">
+                                                    <span class="icon icon-logout me-4"></span>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="container-fluid container-lg">
+                    <div class="main-content pt-3">
+                        <!-- Integrations Different TabList -->
+                        <div class="">
+                            <ul class="nav integrationstablist" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a href="javascript:void(0)" class="nav-link p-0 active" id="in-integrations-tab"
+                                        data-bs-toggle="tab" data-bs-target="#in-integrations-tab-pane" role="tab"
+                                        aria-controls="in-integrations-tab-pane" aria-selected="true">Integrations</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="javascript:void(0)" class="nav-link p-0" id="in-sharepoint-tab"
+                                        data-bs-toggle="tab" data-bs-target="#in-sharepoint-tab-pane" role="tab"
+                                        aria-controls="in-sharepoint-tab-pane" aria-selected="false"
+                                        tabindex="-1">SharePoint</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="javascript:void(0)" class="nav-link p-0" id="in-googleDrive-tab"
+                                        data-bs-toggle="tab" data-bs-target="#in-googleDrive-tab-pane" role="tab"
+                                        aria-controls="in-googleDrive-tab-pane" aria-selected="false"
+                                        tabindex="-1">Google Drive</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="javascript:void(0)" class="nav-link p-0" id="in-webhook-tab"
+                                        data-bs-toggle="tab" data-bs-target="#in-webhook-tab-pane" role="tab"
+                                        aria-controls="in-webhook-tab-pane" aria-selected="false" tabindex="-1">Filejet
+                                        Webhook</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="javascript:void(0)" class="nav-link p-0" id="in-api-tab"
+                                        data-bs-toggle="tab" data-bs-target="#in-api-tab-pane" role="tab"
+                                        aria-controls="in-api-tab-pane" aria-selected="false" tabindex="-1">Filejet
+                                        API</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="javascript:void(0)" class="nav-link p-0" id="in-agentic-tab"
+                                        data-bs-toggle="tab" data-bs-target="#in-agentic-tab-pane" role="tab"
+                                        aria-controls="in-agentic-tab-pane" aria-selected="false" tabindex="-1">Filejet
+                                        Agentic Interface</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Integrations Different TabList End -->
+
+                        <!-- Integrations Tabs Content Start -->
+                        <div class="integrationTabsContent flex-grow-1 pt-4">
+                            <div class="tab-content mb-3" id="myTabContent">
+
+                                <!-- Integrations Start -->
+                                <div class="tab-pane fade show active" id="in-integrations-tab-pane" role="tabpanel"
+                                    aria-labelledby="in-integrations-tab" tabindex="0">
+                                    <div class="row g-2">
+                                        <div class="col-12 col-md-8 flex-grow-1 mb-2 search-table-col">
+                                            <div
+                                                class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm  m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                                <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                                <input type="text" class="custom-search-input border-0 p-0 w-100"
+                                                    placeholder="Search Integrations">
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="filter2-dropdown col-12 col-md-3 flex-grow-1 status-table-col mb-2 dropdown">
+                                            <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                                id="orderStatusContainer" data-bs-toggle="dropdown"
+                                                aria-expanded="false" tabindex="0">
+                                                <input type="text" class="search-input" id="orderStatusSearch"
+                                                    placeholder="Status" autocomplete="off">
+                                            </div>
+                                            <ul class="dropdown-menu search-disabled" id="orderStatusDropdown">
+                                                <li>
+                                                    <label class="dropdown-item">
+                                                        <input type="checkbox" id="orderStatusSelectAll"
+                                                            class="form-check-input me-2 orderStatus-checkbox"
+                                                            data-value="All">All
+                                                    </label>
+                                                </li>
+                                                <li><label class="dropdown-item"><input type="checkbox"
+                                                            class="form-check-input orderStatus-checkbox me-2"
+                                                            data-value="Active">
+                                                        Active</label></li>
+                                                <li><label class="dropdown-item"><input type="checkbox"
+                                                            class="form-check-input orderStatus-checkbox me-2"
+                                                            data-value="Available">
+                                                        Available</label></li>
+                                                <li><label class="dropdown-item"><input type="checkbox"
+                                                            class="form-check-input orderStatus-checkbox me-2"
+                                                            data-value="Paused">
+                                                        Paused</label></li>
+                                                <li><label class="dropdown-item"><input type="checkbox"
+                                                            class="form-check-input orderStatus-checkbox me-2"
+                                                            data-value="Error">
+                                                        Error</label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-column gap-4 mt-2">
+                                        <!-- Active Integrations Start -->
+                                        <div class="p-3 bg-white rounded-2">
+                                            <h5 class="fw-bold mb-2">Active Integrations</h5>
+                                            <div class="integration-list">
+                                                <div
+                                                    class="integration-item d-flex align-items-center justify-content-between gap-3 py-3 border-bottom">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <span class="integration-icon border rounded-4">
+                                                            <span class="icon icon-sharepoint icon-lg m-0"></span>
+                                                        </span>
+                                                        <div>
+                                                            <p class="fw-bold mb-0">SharePoint</p>
+                                                            <p class="integration-meta mb-0">
+                                                                Connected <span class="integration-dot"></span> Last
+                                                                sync: 45 minutes ago
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <span
+                                                        class="badge badge-text-dark integration-badge integration-badge-active">
+                                                        <span class="icon icon-check-dark icon-xs m-0"></span> Active
+                                                    </span>
+                                                </div>
+
+                                                <div
+                                                    class="integration-item d-flex align-items-center justify-content-between gap-3 py-3 border-bottom">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <span class="integration-icon border rounded-4">
+                                                            <span class="icon icon-gdrive icon-lg m-0"></span>
+                                                        </span>
+                                                        <div>
+                                                            <p class="fw-bold mb-0">Google Drive</p>
+                                                            <p class="integration-meta mb-0 integration-error">
+                                                                Error <span class="integration-dot"></span>
+                                                                Authentication failed
+                                                                <span>(Last 24 hours)</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <span
+                                                        class="badge badge-text-dark integration-badge integration-badge-error">
+                                                        <span class="icon icon-error icon-xs m-0"></span> Error
+                                                    </span>
+                                                </div>
+
+                                                <div
+                                                    class="integration-item d-flex align-items-center justify-content-between gap-3 py-3 border-bottom">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <span class="integration-icon border rounded-4">
+                                                            <span class="icon icon-filejetSymbol icon-lg m-0"></span>
+                                                        </span>
+                                                        <div>
+                                                            <p class="fw-bold mb-0">Filejet Document Webhook</p>
+                                                            <p class="integration-meta mb-0">
+                                                                Connected <span class="integration-dot"></span> Last
+                                                                sync: 45 minutes ago
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <span
+                                                        class="badge badge-text-dark integration-badge integration-badge-active">
+                                                        <span class="icon icon-check-dark icon-xs m-0"></span> Active
+                                                    </span>
+                                                </div>
+
+                                                <div
+                                                    class="integration-item d-flex align-items-center justify-content-between gap-3 py-3 border-bottom">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <span class="integration-icon border rounded-4">
+                                                            <span class="icon icon-filejetSymbol icon-lg m-0"></span>
+                                                        </span>
+                                                        <div>
+                                                            <p class="fw-bold mb-0">Filejet API</p>
+                                                            <p class="integration-meta mb-0">
+                                                                3 API keys <span class="integration-dot"></span> Last
+                                                                used 6 hours ago
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <span
+                                                        class="badge badge-text-dark integration-badge integration-badge-active">
+                                                        <span class="icon icon-check-dark icon-xs m-0"></span> Active
+                                                    </span>
+                                                </div>
+
+                                                <div
+                                                    class="integration-item d-flex align-items-center justify-content-between gap-3 py-3">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <span class="integration-icon border rounded-4">
+                                                            <span class="icon icon-filejetSymbol icon-lg m-0"></span>
+                                                        </span>
+                                                        <div>
+                                                            <p class="fw-bold mb-0">Filejet Agentic Interface</p>
+                                                            <p class="integration-meta mb-0">
+                                                                OAuth on <span class="integration-dot"></span> 3 users
+                                                                with access
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <span
+                                                        class="badge badge-text-dark integration-badge integration-badge-active">
+                                                        <span class="icon icon-check-dark icon-xs m-0"></span> Active
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Active Integrations End -->
+
+                                        <!-- Available Integrations Start -->
+                                        <div class="p-3 bg-white rounded-2">
+                                            <h5 class="fw-bold mb-2">Available Integrations</h5>
+                                            <div class="integration-list">
+                                                <div
+                                                    class="integration-item d-flex align-items-center justify-content-between gap-3 py-3 border-bottom">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <span class="integration-icon border rounded-4">
+                                                            <span class="icon icon-boxDocument icon-xl m-0"></span>
+                                                        </span>
+                                                        <div>
+                                                            <p class="fw-bold mb-0">Box</p>
+                                                            <p class="integration-meta mb-0">Sync documents to your Box
+                                                                account</p>
+                                                        </div>
+                                                    </div>
+                                                    <span role="button"
+                                                        class="badge badge-text-dark integration-badge integration-badge-add">
+                                                        Add <span class="icon icon-add-chart icon-xs m-0"></span>
+                                                    </span>
+                                                </div>
+
+                                                <div
+                                                    class="integration-item d-flex align-items-center justify-content-between gap-3 py-3">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <span class="integration-icon border rounded-4">
+                                                            <span class="icon icon-netDocument icon-xl m-0"></span>
+                                                        </span>
+                                                        <div>
+                                                            <p class="fw-bold mb-0">NetDocuments</p>
+                                                            <p class="integration-meta mb-0">Sync documents to your
+                                                                NetDocuments account</p>
+                                                        </div>
+                                                    </div>
+                                                    <span role="button"
+                                                        class="badge badge-text-dark integration-badge integration-badge-add">
+                                                        Add <span class="icon icon-add-chart icon-xs m-0"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Available Integrations End -->
+                                    </div>
+                                </div>
+                                <!-- Integrations End -->
+
+                                <!-- SharePoint Start -->
+                                <div class="tab-pane fade" id="in-sharepoint-tab-pane" role="tabpanel"
+                                    aria-labelledby="in-sharepoint-tab" tabindex="0"></div>
+                                <!-- SharePoint End -->
+
+                                <!-- Google Drive Start -->
+                                <div class="tab-pane fade" id="in-googleDrive-tab-pane" role="tabpanel"
+                                    aria-labelledby="in-googleDrive-tab" tabindex="0"></div>
+                                <!-- Google Drive End -->
+
+                                <!-- FileJet Webhook Start -->
+                                <div class="tab-pane fade" id="in-webhook-tab-pane" role="tabpanel"
+                                    aria-labelledby="in-webhook-tab" tabindex="0"></div>
+                                <!-- FileJet Webhook End -->
+
+                                <!-- FileJet API Start -->
+                                <div class="tab-pane fade" id="in-api-tab-pane" role="tabpanel"
+                                    aria-labelledby="in-api-tab" tabindex="0"></div>
+                                <!-- FileJet API End -->
+
+                                <!-- FileJet Agentic Interface Start -->
+                                <!-- FileJet Agentic Interface Start -->
+                                <div class="tab-pane fade" id="in-agentic-tab-pane" role="tabpanel"
+                                    aria-labelledby="in-agentic-tab" tabindex="0"></div>
+                                <!-- FileJet Agentic Interface End -->
+                                <!-- FileJet Agentic Interface End -->
+                            </div>
+                        </div>
+                        <!-- Integrations Tabs Content End -->
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="main-content pt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Scripts start-->
+    <script src="../dist/js/plugins.min.js"></script>
+    <script src="../dist/js/custom.min.js"></script>
+    <script src="/dist/js/dashboard-v2_document.js"></script>
+
+    <!-- Scripts End-->
+    <script>
+        // Initialize all tooltips on the page
+        const tooltipTriggerList = [].slice.call(
+            document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+        );
+        tooltipTriggerList.map((el) => new bootstrap.Tooltip(el));
+    </script>
+
+    <script>
+        if (/Mobi/.test(navigator.userAgent)) {
+            // if mobile device, use native pickers
+            $(".time input").attr("type", "time");
+        } else {
+            // if desktop device, use DateTimePicker
+            $("#setuptimepicker").datetimepicker({
+                format: "LT",
+                icons: {
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                },
+            });
+        }
+    </script>
+</body>
+
+</html>
