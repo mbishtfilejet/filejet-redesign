@@ -440,10 +440,135 @@
                                 <!-- FileJet API End -->
 
                                 <!-- FileJet Agentic Interface Start -->
-                                <!-- FileJet Agentic Interface Start -->
                                 <div class="tab-pane fade" id="in-agentic-tab-pane" role="tabpanel"
-                                    aria-labelledby="in-agentic-tab" tabindex="0"></div>
-                                <!-- FileJet Agentic Interface End -->
+                                    aria-labelledby="in-agentic-tab" tabindex="0">
+                                    <div class="d-flex flex-column gap-4">
+                                        <!-- Agentic Header Start -->
+                                        <div class="p-3 bg-white rounded-2">
+                                            <div class="d-flex align-items-center justify-content-between gap-3">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="integration-icon border rounded-4">
+                                                        <span class="icon icon-filejetSymbol icon-lg m-0"></span>
+                                                    </span>
+                                                    <h5 class="fw-bold mb-0">Filejet Agentic Interface</h5>
+                                                </div>
+                                                <div class="form-switch  intergration-switch m-0">
+                                                    <input class="form-check-input m-0" type="checkbox"
+                                                        id="agenticInterfaceSwitch" checked>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Agentic Header End -->
+
+                                        <!-- OAuth Authentication Start -->
+                                        <div class="p-3 bg-white rounded-2">
+                                            <h6 class="fw-bold mb-1">OAuth Authentication</h6>
+                                            <p class="integration-meta mb-2">
+                                                Users sign in to Filejet from their AI agents. Requests run as that
+                                                user, with their permissions.
+                                            </p>
+
+                                            <hr>
+
+                                            <div class="d-flex align-items-center gap-4 mb-1">
+                                                <p class="fw-bold mb-0">Enable OAuth access to Filejet API for users</p>
+                                                <div class="form-switch  intergration-switch m-0">
+                                                    <input class="form-check-input m-0" type="checkbox"
+                                                        id="agenticOAuthSwitch" checked>
+                                                </div>
+                                            </div>
+                                            <p class="integration-meta mb-3">
+                                                Turn it on for specific users or roles in
+                                                <a href="./users-v1.html"
+                                                    class="text-indigo fw-bold text-decoration-none">Users
+                                                    & Roles</a>
+                                                - 3 users has access.
+                                            </p>
+
+                                            <div
+                                                class="integration-key-box p-3 border rounded-2">
+                                                <span
+                                                    class="integration-key-value text-break d-block mb-2">fj_live_8f3a2c71b9d04e6a95c1f7e2d4b8a063</span>
+                                                <button type="button" class="btn btn-dark p-2 py-0 rounded-1 text-capitalize">
+                                                    MCP Server
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- OAuth Authentication End -->
+
+                                        <!-- Integration Log Start -->
+                                        <div>
+                                            <h6 class="fw-bold mb-3">Integration Log</h6>
+                                            <div class="row g-2">
+                                                <div class="col-12 col-md-5 flex-grow-1 mb-2 search-table-col">
+                                                    <div
+                                                        class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                                        <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                                        <input type="text"
+                                                            class="custom-search-input border-0 p-0 w-100"
+                                                            placeholder="Search Log">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-md-3 flex-grow-1 mb-2">
+                                                    <div
+                                                        class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1 h-100">
+                                                        <input type="text" name="daterange"
+                                                            class="form-control received-datepicker w-100 border-0 p-0 my-auto"
+                                                            placeholder="Date Range" value="" />
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="filter2-dropdown col-12 col-md-2 flex-grow-1 status-table-col mb-2 dropdown">
+                                                    <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                                        id="statusContainer" data-bs-toggle="dropdown"
+                                                        aria-expanded="false" tabindex="0">
+                                                        <input type="text" class="search-input" id="statusSearch"
+                                                            placeholder="Status" autocomplete="off">
+                                                    </div>
+                                                    <ul class="dropdown-menu search-disabled" id="statusDropdown">
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="statusSelectAll"
+                                                                    class="form-check-input me-2 status-checkbox"
+                                                                    data-value="All">All
+                                                            </label>
+                                                        </li>
+                                                        <li><label class="dropdown-item"><input type="checkbox"
+                                                                    class="form-check-input status-checkbox me-2"
+                                                                    data-value="Success">
+                                                                Success</label></li>
+                                                        <li><label class="dropdown-item"><input type="checkbox"
+                                                                    class="form-check-input status-checkbox me-2"
+                                                                    data-value="Failed">
+                                                                Failed</label></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="integrationTableCard mt-2 border rounded-2">
+                                                <div class="integrationLogTable">
+                                                    <table id="integration-log-table"
+                                                        class="table table-striped w-100 table-nowrap">
+                                                        <thead>
+                                                            <tr class="group-row">
+                                                                <th>Date</th>
+                                                                <th>Time</th>
+                                                                <th>User Name</th>
+                                                                <th>Action</th>
+                                                                <th>Status</th>
+                                                                <th>Details</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Integration Log End -->
+                                    </div>
+                                </div>
                                 <!-- FileJet Agentic Interface End -->
                             </div>
                         </div>
@@ -463,7 +588,12 @@
     <!-- Scripts start-->
     <script src="../dist/js/plugins.min.js"></script>
     <script src="../dist/js/custom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
     <script src="/dist/js/dashboard-v2_document.js"></script>
+    <script src="/dist/js/intergrations.js"></script>
 
     <!-- Scripts End-->
     <script>
