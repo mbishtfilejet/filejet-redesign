@@ -91,9 +91,20 @@ $(document).ready(function () {
             { data: "entities" },
             {
                 data: null, render: function (data, type, row) {
+                    const viewModal = {
+                        "Admin": "#ViewAdminRole",
+                        "User Admin": "#ViewUserAdminRole",
+                        "Invoice Admin": "#ViewInvoiceAdminRole"
+                    }[row.role];
                     return `
                         <div class="d-flex align-items-center">
-                            ${row.role.toLowerCase().includes("admin") ? "" : `
+                            ${row.role.toLowerCase().includes("admin")
+                            ? `
+                                <span role="button" tabindex="0"> 
+                                    <span data-toggle="tooltip" aria-label="VIEW" data-bs-original-title="VIEW" data-bs-toggle="modal" data-bs-target="${viewModal}"
+                                        class="icon icon-eye me-1 me-md-2"></span>
+                                </span> 
+                                ` : `
                             <span role="button" tabindex="0"> 
                                 <span data-toggle="tooltip" aria-label="EDIT" data-bs-original-title="EDIT" data-bs-toggle="modal" data-bs-target="#EditRole"
                                     class="icon icon-entity-edit me-1 me-md-2"></span>
@@ -263,12 +274,31 @@ $(document).ready(function () {
         },
         {
             id: "#user-rights-table-2", tableContext: "role_2", dataSrc: "group_entities_data"
+        },
+        {
+            id: "#user-rights-table-3", tableContext: "role_3", dataSrc: "admin_role_data"
+        },
+        {
+            id: "#user-rights-table-4", tableContext: "role_4", dataSrc: "useradmin_role_data"
+        },
+        {
+            id: "#user-rights-table-5", tableContext: "role_5", dataSrc: "invoiceadmin_role_data"
         }
     ]
 
     tablesId.forEach(value => {
-        $(value.id).DataTable(tableAccessOption(value.tableContext, value.dataSrc))
-        multiSelectRowCheckbox($(value.id))
+        let tableId = value.id;
+        let role_based_table = $(tableId).DataTable(tableAccessOption(value.tableContext, value.dataSrc))
+        multiSelectRowCheckbox($(tableId))
+
+        if (["role_3", "role_4", "role_5"].includes(value.tableContext)) {
+            role_based_table.on('draw.dt', function () {
+                $(tableId).closest('.userAccessTable').find('input[type=checkbox]')
+                    .prop('disabled', true)
+                    .closest('tr').addClass('check-disabled');
+            })
+        }
+
     })
 
     $(document).on("click", ".user-data-table tbody td .dt-control", function () {
@@ -351,7 +381,11 @@ function toggleTable(select) {
 
     if (!selectedValue) return;
 
-    const accessSection = $(select).closest('.modal').find('.access-table-section');
+    let parentModal = $(select).closest('.modal');
+
+    let accessSection = parentModal.find('.access-table-section');
+    let apiSection = parentModal.find('.filejet-api-section'); // just for reference to show checked OAuth api state based on Role
+    let switchInput = apiSection.find('.form-switch .form-check-input'); // just for reference to show checked OAuth api state based on Role
 
     if (!accessSection) return;
 
@@ -361,6 +395,17 @@ function toggleTable(select) {
     }
 
     accessSection.removeClass('d-none').hide().fadeIn(100);
+
+    // just for reference to show checked OAuth api state based on Role
+    if (apiSection) {
+        apiSection.removeClass('d-none').hide().fadeIn(100);
+
+        if (selectedValue === "Custom User") {
+            switchInput.prop({ checked: false, disabled: false });
+        } else {
+            switchInput.prop({ checked: true, disabled: true });
+        }
+    }
     const userRightsTable = accessSection.find('.user-data-table');
 
     if (!userRightsTable) return;
