@@ -9,6 +9,51 @@
         @extend .billingTabsContent;
     }
 
+    .form-switch-actiontext {
+        position: relative;
+        font-weight: normal;
+        display: block;
+        font-size: 12px;
+
+        .switch-checked,
+        .switch-unchecked {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    .intergration-switch {
+        .form-check-input {
+            &:checked+.form-switch-actiontext {
+
+                .switch-checked {
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                .switch-unchecked {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+
+            &+.form-switch-actiontext {
+
+                .switch-unchecked {
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                .switch-checked {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+
     .integration-list {
         .integration-item:last-child {
             padding-bottom: 0 !important;
@@ -27,7 +72,7 @@
         font-size: 12px;
         font-weight: normal;
 
-        .text-indigo {
+        a.text-indigo {
             color: var(--bs-filejet-purple-indigo);
             --bs-link-hover-color: var(--bs-filejet-purple-indigo);
             cursor: pointer;
@@ -114,8 +159,9 @@
         background-color: var(--bs-gray-light);
     }
 
-    .integration-copy {
-        cursor: pointer;
+    .integration-copy:hover {
+        @extend .border;
+        background-color: white;
     }
 
     .badge-failed {

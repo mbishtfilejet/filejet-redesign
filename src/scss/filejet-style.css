@@ -7842,7 +7842,7 @@ input[type=time]:active:before, .modal-header .btn-outline-dark:hover .icon-mail
   transform: translateY(-50%) !important;
 }
 
-.border, .boc-light #boc-ppdf-btns #boc-ppdf-header, .boc-light #boc-ppdf-btns #boc-ppdf-margin, .boc-light #boc-ppdf-btns #boc-ppdf-footer, .boc-light #boc-ppdf-btns #boc-ppdf-size, .boc-light #boc-ppdf-btns #boc-ppdf-layout, .boc-light #boc-ppdf-btns #boc-ppdf-scale {
+.border, .integration-dashboard .integration-copy:hover, .boc-light #boc-ppdf-btns #boc-ppdf-header, .boc-light #boc-ppdf-btns #boc-ppdf-margin, .boc-light #boc-ppdf-btns #boc-ppdf-footer, .boc-light #boc-ppdf-btns #boc-ppdf-size, .boc-light #boc-ppdf-btns #boc-ppdf-layout, .boc-light #boc-ppdf-btns #boc-ppdf-scale {
   border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
 }
 
@@ -24872,7 +24872,7 @@ body *::-webkit-scrollbar-thumb {
 .reporting-dashboard .sidebar .menu-link .nav-link.active a::after {
   background-color: rgba(223, 223, 223, 0.6) !important;
 }
-.reporting-dashboard .reportSection .border, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-size, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-size, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-layout, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-layout, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-scale, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-scale, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-header, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-header, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-margin, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-margin, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-footer, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-footer {
+.reporting-dashboard .reportSection .border, .reporting-dashboard .reportSection .integration-dashboard .integration-copy:hover, .integration-dashboard .reporting-dashboard .reportSection .integration-copy:hover, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-size, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-size, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-layout, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-layout, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-scale, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-scale, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-header, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-header, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-margin, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-margin, .reporting-dashboard .reportSection .boc-light #boc-ppdf-btns #boc-ppdf-footer, .boc-light #boc-ppdf-btns .reporting-dashboard .reportSection #boc-ppdf-footer {
   border-color: var(--bs-border-color-translucent) !important;
 }
 .reporting-dashboard .filter-option {
@@ -25943,6 +25943,35 @@ body *::-webkit-scrollbar-thumb {
   overflow-y: auto !important;
 }
 
+.integration-dashboard .form-switch-actiontext {
+  position: relative;
+  font-weight: normal;
+  display: block;
+  font-size: 12px;
+}
+.integration-dashboard .form-switch-actiontext .switch-checked,
+.integration-dashboard .form-switch-actiontext .switch-unchecked {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.integration-dashboard .intergration-switch .form-check-input:checked + .form-switch-actiontext .switch-checked, .integration-dashboard .intergration-switch .boc-light .boc-filter .boc-filter-menu fieldset div input:checked + .form-switch-actiontext .switch-checked, .boc-light .boc-filter .boc-filter-menu fieldset div .integration-dashboard .intergration-switch input:checked + .form-switch-actiontext .switch-checked {
+  opacity: 1;
+  visibility: visible;
+}
+.integration-dashboard .intergration-switch .form-check-input:checked + .form-switch-actiontext .switch-unchecked, .integration-dashboard .intergration-switch .boc-light .boc-filter .boc-filter-menu fieldset div input:checked + .form-switch-actiontext .switch-unchecked, .boc-light .boc-filter .boc-filter-menu fieldset div .integration-dashboard .intergration-switch input:checked + .form-switch-actiontext .switch-unchecked {
+  opacity: 0;
+  visibility: hidden;
+}
+.integration-dashboard .intergration-switch .form-check-input + .form-switch-actiontext .switch-unchecked, .integration-dashboard .intergration-switch .boc-light .boc-filter .boc-filter-menu fieldset div input + .form-switch-actiontext .switch-unchecked, .boc-light .boc-filter .boc-filter-menu fieldset div .integration-dashboard .intergration-switch input + .form-switch-actiontext .switch-unchecked {
+  opacity: 1;
+  visibility: visible;
+}
+.integration-dashboard .intergration-switch .form-check-input + .form-switch-actiontext .switch-checked, .integration-dashboard .intergration-switch .boc-light .boc-filter .boc-filter-menu fieldset div input + .form-switch-actiontext .switch-checked, .boc-light .boc-filter .boc-filter-menu fieldset div .integration-dashboard .intergration-switch input + .form-switch-actiontext .switch-checked {
+  opacity: 0;
+  visibility: hidden;
+}
 .integration-dashboard .integration-list .integration-item:last-child {
   padding-bottom: 0 !important;
 }
@@ -25956,7 +25985,7 @@ body *::-webkit-scrollbar-thumb {
   font-size: 12px;
   font-weight: normal;
 }
-.integration-dashboard .integration-meta .text-indigo {
+.integration-dashboard .integration-meta a.text-indigo {
   color: var(--bs-filejet-purple-indigo);
   --bs-link-hover-color: var(--bs-filejet-purple-indigo);
   cursor: pointer;
@@ -26018,8 +26047,8 @@ body *::-webkit-scrollbar-thumb {
 .integration-dashboard .integration-key-box {
   background-color: var(--bs-gray-light);
 }
-.integration-dashboard .integration-copy {
-  cursor: pointer;
+.integration-dashboard .integration-copy:hover {
+  background-color: white;
 }
 .integration-dashboard .badge-failed {
   background-color: #F36458;
