@@ -518,27 +518,125 @@
                                 <!-- FileJet API Start -->
                                 <div class="tab-pane fade" id="in-api-tab-pane" role="tabpanel"
                                     aria-labelledby="in-api-tab" tabindex="0">
-                                    <!-- FileJet API Header Start -->
-                                    <div class="p-3 bg-white rounded-2">
-                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                                            <div class="d-flex align-items-center gap-3">
-                                                <span class="integration-icon border rounded-4">
-                                                    <span class="icon icon-filejetSymbol icon-lg m-0"></span>
-                                                </span>
-                                                <h5 class="fw-bold mb-0">Filejet API</h5>
-                                            </div>
+                                    <div class="d-flex flex-column gap-4">
+                                        <!-- FileJet API Header Start -->
+                                        <div class="p-3 bg-white rounded-2">
                                             <div
-                                                class="form-switch  intergration-switch m-0 p-0 d-flex align-items-center">
-                                                <input class="form-check-input m-0 order-1 ms-2" type="checkbox"
-                                                    id="apiSwitch" checked>
-                                                <span class="form-switch-actiontext order-0">
-                                                    <span class="switch-checked">Enabled</span>
-                                                    <span class="switch-unchecked">Disabled</span>
-                                                </span>
+                                                class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="integration-icon border rounded-4">
+                                                        <span class="icon icon-filejetSymbol icon-lg m-0"></span>
+                                                    </span>
+                                                    <h5 class="fw-bold mb-0">Filejet API</h5>
+                                                </div>
+                                                <div
+                                                    class="form-switch  intergration-switch m-0 p-0 d-flex align-items-center">
+                                                    <input class="form-check-input m-0 order-1 ms-2" type="checkbox"
+                                                        id="apiSwitch" checked>
+                                                    <span class="form-switch-actiontext order-0">
+                                                        <span class="switch-checked">Enabled</span>
+                                                        <span class="switch-unchecked">Disabled</span>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- FileJet API Header End -->
+
+                                        <!-- FileJet API Keys Start -->
+                                        <div>
+                                            <div class="integrationTableCard border rounded-2">
+                                                <div class="integrationApiKeysTable">
+                                                    <table id="api-keys-table"
+                                                        class="table table-striped w-100 table-nowrap">
+                                                        <thead>
+                                                            <tr class="group-row">
+                                                                <th>Key Name</th>
+                                                                <th>Type</th>
+                                                                <th>Created By</th>
+                                                                <th>Date Created</th>
+                                                                <th>Last Used</th>
+                                                                <th data-orderable="false">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <button type="button"
+                                                class="btn btn-dark p-2 py-0 rounded-1 text-capitalize mt-3"
+                                                data-bs-toggle="modal" data-bs-target="#addApiKeyDetails">Add API
+                                                Key</button>
+                                        </div>
+                                        <!-- FileJet API Keys End -->
+
+                                        <!-- FileJet API Integration Log Start -->
+                                        <div>
+                                            <h6 class="fw-bold mb-3">Integration Log</h6>
+                                            <div class="row g-2">
+                                                <div class="col-12 col-md-5 flex-grow-1 mb-2 search-table-col">
+                                                    <div
+                                                        class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                                        <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                                        <input type="text"
+                                                            class="custom-search-input border-0 p-0 w-100"
+                                                            placeholder="Search Log">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-3 flex-grow-1 mb-2">
+                                                    <div
+                                                        class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1 h-100">
+                                                        <input type="text" name="daterange"
+                                                            class="form-control received-datepicker w-100 border-0 p-0 my-auto"
+                                                            placeholder="Date Range" value="" />
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="filter2-dropdown col-12 col-md-2 flex-grow-1 status-table-col mb-2 dropdown">
+                                                    <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                                        id="apiStatusContainer" data-bs-toggle="dropdown"
+                                                        aria-expanded="false" tabindex="0">
+                                                        <input type="text" class="search-input" id="apiStatusSearch"
+                                                            placeholder="Status" autocomplete="off">
+                                                    </div>
+                                                    <ul class="dropdown-menu search-disabled" id="apiStatusDropdown">
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="apiStatusSelectAll"
+                                                                    class="form-check-input me-2 apiStatus-checkbox"
+                                                                    data-value="All">All
+                                                            </label>
+                                                        </li>
+                                                        <li><label class="dropdown-item"><input type="checkbox"
+                                                                    class="form-check-input apiStatus-checkbox me-2"
+                                                                    data-value="Success"> Success</label></li>
+                                                        <li><label class="dropdown-item"><input type="checkbox"
+                                                                    class="form-check-input apiStatus-checkbox me-2"
+                                                                    data-value="Failed"> Failed</label></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="integrationTableCard mt-2 border rounded-2">
+                                                <div class="integrationApiLogTable">
+                                                    <table id="api-log-table"
+                                                        class="table table-striped w-100 table-nowrap">
+                                                        <thead>
+                                                            <tr class="group-row">
+                                                                <th>Date & Time</th>
+                                                                <th>Key Name</th>
+                                                                <th>Type</th>
+                                                                <th>Action</th>
+                                                                <th>Status</th>
+                                                                <th>Details</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- FileJet API Integration Log End -->
                                     </div>
-                                    <!-- FileJet API Header End -->
                                 </div>
                                 <!-- FileJet API End -->
 

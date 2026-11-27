@@ -37,17 +37,20 @@ $(function () {
 
     const dateRangeInputs = $('.integrationTabsContent input[name="daterange"]');
 
-    dateRangeInputs.daterangepicker({
-        ranges: {
-            'Today': [moment(), moment()],
-            'Last 24 Hours': [moment().subtract(24, 'hours'), moment()],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-        },
-        startDate: moment().subtract(24, 'hours'),
-        endDate: moment(),
-        drops: 'auto',
-        autoUpdateInput: false,
+    dateRangeInputs.each(function () {
+        let el = $(this);
+        el.daterangepicker({
+            ranges: {
+                'Today': [moment(), moment()],
+                'Last 24 Hours': [moment().subtract(24, 'hours'), moment()],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+            },
+            startDate: moment().subtract(24, 'hours'),
+            endDate: moment(),
+            drops: 'auto',
+            autoUpdateInput: false,
+        })
     });
 
     dateRangeInputs.on('apply.daterangepicker', function (ev, picker) {
