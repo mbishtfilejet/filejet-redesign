@@ -128,5 +128,9 @@ $(function () {
         { data: "details" }
     ]);
 
+    const tableOption = tableAccessOption("role_2", "group_entities_data");
 
+    $("#api-scope-table").DataTable(tableOption);
+
+    multiSelectRowCheckbox($("#api-scope-table"))
 });

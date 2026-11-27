@@ -179,7 +179,7 @@
 
     .api-key-modal {
         .api-type-tag.badge-live {
-            color: #14AEFC;
+            color: #14AE5C;
         }
 
         .btn-outline-indigo {
@@ -253,6 +253,51 @@
                     min-width: 250px !important;
                 }
             }
+        }
+    }
+
+    .SOP-model .green-checkbox[type=checkbox]:checked,
+    .green-checkbox[type=checkbox]:checked {
+        background-color: #72E097 !important;
+        background-image: url("../../../../dist/images/icons/light-green-check.svg") !important;
+    }
+
+    .SOP-model .light-green-checkbox[type=checkbox]:checked,
+    .light-green-checkbox[type=checkbox]:checked {
+        background-color: #E7F9ED !important;
+        background-image: url("../../../../dist/images/icons/light-green-check.svg") !important;
+    }
+}
+
+.api-step-group {
+
+    &.service-step-group .step {
+        left: 0 !important;
+        flex: 1;
+        align-items: flex-start;
+
+        &::after {
+            left: 38px; // 25px circle + 8px gap
+            width: calc(100% - 51px); // stop 8px before the next circle
+        }
+
+        .circle {
+            left: 0;
+        }
+
+        .step3-text {
+            width: auto !important;
+            white-space: nowrap;
+        }
+
+        &:nth-child(2) .step3-text {
+            transform: translateX(calc(-50% + 12.5px)); // centre under the circle
+        }
+
+        &:last-child {
+            flex: 0 0 25px;
+            min-width: 0;
+            align-items: flex-end; // label right-aligned with the edge
         }
     }
 }
