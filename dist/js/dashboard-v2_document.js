@@ -396,7 +396,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ["groupPaymentContainer", "groupPaymentDropdown", "groupPaymentSearch", "groupPayment-checkbox", "groupPaymentSelectAll"],
     ["groupContainer", "groupDropdown", "groupSearch", "group-checkbox", "groupSelectAll"],
     ["viewContainer", "viewDropdown", "viewSearch", "view-checkbox"],
-    ["apiStatusContainer", "apiStatusDropdown", "apiStatusSearch", "apiStatus-checkbox", "apiStatusSelectAll"]
+    ["apiStatusContainer", "apiStatusDropdown", "apiStatusSearch", "apiStatus-checkbox", "apiStatusSelectAll"],
+    ["webhookStatusContainer", "webhookStatusDropdown", "webhookStatusSearch", "webhookStatus-checkbox", "webhookStatusSelectAll"]
   ];
 
   dropdownConfigs.forEach(args => setupMultiSelect(...args));
