@@ -422,32 +422,214 @@
                                 <!-- SharePoint Start -->
                                 <div class="tab-pane fade" id="in-sharepoint-tab-pane" role="tabpanel"
                                     aria-labelledby="in-sharepoint-tab" tabindex="0">
-                                    <!-- SharePoint Header Start -->
-                                    <div class="p-3 bg-white rounded-2">
-                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                                            <div class="d-flex align-items-center gap-3">
-                                                <span class="integration-icon border rounded-4">
-                                                    <span class="icon icon-sharepoint icon-lg m-0"></span>
-                                                </span>
-                                                <h5 class="fw-bold mb-0">SharePoint</h5>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-3">
-                                                <div
-                                                    class="form-switch  intergration-switch m-0 p-0 d-flex align-items-center">
-                                                    <input class="form-check-input m-0 order-1 ms-2" type="checkbox"
-                                                        id="sharepointSwitch" checked>
-                                                    <span class="form-switch-actiontext order-0">
-                                                        <span class="switch-checked">Enabled</span>
-                                                        <span class="switch-unchecked">Disabled</span>
+                                    <div class="d-flex flex-column gap-4">
+                                        <!-- SharePoint Header Start -->
+                                        <div class="p-3 bg-white rounded-2">
+                                            <div
+                                                class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="integration-icon border rounded-4">
+                                                        <span class="icon icon-sharepoint icon-lg m-0"></span>
                                                     </span>
+                                                    <h5 class="fw-bold mb-0">SharePoint</h5>
                                                 </div>
-                                                <button type="button"
-                                                    class="btn btn-dark rounded-1 p-2 py-0 text-capitalize">Sync
-                                                    Now</button>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div
+                                                        class="form-switch  intergration-switch m-0 p-0 d-flex align-items-center">
+                                                        <input class="form-check-input m-0 order-1 ms-2" type="checkbox"
+                                                            id="sharepointSwitch" checked>
+                                                        <span class="form-switch-actiontext order-0">
+                                                            <span class="switch-checked">Enabled</span>
+                                                            <span class="switch-unchecked">Disabled</span>
+                                                        </span>
+                                                    </div>
+                                                    <button type="button"
+                                                        class="btn btn-dark rounded-1 p-2 py-0 text-capitalize">Sync
+                                                        Now</button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- SharePoint Header End -->
+
+                                        <!-- SharePoint Authentication Start -->
+                                        <div class="p-3 bg-white rounded-2 integrations-section integration-save-card">
+                                            <h6 class="fw-bold mb-3">Authentication</h6>
+                                            <div class="row g-3">
+                                                <div class="col-12 col-md-6">
+                                                    <label for="sharepointUsername" class="form-label">Username</label>
+                                                    <input type="text" class="form-control" id="sharepointUsername"
+                                                        placeholder="Username">
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <label for="sharepointPassword" class="form-label">Password</label>
+                                                    <div class="integration-password position-relative">
+                                                        <input type="password" class="form-control no-bg"
+                                                            id="sharepointPassword" placeholder="Password">
+                                                        <span
+                                                            class="icon icon-eye-slash position-absolute cursor-pointer"></span>
+                                                        <span
+                                                            class="icon icon-eye position-absolute cursor-pointer d-none"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="integration-meta my-3">Certificate-based authentication is coming
+                                                soon.</p>
+                                            <button type="button"
+                                                class="btn btn-dark p-2 py-0 rounded-1 text-capitalize"
+                                                disabled>Save</button>
+                                        </div>
+                                        <!-- SharePoint Authentication End -->
+
+                                        <!-- SharePoint Root Location & Document Types Start -->
+                                        <div class="row g-4 integrations-section">
+                                            <div class="col-12 col-lg-6">
+                                                <div
+                                                    class="p-3 bg-white rounded-2 h-100 integration-save-card d-flex flex-column">
+                                                    <h6 class="fw-bold mb-3">Root Location</h6>
+                                                    <label for="sharepointRootUrl" class="form-label">Root Folder
+                                                        URL</label>
+                                                    <input type="url" class="form-control mb-3" id="sharepointRootUrl"
+                                                        placeholder="Enter root folder URL">
+                                                    <button type="button"
+                                                        class="btn btn-dark p-2 py-0 rounded-1 text-capitalize mt-auto align-self-start"
+                                                        disabled>Save</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-6">
+                                                <div
+                                                    class="p-3 bg-white rounded-2 h-100 integration-save-card d-flex flex-column">
+                                                    <h6 class="fw-bold mb-3">Document Types</h6>
+                                                    <div class="row g-2 mb-3">
+                                                        <div class="col-12 col-sm-6 d-flex flex-column gap-2">
+                                                            <div class="form-check m-0">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="sharepointDocStanding">
+                                                                <label class="form-check-label rights-label"
+                                                                    for="sharepointDocStanding">Certificate of
+                                                                    Standing</label>
+                                                            </div>
+                                                            <div class="form-check m-0">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="sharepointDocFormation">
+                                                                <label class="form-check-label rights-label"
+                                                                    for="sharepointDocFormation">Formation
+                                                                    Documents</label>
+                                                            </div>
+                                                            <div class="form-check m-0">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="sharepointDocAnnual">
+                                                                <label class="form-check-label rights-label"
+                                                                    for="sharepointDocAnnual">Annual Reports</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-sm-6 d-flex flex-column gap-2">
+                                                            <div class="form-check m-0">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="sharepointDocRA">
+                                                                <label class="form-check-label rights-label"
+                                                                    for="sharepointDocRA">Registered Agent
+                                                                    Filings</label>
+                                                            </div>
+                                                            <div class="form-check m-0">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="sharepointDocFranchise">
+                                                                <label class="form-check-label rights-label"
+                                                                    for="sharepointDocFranchise">Franchise Tax
+                                                                    Filings</label>
+                                                            </div>
+                                                            <div class="form-check m-0">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="sharepointDocCustom">
+                                                                <label class="form-check-label rights-label"
+                                                                    for="sharepointDocCustom">Custom Documents</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="button"
+                                                        class="btn btn-dark p-2 py-0 rounded-1 text-capitalize mt-auto align-self-start"
+                                                        disabled>Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- SharePoint Root Location & Document Types End -->
+
+                                        <!-- SharePoint Integration Log Start -->
+                                        <div>
+                                            <h6 class="fw-bold mb-3">Integration Log</h6>
+                                            <div class="row g-2">
+                                                <div class="col-12 col-md-5 flex-grow-1 mb-2 search-table-col">
+                                                    <div
+                                                        class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                                        <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                                        <input type="text"
+                                                            class="custom-search-input border-0 p-0 w-100"
+                                                            placeholder="Search Log">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-3 flex-grow-1 mb-2">
+                                                    <div
+                                                        class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1 h-100">
+                                                        <input type="text" name="daterange"
+                                                            class="form-control received-datepicker w-100 border-0 p-0 my-auto"
+                                                            placeholder="Date Range" value="" />
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="filter2-dropdown col-12 col-md-2 flex-grow-1 status-table-col mb-2 dropdown">
+                                                    <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                                        id="sharepointStatusContainer" data-bs-toggle="dropdown"
+                                                        aria-expanded="false" tabindex="0">
+                                                        <input type="text" class="search-input"
+                                                            id="sharepointStatusSearch" placeholder="Status"
+                                                            autocomplete="off">
+                                                    </div>
+                                                    <ul class="dropdown-menu search-disabled"
+                                                        id="sharepointStatusDropdown">
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="sharepointStatusSelectAll"
+                                                                    class="form-check-input me-2 sharepointStatus-checkbox"
+                                                                    data-value="All">All
+                                                            </label>
+                                                        </li>
+                                                        <li><label class="dropdown-item"><input type="checkbox"
+                                                                    class="form-check-input sharepointStatus-checkbox me-2"
+                                                                    data-value="Success"> Success</label></li>
+                                                        <li><label class="dropdown-item"><input type="checkbox"
+                                                                    class="form-check-input sharepointStatus-checkbox me-2"
+                                                                    data-value="Failed"> Failed</label></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="integrationTableCard mt-2 border rounded-2">
+                                                <div class="integrationSyncLogTable">
+                                                    <table id="sharepoint-log-table"
+                                                        class="table table-striped w-100 table-nowrap">
+                                                        <thead>
+                                                            <tr class="group-row">
+                                                                <th>Date & Time</th>
+                                                                <th>Status</th>
+                                                                <th>Message</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- SharePoint Integration Log End -->
+
+                                        <!-- SharePoint Remove Integration Start -->
+                                        <div class="p-3 bg-white rounded-2">
+                                            <h6 class="fw-bold mb-1">Remove Integration</h6>
+                                            <p class="integration-meta mb-3">Are you sure you want to remove this
+                                                integration?</p>
+                                            <button type="button"
+                                                class="btn btn-dark p-2 py-0 rounded-1 text-capitalize">Remove</button>
+                                        </div>
+                                        <!-- SharePoint Remove Integration End -->
                                     </div>
-                                    <!-- SharePoint Header End -->
                                 </div>
                                 <!-- SharePoint End -->
 
