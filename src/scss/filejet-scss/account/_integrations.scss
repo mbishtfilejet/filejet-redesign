@@ -177,24 +177,21 @@
         background-color: #FDEFB6;
     }
 
-    .api-key-modal {
-        .api-type-tag.badge-live {
-            color: #14AE5C;
-        }
-
-        .btn-outline-indigo {
-            color: #595DDC;
-            background-color: #fff;
-            border: 1px solid #595DDC;
-
-            &:hover,
-            &:focus-visible {
-                color: #fff;
-                background-color: #595DDC;
-            }
-        }
+    .api-type-tag.badge-live {
+        color: #14AE5C;
     }
 
+    .btn-outline-indigo {
+        color: #595DDC;
+        background-color: #fff;
+        border: 1px solid #595DDC;
+
+        &:hover,
+        &:focus-visible {
+            color: #fff;
+            background-color: #595DDC;
+        }
+    }
 
     .integrationApiKeysTable .dataTables_wrapper {
         tr {
@@ -277,12 +274,25 @@
         align-items: flex-start;
 
         &::after {
-            left: 38px; // 25px circle + 8px gap
-            width: calc(100% - 51px); // stop 8px before the next circle
+            left: 55px; // 25px circle + 8px gap
+            width: calc(100% - 75px); // stop 8px before the next circle
+        }
+
+        &:nth-child(2)::after {
+            left: 45px;
+            width: calc(100% - 95px);
         }
 
         .circle {
             left: 0;
+        }
+
+        &:nth-child(1) .circle {
+            left: 12px;
+        }
+
+        &:nth-child(3) .circle {
+            left: -32px;
         }
 
         .step3-text {

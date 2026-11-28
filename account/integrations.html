@@ -486,32 +486,201 @@
                                 <!-- FileJet Webhook Start -->
                                 <div class="tab-pane fade" id="in-webhook-tab-pane" role="tabpanel"
                                     aria-labelledby="in-webhook-tab" tabindex="0">
-                                    <!-- FileJet Webhook Header Start -->
-                                    <div class="p-3 bg-white rounded-2">
-                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                                            <div class="d-flex align-items-center gap-3">
-                                                <span class="integration-icon border rounded-4">
-                                                    <span class="icon icon-filejetSymbol icon-lg m-0"></span>
-                                                </span>
-                                                <h5 class="fw-bold mb-0">Filejet Webhook</h5>
-                                            </div>
-                                            <div class="d-flex align-items-center gap-3">
-                                                <div
-                                                    class="form-switch  intergration-switch m-0 p-0 d-flex align-items-center">
-                                                    <input class="form-check-input m-0 order-1 ms-2" type="checkbox"
-                                                        id="googleDriveSwitch" checked>
-                                                    <span class="form-switch-actiontext order-0">
-                                                        <span class="switch-checked">Enabled</span>
-                                                        <span class="switch-unchecked">Disabled</span>
+                                    <div class="d-flex flex-column gap-4">
+                                        <!-- FileJet Webhook Header Start -->
+                                        <div class="p-3 bg-white rounded-2">
+                                            <div
+                                                class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="integration-icon border rounded-4">
+                                                        <span class="icon icon-filejetSymbol icon-lg m-0"></span>
                                                     </span>
+                                                    <h5 class="fw-bold mb-0">Filejet Webhook</h5>
                                                 </div>
-                                                <button type="button"
-                                                    class="btn btn-dark rounded-1 p-2 py-0 text-capitalize">Sync
-                                                    Now</button>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div
+                                                        class="form-switch  intergration-switch m-0 p-0 d-flex align-items-center">
+                                                        <input class="form-check-input m-0 order-1 ms-2" type="checkbox"
+                                                            id="googleDriveSwitch" checked>
+                                                        <span class="form-switch-actiontext order-0">
+                                                            <span class="switch-checked">Enabled</span>
+                                                            <span class="switch-unchecked">Disabled</span>
+                                                        </span>
+                                                    </div>
+                                                    <button type="button"
+                                                        class="btn btn-dark rounded-1 p-2 py-0 text-capitalize">Sync
+                                                        Now</button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- FileJet Webhook Header End -->
+
+                                        <!-- FileJet Webhook Authentication Start -->
+                                        <div class="p-3 bg-white rounded-2 integrations-section integration-save-card">
+                                            <h6 class="fw-bold mb-3">Authentication</h6>
+                                            <div class="row g-3">
+                                                <div class="col-12 col-md-4">
+                                                    <label for="webhook_key" class="form-label">Webhook
+                                                        Secret/Key</label>
+                                                    <input type="text" class="form-control" id="webhook_key"
+                                                        placeholder="Type in your Webhook Secret Key">
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label for="webhook_api_key" class="form-label">API Key</label>
+                                                    <div class="integration-password position-relative">
+                                                        <input type="password" class="form-control no-bg"
+                                                            id="webhook_api_key" placeholder="Type in your API Key">
+                                                        <span
+                                                            class="icon icon-eye-slash position-absolute cursor-pointer"></span>
+                                                        <span
+                                                            class="icon icon-eye position-absolute cursor-pointer d-none"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label for="webhook_url" class="form-label">Webhook URL</label>
+                                                    <div class="integration-password position-relative">
+                                                        <input type="password" class="form-control no-bg"
+                                                            id="webhook_url" placeholder="Type in your Webhook URL">
+                                                        <span
+                                                            class="icon icon-eye-slash position-absolute cursor-pointer"></span>
+                                                        <span
+                                                            class="icon icon-eye position-absolute cursor-pointer d-none"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="integration-meta my-3">Certificate-based authentication is coming
+                                                soon.</p>
+                                            <button type="button"
+                                                class="btn btn-dark p-2 py-0 rounded-1 text-capitalize"
+                                                disabled>Save</button>
+                                        </div>
+                                        <!-- FileJet Webhook Authentication End -->
+
+                                        <!-- FileJet Webhook Document Types Start -->
+                                        <div class="p-3 bg-white rounded-2 integrations-section integration-save-card">
+                                            <h6 class="fw-bold mb-3">Document Types</h6>
+                                            <div class="row row-cols-1 row-cols-md-3 g-2 mb-3">
+                                                <div class="col">
+                                                    <div class="form-check m-0">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="webhookDocStanding">
+                                                        <label class="form-check-label rights-label"
+                                                            for="webhookDocStanding">Certificate of Standing</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-check m-0">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="webhookDocRA">
+                                                        <label class="form-check-label rights-label"
+                                                            for="webhookDocRA">Registered Agent Filings</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-check m-0">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="webhookDocFormation">
+                                                        <label class="form-check-label rights-label"
+                                                            for="webhookDocFormation">Formation Documents</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-check m-0">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="webhookDocFranchise">
+                                                        <label class="form-check-label rights-label"
+                                                            for="webhookDocFranchise">Franchise Tax Filings</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-check m-0">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="webhookDocAnnual">
+                                                        <label class="form-check-label rights-label"
+                                                            for="webhookDocAnnual">Annual Reports</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-check m-0">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="webhookDocCustom">
+                                                        <label class="form-check-label rights-label"
+                                                            for="webhookDocCustom">Custom Documents</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="button"
+                                                class="btn btn-dark p-2 py-0 rounded-1 text-capitalize"
+                                                disabled>Save</button>
+                                        </div>
+                                        <!-- FileJet Webhook Document Types End -->
+
+                                        <!-- FileJet Webhook Integration Log Start -->
+                                        <div>
+                                            <h6 class="fw-bold mb-3">Integration Log</h6>
+                                            <div class="row g-2">
+                                                <div class="col-12 col-md-5 flex-grow-1 mb-2 search-table-col">
+                                                    <div
+                                                        class="table-search-feild d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg px-3 py-2 py-md-2 h-100">
+                                                        <span class="icon icon-search-grey icon-sm opacity-25"></span>
+                                                        <input type="text"
+                                                            class="custom-search-input border-0 p-0 w-100"
+                                                            placeholder="Search Log">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-3 flex-grow-1 mb-2">
+                                                    <div
+                                                        class="calendar-wrapper d-flex align-items-center border rounded-2 shadow-sm m-0 white-bg p-2 gap-1 h-100">
+                                                        <input type="text" name="daterange"
+                                                            class="form-control received-datepicker w-100 border-0 p-0 my-auto"
+                                                            placeholder="Date Range" value="" />
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="filter2-dropdown col-12 col-md-2 flex-grow-1 status-table-col mb-2 dropdown">
+                                                    <div class="multi-select-container d-flex align-items-center border border-1 rounded-2 shadow-sm m-0 white-bg"
+                                                        id="webhookStatusContainer" data-bs-toggle="dropdown"
+                                                        aria-expanded="false" tabindex="0">
+                                                        <input type="text" class="search-input" id="webhookStatusSearch"
+                                                            placeholder="Status" autocomplete="off">
+                                                    </div>
+                                                    <ul class="dropdown-menu search-disabled"
+                                                        id="webhookStatusDropdown">
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input type="checkbox" id="webhookStatusSelectAll"
+                                                                    class="form-check-input me-2 webhookStatus-checkbox"
+                                                                    data-value="All">All
+                                                            </label>
+                                                        </li>
+                                                        <li><label class="dropdown-item"><input type="checkbox"
+                                                                    class="form-check-input webhookStatus-checkbox me-2"
+                                                                    data-value="Success"> Success</label></li>
+                                                        <li><label class="dropdown-item"><input type="checkbox"
+                                                                    class="form-check-input webhookStatus-checkbox me-2"
+                                                                    data-value="Failed"> Failed</label></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="integrationTableCard mt-2 border rounded-2">
+                                                <div class="integrationSyncLogTable">
+                                                    <table id="webhook-log-table"
+                                                        class="table table-striped w-100 table-nowrap">
+                                                        <thead>
+                                                            <tr class="group-row">
+                                                                <th>Date & Time</th>
+                                                                <th>Status</th>
+                                                                <th>Message</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- FileJet Webhook Integration Log End -->
                                     </div>
-                                    <!-- FileJet Webhook Header End -->
                                 </div>
                                 <!-- FileJet Webhook End -->
 
@@ -790,7 +959,7 @@
     </div>
 
     <!-- Add API Key step-1 Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model api-key-modal" id="addApiKeyDetails" tabindex="-1"
+    <div class="modal modal-right fade filter-slideout SOP-model" id="addApiKeyDetails" tabindex="-1"
         aria-labelledby="addApiKeyDetailsLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -877,7 +1046,7 @@
     <!-- Add API Key step-1 Modal End -->
 
     <!-- Add API Key step-2 Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model api-key-modal" id="addApiKeyScope" tabindex="-1"
+    <div class="modal modal-right fade filter-slideout SOP-model" id="addApiKeyScope" tabindex="-1"
         aria-labelledby="addApiKeyScopeLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -889,7 +1058,7 @@
                             <h4 class="fw-bold m-0" id="addApiKeyScopeLabel">Add API Key</h4>
                         </div>
                         <!-- stepper start -->
-                        <div class="service-step-group service-step3">
+                        <div class="service-step-group service-step3 api-step-group">
                             <div class="step completed" data-bs-toggle="modal" data-bs-target="#addApiKeyDetails"
                                 data-bs-dismiss="modal">
                                 <div class="circle completed"></div>
@@ -1023,7 +1192,7 @@
                         <button type="button" class="btn btn-link text-decoration-none font-weight-600 p-0"
                             data-bs-dismiss="modal">CANCEL</button>
                         <button type="button" class="btn btn-info py-0 px-5 rounded-3 ms-3"
-                            data-bs-target="#addApiKeySecret" data-bs-toggle="modal" data-bs-dismiss="modal">Create API
+                            data-bs-target="#addApiKeySecret" data-bs-toggle="modal" data-bs-dismiss="modal">Create
                             Key</button>
                     </div>
                 </div>
@@ -1033,7 +1202,7 @@
     <!-- Add API Key step-2 Modal End -->
 
     <!-- Add API Key step-3 Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model api-key-modal" id="addApiKeySecret" tabindex="-1"
+    <div class="modal modal-right fade filter-slideout SOP-model" id="addApiKeySecret" tabindex="-1"
         aria-labelledby="addApiKeySecretLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
@@ -1045,7 +1214,7 @@
                             <h4 class="fw-bold m-0" id="addApiKeySecretLabel">Add API Key</h4>
                         </div>
                         <!-- stepper start -->
-                        <div class="service-step-group service-step3">
+                        <div class="service-step-group service-step3 api-step-group ">
                             <div class="step completed" data-bs-toggle="modal" data-bs-target="#addApiKeyDetails"
                                 data-bs-dismiss="modal">
                                 <div class="circle completed"></div>
@@ -1072,7 +1241,8 @@
                     <div class="mb-4 p-3 bg-white rounded-2">
                         <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
                             <h4 class="fs-5 fw-semibold text-break m-0 api-secret-key-name">NetSuit Sync</h4>
-                            <span class="d-inline-flex rounded-2 px-2 py-1 api-type-tag api-secret-key-type badge-live">Live</span>
+                            <span
+                                class="d-inline-flex rounded-2 px-2 py-1 api-type-tag api-secret-key-type badge-live">Live</span>
                         </div>
                         <label class="form-label">API Key Secret</label>
                         <div class="integration-key-box p-3 border rounded-2 mb-3">
@@ -1105,7 +1275,7 @@
     <!-- Add API Key step-3 Modal End -->
 
     <!-- Edit API Key Modal Start -->
-    <div class="modal modal-right fade filter-slideout SOP-model api-key-modal" id="editApiKey" tabindex="-1"
+    <div class="modal modal-right fade filter-slideout SOP-model" id="editApiKey" tabindex="-1"
         aria-labelledby="editApiKeyLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-end modal-dialog-scrollable modal-md-plus my-0 min-vh-100">
             <div class="modal-content border-0 rounded-0 min-vh-100">
